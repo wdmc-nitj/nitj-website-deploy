@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Page</title>
+    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="m-2 p-2 space-y-2">
+      <form id="form" action="#" class="space-y-2">
+        <input
+          type="text"
+          name="title"
+          id="title"
+          placeholder="Enter Title"
+          class="w-72 h-10 border-2 border-black rounded-lg p-2"
+        />
+
+        <textarea name="editor1"></textarea>
+        <!-- <input type="hidden" name="show" id="show" value="" /> -->
+        <input type="hidden" name="id" id="id" value="" />
+        <button
+          class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10"
+          onclick="handleSave()"
+        >
+          Save
+        </button>
+      </form>
+      <a href="/admin/store">
+        <button class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10">
+          Back
+        </button>
+      </a>
+    </div>
+  </body>
+  <script>
+    CKEDITOR.replace("editor1");
+    loadData();
+
+    function loadData() {
+      let url = window.location.href;
+      let id = url.split("/").pop();
+
+      let u = `/store/${id}`;
+
+      fetch(u, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          res.json().then((data) => {
+            console.log(data);
+            document.getElementById("title").value=data.title;
+            document.getElementById("id").value=data._id;
+            CKEDITOR.instances.editor1.setData(data.content);
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    document.getElementById("form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      handleSave();
+    });
+
+    async function handleSave() {
+      const content = CKEDITOR.instances.editor1.getData();
+      const title = document.getElementById("title").value;
+      
+      const id = document.getElementById("id").value;
+
+      let url = `/store/${id}`;
+
+      await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: title,
+          content: content,
+        }),
+      });
+
+      loadData();
+      alert("Saved");
+
+      // window.location.href = "http://localhost:8000/admin/newpage";
+    }
+  </script>
+</html>

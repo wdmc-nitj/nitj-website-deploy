@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload</title>
+    <style>
+      /* Style the form element */
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+
+      /* Style the file input element */
+      input[type="file"] {
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      /* Style the submit button element */
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      /* Style the submit button element on hover */
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      #link-container {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+      }
+
+      #copy-button {
+        display: block;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #copy-button:hover {
+        background-color: #0069d9;
+      }
+    </style>
+  </head>
+  <body>
+    <form
+      action="/upload"
+      method="post"
+      id="upload"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="file" />
+      <input type="submit" value="Upload" />
+    </form>
+    <div id="link-container"></div>
+    <button id="copy-button" style="display: none">Copy Link</button>
+    <script>
+      const form = document.getElementById("upload");
+      const linkContainer = document.getElementById("link-container");
+      const copyButton = document.getElementById("copy-button");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault(); // prevent the form from submitting normally
+
+        // Send the form data using fetch()
+        fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Copy the link received in response
+            const link = data.link;
+            linkContainer.innerHTML = link;
+
+            // Show the copy button
+            copyButton.style.display = "block";
+
+            console.log(link);
+          })
+          .catch((error) => {
+            console.error(error);
+            alert("An error occurred while uploading the file.");
+          });
+      });
+
+      copyButton.addEventListener("click", () => {
+        // Copy the link to the clipboard
+        const link = linkContainer.innerHTML;
+        const tempInput = document.createElement("input");
+        tempInput.setAttribute("value", link);
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+
+        // Show a message indicating that the link has been copied
+        alert("Link copied to clipboard: " + link);
+      });
+    </script>
+  </body>
+</html>

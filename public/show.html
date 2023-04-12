@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Pages</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex flex-col m-2">
+      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+          <div class="overflow-hidden">
+            <table class="min-w-full text-left text-sm font-light">
+              <thead class="border-b font-medium dark:border-neutral-500">
+                <tr>
+                  <th scope="col" class="px-6 py-4">Title</th>
+                  <th scope="col" class="px-6 py-4">Content</th>
+                </tr>
+              </thead>
+              <tbody id="table"></tbody>
+            </table>
+          </div>
+          <a href="/admin/store/add">
+
+            <button 
+            class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10">
+              Add new
+          </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      showTable();
+      function showTable() {
+        let table = document.getElementById("table");
+        table.innerHTML = "";
+        let url = "/store/get/all";
+        fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => {
+            res.json().then((data) => {
+              console.log(data);
+
+              for (let i = 0; i < data.length; i++) {
+                let d = data[i];
+
+                let tr = document.createElement("tr");
+                let td = document.createElement("td");
+                let td1 = document.createElement("td");
+                let td2=document.createElement("td");
+
+                td.className = "whitespace-nowrap px-6 py-4";
+                td1.className = "whitespace-nowrap px-6 py-4";
+                td2.className = "whitespace-nowrap px-6 py-4";
+                td.innerHTML = d.title;
+                td1.innerHTML = d.content;
+                td2.innerHTML=`<a href="/admin/store/edit/${d._id}">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded">Edit</button></a>`
+
+                tr.appendChild(td);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+
+                tr.className = "border-b dark:border-neutral-500";
+                table.appendChild(tr);
+              }
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
+      // function copy(id) {
+      //   let copyText = `https://nitjmain.onrender.com/template/index.html?id=${id}?category=newpage`;
+
+      //   navigator.clipboard.writeText(copyText);
+      //   alert("Copied the text: " + copyText);
+      // }
+    </script>
+  </body>
+</html>

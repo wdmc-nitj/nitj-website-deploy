@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --dark-purple: hsla(242, 83%, 7%, 1);
+    --accent: hsla(201, 96%, 32%);
+    --light-purple: hsla(242, 83%, 98%);
+    --accent-orange: hsla(12, 87%, 56%, 1);
+  }
+
+  sub,
+  sup {
+    font-size: 50%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+    font-weight: normal;
+  }
+  sup {
+    top: 0em;
+    vertical-align: super;
+  }
+}
+
+@layer utilities {
+  .main-body {
+    font-family: 'Poppins', sans-serif;
+  }
+  .font2 {
+    font-family: 'Barlow', sans-serif;
+  }
+  .animate-delay {
+    animate-delay: 100ms;
+  }
+  .main-slider-text {
+    height: 120px;
+    overflow: hidden;
+  }
+  .main-slider-text h2 {
+    animation: rotate 8s ease-in-out 500ms infinite;
+  }
+  @media screen and (max-width: 992px) {
+    .main-slider-text {
+      height: 95px;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .main-slider-text {
+      height: 80px;
+    }
+  }
+}
+
+@keyframes rotate {
+  10% {
+    transform: translateY(-7%);
+  }
+  33.33% {
+    transform: translateY(0%);
+  }
+  43.33% {
+    transform: translateY(-107%);
+  }
+  66.66% {
+    transform: translateY(-100%);
+  }
+  76.66% {
+    transform: translateY(-207%);
+  }
+  100% {
+    transform: translateY(-200%);
+  }
+}
