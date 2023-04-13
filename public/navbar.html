@@ -78,7 +78,7 @@
               </thead>
               <tbody id="table"></tbody>
             </table>
-            <a href="/admin/navbar/add">
+            <a href="/api/dashboard/navbar/add">
               <button
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
               >
@@ -158,7 +158,7 @@
         let table = document.getElementById("table");
         table.innerHTML = "";
 
-        let url = "/navbar";
+        let url = "/api/navbar";
         fetch(url, {
           method: "GET",
           headers: {
@@ -226,7 +226,7 @@
       }
 
       async function handleDelete(id) {
-        let url = `/navbar/delete`;
+        let url = `/api/dashboard/navbar/delete`;
         let menu = document.getElementById("menu").value;
         let submenu = document.getElementById("submenu").value;
 
@@ -262,7 +262,7 @@
       }
 
       async function handleEditSubmit() {
-        let url = `/navbar/edit`;
+        let url = `/api/navbar/edit`;
         let menu = document.getElementById("menu").value;
         let submenu = document.getElementById("submenu").value;
 
@@ -286,7 +286,7 @@
           },
         });
 
-        url = `/navbar/sort`;
+        url = `/api/navbar/sort`;
 
         await fetch(url, {
           method: "POST",

@@ -29,7 +29,7 @@
           Save
         </button>
       </form>
-      <a href="/admin/store">
+      <a href="/api/dashboard/store">
         <button class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10">
           Back
         </button>
@@ -44,7 +44,7 @@
       let url = window.location.href;
       let id = url.split("/").pop();
 
-      let u = `/store/${id}`;
+      let u = `/api/store/${id}`;
 
       fetch(u, {
         method: "GET",
@@ -76,7 +76,7 @@
       
       const id = document.getElementById("id").value;
 
-      let url = `/store/${id}`;
+      let url = `/api/store/${id}`;
 
       await fetch(url, {
         method: "PUT",

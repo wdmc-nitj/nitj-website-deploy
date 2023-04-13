@@ -136,7 +136,7 @@
                             <p class="basis-3/12 md:basis-1/12 font-semibold">Tel No.</p>
                             <p class="">: &nbsp; &nbsp;</p>
                             <div id="telno"> </div>
-                            <!-- <p>+91-181-2690802 (O)</p> -->
+                            <p>+91-181-2690802 (O)</p>
                         </div>
                         <div class="flex flex-row">
                             <p class="basis-3/12 md:basis-1/12 font-semibold text-justify">EPABX</p>
@@ -148,7 +148,7 @@
                             <p class="basis-3/12 md:basis-1/12 font-semibold">Extn.</p>
                             <p class="">: &nbsp; &nbsp;</p>
                             <div id="extn"> </div>
-                            <!-- <p>1000 (O), 1002 (PA)</p> -->
+                            <p>1000 (O), 1002 (PA)</p>
                         </div>
                         <div class="flex flex-row">
                             <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
@@ -226,12 +226,12 @@
             document.getElementById("email").innerHTML =
                 `<p>${result[0].contact.Email}</p>
          `
-            document.getElementById("telno").innerHTML =
-                `<p>${result[0].contact["Tel No."]}</p>`
+//             document.getElementById("telno").innerHTML =
+//                 `<p>${result[0].contact["Tel No."]}</p>`
             document.getElementById("epabx").innerHTML =
                 `<p>${result[0].contact.EPABX}</p>`
-            document.getElementById("extn").innerHTML =
-                `<p>${result[0].contact["Extn."]}</p> `
+//             document.getElementById("extn").innerHTML =
+//                 `<p>${result[0].contact["Extn."]}</p> `
             document.getElementById("fax").innerHTML =
                 `<p>${result[0].contact.Fax}</p>`
             document.getElementById("message").innerHTML =
