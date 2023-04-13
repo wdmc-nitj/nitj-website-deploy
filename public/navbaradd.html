@@ -52,7 +52,7 @@
           Add
         </button>
       </form>
-      <a href="/admin/navbar">
+      <a href="/api/dashboard/navbar">
 
         <button
             id="back"
@@ -143,7 +143,7 @@
             order
           }
           console.log(data);
-          fetch('/api/navbar/update', {
+          fetch('/api/dashboard/navbar/update', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
