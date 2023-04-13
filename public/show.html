@@ -23,7 +23,7 @@
               <tbody id="table"></tbody>
             </table>
           </div>
-          <a href="/admin/store/add">
+          <a href="/api/dashboard/store/add">
 
             <button 
             class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10">
@@ -38,7 +38,7 @@
       function showTable() {
         let table = document.getElementById("table");
         table.innerHTML = "";
-        let url = "/store/get/all";
+        let url = "/api/store/get/all";
         fetch(url, {
           method: "GET",
           headers: {
@@ -62,7 +62,7 @@
                 td2.className = "whitespace-nowrap px-6 py-4";
                 td.innerHTML = d.title;
                 td1.innerHTML = d.content;
-                td2.innerHTML=`<a href="/admin/store/edit/${d._id}">
+                td2.innerHTML=`<a href="/api/dashboard/store/edit/${d._id}">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded">Edit</button></a>`
 
                 tr.appendChild(td);
