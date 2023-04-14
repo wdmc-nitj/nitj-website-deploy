@@ -1,6 +1,7 @@
 var years;
 let data_url = "/api";
 
+
 async function helper() {
   const res = await fetch(
     `${data_url}/research/sponsoredProjects/groupedByYear`
@@ -35,6 +36,14 @@ async function helper() {
   helper2();
 }
 
+
+function initialYear() {
+  let head = document.getElementById("displayYear");
+  head.innerHTML = `Ongoing Projects (${years[0]}-${Number(years[0]) + 1
+    })`
+}
+
+
 async function helperSmallScreen() {
   const res = await fetch(
     `${data_url}/research/sponsoredProjects/groupedByYear`
@@ -45,21 +54,22 @@ async function helperSmallScreen() {
   years.reverse();
   const ugupdates = document.getElementById("smallScreenSidetab");
   var i = 1;
+
   years.forEach((update) => {
     const ugupdate = document.createElement("ul");
     if (i == 1) {
       ugupdate.innerHTML = `
-      <li x-on:click="dropdownMenu = ! dropdownMenu"
+      <li x-on:click="dropdownMenu = ! dropdownMenu" onclick=dropDownContentOnClick(${update})
       class="active2 bg-accent mb-1 rounded-md  text-white  hover:text-black">
-      <span class="text dropContent1" onclick=dropDownContentOnClick1(${update})>Ongoing Projects (${update}-${Number(update) + 1
+      <span class="text dropContent1" >Ongoing Projects (${update}-${Number(update) + 1
         }) Onwards</span>
     </li>
       `;
     } else {
       ugupdate.innerHTML = `
-      <li x-on:click="dropdownMenu = ! dropdownMenu"
+      <li x-on:click="dropdownMenu = ! dropdownMenu" onclick=dropDownContentOnClick(${update})
       class=" bg-accent mb-1 rounded-md  text-white  hover:text-black">
-      <span class="text dropContent1" onclick=dropDownContentOnClick1(${update})>Ongoing Projects (${update}-${Number(update) + 1
+      <span class="text dropContent1" >Ongoing Projects (${update}-${Number(update) + 1
         }) Onwards</span>
     </li>
           `;
@@ -68,6 +78,17 @@ async function helperSmallScreen() {
     i++;
   });
 }
+
+
+function dropDownContentOnClick(year) {
+  let dis = document.getElementById("currentDisplay");
+  dis.style.display = "block"
+  let head = document.getElementById("displayYear");
+  head.innerHTML = `Ongoing Projects (${year}-${Number(year) + 1
+    })`
+}
+
+
 
 
 
