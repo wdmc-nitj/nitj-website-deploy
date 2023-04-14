@@ -19,7 +19,12 @@
   <!-- CSS linking -->
   <link rel="stylesheet" href="style.css" />
   <script src="./js/data.js" defer></script>
-
+  <!-- ----------------------------- -->
+  <!-- For launcher -->
+  <script src="https://unpkg.com/@rive-app/canvas@1.0.102"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <!-- to be deleted -->
+  <!-- ----------------------------- -->
   <style>
     /* Customizing the Scrollbar */
 
@@ -157,7 +162,127 @@
 </head>
 
 <body class="font-body relative text-dark-purple scroll-smooth">
+  <!-- ---------------------------------------- -->
+  <!--Launch Page (To be removed later)  -->
+  <script type="module">
+    const scrollToBottom = () => {
+      window.scrollTo({
+        top: 300,
+        left: 0,
+        behavior: 'smooth',
+      })
+    }
+    const backToTop = () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      })
+    }
+    window.addEventListener('load', () => {
+      document.body.style.overflow = 'hidden'
+      scrollToBottom()
+    })
+    const overlayLauncher = document.getElementById('overlay-launcher')
+    const canvasEl = document.getElementById('canvasEL')
+    const riveInstance = new rive.Rive({
+      src: 'publish_button.riv',
+      canvas: canvasEl,
+      autoplay: true,
+      stateMachines: 'State Machine 1',
+      // onabort: () => {
+      //   overlayLauncher.classList.add('hidden')
+      // }
+      onStateChange: (e) => {
+        console.log(e)
+        if (e.data[0] === 'exit') {
+          overlayLauncher.classList.add('pointer-events-none')
+          overlayLauncher.classList.add('opacity-0')
+          riveInstance.stop()
+          riveInstance.cleanup()
+          document.body.style.overflow = 'auto'
+          setTimeout(() => {
+            backToTop()
+          }, 400)
+          const player = document.querySelector('lottie-player')
+          player.style.height = '100%'
+          player.style.width = '100%'
 
+          player.play()
+        }
+      },
+    })
+
+    const launcherInput = document.getElementById('launcher-input')
+    const launcherForm = document.getElementById('launcher-form')
+    const launcherContent = document.getElementById('launcher-content')
+    const canvasContainer = document.getElementById('launcher-canvas-container')
+    launcherForm.onsubmit = (e) => {
+      e.preventDefault()
+      if (launcherInput.value === 'magic') {
+        launcherContent.classList.add('hidden')
+        canvasContainer.classList.remove('-translate-y-10')
+        canvasContainer.classList.remove('opacity-0')
+        canvasContainer.classList.remove('pointer-events-none')
+        canvasContainer.classList.add('-translate-y-1/2')
+      }
+    }
+  </script>
+  <!-- confetti animation -->
+  <div class="fixed inset-0 z-[999] pointer-events-none">
+    <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_ZF8J0eEWCR.json" background="transparent"
+      speed="0.75"></lottie-player>
+  </div>
+  <!-- launch page -->
+  <div id="overlay-launcher" class="fixed inset-0 z-[1000] bg-gray-100 transition-all duration-500">
+
+    <div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
+      <div id="launcher-content" class="mx-auto max-w-5xl text-center">
+        <img class="h-32 mx-auto mb-8" src="/public/assets/images/logo_250.png" alt="NITJ Website">
+
+        <div class="flex flex-col">
+          <h1 class="text-[#3E92CC] text-3xl font-extrabold sm:text-5xl leading-10">
+            Launching of New Official Website of
+          </h1>
+          <span class="mt-2 font-extrabold text-3xl sm:text-5xl  text-[#F48C06]">NIT Jalandhar</span>
+          <p class="mx-auto mt-4 text-gray-900 font-semibold max-w-2xl sm:text-xl sm:leading-relaxed">
+            <span class="text-gray-900 font-normal text-base sm:leading-tight">Developed In-house by<br>
+            </span>Website Development & Management Committee (WDMC)
+          </p>
+        </div>
+        <form type="submit" id="launcher-form" class="flex flex-col items-center gap-2 mt-5">
+          <input id="launcher-input" type="text" id="Password" placeholder="..."
+            class="w-80 py-2 font-bold rounded-md border-gray-300 border-2 bg-gray-200 text-center px-4 text-xl text-slate-900 shadow-sm" />
+          <label id="launcher-input-label" class="block z-[10001] font-medium text-gray-500">
+            Enter the magic words 🚀
+          </label>
+        </form>
+      </div>
+      <div id="launcher-canvas-container"
+        class="flex flex-wrap justify-center gap-4 -mt-5 pointer-events-none transition duration-700 -translate-y-10 opacity-0 fixed z-[1001] top-1/2 left-1/2 -translate-x-1/2">
+        <canvas id="canvasEL" width="800" height="800"></canvas>
+
+      </div>
+    </div>
+
+    <footer class="fixed bottom-0 inset-x-0 bg-transparent">
+      <div class="mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+
+          <p class="text-center text-sm text-gray-500 lg:text-right">
+            &copy; 2023 NIT Jalandhar. All rights reserved.
+
+          </p>
+          <p class="text-sm text-right text-gray-500">
+            You are seeing this page because the website is held in a private mode for the launch of the new website.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <!-- Ends Launch Page (to be removed) -->
+  <!-- ----------------------------------------- -->
   <script src="/template/header.js" type="module"></script>
   <script src="/template/helper.js"></script>
   <button id="scroll-to-top-button"
