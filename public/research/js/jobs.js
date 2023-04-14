@@ -17,19 +17,19 @@ fetch(`${data_url}` + `/recruitments/updates/defaultTab`)
       const resJob = document.getElementById("researchButton");
       resJob.click()
     }
-    else if (update.defaultTabName === "faculty-contract") {
+    else if (update.defaultTabName === "faculty-contract" && slug[slug.length - 1] !== "research") {
       const facultycontract = document.getElementById("facultycontractButton");
       facultycontract.click()
     }
-    else if (update.defaultTabName === "nonFaculty") {
+    else if (update.defaultTabName === "nonFaculty" && slug[slug.length - 1] !== "research") {
       const nonfaculty = document.getElementById("nonfacultyButton");
       nonfaculty.click()
     }
-    else if (update.defaultTabName === "nonFaculty-contract") {
+    else if (update.defaultTabName === "nonFaculty-contract" && slug[slug.length - 1] !== "research") {
       const nonfacultycontract = document.getElementById("nonfacultycontractButton");
       nonfacultycontract.click()
     }
-    else {
+    else if(update.defaultTabName === "faculty" && slug[slug.length - 1] !== "research"){
       const faculty = document.getElementById("facultyButton");
       faculty.click()
     };
