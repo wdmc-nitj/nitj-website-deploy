@@ -107,6 +107,9 @@ mainRouter.get(`/${adminPath}/store/edit/:id`, (req, res) => {
 mainRouter.get(`/${adminPath}/navbar`, (req, res) => {
   res.sendFile(__dirname + "/public/navbar.html");
 });
+mainRouter.get(`/${adminPath}/navbar/add`, (req, res) => {
+  res.sendFile(__dirname + "/public/navbaradd.html");
+});
 
 //Export----------------------------->
 module.exports = mainRouter;

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NSS - NITJ</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- ICONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <!-- font-family: 'Barlow', sans-serif;
+    font-family: 'Poppins', sans-serif; -->
+
+  <style>
+    /* Customizing the Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(30, 58, 138, 1);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: gray;
+    }
+
+    ::-webkit-resizer {
+      background-color: #ffffff;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 300, "grad" 0, "opzs" 20;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .font2 {
+      font-family: 'Barlow', sans-serif;
+    }
+
+    :root {
+      --primary-color: #fff;
+      --background-color: #212121;
+
+      --blue-color: #0369A1;
+      --light-blue-color: #F6F6FE;
+      --purple-color: #040320;
+      --font1: 'Poppins', sans-serif;
+      --font2: 'Barlow', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-body {
+      font-family: var(--font1);
+    }
+
+    .titlebg {
+      background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(img/about_top.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .tile1 {
+      background: linear-gradient(132.04deg, rgba(255, 255, 255, 0.1) 16.87%, rgba(255, 255, 255, 0.4) 75.02%);
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(40px);
+      background-color: #0369A1;
+      /* Note: backdrop-filter has minimal browser support */
+      border-radius: 6px;
+      transition: all .3s ease-in-out;
+    }
+
+    .tile1:hover {
+      transform: scale(1.1);
+    }
+
+    /* Outer Layer with the timeline border */
+    .outer {
+      border-left: 3px solid #0369A1;
+    }
+
+    /* Card container */
+    .card {
+      position: relative;
+      /* box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3); */
+    }
+
+    /* Timeline dot  */
+    .title::before {
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: white;
+      border-radius: 999px;
+      left: -29px;
+      border: 3px solid #0369A1;
+    }
+
+    .box {
+      flex: 1;
+      overflow: hidden;
+      transition: 0.5s;
+      line-height: 0;
+    }
+
+    .box>img {
+      width: 100%;
+      height: 100%;
+      border: 0.2rem solid white;
+      border-radius: 8px;
+      -o-object-fit: cover;
+      object-fit: cover;
+      transition: ease 0.75s;
+      
+    }
+
+    .box:hover {
+      flex: 1 1 30%;
+      /* box-shadow: 0px 6px 6px rgba(73, 73, 73, 0.65); */
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .box:hover>img {
+      opacity: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    .base-image {
+      margin-top: 40px;
+      background-image: url("img/nitj3.jpg"),
+        linear-gradient(rgb(255, 255, 255), rgba(4, 4, 4));
+
+      background-color: #cccccc;
+      height: 400px;
+      background-position: 0% 28%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .base-image-2 {
+      margin-top: 40px;
+      background-image: url("img/nitj3.jpg"),
+        linear-gradient(rgb(255, 255, 255), rgba(4, 4, 4));
+      background-color: #cccccc;
+      height: 300px;
+      background-position: 58% 28%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    @media only screen and (max-width: 1000px) {
+      .academic-timeline {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script src="/template/header.js" type="module"></script>
+  <script src="/template/helper.js"></script>
+
+  <div class="main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px] lg:mb-32">
+    <div class="titlebg">
+      <div class="container flex flex-col justify-center items-start h-[224px] py-[48px]">
+        <!-- <p> Code by Bhavya Mittal </p> -->
+        <p class="font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">National Service Scheme</p>
+      </div>
+      <nav class="flex bg-gray-200 py-[8px] text-black" aria-label="Breadcrumb">
+        <ol class="container inline-flex items-center">
+          <li class="inline-flex items-center">
+            <a href="" class="inline-flex items-center text-sm font-medium hover:text-gray-900">
+              <a href="../index.html" class="text-lg font-medium ml-2">Home</a>
+            </a>
+          </li>
+          <li aria-current="page">
+            <div class="inline-flex items-center">
+              <i style="color: rgb(128, 128, 128); font-size: 12px; margin-left: 12px"
+                class="fa-solid fa-angle-right ml-2"></i>
+              <a href="#" class="text-lg font-medium ml-2">NSS</a>
+            </div>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+
+
+    <!-- <p> Code by Bhavya Mittal </p> -->
+    <div class="container flex flex-col items-start gap-[20px] lg:gap-[16px]">
+      <div class="w-full flex flex-col items-start">
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">NSS Programmes</p>
+        <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[3px]"></div>
+      </div>
+      <div id="Introduction">
+        National Service Scheme has two types of programmes – Regular Activities and Special 
+        Camping Programmes. Students enrolled as NSS Volunteers are expected to work in the 
+        scheme for a period of two years and also participate in Special Camping Programmes of 
+        10 days duration.
+      </div>
+
+      <div class="w-full flex flex-col items-start">
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">Aims of NSS Programmes/Activities</p>
+        <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[3px]"></div>
+      </div>
+      <div id="Introduction">
+        The operational aim of NSS is to integrate the three basic components of the programme. 
+        NSS programme should provide a variety of learning experiences which must develop a sense 
+        of participation, service and achievement among the volunteers. The activities aim at the 
+        following aspects:
+
+        <ul 
+        id="list"
+        class="list-disc ml-5 text-accent flex flex-col mt-5 gap-6"
+        >
+          <li>
+            Making education more relevant to the present situation to meet the felt needs of the community and 
+                supplement the education of the university/college students by bringing them face to face with the 
+                rural situation.
+            
+          </li>
+
+          <li>
+            Providing opportunities to the students to play their role in planning and executing development 
+                projects which would not only help in creating durable community assets in rural areas and urban 
+                slums but also results in the improvement of quality of life of the economically weaker sections 
+                of the community.
+          </li>
+
+          <li>
+            Encouraging students and non – students to work together along with the adults in rural areas.
+          </li>
+
+          <li>
+            Developing qualities of leadership by discovering the latent potential among the campers, both 
+                students as well as local youth (Rural and Urban), with a view to involving them more intimately 
+                in the development programme and also ensuring proper maintenance of the assets created during the camps.
+            
+          </li>
+
+          <li>
+            Emphasizing dignity of labour and self – help and the need for combining physical work with intellectual pursuits.
+          </li>
+
+          <li>
+            Encouraging youth to participate enthusiastically in the process of national development and promote national 
+                integration through corporate living and cooperative action.
+          </li>
+
+        </ul>
+        <br>
+        While undertaking these activities, each NSS unit should envisage its programmes/activities aimed at instilling discipline, 
+        building character, promotion of physical fitness and development of culture.
+      </div>
+
+      <div class="w-full flex flex-col items-start">
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">Vision</p>
+        <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[3px]"></div>
+      </div>
+      <div id="Introduction">
+        NSS NIT Jalandhar aim is to motivate students to indulge in nation building activities through various events and projects 
+        which are aimed towards the benefit of people in and around NIT Jalandhar. We share the belief that such activities are almost 
+        always means of great satisfaction and joy.
+      </div>
+
+      <div class="w-full flex flex-col items-start">
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">Purpose</p>
+        <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[3px]"></div>
+      </div>
+      <div id="Introduction">
+        NSS NIT Jalandhar has a base of many student’s volunteer belonging to UG programs of various disciplines. We work on a diverse 
+        range of social issues including; blood donation, teaching to underprivileged children, environmental issues, tree plantation, 
+        etc. We also collaborate with several NGO’s in and around the institute on working on these issues.
+
+        
+      </div>
+
+      
+
+      
+      
+    </div>
+    <div class=" container mt-4">
+        <a href="https://www.nitj.ac.in/index.php/nitj_cinfo/nss" target="_blank"
+          class="  rounded-lg   py-2  text-white hover:bg-blue-400 lg:px-[7%]" style="background-color: rgb(38, 112, 223);">
+          NSS Website
+        </a>
+      </div>
+
+    
+  </div>
+  <script src="app.js"></script>
+  <script src="../template/footer.js"></script>
+</body>
+
+</html>

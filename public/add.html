@@ -21,7 +21,7 @@
         onclick=handleSave()>
           Save
       </button>
-      <a href="/admin/store">
+      <a href="/api/dashboard/store">
         <button class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10">
           Back
         </button>
@@ -35,7 +35,7 @@
 
             console.log(content,title);
 
-            let url='/store';
+            let url='/api/store';
             fetch(url, {
                 method: 'POST',
                 headers: {

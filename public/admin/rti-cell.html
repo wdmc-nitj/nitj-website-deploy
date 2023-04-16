@@ -198,8 +198,8 @@
             <div class="w-full">
                 <p class="font2 font-medium text-[28px] lg:text-[44px]">RTI Replies</p>
                 <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[5px] mb-3"></div>
-                <ul class="font2 list-disc px-3 cursor-pointer">
-                    <li href="#">Guide on the Right to Information Act,2005</li>
+                <ul id="list" class="list-disc ml-5 text-accent flex flex-col mt-5 gap-3">
+                    <!-- <li href="#">Guide on the Right to Information Act,2005</li>
                     <li href="#">RTI Replies -XII</li>
                     <li href="#">RTI Replies -XI</li>
                     <li href="#">RTI Replies -X</li>
@@ -210,7 +210,7 @@
                     <li href="#">RTI Replies -IV</li>
                     <li href="#">RTI Replies -III</li>
                     <li href="#">RTI Replies -II</li>
-                    <li href="#">RTI Replies -I</li>
+                    <li href="#">RTI Replies -I</li> -->
                 </ul>
             </div>
 
@@ -221,6 +221,49 @@
     <script src="app.js"></script>
 
     <script src="../template/footer.js"></script>
+    <script>
+        async function callAPi() {
+          let result = await fetch("/api/resource");
+          result = await result.json();
+          result = result.filter((item) => item.resourceType === "RTI replies");
+          console.log(result);
+          //reverse the item in result
+    
+          result.sort((a, b) => a.order - b.order);
+        //   result = result.reverse();
+          let x = "";
+          for (let i = 0; i < result.length; i++) {
+            if (result[i].show) {
+              x += `<li>  
+      <a class="underline underline-offset-4 decoration-accent decoration-0 hover:decoration-2" target="_blank" href=${result[i].resourceLink}
+    ">
+    
+              ${result[i].resourceDescription}
+            </a>`;
+              if (result[i].new) {
+                x += `<div id="new-tag" class="inline-flex ml-2 items-center justify-start space-x-2">
+    <span class="material-symbols-outlined text-accent-orange">
+    auto_awesome
+    </span>
+    <p class="text-lg font-bold uppercase text-accent-orange">
+    New
+    </p>
+    </div>`
+    
+                  ;
+    
+              }
+              x += `</li>`;
+            }
+          }
+    
+    
+          document.getElementById("list").innerHTML = x;
+        }
+        callAPi();
+      </script>
+    
+    
 
 
 
