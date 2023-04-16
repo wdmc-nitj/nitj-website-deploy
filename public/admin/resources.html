@@ -154,7 +154,7 @@
     }
     // Make a fetch call to the API
     var resources = document.getElementById("resources");
-    fetch('https://wdmc-vsj1.onrender.com/resource')
+    fetch('/api/resource')
         .then(response => response.json())
         .then(data => {
             // Create an unordered list element
@@ -204,8 +204,8 @@
     </script>
     <script src="app.js"></script>
     <script>
-      const searchInput = document.querySelector('#search');
-      const searchLabel = document.querySelector('label[for="search"]');
+      const searchInput = document.querySelector('#searchbar');
+      const searchLabel = document.querySelector('label[for="searchbar"]');
 
       searchInput.addEventListener('focus', () => {
         searchLabel.classList.add('translate-y-1/4');

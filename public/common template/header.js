@@ -19,10 +19,10 @@ function handlingPDFs() {
     let currSrc = link.getAttribute('href').includes('https')
     // console.log(currSrc)
     if (currSrc) {
-      console.log(link)
+      // console.log(link)
       link.setAttribute('target', '_blank')
     }
-    console.log(currSrc)
+    // console.log(currSrc)
   })
 }
 
