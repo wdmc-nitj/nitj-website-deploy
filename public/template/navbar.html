@@ -323,16 +323,16 @@
         <input type="text" id="searchbar" onkeyup="search_resources()" onsubmit="showSearchPage(event)"
           class="z-20 block w-full rounded-r-lg border border-l-2 border-gray-300 border-l-gray-50 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
           placeholder="Search Resources, Navbar links..." required=" " />
-        <button type="button" onclick="display_resources()" 
+        <!-- <button type="button" onclick="display_resources()" 
           class="material-symbols-outlined absolute top-0 right-0 rounded-r-lg border border-blue-700 bg-blue-700 p-1 text-2xl text-white hover:bg-blue-800">
           search
-        </button>
+        </button> -->
       </div>
     </div>
   </form>
   <div id="resources" class="relative pt-20 z-[51]  hidden flex flex-col items-center justify-center overflow-x-hidden overflow-y-scroll">
        <div id="Big_alphabets" class="min-h-screen  text-4xl font-bold px-2 sm:px-28"></div>
-       <div id="noresult" class=" hidden top-44 text-2xl font-bold">
+       <div id="noresult" class="absolute hidden top-44 text-2xl font-bold">
           <div class="text-center text-white">No results found</div>
           <div class="text-center text-white">Try searching something else</div>
        </div>
