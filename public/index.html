@@ -165,87 +165,68 @@
   <!-- ---------------------------------------- -->
   <!--Launch Page (To be removed later)  -->
   <script type="module">
-
-    const player = document.querySelector('lottie-player')
-    player.style.height = '100%'
-    player.style.width = '100%'
-
+    const scrollToBottom = () => {
+      window.scrollTo({
+        top: 300,
+        left: 0,
+        behavior: 'smooth',
+      })
+    }
+    const backToTop = () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      })
+    }
     window.addEventListener('load', () => {
+      document.body.style.overflow = 'hidden'
+      scrollToBottom()
+    })
+    const overlayLauncher = document.getElementById('overlay-launcher')
+    const canvasEl = document.getElementById('canvasEL')
+    const riveInstance = new rive.Rive({
+      src: 'publish_button.riv',
+      canvas: canvasEl,
+      autoplay: true,
+      stateMachines: 'State Machine 1',
+      // onabort: () => {
+      //   overlayLauncher.classList.add('hidden')
+      // }
+      onStateChange: (e) => {
+        console.log(e)
+        if (e.data[0] === 'exit') {
+          overlayLauncher.classList.add('pointer-events-none')
+          overlayLauncher.classList.add('opacity-0')
+          riveInstance.stop()
+          riveInstance.cleanup()
+          document.body.style.overflow = 'auto'
+          setTimeout(() => {
+            backToTop()
+          }, 400)
+          const player = document.querySelector('lottie-player')
+          player.style.height = '100%'
+          player.style.width = '100%'
 
-      if (localStorage.getItem('skipAnimation')) {
-        player.playSegments([0, 0], true)
-        return
-      } else {
-        player.play()
-        localStorage.setItem('skipAnimation', true)
-      }
-
+          player.play()
+        }
+      },
     })
 
-  // player.play()
-
-    // const scrollToBottom = () => {
-    //   window.scrollTo({
-    //     top: 300,
-    //     left: 0,
-    //     behavior: 'smooth',
-    //   })
-    // }
-    // const backToTop = () => {
-    //   window.scrollTo({
-    //     top: 0,
-    //     left: 0,
-    //     behavior: 'smooth',
-    //   })
-    // }
-    // window.addEventListener('load', () => {
-    //   document.body.style.overflow = 'hidden'
-    //   scrollToBottom()
-    // })
-    // const overlayLauncher = document.getElementById('overlay-launcher')
-    // const canvasEl = document.getElementById('canvasEL')
-    // const riveInstance = new rive.Rive({
-    //   src: 'publish_button.riv',
-    //   canvas: canvasEl,
-    //   autoplay: true,
-    //   stateMachines: 'State Machine 1',
-    //   // onabort: () => {
-    //   //   overlayLauncher.classList.add('hidden')
-    //   // }
-    //   onStateChange: (e) => {
-    //     console.log(e)
-    //     if (e.data[0] === 'exit') {
-    //       overlayLauncher.classList.add('pointer-events-none')
-    //       overlayLauncher.classList.add('opacity-0')
-    //       riveInstance.stop()
-    //       riveInstance.cleanup()
-    //       document.body.style.overflow = 'auto'
-    //       setTimeout(() => {
-    //         backToTop()
-    //       }, 400)
-    //       const player = document.querySelector('lottie-player')
-    //       player.style.height = '100%'
-    //       player.style.width = '100%'
-
-    //       player.play()
-    //     }
-    //   },
-    // })
-
-    // const launcherInput = document.getElementById('launcher-input')
-    // const launcherForm = document.getElementById('launcher-form')
-    // const launcherContent = document.getElementById('launcher-content')
-    // const canvasContainer = document.getElementById('launcher-canvas-container')
-    // launcherForm.onsubmit = (e) => {
-    //   e.preventDefault()
-    //   if (launcherInput.value === 'magic') {
-    //     launcherContent.classList.add('hidden')
-    //     canvasContainer.classList.remove('-translate-y-10')
-    //     canvasContainer.classList.remove('opacity-0')
-    //     canvasContainer.classList.remove('pointer-events-none')
-    //     canvasContainer.classList.add('-translate-y-1/2')
-    //   }
-    // }
+    const launcherInput = document.getElementById('launcher-input')
+    const launcherForm = document.getElementById('launcher-form')
+    const launcherContent = document.getElementById('launcher-content')
+    const canvasContainer = document.getElementById('launcher-canvas-container')
+    launcherForm.onsubmit = (e) => {
+      e.preventDefault()
+      if (launcherInput.value === 'magic') {
+        launcherContent.classList.add('hidden')
+        canvasContainer.classList.remove('-translate-y-10')
+        canvasContainer.classList.remove('opacity-0')
+        canvasContainer.classList.remove('pointer-events-none')
+        canvasContainer.classList.add('-translate-y-1/2')
+      }
+    }
   </script>
   <!-- confetti animation -->
   <div class="fixed inset-0 z-[999] pointer-events-none">
@@ -253,7 +234,7 @@
       speed="0.75"></lottie-player>
   </div>
   <!-- launch page -->
-  <!-- <div id="overlay-launcher" class="fixed inset-0 z-[1000] bg-gray-100 transition-all duration-500">
+  <div id="overlay-launcher" class="fixed inset-0 z-[1000] bg-gray-100 transition-all duration-500">
 
     <div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
       <div id="launcher-content" class="mx-auto max-w-5xl text-center">
@@ -299,7 +280,7 @@
       </div>
     </footer>
 
-  </div> -->
+  </div>
   <!-- Ends Launch Page (to be removed) -->
   <!-- ----------------------------------------- -->
   <script src="/template/header.js" type="module"></script>
