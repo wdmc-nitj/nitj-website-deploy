@@ -187,17 +187,17 @@ async function displayWords(words, links) {
       "uls inset-y-20 text-lg font-bold flex flex-col mx-auto w-full text-gray-800 rounded-md p-2 shadow-md transition duration-500 ease-in-out"
     );
     for (let word of groupedWords[letter]) {
+      let anc = document.createElement("a");
+      anc.setAttribute("href", links[word]);
+      anc.setAttribute("target", "_blank");
       let li = document.createElement("li");
       li.setAttribute(
         "class",
         "resource text-left mb-2 ml-2 px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 cursor-pointer transition duration-500 ease-in-out"
       );
-      let lichild = document.createElement("a");
-      lichild.setAttribute("href", links[word]);
-      lichild.setAttribute("target", "_blank");
-      lichild.textContent = word;
-      li.appendChild(lichild);
-      ul.appendChild(li);
+      li.innerHTML = word;
+      anc.appendChild(li);
+      ul.appendChild(anc);
       Big_alphabets_heading.appendChild(ul);
     }
   }
@@ -212,7 +212,7 @@ fetch('/api/navbar')
         for(let j=2;j<data[key][i].length;j++){
           // console.log(data[key][i][j].name)
           // console.log(data[key][i][j].link)
-          // data[key][i][j].name = data[key][i][j].name+" from Navbar"
+          data[key][i][j].name = data[key][i][j].name+" <span class=\"material-symbols-outlined align-middle\" >open_in_new</span>";
           displayWordsArr.push(data[key][i][j].name);
           links[data[key][i][j].name] = data[key][i][j].link;
         }
@@ -226,6 +226,7 @@ fetch('/api/resource')
     // Create an unordered list element
     data.forEach((element) => {
       if (element.resourceType === "other") {
+        element["resourceName"] = element["resourceName"]+" <span class=\"material-symbols-outlined align-middle\">picture_as_pdf</span>";
         displayWordsArr.push(element["resourceName"]);
         links[element["resourceName"]] = element["resourceLink"];
       }
@@ -253,10 +254,10 @@ function search_resources() {
   }
   var count = 0;
   for (let j = 0; j < header.length; j++) {
-    let listItems = header[j].nextElementSibling.children;
+    let ancItems = header[j].nextElementSibling.children;
     let allHidden = true;
-    for (let k = 0; k < listItems.length; k++) {
-      if (listItems[k].style.display != "none") {
+    for (let k = 0; k < ancItems.length; k++) {
+      if (ancItems[k].firstChild.style.display != "none") {
         allHidden = false;
         break;
       }
