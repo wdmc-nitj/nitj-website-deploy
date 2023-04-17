@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "tailwind build -i public/css/src/style.css -o public/style.css --minify && nodemon server.js",
-    "deploy" : "yarn && tailwind build -i public/css/src/style.css -o public/style.css --minify" 
+    "deploy": "yarn && tailwind build -i public/css/src/style.css -o public/style.css --minify"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "dependencies": {
     "@admin-bro/express": "^3.1.0",
     "@admin-bro/mongoose": "^1.1.0",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "admin-bro": "^4.0.1",
     "admin-bro-expressjs": "^2.1.1",
     "bcrypt": "^5.1.0",
@@ -37,17 +38,17 @@
     "jsonwebtoken": "^9.0.0",
     "mongo-store": "^0.0.2",
     "mongoose": "^6.6.6",
+    "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "node-gyp": "^9.3.1",
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.20",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "tailwind-scrollbar-hide": "^1.1.7",
     "tinymce": "^6.4.0",
     "tslib": "^2.5.0",
-    "uuid": "^9.0.0",
-    "@tailwindcss/line-clamp": "^0.4.0",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.1"
