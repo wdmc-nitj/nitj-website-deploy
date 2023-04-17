@@ -13,15 +13,18 @@ const Schema = new mongoose.Schema(
     type: {
       type: String, required: true,
       enum: [
-        "Conference",
-        "Seminar",
+        "conference",
+        "seminar",
         "FDP",
         "STC",
-        "Workshop",
-        "GuestLecture",
+        "workshop",
+        "guestLecture",
+        "research",
         "others",
       ],
     },
+    organiser: { type: String, required: true },
+    venue: { type: String, required: true },
     img: { type: String, default: "" },
     new: {
       type: Boolean,
@@ -46,10 +49,10 @@ const Schema = new mongoose.Schema(
     sourceOfInfoDepartment: {
       type: String,
     },
-    startDate:{type:Date, required: true},
-    desc:{type:String},
-    
-    endDate:{type:Date},
+    startDate: { type: Date, required: true },
+    desc: { type: String },
+
+    endDate: { type: Date },
     show: { type: Boolean, default: true },
   },
   {
