@@ -47,10 +47,10 @@ const Schema = new mongoose.Schema(
     sourceOfInfoDepartment: {
       type: String,
     },
-    startDate:{type:Date, required: true},
-    desc:{type:String},
-    
-    endDate:{type:Date},
+    startDate: { type: Date, required: true },
+    desc: { type: String },
+
+    endDate: { type: Date },
     show: { type: Boolean, default: true },
   },
   {
