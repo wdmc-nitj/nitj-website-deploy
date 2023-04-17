@@ -23,6 +23,8 @@ const Schema = new mongoose.Schema(
         "others",
       ],
     },
+    organiser: { type: String, required: true },
+    venue: { type: String, required: true },
     img: { type: String, default: "" },
     new: {
       type: Boolean,

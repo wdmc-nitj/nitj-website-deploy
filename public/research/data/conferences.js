@@ -15,7 +15,7 @@ fetch(`${data_url}` + '/research/events/get?visible=visible&upcoming=true&catego
     const ugupdates = document.getElementById('upcoming_conferences')
     data.forEach((update) => {
       const ugupdate = document.createElement('div')
-      var d = new Date(update.dateTime);
+      var d = new Date(update.startDate);
       console.log(d.getTime());
       console.log(d.getHours());
       console.log(d.getMinutes());
@@ -65,7 +65,7 @@ fetch(`${data_url}` + '/research/events/get?visible=visible&upcoming=false&categ
     const ugupdates = document.getElementById('organizedConferences')
     data.forEach((update) => {
       const ugupdate = document.createElement('div')
-      var d = new Date(update.dateTime);
+      var d = new Date(update.startDate);
       console.log(d)
       console.log(d.getDate()); // Hours
 
