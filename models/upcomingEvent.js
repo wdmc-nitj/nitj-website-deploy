@@ -13,12 +13,13 @@ const Schema = new mongoose.Schema(
     type: {
       type: String, required: true,
       enum: [
-        "Conference",
-        "Seminar",
+        "conference",
+        "seminar",
         "FDP",
         "STC",
-        "Workshop",
-        "GuestLecture",
+        "workshop",
+        "guestLecture",
+        "research",
         "others",
       ],
     },
