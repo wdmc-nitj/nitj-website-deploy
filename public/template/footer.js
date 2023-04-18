@@ -4,7 +4,7 @@ document.write(`
             <div class="flex flex-row items-center gap-x-[10px] pb-3">
                 <img src="/public/assets/images/logo_250.png" alt="NITJ logo" class="h-[67px] w-[67px]" />
                 <p class="font-semibold text-white lg:text-[20px]">
-                    Dr. B R Ambedkar National Institute of Technology Jalandhar
+                    Dr B R Ambedkar National Institute of Technology Jalandhar
                 </p>
             </div>
 
@@ -106,19 +106,7 @@ document.write(`
         </div>
 
         <div class="text-[12px] lg:text-[15px]">
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">Other NITs</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">MoU</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">GIAN</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">TEQIP</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">Anti Ragging</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">Terms of Use</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">Credits</a>
+            Developed in-house by<a href="/admin/students.html" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">Website Development and Management Committee (WDMC)</a>
         </div>
     </div>
 

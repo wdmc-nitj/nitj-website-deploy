@@ -226,11 +226,12 @@
       }
 
       async function handleDelete(id) {
-        let url = `/api/dashboard/navbar/delete`;
+        
+        let url = '/api/navbar/delete';
         let menu = document.getElementById("menu").value;
         let submenu = document.getElementById("submenu").value;
 
-        await fetch(url, {
+        fetch(url, {
           method: "POST",
           body: JSON.stringify({
             id: id,
@@ -239,10 +240,17 @@
           }),
           headers: {
             "Content-Type": "application/json",
+            "authorization":"HareKrishna"
           },
+        }).then((res) => {
+          res.json().then((data) => {
+            console.log(data);
+            showTable();
+          });
+        }).catch((err) => {
+          console.log(err);
         });
 
-        showTable();
       }
 
       function handleEdit(id, name, link, order) {
@@ -283,6 +291,7 @@
           }),
           headers: {
             "Content-Type": "application/json",
+            "authorization":"HareKrishna"
           },
         });
 
@@ -296,6 +305,7 @@
           }),
           headers: {
             "Content-Type": "application/json",
+            "authorization":"HareKrishna"
           },
         });
 

@@ -44,7 +44,7 @@ window.onhashchange = function () {
   }
 
 }
-fetch(`${data_url}` + `/news/getNewsByType?type=Jobsfaculty`)
+fetch(`${data_url}` + `/news/getNewsByType?type=jobsFaculty`)
   .then((response) => response.json())
   .then((data) => {
     const faculty = document.getElementById("faculty");
@@ -65,7 +65,7 @@ ${update.title}
     });
   });
 
-fetch(`${data_url}` + `/news/getNewsByType?type=Jobsnonfaculty`)
+fetch(`${data_url}` + `/news/getNewsByType?type=jobsNonFaculty`)
   .then((response) => response.json())
   .then((data) => {
     const faculty = document.getElementById("nonFaculty");
@@ -87,7 +87,7 @@ ${update.title}
   });
 
 fetch(
-  `${data_url}` + `/news/getNewsByType?type=Jobsfacultycontract`
+  `${data_url}` + `/news/getNewsByType?type=jobsFacultyContract`
 )
   .then((response) => response.json())
   .then((data) => {
@@ -111,7 +111,7 @@ ${update.title}
 
 fetch(
   `${data_url}` +
-  `/news/getNewsByType?type=Jobsnonfacultycontract`
+  `/news/getNewsByType?type=jobsNonFacultyContract`
 )
   .then((response) => response.json())
   .then((data) => {
