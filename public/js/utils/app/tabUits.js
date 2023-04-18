@@ -77,7 +77,7 @@ async function fetchTabContent(tabName, tabContainer) {
       data.forEach((e) => {
         let title = e.title
         if (tabName == 'tender') {
-          title = e.title
+          title = e.desc
         } else title = e.title
         const newUpdate = document.createElement('li')
         newUpdate.setAttribute('class', 'py-4 w-full')
