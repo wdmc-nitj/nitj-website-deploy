@@ -50,7 +50,7 @@ const app = express();
 
 //admin panel
 app.use(admin_panel.options.rootPath, router);
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(compression());
@@ -58,6 +58,7 @@ app.use(cookieParser());
 app.use(bodyParser.json({ limit: "5mb" }));
 bodyParser.urlencoded({ extended: true });
 app.use(express.static(__dirname + '/public'));
+
 
 app.get("/", (req, res) => {
   res.sendFile("index.html");
@@ -73,9 +74,7 @@ app.use(
 //routes
 
 // app.use("/login",login);
-app.use('/api', (req, res, next) => {
-  next();
-})
+
 // app.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 app.use("/navbar", navBarRouter);
 app.use("/news", newsRouter);
