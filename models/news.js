@@ -22,6 +22,9 @@ const Schema = new mongoose.Schema(
     pdfLink: {
       type: String,
     },
+    link: {
+      type: String,
+    },
     sourceOfInfoName: {
       type: String,
     },
@@ -68,7 +71,7 @@ const Schema = new mongoose.Schema(
       ],
     },
     show: { type: Boolean, default: true },
-    showviewall:{type:Boolean,default:true},
+    showviewall: { type: Boolean, default: true },
     updateLogs: {
       type: Array,
       default: [],
