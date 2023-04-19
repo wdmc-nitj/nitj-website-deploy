@@ -42,7 +42,7 @@ const getVisibleRecruitmentUpdatesByCategory = (req, res) => {
             // if the recruitmentUpdates is empty, return an array with one empty object, to show on the frontend
             if (recruitmentUpdates.length === 0) {
                 return res.json([{
-                    title: 'No updates under this tab.',
+                    title: 'Currently no updates under this tab.',
                     link: '#',
                 }]);
             }
