@@ -100,9 +100,9 @@ function openSubDropDowns(id) {
   for (var i = 0; i < subdropdownmenubuttons.length; i++) {
     if (
       id[id.length - 1] ==
-      subdropdownmenus[i].id[subdropdownmenus[i].id.length - 1] &&
+        subdropdownmenus[i].id[subdropdownmenus[i].id.length - 1] &&
       id[id.length - 2] ==
-      subdropdownmenus[i].id[subdropdownmenus[i].id.length - 2]
+        subdropdownmenus[i].id[subdropdownmenus[i].id.length - 2]
     ) {
       if (
         subdropdownmenubuttons[i].children[0].classList.contains("rotate-180")
@@ -126,7 +126,6 @@ function checkEnter(event) {
   if (event.keyCode == 13) {
     event.preventDefault();
     search_resources();
-    display_resources();
   }
 }
 
@@ -149,15 +148,16 @@ function showSearchPage(event) {
 
 function display_resources() {
   let input = document.getElementById("searchbar");
-  if (input.reportValidity()) {
+  if(input.reportValidity()){
     let resources = document.getElementById("resources");
     if (resources.classList.contains("hidden")) {
       resources.classList.remove("hidden");
-    } else {
-      resources.classList.add("hidden");
-    }
+    } 
+    // else {
+    //   resources.classList.add("hidden");
+    // }
   }
-  else {
+  else{
     let resources = document.getElementById("resources");
     if (!resources.classList.contains("hidden")) {
       resources.classList.add("hidden");
@@ -165,7 +165,7 @@ function display_resources() {
   }
 }
 
-function displayWords(words, links) {
+async function displayWords(words, links) {
   let sortedWords = words.sort();
   let groupedWords = sortedWords.reduce((acc, word) => {
     let firstLetter = word[0].toUpperCase();
@@ -176,7 +176,7 @@ function displayWords(words, links) {
     return acc;
   }, {});
   for (let letter in groupedWords) {
-    let Big_alphabets_heading = document.getElementById("Big_alphabets");
+    let Big_alphabets_heading = await waitForElm("#Big_alphabets");
     let h2 = document.createElement("h2");
     h2.setAttribute("class", "head hidden");
     h2.textContent = letter;
@@ -184,20 +184,20 @@ function displayWords(words, links) {
     let ul = document.createElement("ul");
     ul.setAttribute(
       "class",
-      "uls inset-y-20 text-lg font-bold flex flex-col mx-auto w-full sm:w-1/2 text-gray-800 rounded-md p-2 shadow-md transition duration-500 ease-in-out"
+      "uls inset-y-20 text-lg font-bold flex flex-col mx-auto w-full text-gray-800 rounded-md p-2 shadow-md transition duration-500 ease-in-out"
     );
     for (let word of groupedWords[letter]) {
+      let anc = document.createElement("a");
+      anc.setAttribute("href", links[word]);
+      anc.setAttribute("target", "_blank");
       let li = document.createElement("li");
       li.setAttribute(
         "class",
         "resource text-left mb-2 ml-2 px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300 cursor-pointer transition duration-500 ease-in-out"
       );
-      let lichild = document.createElement("a");
-      lichild.setAttribute("href", links[word]);
-      lichild.setAttribute("target", "_blank");
-      lichild.textContent = word;
-      li.appendChild(lichild);
-      ul.appendChild(li);
+      li.innerHTML = word;
+      anc.appendChild(li);
+      ul.appendChild(anc);
       Big_alphabets_heading.appendChild(ul);
     }
   }
@@ -208,10 +208,11 @@ fetch('/api/navbar')
   .then(async (res) => await res.json())
   .then((data) => {
     Object.keys(data).forEach(key => {
-      for (let i = 0; i < data[key].length; i++) {
-        for (let j = 2; j < data[key][i].length; j++) {
+      for(let i=0;i<data[key].length;i++){
+        for(let j=2;j<data[key][i].length;j++){
           // console.log(data[key][i][j].name)
           // console.log(data[key][i][j].link)
+          data[key][i][j].name = data[key][i][j].name+" <span class=\"material-symbols-outlined align-middle\" >open_in_new</span>";
           displayWordsArr.push(data[key][i][j].name);
           links[data[key][i][j].name] = data[key][i][j].link;
         }
@@ -219,12 +220,13 @@ fetch('/api/navbar')
     });
   })
 var resources = document.getElementById("resources");
-fetch("/api/resource")
+fetch('/api/resource')
   .then((response) => response.json())
   .then((data) => {
     // Create an unordered list element
     data.forEach((element) => {
       if (element.resourceType === "other") {
+        element["resourceName"] = element["resourceName"]+" <span class=\"material-symbols-outlined align-middle\">picture_as_pdf</span>";
         displayWordsArr.push(element["resourceName"]);
         links[element["resourceName"]] = element["resourceLink"];
       }
@@ -235,10 +237,10 @@ fetch("/api/resource")
 function search_resources() {
   let input_element = document.getElementById("searchbar");
   let input = document.getElementById("searchbar").value;
-  if (!input_element.reportValidity()) {
+  // if(!input_element.reportValidity()){
     display_resources();
-    return;
-  }
+    // return;
+  // }
   input = input.toLowerCase();
   let x = document.getElementsByClassName("resource");
   let header = document.getElementsByClassName("head");
@@ -252,10 +254,10 @@ function search_resources() {
   }
   var count = 0;
   for (let j = 0; j < header.length; j++) {
-    let listItems = header[j].nextElementSibling.children;
+    let ancItems = header[j].nextElementSibling.children;
     let allHidden = true;
-    for (let k = 0; k < listItems.length; k++) {
-      if (listItems[k].style.display != "none") {
+    for (let k = 0; k < ancItems.length; k++) {
+      if (ancItems[k].firstChild.style.display != "none") {
         allHidden = false;
         break;
       }
@@ -267,14 +269,34 @@ function search_resources() {
     } else {
       uls[j].classList.remove("hidden");
     }
-    if (count == header.length) {
+    if(count == header.length){
       let noresult = document.getElementById("noresult")
       noresult.classList.remove("hidden")
       // show no result found
     }
-    else {
+    else{
       let noresult = document.getElementById("noresult")
       noresult.classList.add("hidden")
     }
   }
+}
+
+function waitForElm(selector) {
+  return new Promise(resolve => {
+      if (document.querySelector(selector)) {
+          return resolve(document.querySelector(selector));
+      }
+
+      const observer = new MutationObserver(mutations => {
+          if (document.querySelector(selector)) {
+              resolve(document.querySelector(selector));
+              observer.disconnect();
+          }
+      });
+
+      observer.observe(document.body, {
+          childList: true,
+          subtree: true
+      });
+  });
 }
