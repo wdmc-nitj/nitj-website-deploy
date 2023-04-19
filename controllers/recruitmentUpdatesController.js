@@ -37,8 +37,18 @@ const getVisibleRecruitmentUpdatesByCategory = (req, res) => {
 
     RecruitmentUpdate
         .find(filter)
-        .sort({ updatedAt: -1 })
-        .then((recruitmentUpdates) => res.json(recruitmentUpdates))
+        .sort({ order: -1 })
+        .then((recruitmentUpdates) => {
+            // if the recruitmentUpdates is empty, return an array with one empty object, to show on the frontend
+            if (recruitmentUpdates.length === 0) {
+                return res.json([{
+                    title: 'No updates under this tab.',
+                    link: '#',
+                }]);
+            }
+
+            res.json(recruitmentUpdates);
+        })
         .catch((err) => sendError(res, err));
 };
 
