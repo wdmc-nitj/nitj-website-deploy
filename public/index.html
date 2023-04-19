@@ -192,6 +192,7 @@
 
       if (localStorage.getItem('skipAnimation')) {
         overlayLauncher.classList.add('hidden')
+        player.play()
         return
       } else {
         document.body.style.overflow = 'hidden'
