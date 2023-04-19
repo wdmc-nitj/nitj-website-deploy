@@ -190,61 +190,63 @@
     }
     window.addEventListener('load', () => {
 
-      if (localStorage.getItem('skipAnimation')) {
-        overlayLauncher.classList.add('hidden')
-        player.play()
-        return
-      } else {
-        document.body.style.overflow = 'hidden'
-        scrollToBottom()
-        localStorage.setItem('skipAnimation', true)
-      }
-
-    })
-    const overlayLauncher = document.getElementById('overlay-launcher')
-    const canvasEl = document.getElementById('canvasEL')
-    const riveInstance = new rive.Rive({
-      src: 'publish_button.riv',
-      canvas: canvasEl,
-      autoplay: true,
-      stateMachines: 'State Machine 1',
-      // onabort: () => {
-      //   overlayLauncher.classList.add('hidden')
+      // if (localStorage.getItem('skipAnimation')) {
+      //   // overlayLauncher.classList.add('hidden')
+      //   player.playSegments([0, 0], true)
+      //   // player.play()
+      //   return
+      // } else {
+      //   // document.body.style.overflow = 'hidden'
+      //   player.play()
+      //   // scrollToBottom()
+      //   localStorage.setItem('skipAnimation', true)
       // }
-      onStateChange: (e) => {
-        console.log(e)
-        if (e.data[0] === 'exit') {
-          overlayLauncher.classList.add('pointer-events-none')
-          overlayLauncher.classList.add('opacity-0')
-          riveInstance.stop()
-          riveInstance.cleanup()
-          document.body.style.overflow = 'auto'
-          setTimeout(() => {
-            backToTop()
-          }, 400)
-          const player = document.querySelector('lottie-player')
-          player.style.height = '100%'
-          player.style.width = '100%'
-
-          player.play()
-        }
-      },
+      player.play()
     })
+    // const overlayLauncher = document.getElementById('overlay-launcher')
+    // const canvasEl = document.getElementById('canvasEL')
+    // const riveInstance = new rive.Rive({
+    //   src: 'publish_button.riv',
+    //   canvas: canvasEl,
+    //   autoplay: true,
+    //   stateMachines: 'State Machine 1',
+    //   // onabort: () => {
+    //   //   overlayLauncher.classList.add('hidden')
+    //   // }
+    //   onStateChange: (e) => {
+    //     console.log(e)
+    //     if (e.data[0] === 'exit') {
+    //       overlayLauncher.classList.add('pointer-events-none')
+    //       overlayLauncher.classList.add('opacity-0')
+    //       riveInstance.stop()
+    //       riveInstance.cleanup()
+    //       document.body.style.overflow = 'auto'
+    //       setTimeout(() => {
+    //         backToTop()
+    //       }, 400)
+    //       const player = document.querySelector('lottie-player')
+    //       player.style.height = '100%'
+    //       player.style.width = '100%'
 
-    const launcherInput = document.getElementById('launcher-input')
-    const launcherForm = document.getElementById('launcher-form')
-    const launcherContent = document.getElementById('launcher-content')
-    const canvasContainer = document.getElementById('launcher-canvas-container')
-    launcherForm.onsubmit = (e) => {
-      e.preventDefault()
-      if (launcherInput.value === 'magic') {
-        launcherContent.classList.add('hidden')
-        canvasContainer.classList.remove('-translate-y-10')
-        canvasContainer.classList.remove('opacity-0')
-        canvasContainer.classList.remove('pointer-events-none')
-        canvasContainer.classList.add('-translate-y-1/2')
-      }
-    }
+    //       player.play()
+    //     }
+    //   },
+    // })
+
+    // const launcherInput = document.getElementById('launcher-input')
+    // const launcherForm = document.getElementById('launcher-form')
+    // const launcherContent = document.getElementById('launcher-content')
+    // const canvasContainer = document.getElementById('launcher-canvas-container')
+    // launcherForm.onsubmit = (e) => {
+    //   e.preventDefault()
+    //   if (launcherInput.value === 'magic') {
+    //     launcherContent.classList.add('hidden')
+    //     canvasContainer.classList.remove('-translate-y-10')
+    //     canvasContainer.classList.remove('opacity-0')
+    //     canvasContainer.classList.remove('pointer-events-none')
+    //     canvasContainer.classList.add('-translate-y-1/2')
+    //   }
+    // }
   </script>
   <!-- confetti animation -->
   <div class="fixed inset-0 z-[999] pointer-events-none">
@@ -252,7 +254,7 @@
       speed="0.75"></lottie-player>
   </div>
   <!-- launch page -->
-  <div id="overlay-launcher" class="fixed inset-0 z-[1000] bg-gray-100 transition-all duration-500">
+  <!-- <div id="overlay-launcher" class="fixed inset-0 z-[1000] bg-gray-100 transition-all duration-500">
 
     <div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
       <div id="launcher-content" class="mx-auto max-w-5xl text-center">
@@ -298,7 +300,7 @@
       </div>
     </footer>
 
-  </div>
+  </div> -->
   <!-- Ends Launch Page (to be removed) -->
   <!-- ----------------------------------------- -->
   <script src="/template/header.js" type="module"></script>
@@ -682,7 +684,7 @@
                   " class="inline-block">that prove</span>
             NITJ
           </h1>
-          <a href="https://placement-q1bq.onrender.com/"
+          <a href="https://ctp.nitj.ac.in"
             class="text-sm w-fit font-semibold text-gray-900 hover:text-white flex items-center bg-white hover:bg-transparent hover:ring-2 ring-white ring-inset px-4 py-2 rounded-lg transition">
             <span class="text-base">Placement site &rarr;</span>
           </a>
