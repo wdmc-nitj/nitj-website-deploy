@@ -112,7 +112,7 @@ async function fetchTabContent(tabName, tabContainer) {
               
           
           ${
-            tabName === 'upcomingEvent'
+            tabName === 'upcomingEvent' && e?.startDate
               ? `<div id="date-tag" class="text-slate-600 font-normal text-base inline-flex items-center justify-start space-x-2">
               ${tabName === 'upcomingEvent' ? 'Event Date:&nbsp;' : ''}
                       
@@ -120,7 +120,7 @@ async function fetchTabContent(tabName, tabContainer) {
                 calendar_month
               </span>
               <p>
-              ${dateManipulator(e?.startDate || e.updatedAt)}
+              ${dateManipulator(e?.startDate || '')}
               </p>
              ${
                e?.endDate
