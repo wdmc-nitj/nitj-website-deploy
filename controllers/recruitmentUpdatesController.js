@@ -37,7 +37,7 @@ const getVisibleRecruitmentUpdatesByCategory = (req, res) => {
 
     RecruitmentUpdate
         .find(filter)
-        .sort({ updatedAt: -1 })
+        .sort({ order: -1 })
         .then((recruitmentUpdates) => res.json(recruitmentUpdates))
         .catch((err) => sendError(res, err));
 };
