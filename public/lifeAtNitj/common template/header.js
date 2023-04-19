@@ -215,7 +215,7 @@ id="nav-menu" style="display: none">
               ">
             badge
           </span>
-          <a href="https://placement-q1bq.onrender.com/" class="hidden sm:block pl-1.5 text-xs">Placements</a>
+          <a href="https://ctp.nitj.ac.in" class="hidden sm:block pl-1.5 text-xs">Placements</a>
         </div>
         <div class="flex items-center">
           <span class="material-symbols-outlined" style="
