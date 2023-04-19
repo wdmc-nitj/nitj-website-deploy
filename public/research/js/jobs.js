@@ -88,6 +88,7 @@ ${update.new
   });
 
 fetch(`${data_url}` + `/recruitments/updates/categorised?category=nonFaculty`)
+
   .then((response) => response.json())
   .then((data) => {
     const faculty = document.getElementById("nonFaculty");
@@ -134,6 +135,7 @@ ${update.new
 
 fetch(
   `${data_url}` + `/recruitments/updates/categorised?category=facultyContract`
+
 )
   .then((response) => response.json())
   .then((data) => {
@@ -180,6 +182,7 @@ ${update.new
 fetch(
   `${data_url}` +
   `/recruitments/updates/categorised?category=nonFacultyContract`
+
 )
   .then((response) => response.json())
   .then((data) => {

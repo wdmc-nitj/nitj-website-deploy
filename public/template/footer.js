@@ -4,7 +4,7 @@ document.write(`
             <div class="flex flex-row items-center gap-x-[10px] pb-3">
                 <img src="/public/assets/images/logo_250.png" alt="NITJ logo" class="h-[67px] w-[67px]" />
                 <p class="font-semibold text-white lg:text-[20px]">
-                    Dr. B R Ambedkar National Institute of Technology Jalandhar
+                    Dr B R Ambedkar National Institute of Technology Jalandhar
                 </p>
             </div>
 
@@ -12,11 +12,7 @@ document.write(`
                 <div class="pb-[6px] lg:w-[85%]">
                     <i class="fas fa-location-dot pr-[8px]"></i><span class="opacity-90">G.T Road, Amritsar Bypass,
                         Jalandhar,
-                        Punjab, India-144024</span>
-                </div>
-                <div class="flex flex-row pb-[6px]">
-                    <i class="fas fa-envelope mt-1 pr-[8px]"></i>
-                    <h3 class="opacity-90">webmaster@nitj.ac.in</h3>
+                        Punjab, India-144027</span>
                 </div>
                 <div class="align-center flex flex-row pb-[14px]">
                     <i class="fas fa-phone mt-1 pr-[8px]"></i>
@@ -102,23 +98,11 @@ document.write(`
     <div
         class="border-t border-zinc-400 flex flex-col bg-slate-800 px-20 p-[20px] text-center text-white lg:flex-row justify-between">
         <div class="pb-[10px] text-[12px] lg:pb-0 lg:text-[15px]">
-            © Copyright 2022, All Rights Reserved NIT Jalandhar
+            © Copyright 2023, All Rights Reserved NIT Jalandhar
         </div>
 
         <div class="text-[12px] lg:text-[15px]">
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">Other NITs</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">MoU</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">GIAN</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">TEQIP</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">Anti Ragging</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">Terms of Use</a>
-            |
-            <a href="#" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">Credits</a>
+            Developed in-house by<a href="/admin/students.html" class="mx-1 hover:text-yellow-300 hover:underline lg:mx-2">Website Development and Management Committee (WDMC)</a>
         </div>
     </div>
 
