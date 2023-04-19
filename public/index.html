@@ -403,10 +403,10 @@
   <!-- === Carousel section ends === -->
   <!-- === News Section Starts === -->
   <div id="news" class="my-20 scroll-mt-36">
-    <div class="container flex flex-col justify-start lg:flex-row">
+    <div class="container flex flex-col justify-start gap-10 lg:flex-row">
       <div id="announcements" class="flex w-full lg:w-2/3 flex-col space-y-6">
         <div class="flex items-center justify-start space-x-6 group">
-          <h1 class="uppercase text-4xl font-semibold text-accent">
+          <h1 class="uppercase text-3xl md:text-4xl font-semibold text-accent">
             Latest <span class="text-dark-purple">Events</span>
           </h1>
           <span class="material-symbols-outlined group-hover:animate-shake animate-delay"
@@ -417,7 +417,7 @@
 
         <!-- Cards -->
         <div class="flex flex-row relative">
-          <i class="absolute top-1/2 -left-10 -translate-y-1/2 fa-solid fa-angle-left self-center pl-4 text-2xl cursor-pointer"
+          <i class="hidden md:block absolute top-1/2 -left-10 -translate-y-1/2 fa-solid fa-angle-left self-center pl-4 text-2xl cursor-pointer"
             onclick="slideCards(this,'left')"></i>
           <div id="cards" class="scrollbar-hide flex space-x-6 overflow-x-scroll pl-1 pt-8 scroll-smooth h-[27rem]">
             <!-- Data from API -->
@@ -487,7 +487,7 @@
               </div>
             </div>
           </div>
-          <i class="fa-solid fa-angle-right self-center p-4 text-2xl cursor-pointer"
+          <i class="hidden md:block fa-solid fa-angle-right self-center p-4 text-2xl cursor-pointer"
             onclick="slideCards(this,'right')"></i>
         </div>
         <div class="flex items-end w-fit">
@@ -497,9 +497,9 @@
         </div>
       </div>
 
-      <div id="notices" class="container mx-auto flex grow lg:w-1/3 w-full flex-col">
+      <div id="notices" class="mx-auto flex grow lg:w-1/3 w-full flex-col">
         <div class="flex items-center mb-6 justify-start space-x-6 group">
-          <h1 class="text-4xl font-semibold uppercase text-gray-900">News</h1>
+          <h1 class="text-3xl md:text-4xl font-semibold uppercase text-gray-900">News</h1>
           <span class="material-symbols-outlined text-xl group-hover:animate-shake animate-delay"
             style="font-size: 40px; color: var(--accent)">
             newspaper
@@ -633,22 +633,22 @@
           </span>
         </div>
         <div class="ring-2 ring-accent rounded-xl p-5 flex flex-col items-center justify-center gap-5">
-          <div class="flex items-stretch rounded-full ring-2 ring-accent overflow-hidden">
+          <div class="flex items-stretch rounded-full ring-2 ring-accent overflow-x-auto">
             <p data-notif="upcomingEvent"
-              class="notif-link cursor-pointer text-base px-6 py-1 rounded-full text-slate-400 font-semibold hover:bg-blue-50">
+              class="notif-link cursor-pointer text-sm sm:text-base flex items-center justify-center text-center px-2 sm:px-6 py-1 rounded-full text-slate-400 font-semibold hover:bg-blue-50">
               Upcoming Events
             </p>
             <p data-notif="notice"
-              class="notif-link cursor-pointer text-base px-6 py-1 rounded-full text-accent font-semibold bg-blue-100 hover:bg-blue-200">
+              class="notif-link cursor-pointer text-sm sm:text-base flex items-center justify-center text-center px-2 sm:px-6 py-1 rounded-full text-accent font-semibold bg-blue-100 hover:bg-blue-200">
               Student's Corner
             </p>
             <p data-notif="tender"
-              class="notif-link cursor-pointer text-base px-6 py-1 rounded-full text-slate-400 font-semibold hover:bg-blue-50">
+              class="notif-link cursor-pointer text-sm sm:text-base flex items-center justify-center text-center px-2 sm:px-6 py-1 rounded-full text-slate-400 font-semibold hover:bg-blue-50">
               Tenders
             </p>
           </div>
           <div class="w-full">
-            <div id="notice" class="w-full notice-content px-6 space-y-10 lg:mr-4 overflow-y-auto h-96">
+            <div id="notice" class="w-full notice-content px-6  space-y-10 lg:mr-4 overflow-y-auto h-96">
               <ul id="updates" class="w-full flex list-disc flex-col justify-between divide-y-2">
 
               </ul>
@@ -702,7 +702,7 @@
     <div class="container grid grid-cols-1 gap-5 md:grid-cols-3">
       <div id="announcements" class="md:col-start-1 md:col-end-3 row-span-2 flex flex-col space-y-6">
         <div class="flex items-center justify-start space-x-6 group">
-          <h1 class="uppercase text-4xl font-semibold text-accent">
+          <h1 class="uppercase text-3xl md:text-4xl font-semibold text-accent">
             Research <span class="text-dark-purple">Highlights</span>
           </h1>
           <span class="group-hover:animate-shake animate-delay material-symbols-outlined"
@@ -713,7 +713,7 @@
 
         <!-- Cards -->
         <div class="flex flex-row relative">
-          <i class="absolute top-1/2 -left-10 -translate-y-1/2 fa-solid fa-angle-left self-center pl-4 text-2xl cursor-pointer"
+          <i class="hidden md:block absolute top-1/2 -left-10 -translate-y-1/2 fa-solid fa-angle-left self-center pl-4 text-2xl cursor-pointer"
             onclick="slideCards(this,'left')"></i>
           <div id="slides" class="scrollbar-hide flex space-x-6 overflow-x-scroll pl-1 pt-8 scroll-smooth h-[25rem]">
             <!-- Data from API -->
@@ -781,7 +781,7 @@
               </div>
             </div>
           </div>
-          <i class="fa-solid fa-angle-right self-center p-4 text-2xl cursor-pointer"
+          <i class="hidden md:block fa-solid fa-angle-right self-center p-4 text-2xl cursor-pointer"
             onclick="slideCards(this,'right')"></i>
         </div>
         <div class="flex items-end w-fit pb-2 lg:pb-0">

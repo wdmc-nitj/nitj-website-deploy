@@ -42,6 +42,31 @@ const deptCalendarRouter = require("./routes/deptCalendar");
 
 const adminPath = "dashboard";
 
+// The endpoint for the admin panel which used a non-GET request must be added to this array
+const allowedNonGetRoutes = [
+  '/api/store',
+  '/api/store/*',
+  '/api/navbar/delete',
+  '/api/navbar/edit',
+  '/api/navbar/sort',
+  '/api/navbar/update',
+  '/api/upload',
+];
+
+mainRouter.use("/*", (req, res, next) => {
+  if(req.method === "GET") {
+    next();
+  }
+  else {
+    if ((req.headers.authorization === process.env.SECRET_KEY) && allowedNonGetRoutes.includes(req.path)) {
+      next();
+    }
+    else {
+      res.status(403).json({message: "Unauthorized"});
+    }
+  }
+});
+
 // mainRouter.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 mainRouter.use("/navbar", navBarRouter);
 mainRouter.use("/news", newsRouter);
@@ -83,6 +108,8 @@ mainRouter.use("/store", store);
 mainRouter.use("/admissions", admissionsRoutes);
 mainRouter.use("/research", researchRoutes);
 mainRouter.use("/recruitments", recruitmentsRoutes);
+
+
 
 mainRouter.get(`/${adminPath}/ckeditor`, (req, res) => {
   res.sendFile(__dirname + "/public/add.html");

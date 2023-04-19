@@ -70,24 +70,23 @@ async function fetchTabContent(tabName, tabContainer) {
   fetch(`${BaseURL}/${tabName}/get/all`)
     .then((res) => res.json())
     .then((apidata) => {
-      // console.log(data)
       const data = dataFilter(apidata)
+      console.log(data)
       tabContainer.innerHTML = ''
       const viewAll = document.getElementById('tab-view-all')
       data.forEach((e) => {
         let title = e.title
-        if (tabName == 'tender') {
-          title = e.desc
-        } else title = e.title
+
         const newUpdate = document.createElement('li')
         newUpdate.setAttribute('class', 'py-4 w-full')
         newUpdate.innerHTML = `
           <div>
             <a
-              ${e.newPage
-            ? `target = "_blank" href= "${e.pdfLink}"`
-            : `href = "/template/index.html?id=${e._id}?category=${tabName}"`
-          }
+              ${
+                e.newPage
+                  ? `target = "_blank" href= "${e.pdfLink}"`
+                  : `href = "/template/index.html?id=${e._id}?category=${tabName}"`
+              }
             class="text-xl font-semibold text-accent line-clamp-3">
             <p class="inline w-auto line-clamp-3">${title}&nbsp; 
             </p>
@@ -95,8 +94,9 @@ async function fetchTabContent(tabName, tabContainer) {
             <div
             class="flex flex-col md:flex-row w-full justify-between mt-2"
             >
-           ${e.new &&
-          `
+           ${
+             e.new
+               ? `
           <span id="new-tag" class="flex text-base text-accent-orange space-x-2">
             <span class="text-base material-symbols-outlined text-accent-orange">
               auto_awesome
@@ -105,13 +105,15 @@ async function fetchTabContent(tabName, tabContainer) {
               New
             </p>
           </span>`
-          }
+               : '<p></p>'
+           }
         
             
               
           
-          ${tabName === 'upcomingEvent'
-            ? `<div id="date-tag" class="text-slate-600 font-normal text-base inline-flex items-center justify-start space-x-2">
+          ${
+            tabName === 'upcomingEvent'
+              ? `<div id="date-tag" class="text-slate-600 font-normal text-base inline-flex items-center justify-start space-x-2">
               ${tabName === 'upcomingEvent' ? 'Event Date:&nbsp;' : ''}
                       
               <span class="material-symbols-outlined text-lg">
@@ -120,8 +122,9 @@ async function fetchTabContent(tabName, tabContainer) {
               <p>
               ${dateManipulator(e?.startDate || e.updatedAt)}
               </p>
-             ${e?.endDate
-              ? ` <p>
+             ${
+               e?.endDate
+                 ? ` <p>
               -
               </p>
               <span class="material-symbols-outlined text-lg">
@@ -130,10 +133,10 @@ async function fetchTabContent(tabName, tabContainer) {
               <p>
               ${dateManipulator(e?.endDate)}
               </p>`
-              : ''
-            }
+                 : ''
+             }
           </div>`
-            : ''
+              : ''
           }
           </div>
           </div>

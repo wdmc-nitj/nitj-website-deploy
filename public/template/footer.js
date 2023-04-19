@@ -12,11 +12,7 @@ document.write(`
                 <div class="pb-[6px] lg:w-[85%]">
                     <i class="fas fa-location-dot pr-[8px]"></i><span class="opacity-90">G.T Road, Amritsar Bypass,
                         Jalandhar,
-                        Punjab, India-144024</span>
-                </div>
-                <div class="flex flex-row pb-[6px]">
-                    <i class="fas fa-envelope mt-1 pr-[8px]"></i>
-                    <h3 class="opacity-90">webmaster@nitj.ac.in</h3>
+                        Punjab, India-144027</span>
                 </div>
                 <div class="align-center flex flex-row pb-[14px]">
                     <i class="fas fa-phone mt-1 pr-[8px]"></i>
@@ -102,7 +98,7 @@ document.write(`
     <div
         class="border-t border-zinc-400 flex flex-col bg-slate-800 px-20 p-[20px] text-center text-white lg:flex-row justify-between">
         <div class="pb-[10px] text-[12px] lg:pb-0 lg:text-[15px]">
-            © Copyright 2022, All Rights Reserved NIT Jalandhar
+            © Copyright 2023, All Rights Reserved NIT Jalandhar
         </div>
 
         <div class="text-[12px] lg:text-[15px]">
