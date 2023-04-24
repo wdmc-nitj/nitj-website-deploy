@@ -40,6 +40,9 @@ app.use(
 );
 
 app.use("/api", mainRouter);
+app.use("*", (req, res)=>{
+  return res.redirect(`https://v1.nitj.ac.in${req.originalUrl}`)
+})
 
 mongoose.set("strictQuery", false);
 
