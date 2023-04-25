@@ -24,7 +24,16 @@ const getUpdates = (req, res) => {
 
     admissionUpdate.find(filter)
         .sort({ order: -1 })
-        .then((updates) => res.json(updates))
+        .then((updates) => {
+            // if the updates array is empty, return an array of length with 1 object to show on the frontend
+            if (updates.length === 0) {
+                return res.json([{
+                    title: 'Currently no updates under this tab.',
+                    link: '#',
+                }]);
+            }
+            res.json(updates);
+        })
         .catch((err) => sendError(res, err));
 };
 
