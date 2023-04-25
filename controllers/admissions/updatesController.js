@@ -23,7 +23,7 @@ const getUpdates = (req, res) => {
     }
 
     admissionUpdate.find(filter)
-        .sort({ updatedAt: -1 })
+        .sort({ order: -1 })
         .then((updates) => res.json(updates))
         .catch((err) => sendError(res, err));
 };
