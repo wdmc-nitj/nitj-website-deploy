@@ -215,8 +215,13 @@
   list-style-type: square;
 }
 
+.ck-content a {
+  word-wrap: break-word;
+}
+
 .ck-content a:any-link {
   color: hsla(201, 96%, 32%);
+  word-wrap: break-word;
   text-decoration: underline;
   cursor: auto;
   font-weight: 500;
