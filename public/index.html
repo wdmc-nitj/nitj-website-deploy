@@ -19,12 +19,6 @@
   <!-- CSS linking -->
   <link rel="stylesheet" href="style.css" />
   <script src="./js/data.js" defer></script>
-  <!-- ----------------------------- -->
-  <!-- For launcher -->
-  <script src="https://unpkg.com/@rive-app/canvas@1.0.102"></script>
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <!-- to be deleted -->
-  <!-- ----------------------------- -->
   <style>
     /* Customizing the Scrollbar */
 
@@ -162,143 +156,6 @@
 </head>
 
 <body class="font-body relative text-dark-purple scroll-smooth">
-  <!-- ---------------------------------------- -->
-  <!--Launch Page (To be removed later)  -->
-  <script type="module">
-const player = document.querySelector('lottie-player')
-      player.style.height = '100%'
-      player.style.width = '100%'
-
-
-
-
-      // const scrollToBottom = () => {
-      //   window.scrollTo({
-      //     top: 300,
-      //     left: 0,
-      //     behavior: 'smooth',
-      //   })
-      // }
-      // const backToTop = () => {
-      //   window.scrollTo({
-      //     top: 0,
-      //     left: 0,
-      //     behavior: 'smooth',
-      //   })
-      // }
-      window.addEventListener('load', () => {
-        player.play()
-        // if (localStorage.getItem('skipAnimation')) {
-        //   overlayLauncher.classList.add('hidden')
-        //   return
-        // } else {
-        //   document.body.style.overflow = 'hidden'
-        //   scrollToBottom()
-        //   localStorage.setItem('skipAnimation', true)
-        // }
-
-      })
-    // const overlayLauncher = document.getElementById('overlay-launcher')
-    // const canvasEl = document.getElementById('canvasEL')
-    // const riveInstance = new rive.Rive({
-    //   src: 'publish_button.riv',
-    //   canvas: canvasEl,
-    //   autoplay: true,
-    //   stateMachines: 'State Machine 1',
-    //   // onabort: () => {
-    //   //   overlayLauncher.classList.add('hidden')
-    //   // }
-    //   onStateChange: (e) => {
-    //     console.log(e)
-    //     if (e.data[0] === 'exit') {
-    //       overlayLauncher.classList.add('pointer-events-none')
-    //       overlayLauncher.classList.add('opacity-0')
-    //       riveInstance.stop()
-    //       riveInstance.cleanup()
-    //       document.body.style.overflow = 'auto'
-    //       setTimeout(() => {
-    //         backToTop()
-    //       }, 400)
-    //       const player = document.querySelector('lottie-player')
-    //       player.style.height = '100%'
-    //       player.style.width = '100%'
-
-    //       player.play()
-    //     }
-    //   },
-    // })
-
-    // const launcherInput = document.getElementById('launcher-input')
-    // const launcherForm = document.getElementById('launcher-form')
-    // const launcherContent = document.getElementById('launcher-content')
-    // const canvasContainer = document.getElementById('launcher-canvas-container')
-    // launcherForm.onsubmit = (e) => {
-    //   e.preventDefault()
-    //   if (launcherInput.value === 'magic') {
-    //     launcherContent.classList.add('hidden')
-    //     canvasContainer.classList.remove('-translate-y-10')
-    //     canvasContainer.classList.remove('opacity-0')
-    //     canvasContainer.classList.remove('pointer-events-none')
-    //     canvasContainer.classList.add('-translate-y-1/2')
-    //   }
-    // }
-    
-  </script>
-  <!-- confetti animation -->
-  <div class="fixed inset-0 z-[999] pointer-events-none">
-    <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_ZF8J0eEWCR.json" background="transparent"
-      speed="0.75"></lottie-player>
-  </div>
-  <!-- launch page -->
-  <!-- <div id="overlay-launcher" class="fixed inset-0 z-[1000] bg-gray-100 transition-all duration-500">
-
-    <div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
-      <div id="launcher-content" class="mx-auto max-w-5xl text-center">
-        <img class="h-32 mx-auto mb-8" src="/public/assets/images/logo_250.png" alt="NITJ Website">
-
-        <div class="flex flex-col">
-          <h1 class="text-[#3E92CC] text-3xl font-extrabold sm:text-5xl leading-10">
-            Launching of New Official Website of
-          </h1>
-          <span class="mt-2 font-extrabold text-3xl sm:text-5xl  text-[#F48C06]">NIT Jalandhar</span>
-          <p class="mx-auto mt-4 text-gray-900 font-semibold max-w-2xl sm:text-xl sm:leading-relaxed">
-            <span class="text-gray-900 font-normal text-base sm:leading-tight">Developed In-house by<br>
-            </span>Website Development & Management Committee (WDMC)
-          </p>
-        </div>
-        <form type="submit" id="launcher-form" class="flex flex-col items-center gap-2 mt-5">
-          <input id="launcher-input" type="text" id="Password" placeholder="..."
-            class="w-80 py-2 font-bold rounded-md border-gray-300 border-2 bg-gray-200 text-center px-4 text-xl text-slate-900 shadow-sm" />
-          <label id="launcher-input-label" class="block z-[10001] font-medium text-gray-500">
-            Enter the magic words 🚀
-          </label>
-        </form>
-      </div>
-      <div id="launcher-canvas-container"
-        class="flex flex-wrap justify-center gap-4 -mt-5 pointer-events-none transition duration-700 -translate-y-10 opacity-0 fixed z-[1001] top-1/2 left-1/2 -translate-x-1/2">
-        <canvas id="canvasEL" width="800" height="800"></canvas>
-
-      </div>
-    </div>
-
-    <footer class="fixed bottom-0 inset-x-0 bg-transparent">
-      <div class="mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <div class="sm:flex sm:items-center sm:justify-between">
-
-          <p class="text-center text-sm text-gray-500 lg:text-right">
-            &copy; 2023 NIT Jalandhar. All rights reserved.
-
-          </p>
-          <p class="text-sm text-right text-gray-500">
-            You are seeing this page because the website is held in a private mode for the launch of the new website.
-          </p>
-        </div>
-      </div>
-    </footer>
-
-  </div> -->
-  <!-- Ends Launch Page (to be removed) -->
-  <!-- ----------------------------------------- -->
   <script src="/template/header.js" type="module"></script>
   <script src="/template/helper.js"></script>
   <button id="scroll-to-top-button"
@@ -307,7 +164,6 @@ const player = document.querySelector('lottie-player')
       class="w-6 h-6">
       <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
     </svg>
-
   </button>
   <div class="h-28 bg-accent w-full"></div>
   <div id="main-image" class="min-h-[700px] h-screen max-h-[1000px] transition-all duration-1000 bg-cover bg-center">
@@ -331,7 +187,13 @@ const player = document.querySelector('lottie-player')
             <a href="#news" class="flex flex-col space-y-4 items-center justify-center">
               <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
                 style="font-size: 48px">
-                newspaper</span>
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960"
+                  width="48">
+                  <path
+                    d="M140 936q-24.75 0-42.375-17.625T80 876V216l67 67 66-67 67 67 67-67 66 67 67-67 67 67 66-67 67 67 67-67 66 67 67-67v660q0 24.75-17.625 42.375T820 936H140Zm0-60h310V596H140v280Zm370 0h310V766H510v110Zm0-170h310V596H510v110ZM140 536h680V416H140v120Z" />
+                </svg>
+
+              </span>
               <p
                 class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
                 News
@@ -343,7 +205,11 @@ const player = document.querySelector('lottie-player')
             <a href="#admission" class="flex flex-col space-y-4 items-center justify-center">
               <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
                 style="font-size: 48px">
-                school
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960"
+                  width="48">
+                  <path
+                    d="M479 936 189 777V537L40 456l439-240 441 240v317h-60V491l-91 46v240L479 936Zm0-308 315-172-315-169-313 169 313 172Zm0 240 230-127V573L479 696 249 571v170l230 127Zm1-240Zm-1 74Zm0 0Z" />
+                </svg>
               </span>
               <p
                 class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
@@ -356,7 +222,11 @@ const player = document.querySelector('lottie-player')
             <a href="#nitj-numbers" class="flex flex-col space-y-4 items-center justify-center">
               <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
                 style="font-size: 48px">
-                real_estate_agent
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960"
+                  width="48">
+                  <path
+                    d="M770 701V379L560 232 350 379v129h-60V349l270-193 270 193v352h-60ZM560 232Zm20 204h40v-40h-40v40Zm-80 0h40v-40h-40v40Zm80 80h40v-40h-40v40Zm-80 0h40v-40h-40v40Zm66 478-311-89v57H40V568h309l255 96q27 10 45.5 32.5T668 761h114q42 0 70 30t28 81v26l-314 96Zm-466-92h94V628h-94v274Zm462 30 256-78q-6-19-15-26t-21-7H575q-30 0-55.5-4T471 806l-81-25 22-58 73 24q25 8 47.5 11t71.5 3q0-12-4.5-23.5T584 721l-245-93h-84v214l307 90ZM194 765Zm410-4Zm-410 4Zm61 0Z" />
+                </svg>
               </span>
               <p
                 class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
@@ -370,7 +240,11 @@ const player = document.querySelector('lottie-player')
             <a href="#research" class="flex flex-col space-y-4 items-center justify-center">
               <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
                 style="font-size: 48px">
-                biotech
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960"
+                  width="48">
+                  <path
+                    d="M200 936v-60h208V772h-15q-81 0-137-56t-56-137q0-61 35-111t92-70q4-40 35-65t72-22l-21-59 41-14.56L440 200l66-24 14 37 40-14 113 295-43 15 14 37-64 23-14-37-43 16-25-68q-15 17-35.5 24.5t-43.833 6.5Q393 510 371 495t-35-38q-35 17-55.5 49.965T260 579q0 55.417 38.792 94.208Q337.583 712 393 712h347v60H508v104h252v60H200Zm356-452 53-19-80-206-53 19 80 206Zm-130.175-23Q447 461 461.5 446.675q14.5-14.324 14.5-35.5Q476 390 461.675 375.5q-14.324-14.5-35.5-14.5Q405 361 390.5 375.325q-14.5 14.324-14.5 35.5Q376 432 390.325 446.5q14.324 14.5 35.5 14.5ZM556 484Zm-130-75Zm2 0Z" />
+                </svg>
               </span>
               <p
                 class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
@@ -384,7 +258,11 @@ const player = document.querySelector('lottie-player')
             <a href="#campus-life" class="flex flex-col space-y-4 items-center justify-center">
               <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
                 style="font-size: 48px">
-                sports_handball
+                <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960"
+                  width="48">
+                  <path
+                    d="m352 1050-50-30 128-218-82-49-75 121-50-30 229-371q-42-37-63-80.5T368 301q0-38 7.5-70t26.5-70l52 28q-14 29-20 54.5t-6 51.5q0 48 23 87t77 71l97 57q57 33 84.5 81.5T737 703q0 39-12 79t-32 76l-52-30q17-32 26.5-62.5T677 703q0-38-13-69.5T625 585l-273 465Zm285-608q-30 0-51.5-21.5T564 369q0-30 21.5-51.5T637 296q30 0 51.5 21.5T710 369q0 30-21.5 51.5T637 442Zm-94-186q-26 0-43-17t-17-43q0-26 17-43t43-17q26 0 43 17t17 43q0 26-17 43t-43 17Z" />
+                </svg>
               </span>
               <p
                 class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
