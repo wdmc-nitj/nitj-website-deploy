@@ -58,7 +58,8 @@ mainRouter.use("/*", (req, res, next) => {
     next();
   }
   else {
-    if ((req.headers.authorization === process.env.SECRET_KEY) && allowedNonGetRoutes.includes(req.path)) {
+
+    if ((req.headers.authorization === process.env.SECRET_KEY)) {
       next();
     }
     else {
