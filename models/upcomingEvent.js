@@ -49,7 +49,7 @@ const Schema = new mongoose.Schema(
     sourceOfInfoDepartment: {
       type: String,
     },
-    startDate: { type: Date, required: true },
+    startDate: { type: Date},
     desc: { type: String },
 
     endDate: { type: Date },

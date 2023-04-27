@@ -165,40 +165,39 @@
   <!-- ---------------------------------------- -->
   <!--Launch Page (To be removed later)  -->
   <script type="module">
-
-    const player = document.querySelector('lottie-player')
-    player.style.height = '100%'
-    player.style.width = '100%'
-
+const player = document.querySelector('lottie-player')
+      player.style.height = '100%'
+      player.style.width = '100%'
 
 
 
-    // const scrollToBottom = () => {
-    //   window.scrollTo({
-    //     top: 300,
-    //     left: 0,
-    //     behavior: 'smooth',
-    //   })
-    // }
-    // const backToTop = () => {
-    //   window.scrollTo({
-    //     top: 0,
-    //     left: 0,
-    //     behavior: 'smooth',
-    //   })
-    // }
-    window.addEventListener('load', () => {
-      player.play()
-      // if (localStorage.getItem('skipAnimation')) {
-      //   overlayLauncher.classList.add('hidden')
-      //   return
-      // } else {
-      //   document.body.style.overflow = 'hidden'
-      //   scrollToBottom()
-      //   localStorage.setItem('skipAnimation', true)
+
+      // const scrollToBottom = () => {
+      //   window.scrollTo({
+      //     top: 300,
+      //     left: 0,
+      //     behavior: 'smooth',
+      //   })
       // }
+      // const backToTop = () => {
+      //   window.scrollTo({
+      //     top: 0,
+      //     left: 0,
+      //     behavior: 'smooth',
+      //   })
+      // }
+      window.addEventListener('load', () => {
+        player.play()
+        // if (localStorage.getItem('skipAnimation')) {
+        //   overlayLauncher.classList.add('hidden')
+        //   return
+        // } else {
+        //   document.body.style.overflow = 'hidden'
+        //   scrollToBottom()
+        //   localStorage.setItem('skipAnimation', true)
+        // }
 
-    })
+      })
     // const overlayLauncher = document.getElementById('overlay-launcher')
     // const canvasEl = document.getElementById('canvasEL')
     // const riveInstance = new rive.Rive({
@@ -243,6 +242,7 @@
     //     canvasContainer.classList.add('-translate-y-1/2')
     //   }
     // }
+    
   </script>
   <!-- confetti animation -->
   <div class="fixed inset-0 z-[999] pointer-events-none">

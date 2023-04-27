@@ -39,6 +39,7 @@ const researchRoutes = require("./routes/researchRoutes");
 const recruitmentsRoutes = require("./routes/recruitmentRoutes");
 const curriculumRouter = require("./routes/curriculum");
 const deptCalendarRouter = require("./routes/deptCalendar");
+const examinationRouter = require("./routes/examination");
 
 const adminPath = "dashboard";
 
@@ -93,6 +94,8 @@ mainRouter.use("/studentTeam", studentTeamRouter);
 mainRouter.use("/club", clubRouter);
 mainRouter.use("/upcomingEvent", upcomingEventRouter);
 mainRouter.use("/academicCalendar", academicCalendarRouter);
+mainRouter.use("/examination", examinationRouter);
+
 
 mainRouter.use("/deptCalendar", deptCalendarRouter);
 mainRouter.use("/curriculum", curriculumRouter);
