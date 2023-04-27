@@ -7,17 +7,18 @@ const TenderSchema = new mongoose.Schema(
     title: {
       type: String,
     },
-    lastDateOfReceiptOfBids: { type: Date, required: true },
-    dateOfOpeningTechnicalBids: { type: Date, required: true },
-    desc: { type: String, default: "" },
-    fileLink: { type: String, default: "" },
-    imageLink: { type: String, default: "" },
-    show: { type: Boolean, default: true },
-    showviewall: { type: Boolean, default: true },
     order: {
       type: Number,
       default: 0,
     },
+    lastDateOfReceiptOfBids: { type: Date, required: true },
+    dateOfOpeningTechnicalBids: { type: Date, required: true },
+    desc: { type: String, default: "" },
+    pdfLink: { type: String, default: "" },
+    imageLink: { type: String, default: "" },
+    show: { type: Boolean, default: true },
+    showviewall: { type: Boolean, default: true },
+   
     new: {
       type: Boolean,
       default: true,
