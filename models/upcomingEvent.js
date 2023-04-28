@@ -15,8 +15,7 @@ const Schema = new mongoose.Schema(
       enum: [
         "conference",
         "seminar",
-        "FDP",
-        "STC",
+        "stc_fdp",
         "workshop",
         "guestLecture",
         "research",
