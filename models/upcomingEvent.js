@@ -22,8 +22,8 @@ const Schema = new mongoose.Schema(
         "others",
       ],
     },
-    organiser: { type: String, required: true },
-    venue: { type: String, required: true },
+    organiser: { type: String },
+    venue: { type: String },
     img: { type: String, default: "" },
     new: {
       type: Boolean,
