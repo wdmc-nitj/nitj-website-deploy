@@ -13,7 +13,8 @@ fetch(`${data_url}` + '/research/events/get?visible=visible&upcoming=true&catego
     const ugupdates = document.getElementById('upcoming_seminars')
     data.forEach((update) => {
       const ugupdate = document.createElement('div')
-      var d = new Date(update.dateTime);
+      var d = new Date(update.startDate);
+
       ugupdate.innerHTML = `
     <div class="lg:flex shadow rounded-lg border w-[100%] mb-4 border-gray-400">
     <div class="bg-accent rounded-lg lg:w-[30%] w-[30%] py-4 block h-full shadow-inner mx-auto">
@@ -28,20 +29,23 @@ fetch(`${data_url}` + '/research/events/get?visible=visible&upcoming=true&catego
       <div class="flex flex-row lg:justify-start justify-center">
         <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
           <!--time-->
-          <i class="far fa-clock"></i> ${d.getHours()}:${d.getMinutes().toString().length == 1 ? 0 + d.getMinutes().toString() : d.getMinutes()}${d.getHours() < 12 ? "AM" : "PM"}
+          ${d.getHours()<=5 ?  `` : ` <i class="far fa-clock"></i> ${d.getHours()}:${d.getMinutes().toString().length == 1 ? 0 + d.getMinutes().toString() : d.getMinutes()}${d.getHours() < 12 ? "AM" : "PM"}`}
+         
         </div>
-        <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
-          Organiser : ${update.organiser}
-        </div>
+        ${update.organiser ?` <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
+        Organiser : ${update.organiser}
+      </div>` : ``}
+       
       </div>
       <div class="font-semibold text-gray-800 text-xl text-center lg:text-left px-2">
         ${update.title}
       </div>
 
-      <div class="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2">
-        <!--address / location-->
-        ${update.venue}
-      </div>
+      ${update.venue ? `  <div class="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2">
+      <!--address / location-->
+      ${update.venue}
+    </div>`: `` }
+    
     </div>
 
   </div>
@@ -59,7 +63,8 @@ fetch(`${data_url}` + '/research/events/get?visible=visible&upcoming=false&categ
     const ugupdates = document.getElementById('organizedSeminars')
     data.forEach((update) => {
       const ugupdate = document.createElement('div')
-      var d = new Date(update.dateTime);
+      var d = new Date(update.startDate);
+
       ugupdate.innerHTML = `
     <div class="lg:flex shadow rounded-lg border w-[100%] mb-4 border-gray-400">
     <div class="bg-accent rounded-lg lg:w-[30%] w-[30%] py-4 block h-full shadow-inner mx-auto">
@@ -74,20 +79,23 @@ fetch(`${data_url}` + '/research/events/get?visible=visible&upcoming=false&categ
       <div class="flex flex-row lg:justify-start justify-center">
         <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
           <!--time-->
-          <i class="far fa-clock"></i> ${d.getHours()}:${d.getMinutes().toString().length == 1 ? 0 + d.getMinutes().toString() : d.getMinutes()}${d.getHours() < 12 ? "AM" : "PM"}
+          ${d.getHours()<=5 ?  `` : ` <i class="far fa-clock"></i> ${d.getHours()}:${d.getMinutes().toString().length == 1 ? 0 + d.getMinutes().toString() : d.getMinutes()}${d.getHours() < 12 ? "AM" : "PM"}`}
+         
         </div>
-        <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
-          Organiser : ${update.organiser}
-        </div>
+        ${update.organiser ?` <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
+        Organiser : ${update.organiser}
+      </div>` : ``}
+       
       </div>
       <div class="font-semibold text-gray-800 text-xl text-center lg:text-left px-2">
         ${update.title}
       </div>
 
-      <div class="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2">
-        <!--address / location-->
-        ${update.venue}
-      </div>
+      ${update.venue ? `  <div class="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2">
+      <!--address / location-->
+      ${update.venue}
+    </div>`: `` }
+    
     </div>
 
   </div>
