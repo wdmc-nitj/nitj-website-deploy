@@ -6,6 +6,16 @@ function formatTime(timeString) {
   return (hour % 12 || 12) + ":" + minute + (hour < 12 ? "AM" : "PM");
 }
 
+function funcTime(d){
+  const h=d.getHours()%12;
+  const m=d.getMinutes();
+  const hour= h.toString().length==1?"0"+h.toString():h.toString();
+
+  return hour+":"+m.toString()+(d.getHours()>12?"PM":"AM");
+}
+
+
+
 fetch(`${data_url}` + '/research/events/get?visible=visible&upcoming=true&category=stc_fdp')
   .then((response) => response.json())
   .then((data) => {
@@ -13,9 +23,36 @@ fetch(`${data_url}` + '/research/events/get?visible=visible&upcoming=true&catego
     const ugupdates = document.getElementById('upcoming_stc_fdp')
     data.forEach((update) => {
       const ugupdate = document.createElement('div')
+<<<<<<< Updated upstream
       var d = new Date(update.startDate);
       console.log(d)
       console.log(d.getDate()); // Hours
+=======
+      var d = new Date(update.dateTime);
+      ugupdate.innerHTML = `
+    <div class="lg:flex shadow rounded-lg border w-[100%] mb-4 border-gray-400">
+    <div class="bg-accent rounded-lg lg:w-[30%] w-[30%] py-4 block h-full shadow-inner mx-auto">
+      <div class="text-center tracking-wide">
+        <!--date-->
+        <div class="text-white font-bold text-4xl ">${d.getDate()}</div>
+                  <div class="text-white font-normal text-2xl">${month[d.getMonth()].substring(0, 3)}</div>
+     
+      </div>
+    </div>
+    <div class="w-full  lg:w-11/12 xl:w-full px-1 bg-white py-5 lg:px-2 lg:py-2 tracking-wide">
+      <div class="flex flex-row lg:justify-start justify-center">
+        <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
+          <!--time-->
+          <i class="far fa-clock"></i> ${d.getHours()==5?" ":funcTime(d)}
+          </div>
+        <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
+        Organiser : ${update.organiser===undefined?" ":update.organiser}
+        </div>
+      </div>
+      <div class="font-semibold text-gray-800 text-xl text-center lg:text-left px-2">
+        ${update.title}
+      </div>
+>>>>>>> Stashed changes
 
       console.log(month[d.getMonth()].substring(0, 3));
       console.log(d.getUTCSeconds());
@@ -47,9 +84,13 @@ fetch(`${data_url}` + '/research/events/get?visible=visible&upcoming=true&catego
   
         ${update.venue ? `  <div class="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2">
         <!--address / location-->
+<<<<<<< Updated upstream
         ${update.venue}
       </div>`: `` }
       
+=======
+        ${update.venue===undefined?" ":update.venue}
+>>>>>>> Stashed changes
       </div>
   
     </div>
@@ -67,9 +108,36 @@ console.log("stc fdp",data);
     const ugupdates = document.getElementById('organizedstc_fdp')
     data.forEach((update) => {
       const ugupdate = document.createElement('div')
+<<<<<<< Updated upstream
       var d = new Date(update.startDate);
       console.log(d)
       console.log(d.getDate()); // Hours
+=======
+      var d = new Date(update.dateTime);
+      ugupdate.innerHTML = `
+    <div class="lg:flex shadow rounded-lg border w-[100%] mb-4 border-gray-400">
+    <div class="bg-accent rounded-lg lg:w-[30%] w-[30%] py-4 block h-full shadow-inner mx-auto">
+      <div class="text-center tracking-wide">
+        <!--date-->
+        <div class="text-white font-bold text-4xl ">${d.getDate()}</div>
+                  <div class="text-white font-normal text-2xl">${month[d.getMonth()].substring(0, 3)}</div>
+     
+      </div>
+    </div>
+    <div class="w-full  lg:w-11/12 xl:w-full px-1 bg-white py-5 lg:px-2 lg:py-2 tracking-wide">
+      <div class="flex flex-row lg:justify-start justify-center">
+        <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
+          <!--time-->
+          <i class="far fa-clock"></i> ${d.getHours()==5?" ":funcTime(d)}
+          </div>
+        <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
+        Organiser : ${update.organiser===undefined?" ":update.organiser}
+        </div>
+      </div>
+      <div class="font-semibold text-gray-800 text-xl text-center lg:text-left px-2">
+        ${update.title}
+      </div>
+>>>>>>> Stashed changes
 
       console.log(month[d.getMonth()].substring(0, 3));
       console.log(d.getUTCSeconds());
@@ -101,9 +169,13 @@ console.log("stc fdp",data);
   
         ${update.venue ? `  <div class="text-gray-600 font-medium text-sm pt-1 text-center lg:text-left px-2">
         <!--address / location-->
+<<<<<<< Updated upstream
         ${update.venue}
       </div>`: `` }
       
+=======
+        ${update.venue===undefined?" ":update.venue}
+>>>>>>> Stashed changes
       </div>
   
     </div>
