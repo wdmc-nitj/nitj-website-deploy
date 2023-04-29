@@ -61,7 +61,7 @@ const yearlyRanking = require("./models/yearlyRanking");
 // Research Menu
 const researchMenuName = "Research";
 const Consultancy = require("./models/research/consultancy");
-const Events = require("./models/research/events");
+// const Events = require("./models/research/events");
 const MoUs = require("./models/research/MoUs");
 const researchPublications = require("./models/research/researchPublications");
 const sponsoredProjects = require("./models/research/sponsoredProjects");
@@ -2141,13 +2141,13 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-    {
-      resource: Events,
-      options: {
-        navigation: researchMenuName,
-        actions: { list: { isAccessible: isAdmin } },
-      },
-    },
+    // {
+    //   resource: Events,
+    //   options: {
+    //     navigation: researchMenuName,
+    //     actions: { list: { isAccessible: isAdmin } },
+    //   },
+    // },
     {
       resource: MoUs,
       options: {
