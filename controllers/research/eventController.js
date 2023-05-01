@@ -1,5 +1,5 @@
 const { sendError, validateID } = require('../../utils');
-const Event = require('../../models/research/events');
+// const Event = require('../../models/research/events');
 const UpcomingEvent = require('../../models/upcomingEvent');
 
 const createTimeStamp = (date, time) => {
