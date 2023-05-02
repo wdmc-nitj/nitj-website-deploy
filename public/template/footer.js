@@ -98,7 +98,7 @@ document.write(`
     <div
         class="border-t border-zinc-400 flex flex-col bg-slate-800 px-20 p-[20px] text-center text-white lg:flex-row justify-between">
         <div class="pb-[10px] text-[12px] lg:pb-0 lg:text-[15px]">
-            © Copyright 2023, All Rights Reserved NIT Jalandhar
+            © Copyright 2020, All Rights Reserved NIT Jalandhar
         </div>
 
         <div class="text-[12px] lg:text-[15px]">
