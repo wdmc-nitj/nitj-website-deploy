@@ -23,7 +23,7 @@ const obj = {
     "Prospective Students",
     "Anti Raging",
     "Join NITJ",
-    "Institute Prospectus",
+    "Information Flyers",
   ],
   Research: [
     "Research @NITJ",
