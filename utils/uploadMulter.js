@@ -5,10 +5,10 @@ const path = require("path");
 //config ------------------------------------------------------>
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "..", "public", "files"));
+    cb(null, path.join(__dirname, "..", "..", "nitj_files"));
   },
   filename: (req, file, cb) => {
-    cb(null, file.fieldname + "-" + Date.now() + ".png");
+    cb(null, file.originalname);
   },
 });
 

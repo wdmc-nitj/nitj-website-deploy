@@ -10,9 +10,9 @@ exports.upload = async (req, res) => {
       res.send(error);
     }
 
-    const currentUrl = `${req.protocol}://${req.headers.host}`;
+    const currentUrl = 'https://nitj.ac.in';
     res.json({
-      link: `${currentUrl}/files/${file.filename}`,
+      link: `${currentUrl}/${file.originalname}`,
     });
   } catch (err) {
     console.log(err);

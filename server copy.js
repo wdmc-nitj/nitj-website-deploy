@@ -9,7 +9,6 @@ const mainRouter = require("./routes");
 const { admin_panel, router } = require("./admin_panel");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const path=require("path");
 
 // process.on("unhandledRejection", (err) => {
 //   console.log("unhandleed rejection occured");
@@ -21,6 +20,9 @@ const path=require("path");
 
 //initialize app
 const app = express();
+const path=require(
+  "path"
+)
 
 //admin panel
 app.use(admin_panel.options.rootPath, router);
@@ -32,7 +34,9 @@ app.use(cookieParser());
 app.use(bodyParser.json({ limit: "5mb" }));
 bodyParser.urlencoded({ extended: true });
 app.use(express.static(__dirname + "/public"));
-app.use(express.static(path.join(__dirname,"..","nitj_files")))
+app.use(express.static(path.join(
+  __dirname,"..","nitj_files"
+)))
 
 //allowing all cross origin requests
 app.use(
