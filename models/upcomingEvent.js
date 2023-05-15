@@ -25,6 +25,8 @@ const Schema = new mongoose.Schema(
     organiser: { type: String },
     venue: { type: String },
     img: { type: String, default: "" },
+    show: { type: Boolean, default: true },
+    showviewall: { type: Boolean, default: true },
     new: {
       type: Boolean,
       default: true,
