@@ -10,9 +10,10 @@ exports.upload = async (req, res) => {
       res.send(error);
     }
 
-    const currentUrl = 'https://nitj.ac.in';
+    const currentUrl = "https://nitj.ac.in/files";
+    // const currentUrl = "http://127.0.0.1:8000/files";
     res.json({
-      link: `${currentUrl}/${file.originalname}`,
+      link: `${currentUrl}/${file.newfilename}`,
     });
   } catch (err) {
     console.log(err);
