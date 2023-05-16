@@ -8,7 +8,9 @@ const storage = multer.diskStorage({
     cb(null, path.join(__dirname, "..", "..", "nitj_files"));
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    let newfilename = `${Date.now()}-${file.originalname}`;
+    file.newfilename = newfilename;
+    cb(null, newfilename);
   },
 });
 

@@ -45,26 +45,23 @@ const adminPath = "dashboard";
 
 // The endpoint for the admin panel which used a non-GET request must be added to this array
 const allowedNonGetRoutes = [
-  '/api/store',
-  '/api/store/*',
-  '/api/navbar/delete',
-  '/api/navbar/edit',
-  '/api/navbar/sort',
-  '/api/navbar/update',
-  '/api/upload',
+  "/api/store",
+  "/api/store/*",
+  "/api/navbar/delete",
+  "/api/navbar/edit",
+  "/api/navbar/sort",
+  "/api/navbar/update",
+  "/api/upload",
 ];
 
 mainRouter.use("/*", (req, res, next) => {
-  if(req.method === "GET") {
+  if (req.method === "GET") {
     next();
-  }
-  else {
-
-    if ((req.headers.authorization === process.env.SECRET_KEY)) {
+  } else {
+    if (req.headers.authorization === process.env.SECRET_KEY) {
       next();
-    }
-    else {
-      res.status(403).json({message: "Unauthorized"});
+    } else {
+      res.status(403).json({ message: "Unauthorized" });
     }
   }
 });
@@ -96,7 +93,6 @@ mainRouter.use("/upcomingEvent", upcomingEventRouter);
 mainRouter.use("/academicCalendar", academicCalendarRouter);
 mainRouter.use("/examination", examinationRouter);
 
-
 mainRouter.use("/deptCalendar", deptCalendarRouter);
 mainRouter.use("/curriculum", curriculumRouter);
 
@@ -112,8 +108,6 @@ mainRouter.use("/store", store);
 mainRouter.use("/admissions", admissionsRoutes);
 mainRouter.use("/research", researchRoutes);
 mainRouter.use("/recruitments", recruitmentsRoutes);
-
-
 
 mainRouter.get(`/${adminPath}/ckeditor`, (req, res) => {
   res.sendFile(__dirname + "/public/add.html");
