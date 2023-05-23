@@ -21,7 +21,7 @@ const getByIdprogrammeInfo = async (req, res) => {
 
 const getByDeptprogrammeInfo = async (req, res) => {
     try {
-        const result = await programmeInfo.find({department: req.params.dept });
+        const result = await programmeInfo.find({show:true,department: req.params.dept });
         
         res.status(200).json(result);
     } catch (error) {
