@@ -52,11 +52,11 @@ const Schema = new mongoose.Schema(
     contact: {
       type: Object,
       default: {
-        email: null,
-        telNo: null,
-        EPABX: null,
-        Extn: null,
-        fax: null,
+        email: "",
+        telNo: "",
+        EPABX: "",
+        Extn: "",
+        fax: "",
       },
     },
     show: { type: Boolean, default: true },
