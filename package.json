@@ -7,7 +7,8 @@
     "start": "node server.js",
     "dev": "tailwind build -i public/css/src/style.css -o public/style.css --minify && nodemon server.js",
     "deploy": "yarn && tailwind build -i public/css/src/style.css -o public/style.css --minify",
-    "watch:css": "tailwindcss -i public/css/src/style.css -o public/style.css --watch"
+    "watch:css": "tailwindcss -i public/css/src/style.css -o public/style.css --watch",
+    "build:css": "tailwindcss -i public/css/src/style.css -o public/style.css --minify"
   },
   "repository": {
     "type": "git",
