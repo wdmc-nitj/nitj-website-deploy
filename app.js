@@ -26,6 +26,7 @@ const specialCentresRouter = require("./routes/specialCentres");
 const studentTeamRouter = require("./routes/studentTeam");
 const academicnoticesRouter = require("./routes/academicnotices");
 const studyProgramRouter = require("./routes/studyprog");
+const examinationRouter = require("./routes/examination");
 const clubRouter = require("./routes/club");
 const upcomingEventRouter = require("./routes/upcomingEvent");
 const departmentRouter = require("./routes/departement");
@@ -49,7 +50,7 @@ const app = express();
 
 //admin panel
 app.use(admin_panel.options.rootPath, router);
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(compression());
@@ -57,6 +58,7 @@ app.use(cookieParser());
 app.use(bodyParser.json({ limit: "5mb" }));
 bodyParser.urlencoded({ extended: true });
 app.use(express.static(__dirname + '/public'));
+
 
 app.get("/", (req, res) => {
   res.sendFile("index.html");
@@ -72,9 +74,7 @@ app.use(
 //routes
 
 // app.use("/login",login);
-app.use('/api', (req, res, next) => {
-  next();
-})
+
 // app.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 app.use("/navbar", navBarRouter);
 app.use("/news", newsRouter);
@@ -103,7 +103,7 @@ app.use("/academicCalendar", academicCalendarRouter);
 
 app.use("/deptCalendar", deptCalendarRouter);
 app.use('/curriculum', curriculumRouter);
-
+app.use('/examination', examinationRouter);
 app.use("/search", searchRouter);
 app.use("/dept", departmentRouter);
 app.use('/newpage', newpageRouter)
@@ -142,7 +142,9 @@ app.get("/admin/navbar", (req, res) => {
   res.sendFile(__dirname + "/public/navbar.html");
 });
 
-
+app.get("/admin/navbar/add", (req, res) => {
+  res.sendFile(__dirname + "/public/navbaradd.html");
+});
 //Export----------------------------->
 module.exports = app;
 

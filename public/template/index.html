@@ -184,11 +184,12 @@
     <div class="main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px] mb-16">
         <div>
             <div class="titlebg flex flex-col justify-center items-start h-[224px] px-4 lg:px-[11%] py-[48px]">
-                <p class="page-title font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">
+                <p
+                    class="w-full container page-title font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">
                 </p>
             </div>
             <nav class="flex px-4 lg:px-[11%] bg-gray-200 py-[8px] text-black" aria-label="Breadcrumb">
-                <ol class="inline-flex items-center">
+                <ol class="container w-full inline-flex items-center">
                     <li class="inline-flex items-center">
                         <a href="" class="inline-flex items-center text-sm font-medium hover:text-gray-900">
                             <a href="../index.html" class="text-lg font-medium ml-2">Home</a>
@@ -205,7 +206,7 @@
             </nav>
         </div>
 
-        <div class="flex flex-col items-start px-4 lg:px-[11%] gap-[20px] lg:gap-[16px]">
+        <div class="w-full max-w-7xl mx-auto flex flex-col items-start px-4 gap-[20px] lg:gap-[16px]">
             <div class="w-full flex flex-col items-start px-4">
                 <p id="date" class="font-semibold text-slate-500 text-sm lg:text-base"></p>
                 <p id="title" class="font2 font-medium text-[28px] lg:text-[32px] leading-tight my-2"></p>
@@ -217,13 +218,18 @@
 
                 </div>
                 <p id="description"
-                    class="font-normal mt-5 text-gray-800 lg:text-[16px] lg:leading-[27px] text-justify ck-content"></p>
+                    class="w-full font-normal mt-5 text-gray-800 lg:text-[16px] lg:leading-[27px] text-justify ck-content">
+                </p>
             </div>
         </div>
     </div>
     <script type="module" src="../template/header.js"></script>
 
     <script src="../js/routing.js" type="module"></script>
+    <script src="/template/helper.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/footer.js"></script>
+    <script src="/template/footer.js"></script>
 </body>
 
 </html>

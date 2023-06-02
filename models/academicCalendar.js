@@ -10,6 +10,10 @@ const Schema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    new: {
+      type: Boolean,
+      default: true,
+    },
     show: { type: Boolean, default: true },
   },
   { timestamps: true }
