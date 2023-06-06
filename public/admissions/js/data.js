@@ -441,7 +441,7 @@ fetch(
   });
 
 fetch(
-  `${data_url}` + "/admissions/helplines/get?visible=visible&degree=MTECH-SELF"
+  `${data_url}` + "/admissions/helplines/get?visible=visible&degree=MTECH-CCMT"
 )
   .then((response) => response.json())
   .then((data) => {
@@ -484,8 +484,8 @@ fetch(
                                 ><span style="font-size: 14px"
                                   ><span style="color: #000000"
                                     ><span style="font-size: 14px" class="px-1"
-                                      >${update.number} (${update.name}, ${update.startTime} to ${update.endTime}, For
-                                      queries in ${update.languages})</span
+                                      >${update.Details}
+                                      </span
                                     ></span
                                   ></span
                                 >
