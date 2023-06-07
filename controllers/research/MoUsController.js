@@ -27,8 +27,17 @@ const getMoUs = (req, res) => {
     }
 
     MoU.find(filter)
-        .then((MoUs) => res.json(MoUs))
+        .then((MoUs) => {
+            // Sorting the MoUs based on the dateOfMoU field
+            MoUs.sort((a, b) => {
+                const dateA = new Date(a.dateOfMoU.split('-').reverse().join('-'));
+                const dateB = new Date(b.dateOfMoU.split('-').reverse().join('-'));
+                return dateB - dateA; // Sort in descending order
+            });
+            res.json(MoUs);
+        })
         .catch((err) => sendError(res, err));
+
 };
 
 const getMoUById = (req, res) => {
