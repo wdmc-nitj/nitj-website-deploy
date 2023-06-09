@@ -83,7 +83,6 @@ const { filter } = require("compression");
 const specialCentres = require("./models/specialCentres");
 const curriculum = require("./models/curriculum");
 const examSchedule = require("./models/examSchedule");
-const examination = require("./models/examination")
 
 const canModifyUsers = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
@@ -2692,13 +2691,6 @@ const AdminBroOptions = {
     },
     {
       resource: study_programmes,
-      options: {
-        navigation: "AcademicsSystem",
-        actions: { list: { isAccessible: isAdmin } },
-      },
-    },
-    {
-      resource: examination,
       options: {
         navigation: "AcademicsSystem",
         actions: { list: { isAccessible: isAdmin } },
