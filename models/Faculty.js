@@ -266,7 +266,7 @@ const Schema = new mongoose.Schema({
     },
 
     research_profile: {
-        type: [
+        type: 
             {
                 "Research Interests": {
                     type: String
@@ -275,8 +275,8 @@ const Schema = new mongoose.Schema({
                     type: String
                 }
             }
-        ],
-        default: []
+        ,
+        default: {}
     },
     research_project: {
         type: [
@@ -313,8 +313,14 @@ const Schema = new mongoose.Schema({
         default: []
     },
     personal_link: {
-        type:
-            String
+        type:{
+            "Google Scholar Link":{
+                type:String
+            },
+            "Personal Link":{
+                type:String
+            }
+        }
     },
     journal: {
         type: [
