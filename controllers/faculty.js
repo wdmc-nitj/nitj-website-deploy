@@ -4,7 +4,6 @@ const Sessions = require('../models/Session');
 const getAllFaculty = async (req, res) => {
     try {
         const result = await Faculty.find({ show: true },).sort({order:1}).select("-password");
-        console.log(result);
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json("Error: " + error);
@@ -14,7 +13,7 @@ const getAllFaculty = async (req, res) => {
 const getByIdFaculty = async (req, res) => {
     try {
         const result = await Faculty.find({ _id: req.params.id }).select("-password");
-        res.status(200).json({ data: result, validation: {status:req.user} });
+        res.status(200).json({ data: result, validation: req.user });
     } catch (error) {
         res.status(400).json("Error: " + error);
     }

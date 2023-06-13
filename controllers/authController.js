@@ -17,7 +17,6 @@ module.exports.signInAuthentication = async function (req, res, next) {
   try {
     if (flag) {
       const sessionID = cookie;
-      console.log(sessionID);
 
       let session = await Sessions.findById(sessionID);
       if (session) {
