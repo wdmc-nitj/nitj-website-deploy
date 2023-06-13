@@ -106,8 +106,8 @@ Router.get("/:dept/Faculty", getByDeptFaculty);
 Router.put("/:dept/Faculty/:id/:token", authController.signInAuthentication,updateFaculty);
 Router.get("/:dept/Faculty/:id/:token",authController.signInAuthentication,getByIdFaculty);
 Router.get("/:dept/Faculty/:id",getByIdFaculty);
-Router.post("/:dept/Faculty", addFaculty);
-Router.delete("/:dept/Faculty/:id", deleteFaculty);
+// Router.post("/:dept/Faculty", addFaculty);
+// Router.delete("/:dept/Faculty/:id", deleteFaculty);
 
 Router.get("/:dept/Placement", getByDeptPlacement);
 // Router.post("/:dept/Placement", addPlacement);
