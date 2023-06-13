@@ -26,7 +26,8 @@ module.exports.signInAuthentication = async function (req, res, next) {
             isFaculty: true,
             login: true,
           };
-        } else {
+        } 
+        else {
           req.user = {
             isFaculty: false,
             login: true,
@@ -35,12 +36,20 @@ module.exports.signInAuthentication = async function (req, res, next) {
 
         next();
         return;
-      } else {
+      } 
+      else {
         req.user = {
           isFaculty: false,
           login: false,
         };
       }
+    }
+    else{
+      // This should be false as no token is sent by the request. The faculty should not be updated, and login is not succeeded.
+      req.user = {
+        isFaculty: false,
+        login: false,
+      };
     }
   } catch (error) {
     console.log(error);
