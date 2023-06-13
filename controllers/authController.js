@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 module.exports.signInAuthentication = async function (req, res, next) {
   const id = req.params.id;
   const dept = req.params.dept;
-  const url = `https://www.departments.nitj.ac.in/dept/${dept}`;
+  const url = `http://departments.nitj.ac.in/dept/${dept}`;
   // const cookie = req.headers.cookie.split(';').find(cookie => cookie.trim().startsWith('session=')).split('=')[1];
   const cookie = req.params.token;
   var flag = false;
@@ -59,7 +59,7 @@ module.exports.signInAuthentication = async function (req, res, next) {
 
 module.exports.createSession = async function (req, res) {
   const dept = req.params.dept;
-  const url = `https://www.departments.nitj.ac.in/dept/${dept}`;
+  const url = `http://departments.nitj.ac.in/dept/${dept}`;
 
   try {
     const User = await Faculty.find({ email: req.body.email });
