@@ -15,7 +15,7 @@ const Schema=new mongoose.Schema({
     sourceOfInfo: {
       type:  String
   },
-    show: { type: Boolean, default: true },
+    show: { type: Boolean },
     order:{
         type: Number,
     }

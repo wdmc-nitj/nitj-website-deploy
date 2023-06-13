@@ -26,7 +26,7 @@ module.exports.resetEmailHandler = async function (req, res) {
 
       await nodemailer.sendMail(
         {
-          from: "adityanmt@gmail.com",
+          from: process.env.EMAIL,
           to: req.body.email,
           subject: "Reset your Password",
           html: `<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" style="border-collapse: collapse;">
