@@ -58,7 +58,7 @@ mainRouter.use("/*", (req, res, next) => {
   if (req.method === "GET") {
     next();
   } else {
-    if (req.headers.authorization === process.env.SECRET_KEY) {
+    if (req.headers.authorization === process.env.SECRET_KEY || req.baseUrl.startsWith("/api/dept/")) {
       next();
     } else {
       res.status(403).json({ message: "Unauthorized" });

@@ -96,17 +96,18 @@ Router.post(
   "/:dept/login",
   authController.createSession
 );
-Router.post("/:dept/logout",authController.deleteSession);
+Router.get("/:dept/logout/:token",authController.deleteSession);
 // Router.get('/:dept/Faculty/:id', authController.checkAuthentication)
 
 Router.get("/:dept/Acadcord", getByDeptCoordinator);
 
 
 Router.get("/:dept/Faculty", getByDeptFaculty);
+Router.put("/:dept/Faculty/:id/:token", authController.signInAuthentication,updateFaculty);
+Router.get("/:dept/Faculty/:id/:token",authController.signInAuthentication,getByIdFaculty);
 Router.get("/:dept/Faculty/:id",getByIdFaculty);
-Router.post("/:dept/Faculty", addFaculty);
-Router.put("/:dept/Faculty/:id", authController.signInAuthentication,updateFaculty);
-Router.delete("/:dept/Faculty/:id", deleteFaculty);
+// Router.post("/:dept/Faculty", addFaculty);
+// Router.delete("/:dept/Faculty/:id", deleteFaculty);
 
 Router.get("/:dept/Placement", getByDeptPlacement);
 // Router.post("/:dept/Placement", addPlacement);
@@ -164,9 +165,8 @@ Router.get("/:dept/awardsAndHonors", getByDeptAwards);
 // Router.put("/:dept/awardsAndHonors/:id", updateAwards);
 // Router.delete("/:dept/awardsAndHonors/:id", deleteAwards);
 
-
 Router.post("/:dept/confirmation", resetController.resetEmailHandler);
-Router.get("/:dept/confirmation/:token/*", resetController.checkToken);
+Router.get("/:dept/confirmation/:token", resetController.checkToken);
 Router.post("/:dept/confirmation/submit/:token", resetController.modifyPassword);
 Router.get("/:dept/deptCalendar", DeptCalendar.getAllDeptCalendar);
 
