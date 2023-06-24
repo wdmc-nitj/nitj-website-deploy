@@ -34,7 +34,7 @@ fetch(`${data_url}` + '/research/events/get?visible=visible&upcoming=true&catego
         <div class="flex flex-row lg:justify-start justify-center">
           <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
             <!--time-->
-            ${d.getHours()<=5 ?  `` : ` <i class="far fa-clock"></i> ${d.getHours()}:${d.getMinutes().toString().length == 1 ? 0 + d.getMinutes().toString() : d.getMinutes()}${d.getHours() < 12 ? "AM" : "PM"}`}
+            ${d.getHours()<=5 ?  `` : ` <i class="far fa-clock"></i> ${d.getHours()}:${d.getMinutes().toString().length == 1 ? 0 + d.getMinutes().toString() : d.getMinutes()} `}
            
           </div>
           ${update.organiser ?` <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
@@ -88,7 +88,7 @@ fetch(`${data_url}` + 'research/events/get?visible=visible&upcoming=false&catego
         <div class="flex flex-row lg:justify-start justify-center">
           <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
             <!--time-->
-            ${d.getHours()<=5 ?  `` : ` <i class="far fa-clock"></i> ${d.getHours()}:${d.getMinutes().toString().length == 1 ? 0 + d.getMinutes().toString() : d.getMinutes()}${d.getHours() < 12 ? "AM" : "PM"}`}
+            ${d.getHours()<=5 ?  `` : ` <i class="far fa-clock"></i> ${d.getHours()}:${d.getMinutes().toString().length == 1 ? 0 + d.getMinutes().toString() : d.getMinutes()} `}
            
           </div>
           ${update.organiser ?` <div class="text-gray-700 font-medium text-sm text-center lg:text-left px-2">
