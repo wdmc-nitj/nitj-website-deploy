@@ -6,6 +6,9 @@ const refereedResearchController = require('../../controllers/research/refereedR
 RefereedResearchRouter.route('/create')
     .post(refereedResearchController.createRefereedResearch);
 
+RefereedResearchRouter.route('/createMany')
+    .post(refereedResearchController.addMultipleRefereedResearches);
+
 RefereedResearchRouter.route('/research')
     .get(refereedResearchController.getRefereedResearchById)
     .patch(refereedResearchController.editRefereedResearch)
