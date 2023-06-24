@@ -9,6 +9,7 @@ const mainRouter = require("./routes");
 const { admin_panel, router } = require("./admin_panel");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 // process.on("unhandledRejection", (err) => {
 //   console.log("unhandleed rejection occured");
@@ -31,6 +32,7 @@ app.use(cookieParser());
 app.use(bodyParser.json({ limit: "5mb" }));
 bodyParser.urlencoded({ extended: true });
 app.use(express.static(__dirname + "/public"));
+app.use("/files", express.static(path.join(__dirname, "..", "nitj_files")));
 
 //allowing all cross origin requests
 app.use(
@@ -40,6 +42,9 @@ app.use(
 );
 
 app.use("/api", mainRouter);
+app.use("*", (req, res) => {
+  return res.redirect(`https://v1.nitj.ac.in${req.originalUrl}`);
+});
 
 mongoose.set("strictQuery", false);
 

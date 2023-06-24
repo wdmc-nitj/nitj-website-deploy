@@ -23,7 +23,7 @@ const getLinks = (req, res) => {
     }
 
     admissionLink.find(filter)
-        .sort({ updatedAt: -1 })
+        .sort({ order: -1 })
         .then((links) => res.json(links))
         .catch((err) => sendError(res, err));
 }

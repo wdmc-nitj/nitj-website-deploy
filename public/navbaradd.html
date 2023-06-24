@@ -86,7 +86,7 @@
           "Prospective Students",
           "Anti Raging",
           "Join NITJ",
-          "Institute Prospectus",
+          "Information Flyers",
         ],
         Research: [
           "Research @NITJ",
@@ -146,7 +146,8 @@
           fetch('/api/navbar/update', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              "authorization":"HareKrishna"
             },
             body: JSON.stringify(data)
           }).then((res) => {

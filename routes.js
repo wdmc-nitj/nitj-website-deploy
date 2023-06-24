@@ -39,8 +39,32 @@ const researchRoutes = require("./routes/researchRoutes");
 const recruitmentsRoutes = require("./routes/recruitmentRoutes");
 const curriculumRouter = require("./routes/curriculum");
 const deptCalendarRouter = require("./routes/deptCalendar");
+const examinationRouter = require("./routes/examination");
 
 const adminPath = "dashboard";
+
+// The endpoint for the admin panel which used a non-GET request must be added to this array
+const allowedNonGetRoutes = [
+  "/api/store",
+  "/api/store/*",
+  "/api/navbar/delete",
+  "/api/navbar/edit",
+  "/api/navbar/sort",
+  "/api/navbar/update",
+  "/api/upload",
+];
+
+mainRouter.use("/*", (req, res, next) => {
+  if (req.method === "GET") {
+    next();
+  } else {
+    if (req.headers.authorization === process.env.SECRET_KEY || req.baseUrl.startsWith("/api/dept/")) {
+      next();
+    } else {
+      res.status(403).json({ message: "Unauthorized" });
+    }
+  }
+});
 
 // mainRouter.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 mainRouter.use("/navbar", navBarRouter);
@@ -67,6 +91,7 @@ mainRouter.use("/studentTeam", studentTeamRouter);
 mainRouter.use("/club", clubRouter);
 mainRouter.use("/upcomingEvent", upcomingEventRouter);
 mainRouter.use("/academicCalendar", academicCalendarRouter);
+mainRouter.use("/examination", examinationRouter);
 
 mainRouter.use("/deptCalendar", deptCalendarRouter);
 mainRouter.use("/curriculum", curriculumRouter);

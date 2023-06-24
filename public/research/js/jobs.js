@@ -44,14 +44,19 @@ window.onhashchange = function () {
   }
 
 }
-fetch(`${data_url}` + `/news/getNewsByType?type=Jobsfaculty`)
+fetch(`${data_url}` + `/recruitments/updates/categorised?category=faculty`)
   .then((response) => response.json())
   .then((data) => {
     const faculty = document.getElementById("faculty");
     data.forEach((update) => {
       const list = document.createElement("li");
+      list.classList.add("flex");
+      list.classList.add("py-2");
       list.innerHTML = `
-  <span class="font-bold text-4xl">.</span>
+      <span class="mx-2 ">
+      <i
+      class="fa-solid fa-angle-right text-[16px] "></i>
+      </span>
   <a
   href=${update.link}
   class="hover:text-[#FF6600]"
@@ -60,19 +65,44 @@ ${update.title}
  </a
 >
 
+
+${update.new
+  ? ` 
+ 
+<span id="new-tag" class="flex text-base text-accent-orange space-x-2">
+    <span class="text-base material-symbols-outlined text-accent-orange">
+      auto_awesome
+    </span>
+    <p class="font-bold uppercase text-accent-orange">
+      New
+    </p>
+  </span>
+`
+  : `
+    <span>
+  </span> `
+}
     `;
       faculty.appendChild(list);
     });
   });
 
-fetch(`${data_url}` + `/news/getNewsByType?type=Jobsnonfaculty`)
+fetch(`${data_url}` + `/recruitments/updates/categorised?category=nonFaculty`)
+
   .then((response) => response.json())
   .then((data) => {
     const faculty = document.getElementById("nonFaculty");
     data.forEach((update) => {
       const list = document.createElement("li");
+      list.classList.add("flex");
+      list.classList.add("py-2");
+     
+     
       list.innerHTML = `
-  <span class="font-bold text-4xl">.</span>
+      <span class="mx-2 ">
+      <i
+      class="fa-solid fa-angle-right text-[16px] "></i>
+      </span>
   <a
   href=${update.link}
   class="hover:text-[#FF6600]"
@@ -81,21 +111,44 @@ ${update.title}
  </a
 >
 
+
+${update.new
+  ? ` 
+ 
+<span id="new-tag" class="flex text-base text-accent-orange space-x-2">
+    <span class="text-base material-symbols-outlined text-accent-orange">
+      auto_awesome
+    </span>
+    <p class="font-bold uppercase text-accent-orange">
+      New
+    </p>
+  </span>
+`
+  : `
+    <span>
+  </span> `
+}
     `;
       faculty.appendChild(list);
     });
   });
 
 fetch(
-  `${data_url}` + `/news/getNewsByType?type=Jobsfacultycontract`
+  `${data_url}` + `/recruitments/updates/categorised?category=facultyContract`
+
 )
   .then((response) => response.json())
   .then((data) => {
     const faculty = document.getElementById("faculty-contract");
     data.forEach((update) => {
       const list = document.createElement("li");
+      list.classList.add("flex");
+      list.classList.add("py-2");
       list.innerHTML = `
-  <span class="font-bold text-4xl">.</span>
+      <span class="mx-2 ">
+      <i
+      class="fa-solid fa-angle-right text-[16px] "></i>
+      </span>
   <a
   href=${update.link}
   class="hover:text-[#FF6600]"
@@ -104,6 +157,23 @@ ${update.title}
  </a
 >
 
+
+${update.new
+  ? ` 
+ 
+<span id="new-tag" class="flex text-base text-accent-orange space-x-2">
+    <span class="text-base material-symbols-outlined text-accent-orange">
+      auto_awesome
+    </span>
+    <p class="font-bold uppercase text-accent-orange">
+      New
+    </p>
+  </span>
+`
+  : `
+    <span>
+  </span> `
+}
     `;
       faculty.appendChild(list);
     });
@@ -111,15 +181,21 @@ ${update.title}
 
 fetch(
   `${data_url}` +
-  `/news/getNewsByType?type=Jobsnonfacultycontract`
+  `/recruitments/updates/categorised?category=nonFacultyContract`
+
 )
   .then((response) => response.json())
   .then((data) => {
     const faculty = document.getElementById("nonFaculty-contract");
     data.forEach((update) => {
       const list = document.createElement("li");
+      list.classList.add("flex");
+      list.classList.add("py-2");
       list.innerHTML = `
-  <span class="font-bold text-4xl">.</span>
+      <span class="mx-2 ">
+      <i
+      class="fa-solid fa-angle-right text-[16px] "></i>
+      </span>
   <a
   href=${update.link}
   class="hover:text-[#FF6600]"
@@ -128,19 +204,41 @@ ${update.title}
  </a
 >
 
+
+${update.new
+  ? ` 
+ 
+<span id="new-tag" class="flex text-base text-accent-orange space-x-2">
+    <span class="text-base material-symbols-outlined text-accent-orange">
+      auto_awesome
+    </span>
+    <p class="font-bold uppercase text-accent-orange">
+      New
+    </p>
+  </span>
+`
+  : `
+    <span>
+  </span> `
+}
     `;
       faculty.appendChild(list);
     });
   });
 
-fetch(`${data_url}` + `/news/getNewsByType?type=researchjobs`)
+fetch(`${data_url}` + `/recruitments/updates/categorised?category=research`)
   .then((response) => response.json())
   .then((data) => {
     const faculty = document.getElementById("researchJob");
     data.forEach((update) => {
       const list = document.createElement("li");
+      list.classList.add("flex");
+      list.classList.add("py-2");
       list.innerHTML = `
-  <span class="font-bold text-4xl">.</span>
+      <span class="mx-2 ">
+      <i
+      class="fa-solid fa-angle-right text-[16px] "></i>
+      </span>
   <a
   href=${update.link}
   class="hover:text-[#FF6600]"
@@ -149,6 +247,23 @@ ${update.title}
  </a
 >
 
+
+${update.new
+  ? ` 
+ 
+<span id="new-tag" class="flex text-base text-accent-orange space-x-2">
+    <span class="text-base material-symbols-outlined text-accent-orange">
+      auto_awesome
+    </span>
+    <p class="font-bold uppercase text-accent-orange">
+      New
+    </p>
+  </span>
+`
+  : `
+    <span>
+  </span> `
+}
     `;
       faculty.appendChild(list);
     });

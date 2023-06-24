@@ -12,7 +12,7 @@ const Schema = new mongoose.Schema({
     InstagramUrl: { type: String },
     TwitterUrl: { type: String },
     LinkedinUrl: { type: String },
-
+    show:{type:Boolean},
     sourceOfInfo: {
         type:  String
     },

@@ -50,13 +50,28 @@ const Schema = new mongoose.Schema(
       type: String,
     },
     contact: {
-      type: Object,
-      default: {
-        email: null,
-        telNo: null,
-        EPABX: null,
-        Extn: null,
-        fax: null,
+      type: {
+        email: {
+          type: String,
+          default: "",
+        },
+        telNo: {
+          type: String,
+          default: "",
+        },
+        EPABX: {
+          type: String,
+          default: "",
+        },
+        Extn: {
+          type: String,
+          default: "",
+        },
+        fax: {
+          type: String,
+          default: "",
+        },
+
       },
     },
     show: { type: Boolean, default: true },

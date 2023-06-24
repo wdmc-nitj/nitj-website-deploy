@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { commonFieldsForAll, regexForUpdateLogs, logUpdates, fields } = require('../utils');
 const Schema = mongoose.Schema;
 
-const categoryList = ['faculty', 'nonFaculty', 'faculty-contract', 'nonFaculty-contract', 'research'];
+const categoryList = ['faculty', 'nonFaculty', 'facultyContract', 'nonFacultyContract', 'research'];
 
 const recruitmentUpdateSchema = new Schema(Object.assign({
     title: {

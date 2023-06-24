@@ -61,7 +61,7 @@ const yearlyRanking = require("./models/yearlyRanking");
 // Research Menu
 const researchMenuName = "Research";
 const Consultancy = require("./models/research/consultancy");
-const Events = require("./models/research/events");
+// const Events = require("./models/research/events");
 const MoUs = require("./models/research/MoUs");
 const researchPublications = require("./models/research/researchPublications");
 const sponsoredProjects = require("./models/research/sponsoredProjects");
@@ -80,6 +80,8 @@ const User = require("./models/AdminBroUser");
 const { query } = require("express");
 const { filter } = require("compression");
 const specialCentres = require("./models/specialCentres");
+const curriculum = require("./models/curriculum");
+const examSchedule = require("./models/examSchedule");
 
 const canModifyUsers = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
@@ -2139,13 +2141,13 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-    {
-      resource: Events,
-      options: {
-        navigation: researchMenuName,
-        actions: { list: { isAccessible: isAdmin } },
-      },
-    },
+    // {
+    //   resource: Events,
+    //   options: {
+    //     navigation: researchMenuName,
+    //     actions: { list: { isAccessible: isAdmin } },
+    //   },
+    // },
     {
       resource: MoUs,
       options: {
@@ -2674,6 +2676,20 @@ const AdminBroOptions = {
     },
     {
       resource: specialCentres,
+      options: {
+        navigation: "AcademicsSystem",
+        actions: { list: { isAccessible: isAdmin } },
+      },
+    },
+    {
+      resource: curriculum,
+      options: {
+        navigation: "AcademicsSystem",
+        actions: { list: { isAccessible: isAdmin } },
+      },
+    },
+    {
+      resource: examSchedule,
       options: {
         navigation: "AcademicsSystem",
         actions: { list: { isAccessible: isAdmin } },

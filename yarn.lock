@@ -1998,7 +1998,7 @@
 
 "@rive-app/canvas@^1.1.2":
   version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@rive-app/canvas/-/canvas-1.1.2.tgz#8e75966f2e8e5e9d99a48fd72819b4b2e5629c8e"
+  resolved "https://registry.npmjs.org/@rive-app/canvas/-/canvas-1.1.2.tgz"
   integrity sha512-QggBhe52+gSMmUuPj5xC3IBRyQ55xPN/EQueR4vJyma3CpoppU1hXHreQG7ZdVHQBXHVaoVIyIIxGEHopFX17g==
 
 "@rollup/plugin-babel@^5.2.1":
@@ -3307,7 +3307,7 @@ fs.realpath@^1.0.0:
 
 fsevents@~2.3.2:
   version "2.3.2"
-  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
+  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
 function-bind@^1.1.1:
@@ -4105,10 +4105,12 @@ mongodb-connection-string-url@^2.5.4:
     "@types/whatwg-url" "^8.2.1"
     whatwg-url "^11.0.0"
 
+
 mongodb@4.14.0:
   version "4.14.0"
   resolved "https://registry.npmjs.org/mongodb/-/mongodb-4.14.0.tgz"
   integrity sha512-coGKkWXIBczZPr284tYKFLg+KbGPPLlSbdgfKAb6QqCFt5bo5VFZ50O3FFzsw4rnkqjwT6D8Qcoo9nshYKM7Mg==
+
   dependencies:
     bson "^4.7.0"
     mongodb-connection-string-url "^2.5.4"

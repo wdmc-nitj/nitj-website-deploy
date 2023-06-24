@@ -23,7 +23,7 @@ const obj = {
     "Prospective Students",
     "Anti Raging",
     "Join NITJ",
-    "Institute Prospectus",
+    "Information Flyers",
   ],
   Research: [
     "Research @NITJ",
@@ -197,7 +197,7 @@ exports.create = async (req, res) => {
           ["Prospective Students", false],
           ["Anti Raging", true],
           ["Join NITJ", false],
-          ["Institute Prospectus", true],
+          ["Information Flyers", true],
         ],
         Research: [
           ["Research @NITJ", false],

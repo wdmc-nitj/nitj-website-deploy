@@ -1,5 +1,6 @@
 const { sendError, validateID } = require('../../utils');
-const Event = require('../../models/research/events');
+// const Event = require('../../models/research/events');
+const UpcomingEvent = require('../../models/upcomingEvent');
 
 const createTimeStamp = (date, time) => {
     // date and time are strings in DD-MM-YYYY and HH:MM format
@@ -24,31 +25,47 @@ const getAllevents = (req, res) => {
 
     //filter by req.query
     if (req.query.category !== 'all') {
-        filter.category = req.query.category;
+        filter.type = req.query.category;
     }
     if (req.query.visible === 'visible') {
-        filter.visible = true;
+        filter.show = true;
     } else if (req.query.visible === 'hidden') {
-        filter.visible = false;
+        filter.show = false;
     } else if (req.query.visible !== 'all') {
         return sendError(res, `Invalid value for visible: ${req.query.visible}`);
     }
 
     // filter upcoming and past events
     if (req.query.upcoming === 'true') {
-        filter.dateTime = { $gte: new Date() };
+        filter.startDate = { $gte: new Date() };
     } else if (req.query.upcoming === 'false') {
-        filter.dateTime = { $lt: new Date() };
+        filter.startDate = { $lt: new Date() };
     } else if (req.query.upcoming !== 'all') {
         return sendError(res, `Invalid value for upcoming: ${req.query.upcoming}`);
     }
 
     // sort ascending if upcoming is true, descending otherwise
-    Event
+    UpcomingEvent
         .find(filter)
-        .sort({ dateTime: req.query.upcoming === 'true' ? 'asc' : 'desc' })
+        .sort({ startDate: req.query.upcoming === 'true' ? 'asc' : 'desc' })
         .then((events) => res.json(events))
         .catch((err) => sendError(res, err));
+
+    // // filter upcoming and past events
+    // if (req.query.upcoming === 'true') {
+    //     filter.dateTime = { $gte: new Date() };
+    // } else if (req.query.upcoming === 'false') {
+    //     filter.dateTime = { $lt: new Date() };
+    // } else if (req.query.upcoming !== 'all') {
+    //     return sendError(res, `Invalid value for upcoming: ${req.query.upcoming}`);
+    // }
+
+    // // sort ascending if upcoming is true, descending otherwise
+    // Event
+    //     .find(filter)
+    //     .sort({ dateTime: req.query.upcoming === 'true' ? 'asc' : 'desc' })
+    //     .then((events) => res.json(events))
+    //     .catch((err) => sendError(res, err));
 };
 
 const createevent = (req, res) => {
