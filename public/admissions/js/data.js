@@ -437,7 +437,7 @@ fetch(
   .then((response) => response.json())
   .then((data) => {
     const helplines = document.getElementById("helplinesmtechccmt");
- 
+ console.log(helplines)
     data.forEach((update) => {
       console.log(update);
       const helpline = document.createElement("li");
@@ -445,7 +445,7 @@ fetch(
       <li class="ppx-1 mt-1 mb-4">
 <div class="lg:basis-3/4">
 
-<p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] normal-case">${update.name}</p>
+<p class="font2 font-semibold text-[26px] lg:text-[1.4rem] leading-[1.3] normal-case">${update.name}</p>
 ${update.designation ?   ` <p class="text-gray-400 text-[12px] lg:text-[16px]">${update.designation}</p>` : ``}
 <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
 <div class="w-[100%] flex flex-col gap-[4px]">
@@ -495,7 +495,7 @@ fetch(
       <li class="ppx-1 mt-1 mb-4">
 <div class="lg:basis-3/4">
 
-<p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] normal-case">${update.name}</p>
+<p class="font2 font-semibold text-[26px] lg:text-[1.4rem] leading-[1.3] normal-case">${update.name}</p>
 ${update.designation ?   ` <p class="text-gray-400 text-[12px] lg:text-[16px]">${update.designation}</p>` : ``}
 <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
 <div class="w-[100%] flex flex-col gap-[4px]">
@@ -542,7 +542,7 @@ fetch(`${data_url}` + "/admissions/helplines/get?visible=visible&degree=MSC")
                           <li class="ppx-1 mt-1 mb-4">
             <div class="lg:basis-3/4">
                    
-            <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] normal-case">${update.name}</p>
+            <p class="font2 font-semibold text-[26px] lg:text-[1.4rem] leading-[1.3] normal-case">${update.name}</p>
             ${update.designation ?   ` <p class="text-gray-400 text-[12px] lg:text-[16px]">${update.designation}</p>` : ``}
             <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
             <div class="w-[100%] flex flex-col gap-[4px]">
@@ -588,7 +588,7 @@ fetch(`${data_url}` + "/admissions/helplines/get?visible=visible&degree=MBA")
       <li class="ppx-1 mt-1 mb-4">
 <div class="lg:basis-3/4">
 
-<p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] normal-case">${update.name}</p>
+<p class="font2 font-semibold text-[26px] lg:text-[1.4rem] leading-[1.3] normal-case">${update.name}</p>
 ${update.designation ?   ` <p class="text-gray-400 text-[12px] lg:text-[16px]">${update.designation}</p>` : ``}
 <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
 <div class="w-[100%] flex flex-col gap-[4px]">
@@ -634,7 +634,7 @@ fetch(`${data_url}` + "/admissions/helplines/get?visible=visible&degree=PHD")
       <li class="ppx-1 mt-1 mb-4">
 <div class="lg:basis-3/4">
 
-<p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] normal-case">${update.name}</p>
+<p class="font2 font-semibold text-[26px] lg:text-[1.4rem] leading-[1.3] normal-case">${update.name}</p>
 ${update.designation ?   ` <p class="text-gray-400 text-[12px] lg:text-[16px]">${update.designation}</p>` : ``}
 <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
 <div class="w-[100%] flex flex-col gap-[4px]">

@@ -332,8 +332,8 @@
         <div class="container mb-12">
             <div class="tab">
                 <button class="tablinks active" onclick="openTab(event,'firstDean-sw')">B.Tech.</button>
-                <button class="tablinks " onclick="openTab(event,'Associate-Dean-P-sw')">M.Tech.(CCMT)</button>
-                <button class="tablinks " onclick="openTab(event,'Associate-Dean-J-sw')">M.Tech.(Self Sponsored)</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-J-sw')">M.Tech.(CCMT)</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-P-sw')">M.Tech.(Self Sponsored)</button>
                 <button class="tablinks " onclick="openTab(event,'Associate-Dean-U-sw')">M.Sc.</button>
                 <button class="tablinks " onclick="openTab(event,'Associate-Dean-D-sw')">M.B.A.</button>
                 <button class="tablinks " onclick="openTab(event,'Associate-Dean-S-sw')">Ph.D</button>
@@ -350,64 +350,44 @@
                <div><a href="https://v1.nitj.ac.in/nitj_files/links/Help_Desk_for_JoSAA-2023_at_NIT_Jalandhar_44710.pdf">Help Desk for JoSAA-2023 </a><img src="https://www.nitj.ac.in//images/New.gif"  class="inline"> </div>
                 </div>
 
-                <div id="Associate-Dean-J-sw" class="tabcontent">
-                  <table cellpadding="6" cellspacing="0" class="table table-bordered table-striped">
-                    <tbody>
-                      <tr>
+                <div id="Associate-Dean-J-sw" class="tabcontent flex flex-col">
+                  
                         <ul id="helplinesmtechccmt">
           
                         </ul>
-                      </tr>
-                    </tbody>
-                  </table>
+                    
                 </div>
 
-            <div id="Associate-Dean-P-sw" class="tabcontent">
-              <table cellpadding="6" cellspacing="0" class="table table-bordered table-striped">
-                <tbody>
-                  <tr>
+            <div id="Associate-Dean-P-sw" class="tabcontent flex flex-col">
+              
                     <ul id="helplinesmtechss">
       
                     </ul>
-                  </tr>
-                </tbody>
-              </table>
+               
             </div>
 
-            <div id="Associate-Dean-U-sw" class="tabcontent">
-              <table cellpadding="6" cellspacing="0" class="table table-bordered table-striped">
-                <tbody>
-                  <tr>
+            <div id="Associate-Dean-U-sw" class="tabcontent flex flex-col">
+            
                     <ul id="helplinesmsc">
       
                     </ul>
-                  </tr>
-                </tbody>
-              </table>
+                
             </div>
 
-            <div id="Associate-Dean-D-sw" class="tabcontent">
-              <table cellpadding="6" cellspacing="0" class="table table-bordered table-striped">
-                <tbody>
-                  <tr>
+            <div id="Associate-Dean-D-sw" class="tabcontent flex flex-col">
+             
                     <ul id="helplinesmba">
       
                     </ul>
-                  </tr>
-                </tbody>
-              </table>
+               
             </div>
 
-            <div id="Associate-Dean-S-sw" class="tabcontent">
-              <table cellpadding="6" cellspacing="0" class="table table-bordered table-striped">
-                <tbody>
-                  <tr>
+            <div id="Associate-Dean-S-sw" class="tabcontent flex flex-col">
+             
                     <ul id="helplinesphd">
       
                     </ul>
-                  </tr>
-                </tbody>
-              </table>
+               
             </div>
         </div>
 
@@ -420,7 +400,7 @@
 
     <script>
         function openDeans() {
-            const deans = ['firstDean-sw', 'Dean-ia', 'Dean-ja','Dean-rc', 'Dean-pd', 'Dean-f', 'Dean-s']
+            const deans = ['firstDean-sw', "Associate-Dean-J-sw", "Associate-Dean-P-sw","Associate-Dean-U-sw", "Associate-Dean-D-sw", "Associate-Dean-S-sw"]
             for (let i = 0; i < deans.length; i++) {
                 document.getElementById(deans[i]).style.display = "flex";
             }
