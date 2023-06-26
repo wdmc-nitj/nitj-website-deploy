@@ -24,7 +24,7 @@ const getHelplines = (req, res) => {
     }
 
     admissionHelpline.find(filter)
-        .sort({ updatedAt: -1 })
+        .sort({createdAt: 1 })
         .then((helplines) => res.json(helplines))
         .catch((err) => sendError(res, err));
 }
