@@ -7,9 +7,11 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "./.env" });
 url=process.env.DEPT_URL
 module.exports.resetEmailHandler = async function (req, res) {
+  
   try {
     const faculty = await Faculty.find({ email: req.body.email });
     const dept = req.params.dept;
+    const url = `http://departments.nitj.ac.in/dept/${dept}`;
     // url="http://nitjintranet.ac.in:8081"
 
     if (faculty[0]?._id) {
@@ -24,33 +26,44 @@ module.exports.resetEmailHandler = async function (req, res) {
 
       await nodemailer.sendMail(
         {
-          from: "adityanmt@gmail.com",
+          from: process.env.EMAIL,
           to: req.body.email,
           subject: "Reset your Password",
-          html: `<div>
-                    <a href="${url}/dept/${dept}/confirmation/${token}">
-                    "${url}/dept/${dept}/confirmation/${token}"
-                    </a>
-            </div>`,
+          html: `<table cellpadding="0" cellspacing="0" border="0" align="center" width="600" style="border-collapse: collapse;">
+          <tr>
+            <td bgcolor="#ffffff" style="padding: 40px 20px 40px 20px; font-family: Arial, sans-serif; font-size: 14px; line-height: 20px; color: #555555;">
+              <h2 style="font-size: 18px; font-weight: bold; margin: 0 0 20px 0;">Forgot Password</h2>
+              <p>Hello,</p>
+              <p>Click the link below to reset your password:</p>
+              <p><a href="${url}/confirmation/${token}" style="display: inline-block; padding: 10px 20px; background-color: #4CAF50; color: #ffffff; text-decoration: none;">Reset Password</a></p>
+              <p>If you didn't request this password reset, please ignore this email.</p>
+              <p>Thank you,<br>Webmaster<br>National Institute of Technology, Jalandhar</p>
+            </td>
+          </tr>
+        </table>`,
         },
         function (err, info) {
           if (err) {
             console.log(err);
+            console.log(url);
             return res.redirect(
-              `${url}/dept/cse/onClickForgotPass/failure`
+              `${url}/onClickForgotPass/failure`
             );
           }
 
           return res.redirect(
-            `${url}/dept/cse/onClickForgotPass/success`
+            `${url}/onClickForgotPass/success`
           );
         }
       );
     }
-    else
-    return res.redirect(
-      `${url}/dept/cse/onClickForgotPass/failure/`
-    );
+    else{
+      console.log(url);
+      return res.redirect(
+        `${url}/onClickForgotPass/failure/`
+      );
+
+    }
   } catch (err) {
     console.log(err);
   }
@@ -86,6 +99,7 @@ module.exports.modifyPassword = async function (req, res) {
   const dept = req.params.dept;
   const resetPasswordToken = await ResetPassword.find({ token_id: token });
   const id = resetPasswordToken[0]?.user_id;
+  const url = `http://departments.nitj.ac.in/dept/${dept}`;
 
   if (resetPasswordToken) {
     if (req.body.password == req.body.repassword) {
@@ -100,9 +114,14 @@ module.exports.modifyPassword = async function (req, res) {
         });
         return res
           .status(200)
-          .redirect(`${url}/dept/${dept}/faculty/${id}`);
+          .redirect(`${url}/faculty/${id}`);
       }
     }
-    return res.status(200).redirect(`${url}/${dept}/faculty`);
+    else{
+      return res
+          .status(200)
+          .redirect(`${url}/onClickForgotPass/failure/`);
+    }
+    return res.status(200).redirect(`${url}/faculty`);
   }
 };

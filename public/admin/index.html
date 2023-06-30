@@ -730,43 +730,29 @@
     }
     callAPi();
   </script>
-  <script>
-    async function callAPi() {
-      let result = await fetch("/api/Ranking/");
-      result = await result.json();
-      timelist = [];
-      console.log(result.length);
-      for (let i = 0; i < result.length; i++) {
-        console.log(result[i].Ranking);
-        timelist.push(Number(result[i].Ranking.rankingValue));
-      }
-      //sort elements in timelist in ascending order and store it in timelist
-      timelist.sort().reverse();
-      //remove duplicate values
-      timelist = timelist.filter(
-        (item, index) => timelist.indexOf(item) === index
-      );
-      console.log(timelist);
-      //
-      x = "";
+<script>
+  async function callAPI() {
+    let result = await fetch("/api/ranking/");
+    result = await result.json();
 
-      for (let i = 0; i < timelist.length; i++) {
-        x += `<div class="flex flex-row items-start gap-[16px] lg:gap-[32px]">`
-        x += `<p class="text-accent font-bold text-[48px] lg:text-[54px] leading-[27px]"> ${timelist[i]}</p>`
-        for (let j = 0; j < result.length; j++) {
-          if (timelist[i] == Number(result[j].Ranking.rankingValue)) {
-            x += `<p class="font-medium text-[18px] lg:text-[18px]"> ${result[j].Ranking.rankingName}</p>`;
+    result.sort((a, b) => a.order - b.order); // Sort the result array based on the order property
 
-          }
+    let x = "";
 
-
-        }
-        x += "</div><br>"
-      }
-      document.getElementById("Current_ranking").innerHTML = x;
+    for (let i = 0; i < result.length; i++) {
+      x += `<div class="flex flex-row items-start gap-[16px] lg:gap-[32px]">`;
+      x += `<p class="text-accent font-bold text-[48px] lg:text-[54px] leading-[27px]">${result[i].rankingValue}</p>`;
+      x += `<p class="font-medium text-[18px] lg:text-[18px]">${result[i].rankingName}</p>`;
+      x += "</div> <br>";
     }
-    callAPi();
-  </script>
+
+    document.getElementById("Current_ranking").innerHTML = x;
+  }
+
+  callAPI();
+</script>
+
+
   <script>
     async function callAPi() {
       let result = await fetch(

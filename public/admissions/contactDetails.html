@@ -197,6 +197,105 @@
       background-size: cover;
     }
   </style>
+
+
+   <style>
+       .titlebg {
+           background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(img/about_top.jpg);
+           background-repeat: no-repeat;
+           background-position: center;
+           background-size: cover;
+       }
+
+       /* Style the tab */
+       .tab {
+           color: white;
+           overflow: hidden;
+           border: 1px solid #ccc;
+           background-color: hsla(201, 96%, 32%);
+       }
+
+       /* Style the buttons inside the tab */
+       .tab button {
+           background-color: inherit;
+           float: left;
+           border: none;
+           outline: none;
+           cursor: pointer;
+           padding: 14px 16px;
+           transition: 0.3s;
+           font-size: 17px;
+       }
+
+       /* Change background color of buttons on hover */
+       .tab button:hover {
+           color: black;
+           background-color: hsla(242, 83%, 98%);
+       }
+
+       /* Create an active/current tablink class */
+       .tab button.active {
+           color: black;
+           background-color: hsla(242, 83%, 98%);
+       }
+
+       /* Style the tab content */
+       .tabcontent {
+           display: none;
+           padding: 6px 12px;
+           border: 1px solid #ccc;
+           border-top: none;
+       }
+
+       /* Transition on tab content */
+       .tabcontent {
+           animation: fadeEffect 1s;
+           /* Fading effect takes 1 second */
+       }
+
+       .font2 {
+           font-family: 'Barlow', sans-serif;
+       }
+
+       :root {
+           --primary-color: #fff;
+           --background-color: #212121;
+
+           --blue-color: #0369A1;
+           --light-blue-color: #F6F6FE;
+           --purple-color: #040320;
+           --font1: 'Poppins', sans-serif;
+           --font2: 'Barlow', sans-serif;
+       }
+
+       * {
+           margin: 0;
+           padding: 0;
+       }
+
+       .main-body {
+           font-family: var(--font1);
+       }
+
+       .titlebg {
+           background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(img/about_top.jpg);
+           background-repeat: no-repeat;
+           background-position: center;
+           background-size: cover;
+       }
+
+       @keyframes fadeEffect {
+
+           /* Go from zero to full opacity */
+           from {
+               opacity: 0;
+           }
+
+           to {
+               opacity: 1;
+           }
+       }
+   </style>
 </head>
 
 <body>
@@ -229,115 +328,105 @@
     </div>
 
 
-  <div class="main-body flex flex-wrap gap-8 lg:gap-12   align-middle md:mb-20 mb-20" style="margin-left: 6%;">
-    <div class="flex-col lg:w-[45%] w-[90%] mb-8 ">
-      <div
-        class="head block bg-[#0369A1] text-white p-2 lg:w-[80%] w-[100%]   border-[1px] shadow-lg rounded-lg border-accent mt-2 mb-2">
-        B.Tech. Admissions
-      </div>
+     
+        <div class="container mb-12">
+            <div class="tab">
+                <button class="tablinks active" onclick="openTab(event,'firstDean-sw')">B.Tech.</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-J-sw')">M.Tech.(CCMT)</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-P-sw')">M.Tech.(Self Sponsored)</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-U-sw')">M.Sc.</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-D-sw')">M.B.A.</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-S-sw')">Ph.D</button>
+            </div>
 
-      <div class="lg:w-[80%] w-[100%] ">
-        <table cellpadding="6" cellspacing="0" class="table table-bordered table-striped">
-          <tbody>
-            <tr>
-              <ul id="helplines">
 
-              </ul>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            <div id="firstDean-sw" class="tabcontent flex flex-col">
+  
+                    <ul id="helplines">               
+         
+                </ul>  
+                <br>          
+                
+               <div><a Class = "text-accent" href="https://v1.nitj.ac.in/nitj_files/links/Help_Desk_for_JoSAA-2023_at_NIT_Jalandhar_44710.pdf"><b>Help Desk for JoSAA-2023</b> </a><img src="https://www.nitj.ac.in//images/New.gif"  class="inline"> </div>
+                </div>
+
+                <div id="Associate-Dean-J-sw" class="tabcontent flex flex-col">
+                  
+                        <ul id="helplinesmtechccmt">
+          
+                        </ul>
+                    
+                </div>
+
+            <div id="Associate-Dean-P-sw" class="tabcontent flex flex-col">
+              
+                    <ul id="helplinesmtechss">
+      
+                    </ul>
+               
+            </div>
+
+            <div id="Associate-Dean-U-sw" class="tabcontent flex flex-col">
+            
+                    <ul id="helplinesmsc">
+      
+                    </ul>
+                
+            </div>
+
+            <div id="Associate-Dean-D-sw" class="tabcontent flex flex-col">
+             
+                    <ul id="helplinesmba">
+      
+                    </ul>
+               
+            </div>
+
+            <div id="Associate-Dean-S-sw" class="tabcontent flex flex-col">
+             
+                    <ul id="helplinesphd">
+      
+                    </ul>
+               
+            </div>
+        </div>
+
+
     </div>
 
-    <div class="flex-col lg:w-[45%] w-[90%] mb-8">
-      <div
-        class="head block bg-[#0369A1] text-white p-2  lg:w-[80%] w-[100%] border-[1px] shadow-lg rounded-lg border-accent mt-2 mb-2">
-        M.Tech. Admissions
-      </div>
+    <script src="../admin/app.js"></script>
+    <script src="../template/footer.js"></script>
+    <script src="../admissions/js/data.js"></script>
 
-      <div class="lg:w-[80%] w-[100%]">
-        <table cellpadding="6" cellspacing="0" class="table table-bordered table-striped">
-          <tbody>
-            <tr>
-              <ul id="helplinesmtechss">
+    <script>
+        function openDeans() {
+          const deans = ['firstDean-sw', 'Dean-ia', 'Dean-rc', 'Dean-pd', 'Dean-f', 'Dean-s']
+            for (let i = 0; i < deans.length; i++) {
+                document.getElementById(deans[i]).style.display = "flex";
+            }
+        }
 
-              </ul>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+        function openTab(evt, deanName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                if (tabcontent[i].id[tabcontent[i].id.length - 1] == deanName[deanName.length - 1]) {
+                    tabcontent[i].style.display = "none";
+                }
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                if (tabcontent[i].id[tabcontent[i].id.length - 1] == deanName[deanName.length - 1]) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+            }
+            document.getElementById(deanName).style.display = "flex";
+            evt.currentTarget.className += " active";
+        }
 
+        document.addEventListener("load", openDeans())
+    </script>
 
-    <div class="flex-col lg:w-[45%] w-[90%] mb-8">
-      <div
-        class="head block bg-[#0369A1] text-white p-2 p-2 lg:w-[80%] w-[100%] border-[1px] shadow-lg rounded-lg border-accent mt-2 mb-2">
-         M.Sc. Admissions
-      </div>
-
-      <div class="lg:w-[80%] w-[100%]">
-        <table cellpadding="6" cellspacing="0" class="table table-bordered table-striped">
-          <tbody>
-            <tr>
-              <ul id="helplinesmsc">
-
-              </ul>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="flex-col lg:w-[45%] w-[90%] mb-8">
-      <div
-        class="head block bg-[#0369A1] text-white p-2 lg:w-[80%] w-[100%] border-[1px] shadow-lg rounded-lg border-accent mt-2 mb-2">
-         M.B.A. Admissions
-      </div>
-
-      <div class="lg:w-[80%] w-[100%]">
-        <table cellpadding="6" cellspacing="0" class="table table-bordered table-striped">
-          <tbody>
-            <tr>
-              <ul id="helplinesmba">
-
-              </ul>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-
-
-    <div class="flex-col  lg:w-[45%] w-[90%]  mb-8">
-      <div class="head block bg-[#0369A1] text-white p-2 lg:w-[80%] w-[100%] border-[1px] shadow-lg rounded-lg border-accent mt-2 mb-2">
-       Ph.D. Admissions
-      </div>
-
-      <div class="lg:w-[80%] w-[100%]">
-        <table cellpadding="6" cellspacing="0" class="table table-bordered table-striped">
-          <tbody>
-            <tr>
-              <ul id="helplinesphd">
-
-              </ul>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-  </div>
-
-
-
-
-  </div>
-
-  <script src="../admin/app.js"></script>
-  <script src="../template/footer.js"></script>
-  <script src="../admissions/js/data.js"></script>
 </body>
-
 
 </html>

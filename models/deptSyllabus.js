@@ -8,7 +8,7 @@ const Schema=new mongoose.Schema({
     link: {type:String},
     type:{
       type:String,
-      enum:["B.Tech","M.Tech","PhD","PG Diploma"]
+      enum:["B.Tech","M.Tech","M.Sc.", "PhD","PG Diploma"]
     },
     show:{type:Boolean},
     sourceOfInfo: {
