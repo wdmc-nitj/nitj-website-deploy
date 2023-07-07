@@ -153,7 +153,7 @@ fetch('${data_url}/admissions/minorProgramme/visible')
   .then((data) => {
     const ugupdates = document.getElementById("phd_programme");
     data.forEach((update) => {
-      const ugupdate = document.createElement("div");
+      const ugupdate = document.createElement("li");
       ugupdate.innerHTML = `
  
       ${update.nameOfProgrammeOrComment}  ${update.new ? `<div class="inline-block"><img src="https://v1.nitj.ac.in//images/New.gif"></div>` : ``}
