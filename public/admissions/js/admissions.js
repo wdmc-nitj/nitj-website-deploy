@@ -2,8 +2,9 @@ let slug = window.location.href.match(/[^#]+/g)
 if(slug[slug.length-1]==="btech")
 {
   location.reload;
-   document.getElementById("mtechadmission").style.display="none";  
-       document.getElementById("mtechss").style.display="none";
+   document.getElementById("mtechadmission").style.display="none";
+   document.getElementById("mtechadmission").style.display="none";
+   document.getElementById("mtechss").style.display="none";
   document.getElementById("mscadmission").style.display="none";
   document.getElementById("mbaadmission").style.display="none";
   document.getElementById("phdadmission").style.display="none";
@@ -34,6 +35,7 @@ document.getElementById("mbaadmission").style.display="none";
 document.getElementById("phdadmission").style.display="none";
 document.getElementById("foreign").style.display="none";
 document.getElementById("mtechadmission").style.display="block";
+document.getElementById("mtechssadmission").style.display="none";
 document.getElementById("btechtab").style.display="none";
 document.getElementById("msctab").style.display="none";
 document.getElementById("mbatab").style.display="none";
@@ -55,7 +57,8 @@ document.getElementById("mscadmission").style.display="none";
 document.getElementById("mbaadmission").style.display="none";
 document.getElementById("phdadmission").style.display="none";
 document.getElementById("foreign").style.display="none";
-document.getElementById("mtechadmission").style.display="block";
+document.getElementById("mtechadmission").style.display="none";
+document.getElementById("mtechssadmission").style.display="block";
 document.getElementById("btechtab").style.display="none";
 document.getElementById("msctab").style.display="none";
 document.getElementById("mbatab").style.display="none";
