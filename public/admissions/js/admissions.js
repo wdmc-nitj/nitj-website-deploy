@@ -4,8 +4,7 @@ if(slug[slug.length-1]==="btech")
   
    document.getElementById("mtechadmission").style.display="none";
    document.getElementById("mtechssadmission").style.display="none";
-   document.getElementById("mtechss").style.display="none";
-  document.getElementById("mscadmission").style.display="none";
+   document.getElementById("mscadmission").style.display="none";
   document.getElementById("mbaadmission").style.display="none";
   document.getElementById("phdadmission").style.display="none";
   document.getElementById("foreign").style.display="none";
@@ -169,7 +168,7 @@ document.getElementsByClassName("active2")[1].classList.remove("active2");
 
  window.onhashchange = function(){
   let slug = window.location.href.match(/[^#]+/g)
-  console.log(slug)
+  console.log(slug);
   if(slug[slug.length-1]==="btech")
   {
     
