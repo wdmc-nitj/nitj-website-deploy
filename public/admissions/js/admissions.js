@@ -47,6 +47,28 @@ document.getElementById("mtechsidetab").classList.add("active2");
 document.getElementById("respmtechsidetab").classList.add("active2");
 document.getElementsByClassName("active2")[1].classList.remove("active2");
 }
+else if(slug[slug.length-1]==="mtechss")
+{
+location.reload;
+document.getElementById("btechadmission").style.display="none";
+document.getElementById("mscadmission").style.display="none";
+document.getElementById("mbaadmission").style.display="none";
+document.getElementById("phdadmission").style.display="none";
+document.getElementById("foreign").style.display="none";
+document.getElementById("mtechadmission").style.display="block";
+document.getElementById("btechtab").style.display="none";
+document.getElementById("msctab").style.display="none";
+document.getElementById("mbatab").style.display="none";
+document.getElementById("phdtab").style.display="none";
+document.getElementById("mtechsstab").style.display="block";
+document.getElementById("foreignadmissiontab").style.display="none";
+document.getElementById("mtechtab").style.display="none";
+
+document.getElementsByClassName("active2")[0].classList.remove("active2");
+document.getElementById("mtechsidetab").classList.add("active2");
+document.getElementById("respmtechsidetab").classList.add("active2");
+document.getElementsByClassName("active2")[1].classList.remove("active2");
+}
 
 else if(slug[slug.length-1]==="msc")
 {
