@@ -73,7 +73,7 @@ if (parseInt(id) === 0) {
       let title = data[0]?.title2 || data[0].title
       putCategory(data[0]?.title1 || category)
 
-      if (title === undefined) title === category
+      if (title === undefined) title = category
 
       titleDiv.innerHTML = title.charAt(0).toUpperCase() + title.slice(1)
 
@@ -82,7 +82,8 @@ if (parseInt(id) === 0) {
       if (data[0].image)
         imgContainer.innerHTML = ` <img src = "${data[0].image}" id="image" class="max-w-4xl rounded-xl mt-10 w-full" />`
         // pageTitleUpdater(category, data[0]?.title1 || data[0].title)
-        pageTitleUpdater(data[0]?.title1 || data[0].title)
+        // pageTitleUpdater(data[0]?.title1 || data[0].title)
+        pageTitleUpdater(data[0].title1)
     })
     .catch((err) => {
       console.log(err)
