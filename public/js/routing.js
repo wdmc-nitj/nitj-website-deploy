@@ -75,8 +75,7 @@ if (parseInt(id) === 0) {
 
       if (title === undefined) title = category
 
-      titleDiv.innerHTML = title.charAt(0).toUpperCase() 
-      // + title.slice(1)
+      titleDiv.innerHTML = title.charAt(0).toUpperCase() + title.slice(1)
 
       if (data[0].desc) desp.innerHTML = data[0].desc
       dateDiv.innerHTML = dateManipulator(data[0].updatedAt)
