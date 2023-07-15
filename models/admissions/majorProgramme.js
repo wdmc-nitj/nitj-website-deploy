@@ -23,6 +23,39 @@ const majorProgrammeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    departmentName: {
+        type: String,
+        default: null,
+        validate: {
+            validator: async function (v) {
+                // When we perform updation, we get the data to be updated in _update object.
+                console.log("I was called!!");
+                const isComment = this.isComment ? this.isComment : (this._update ? this._update["$set"].isComment : undefined);
+                if(!isComment)
+                {
+                    return (v ? true:false);
+                }
+                return true;
+            },
+            message: ()=> "Department Name is not mentioned for the programme! Either check the \"Is Comment\" box or enter the Department Name!"
+        }
+    },
+    departmentWebsite: {
+        type: String,
+        default: null, 
+        validate: {
+            validator: async function (v) {
+                // When we perform updation, we get the data to be updated in _update object.
+                const isComment = this.isComment ? this.isComment : (this._update ? this._update["$set"].isComment : undefined);
+                if(!isComment)
+                {
+                    return (v ? true:false);
+                }
+                return true;
+            },
+            message: ()=> "Department Website is not mentioned for the programme! Either check the \"Is Comment\" box or enter the Department Website!"
+        }
+    },
     new: {
         type: Boolean,
         default: false
