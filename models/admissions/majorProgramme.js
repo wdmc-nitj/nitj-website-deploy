@@ -29,7 +29,7 @@ const majorProgrammeSchema = new mongoose.Schema({
         validate: {
             validator: async function (v) {
                 // When we perform updation, we get the data to be updated in _update object.
-                console.log("I was called!!");
+
                 const isComment = this.isComment ? this.isComment : (this._update ? this._update["$set"].isComment : undefined);
                 if(!isComment)
                 {
