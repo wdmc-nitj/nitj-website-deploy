@@ -347,6 +347,9 @@ const Schema = new mongoose.Schema({
                 "Category": {
                     type: String
                 },
+                "Title" :{
+                    type: String
+                },
                 "Type": {
                     type: String
                 },
