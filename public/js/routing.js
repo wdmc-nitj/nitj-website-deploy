@@ -83,6 +83,7 @@ if (parseInt(id) === 0) {
         imgContainer.innerHTML = ` <img src = "${data[0].image}" id="image" class="max-w-4xl rounded-xl mt-10 w-full" />`
         // pageTitleUpdater(category, data[0]?.title1 || data[0].title)
         pageTitleUpdater(data[0]?.title1 || data[0].title)
+        // pageTitleUpdater(data[0].title1)
     })
     .catch((err) => {
       console.log(err)

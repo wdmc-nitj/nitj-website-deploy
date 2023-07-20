@@ -243,7 +243,7 @@
     </div>
     <!--Mtech Programme (ccmt)-->
 
-    <div class="tab_wrap2 main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px]" style="display: block" id="mtechtab">
+    <div class="tab_wrap2 main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px]" style="display: none" id="mtechtab">
       <div class="titlebg">
         <div
           class="container flex flex-col justify-center items-start h-[224px] py-[48px]"
@@ -297,7 +297,7 @@
                   <div class="inline-flex items-center">
                       <i style="color: rgb(128, 128, 128); font-size: 12px; margin-left: 12px"
                           class="fa-solid fa-angle-right ml-2"></i>
-                      <a href="/admissions/index.html#mtech" class=" font-medium  ml-2">M.Tech. (Self Sponsored) Admission</a>
+                      <a href="/admissions/index.html#mtechss" class=" font-medium  ml-2">M.Tech. (Self Sponsored) Admission</a>
                   </div>
               </li>
           </ol>
@@ -451,7 +451,7 @@
           <li class="bg-accent mb-1 rounded-md text-white   hover:text-black" id="mtechsidetab">
             <span class="text">M.Tech. (CCMT)</span>
           </li>
-          <li class="bg-accent mb-1 rounded-md  text-white  hover:text-black">
+          <li class="bg-accent mb-1 rounded-md  text-white  hover:text-black" id="mtechsssidetab">
             <span class="text">M.Tech. (Self Sponsored)</span>
           </li>
 
@@ -492,7 +492,7 @@
               <span class="text dropContent2">M.Tech. (CCMT)</span>
             </li>
             <li x-on:click="dropdownMenu = ! dropdownMenu"
-              class="bg-accent mb-1 rounded-md  text-white  hover:text-black">
+              class="bg-accent mb-1 rounded-md  text-white  hover:text-black" id="respmtechsssidetab">
               <span class="text dropContent3">M.Tech. (Self Sponsored)</span>
             </li>
             <li x-on:click="dropdownMenu = ! dropdownMenu"
@@ -1099,7 +1099,7 @@
       </div>
 
       <!--MTech self sponsored section-->
-      <div class="tab_wrap" style="display: none" id="mtechss">
+      <div class="tab_wrap" style="display: none" id="mtechssadmission">
         <div class="lg:flex lg:justify-between">
           <div class="tab_content lg:w-[40%] w-[100%] text-center lg:text-left">
             <!--start admission page guyz -->

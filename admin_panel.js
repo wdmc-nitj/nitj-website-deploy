@@ -74,6 +74,9 @@ const DefaultJobsTab = require("./models/recruitmentUpdates").DefaultJobsTab;
 const addmissionHelpline = require("./models/admissions/admissionHelpline");
 const addmissionUpdate = require("./models/admissions/admissionUpdate");
 const importantLink = require("./models/admissions/importantLink");
+const majorProgramme = require("./models/admissions/majorProgramme.js");
+const minorProgramme = require("./models/admissions/minorProgramme.js");
+
 
 const newpage = require("./models/newpage");
 
@@ -2868,6 +2871,20 @@ const AdminBroOptions = {
     },
     {
       resource: importantLink,
+      options: {
+        navigation: "Admissions",
+        actions: { list: { isAccessible: isAdmin } },
+      },
+    },
+    {
+      resource: majorProgramme,
+      options: {
+        navigation: "Admissions",
+        actions: { list: { isAccessible: isAdmin } },
+      },
+    },
+    {
+      resource: minorProgramme,
       options: {
         navigation: "Admissions",
         actions: { list: { isAccessible: isAdmin } },
