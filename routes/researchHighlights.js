@@ -7,7 +7,7 @@ const Router = express.Router();
 
 Router.route("/").get(researchHighlights.showResearchHighlights);
 
-Router.route("/get/all").get(researchHighlights.showAllResearchHighlights);
+Router.route("/get/all").get(researchHighlights.showAllResearchHighlight);
 
 //Export----------------------------->
 module.exports = Router;
