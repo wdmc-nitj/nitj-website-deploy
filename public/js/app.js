@@ -8,7 +8,8 @@ import {
   clubsCardsScroll,
 } from './utils/app/scrollUtils.js'
 import notificationTabs from './utils/app/tabUits.js'
-// import getNavbar from './navbar.js'
+import './utils/app/sliderTextAnimation.js'
+
 window.onscroll = navbarUtil
 // window.onload = getNavbar
 function openDropdown() {
