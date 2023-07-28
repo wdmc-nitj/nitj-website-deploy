@@ -39,7 +39,7 @@
     animate-delay: 100ms;
   }
   .main-slider-text {
-    height: 120px;
+    height: 160px;
     overflow: hidden;
     animation-name: constantBounce;
     animation-duration: 1.8s;
@@ -67,12 +67,12 @@
 
   @media screen and (max-width: 992px) {
     .main-slider-text {
-      height: 95px;
+      height: 120px;
     }
   }
   @media screen and (max-width: 576px) {
     .main-slider-text {
-      height: 80px;
+      height: 120px;
     }
   }
 }

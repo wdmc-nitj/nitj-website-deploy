@@ -15,11 +15,16 @@ let animationTimeout = null
 function animateText(stringsArray) {
   if (isPaused) return
   const currentString = stringsArray[currentIndex]
-  const newH2 = document.createElement('a')
-  newH2.innerHTML = currentString[0]
+  const newLink = document.createElement('a')
+  newLink.innerHTML = currentString.title
+  newLink.href = `/template/index.html?id=${currentString._id}?category=initiative`
+  if (currentString.link) {
+    newLink.href = currentString.link
+  }
+  newLink.target = '_blank'
+  const newH2 = document.createElement('h2')
   newH2.classList.add('enter-animation')
-  newH2.href = `/template/index.html?id=${currentString[1]}?category=initiative`
-  newH2.target = '_blank'
+  newH2.appendChild(newLink)
   mainSliderText.innerHTML = newH2.outerHTML
 
   currentElementInside = mainSliderText.childNodes[0]
@@ -48,7 +53,14 @@ fetch('/api/initiative')
   .then((res) => res.json())
   .then((data) => {
     data = dataFilter(data)
-    stringsArray = data.map((item) => [item.title, item._id])
+    data = data.filter((n) => n.main === true)
+    stringsArray = data.map((item) => {
+      const returnArray = { title: item.title, _id: item._id }
+      if (item.externalLink) {
+        returnArray['link'] = item.externalLink
+      }
+      return returnArray
+    })
     console.log(stringsArray)
     animateText(stringsArray)
     mainSliderText.addEventListener('mouseenter', () => {
