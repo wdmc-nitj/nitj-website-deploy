@@ -18,6 +18,7 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <!-- CSS linking -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/css/magic.min.css">
   <script src="./js/data.js" defer></script>
   <style>
     /* Customizing the Scrollbar */
@@ -173,13 +174,66 @@
           <h2 class="uppercase text-white text-2xl lg:text-4xl text-center">
             <span class="font-bold">NITJ</span> Welcomes you
           </h2>
-          <div
+          <div id="main-slider-text"
             class="main-slider-text transition-all uppercase font-bold text-white max-w-lg text-4xl sm:text-5xl lg:text-6xl text-center">
-            <h2>THE PLACE OF <br> TRANSFORMATION</h2>
-            <h2>72<sup>nd</sup> IN OVERALL <br> NIRF RANKING</h2>
-            <h2>46<sup>th</sup> IN <br> ENGINEERING NIRF</h2>
+
           </div>
         </div>
+        <script>
+          const stringsArray = [
+            '<h2 class="enter-animation">THE PLACE OF <br> TRANSFORMATION</h2>',
+            '<h2 class="enter-animation">72<sup>nd</sup> IN OVERALL <br> NIRF RANKING</h2>',
+            '<h2 class="enter-animation">46<sup>th</sup> IN <br> ENGINEERING NIRF</h2>',
+          ];
+
+          const mainSliderText = document.getElementById('main-slider-text');
+          let currentIndex = 0;
+          let isPaused = false
+          let currentElementInside = null;
+          let animationTimeout = null;
+          function animateText() {
+            if (isPaused) return
+            const currentString = stringsArray[currentIndex];
+
+            mainSliderText.innerHTML = currentString;
+
+            currentElementInside = mainSliderText.childNodes[0];
+
+
+
+            animationTimeout = setTimeout(() => {
+              if (currentElementInside) {
+                currentElementInside.classList.remove('enter-animation');
+              }
+              currentElementInside.classList.add('exit-animation');
+
+              currentElementInside.addEventListener('animationend', function () {
+                currentElementInside.remove()
+
+                currentIndex = (currentIndex + 1) % stringsArray.length;
+
+                animateText();
+              }, { once: true });
+            }, 2200);
+          }
+
+          animateText();
+
+          // Pause animation when hovering over mainSliderText
+          mainSliderText.addEventListener('mouseenter', () => {
+            isPaused = true;
+            clearTimeout(animationTimeout);
+            currentElementInside.classList.remove('exit-animation');
+            console.log('stopping animation')
+          });
+
+          // Resume animation when the mouse leaves mainSliderText
+          mainSliderText.addEventListener('mouseleave', () => {
+            isPaused = false;
+            animateText();
+          });
+
+        </script>
 
         <div id="tiles" class="grid grid-cols-2 lg:flex mt-[10vh] gap-5 w-[90%] items-start">
           <div
@@ -238,10 +292,9 @@
           <div
             class="group transition delay-100 duration-300 hover:shadow-2xl hover:bg-sky-500 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center max-w-xs lg:w-1/5 h-full px-3 py-5 bg-white shadow rounded-xl">
             <a href="#research" class="flex flex-col space-y-4 items-center justify-center">
-              <span class="group-hover:animate-shake animate-delay material-symbols-outlined"
-            style="font-size: 48px">
-            stars
-          </span>
+              <span class="group-hover:animate-shake animate-delay material-symbols-outlined" style="font-size: 48px">
+                stars
+              </span>
               <!-- <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
                 style="font-size: 48px">
                 <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960"
@@ -483,13 +536,13 @@
               <p class="text-lg text-slate-500">Postgraduate Program</p>
             </div>
           </a>
-          
+
           <a href="/admissions/index.html#msc">
             <div
               class="ring-2 ring-slate-300 px-8 py-5 rounded-lg flex-col flex hover:ring-accent hover:bg-light-purple hover:ring-4 transition-all">
               <p class="text-3xl font-bold">M.Sc, MBA</p>
               <p class="text-lg text-slate-500">
-                Postgraduate Program 
+                Postgraduate Program
               </p>
             </div>
           </a>
