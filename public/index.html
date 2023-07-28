@@ -175,65 +175,12 @@
             <span class="font-bold">NITJ</span> Welcomes you
           </h2>
           <div id="main-slider-text"
-            class="main-slider-text transition-all uppercase font-bold text-white max-w-lg text-4xl sm:text-5xl lg:text-6xl text-center">
-
+            class="main-slider-text uppercase transition-all font-bold text-white max-w-lg text-4xl sm:text-5xl lg:text-6xl text-center">
+            <!-- exit-animation -->
+            <!-- enter-animation -->
           </div>
         </div>
-        <script>
-          const stringsArray = [
-            '<h2 class="enter-animation">THE PLACE OF <br> TRANSFORMATION</h2>',
-            '<h2 class="enter-animation">72<sup>nd</sup> IN OVERALL <br> NIRF RANKING</h2>',
-            '<h2 class="enter-animation">46<sup>th</sup> IN <br> ENGINEERING NIRF</h2>',
-          ];
 
-          const mainSliderText = document.getElementById('main-slider-text');
-          let currentIndex = 0;
-          let isPaused = false
-          let currentElementInside = null;
-          let animationTimeout = null;
-          function animateText() {
-            if (isPaused) return
-            const currentString = stringsArray[currentIndex];
-
-            mainSliderText.innerHTML = currentString;
-
-            currentElementInside = mainSliderText.childNodes[0];
-
-
-
-            animationTimeout = setTimeout(() => {
-              if (currentElementInside) {
-                currentElementInside.classList.remove('enter-animation');
-              }
-              currentElementInside.classList.add('exit-animation');
-
-              currentElementInside.addEventListener('animationend', function () {
-                currentElementInside.remove()
-
-                currentIndex = (currentIndex + 1) % stringsArray.length;
-
-                animateText();
-              }, { once: true });
-            }, 2200);
-          }
-
-          animateText();
-
-          // Pause animation when hovering over mainSliderText
-          mainSliderText.addEventListener('mouseenter', () => {
-            isPaused = true;
-            clearTimeout(animationTimeout);
-            currentElementInside.classList.remove('exit-animation');
-            console.log('stopping animation')
-          });
-
-          // Resume animation when the mouse leaves mainSliderText
-          mainSliderText.addEventListener('mouseleave', () => {
-            isPaused = false;
-            animateText();
-          });
-
-        </script>
 
         <div id="tiles" class="grid grid-cols-2 lg:flex mt-[10vh] gap-5 w-[90%] items-start">
           <div
