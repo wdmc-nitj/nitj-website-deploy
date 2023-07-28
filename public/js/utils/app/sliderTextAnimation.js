@@ -1,4 +1,6 @@
-const stringsArray = [
+import { dataFilter } from '../routingUtils.js'
+
+let stringsArray = [
   'THE PLACE OF TRANSFORMATION',
   '72<sup>nd</sup> IN OVERALL NIRF RANKING',
   '46<sup>th</sup> IN ENGINEERING NIRF',
@@ -10,7 +12,7 @@ let isPaused = false
 let currentElementInside = null
 let animationTimeout = null
 
-function animateText() {
+function animateText(stringsArray) {
   if (isPaused) return
   const currentString = stringsArray[currentIndex]
   const newH2 = document.createElement('h2')
@@ -34,25 +36,33 @@ function animateText() {
 
         currentIndex = (currentIndex + 1) % stringsArray.length
 
-        animateText()
+        animateText(stringsArray)
       },
       { once: true }
     )
   }, 2200)
 }
 
-animateText()
+fetch('/api/initiative')
+  .then((res) => res.json())
+  .then((data) => {
+    data = dataFilter(data)
+    stringsArray = data.map((item) => item.title)
+    console.log(stringsArray)
+    animateText(stringsArray)
+    mainSliderText.addEventListener('mouseenter', () => {
+      isPaused = true
+      clearTimeout(animationTimeout)
+      currentElementInside.classList.remove('exit-animation')
+      console.log('stopping animation')
+    })
 
-// Pause animation when hovering over mainSliderText
-mainSliderText.addEventListener('mouseenter', () => {
-  isPaused = true
-  clearTimeout(animationTimeout)
-  currentElementInside.classList.remove('exit-animation')
-  console.log('stopping animation')
-})
-
-// Resume animation when the mouse leaves mainSliderText
-mainSliderText.addEventListener('mouseleave', () => {
-  isPaused = false
-  animateText()
-})
+    mainSliderText.addEventListener('mouseleave', () => {
+      isPaused = false
+      animateText(stringsArray)
+    })
+  })
+  .catch((err) => {
+    console.log(err)
+    animateText(stringsArray)
+  })
