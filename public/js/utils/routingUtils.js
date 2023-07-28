@@ -47,7 +47,7 @@ export function putCategory(category) {
 
 export function pageTitleUpdater(category, title) {
   const updatedCategory = normalCaseMaker(category)
-  document.title = `NITJ | ${updatedCategory + ' - ' + title}`
+  document.title = `NITJ`
 }
 
 export function normalCaseMaker(str) {
