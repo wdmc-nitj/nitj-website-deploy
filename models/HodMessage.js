@@ -35,6 +35,15 @@ const Schema=new mongoose.Schema({
     sourceOfInfo: {
         type:  String
     },
+    EPABX: {
+        type: String
+    },
+    Extn: {
+        type: String
+    },
+    Fax: {
+        type: String
+    },
     show: { type: Boolean, default: true },
     order:{
         type: Number,
