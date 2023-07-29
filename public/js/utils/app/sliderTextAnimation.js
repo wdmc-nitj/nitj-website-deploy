@@ -57,7 +57,7 @@ fetch('/api/initiative')
     stringsArray = data.map((item) => {
       const returnArray = { title1: item.title1, _id: item._id }
       if (item.externalLink) {
-        returnArray['link'] = item.externalLink
+        returnArray['link'] = item.link
       }
       return returnArray
     })
