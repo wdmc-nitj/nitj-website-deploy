@@ -1,37 +1,53 @@
 const mongoose=require('mongoose');
 
 const Schema=new mongoose.Schema({
-    department:{
-        type:String,
-        enum: ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai']
-    },
-    name:{
-        type:String
-    },
-    email:{
-        type:String
-    },
-    img:{
-        type:String
-    },
-    position:{
-        type:String
-    },
-    
-    
-    sourceOfInfo: {
-        type: Object,
-        default: {
-          name: null,
-          email: null,
-          designation: null,
-          department: null,
-        }
-      },
+   title: { type: String, required: true },
+    desc: { type: String, default: "" },
     show: { type: Boolean, default: true },
-    order:{
-        type: Number,
-    }
-},{timestamps:true})
+    type: {
+      type: String,
+      enum: [
+        "Academics",
+        "Admissions",
+        "others",
+      ],
+    },
+    order: {
+      type: Number,
+      default: 0,
+    },
+    sourceOfInfoName: {
+      type: String,
+    },
+    sourceOfInfoEmail: {
+      type: String,
+    },
+    sourceOfInfoDesignation: {
+      type: String,
+    },
+    sourceOfInfoDepartment: {
+      type: String,
+    },
+    pdfLink: {
+      type: String,
+    },
+    newPage: {
+      type: Boolean,
+    },
+    new: {
+      type: Boolean,
+      default: true,
+    },
+
+    image: { type: String, default: "" },
+    updateLogs: {
+      type: Array,
+      default: [],
+    },
+    showviewall:{type:Boolean,default:true},
+  },
+  {
+    timestamps: true,
+  })
 
 module.exports=mongoose.model("Scholarship",Schema);
