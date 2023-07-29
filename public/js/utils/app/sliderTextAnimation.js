@@ -16,7 +16,7 @@ function animateText(stringsArray) {
   if (isPaused) return
   const currentString = stringsArray[currentIndex]
   const newLink = document.createElement('a')
-  newLink.innerHTML = currentString.title
+  newLink.innerHTML = currentString.title1
   newLink.href = `/template/index.html?id=${currentString._id}?category=initiative`
   if (currentString.link) {
     newLink.href = currentString.link
@@ -55,7 +55,7 @@ fetch('/api/initiative')
     data = dataFilter(data)
     data = data.filter((n) => n.main === true)
     stringsArray = data.map((item) => {
-      const returnArray = { title: item.title, _id: item._id }
+      const returnArray = { title1: item.title1, _id: item._id }
       if (item.externalLink) {
         returnArray['link'] = item.externalLink
       }
