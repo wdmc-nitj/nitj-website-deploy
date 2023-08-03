@@ -1120,6 +1120,14 @@
         <!-- </div> -->
         <!-- </div> -->
       </div>
+      <div id="wmd_implementation_2"></div>
+
+        
+      </div>
+      <div id="wmd_implementation_3"></div>
+
+        
+      </div>
       <a class="text-accent text-lg font-medium hover:underline" href="students.html">View WDMC Student Teams →</a>
     </div>
   </div>
@@ -1981,6 +1989,54 @@
       result = await result.json();
       console.log(result);
       document.getElementById("wmd_implementation_1").innerHTML = `
+      <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
+                  <p class="text-sm">${result[0].designation}</p>
+                  <p class="text-sm text-gray-500">${result[0].department}</p>
+                  <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                      <i class="fa-solid fa-envelope"></i>
+                      <p class="text-sm text-gray-500 my-1">${result[0].contact.email}    </p>
+                  </div>
+                  <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                    <!-- <i class="fa-solid fa-phone"></i>-->
+                         <!-- <p class="text-sm my-1">${result[0].contact["Tel No."]}</p>-->
+                  </div>
+                
+     `;
+    }
+    callAPi();
+  </script>
+  <script>
+    async function callAPi() {
+      let result = await fetch(
+        "/api/administration?id=64cb4ae21eb7b950f4563a8b"
+      );
+      result = await result.json();
+      console.log(result);
+      document.getElementById("wmd_implementation_2").innerHTML = `
+      <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
+                  <p class="text-sm">${result[0].designation}</p>
+                  <p class="text-sm text-gray-500">${result[0].department}</p>
+                  <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                      <i class="fa-solid fa-envelope"></i>
+                      <p class="text-sm text-gray-500 my-1">${result[0].contact.email}    </p>
+                  </div>
+                  <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                    <!-- <i class="fa-solid fa-phone"></i>-->
+                         <!-- <p class="text-sm my-1">${result[0].contact["Tel No."]}</p>-->
+                  </div>
+                
+     `;
+    }
+    callAPi();
+  </script>
+  <script>
+    async function callAPi() {
+      let result = await fetch(
+        "/api/administration?id=64cb4a3d1eb7b950f45600fb"
+      );
+      result = await result.json();
+      console.log(result);
+      document.getElementById("wmd_implementation_3").innerHTML = `
       <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
                   <p class="text-sm">${result[0].designation}</p>
                   <p class="text-sm text-gray-500">${result[0].department}</p>
