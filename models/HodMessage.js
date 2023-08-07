@@ -24,13 +24,13 @@ const Schema = new mongoose.Schema({
     type: String,
   },
   vision: {
-    type: [String], // Changed to an array of strings
+    type: [String], 
   },
   mission: {
-    type: [String], // Changed to an array of strings
+    type: [String], 
   },
   QualityStatements: {
-    type: [String], // Changed to an array of strings
+    type: [String], 
   },
   sourceOfInfo: {
     type: String,
