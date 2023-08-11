@@ -1068,6 +1068,29 @@
                 <p class="text-sm my-1">Jalandhar, Punjab - 144008</p>
               </div> -->
           </div>
+          <div id="wmd_management_3">
+            <!-- <p
+                class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1"
+              >
+                Dr Rajeev Verma
+              </p>
+              <p class="text-sm">Department of Industrial & Production Engg</p>
+              <p class="text-sm text-gray-500">
+                Dr B R Ambedkar NIT, Jalandhar
+              </p>
+              <div
+                class="w-full flex flex-row gap-2 items-center text-gray-500"
+              >
+                <i class="fa-solid fa-envelope"></i>
+                <p class="text-sm text-gray-500 my-1">director@nitj.ac.in</p>
+              </div>
+              <div
+                class="w-full flex flex-row gap-2 items-center text-gray-500"
+              >
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="text-sm my-1">Jalandhar, Punjab - 144008</p>
+              </div> -->
+          </div>
           <div id="wmd_management_1">
             <!-- <p
                 class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1"
@@ -1091,6 +1114,7 @@
                 <p class="text-sm my-1">Jalandhar, Punjab - 144008</p>
               </div> -->
           </div>
+
 
         </div>
       </div>
@@ -1851,6 +1875,26 @@
       result = await result.json();
       console.log(result);
       document.getElementById("wmd_management_1").innerHTML = `
+          <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
+                      <p class="text-sm">${result[0].designation}</p>
+                      <p class="text-sm text-gray-500">${result[0].department}</p>
+                      <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                          <i class="fa-solid fa-envelope"></i>
+                          <p class="text-sm text-gray-500 my-1">${result[0].contact.Email}    </p>
+                      </div>
+               
+         `;
+    }
+    callAPi();
+  </script>
+  <script>
+    async function callAPi() {
+      let result = await fetch(
+        "/api/administration?id=64d5db88d0999dfea42eea2e"
+      );
+      result = await result.json();
+      console.log(result);
+      document.getElementById("wmd_management_3").innerHTML = `
           <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
                       <p class="text-sm">${result[0].designation}</p>
                       <p class="text-sm text-gray-500">${result[0].department}</p>
