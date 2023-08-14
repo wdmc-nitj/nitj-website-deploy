@@ -57,6 +57,8 @@ const Testimonial = require("./models/testimonial");
 const Timeline = require("./models/timeline");
 const upcommingEvent = require("./models/upcomingEvent");
 const yearlyRanking = require("./models/yearlyRanking");
+const scholarship=require("./models/scholarship");
+const initiative=require("./models/initiatives");
 
 // Research Menu
 const researchMenuName = "Research";
@@ -2677,6 +2679,21 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
+    {
+      resource: scholarship,
+      options: {
+        navigation: "Scholarship",
+        actions: { list: { isAccessible: isAdmin } },
+      },
+    },
+    {
+      resource: initiative,
+      options: {
+        navigation: "Initiative",
+        actions: { list: { isAccessible: isAdmin } },
+      },
+    },
+    
     {
       resource: specialCentres,
       options: {

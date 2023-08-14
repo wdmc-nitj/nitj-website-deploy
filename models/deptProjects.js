@@ -20,7 +20,9 @@ const ProjectSchema = new mongoose.Schema(
     "SANCTION AMOUNT RS IN LAC": {
       type: String
     },
-
+    Link:{
+      type:String
+    },
     department: {
       type: String,
       enum: ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai']

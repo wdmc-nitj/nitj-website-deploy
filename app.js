@@ -5,6 +5,7 @@ const compression = require("compression");
 
 const navBarRouter = require("./routes/navbar");
 const newsRouter = require("./routes/news");
+const initiativeRouter = require("./routes/initiative");
 const latestEvents = require("./routes/latestEvent");
 const administrationRouter = require("./routes/administration");
 const resourceRouter = require("./routes/resource");
@@ -78,6 +79,7 @@ app.use(
 // app.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 app.use("/navbar", navBarRouter);
 app.use("/news", newsRouter);
+app.use("/initiative", initiativeRouter);
 app.use("/latestEvent", latestEvents);
 app.use("/administration", administrationRouter);
 app.use("/notice", noticeRouter);
