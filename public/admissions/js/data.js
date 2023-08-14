@@ -5,6 +5,7 @@ fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=BTECH")
     const ugupdates = document.getElementById("ug-updates");
     data.forEach((update) => {
       const ugupdate = document.createElement("li");
+      ugupdate.classList.add("mb-2");
       ugupdate.innerHTML = `
     <div class="flex">
     <div class="w-[80%]">
@@ -44,8 +45,10 @@ fetch(
   .then((response) => response.json())
   .then((data) => {
     const mtechupdates = document.getElementById("mtech-ccmt-updates");
+  
     data.forEach((update) => {
       const mtechupdate = document.createElement("li");
+      mtechupdate.classList.add("mb-2");
       mtechupdate.innerHTML = `
       <div class="flex">
       <div class="w-[80%]">
@@ -89,6 +92,7 @@ fetch(
     const mtechselfupdates = document.getElementById("mtech-self-updates");
     data.forEach((update) => {
       const mtechselfupdate = document.createElement("li");
+      mtechselfupdate.classList.add("mb-2");
       mtechselfupdate.innerHTML = `
         <div class="flex">
         <div class="w-[80%]">
@@ -130,6 +134,7 @@ fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=MSC")
     const msc_updates = document.getElementById("msc-updates");
     data.forEach((update) => {
       const mscupdate = document.createElement("li");
+      mscupdate.classList.add("mb-2");
       mscupdate.innerHTML = `
           <div class="flex">
           <div class="w-[80%]">
@@ -171,6 +176,7 @@ fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=MBA")
     const mba_updates = document.getElementById("mba-updates");
     data.forEach((update) => {
       const mbaupdate = document.createElement("li");
+      mbaupdate.classList.add("mb-2");
       mbaupdate.innerHTML = `
             <div class="flex">
             <div class="w-[80%]">
@@ -212,6 +218,7 @@ fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=PHD")
     const phd_updates = document.getElementById("phd-updates");
     data.forEach((update) => {
       const phdupdate = document.createElement("li");
+      phdupdate.classList.add("mb-2");
       phdupdate.innerHTML = `
               <div class="flex">
               <div class="w-[80%]">
@@ -627,6 +634,53 @@ fetch(`${data_url}` + "/admissions/helplines/get?visible=visible&degree=PHD")
   .then((response) => response.json())
   .then((data) => {
     const helplines = document.getElementById("helplinesphd");
+
+    data.forEach((update) => {
+      const helpline = document.createElement("li");
+      helpline.innerHTML = `
+      <li class="ppx-1 mt-1 mb-4">
+<div class="lg:basis-3/4">
+
+<p class="font2 font-semibold text-[26px] lg:text-[1.4rem] leading-[1.3] normal-case">${update.name}</p>
+${update.designation ?   ` <p class="text-gray-400 text-[12px] lg:text-[16px]">${update.designation}</p>` : ``}
+<div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
+<div class="w-[100%] flex flex-col gap-[4px]">
+${update.email  ? ` <div class="flex flex-row">
+<p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
+<p class="">: &nbsp; &nbsp;</p>
+<p>${update.email}</p>
+</div>` : ``}
+<div class="flex flex-row">
+<p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
+<p class="">: &nbsp; &nbsp;</p>
+<p>${update.contactNumbers}</p>
+</div>
+${update.languages.length ?    `<div class="flex flex-row">
+<p class="basis-3/12 md:basis-1/12 font-semibold">Languages</p>
+<p class="">: &nbsp; &nbsp;</p>
+<p>${update.languages}</p>
+</div>` : ``}
+${update.timings.length ?    `<div class="flex flex-row">
+<p class="basis-3/12 md:basis-1/12 font-semibold">Timings</p>
+<p class="">: &nbsp; &nbsp;</p>
+<p>${update.timings}</p>
+</div>` : ``}
+</div>
+</div>
+
+
+    </li>
+    
+        `;
+      helplines.appendChild(helpline);
+    });
+  });
+
+
+  fetch(`${data_url}` + "/admissions/helplines/get?visible=visible&degree=BSC-BED")
+  .then((response) => response.json())
+  .then((data) => {
+    const helplines = document.getElementById("helplinesbsc");
 
     data.forEach((update) => {
       const helpline = document.createElement("li");
