@@ -8,6 +8,9 @@ const PublicationSchema = new mongoose.Schema(
     "DOCUMENT TITLE": {
       type: String
     },
+    "DOI":{
+      type:String
+    },
     "AUTHORS": {
       type: String
     },
