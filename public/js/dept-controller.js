@@ -16,7 +16,7 @@ const dict = {
         "ice":"Instrumentation and Control Engineering",
         "me":"Mechanical Engineering",
         "ipe":"Industrial and Production Enginnering",
-        "hm" : "Humanities and Management",
+        "hum" : "Humanities and Management",
         "chem" : "Chemistry",
         "math" : "Mathematics", 
         "phy" : "Physics"
