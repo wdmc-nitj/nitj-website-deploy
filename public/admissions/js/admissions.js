@@ -1,7 +1,6 @@
 let slug = window.location.href.match(/[^#]+/g)
 if(slug[slug.length-1]==="btech")
 {
-  
    document.getElementById("mtechadmission").style.display="none";
    document.getElementById("mtechssadmission").style.display="none";
    document.getElementById("mscadmission").style.display="none";
