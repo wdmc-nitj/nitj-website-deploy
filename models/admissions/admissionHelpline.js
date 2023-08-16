@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
-const { commonFieldsForAll, logUpdates, regexForUpdateLogs, fields } = require('../../utils');
+const { commonFieldsForAll, logUpdates, regexForUpdateLogs} = require('../../utils');
 const Schema = mongoose.Schema;
 
 const helplineSchema = new Schema(Object.assign({
-    ...fields.admissionsFields,
+    degree: {
+        type: String,
+        required: true,
+        notEmpty: true,
+        enum: ['BTECH', 'MTECH-CCMT', 'MTECH-SELF', 'MSC', 'MBA', 'PHD', 'FOREIGN', 'BSC-BED'],
+    },
     name: {
         type: String,
         required: true
