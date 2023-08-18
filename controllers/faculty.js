@@ -21,7 +21,7 @@ const getByIdFaculty = async (req, res) => {
 
 const getByDeptFaculty = async (req, res) => {
     try {
-        const result = await Faculty.find({ show: true, department: req.params.dept }).sort({order:1}).select("-password");
+        const result = await Faculty.find({ show: true, department:{ $in:[req.params.dept]} }).sort({order:1}).select("-password");
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json("Error: " + error);
