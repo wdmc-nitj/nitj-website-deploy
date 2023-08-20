@@ -1,5 +1,11 @@
 module.exports = {
-  content: ['./public/*.html', './public/**/*.html', './public/js/*.js','./public/template/*.js', './public/*.js'],
+  content: [
+    './public/*.html',
+    './public/**/*.html',
+    './public/js/*.js',
+    './public/template/*.js',
+    './public/*.js',
+  ],
   theme: {
     container: {
       // you can configure the container to be centered
@@ -42,6 +48,26 @@ module.exports = {
           },
           '75%': {
             transform: 'rotate(10deg)',
+          },
+        },
+        slideUp: {
+          '0%': {
+            transformOrigin: '0 0',
+            transform: 'translateY(0%)',
+          },
+          '100%': {
+            transformOrigin: '0 0',
+            transform: 'translateY(-100%)',
+          },
+        },
+        slideUpReturn: {
+          '0%': {
+            transformOrigin: '0 0',
+            transform: 'translateY(-100%)',
+          },
+          '100%': {
+            transformOrigin: ' 0 0',
+            transform: 'translateY(0%)',
           },
         },
       },

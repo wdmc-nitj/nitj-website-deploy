@@ -23,7 +23,9 @@ const ConsultancySchema = new mongoose.Schema(
         "AMOUNT RECEIVED (IN WORDS)": {
             type: String
         },
-
+        Link:{
+            type:String
+        },
         department: {
             type: String,
             enum: ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai']

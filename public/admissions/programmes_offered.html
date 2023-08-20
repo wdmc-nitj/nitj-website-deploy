@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Programmes Offered</title>
+
+    <script src="app.js" defer></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css" />
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .titlebg {
+            background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(img/about_top.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* Style the tab */
+        .tab {
+            color: white;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: hsla(201, 96%, 32%);
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            color: black;
+            background-color: hsla(242, 83%, 98%);
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            color: black;
+            background-color: hsla(242, 83%, 98%);
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        /* Transition on tab content */
+        .tabcontent {
+            animation: fadeEffect 1s;
+            /* Fading effect takes 1 second */
+        }
+
+        .font2 {
+            font-family: 'Barlow', sans-serif;
+        }
+
+        :root {
+            --primary-color: #fff;
+            --background-color: #212121;
+
+            --blue-color: #0369A1;
+            --light-blue-color: #F6F6FE;
+            --purple-color: #040320;
+            --font1: 'Poppins', sans-serif;
+            --font2: 'Barlow', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-body {
+            font-family: var(--font1);
+        }
+
+        .titlebg {
+            background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(img/about_top.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        @keyframes fadeEffect {
+
+            /* Go from zero to full opacity */
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="/template/header.js" type="module"></script>
+    <script src="/template/helper.js"></script>
+
+    <div
+      class="main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px] lg:mb-32"
+    >
+      <div class="titlebg">
+        <div
+          class="container flex flex-col justify-center items-start h-[224px] py-[48px]"
+        >
+          <!-- px-4 lg:px-[11%] -->
+          <p
+            class="font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]"
+          >
+             Programmes offered
+          </p>
+        </div>
+        <nav class="flex bg-gray-200 py-[8px] text-black" aria-label="Breadcrumb">
+          <ol class="container inline-flex items-center">
+              <li class="inline-flex items-center">
+                  <a href="" class="inline-flex items-center text-sm   hover:text-gray-900">
+                      <a href="../index.html" class="  font-medium  ml-2">Home</a>
+                  </a>
+              </li>
+              <li aria-current="page">
+                  <div class="inline-flex items-center">
+                      <i style="color: rgb(128, 128, 128); font-size: 12px; margin-left: 12px"
+                          class="fa-solid fa-angle-right ml-2"></i>
+                      <a href="#" class="   font-medium ml-2"> Programmes offered</a>
+                  </div>
+              </li>
+          </ol>
+      </nav>
+      </div>
+
+     
+        <div class="container mb-12">
+            <div class="tab">
+                <button class="tablinks active" onclick="openTab(event,'firstDean-sw')">UG Programmes</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-P-sw')">PG Programmes</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-U-sw')">Ph.D Programmes</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-D-sw')">PG Diploma</button>
+            </div>
+
+
+            <div id="firstDean-sw" class="tabcontent block">
+                <div id="x_name" class="gap-[32px] lg:px-[16px] py-4">
+                    <p class="mt-4 font-bold">Four years Bachelor of Technology (B.Tech) Programmes</p>
+                    <ul class="list-disc ml-8" id="ug_programmes">
+                        <!-- <li>Bio Technology</li>
+                        <li>Chemical Engineering</li>
+                        <li>Civil Engineering</li>
+                        <li>Computer Science and Engineering</li>
+                        <li>Data Science and Engineering <div class="inline-block"><img src="https://v1.nitj.ac.in//images/New.gif"></div></li>
+                        <li>Electrical Engineering</li>
+                        <li>Electronics and Communication Engineering</li>
+                        <li>Electronics and VLSI Engineering  <div class="inline-block"><img src="https://v1.nitj.ac.in//images/New.gif"></div></li>
+
+                        <li>Industrial and Production Engineering</li>
+                        <li>Information Technology&nbsp;</li>
+                        <li>Instrumentation and Control Engineering</li>
+                        <li>Mechanical Engineering</li>
+                        <li>Textile Technology</li> -->
+                    </ul>
+<div class="mt-8">
+                    <h4 class="font-bold">B.Tech (Minor Degree) Programmes</h4>
+                    <p>
+                        In addition to above mentioned B.Tech programme, the institute offers its meritorious students to earn a minor 
+                        degree in another engineering discipline in addition to Major degree in the which the student is originally enrolled. 
+                        The students have to study six additional specialized courses (One in each semester starting from 3rd semester) in 
+                        the engineering discipline of minor degree. Presently, the following combinations of Major and Minor degrees are operational:
+                    </p>
+                    </div>
+
+                    <table cellpadding="3" cellspacing="0" style="width: 70%;" class="mt-8 border border-gray-300">
+                        <tbody id="minor_degrees">
+                            <tr>
+                                <td style="height:23px;" class="px-4 py-2 border-gray-300">
+                                    <p class="font-bold">B.Tech. Programme in</p>
+                                </td>
+                                <td style="height:23px;" class="px-4 py-2 border-gray-300">
+                                    <p class="font-bold">Available Minor Degree Programmes</p>
+                                </td>
+                            </tr>
+                      
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="Associate-Dean-P-sw" class="tabcontent">
+                <div id="xad1_name" class="gap-[32px] lg:px-[16px] py-4">
+                    <p class="mt-4 font-bold">Two years regular M.Tech Programmes (Admission Through CCMT)</p>
+                    <ul class="list-disc ml-8" id="mtech_programme_ccmt">
+                        <!-- <li>Bio Technology</li>
+                        <li>Chemical Engineering</li>
+                        <li>Computer Science and Engineering</li>
+                        <li>Computer Science and Engineering (Information security)</li>
+                        <li>Data Science and Engineering <div class="inline-block"><img src="https://v1.nitj.ac.in//images/New.gif"></div></li>
+                        <li>Control and Instrumentation Engineering</li>
+                        <li>Design Engineering</li>
+                        <li>Thermal Engineering</li>
+                        <li>Electric Vehicle Design</li>
+                        <li>Electronics and Communication Engineering</li>
+                        <li>Data Analytics <div class="inline-block"><img src="https://v1.nitj.ac.in//images/New.gif"></div></li>
+                        <li>VLSI Design</li>
+                        <li>Geotechnical and Geo-Environmental Engineering</li>
+                        <li>Renewable Energy</li>
+                        <li>Structural and Construction Engineering</li>
+                        <li>Industrial Engineering and Data Analytics <div class="inline-block"><img src="https://v1.nitj.ac.in//images/New.gif"></div></li>
+                        <li>Manufacturing Technology With Machine Learning <div class="inline-block"><img src="https://v1.nitj.ac.in//images/New.gif"></div></li>
+                        <li>Textile Engineering and Management</li> -->
+                    </ul>
+
+                    <p class="mt-4 font-bold">Two years M.Tech Programmes (Self-Sponsored)</p>
+                    <ul class="list-disc ml-8" id="mtech_programme_Self-Sponsored">
+                        <!-- <li>Artificial Intelligence</li>
+                        <li>Bio Technology</li>
+                        <li>Chemical Engineering</li>
+                        <li>Computer Science and Engineering</li>
+                        <li>Computer Science and Engineering (Information security)</li>
+                        <li>Data Science and Engineering <div class="inline-block"><img src="https://v1.nitj.ac.in//images/New.gif"></div></li>
+                        <li>Control and Instrumentation Engineering</li>
+                        <li>Design Engineering</li>
+                        <li>Thermal Engineering</li>
+                        <li>Electric Vehicle Design</li>
+                        <li>Electronics and Communication Engineering</li>
+                        <li>Data Analytics <div class="inline-block"><img src="https://v1.nitj.ac.in//images/New.gif"> </div></li>
+                        <li>VLSI Design</li>
+                        <li>Geotechnical and Geo-Environmental Engineering</li>
+                        <li>Renewable Energy</li>
+                        <li>Structural and Construction Engineering</li>
+                        <li>Industrial Engineering and Data Analytics<div class="inline-block"><img src="https://v1.nitj.ac.in//images/New.gif"> </div></li>
+                        <li>Manufacturing Technology With Machine Learning<div class="inline-block"><img src="https://v1.nitj.ac.in//images/New.gif"> </div></li>
+                        <li>Textile Engineering and Management</li> -->
+                    </ul>
+
+
+                    <p class="mt-4 font-bold">Two years regular M.Sc. Programmes</p>
+                    <ul class="list-disc ml-8" id="programme_msc">
+                        <!-- <li>Chemistry</li>
+                        <li>Physics</li>
+                        <li>Mathematics</li> -->
+                    </ul>
+
+
+                    <p class="mt-4 font-bold">Two years regular MBA Programmes</p>
+                    <ul class="list-disc ml-8" id="programme_mba">
+                        <!-- <li>Humanities and Management</li> -->
+                    </ul>
+
+
+                    <p class="mt-4 font-bold">One year PG Diploma in Management Programme</p>
+                    <ul class="list-disc ml-8" id="PG_Diploma_in_Management">
+                        <!-- <li>Humanities and Management</li> -->
+                    </ul>
+                </div>
+            </div>
+
+            <div id="Associate-Dean-U-sw" class="tabcontent">
+                <div class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4" >
+                    <ul id="phd_programme" class="list-disc">
+
+                    </ul>
+                    <!-- The Institute offers PhD programmes in all the departments in various disciplines. -->
+                </div>
+            </div>
+
+            <div id="Associate-Dean-D-sw" class="tabcontent">
+                <div id="xad2_name" class="lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                    <p class="mt-4 font-bold">PG Diploma in Engineering Programmes</p>
+                    <ul class="list-disc ml-8" id="PG_Diploma_in_Engineering">
+                        <!-- <li>Chemical Engineering</li>
+                        <li>Computer Science and Engineering</li>
+                        <li>Electronics and Communication Engineering</li>
+                        <li>Instrumentation and Control Engineering</li>
+                        <li>Structural and Construction Engineering</li>
+                        <li>Geotechnical and Geo Environmental Engineering</li>
+                        <li>Textile Engineering and  Management</li>
+                        <li>Design Engineering</li>
+                        <li>Thermal Engineering</li>
+                        <li>Industrial Engineering</li> -->
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script src="app.js"></script>
+    <script src="../template/footer.js"></script>
+     <script src="./js/programmes_offered.js"></script>
+    <script>
+        function openDeans() {
+            const deans = ['firstDean-sw', 'Dean-ia', 'Dean-rc', 'Dean-pd', 'Dean-f', 'Dean-s']
+            for (let i = 0; i < deans.length; i++) {
+                document.getElementById(deans[i]).style.display = "flex";
+            }
+        }
+
+        function openTab(evt, deanName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                if (tabcontent[i].id[tabcontent[i].id.length - 1] == deanName[deanName.length - 1]) {
+                    tabcontent[i].style.display = "none";
+                }
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                if (tabcontent[i].id[tabcontent[i].id.length - 1] == deanName[deanName.length - 1]) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+            }
+            document.getElementById(deanName).style.display = "flex";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("load", openDeans())
+    </script>
+
+</body>
+
+</html>

@@ -18,6 +18,7 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <!-- CSS linking -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/css/magic.min.css">
   <script src="./js/data.js" defer></script>
   <style>
     /* Customizing the Scrollbar */
@@ -173,13 +174,13 @@
           <h2 class="uppercase text-white text-2xl lg:text-4xl text-center">
             <span class="font-bold">NITJ</span> Welcomes you
           </h2>
-          <div
-            class="main-slider-text transition-all uppercase font-bold text-white max-w-lg text-4xl sm:text-5xl lg:text-6xl text-center">
-            <h2>THE PLACE OF <br> TRANSFORMATION</h2>
-            <h2>72<sup>nd</sup> IN OVERALL <br> NIRF RANKING</h2>
-            <h2>46<sup>th</sup> IN <br> ENGINEERING NIRF</h2>
+          <div id="main-slider-text"
+            class="main-slider-text uppercase transition-all font-bold text-white hover:underline hover:decoration-white max-w-xl text-4xl sm:text-5xl text-center">
+            <!-- exit-animation -->
+            <!-- enter-animation -->
           </div>
         </div>
+
 
         <div id="tiles" class="grid grid-cols-2 lg:flex mt-[10vh] gap-5 w-[90%] items-start">
           <div
@@ -238,17 +239,20 @@
           <div
             class="group transition delay-100 duration-300 hover:shadow-2xl hover:bg-sky-500 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center max-w-xs lg:w-1/5 h-full px-3 py-5 bg-white shadow rounded-xl">
             <a href="#research" class="flex flex-col space-y-4 items-center justify-center">
-              <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
+              <span class="group-hover:animate-shake animate-delay material-symbols-outlined" style="font-size: 48px">
+                stars
+              </span>
+              <!-- <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
                 style="font-size: 48px">
                 <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960"
                   width="48">
                   <path
                     d="M200 936v-60h208V772h-15q-81 0-137-56t-56-137q0-61 35-111t92-70q4-40 35-65t72-22l-21-59 41-14.56L440 200l66-24 14 37 40-14 113 295-43 15 14 37-64 23-14-37-43 16-25-68q-15 17-35.5 24.5t-43.833 6.5Q393 510 371 495t-35-38q-35 17-55.5 49.965T260 579q0 55.417 38.792 94.208Q337.583 712 393 712h347v60H508v104h252v60H200Zm356-452 53-19-80-206-53 19 80 206Zm-130.175-23Q447 461 461.5 446.675q14.5-14.324 14.5-35.5Q476 390 461.675 375.5q-14.324-14.5-35.5-14.5Q405 361 390.5 375.325q-14.5 14.324-14.5 35.5Q376 432 390.325 446.5q14.324 14.5 35.5 14.5ZM556 484Zm-130-75Zm2 0Z" />
                 </svg>
-              </span>
+              </span> -->
               <p
                 class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
-                Research
+                Achievements
               </p>
             </a>
           </div>
@@ -479,20 +483,21 @@
               <p class="text-lg text-slate-500">Postgraduate Program</p>
             </div>
           </a>
+
+          <a href="/admissions/index.html#msc">
+            <div
+              class="ring-2 ring-slate-300 px-8 py-5 rounded-lg flex-col flex hover:ring-accent hover:bg-light-purple hover:ring-4 transition-all">
+              <p class="text-3xl font-bold">M.Sc, MBA</p>
+              <p class="text-lg text-slate-500">
+                Postgraduate Program
+              </p>
+            </div>
+          </a>
           <a href="/admissions/index.html#phd">
             <div
               class="ring-2 ring-slate-300 px-8 py-5 rounded-lg flex-col flex hover:ring-accent hover:bg-light-purple hover:ring-4 transition-all">
               <p class="text-3xl font-bold">Ph.D</p>
               <p class="text-lg text-slate-500">Doctrate Program</p>
-            </div>
-          </a>
-          <a href="/admissions/index.html#mba">
-            <div
-              class="ring-2 ring-slate-300 px-8 py-5 rounded-lg flex-col flex hover:ring-accent hover:bg-light-purple hover:ring-4 transition-all">
-              <p class="text-3xl font-bold">Others</p>
-              <p class="text-lg text-slate-500">
-                MBA, Diploma, M.Sc etc.
-              </p>
             </div>
           </a>
         </div>
@@ -521,6 +526,10 @@
               class="notif-link cursor-pointer text-sm sm:text-base flex items-center justify-center text-center px-2 sm:px-6 py-1 rounded-full text-slate-400 font-semibold hover:bg-blue-50">
               Tenders
             </p>
+            <p data-notif="scholarship"
+            class="notif-link cursor-pointer text-sm sm:text-base flex items-center justify-center text-center px-2 sm:px-6 py-1 rounded-full text-slate-400 font-semibold hover:bg-blue-50">
+            Scholarships
+          </p>
           </div>
           <div class="w-full">
             <div id="notice" class="w-full notice-content px-6  space-y-10 lg:mr-4 overflow-y-auto h-96">
@@ -578,7 +587,7 @@
       <div id="announcements" class="md:col-start-1 md:col-end-3 row-span-2 flex flex-col space-y-6">
         <div class="flex items-center justify-start space-x-6 group">
           <h1 class="uppercase text-3xl md:text-4xl font-semibold text-accent">
-            Research <span class="text-dark-purple">Highlights</span>
+            Current <span class="text-dark-purple">Achievements</span>
           </h1>
           <span class="group-hover:animate-shake animate-delay material-symbols-outlined"
             style="font-size: 40px; color: var(--accent)">
@@ -659,11 +668,15 @@
           <i class="hidden md:block fa-solid fa-angle-right self-center p-4 text-2xl cursor-pointer"
             onclick="slideCards(this,'right')"></i>
         </div>
-        <div class="flex items-end w-fit pb-2 lg:pb-0">
-          <a class="text-accent hover:text-sky-500 lg:mr-[80px]"
-            href="/template/index.html?id=0?category=researchHighlights">
-            <span class="font-semibold hover:underline">View All →</span>
+        <div class="grid grid-cols-1 grid-rows-1 md:col-start-1 md:col-end-3 md:row-start-3 md:mr-6 bg-white">
+          <a href="https://www.nitj.ac.in/template/index.html?id=64bf68ff2325112eba21be22?category=newpage"
+            class="text-sm w-fit font-semibold text-white hover:text-accent flex items-center bg-accent hover:bg-transparent hover:ring-2 ring-accent ring-inset px-4 py-2 rounded-lg transition">
+            <span class="text-base">View more Achievements →</span>
           </a>
+          <!-- <a class="text-accent hover:text-sky-500 lg:mr-[80px]"
+            href="https://www.nitj.ac.in/template/index.html?id=64bf68ff2325112eba21be22?category=newpage">
+            <span class="font-semibold hover:underline">View more Achievements →</span>
+          </a> -->
         </div>
       </div>
 
@@ -715,7 +728,7 @@
               local_library
             </span>
           </div>
-          <a class="text-accent hover:text-sky-500 lg:mr-[80px]" href="/research/research_publications.html">
+          <a class="text-accent hover:text-sky-500 lg:mr-[80px]" href="https://www.nitj.ac.in/template/index.html?id=64d0d8abed9a6e3506b3df6b?category=newpage">
             <span class="font-semibold hover:underline">View All →</span>
           </a>
         </div>
