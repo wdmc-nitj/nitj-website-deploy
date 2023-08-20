@@ -87,6 +87,15 @@ const deleteRefereedResearch = (req, res) => {
         .catch((err) => sendError(res, err));
 };
 
+// add multiple refereed researches
+const addMultipleRefereedResearches = (req, res) => {
+    const newRefereedResearches = req.body;
+
+    RefereedResearch.insertMany(newRefereedResearches)
+        .then((createdRefereedResearches) => res.status(201).json(createdRefereedResearches))
+        .catch((err) => sendError(res, err));
+};
+
 
 module.exports = {
     getAllRefereedResearches,
@@ -94,5 +103,6 @@ module.exports = {
     editRefereedResearch,
     getRefereedResearchById,
     hideRefereedResearch: editMetaData,
-    deleteRefereedResearch
+    deleteRefereedResearch,
+    addMultipleRefereedResearches
 };

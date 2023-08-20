@@ -37,7 +37,7 @@ const Schema = new mongoose.Schema({
         default: []
     },
     address: {
-        type: [
+        type: 
             {
                 "address1": {
                     type: String
@@ -64,8 +64,8 @@ const Schema = new mongoose.Schema({
                     type: String
                 },
             }
-        ],
-        default: []
+        ,
+        default: {}
     },
     gender: {
         type: String,

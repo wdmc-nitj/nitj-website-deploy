@@ -4,6 +4,8 @@ const mainRouter = express.Router();
 
 const navBarRouter = require("./routes/navbar");
 const newsRouter = require("./routes/news");
+const initiativeRouter = require("./routes/initiative");
+
 const latestEvents = require("./routes/latestEvent");
 const administrationRouter = require("./routes/administration");
 const resourceRouter = require("./routes/resource");
@@ -23,6 +25,7 @@ const aboutRouter = require("./routes/about");
 const testimonialRouter = require("./routes/testimonial");
 const specialCentresRouter = require("./routes/specialCentres");
 const studentTeamRouter = require("./routes/studentTeam");
+const scholarshipRouter = require("./routes/scholarship");
 const academicnoticesRouter = require("./routes/academicnotices");
 const studyProgramRouter = require("./routes/studyprog");
 const clubRouter = require("./routes/club");
@@ -69,6 +72,8 @@ mainRouter.use("/*", (req, res, next) => {
 // mainRouter.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 mainRouter.use("/navbar", navBarRouter);
 mainRouter.use("/news", newsRouter);
+mainRouter.use("/initiative", initiativeRouter);
+
 mainRouter.use("/latestEvent", latestEvents);
 mainRouter.use("/administration", administrationRouter);
 mainRouter.use("/notice", noticeRouter);
@@ -88,6 +93,7 @@ mainRouter.use("/footer", footerRouter);
 mainRouter.use("/about", aboutRouter);
 mainRouter.use("/testimonial", testimonialRouter);
 mainRouter.use("/studentTeam", studentTeamRouter);
+mainRouter.use("/scholarship", scholarshipRouter);
 mainRouter.use("/club", clubRouter);
 mainRouter.use("/upcomingEvent", upcomingEventRouter);
 mainRouter.use("/academicCalendar", academicCalendarRouter);

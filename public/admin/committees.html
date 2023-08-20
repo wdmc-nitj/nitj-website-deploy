@@ -1068,6 +1068,7 @@
                 <p class="text-sm my-1">Jalandhar, Punjab - 144008</p>
               </div> -->
           </div>
+          
           <div id="wmd_management_1">
             <!-- <p
                 class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1"
@@ -1091,13 +1092,41 @@
                 <p class="text-sm my-1">Jalandhar, Punjab - 144008</p>
               </div> -->
           </div>
+          <div id="wmd_management_3">
+            <!-- <p
+                class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1"
+              >
+                Dr Rajeev Verma
+              </p>
+              <p class="text-sm">Department of Industrial & Production Engg</p>
+              <p class="text-sm text-gray-500">
+                Dr B R Ambedkar NIT, Jalandhar
+              </p>
+              <div
+                class="w-full flex flex-row gap-2 items-center text-gray-500"
+              >
+                <i class="fa-solid fa-envelope"></i>
+                <p class="text-sm text-gray-500 my-1">director@nitj.ac.in</p>
+              </div>
+              <div
+                class="w-full flex flex-row gap-2 items-center text-gray-500"
+              >
+                <i class="fa-solid fa-location-dot"></i>
+                <p class="text-sm my-1">Jalandhar, Punjab - 144008</p>
+              </div> -->
+          </div>
+
 
         </div>
       </div>
       <div>
         <p class="font2 text-xl lg:text-3xl uppercase mb-2 border-b-2">
           Implementation
-        <div id="wmd_implementation_1"></div>
+        </p>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
+          <div id="wmd_implementation_1"></div>
+          <div id="wmd_implementation_4"></div>
+          <div id="wmd_implementation_3"></div>
 
         <!-- </p>
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
@@ -1119,7 +1148,11 @@
         <!-- </div>  -->
         <!-- </div> -->
         <!-- </div> -->
+             <!-- <div id="wmd_implementation_2"></div> -->
+             <!-- <div id="wmd_implementation_3"></div> -->
       </div>
+      <br>
+      <br>
       <a class="text-accent text-lg font-medium hover:underline" href="students.html">View WDMC Student Teams →</a>
     </div>
   </div>
@@ -1858,6 +1891,26 @@
   <script>
     async function callAPi() {
       let result = await fetch(
+        "/api/administration?id=64d5e32eb11276fc919e8f94"
+      );
+      result = await result.json();
+      console.log(result);
+      document.getElementById("wmd_management_3").innerHTML = `
+          <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
+                      <p class="text-sm">${result[0].designation}</p>
+                      <p class="text-sm text-gray-500">${result[0].department}</p>
+                      <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                          <i class="fa-solid fa-envelope"></i>
+                          <p class="text-sm text-gray-500 my-1">${result[0].contact.email}    </p>
+                      </div>
+               
+         `;
+    }
+    callAPi();
+  </script>
+  <script>
+    async function callAPi() {
+      let result = await fetch(
         "/api/administration?id=639ebd9d1abac50c0b5e1bf1"
       );
       result = await result.json();
@@ -1997,6 +2050,56 @@
     }
     callAPi();
   </script>
+  <script>
+    async function callAPi() {
+      let result = await fetch(
+        "/api/administration?id=64cb4ae21eb7b950f4563a8b"
+      );
+      result = await result.json();
+      console.log(result);
+      document.getElementById("wmd_implementation_3").innerHTML = `
+      <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
+                  <p class="text-sm">${result[0].designation}</p>
+                  <p class="text-sm text-gray-500">${result[0].department}</p>
+                  <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                      <i class="fa-solid fa-envelope"></i>
+                      <p class="text-sm text-gray-500 my-1">${result[0].contact.email}    </p>
+                  </div>
+                  <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                    <!-- <i class="fa-solid fa-phone"></i>-->
+                         <!-- <p class="text-sm my-1">${result[0].contact["Tel No."]}</p>-->
+                  </div>
+                
+     `;
+    }
+    callAPi();
+  </script>
+  <script>
+    async function callAPi() {
+      let result = await fetch(
+        "/api/administration?id=64cb4a3d1eb7b950f45600fb"
+      );
+      result = await result.json();
+      console.log(result);
+      document.getElementById("wmd_implementation_4").innerHTML = `
+      <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
+                  <p class="text-sm">${result[0].designation}</p>
+                  <p class="text-sm text-gray-500">${result[0].department}</p>
+                  <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                      <i class="fa-solid fa-envelope"></i>
+                      <p class="text-sm text-gray-500 my-1">${result[0].contact.email}    </p>
+                  </div>
+                  <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                    <!-- <i class="fa-solid fa-phone"></i>-->
+                         <!-- <p class="text-sm my-1">${result[0].contact["Tel No."]}</p>-->
+                  </div>
+                
+     `;
+    }
+    callAPi();
+  </script>
+  
+  
   <script>
     async function callAPi() {
       let result = await fetch(
