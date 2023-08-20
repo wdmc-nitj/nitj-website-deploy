@@ -237,21 +237,34 @@ fetch('/api/resource')
 function search_resources() {
   let input_element = document.getElementById("searchbar");
   let input = document.getElementById("searchbar").value;
+  input = input.replace(/[^\w\s]/g, "").toLowerCase(); // Removing special characters and convert to lowercase
+  let searchTerms = input.split(/\s+/).filter(term => term !== ""); // Spliting input into search terms
   // if(!input_element.reportValidity()){
     display_resources();
     // return;
   // }
-  input = input.toLowerCase();
+
   let x = document.getElementsByClassName("resource");
   let header = document.getElementsByClassName("head");
   let uls = document.getElementsByClassName("uls");
-  for (let i = 0; i < x.length; i++) {
-    if (!x[i].innerHTML.toLowerCase().includes(input) && input != "") {
-      x[i].style.display = "none";
-    } else {
+    for (let i = 0; i < x.length; i++) {
+    let resourceContent = x[i].innerHTML.toLowerCase().replace(/[^\w\s]/g, "");
+    let showResource = true;
+
+    for (let term of searchTerms) {
+      if (!resourceContent.includes(term)) {
+        showResource = false;
+        break;
+      }
+    }
+
+    if (showResource) {
       x[i].style.display = "list-item";
+    } else {
+      x[i].style.display = "none";
     }
   }
+
   var count = 0;
   for (let j = 0; j < header.length; j++) {
     let ancItems = header[j].nextElementSibling.children;
@@ -269,14 +282,14 @@ function search_resources() {
     } else {
       uls[j].classList.remove("hidden");
     }
-    if(count == header.length){
-      let noresult = document.getElementById("noresult")
-      noresult.classList.remove("hidden")
+
+    if (count == header.length) {
+      let noresult = document.getElementById("noresult");
+      noresult.classList.remove("hidden");
       // show no result found
-    }
-    else{
-      let noresult = document.getElementById("noresult")
-      noresult.classList.add("hidden")
+    } else {
+      let noresult = document.getElementById("noresult");
+      noresult.classList.add("hidden");
     }
   }
 }
