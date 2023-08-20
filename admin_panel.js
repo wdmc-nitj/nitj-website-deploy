@@ -82,6 +82,7 @@ const { filter } = require("compression");
 const specialCentres = require("./models/specialCentres");
 const curriculum = require("./models/curriculum");
 const examSchedule = require("./models/examSchedule");
+const deptwiseFaculty = require("./models/deptwiseFaculty");
 
 const canModifyUsers = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
@@ -2805,6 +2806,13 @@ const AdminBroOptions = {
       resource: StudentTeam,
       options: {
         navigation: "Home",
+        actions: { list: { isAccessible: isAdmin } },
+      },
+    },
+    {
+      resource: deptwiseFaculty,
+      options: {
+        navigation: "Faculty",
         actions: { list: { isAccessible: isAdmin } },
       },
     },
