@@ -29,27 +29,23 @@ exports.addNews = async (req, res) => {
 };
 
 exports.getNews = async (req, res) => {
-    try{
-        console.log("Handling getNews request");
-        if (req.query.id !== undefined) {
-            const news = await LatestNews.find({ _id: req.query.id });
-            return res.status(200).json(news);
-        } else if (req.query.title !== undefined) {
-            const title = req.query.title.split("-").join(" ");
-            const news = await LatestNews.find({ title: title });
-            return res.status(200).json(news);
-        } else {
+    if (req.query.id !== undefined) {
+        LatestNews.find({ _id: req.query.id })
+            .then((news) => res.status(200).send(news))
+            .catch((err) => res.status(400).send("Error: " + err));
+    } else if (req.query.title !== undefined) {
+        const title = req.query.title.split("-").join(" ");
+        return LatestNews.find({ title: title })
+            .then((news) => res.status(200).send(news))
+            .catch((err) => res.status(400).send("Error: " + err));
+    } else {
         
-        const news = await LatestNews.find({ show: true })
+        LatestNews.find({ show: true })
         .sort({ pin: -1, updatedAt: -1 })
-        .exec();
-    return res.status(200).json(news);
 
-}
-}catch (err) {
-    console.error("Error:", err);
-    return res.status(500).json({ message: "Internal server error" });
-}
+            .then((news) => {res.status(200).send(news)})
+            .catch((err) => res.status(400).send("Error: " + err));
+    }
 };
 
 exports.updateNews = async (req, res) => {
@@ -99,3 +95,4 @@ exports.getNewsbyType = (req, res) => {
         .then((news) => res.json(news))
         .catch((err) => sendError(res,err));
 };
+
