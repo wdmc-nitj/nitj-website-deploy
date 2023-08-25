@@ -19,6 +19,7 @@ exports.addNews = async (req, res) => {
         },
         order: req.body?.order,
         new: req.body?.new,
+        pin: false,
     });
 
     latestNews
@@ -28,21 +29,27 @@ exports.addNews = async (req, res) => {
 };
 
 exports.getNews = async (req, res) => {
-    if (req.query.id !== undefined) {
-        LatestNews.find({ _id: req.query.id })
-            .then((news) => res.status(200).send(news))
-            .catch((err) => res.status(400).send("Error: " + err));
-    } else if (req.query.title !== undefined) {
-        const title = req.query.title.split("-").join(" ");
-        return LatestNews.find({ title: title })
-            .then((news) => res.status(200).send(news))
-            .catch((err) => res.status(400).send("Error: " + err));
-    } else {
+    try{
+        console.log("Handling getNews request");
+        if (req.query.id !== undefined) {
+            const news = await LatestNews.find({ _id: req.query.id });
+            return res.status(200).json(news);
+        } else if (req.query.title !== undefined) {
+            const title = req.query.title.split("-").join(" ");
+            const news = await LatestNews.find({ title: title });
+            return res.status(200).json(news);
+        } else {
         
-        LatestNews.find({ show: true })
-            .then((news) => {res.status(200).send(news)})
-            .catch((err) => res.status(400).send("Error: " + err));
-    }
+        const news = await LatestNews.find({ show: true })
+        .sort({ pin: -1, updatedAt: -1 })
+        .exec();
+    return res.status(200).json(news);
+
+}
+}catch (err) {
+    console.error("Error:", err);
+    return res.status(500).json({ message: "Internal server error" });
+}
 };
 
 exports.updateNews = async (req, res) => {
@@ -92,3 +99,24 @@ exports.getNewsbyType = (req, res) => {
         .then((news) => res.json(news))
         .catch((err) => sendError(res,err));
 };
+const pinNews = async (req, res) => {
+    try {
+      const { id, pin } = req.params;
+
+      const updatedNews = await News.findByIdAndUpdate(id, { pin: pin === 'true' });
+  
+      if (!updatedNews) {
+        return res.status(404).json({ message: 'News not found' });
+      }
+  
+      return res.status(200).json({ message: 'News pinned successfully' });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+  };
+  
+  module.exports = {
+    pinNews
+  };
+  

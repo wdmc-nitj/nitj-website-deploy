@@ -52,8 +52,9 @@ mongoose.set("strictQuery", false);
 const port = process.env.PORT || 8000;
 
 mongoose
-  .connect(process.env.URI, {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
+    useUnifiedTopology: true, 
   })
   .then(() => {
     console.log("connection to database eshtablished");
