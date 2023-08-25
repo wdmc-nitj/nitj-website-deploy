@@ -19,6 +19,7 @@ exports.addNews = async (req, res) => {
         },
         order: req.body?.order,
         new: req.body?.new,
+        pin: false,
     });
 
     latestNews
@@ -40,6 +41,8 @@ exports.getNews = async (req, res) => {
     } else {
         
         LatestNews.find({ show: true })
+        .sort({ pin: -1, updatedAt: -1 })
+
             .then((news) => {res.status(200).send(news)})
             .catch((err) => res.status(400).send("Error: " + err));
     }
@@ -92,3 +95,4 @@ exports.getNewsbyType = (req, res) => {
         .then((news) => res.json(news))
         .catch((err) => sendError(res,err));
 };
+
