@@ -99,24 +99,3 @@ exports.getNewsbyType = (req, res) => {
         .then((news) => res.json(news))
         .catch((err) => sendError(res,err));
 };
-const pinNews = async (req, res) => {
-    try {
-      const { id, pin } = req.params;
-
-      const updatedNews = await News.findByIdAndUpdate(id, { pin: pin === 'true' });
-  
-      if (!updatedNews) {
-        return res.status(404).json({ message: 'News not found' });
-      }
-  
-      return res.status(200).json({ message: 'News pinned successfully' });
-    } catch (error) {
-      console.error(error);
-      return res.status(500).json({ message: 'Internal server error' });
-    }
-  };
-  
-  module.exports = {
-    pinNews
-  };
-  

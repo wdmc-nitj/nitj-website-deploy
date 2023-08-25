@@ -7,7 +7,6 @@ const Router = express.Router();
 
 Router.route("/").get(latestNewsController.getNews);
 
-Router.route("/pin/:id/:pin").put(latestNewsController.pinNews);
 
 Router.route("/get/all").get(latestNewsController.getAllNews);
 
