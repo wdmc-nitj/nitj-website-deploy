@@ -40,13 +40,15 @@ fetch(`${baseURL}/news/`)
     newsCards.innerHTML = "";
 
     const Pinned = document.createElement("div");
-    Pinned.setAttribute("class", "flex flex-col gap-6 px-2");
+    Pinned.setAttribute("class", "flex flex-col gap-6 px-2 mr-2");
 
     const NotPinned = document.createElement("div");
     NotPinned.setAttribute(
       "class",
-      "h-48 flex flex-col gap-6 overflow-scroll px-2 py-1"
+      "h-[20.5rem] flex flex-col gap-6 overflow-scroll px-2 py-2"
     );
+
+    NotPinned.setAttribute("id", "not-pinned");
 
     sortedData.forEach((news) => {
       const isPinned = news.pin === true;
@@ -74,11 +76,17 @@ fetch(`${baseURL}/news/`)
                 news.new
                   ? `
                 
-                <span class=absolute -top-1 -left-1">
+                <span class="absolute -top-1 -left-1">
                   <span class="relative flex h-3 w-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                    <span class="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full ${
+                      isPinned ? "bg-green-500" : "bg-orange-400"
+                    } opacity-75"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full  ${
+                      isPinned ? "bg-green-500" : "bg-orange-400"
+                    } opacity-75"></span>
+                    <span class="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex rounded-full h-3 w-3  ${
+                      isPinned ? "bg-green-500" : "bg-orange-500"
+                    }"></span>
                   </span>
                 </span>
                 `
