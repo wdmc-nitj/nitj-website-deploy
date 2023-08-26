@@ -39,26 +39,26 @@ fetch(`${baseURL}/news/`)
     const newsCards = document.getElementById("news-cards");
     newsCards.innerHTML = "";
 
+    const Pinned = document.createElement("div");
+    Pinned.setAttribute("class", "flex flex-col gap-6 px-2");
+
+    const NotPinned = document.createElement("div");
+    NotPinned.setAttribute(
+      "class",
+      "h-48 flex flex-col gap-6 overflow-scroll px-2 py-1"
+    );
+
     sortedData.forEach((news) => {
       const isPinned = news.pin === true;
-
-      // Create a div for pinned Div
-      const Pinned = document.createElement("div");
-      Pinned.setAttribute(
-        "class",
-        "bg-blue-100 z-30 sticky top-0 rounded-xl border-b-4  border-t-4 border-white"
-      );
 
       const newsCard = document.createElement("div");
       newsCard.setAttribute(
         "class",
-        ` ${
-          isPinned ? "z-50 " : "even:bg-blue-200 odd:bg-blue-100/50"
-        }  relative
-        rounded-xl p-4 shadow-md `
+        `relative
+        rounded-xl p-4 shadow-md even:bg-blue-200 odd:bg-blue-100/50 `
       );
+
       newsCard.innerHTML = `
-      
             <a 
                 ${
                   news.newPage
@@ -74,7 +74,7 @@ fetch(`${baseURL}/news/`)
                 news.new
                   ? `
                 
-                <span class="absolute -top-1 -left-1">
+                <span class=absolute -top-1 -left-1">
                   <span class="relative flex h-3 w-3">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
@@ -94,10 +94,10 @@ fetch(`${baseURL}/news/`)
       `;
       if (isPinned) {
         Pinned.appendChild(newsCard);
-        Pinned.appendChild(newsCard);
-        newsCards.appendChild(Pinned);
-      } else newsCards.appendChild(newsCard);
+      } else NotPinned.appendChild(newsCard);
     });
+    newsCards.appendChild(Pinned);
+    newsCards.appendChild(NotPinned);
   });
 
 fetch(`${baseURL}/testimonial/get/all`)
