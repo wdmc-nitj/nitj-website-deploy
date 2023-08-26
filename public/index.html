@@ -377,14 +377,14 @@
       </div>
 
       <div id="notices" class="mx-auto flex grow lg:w-1/3 w-full flex-col">
-        <div class="flex items-center mb-6 justify-start space-x-6 group">
+        <div class="flex items-center mb-6 justify-start space-x-6 group relative">
           <h1 class="text-3xl md:text-4xl font-semibold uppercase text-gray-900">News</h1>
           <span class="material-symbols-outlined text-xl group-hover:animate-shake animate-delay"
             style="font-size: 40px; color: var(--accent)">
             newspaper
           </span>
         </div>
-        <div class="flex flex-col space-y-4 py-6 px-2 overflow-scroll h-[29rem]" id="news-cards">
+        <div class="flex flex-col space-y-4  px-2 overflow-scroll h-[29rem] " id="news-cards">
           <!-- Data from the API -->
           <!-- TODO : Add auto scrolling -->
           <!-- TODO : Add loading state -->
@@ -527,9 +527,9 @@
               Tenders
             </p>
             <p data-notif="scholarship"
-            class="notif-link cursor-pointer text-sm sm:text-base flex items-center justify-center text-center px-2 sm:px-6 py-1 rounded-full text-slate-400 font-semibold hover:bg-blue-50">
-            Scholarships
-          </p>
+              class="notif-link cursor-pointer text-sm sm:text-base flex items-center justify-center text-center px-2 sm:px-6 py-1 rounded-full text-slate-400 font-semibold hover:bg-blue-50">
+              Scholarships
+            </p>
           </div>
           <div class="w-full">
             <div id="notice" class="w-full notice-content px-6  space-y-10 lg:mr-4 overflow-y-auto h-96">
@@ -728,7 +728,8 @@
               local_library
             </span>
           </div>
-          <a class="text-accent hover:text-sky-500 lg:mr-[80px]" href="https://www.nitj.ac.in/template/index.html?id=64d0d8abed9a6e3506b3df6b?category=newpage">
+          <a class="text-accent hover:text-sky-500 lg:mr-[80px]"
+            href="https://www.nitj.ac.in/template/index.html?id=64d0d8abed9a6e3506b3df6b?category=newpage">
             <span class="font-semibold hover:underline">View All →</span>
           </a>
         </div>
@@ -1097,6 +1098,7 @@
     function carousel() {
       var i;
       var x = document.getElementsByClassName("mySlides");
+
       for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
       }
