@@ -39,9 +39,11 @@ fetch(`${baseURL}/news/`)
     const newsCards = document.getElementById("news-cards");
     newsCards.innerHTML = "";
 
+    // Made div for Pinned cards
     const Pinned = document.createElement("div");
     Pinned.setAttribute("class", "flex flex-col gap-6 px-2 mr-2");
 
+    // Made div for unpinned cards
     const NotPinned = document.createElement("div");
     NotPinned.setAttribute(
       "class",
@@ -73,7 +75,7 @@ fetch(`${baseURL}/news/`)
               
               <p class="w-full text-lg font-semibold">
               ${
-                news.new
+                news.new || isPinned
                   ? `
                 
                 <span class="absolute -top-1 -left-1">
