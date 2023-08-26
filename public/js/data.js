@@ -1,42 +1,78 @@
 // TODO : use promise.all to fetch all data at once
-const baseURL = '/api'
+const baseURL = "/api";
 
 function dataFilter(apiData) {
-  const data = apiData.filter((n) => n.show === true)
+  const data = apiData.filter((n) => n.show === true);
   data.sort((a, b) => {
-    return b.order - a.order
-  })
-  return data
+    return b.order - a.order;
+  });
+  return data;
 }
 
+function sortByPinTrueFirst(data) {
+  const pinnedItems = [];
+  const unpinnedItems = [];
+
+  // Separate the data into pinned and unpinned arrays
+  data.forEach((item) => {
+    if (item.pin === true) {
+      pinnedItems.push(item);
+    } else {
+      unpinnedItems.push(item);
+    }
+  });
+
+  // Concatenate the pinned and unpinned arrays, placing pinned items first
+  const sortedData = pinnedItems.concat(unpinnedItems);
+
+  return sortedData;
+}
 fetch(`${baseURL}/news/`)
   .then((response) => response.json())
   .then((apiData) => {
-    const data = dataFilter(apiData)
+    // sort data by order
+    const data = dataFilter(apiData);
 
-    const newsCards = document.getElementById('news-cards')
-    newsCards.innerHTML = ''
-    data.forEach((news) => {
-      // console.log(news)
-      const newsCard = document.createElement('div')
+    // sort data by pin
+    const sortedData = sortByPinTrueFirst(data);
+
+    const newsCards = document.getElementById("news-cards");
+    newsCards.innerHTML = "";
+
+    sortedData.forEach((news) => {
+      const isPinned = news.pin === true;
+
+      // Create a div for pinned Div
+      const Pinned = document.createElement("div");
+      Pinned.setAttribute(
+        "class",
+        "bg-blue-100 z-30 sticky top-0 rounded-xl border-b-4  border-t-4 border-white"
+      );
+
+      const newsCard = document.createElement("div");
       newsCard.setAttribute(
-        'class',
-        `relative rounded-xl p-4 shadow-md odd:bg-blue-100/50 even:bg-blue-200`
-      )
+        "class",
+        ` ${
+          isPinned ? "z-50 " : "even:bg-blue-200 odd:bg-blue-100/50"
+        }  relative
+        rounded-xl p-4 shadow-md `
+      );
       newsCard.innerHTML = `
       
             <a 
-                ${news.newPage
-          ? `target = "_blank" href= "${news.pdfLink}"`
-          : `href = "/template/index.html?id=${news._id}?category=news"`
-        }
+                ${
+                  news.newPage
+                    ? `target = "_blank" href= "${news.pdfLink}"`
+                    : `href = "/template/index.html?id=${news._id}?category=news"`
+                }
             
             >
               <div class="flex flex-col items-start justify-start space-y-1 border-l-4 border-gray-800 pl-5">
               
               <p class="w-full text-lg font-semibold">
-              ${news.new
-          ? `
+              ${
+                news.new
+                  ? `
                 
                 <span class="absolute -top-1 -left-1">
                   <span class="relative flex h-3 w-3">
@@ -46,8 +82,8 @@ fetch(`${baseURL}/news/`)
                   </span>
                 </span>
                 `
-          : ''
-        }  
+                  : ""
+              }  
               ${news.title}</p>
 
                 <p class="w-full line-clamp-2">
@@ -55,15 +91,19 @@ fetch(`${baseURL}/news/`)
                 </p>
               </div
             </a>
-      `
-      newsCards.appendChild(newsCard)
-    })
-  })
+      `;
+      if (isPinned) {
+        Pinned.appendChild(newsCard);
+        Pinned.appendChild(newsCard);
+        newsCards.appendChild(Pinned);
+      } else newsCards.appendChild(newsCard);
+    });
+  });
 
 fetch(`${baseURL}/testimonial/get/all`)
   .then((response) => response.json())
   .then((apidata) => {
-    const data = dataFilter(apidata)
+    const data = dataFilter(apidata);
     // console.log(data)
     // //////////////////////
     // Original Element
@@ -81,24 +121,24 @@ fetch(`${baseURL}/testimonial/get/all`)
     const randNums = new Array(
       parseInt(Math.random() * data.length),
       parseInt(Math.random() * data.length)
-    )
-    const testimonial = document.getElementById('testimonial')
-    testimonial.innerHTML = ''
+    );
+    const testimonial = document.getElementById("testimonial");
+    testimonial.innerHTML = "";
     randNums.forEach((randNum) => {
-      const testimonialImg = document.createElement('img')
-      testimonialImg.src = data[randNum].image
+      const testimonialImg = document.createElement("img");
+      testimonialImg.src = data[randNum].image;
       testimonialImg.setAttribute(
-        'class',
-        'object-cover rounded-lg hidden md:block max-w-[8rem] md:h-full aspect-square'
-      )
-      const testimonialCard = document.createElement('div')
-      const card = document.createElement('div')
+        "class",
+        "object-cover rounded-lg hidden md:block max-w-[8rem] md:h-full aspect-square"
+      );
+      const testimonialCard = document.createElement("div");
+      const card = document.createElement("div");
       // card.href = '/alumni/alumni.html'
       card.setAttribute(
-        'class',
-        'col-start-1 row-start-1 col-end-2 row-end-2 md:mr-6 bg-white rounded-lg flex flex-col justify-center items-center md:flex-row p-5 ring-2 gap-5 ring-accent'
-      )
-      testimonialCard.setAttribute('class', 'text-xl flex flex-col gap-5')
+        "class",
+        "col-start-1 row-start-1 col-end-2 row-end-2 md:mr-6 bg-white rounded-lg flex flex-col justify-center items-center md:flex-row p-5 ring-2 gap-5 ring-accent"
+      );
+      testimonialCard.setAttribute("class", "text-xl flex flex-col gap-5");
       testimonialCard.innerHTML = `
         <div class='text-xl flex flex-col gap-5'>
           <p class="md:line-clamp-3">
@@ -118,52 +158,53 @@ fetch(`${baseURL}/testimonial/get/all`)
           </div>
 
         </div>
-      `
-      card.append(testimonialImg, testimonialCard)
+      `;
+      card.append(testimonialImg, testimonialCard);
 
-      testimonial.appendChild(card)
-    })
-  })
+      testimonial.appendChild(card);
+    });
+  });
 
 function dateManipulator(data) {
-  const date = new Date(data)
-  const year = date.getFullYear()
-  const day = date.getDate()
+  const date = new Date(data);
+  const year = date.getFullYear();
+  const day = date.getDate();
   const months = [
-    'JAN',
-    'FEB',
-    'MAR',
-    'APR',
-    'MAY',
-    'JUNE',
-    'JULY',
-    'AUG',
-    'SEPT',
-    'OCT',
-    'NOV',
-    'DEC',
-  ]
-  const month = months[date.getMonth()]
-  const FullDate = month + ' ' + day + ',' + year
-  return FullDate
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUNE",
+    "JULY",
+    "AUG",
+    "SEPT",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
+  const month = months[date.getMonth()];
+  const FullDate = month + " " + day + "," + year;
+  return FullDate;
 }
 fetch(`${baseURL}/latestEvent/get/all`)
   .then((response) => response.json())
   .then((APIdata) => {
-    const data = dataFilter(APIdata)
-    const cards = document.getElementById('cards')
-    cards.innerHTML = ''
+    const data = dataFilter(APIdata);
+    const cards = document.getElementById("cards");
+    cards.innerHTML = "";
     data.forEach((e) => {
-      const card = document.createElement('div')
-      card.setAttribute('id', 'card')
-      card.setAttribute('class', 'min-h-full')
+      const card = document.createElement("div");
+      card.setAttribute("id", "card");
+      card.setAttribute("class", "min-h-full");
       card.innerHTML = `
               
             <div
                 class="flex flex-col overflow-hidden rounded-xl bg-light-purple shadow-xl border-t-4 border-b-4 border-accent h-full w-60">
                 <div class="flex h-full w-full flex-col p-2.5">
-                  <img class="h-44 basis-full w-full object-cover rounded-lg" src="${e.image
-        }" />
+                  <img class="h-44 basis-full w-full object-cover rounded-lg" src="${
+                    e.image
+                  }" />
                   <div class="flex flex-col p-4 basis-full">
                   <div>
                     <p class="text-sm font-bold uppercase text-gray-900 opacity-50">
@@ -176,10 +217,11 @@ fetch(`${baseURL}/latestEvent/get/all`)
                     <div class="pt-5 mt-auto whitespace-nowrap">
                       <a
 
-                      ${e.newPage
-          ? `target = "_blank" href= "${e.pdfLink}"`
-          : `href = "/template/index.html?id=${e._id}?category=latestEvent"`
-        }
+                      ${
+                        e.newPage
+                          ? `target = "_blank" href= "${e.pdfLink}"`
+                          : `href = "/template/index.html?id=${e._id}?category=latestEvent"`
+                      }
                        
                       class="cursor-pointer font-medium text-sky-500 hover:text-sky-600"
                       >Read More &rarr;</a>
@@ -187,14 +229,14 @@ fetch(`${baseURL}/latestEvent/get/all`)
                   </div>
                 </div>
               </div>
-      `
-      cards.appendChild(card)
-    })
-  })
+      `;
+      cards.appendChild(card);
+    });
+  });
 fetch(`${baseURL}/researchHighlights/get/all`)
   .then((response) => response.json())
   .then((APIdata) => {
-    const data = dataFilter(APIdata)
+    const data = dataFilter(APIdata);
     // ///////////////
     // Original Element
     // ///////////////
@@ -222,19 +264,20 @@ fetch(`${baseURL}/researchHighlights/get/all`)
     //   </div>
     // </div>
 
-    const cards = document.getElementById('slides')
-    cards.innerHTML = ''
+    const cards = document.getElementById("slides");
+    cards.innerHTML = "";
     data.forEach((e) => {
-      const card = document.createElement('div')
-      card.setAttribute('id', 'card')
-      card.setAttribute('class', 'min-h-full')
+      const card = document.createElement("div");
+      card.setAttribute("id", "card");
+      card.setAttribute("class", "min-h-full");
       card.innerHTML = `
               
            <div
                 class="rounded-xl h-full bg-light-purple shadow-xl border-t-4 border-b-4 border-accent w-60">
                 <div class=" h-full w-full flex flex-col p-2.5">
-                  <img class="h-44 basis-3/5 object-cover rounded-lg" src="${e.image
-        }" />
+                  <img class="h-44 basis-3/5 object-cover rounded-lg" src="${
+                    e.image
+                  }" />
                   <div class="flex flex-col justify-between p-4 basis-2/5">
                     <p class="text-lg line-clamp-3 font-semibold text-gray-900">
                       ${e.title}
@@ -242,10 +285,11 @@ fetch(`${baseURL}/researchHighlights/get/all`)
                     <div class="mt-auto pt-5 flex whitespace-nowrap items-center justify-start space-x-3">
                       <a
 
-                      ${e.newPage
-          ? `target = "_blank" href= "${e.pdfLink}"`
-          : `href = "/template/index.html?id=${e._id}?category=researchHighlights"`
-        }
+                      ${
+                        e.newPage
+                          ? `target = "_blank" href= "${e.pdfLink}"`
+                          : `href = "/template/index.html?id=${e._id}?category=researchHighlights"`
+                      }
                        
                       class="cursor-pointer font-medium text-sky-500 hover:text-sky-600">
                       
@@ -256,10 +300,10 @@ fetch(`${baseURL}/researchHighlights/get/all`)
                 </div>
               </div>
 
-      `
-      cards.appendChild(card)
-    })
-  })
+      `;
+      cards.appendChild(card);
+    });
+  });
 fetch(`${baseURL}/administration/get/all`)
   .then((response) => response.json())
   .then((data) => {
@@ -290,13 +334,13 @@ fetch(`${baseURL}/administration/get/all`)
     //       </div>
     // </div>
 
-    const directorMessage = document.getElementById('director-message')
-    directorMessage.innerHTML = ''
-    const msg = document.createElement('div')
+    const directorMessage = document.getElementById("director-message");
+    directorMessage.innerHTML = "";
+    const msg = document.createElement("div");
     msg.setAttribute(
-      'class',
-      'flex flex-col space-y-6 rounded-lg bg-light-purple overflow-hidden shadow-md md:flex-row md:space-y-0 md:space-x-6'
-    )
+      "class",
+      "flex flex-col space-y-6 rounded-lg bg-light-purple overflow-hidden shadow-md md:flex-row md:space-y-0 md:space-x-6"
+    );
 
     // msg.setAttribute('class', 'flex flex-col')
     msg.innerHTML = `
@@ -323,46 +367,46 @@ fetch(`${baseURL}/administration/get/all`)
         <a href="https://www.nitj.ac.in/admin/director.html" class="cursor-pointer font-medium text-sky-500 hover:text-sky-600">Read All &rarr;</a>
     </div>
 </div>
-`
-    directorMessage.appendChild(msg)
-  })
+`;
+    directorMessage.appendChild(msg);
+  });
 fetch(`${baseURL}/placementStat/get/all`)
   .then((response) => response.json())
   .then((data) => {
     // console.log(data)
     data.sort((a, b) => {
-      a.order - b.order
-    })
+      a.order - b.order;
+    });
 
-    const element = document.getElementById('placement-stats')
+    const element = document.getElementById("placement-stats");
     // console.log(statsData)
     data.map((statData) => {
       // console.log(metric, stat, stat[metric])
-      const stat = document.createElement('div')
-      stat.setAttribute('class', 'number')
+      const stat = document.createElement("div");
+      stat.setAttribute("class", "number");
       stat.innerHTML = `
       <h1 class="text-5xl font-bold uppercase">${statData.placementStatValue}</h1>
       <p class="text-lg uppercase">${statData.placementStatName}</p>
-      `
-      element.appendChild(stat)
-    })
-  })
+      `;
+      element.appendChild(stat);
+    });
+  });
 
 fetch(`${baseURL}/publication`)
   .then((res) => res.json())
   .then((apidata) => {
-    const data = dataFilter(apidata)
+    const data = dataFilter(apidata);
     // console.log(data)
-    const parentDiv = document.getElementById('publication-cards')
-    parentDiv.innerHTML = ''
+    const parentDiv = document.getElementById("publication-cards");
+    parentDiv.innerHTML = "";
     data.forEach((content) => {
-      const div = document.createElement('div')
-      div.setAttribute('id', 'publication-card')
+      const div = document.createElement("div");
+      div.setAttribute("id", "publication-card");
       div.innerHTML = `  
       <div id="publication-card" class="w-full flex flex-col gap-4 py-2">
             <a
             target= "_blank"
-            href="${content?.url || '#'}">
+            href="${content?.url || "#"}">
               <p>
               <p
               class = "inline font-semibold text-accent cursor-pointer">
@@ -372,33 +416,34 @@ fetch(`${baseURL}/publication`)
               </p>
             </a>
         
-          </div>`
-      content.show && parentDiv.appendChild(div)
-    })
-  })
+          </div>`;
+      content.show && parentDiv.appendChild(div);
+    });
+  });
 
 fetch(`${baseURL}/club/get/all`)
   .then((res) => res.json())
   .then((apidata) => {
     // console.log(data)
-    const data = apidata.sort((a, b) => Math.random() - 0.5)
+    const data = apidata.sort((a, b) => Math.random() - 0.5);
 
-    const parentDiv = document.getElementById('clubs-and-socs')
-    parentDiv.innerHTML = ''
+    const parentDiv = document.getElementById("clubs-and-socs");
+    parentDiv.innerHTML = "";
     data.forEach((e) => {
       // console.log(e)
       // const content = e
-      const div = document.createElement('div')
-      div.setAttribute('id', 'club-card')
+      const div = document.createElement("div");
+      div.setAttribute("id", "club-card");
       div.setAttribute(
-        'class',
-        'overflow-hidden rounded-xl bg-white w-full shadow-lg'
-      )
+        "class",
+        "overflow-hidden rounded-xl bg-white w-full shadow-lg"
+      );
       div.innerHTML = `
         <div class="flex w-full flex-col items-stretch justify-start sm:flex-row">
           <div class="w-full sm:w-2/5 bg-cover bg-center bg-no-repeat">
-          <img src ='${e.img
-        }' class="w-full h-full object-cover" alt="Club Image" />
+          <img src ='${
+            e.img
+          }' class="w-full h-full object-cover" alt="Club Image" />
           </div>
           <div class="flex flex-col p-6 w-full sm:w-3/5">
             <div class="flex flex-col items-start justify-start space-y-3">
@@ -416,20 +461,21 @@ fetch(`${baseURL}/club/get/all`)
             <div class="mt-5 flex items-center justify-start space-x-3">
               <a 
               target = "_blank"
-              href="${e?.url || '#'
-        }" class="uppercase cursor-pointer font-semibold text-sm text-sky-500">Learn more
+              href="${
+                e?.url || "#"
+              }" class="uppercase cursor-pointer font-semibold text-sm text-sky-500">Learn more
                 <span>&rarr;</span></a>
             </div>
           </div>
         </div>
-      `
-      e.show && parentDiv.appendChild(div)
-    })
-  })
+      `;
+      e.show && parentDiv.appendChild(div);
+    });
+  });
 
 // Making the cards dynamic
-var size_images = 0
-var img_arr = []
+var size_images = 0;
+var img_arr = [];
 // Fetching the images in the photo gallery
 function load_more() {
   fetch(`${baseURL}/photoGallery/`)
@@ -437,61 +483,63 @@ function load_more() {
     .then((data) => {
       // console.log(data)
 
-      const Images = data.sort((a, b) => 0.5 - Math.random())
+      const Images = data.sort((a, b) => 0.5 - Math.random());
       const images = Images.filter((img) => {
-        return img.type === 'photoGallery'
-      })
-      images.sort((a, b) => 0.5 - Math.random())
-      size_images = images.length
-      img_arr = images
+        return img.type === "photoGallery";
+      });
+      images.sort((a, b) => 0.5 - Math.random());
+      size_images = images.length;
+      img_arr = images;
       // const images = shuffledArray.slice(0,12)
       // console.log(data)
 
-      const parentDiv = document.getElementById('gallery')
-      const firstRow = document.createElement('div')
-      const secondRow = document.createElement('div')
-      const thirdRow = document.createElement('div')
-      const rows = [firstRow, secondRow, thirdRow]
-      rows.map((row) => row.setAttribute('class', 'flex h-[22vh] w-full'))
+      const parentDiv = document.getElementById("gallery");
+      const firstRow = document.createElement("div");
+      const secondRow = document.createElement("div");
+      const thirdRow = document.createElement("div");
+      const rows = [firstRow, secondRow, thirdRow];
+      rows.map((row) => row.setAttribute("class", "flex h-[22vh] w-full"));
 
-      let i = 0
-      let y = 1
+      let i = 0;
+      let y = 1;
       images.forEach((img, key) => {
         // img_arr.push(img.name)
         // img_arr.push(img.link)
         // img.link
         if (y > 12) {
-          return
+          return;
         }
         if (i > 2) {
-          i = 0
+          i = 0;
         }
 
-        const imgContainer = document.createElement('div')
-        imgContainer.classList.add('box')
+        const imgContainer = document.createElement("div");
+        imgContainer.classList.add("box");
         imgContainer.innerHTML = `
         <img class= "gallery-image" data-index="${key}" src="${img.link}" />
-        `
+        `;
 
         if (y % 4 == 0 && window.innerWidth <= 800) {
         } else {
-          rows[i].append(imgContainer)
+          rows[i].append(imgContainer);
         }
-        imgContainer.addEventListener('click', (e) => {
-          const imgSample = document.getElementById('sample-img')
+        imgContainer.addEventListener("click", (e) => {
+          const imgSample = document.getElementById("sample-img");
 
-          imgSample.src = e.srcElement.currentSrc
-          showImg()
-        })
-        i++
-        y++
-      })
-      parentDiv.append(firstRow, secondRow, thirdRow)
+          imgSample.src = e.srcElement.currentSrc;
+          showImg();
+        });
+        i++;
+        y++;
+      });
+      parentDiv.append(firstRow, secondRow, thirdRow);
     })
     .finally(() => {
-      const loadingTemplate = document.getElementById('gallery-loading-template')
-      loadingTemplate.innerHTML = ''
-    })
+      const loadingTemplate = document.getElementById(
+        "gallery-loading-template"
+      );
+      loadingTemplate.innerHTML = "";
+    });
 }
 fetch(`${baseURL}/photoGallery/`)
   .then((res) => res.json())
@@ -500,123 +548,123 @@ fetch(`${baseURL}/photoGallery/`)
 
     // const images = data.sort((a, b) => 0.5 - Math.random())
     const images = data.filter((img) => {
-      return img.type === 'photoGallery'
-    })
-    images.sort((a, b) => 0.5 - Math.random())
-    size_images = images.length
-    img_arr = images
+      return img.type === "photoGallery";
+    });
+    images.sort((a, b) => 0.5 - Math.random());
+    size_images = images.length;
+    img_arr = images;
     // const images = shuffledArray.slice(0,12)
     // console.log(data)
 
-    const parentDiv = document.getElementById('gallery')
-    const firstRow = document.createElement('div')
-    const secondRow = document.createElement('div')
-    const thirdRow = document.createElement('div')
-    const rows = [firstRow, secondRow, thirdRow]
-    rows.map((row) => row.setAttribute('class', 'flex h-[22vh] w-full'))
+    const parentDiv = document.getElementById("gallery");
+    const firstRow = document.createElement("div");
+    const secondRow = document.createElement("div");
+    const thirdRow = document.createElement("div");
+    const rows = [firstRow, secondRow, thirdRow];
+    rows.map((row) => row.setAttribute("class", "flex h-[22vh] w-full"));
 
-    let i = 0
-    let y = 1
+    let i = 0;
+    let y = 1;
     images.forEach((img, key) => {
       // img_arr.push(img.name)
       // img_arr.push(img.link)
       // img.link
       if (y > 12) {
-        return
+        return;
       }
       if (i > 2) {
-        i = 0
+        i = 0;
       }
 
-      const imgContainer = document.createElement('div')
-      imgContainer.classList.add('box')
+      const imgContainer = document.createElement("div");
+      imgContainer.classList.add("box");
       imgContainer.innerHTML = `
         <img class= "gallery-image" data-index="${key}" src="${img.link}" />
-        `
+        `;
 
       if (y % 4 == 0 && window.innerWidth <= 800) {
       } else {
-        rows[i].append(imgContainer)
+        rows[i].append(imgContainer);
       }
-      imgContainer.addEventListener('click', (e) => {
-        const imgSample = document.getElementById('sample-img')
+      imgContainer.addEventListener("click", (e) => {
+        const imgSample = document.getElementById("sample-img");
 
-        imgSample.src = e.srcElement.currentSrc
-        showImg()
-      })
-      i++
-      y++
-    })
-    parentDiv.append(firstRow, secondRow, thirdRow)
+        imgSample.src = e.srcElement.currentSrc;
+        showImg();
+      });
+      i++;
+      y++;
+    });
+    parentDiv.append(firstRow, secondRow, thirdRow);
   })
   .finally(() => {
-    const loadingTemplate = document.getElementById('gallery-loading-template')
-    loadingTemplate.innerHTML = ''
-  })
+    const loadingTemplate = document.getElementById("gallery-loading-template");
+    loadingTemplate.innerHTML = "";
+  });
 
-const crossbutton = document.getElementById('crossbutton')
-crossbutton.addEventListener('click', (e) => {
-  showImg()
-})
+const crossbutton = document.getElementById("crossbutton");
+crossbutton.addEventListener("click", (e) => {
+  showImg();
+});
 
-const arrow_forward = document.getElementById('arrow_forward')
-arrow_forward.addEventListener('click', (e) => {
-  const imgSample = document.getElementById('sample-img')
-  const imgArray = img_arr
+const arrow_forward = document.getElementById("arrow_forward");
+arrow_forward.addEventListener("click", (e) => {
+  const imgSample = document.getElementById("sample-img");
+  const imgArray = img_arr;
   for (let i = 0; i < imgArray.length; i++) {
     if (
       imgArray[i].link.toLowerCase().trim() ==
       imgSample.src.toLowerCase().trim()
     ) {
       if (i == imgArray.length - 1) {
-        imgSample.src = imgArray[0].link
+        imgSample.src = imgArray[0].link;
       } else {
-        imgSample.src = imgArray[i + 1].link
+        imgSample.src = imgArray[i + 1].link;
       }
-      break
+      break;
     }
   }
-})
-const arrow_backward = document.getElementById('arrow_back')
-arrow_backward.addEventListener('click', (e) => {
-  const imgSample = document.getElementById('sample-img')
-  const imgArray = img_arr
+});
+const arrow_backward = document.getElementById("arrow_back");
+arrow_backward.addEventListener("click", (e) => {
+  const imgSample = document.getElementById("sample-img");
+  const imgArray = img_arr;
   for (let i = 0; i < imgArray.length; i++) {
     if (
       imgArray[i].link.toLowerCase().trim() ==
       imgSample.src.toLowerCase().trim()
     ) {
       if (i == 0) {
-        imgSample.src = imgArray[imgArray.length - 1].link
+        imgSample.src = imgArray[imgArray.length - 1].link;
       } else {
-        imgSample.src = imgArray[i - 1].link
+        imgSample.src = imgArray[i - 1].link;
       }
-      break
+      break;
     }
   }
-})
+});
 
 function showImg() {
   // const body = document.getElementsByTagName('body')
-  const big_viewer = document.getElementById('big-viewer')
-  const imgSample = document.getElementById('sample-img')
-  const crossbutton = document.getElementById('crossbutton')
-  const arrow_forward = document.getElementById('arrow_forward')
-  const arrow_back = document.getElementById('arrow_back')
-  if (imgSample.classList.contains('hidden')) {
-    document.body.classList.add('overflow-hidden')
-    big_viewer.classList.remove('hidden')
-    imgSample.classList.remove('hidden')
-    crossbutton.classList.remove('hidden')
-    arrow_forward.classList.remove('hidden')
-    arrow_back.classList.remove('hidden')
+  const big_viewer = document.getElementById("big-viewer");
+  const imgSample = document.getElementById("sample-img");
+  const crossbutton = document.getElementById("crossbutton");
+  const arrow_forward = document.getElementById("arrow_forward");
+  const arrow_back = document.getElementById("arrow_back");
+  if (imgSample.classList.contains("hidden")) {
+    document.body.classList.add("overflow-hidden");
+    big_viewer.classList.remove("hidden");
+    imgSample.classList.remove("hidden");
+    crossbutton.classList.remove("hidden");
+    arrow_forward.classList.remove("hidden");
+    arrow_back.classList.remove("hidden");
   } else {
-    document.body.classList.remove('overflow-hidden')
-    big_viewer.classList.add('hidden')
-    imgSample.classList.add('hidden')
-    crossbutton.classList.add('hidden')
-    arrow_forward.classList.add('hidden')
-    arrow_back.classList.add('hidden')
+    document.body.classList.remove("overflow-hidden");
+    big_viewer.classList.add("hidden");
+    imgSample.classList.add("hidden");
+    crossbutton.classList.add("hidden");
+    arrow_forward.classList.add("hidden");
+    arrow_back.classList.add("hidden");
   }
 }
 // function hideT{his(e) {
