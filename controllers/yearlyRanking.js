@@ -7,6 +7,8 @@ exports.addYearlyRanking = async (req, res) => {
     return res.status(400).send("Error: YearlyRanking is required");
   }
 
+  const afterRank = Array.isArray(req.body?.afterRank) ? req.body?.afterRank : [];
+
   const data = new YearlyRanking({
     YearlyRanking: req.body?.YearlyRanking,
     sourceOfInfo: {
@@ -16,6 +18,7 @@ exports.addYearlyRanking = async (req, res) => {
       department: req.body?.sourceOfInfo?.department,
     },
     order: req.body?.order,
+    afterRank:afterRank,
   });
 
   data
@@ -25,8 +28,11 @@ exports.addYearlyRanking = async (req, res) => {
 };
 
 exports.showYearlyRanking = async (req, res) => {
+
+  const afterRank=Array.isArray(req.body?.afterRank) ? req.body?.afterRank : [];
+
   if (req.query.id !== undefined) {
-    YearlyRanking.find({ _id: req.query.id })
+    YearlyRanking.find({ _id: req.query.id, afterRank:afterRank })
       .then((data) => res.status(200).send(data))
       .catch((err) => res.status(400).send("Error: " + err));
   } else {
@@ -37,6 +43,9 @@ exports.showYearlyRanking = async (req, res) => {
 };
 
 exports.updateYearlyRanking = async (req, res) => {
+
+  const afterRank=Array.isArray(req.body?.afterRank) ? req.body?.afterRank : [];
+
   YearlyRanking.findByIdAndUpdate(req.params.id, {
     YearlyRanking: req.body?.YearlyRanking,
     sourceOfInfo: {
@@ -46,6 +55,7 @@ exports.updateYearlyRanking = async (req, res) => {
       department: req.body?.sourceOfInfo?.department,
     },
     order: req.body?.order,
+    afterRank:afterRank,
   })
     .then(() => {
       res.status(200).send("YearlyRanking updated successfully");
@@ -54,7 +64,10 @@ exports.updateYearlyRanking = async (req, res) => {
 };
 
 exports.deleteYearlyRanking = async (req, res) => {
-  YearlyRanking.findByIdAndUpdate(req.params.id, { $set: { show: false } })
+
+  const afterRank=Array.isArray(req.body?.afterRank) ? req.body?.afterRank : [];  
+
+  YearlyRanking.findByIdAndUpdate(req.params.id, { $set: { show: false,  afterRank:afterRank } })
     .then(() => {
       res.status(200).send("YearlyRanking deleted successfully");
     })
