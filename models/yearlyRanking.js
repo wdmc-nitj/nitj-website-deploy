@@ -66,10 +66,6 @@ YearlyRankingSchema.pre(/^findOneAndUpdate/, async function (next) {
 
   this._update["$set"].updateLogs = [...updateLogsPrevious, updateLogsNew];
 
-  if(this._update["$set"].afterRank){
-    this._update["$set"].afterRank.sort((a,b)=> a.order - b.order);
-  }
-
   next();
 });
 //Model---------------------------->
