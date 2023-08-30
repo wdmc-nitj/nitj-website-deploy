@@ -47,31 +47,28 @@ async function getNonPinnedNews() {
 }
 
 exports.getNews = async (req, res) => {
-    // if (req.query.id !== undefined) {
-    //     LatestNews.find({ _id: req.query.id })
-    //         .then((news) => res.status(200).send(news))
-    //         .catch((err) => res.status(400).send("Error: " + err));
-    // } else if (req.query.title !== undefined) {
-    //     const title = req.query.title.split("-").join(" ");
-    //     return LatestNews.find({ title: title })
-    //         .then((news) => res.status(200).send(news))
-    //         .catch((err) => res.status(400).send("Error: " + err));
-    // } else {
-        
-    //     LatestNews.find({ show: true })
-    //     .sort({ pin: -1, updatedAt: -1 })
-
-    //         .then((news) => {res.status(200).send(news)})
-    //         .catch((err) => res.status(400).send("Error: " + err));
-    // }
+    
     try {
         const pinnedNews = await getPinnedNews();
         const nonPinnedNews = await getNonPinnedNews();
 
         // Combine pinned and non-pinned news in the desired order
         const news = [...pinnedNews, ...nonPinnedNews];
-
-        res.status(200).send(news);
+        if (req.query.id !== undefined) {
+            LatestNews.find({ _id: req.query.id })
+                .then((news) => res.status(200).send(news))
+                .catch((err) => res.status(400).send("Error: " + err));
+        } else if (req.query.title !== undefined) {
+            const title = req.query.title.split("-").join(" ");
+            return LatestNews.find({ title: title })
+                .then((news) => res.status(200).send(news))
+                .catch((err) => res.status(400).send("Error: " + err));
+        } else {
+            LatestNews.find({ show: true })
+            .then((news) => {res.status(200).send(news)})
+            .catch((err) => res.status(400).send("Error: " + err));
+    }
+        // res.status(200).send(news);
     } catch (error) {
         res.status(400).send("Error: " + error);
     }
