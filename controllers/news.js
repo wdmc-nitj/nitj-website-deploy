@@ -68,7 +68,7 @@ exports.getNews = async (req, res) => {
             .then((news) => {res.status(200).send(news)})
             .catch((err) => res.status(400).send("Error: " + err));
     }
-        // res.status(200).send(news);
+        //res.status(200).send(news);
     } catch (error) {
         res.status(400).send("Error: " + error);
     }
