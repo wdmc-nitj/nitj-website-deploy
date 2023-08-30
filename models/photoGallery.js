@@ -11,7 +11,7 @@ const Schema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ["photoGallery", "history", "homePageImageSlider","shorts"],
+      enum: ["photoGallery", "history", "homePageImageSlider"],
       default: "photoGallery",
     },
     new: {

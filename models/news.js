@@ -19,10 +19,6 @@ const Schema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    pin:{
-      type:Boolean,
-      default:false,
-    },
     pdfLink: {
       type: String,
     },
