@@ -139,7 +139,7 @@
       </nav>
     </div>
 
-    <div class="lg:block">
+    <div class="hidden lg:block">
       <div class="flex flex-col items-start px-4 lg:px-[11%] lg:py-[64px] lg:gap-[48px]">
         <div class="w-[100%] flex flex-col justify-center items-center gap-[24px] lg:gap-[64px]" id="prospectus">
           <div class="basis-1/2 flex flex-row gap-[16px] lg:gap-[64px]">
@@ -205,7 +205,7 @@
           class="w-[100%] flex flex-col lg:flex-row justify-between items-center lg:items-start gap-[24px] lg:gap-[64px]"
           id="prospectus">
           <!-- <div class="basis-1/2 flex flex-row gap-[16px] lg:gap-[64px]"> -->
-          <!-- <div
+            <!-- <div
               class="w-[200px] h-[200px] lg:w-[250px] lg:h-[200px] tile1 flex flex-col justify-center items-center p-[16px] gap-[16px] text-white">
               <i class="fa-solid fa-book-open text-[1.5em] lg:text-[2em]"></i>
               <a href="https://drive.google.com/file/d/1JU4kGC64moo47D7OMwgaNIC6mNqTrsWE/view?usp=sharing"
@@ -259,26 +259,26 @@
                 </p>
               </a>
             </div> -->
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
+    
 
-
-  <script>
-    async function callAPi() {
-      let result = await fetch(
-        "/api/instituteProspectusLink/get/all"
-      );
-      result = await result.json();
-      console.log(result);
-
-      var x = `<div class="basis-1/2 flex flex-row gap-[16px] lg:gap-[64px] flex-wrap justify-center w-screen">`;
-      let i = 0;
-      for (i = 0; i < 5; i++) {
-        x += ` <div
-                      class="w-[150px] h-[130px] lg:w-[300px] lg:h-[200px] tile1 flex flex-col justify-center items-center p-[15px] gap-[12px] text-white">
+    <script>
+        async function callAPi() {
+          let result = await fetch(
+            "/api/instituteProspectusLink/get/all"
+          );
+          result = await result.json();
+          console.log(result);
+  
+          var x = `<div class="basis-1/2 flex flex-row gap-[16px] lg:gap-[64px]">`;
+          let i = 0;
+          for (i = 0; i < 3; i++) {
+            x += ` <div
+                      class="w-[150px] h-[100px] lg:w-[300px] lg:h-[200px] tile1 flex flex-col justify-center items-center p-[20px] gap-[16px] text-white" >
                       <i class="fa-solid fa-book-open text-[1.5em] lg:text-[2em]"></i>
                       <a href="${result[i].link}" target="_blank">
                           <p class="font2 font-medium lg:text-[20px] leading-[22px] text-center ">
@@ -286,12 +286,25 @@
                               <br><span class="font-bold text-lg">(${result[i].degree})</span> </p>
                       </a>
                   </div>`;
-      }
-
-      document.getElementById("prospectus").innerHTML = x;
-    }
-    callAPi();
-  </script>
+          }
+          x += `</div>
+              <div class="basis-1/2 flex flex-row gap-[16px] lg:gap-[64px]">
+              `;
+          for (i = 3; i < 5; i++) {
+            x += ` <div
+                      class="w-[150px] h-[100px] lg:w-[300px] lg:h-[200px] tile1 flex flex-col justify-center items-center p-[20px] gap-[16px] text-white" >
+                      <i class="fa-solid fa-book-open text-[1.5em] lg:text-[2em]"></i>
+                      <a href="${result[i].link}" target="_blank">
+                          <p class="font2 font-medium lg:text-[20px] leading-[22px] text-center ">
+                              ${result[i].program}
+                              <br><span class="font-bold text-lg">(${result[i].degree})</span> </p>
+                      </a>
+                  </div>`;
+          }
+          document.getElementById("prospectus").innerHTML = x;
+        }
+        callAPi();
+      </script>
   </div>
   <script src="app.js"></script>
   <script src="../template/footer.js"></script>
