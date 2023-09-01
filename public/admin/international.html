@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Student's Page</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css" />
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- font-family: 'Barlow', sans-serif;
+    font-family: 'Poppins', sans-serif; -->
+
+    <style>
+        body{
+            background-color: white;
+        }
+        /* Customizing the Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(30, 58, 138, 1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: gray;
+        }
+
+        ::-webkit-resizer {
+            background-color: #ffffff;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 300, "grad" 0, "opzs" 20;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .font2 {
+            font-family: 'Barlow', sans-serif;
+        }
+
+        :root {
+            --primary-color: #fff;
+            --background-color: #212121;
+
+            --blue-color: #0369A1;
+            --light-blue-color: #F6F6FE;
+            --purple-color: #040320;
+            --font1: 'Poppins', sans-serif;
+            --font2: 'Barlow', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        .main-body {
+            font-family: var(--font1);
+            
+        }
+
+        .titlebg {
+            background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(img/about_top.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="/template/header.js" type="module"></script>
+    <script src="/template/helper.js"></script>
+
+   <div class="main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px] lg:mb-32 ">
+
+        <div class="container flex flex-col md:flex-col gap-[32px] md:gap-[64px] mb-8 relative pt-[112px] md:pt-[144px] lg:pt-[144px]">
+            <div class="absolute z-10 h-full w-full">
+                <img src=".\img\title_std.png" class="w-[1450px]">
+            </div>
+             <div class="absolute grid grid-cols-3   h-fit w-full top-[32rem] gap-6 sm:grid-r-1">
+
+                <div class="bg-[#0369A1] z-20 m-0 relative">
+                    <div >
+                        <img src="https://www.aut.ac.nz/__data/assets/file/0020/760133/find-your-course.webp">
+                        <button class="absolute right-2 bg-white rounded-[50%] py-3 px-4  text-[#0369A1] text-xl hover:scale-105">&#9654;</button>
+
+                    </div>
+                    <div >
+                        <h1 class="text-white font-bold text-3xl p-3 mt-3">
+                            FIND YOUR COURSE
+                        </h1>
+                        <p class="text-lg p-2 text-white">Explore your study options at AUT. With over 250 university programmes, we’re sure to share your passion.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-[#0369A1] z-0">
+                    <div>
+                        <h1 class="text-white font-bold text-3xl flex  p-4 uppercase mt-28">
+                                        READY TO JOIN US?
+                        </h1>
+                        <div class="text-lg px-4 text-white">Explore your study options at AUT.</div>
+                    </div>
+                   
+                    <div class=" relative z-20">
+                        <button class="absolute right-2 bg-white rounded-[50%] py-3 px-4  text-[#0369A1] text-xl hover:scale-105">&#9654;</button>
+                        <img src="https://www.aut.ac.nz/__data/assets/file/0009/760149/ready-to-join-us.webp">
+                    </div>   
+                </div>
+
+                <div class="bg-[#0369A1] m-0 relative z-20 ">
+                    <div >
+                        <img src="https://www.aut.ac.nz/__data/assets/file/0019/760150/why-study-at-aut.webp">
+                        <button class="absolute right-2 bg-white rounded-[50%] py-3 px-4  text-[#0369A1] text-xl hover:scale-105">&#9654;</button>
+
+                    </div>
+                    <div >
+                        <h1 class="text-white font-bold text-3xl p-3 mt-3 uppercase">
+                            WHY STUDY AT NITJ?
+                        </h1>
+                        <p class="text-lg p-2 text-white" >Discover why AUT is one of the best modern universities in the world.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#0369A1]">
+                    <div>
+                        <h1 class="text-white font-bold text-3xl flex flex-row-reverse p-4 uppercase">
+                                        FEES FOR NITJ COURSES
+                        </h1>
+                        <div class="text-lg px-4 text-white">Find out about tuition fees for AUT courses and how to pay them. </div>
+                    </div>
+                   
+                    <div class="mt-16 relative">
+                        <button class="absolute left-2 bg-white rounded-[50%] py-3 px-4  text-[#0369A1] text-xl hover:scale-105">&#9654;</button>
+                        <img src="https://www.aut.ac.nz/__data/assets/file/0020/760151/international-student-photos-fees-top.webp">
+                    </div>   
+                </div>
+
+                <div class="bg-[#0369A1] m-0 relative">
+                    <div >
+                        <img src="https://www.aut.ac.nz/__data/assets/file/0007/760147/campus-and-accommodation.webp">
+                        <button class="absolute right-2 bg-white rounded-[50%] py-3 px-4  text-[#0369A1] text-xl hover:scale-105">&#9654;</button>
+
+                    </div>
+                    <div >
+                        <h1 class="text-white font-bold text-3xl p-3">
+                            CAMPUS LIFE
+                        </h1>
+                        <p class="text-lg p-2 text-white">AUT has three campuses around Auckland. Check out our locations and accommodation.</p>
+                    </div>
+                </div>
+
+                <div class="bg-[#0369A1]">
+                    <div>
+                        <h1 class="text-white font-bold text-3xl flex flex-row-reverse p-4 uppercase">
+                                        NEWS AND EVENTS
+                        </h1>
+                        <div class="text-lg px-4 text-white">Check out the latest news and upcoming events at AUT.</div>
+                    </div>
+                   
+                    <div class="mt-16 relative">
+                        <button class="absolute left-2 bg-white rounded-[50%] py-3 px-4  text-[#0369A1] text-xl hover:scale-105">&#9654;</button>
+                        <img src="https://www.aut.ac.nz/__data/assets/file/0003/760152/international-news-and-events-tile.webp">
+                    </div>   
+                </div>
+         
+             </div>
+        </div>
+        
+</div>
+<!-- <script src="/template/footer.js"></script>  -->
+</body>
+
+</html>
