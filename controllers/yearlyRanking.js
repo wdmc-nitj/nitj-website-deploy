@@ -31,6 +31,7 @@ exports.showYearlyRanking = async (req, res) => {
       .catch((err) => res.status(400).send("Error: " + err));
   } else {
     YearlyRanking.find({ show: true })
+      .sort({ order: -1 })
       .then((data) => res.status(200).send(data))
       .catch((err) => res.status(400).send("Error: " + err));
   }
