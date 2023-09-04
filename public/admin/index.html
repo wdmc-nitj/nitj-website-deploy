@@ -730,27 +730,27 @@
     }
     callAPi();
   </script>
-<script>
-  async function callAPI() {
-    let result = await fetch("/api/ranking/");
-    result = await result.json();
+  <script>
+    async function callAPI() {
+      let result = await fetch("/api/ranking/");
+      result = await result.json();
 
-    result.sort((a, b) => a.order - b.order); // Sort the result array based on the order property
+      result.sort((a, b) => a.order - b.order); // Sort the result array based on the order property
 
-    let x = "";
+      let x = "";
 
-    for (let i = 0; i < result.length; i++) {
-      x += `<div class="flex flex-row items-start gap-[16px] lg:gap-[32px]">`;
-      x += `<p class="text-accent font-bold text-[48px] lg:text-[54px] leading-[27px]">${result[i].rankingValue}</p>`;
-      x += `<p class="font-medium text-[18px] lg:text-[18px]">${result[i].rankingName}</p>`;
-      x += "</div> <br>";
+      for (let i = 0; i < result.length; i++) {
+        x += `<div class="flex flex-row items-start gap-[16px] lg:gap-[32px]">`;
+        x += `<p class="text-accent font-bold text-[48px] lg:text-[54px] leading-[27px]">${result[i].rankingValue}</p>`;
+        x += `<p class="font-medium text-[18px] lg:text-[18px]">${result[i].rankingName}</p>`;
+        x += "</div> <br>";
+      }
+
+      document.getElementById("Current_ranking").innerHTML = x;
     }
 
-    document.getElementById("Current_ranking").innerHTML = x;
-  }
-
-  callAPI();
-</script>
+    callAPI();
+  </script>
 
 
   <script>
