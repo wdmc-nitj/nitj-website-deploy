@@ -493,16 +493,10 @@ function load_more() {
     .then((data) => {
       // console.log(data)
 
-      // const images = data.sort((a, b) => 0.5 - Math.random())
-      const images = data.filter((img) => {
+      const Images = data.sort((a, b) => 0.5 - Math.random());
+      const images = Images.filter((img) => {
         return img.type === "photoGallery";
       });
-      const videos = data.filter((vid) => {
-        return vid.type === "shorts";
-      });
-      videos.sort((a, b) => 0.5 - Math.random());
-      vid_arr = videos;
-      size_videos = videos.length;
       images.sort((a, b) => 0.5 - Math.random());
       size_images = images.length;
       img_arr = images;
@@ -522,10 +516,10 @@ function load_more() {
         // img_arr.push(img.name)
         // img_arr.push(img.link)
         // img.link
-        if (y > 8) {
+        if (y > 12) {
           return;
         }
-        if (i > 1) {
+        if (i > 2) {
           i = 0;
         }
 
@@ -548,35 +542,6 @@ function load_more() {
         i++;
         y++;
       });
-      i = 3;
-      y = 9;
-      videos.forEach((vid, key) => {
-        if (i > 2) {
-          i = 0;
-        }
-        if (y > 12) return;
-        // console.log(vid.link.);
-        // const id = vid.link;
-
-        const videoContainer = document.createElement("div");
-        videoContainer.classList.add("box");
-        videoContainer.innerHTML = `
-      <iframe id="sample-short"width="220" height="${
-        parentDiv.clientHeight / 5
-      }"src="https://www.youtube.com/embed/${
-          vid.link
-        } "target="youtube-video" frameborder="0" allowfullscreen></iframe>
-      `;
-        if (y % 4 == 0 && window.innerWidth <= 800) {
-        } else {
-          rows[2].append(videoContainer);
-        }
-        videoContainer.addEventListener("click", (e) => {
-          const vidSample = document.getElementById("sample-short");
-          vidSample.src = e.srcElement.currentSrc;
-          // showImg();
-        });
-      });
       parentDiv.append(firstRow, secondRow, thirdRow);
     })
     .finally(() => {
@@ -595,12 +560,6 @@ fetch(`${baseURL}/photoGallery/`)
     const images = data.filter((img) => {
       return img.type === "photoGallery";
     });
-    const videos = data.filter((vid) => {
-      return vid.type === "shorts";
-    });
-    videos.sort((a, b) => 0.5 - Math.random());
-    vid_arr = videos;
-    size_videos = videos.length;
     images.sort((a, b) => 0.5 - Math.random());
     size_images = images.length;
     img_arr = images;
@@ -620,10 +579,10 @@ fetch(`${baseURL}/photoGallery/`)
       // img_arr.push(img.name)
       // img_arr.push(img.link)
       // img.link
-      if (y > 8) {
+      if (y > 12) {
         return;
       }
-      if (i > 1) {
+      if (i > 2) {
         i = 0;
       }
 
@@ -645,33 +604,6 @@ fetch(`${baseURL}/photoGallery/`)
       });
       i++;
       y++;
-    });
-
-    i = 3;
-    y = 9;
-
-    videos.forEach((vid, key) => {
-      if (i > 2) {
-        i = 0;
-      }
-      if (y > 12) return;
-      // console.log(vid.link.);
-      // const id = vid.link;
-
-      const videoContainer = document.createElement("div");
-      videoContainer.classList.add("box");
-      videoContainer.innerHTML = `
-      <iframe id="sample-short"width="220" height="${parentDiv.clientHeight}"src="https://www.youtube.com/embed/${vid.link} "target="youtube-video" frameborder="0" allowfullscreen></iframe>
-      `;
-      if (y % 4 == 0 && window.innerWidth <= 800) {
-      } else {
-        rows[2].append(videoContainer);
-      }
-      videoContainer.addEventListener("click", (e) => {
-        const vidSample = document.getElementById("sample-short");
-        vidSample.src = e.srcElement.currentSrc;
-        // showImg();
-      });
     });
     parentDiv.append(firstRow, secondRow, thirdRow);
   })
