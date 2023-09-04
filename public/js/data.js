@@ -646,8 +646,10 @@ fetch(`${baseURL}/photoGallery/`)
       i++;
       y++;
     });
+
     i = 3;
     y = 9;
+
     videos.forEach((vid, key) => {
       if (i > 2) {
         i = 0;
@@ -659,11 +661,7 @@ fetch(`${baseURL}/photoGallery/`)
       const videoContainer = document.createElement("div");
       videoContainer.classList.add("box");
       videoContainer.innerHTML = `
-      <iframe id="sample-short"width="220" height="${
-        parentDiv.clientHeight / 5
-      }"src="https://www.youtube.com/embed/${
-        vid.link
-      } "target="youtube-video" frameborder="0" allowfullscreen></iframe>
+      <iframe id="sample-short"width="220" height="${parentDiv.clientHeight}"src="https://www.youtube.com/embed/${vid.link} "target="youtube-video" frameborder="0" allowfullscreen></iframe>
       `;
       if (y % 4 == 0 && window.innerWidth <= 800) {
       } else {
