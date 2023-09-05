@@ -64,7 +64,6 @@
         :root {
             --primary-color: #fff;
             --background-color: #212121;
-
             --blue-color: #0369A1;
             --light-blue-color: #F6F6FE;
             --purple-color: #040320;
@@ -89,6 +88,16 @@
             background-position: center;
             background-size: cover;
         }
+
+        .deans-image {
+            border-top-left-radius: 3rem;
+            border-bottom-right-radius: 3rem;
+            border-style: solid;
+            border-color: white;
+            border-width: 0.5rem;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        }
     </style>
 </head>
 
@@ -96,31 +105,86 @@
     <script src="/template/header.js" type="module"></script>
     <script src="/template/helper.js"></script>
 
-    <div class="main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px] lg:mb-32 ">
-
-        <div class="px-4 py-8 max-w-5xl mx-auto mt-[1.5rem]">
-            <div id="cards-container" class="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div
+        class="main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px] lg:mb-32 overflow-hidden">
+        <div class="relative">
+            <img src="/admin/img/img2.png" class="aspect-video w-full md:h-[100vh] sm:[70vh]">
+            <div class="mt-6 ab flex whitespace-nowrap items-center justify-start ">
+                <a href="https://www.nitj.ac.in/admin/director.html"
+                    class="cursor-pointer font-medium text-sky-500 hover:text-sky-600 md:text-2xl ml-auto md:mr-10 mr-5">
+                    Explore
+                    &rarr;</a>
             </div>
         </div>
-
-        <!-- Card Template for all cards -->
-
-        <template id="base-card">
-            <div id="main-container"
-                class="flex justify-between bg-blue-500 rounded-md overflow-hidden hover:-translate-y-1 hover:shadow-xl transition ">
-                <div class="p-4  space-y-4 text-white">
-                    <h1 id='title' class="text-3xl font-bold"></h1>
-                    <p id='sub-title' class="text-lg"></p>
-                </div>
-
-                <div class="relative">
-                    <img class='w-full object-contain' id='image' />
-                    <button id='drop-btn'
-                        class="absolute bottom-6 right-4 rounded-full bg-white h-10 w-10 text-xl hover:scale-105 transition shadow-xl">&#9654;</button>
-                </div>
-
+    </div>
+    <!-- Deans Message Section -->
+    <div class="container mx-auto my-10">
+        <div
+            class="flex flex-col space-y-6 rounded-lg bg-light-purple overflow-hidden shadow-md md:flex-row md:space-y-0 md:space-x-6">
+            <div class="basis-4/12">
+                <img src="/admin/img/DeanImage.png"
+                    class="basis-4/12 h-[90%] w-full object-cover aspect-square my-2 mx-2 deans-image"
+                    alt="Dean's Image" />
             </div>
-        </template>
+            <div id="content" class="flex flex-col basis-8/12 space-y-4 p-6">
+                <div class="flex space-x-4 items-center justify-start group">
+                    <h1 class="text-4xl font-bold text-accent">
+                        Deans's <span class="text-dark-purple">Message</span>
+                    </h1>
+                    <span class="material-symbols-outlined group-hover:animate-shake animate-delay"
+                        style="font-size: 40px; color: var(--accent)">
+                        history_edu
+                    </span>
+                </div>
+                <h2 class="text-xl font-medium text-dark-purple ">
+                    Professor S P Singh
+                </h2>
+                <p class="text-[1.2rem] opacity-90">
+                    We are delighted to extend you a warm welcome and introduce you to the vibrant and diverse
+                    community
+                    of students,
+                    scholars, and researchers at Dr B R Ambedkar National Institute of Technology, Jalandhar (NITJ).
+                    At
+                    NITJ, we are
+                    dedicated to providing you with an exceptional education that equips you to succeed in a dynamic
+                    and
+                    ever-evolving
+                    world. We highly value the rich perspectives that international students like you bring to our
+                    campus. Your presence is
+                    not only valued but crucial to the tapestry of our community. At NITJ, we have high-end teaching
+                    and
+                    research facilities
+                    for Under Graduate and Graduate Students and I earnestly hope that you will be able to fulfill
+                    your
+                    ambitions.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="px-4 py-6 max-w-5xl mx-auto mt-[1.5rem]">
+        <div id="cards-container" class="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        </div>
+    </div>
+
+    <!-- Card Template for all cards -->
+
+    <template id="base-card">
+        <div id="main-container"
+            class="flex justify-between bg-[#0369A1] rounded-md overflow-hidden hover:-translate-y-1 hover:shadow-xl transition ">
+            <div class="p-4  space-y-4 text-white">
+                <h1 id='title' class="text-3xl font-bold"></h1>
+                <p id='sub-title' class="text-lg"></p>
+            </div>
+
+            <div class="relative">
+                <img class='w-full object-contain' id='image' />
+                <button id='drop-btn'
+                    class="absolute bottom-6 right-4 rounded-full bg-white h-10 w-10 text-xl hover:scale-105 transition shadow-xl">&#9654;</button>
+            </div>
+
+        </div>
+    </template>
 
     </div>
 
@@ -170,7 +234,30 @@
                 subtitle: "Check out the latest news and upcoming events at AUT.",
                 imageSrc:
                     "https://www.aut.ac.nz/__data/assets/file/0003/760152/international-news-and-events-tile.webp"
+            },
+            {
+                id: 4,
+                title: "Fees for NITJ Courses",
+                subtitle: "Find out about tuition fees for AUT courses and how to pay them.",
+                imageSrc:
+                    "https://www.aut.ac.nz/__data/assets/file/0020/760151/international-student-photos-fees-top.webp"
+            },
+            {
+                id: 5,
+                title: "Campus Life",
+                subtitle:
+                    "AUT has three campuses around Auckland. Check out our locations and accommodation.",
+                imageSrc:
+                    "https://www.aut.ac.nz/__data/assets/file/0007/760147/campus-and-accommodation.webp"
+            },
+            {
+                id: 6,
+                title: "News and Events",
+                subtitle: "Check out the latest news and upcoming events at AUT.",
+                imageSrc:
+                    "https://www.aut.ac.nz/__data/assets/file/0003/760152/international-news-and-events-tile.webp"
             }
+
         ];
 
         const cardTemplate = document.getElementById("base-card");
@@ -208,7 +295,7 @@
 
             else {
                 const ContentDiv = document.createElement("div");
-                ContentDiv.setAttribute("class", `row-start-${rowStart} col-span-full  p-6 h-[0] overflow-hidden shadow-xl bg-blue-500 text-white`);
+                ContentDiv.setAttribute("class", `row-start-${rowStart} col-span-full  p-6 h-[0] overflow-hidden shadow-xl bg-blue-[#0369A1] text-white`);
                 console.log(ContentDiv)
                 ContentDiv.innerHTML = `
             <h1 class="text-3xl font-bold mb-5">${card.title}</h1>
