@@ -18,6 +18,14 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -98,33 +106,43 @@
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
         }
+
+        #deans-message {
+            box-shadow: #036aa176 0px 4px 8px -2px, #036aa177 0px 0px 0px 1px;
+        }
     </style>
 </head>
+
+
 
 <body>
     <script src="/template/header.js" type="module"></script>
     <script src="/template/helper.js"></script>
 
-    <div
-        class="main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px] lg:mb-32 overflow-hidden">
+    <div class="main-body flex flex-col pt-[112px] md:pt-[144px] lg:pt-[144px] lg:mb-20 overflow-hidden">
+
         <div class="relative">
-            <img src="/admin/img/img2.png" class="aspect-video w-full md:h-[100vh] sm:[70vh]">
-            <div class="mt-6 ab flex whitespace-nowrap items-center justify-start ">
-                <a href="https://www.nitj.ac.in/admin/director.html"
-                    class="cursor-pointer font-medium text-sky-500 hover:text-sky-600 md:text-2xl ml-auto md:mr-10 mr-5">
-                    Explore
-                    &rarr;</a>
+            <div class="z-10">
+                <img src="/admin/img/international.jpg" class="w-full md:h-[100vh] h-[60vh] ">
+            </div>
+            <div class="absolute 2 z-40 bg-black  top-[50%] left-[10%]">
+                <h1>Hello</h1>
+            </div>
+            <div class="absolute z-20 top-[40%] left-[10%] ml-4 md:text-xl uppercase bg-accent rounded">
+                <a href="#cards-explore"
+                    class="md:text-xl uppercase bg-accent text-white md:px-7 py-2  px-3 font-semibold rounded-md cursor-pointer hover:bg-sky-600 transition">Explore</a>
             </div>
         </div>
+
+
     </div>
     <!-- Deans Message Section -->
-    <div class="container mx-auto my-10">
-        <div
-            class="flex flex-col space-y-6 rounded-lg bg-light-purple overflow-hidden shadow-md md:flex-row md:space-y-0 md:space-x-6">
-            <div class="basis-4/12">
+    <div class="container mb-20">
+        <div id="deans-message"
+            class="flex flex-col space-y-8 rounded-lg items-center bg-light-purple overflow-hidden shadow-md md:flex-row md:space-y-0 md:space-x-6 p-1">
+            <div>
                 <img src="/admin/img/DeanImage.png"
-                    class="basis-4/12 h-[90%] w-full object-cover aspect-square my-2 mx-2 deans-image"
-                    alt="Dean's Image" />
+                    class="basis-4/12 md:h-[17rem] object-cover  m-2 mx-2 deans-image h-[12rem]" alt="Dean's Image" />
             </div>
             <div id="content" class="flex flex-col basis-8/12 space-y-4 p-6">
                 <div class="flex space-x-4 items-center justify-start group">
@@ -136,10 +154,10 @@
                         history_edu
                     </span>
                 </div>
-                <h2 class="text-xl font-medium text-dark-purple ">
+                <h2 class="text-xl font-medium text-dark-purple">
                     Professor S P Singh
                 </h2>
-                <p class="text-[1.2rem] opacity-90">
+                <p id="hidden-paragraph" class="text-[1rem] opacity-90 line-clamp-3">
                     We are delighted to extend you a warm welcome and introduce you to the vibrant and diverse
                     community
                     of students,
@@ -158,11 +176,13 @@
                     your
                     ambitions.
                 </p>
+                <a id="read-more-link" class="cursor-pointer font-medium text-sky-500 hover:text-sky-600">Read All
+                    &rarr;</a></span>
             </div>
         </div>
     </div>
 
-    <div class="px-4 py-6 max-w-5xl mx-auto mt-[1.5rem]">
+    <div id="cards-explore" class="px-4 py-6  mx-auto mt-[1.5rem] mb-12 container">
         <div id="cards-container" class="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         </div>
     </div>
@@ -234,100 +254,153 @@
                 subtitle: "Check out the latest news and upcoming events at AUT.",
                 imageSrc:
                     "https://www.aut.ac.nz/__data/assets/file/0003/760152/international-news-and-events-tile.webp"
-            },
-            {
-                id: 4,
-                title: "Fees for NITJ Courses",
-                subtitle: "Find out about tuition fees for AUT courses and how to pay them.",
-                imageSrc:
-                    "https://www.aut.ac.nz/__data/assets/file/0020/760151/international-student-photos-fees-top.webp"
-            },
-            {
-                id: 5,
-                title: "Campus Life",
-                subtitle:
-                    "AUT has three campuses around Auckland. Check out our locations and accommodation.",
-                imageSrc:
-                    "https://www.aut.ac.nz/__data/assets/file/0007/760147/campus-and-accommodation.webp"
-            },
-            {
-                id: 6,
-                title: "News and Events",
-                subtitle: "Check out the latest news and upcoming events at AUT.",
-                imageSrc:
-                    "https://www.aut.ac.nz/__data/assets/file/0003/760152/international-news-and-events-tile.webp"
             }
-
         ];
 
         const cardTemplate = document.getElementById("base-card");
         const cardsContainer = document.getElementById("cards-container");
+        const hiddenDivs = {}; // Store hidden divs by their IDs
 
-
-        let currentContent = null;
         let currentid = -1;
 
-        /// Animation for card opening Div //
-        const increaseHeightKeyframes = [
-            { height: '0%' },
-            { height: '100%' }
-        ];
-
-        const increaseHeightTiming = {
-            duration: 500, // Animation duration in milliseconds
-            easing: 'ease-out', // Easing function
-            fill: 'forwards' // Keeps the final state after the animation
-        };
-
-        function handleClick(id) {
-            if (window.innerWidth <= 639) return;
-            const NumCard = window.innerWidth >= 600 && window.innerWidth < 768 ? 2 : 3;
-
+        function toggleHiddenDiv(id) {
+            let NumCard;
+            if (window.innerWidth <= 639) NumCard = 1;
+            else if (window.innerWidth >= 600 && window.innerWidth < 768) NumCard = 2;
+            else NumCard = 3;
             let rowStart = Math.ceil((id / NumCard)) + 1;
-            const card = cardData.find(c => c.id === id);
 
+            const card = cardData.find(c => c.id === id);
+            const button = document.getElementById(`drop-btn-${id}`);
+            const hiddenDivId = `hidden-div-${id}`;
 
             if (currentid === id) {
-                cardsContainer.removeChild(currentContent)
-                currentContent = null;
+                // Hide the currently open div
+                const HideenDivId = document.getElementById(hiddenDivId)
+                HideenDivId.style.display = "none";
+
                 currentid = -1;
-            }
-
-            else {
-                const ContentDiv = document.createElement("div");
-                ContentDiv.setAttribute("class", `row-start-${rowStart} col-span-full  p-6 h-[0] overflow-hidden shadow-xl bg-blue-[#0369A1] text-white`);
-                console.log(ContentDiv)
-                ContentDiv.innerHTML = `
-            <h1 class="text-3xl font-bold mb-5">${card.title}</h1>
-            <p class="text-lg opacity-90">${card.subtitle}</p>
-            `;
-
-                if (currentContent) {
-                    cardsContainer.removeChild(currentContent)
+            } else {
+                // Hide the currently open div (if any)
+                if (currentid !== -1) {
+                    document.getElementById(`hidden-div-${currentid}`).style.display = "none";
                 }
 
-                currentContent = ContentDiv;
-                cardsContainer.appendChild(ContentDiv);
-                ContentDiv.animate(increaseHeightKeyframes, increaseHeightTiming);
+                // Show the hidden div for this card
+                const hiddenDiv = document.getElementById(hiddenDivId);
+                hiddenDiv.style.display = "block";
+                hiddenDiv.style.gridColumn = "span 1 / span -1"; // Adjust col-span values as needed
+                hiddenDiv.style.gridRow = rowStart;
+
                 currentid = id;
             }
         }
 
-        cardData.map((data) => {
+
+        cardData.forEach((data) => {
             const newCard = cardTemplate.content.cloneNode(true);
             newCard
                 .getElementById("main-container")
-                .classList.add(data.id % 2 == 0 ? "flex-col" : "flex-col-reverse");
+                .classList.add(data.id % 2 === 0 ? "flex-col" : "flex-col-reverse");
             newCard.getElementById("title").innerText = data.title;
             newCard.getElementById("sub-title").innerText = data.subtitle;
             newCard.getElementById("image").src = data.imageSrc;
-            newCard.getElementById("drop-btn").addEventListener("click", () => handleClick(data.id));
+            const dropBtn = newCard.getElementById("drop-btn");
+            const hiddenDivId = `hidden-div-${data.id}`;
+            hiddenDivs[data.id] = hiddenDivId;
+
+            dropBtn.id = `drop-btn-${data.id}`; // Add a unique ID to each button
+            dropBtn.addEventListener("click", () => toggleHiddenDiv(data.id));
             cardsContainer.append(newCard);
+
+            // Add hidden divs below each card
+            const hiddenDiv = document.createElement("div");
+            hiddenDiv.setAttribute("class", `row-start-2 col-span-full p-3 bg-[#0369A1] text-white`);
+            hiddenDiv.id = hiddenDivId;
+            hiddenDiv.style.display = "none"; // Initially hide the div
+            hiddenDiv.innerHTML = `
+    <h1 class="text-3xl font-bold mb-5 ">${data.title} Content</h1>
+    <p class="text-lg opacity-90">${data.subtitle}</p>
+  `;
+            cardsContainer.appendChild(hiddenDiv);
         });
 
 
 
+
+
+        // const cardTemplate = document.getElementById("base-card");
+        // const cardsContainer = document.getElementById("cards-container");
+
+
+        // let currentContent = null;
+        // let currentid = -1;
+
+        // /// Animation for card opening Div //
+        // const increaseHeightKeyframes = [
+        //     { height: '0%' },
+        //     { height: '100%' }
+        // ];
+
+        // const increaseHeightTiming = {
+        //     duration: 500, // Animation duration in milliseconds
+        //     easing: 'ease-out', // Easing function
+        //     fill: 'forwards' // Keeps the final state after the animation
+        // };
+
+        // function handleClick(id) {
+
+        //     const ContentDiv = document.createElement("div");
+        //     ContentDiv.setAttribute("class", "hidden");
+        //     ContentDiv.setAttribute("id", "content")
+
+        //     let NumCard;
+        //     if (window.innerWidth <= 639) NumCard = 1;
+        //     else NumCard = window.innerWidth >= 600 && window.innerWidth < 768 ? 2 : 3;
+
+        //     let rowStart = Math.ceil((id / NumCard)) + 1;
+        //     const card = cardData.find(c => c.id === id);
+
+
+        //     if (currentid === id) {
+        //         cardsContainer.removeChild(currentContent)
+        //         currentContent = null;
+        //         currentid = -1;
+        //     }
+
+
+        //     else {
+        //         ContentDiv.innerHTML = `
+        //     <h1 class="text-3xl font-bold mb-5">${card.title}</h1>
+        //     <p class="text-lg opacity-90">${card.subtitle}</p>
+        //     `;
+
+        //         if (currentContent) {
+        //             cardsContainer.removeChild(currentContent)
+        //         }
+
+        //         currentContent = ContentDiv;
+        //         cardsContainer.append(ContentDiv);
+        //         ContentDiv.setAttribute("class", `row-start-${rowStart} col-span-full  p-6 h-[0] overflow-hidden shadow-xl bg-[#0369A1] text-white`);
+        //         console.log(ContentDiv)
+        //         ContentDiv.animate(increaseHeightKeyframes, increaseHeightTiming);
+        //         currentid = id;
+        //     }
+
+        //     const ContentDivCards = document.getElementById("content")
+        //     ContentDivCards.setAttribute("class", `row-start-${rowStart}`)
+        // }
+
+        // For show more Dirctor message
+        var hiddenParagraph = document.getElementById('hidden-paragraph');
+        document.getElementById('read-more-link').addEventListener('click', function () {
+            hiddenParagraph.classList.toggle('line-clamp-3'); // Toggle the 'line-clamp-3' class
+        });
+
     </script>
+    <script src="/js/footer.js"></script>
+    <script src="/template/footer.js"></script>
+    <script src="/template/helper.js"></script>
 </body>
 
 </html>
