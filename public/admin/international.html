@@ -118,26 +118,31 @@
 <body>
     <script src="/template/header.js" type="module"></script>
     <script src="/template/helper.js"></script>
-
+    <div class="container mb-20">
     <div class="main-body flex flex-col pt-[112px] md:pt-[144px] lg:pt-[144px] lg:mb-20 overflow-hidden">
-
+        <div class=" absolute z-20 top-[50%] text-4xl text-white">
+            <h1> Welcome to India! Namaste!</h1>   
+            </div> 
         <div class="relative">
             <div class="z-10">
-                <img src="/admin/img/international.jpg" class="w-full md:h-[100vh] h-[60vh] ">
+                <img src="/admin/img/international.jpg" class="w-80 md:h-[100vh] h-[60vh] ">
             </div>
-            <div class="absolute 2 z-40 bg-black  top-[50%] left-[10%]">
-                <h1>Hello</h1>
-            </div>
-            <div class="absolute z-20 top-[40%] left-[10%] ml-4 md:text-xl uppercase bg-accent rounded">
+                
+              
+            <div class="absolute z-20 top-[50%] left-[10%] ml-4 md:text-xl uppercase bg-accent rounded">
                 <a href="#cards-explore"
-                    class="md:text-xl uppercase bg-accent text-white md:px-7 py-2  px-3 font-semibold rounded-md cursor-pointer hover:bg-sky-600 transition">Explore</a>
+                    class="md:text-xl uppercase bg-accent text-white md:px-7 py-2  px-3 font-semibold rounded-md cursor-pointer hover:bg-sky-200 transition">Explore</a>
             </div>
+    
         </div>
-
+        <div id="deans-message"
+            class="flex flex-col space-y-8 rounded-lg items-center bg-light-purple overflow-hidden md:flex-row">
+             <h1> Welcome to NITJ (Dr. B. R. Ambedkar National Institute of Technology) in Jalandhar, India! We're excited to have international students to join our esteemed institute for their education journey. NITJ is renowned for its exceptional academic programs and dedication to nurturing talent, innovation, and research. Our institution is committed to providing top-notch education and fostering a vibrant multicultural environment. With a rich history and a commitment to excellence, NITJ is an ideal place for you to pursue your academic and personal aspirations. Feel free to explore the wide range of academic disciplines, engage with our experienced faculty members, and immerse yourself in the vibrant campus life that NITJ offers.  </h1>
+        </div>      
 
     </div>
     <!-- Deans Message Section -->
-    <div class="container mb-20">
+  
         <div id="deans-message"
             class="flex flex-col space-y-8 rounded-lg items-center bg-light-purple overflow-hidden shadow-md md:flex-row md:space-y-0 md:space-x-6 p-1">
             <div>
@@ -147,7 +152,7 @@
             <div id="content" class="flex flex-col basis-8/12 space-y-4 p-6">
                 <div class="flex space-x-4 items-center justify-start group">
                     <h1 class="text-4xl font-bold text-accent">
-                        Deans's <span class="text-dark-purple">Message</span>
+                        Message from <span class="text-dark-purple">Dean International Affairs</span>
                     </h1>
                     <span class="material-symbols-outlined group-hover:animate-shake animate-delay"
                         style="font-size: 40px; color: var(--accent)">
@@ -254,6 +259,27 @@
                 subtitle: "Check out the latest news and upcoming events at AUT.",
                 imageSrc:
                     "https://www.aut.ac.nz/__data/assets/file/0003/760152/international-news-and-events-tile.webp"
+            },
+            {
+                id: 7,
+                title: "News and Events",
+                subtitle: "Check out the latest news and upcoming events at AUT.",
+                imageSrc:
+                    "https://www.aut.ac.nz/__data/assets/file/0003/760152/international-news-and-events-tile.webp"
+            },
+            {
+                id: 8,
+                title: "News and Events",
+                subtitle: "Check out the latest news and upcoming events at AUT.",
+                imageSrc:
+                    "https://www.aut.ac.nz/__data/assets/file/0003/760152/international-news-and-events-tile.webp"
+            },
+            {
+                id: 9,
+                title: "News and Events",
+                subtitle: "Check out the latest news and upcoming events at AUT.",
+                imageSrc:
+                    "https://www.aut.ac.nz/__data/assets/file/0003/760152/international-news-and-events-tile.webp"
             }
         ];
 
@@ -315,7 +341,7 @@
 
             // Add hidden divs below each card
             const hiddenDiv = document.createElement("div");
-            hiddenDiv.setAttribute("class", `row-start-2 col-span-full p-3 bg-[#0369A1] text-white`);
+            hiddenDiv.setAttribute("class", `row-start-2 col-span-full p-3 bg-accent text-white`);
             hiddenDiv.id = hiddenDivId;
             hiddenDiv.style.display = "none"; // Initially hide the div
             hiddenDiv.innerHTML = `
