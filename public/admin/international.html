@@ -159,57 +159,32 @@
                         history_edu
                     </span>
                 </div>
-                <h2 class="text-xl font-medium text-dark-purple">
-                    Professor S P Singh
-                </h2>
-                <p id="hidden-paragraph" class="text-[1rem] opacity-90 line-clamp-3">
-                    We are delighted to extend you a warm welcome and introduce you to the vibrant and diverse
-                    community
-                    of students,
-                    scholars, and researchers at Dr B R Ambedkar National Institute of Technology, Jalandhar (NITJ).
-                    At
-                    NITJ, we are
-                    dedicated to providing you with an exceptional education that equips you to succeed in a dynamic
-                    and
-                    ever-evolving
-                    world. We highly value the rich perspectives that international students like you bring to our
-                    campus. Your presence is
-                    not only valued but crucial to the tapestry of our community. At NITJ, we have high-end teaching
-                    and
-                    research facilities
-                    for Under Graduate and Graduate Students and I earnestly hope that you will be able to fulfill
-                    your
-                    ambitions.
-                </p>
-                <a id="read-more-link" class="cursor-pointer font-medium text-sky-500 hover:text-sky-600">Read All
-                    &rarr;</a></span>
             </div>
         </div>
-    </div>
 
-    <div id="cards-explore" class="px-4 py-6  mx-auto mt-[1.5rem] mb-12 container">
-        <div id="cards-container" class="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        </div>
-    </div>
-
-    <!-- Card Template for all cards -->
-
-    <template id="base-card">
-        <div id="main-container"
-            class="flex justify-between bg-[#0369A1] rounded-md overflow-hidden hover:-translate-y-1 hover:shadow-xl transition ">
-            <div class="p-4  space-y-4 text-white">
-                <h1 id='title' class="text-3xl font-bold"></h1>
-                <p id='sub-title' class="text-lg"></p>
+        <div id="cards-explore" class="px-4 py-6  mx-auto mt-[1.5rem] mb-12 container">
+            <div id="cards-container" class="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             </div>
-
-            <div class="relative">
-                <img class='w-full object-contain' id='image' />
-                <button id='drop-btn'
-                    class="absolute bottom-6 right-4 rounded-full bg-white h-10 w-10 text-xl hover:scale-105 transition shadow-xl">&#9654;</button>
-            </div>
-
         </div>
-    </template>
+
+        <!-- Card Template for all cards -->
+
+        <template id="base-card">
+            <div id="main-container"
+                class="flex justify-between bg-[#0369A1] rounded-md overflow-hidden hover:-translate-y-1 hover:shadow-xl transition ">
+                <div class="p-4  space-y-4 text-white">
+                    <h1 id='title' class="text-3xl font-bold"></h1>
+                    <p id='sub-title' class="text-lg"></p>
+                </div>
+
+                <div class="relative">
+                    <img class='w-full object-contain' id='image' />
+                    <button id='drop-btn'
+                        class="absolute bottom-6 right-4 rounded-full bg-white h-10 w-10 text-xl hover:scale-105 transition shadow-xl">&#9654;</button>
+                </div>
+
+            </div>
+        </template>
 
     </div>
 
@@ -341,6 +316,7 @@
 
             // Add hidden divs below each card
             const hiddenDiv = document.createElement("div");
+
             hiddenDiv.setAttribute("class", `row-start-2 col-span-full p-3 bg-accent text-white`);
             hiddenDiv.id = hiddenDivId;
             hiddenDiv.style.display = "none"; // Initially hide the div
