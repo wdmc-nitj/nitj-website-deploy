@@ -22,7 +22,7 @@ const getByIdFaculty = async (req, res) => {
 
 const getByDeptFaculty = async (req, res) => {
     try {
-        const result = await DeptWiseFaculty.find({ department: req.params.dept }).populate('faculty.ID', 'name address img position education_qualification address gender email dob father_name designation nationality book_publications conference_publications admin_responsibility patent phd_dissertion phd_supervised awards affiliations research_profile research_project personal_link journal event sourceOfInfo order');
+        const result = await DeptWiseFaculty.find({ department: req.params.dept, show: true }).populate('faculty.ID', 'name address img position education_qualification address gender email dob father_name designation nationality book_publications conference_publications admin_responsibility patent phd_dissertion phd_supervised awards affiliations research_profile research_project personal_link journal event sourceOfInfo order');
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json("Error: " + error);
