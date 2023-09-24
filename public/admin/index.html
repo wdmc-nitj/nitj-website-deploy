@@ -23,34 +23,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-  <!-- font-family: 'Barlow', sans-serif;
-    font-family: 'Poppins', sans-serif; -->
 
   <style>
-    /* Customizing the Scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: rgba(30, 58, 138, 1);
-      border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background-color: gray;
-    }
-
-    ::-webkit-resizer {
-      background-color: #ffffff;
-    }
-
     .material-symbols-outlined {
       font-variation-settings: "FILL" 0, "wght" 300, "grad" 0, "opzs" 20;
-    }
-
-    ::-webkit-scrollbar {
-      width: 4px;
     }
 
     .font2 {
@@ -476,7 +452,7 @@
 
 
   <script src="app.js"></script>
-  <script src="../template/footer.js"></script>
+  <script defer src="/template/footer.js"></script>
 
   <script>
     async function callAPi() {
@@ -730,27 +706,27 @@
     }
     callAPi();
   </script>
-<script>
-  async function callAPI() {
-    let result = await fetch("/api/ranking/");
-    result = await result.json();
+  <script>
+    async function callAPI() {
+      let result = await fetch("/api/ranking/");
+      result = await result.json();
 
-    result.sort((a, b) => a.order - b.order); // Sort the result array based on the order property
+      result.sort((a, b) => a.order - b.order); // Sort the result array based on the order property
 
-    let x = "";
+      let x = "";
 
-    for (let i = 0; i < result.length; i++) {
-      x += `<div class="flex flex-row items-start gap-[16px] lg:gap-[32px]">`;
-      x += `<p class="text-accent font-bold text-[48px] lg:text-[54px] leading-[27px]">${result[i].rankingValue}</p>`;
-      x += `<p class="font-medium text-[18px] lg:text-[18px]">${result[i].rankingName}</p>`;
-      x += "</div> <br>";
+      for (let i = 0; i < result.length; i++) {
+        x += `<div class="flex flex-row items-start gap-[16px] lg:gap-[32px]">`;
+        x += `<p class="text-accent font-bold text-[48px] lg:text-[54px] leading-[27px]">${result[i].rankingValue}</p>`;
+        x += `<p class="font-medium text-[18px] lg:text-[18px]">${result[i].rankingName}</p>`;
+        x += "</div> <br>";
+      }
+
+      document.getElementById("Current_ranking").innerHTML = x;
     }
 
-    document.getElementById("Current_ranking").innerHTML = x;
-  }
-
-  callAPI();
-</script>
+    callAPI();
+  </script>
 
 
   <script>

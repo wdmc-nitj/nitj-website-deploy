@@ -75,7 +75,7 @@ module.exports.createSession = async function (req, res) {
           });
           session.save((err, id) => {
             return res
-              .redirect(`${url}/Home/${id.id}?redirect=${User[0]?._id}`);
+              .redirect(`${url}/Home/${id.id}`);
           });
         } else {
           return res.redirect(
