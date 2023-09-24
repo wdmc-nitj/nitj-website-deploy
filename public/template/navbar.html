@@ -30,8 +30,8 @@
 <header class="fixed bg-white top-0 right-0 left-0 z-40">
   <!-- TOP NAV BAR stats -->
   <div id="top_bar"
-    class="absolute top-0 right-0 left-0 transition-transform delay-200 h-7 bg-accent py-0.5 px-2 sm:px-12 text-xs uppercase text-white shadow-md">
-    <div class="container flex flex-row justify-between">
+    class="absolute top-0 right-0 left-0 transition-transform delay-200 h-7 bg-accent py-0.5 px-2 sm:px-12 text-xs uppercase text-white shadow-md z-10">
+    <div class="max-w-7xl mx-auto px-4 lg:px-0 flex flex-row justify-between">
       <div class="basis-1/2">
         <div class="flex flex-row justify-center gap-4 sm:gap-6">
           <a href="/research/jobs.html">
@@ -180,9 +180,9 @@
   <!-- top nav bar ends -->
   <!-- INSTITUTE LOGO & NAME starts -->
   <div id="instituteNameContainer"
-    class="relative sm:px-0 px-20 sm:w-full container p-0 left-[10px] sm:left-0 h-14 max-h-14 sm:h-20 sm:max-h-20">
-    <div class="mySlides mt-7">
-      <div class="align-center flex flex-row justify-end sm:justify-between bg-white py-2.5">
+    class="relative sm:px-0 px-20 sm:w-full container p-0 left-[10px] sm:left-0 grid grid-cols-1 grid-rows-1">
+    <div class="mySlides mt-7 col-start-1 row-start-1">
+      <div class="align-center flex flex-row justify-end sm:justify-between py-2.5">
         <div
           class="institute_name sm:max-w-lg sm:basis-1/2 justify-start text-center sm:text-lg font-semibold uppercase hidden sm:block">
           <p>Dr B R AMBEDKAR NATIONAL INSTITUTE OF TECHNOLOGY JALANDHAR</p>
@@ -193,8 +193,8 @@
         </div>
       </div>
     </div>
-    <div class="mySlides mt-7">
-      <div class="align-center flex flex-row justify-end sm:justify-between bg-white py-2.5">
+    <div class="mySlides mt-7 col-start-1 row-start-1">
+      <div class="align-center flex flex-row justify-end sm:justify-between py-2.5">
         <div
           class="institute_name sm:max-w-lg sm:basis-1/2 justify-center px-16 text-center sm:text-xl font-bold uppercase hidden sm:block">
           <p>डॉ बी आर अम्बेडकर राष्ट्रीय प्रौद्योगिकी संस्थान जालंधर</p>
@@ -205,8 +205,8 @@
         </div>
       </div>
     </div>
-    <div class="mySlides mt-7">
-      <div class="align-center flex flex-row justify-end sm:justify-between bg-white py-2.5">
+    <div class="mySlides mt-7 col-start-1 row-start-1">
+      <div class="align-center flex flex-row justify-end sm:justify-between py-2.5">
         <div
           class="institute_name sm:max-w-lg sm:basis-1/2 justify-center px-8 text-center sm:text-xl font-bold uppercase hidden sm:block">
           <p>ਡਾ ਬੀ ਆਰ ਅੰਬੇਡਕਰ ਨੈਸ਼ਨਲ ਇੰਸਟੀਚਿਊਟ ਟੈਕਨਾਲੋਜੀ ਜਲੰਧਰ</p>
@@ -227,7 +227,7 @@
   </div>
   <a href="/index.html">
     <div id="logo_250"
-      class="absolute h-[120px] aspect-square left-[50px] sm:left-1/2 scale-[0.40] sm:scale-100 -translate-y-1/3 top-9 sm:top-7 sm:translate-y-0 z-40 -translate-x-1/2 sm:py-0">
+      class="absolute h-[120px] aspect-square left-[50px] sm:left-1/2 scale-[0.40] origin-center sm:origin-top sm:scale-100 sm:top-7 sm:translate-y-0 z-40 -translate-x-1/2 sm:py-0 transition-all">
       <img src="/public/assets/images/logo_250.png" alt="" />
     </div>
   </a>
