@@ -14,6 +14,36 @@
     --accent-orange: hsla(12, 87%, 56%, 1);
   }
 
+  /* Customizing the Scrollbar */
+
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'grad' 0, 'opzs' 48;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-resizer {
+    background-color: #ffffff;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: hsla(201, 96%, 26%);
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #212121;
+  }
+
   sub,
   sup {
     font-size: 50%;

@@ -88,6 +88,7 @@ const { filter } = require("compression");
 const specialCentres = require("./models/specialCentres");
 const curriculum = require("./models/curriculum");
 const examSchedule = require("./models/examSchedule");
+const deptwiseFaculty = require("./models/deptwiseFaculty");
 
 const canModifyUsers = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
@@ -2258,12 +2259,10 @@ const AdminBroOptions = {
               if (currentAdmin.role === "admin") {
                 return [
                   "_id",
-                  "department",
                   "name",
                   "email",
                   "password",
                   "img",
-                  "position",
                   "education_qualification",
                   "address",
                   "gender",
@@ -2284,7 +2283,6 @@ const AdminBroOptions = {
                   "event",
                   "sourceOfInfo",
                   "show",
-                  "order",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
@@ -2295,8 +2293,6 @@ const AdminBroOptions = {
                 "name",
                 "email",
                 "img",
-                "position",
-                "department",
                 "education_qualification",
                 "address",
                 "gender",
@@ -2339,12 +2335,10 @@ const AdminBroOptions = {
               if (currentAdmin.role === "admin") {
                 return [
                   "_id",
-                  "department",
                   "name",
                   "email",
                   "password",
                   "img",
-                  "position",
                   "education_qualification",
                   "address",
                   "gender",
@@ -2365,7 +2359,6 @@ const AdminBroOptions = {
                   "event",
                   "sourceOfInfo",
                   "show",
-                  "order",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
@@ -2376,8 +2369,6 @@ const AdminBroOptions = {
                 "name",
                 "email",
                 "img",
-                "position",
-                "department",
                 "address",
                 "gender",
                 "dob",
@@ -2406,12 +2397,10 @@ const AdminBroOptions = {
               if (currentAdmin.role === "admin") {
                 return [
                   "_id",
-                  "department",
                   "name",
                   "email",
                   "password",
                   "img",
-                  "position",
                   "education_qualification",
                   "address",
                   "gender",
@@ -2432,7 +2421,6 @@ const AdminBroOptions = {
                   "event",
                   "sourceOfInfo",
                   "show",
-                  "order",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
@@ -2443,8 +2431,6 @@ const AdminBroOptions = {
                 "name",
                 "email",
                 "img",
-                "position",
-                "department",
                 "address",
                 "gender",
                 "dob",
@@ -2473,12 +2459,10 @@ const AdminBroOptions = {
               if (currentAdmin.role === "admin") {
                 return [
                   "_id",
-                  "department",
                   "name",
                   "email",
                   "password",
                   "img",
-                  "position",
                   "education_qualification",
                   "address",
                   "gender",
@@ -2499,7 +2483,6 @@ const AdminBroOptions = {
                   "event",
                   "sourceOfInfo",
                   "show",
-                  "order",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
@@ -2511,7 +2494,6 @@ const AdminBroOptions = {
                 "email",
                 "img",
                 "position",
-                "department",
                 "address",
                 "gender",
                 "dob",
@@ -2540,12 +2522,10 @@ const AdminBroOptions = {
               if (currentAdmin.role === "admin") {
                 return [
                   "_id",
-                  "department",
                   "name",
                   "email",
                   "password",
                   "img",
-                  "position",
                   "education_qualification",
                   "address",
                   "gender",
@@ -2566,7 +2546,6 @@ const AdminBroOptions = {
                   "event",
                   "sourceOfInfo",
                   "show",
-                  "order",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
@@ -2577,8 +2556,6 @@ const AdminBroOptions = {
                 "name",
                 "email",
                 "img",
-                "position",
-                "department",
                 "address",
                 "gender",
                 "dob",
@@ -2607,12 +2584,10 @@ const AdminBroOptions = {
               if (currentAdmin.role === "admin") {
                 return [
                   "_id",
-                  "department",
                   "name",
                   "email",
                   "password",
                   "img",
-                  "position",
                   "education_qualification",
                   "address",
                   "gender",
@@ -2633,7 +2608,6 @@ const AdminBroOptions = {
                   "event",
                   "sourceOfInfo",
                   "show",
-                  "order",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
@@ -2644,8 +2618,6 @@ const AdminBroOptions = {
                 "name",
                 "email",
                 "img",
-                "position",
-                "department",
                 "address",
                 "gender",
                 "dob",
@@ -2833,6 +2805,13 @@ const AdminBroOptions = {
       resource: StudentTeam,
       options: {
         navigation: "Home",
+        actions: { list: { isAccessible: isAdmin } },
+      },
+    },
+    {
+      resource: deptwiseFaculty,
+      options: {
+        navigation: "Faculty",
         actions: { list: { isAccessible: isAdmin } },
       },
     },
