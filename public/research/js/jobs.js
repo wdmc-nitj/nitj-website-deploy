@@ -25,7 +25,7 @@ fetch(`${data_url}` + `/recruitments/updates/defaultTab`)
       const nonfaculty = document.getElementById("nonfacultyButton");
       nonfaculty.click()
     }
-    else if (update.defaultTabName === "nonFaculty-contract" && slug[slug.length - 1] !== "research") {
+    else if (update.defaultTabName === "nonFacultyContract" && slug[slug.length - 1] !== "research") {
       const nonfacultycontract = document.getElementById("nonfacultycontractButton");
       nonfacultycontract.click()
     }
