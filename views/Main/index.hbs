@@ -1,0 +1,331 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/x-icon" href="/img/favicon-16x16.png" />
+  <title>TPO - NITJ</title>
+  <style>
+    .tpo {
+      background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(../img/bg_img.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    #btn-back-to-top {
+      position: fixed;
+      display: none;
+    }
+
+    /* Custom CSS for the bottom slider */
+.bottom-slider {
+  
+    width: 100%;
+     /* Background color of the slider */
+}
+
+.slider-content {
+    
+    display: flex;
+    animation: scroll 20s linear infinite;
+}
+
+.slide {
+    width: 100px; /* Adjust the width of the individual slides */
+    height: auto;
+    margin: 5px; /* Adjust the margin between slides */
+}
+@keyframes scroll {
+   0% {
+        transform: translateX(100%); /* Start from the right edge */
+    }
+    100% {
+        transform: translateX(-100%); /* Move to the left edge */
+    }
+}
+
+  </style>
+</head>
+
+<body class="2xl:container 2xl:mx-auto">
+  <div>
+    {{> header}}
+  </div>
+  <br><br><br><br><br><br>
+
+  <!-- Back to top button -->
+  <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light"
+    class="inline-block p-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out bottom-5 right-5"
+    id="btn-back-to-top">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" class="w-4 h-4" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="currentColor"
+        d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z">
+      </path>
+    </svg>
+  </button>
+
+  {{!-- Starting Image --}}
+  <div>
+    <div class="tpo flex flex-col justify-center items-start h-[224px] px-4 lg:px-[11%] py-[48px]">
+      <p class="font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">Centre Training and
+        Placement
+      </p>
+    </div>
+  </div>
+
+  {{!-- Introduction Body --}}
+  <div class="main-body m-10">
+    <div class="container flex flex-col items-start gap-[20px] lg:gap-[16px]" id = "Introduction">
+       
+    </div>
+  </div>
+
+  {{!-- further pages --}}
+ 
+
+
+  <!-- announcement section and notice -->
+  <div class="flex flex-col sm:flex-row overflow-auto mb-4" style="margin-top: 60px;">
+    <!-- announcement section -->
+    <div class="w-11/12 sm:w-3/4 flex flex-col ml-2 sm:ml-5 mr-2">
+      <h1 class="text-2xl sm:text-4xl title-font font-medium text-gray-900 p-2 sm:p-3">Announcements from CTP</h1>
+      <div class="xl:w-full md:w-full p-3">
+        <div class="p-6 rounded-lg overflow-scroll"
+          style="height: 550px; border: 1px solid #2167A7; box-shadow: 0px 6px 10px 4px rgba(79, 154, 239, 0.2); border-radius: 6px;">
+          <!-- list of announcement -->
+          <ul class="list-disc font2" id="annoucements">
+            <!-- announcement 1 -->
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- notice board -->
+    {{!-- <div class="flex flex-col w-11/12 sm:w-1/2 ml-2 mr-2 sm:mr-5">
+      <h1 class="text-2xl sm:text-4xl title-font font-medium text-gray-900 p-2 sm:p-3">Notices</h1>
+      <div id="notes" class="font2 font-semibold">
+
+      </div>
+    </div> --}}
+  </div>
+
+  <!-- past recruiters -->
+  <div class="flex flex-col justify-center item-center mt-5 mb-5 mx-5">
+    <h1 class="sm:text-4xl text-3xl title-font font-medium text-gray-900 p-3 text-center mt-2 mb-5">PAST RECRUITERS</h1>
+    {{!-- <div class=" overflow-x-auto flex flex-row w-full" id = "prDetails">
+      <img src="./img/microsoft.png" alt="microsoft" class="mx-auto">
+      <img src="./img/google.png" alt="google" class="mx-auto">
+      <img src="./img/oracle.png" alt="oracle" class="mx-auto">
+      <img src="./img/intel.png" alt="intel" class="mx-auto">
+      <img src="./img/samsung.png" alt="samsung" class="mx-auto">
+      <img src="./img/uber.png" alt="uber" class="mx-auto">
+      <img src="./img/goldman.png" alt="goldman" class="mx-auto">
+      <img src="./img/bajaj.png" alt="bajaj" class="mx-auto">
+    </div> --}}
+    <div class="bottom-slider" id="bottomSlider">
+        <div class="slider-content">
+            <img src="./img/microsoft.png" alt="microsoft" class="mx-auto">
+      <img src="./img/google.png" alt="google" class="mx-auto slide">
+      <img src="./img/oracle.png" alt="oracle" class="mx-auto slide">
+      <img src="./img/intel.png" alt="intel" class="mx-auto slide">
+      <img src="./img/samsung.png" alt="samsung" class="mx-auto side">
+      <img src="./img/uber.png" alt="uber" class="mx-auto slide">
+      <img src="./img/goldman.png" alt="goldman" class="mx-auto slide">
+      <img src="./img/bajaj.png" alt="bajaj" class="mx-auto slide">
+            <!-- Add more images as needed -->
+        </div>
+    </div>
+  </div>
+
+
+  <!-- footer -->
+
+  <div style="bottom: 0; width:100%">
+    {{> footer}}
+  </div>
+
+</body>
+
+<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+
+
+
+
+{{!-- Attach Backend with frontend --}}
+<script>
+
+  // Post Recruiter Scroll Bar
+const bottomSlider = document.getElementById('bottomSlider');
+const sliderContent = document.querySelector('.slider-content');
+const slides = document.querySelectorAll('.slide');
+
+let currentIndex = 0;
+
+function nextSlide() {
+    currentIndex++;
+    if (currentIndex === slides.length) {
+        currentIndex = 0;
+    }
+    updateSlider();
+}
+
+function updateSlider() {
+    const translateX = -currentIndex * (100 + 10); // Adjust the width and margin of the slides
+    sliderContent.style.transform = `translateX(${translateX}px)`;
+}
+
+setInterval(nextSlide, 3000); // Change slide every 3 seconds (adjust as needed)
+
+  // for announcements
+  const link1 = "{{URL}}/Announcements/"
+
+  // for notices
+  // const link2 = `{{URL}}/Notices/`;
+
+  // for message
+  const link3 = `{{URL}}/NitjMessage/`
+
+  // for post Recruitment
+  const link4 = `{{URL}}/Placement_Insights_Img/`
+
+  fetch(link1)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      let annoucemnts = document.getElementById('annoucements');
+
+      for (let i =0; i<data.length; i++) {
+        let el = document.createElement('li');
+        el.classList.add("ml-3")
+        el.classList.add("mt-1")
+        el.classList.add("mb-1")
+
+        let el1 = document.createElement('a');
+        let span = document.createElement('span');
+        span.style.cssText = "color: #FF8534; font-size: small;"
+        span.classList.add("p-3");
+        el1.style.cssText = "color: #002A51; font-weight:bold; font-size:large";
+
+        el1.target = "_blank";
+        el1.href = data[i].link;
+        el1.innerText = data[i].text;
+
+        span.textContent = data[i].updatedAt.substring(0, 10);
+        el1.appendChild(span);
+        el.appendChild(el1);
+        annoucemnts.appendChild(el);
+      }
+    });
+
+ /*fetch(link2)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+
+      let notes = document.getElementById("notes");
+      let itr = 0;
+
+      for (let i =0; i<data.length; i++) {
+        const notesTemplate = '<div class="xl:w-full md:w-full p-3"><div class="p-6 rounded-lg" style="border: 2px solid #62AAFF; background-color: #F1FFFF; box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.2); border-radius: 6px;"><p class="leading-relaxed text-base">' + data[i].text + '</p></div></div>'
+        notes.innerHTML += notesTemplate;
+        itr++;
+        if (itr == 5) break;
+      }
+    }); */
+
+    fetch(link3)
+    .then(response => response.json())
+    .then(data => {
+       
+
+      let message = document.getElementById("Introduction");
+      let dm = "", hm = "", tpom = "";
+      for(let i =0;i < data.length ;i++)
+      {
+        if(data[i].category == "Director Message")
+        dm = data[i].content
+        else if(data[i].category == "Head Message")
+        hm = data[i].content
+        else if(data[i].category == "Training and Placement Message")
+        tpom = data[i].content
+      }
+       
+       message.innerHTML = ` <div class="w-full flex flex-col items-start">
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">Message from Director</p>
+        <div class="bg-accent w-full lg:w-[300px] h-[1px] lg:h-[3px]"></div>
+      </div>
+      <div>
+        <p class="font-normal text-gray-800 lg:text-[16px] lg:leading-[27px] text-justify">
+          ${dm}
+        </p>
+      </div>
+      <div class="w-full flex flex-col items-start">
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">Message from Head </p>
+        <div class="bg-accent w-full lg:w-[261px] h-[1px] lg:h-[3px]"></div>
+      </div>
+      <div>
+        <p class="font-normal text-gray-800 lg:text-[16px] lg:leading-[27px] text-justify">
+          ${hm}
+        </p>
+      </div>
+      <div class="w-full flex flex-col items-start">
+        <p class="font2 font-medium text-[28px] lg:text-[32px]">Message from Training and Placement</p>
+        <div class="bg-accent w-full lg:w-[510px] h-[1px] lg:h-[3px]"></div>
+      </div>
+      <div>
+        <p class="font-normal text-gray-800 lg:text-[16px] lg:leading-[27px] text-justify">
+          ${tpom}
+        </p>
+      </div>`
+    });
+
+fetch(link4)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+
+      let postRD = document.getElementById("prDetails");
+   
+
+      for (let i =0; i<data.length; i++) {
+        if(data[i].category == "company_logo") {
+        const postRDTemplate = `<img src=${data[i].link} alt=${data[i].category} class="mx-auto">`
+        postRD.innerHTML += postRDTemplate;
+        }
+        
+      }
+    });
+  // Get the button
+  let mybutton = document.getElementById("btn-back-to-top");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+  // When the user clicks on the button, scroll to the top of the document
+  mybutton.addEventListener("click", backToTop);
+
+  function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+</script>
+
+</html>

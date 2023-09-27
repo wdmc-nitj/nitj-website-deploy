@@ -1,0 +1,298 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" type="image/x-icon" href="../img/favicon-16x16.png" />
+
+  <title>Admin Panel</title>
+
+  <link href="/adm-assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link href="/adm-assets/dist/css/sb-admin-2.css" rel="stylesheet" />
+
+  <link href="/adm-assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div id="wrapper">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{URL}}/admin" style="color: #045942">NITJ TPO - SuperUser
+                </a>
+            </div>
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Announcements<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/announcements"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Announcement</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/announcements"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Announcement</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        {{!-- <li>
+                            <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Notices<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/notices"><i class="fa fa-edit fa-fw"></i> Add New Notice</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/notices"><i class="fa fa-edit fa-fw"></i> Edit Notice</a>
+                                </li>
+                            </ul>
+                        </li> --}}
+                        <li>
+                            <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> NITJ Message<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/nitjMessage"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Message</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/nitjMessage"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Message</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-history"></i> Processes<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/processes"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Process</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/processes"><i class="fa fa-edit fa-fw"></i> Edit Process</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-institution" aria-hidden="true"></i> Policies<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/policies"><i class="fa fa-edit fa-fw"></i> Add New Policy</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/policies"><i class="fa fa-edit fa-fw"></i> Edit Policy</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Placement Insights<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Insight info</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Insight info</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-image" aria-hidden="true"></i> Insights Images <span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights_img"><i class="fa fa-edit fa-fw"></i> Add
+                                        New Insight Images</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights_img"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Insight Images</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Internship Insights<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/internship_insights"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Insight</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/internship_insights"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Insight</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Downloadable Content<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/download"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Content</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/download"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Content</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-question" aria-hidden="true"></i> FAQ's<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/faqs"><i class="fa fa-edit fa-fw"></i> Add New FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/faqs"><i class="fa fa-edit fa-fw"></i> Edit FAQ</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-users" aria-hidden="true"></i> People<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/people"><i class="fa fa-edit fa-fw"></i> Add New Person</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/people"><i class="fa fa-edit fa-fw"></i> Edit Person</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> Placement Stats<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/placement_stats"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Stats</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/placement_stats"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Stats</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-code" aria-hidden="true"></i> Post Recruiters<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/PRDetails"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Recruiters Details</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/PRDetails"><i class="fa fa-edit fa-fw"></i> Edit Recruiters
+                                        Details</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Users<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+
+                                <li>
+                                    <a href="{{URL}}/admin/users"><i class="fa fa-edit fa-fw"></i> Add New Person</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/users"><i class="fa fa-edit fa-fw"></i> Edit Person</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+  </div>
+
+  <div id="page-wrapper">
+    <div class="row">
+      <div class="col-4 d-flex justify-content-center text-center" style="margin-top: 200px;">
+        <div class="alert alert-success" role="alert">
+          <h4 class="alert-heading">-*-*- Welcome To -*-*-</h4>
+          <p>NIT Jalandhar TPO Admin Panel</p>
+          <hr />
+          <p class="mb-0">Click on links given in sidebar options to add</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/adm-assets/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <script src="/adm-assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+  <script src="/adm-assets/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+
+  <script src="/adm-assets/dist/js/sb-admin-2.js"></script>
+  <script src="/adm-assets/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+  <script
+    src="/adm-assets/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script>
+    function logout() {
+      axios
+        .get(`{{URL}}/logout`)
+        .then((response) => {
+          console.log(response);
+          alert("User logged out successfully");
+          window.location.href = `{{URL}}`;
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Error occured while fetching data from server");
+        });
+    }
+  </script>
+</body>
+
+
+</html>

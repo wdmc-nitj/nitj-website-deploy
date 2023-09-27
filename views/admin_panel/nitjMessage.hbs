@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" type="image/x-icon" href="../img/favicon-16x16.png" />
+
+  <title>Admin Panel</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="/adm-assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link href="/adm-assets/dist/css/sb-admin-2.css" rel="stylesheet" />
+  <!-- Custom Fonts -->
+  <link href="/adm-assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!--whole page wrapper -->
+  <div id="wrapper">
+    <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{URL}}/admin" style="color: #045942">NITJ TPO - SuperUser
+                </a>
+            </div>
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Announcements<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/announcements"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Announcement</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/announcements"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Announcement</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        {{!-- <li>
+                            <a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> Notices<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/notices"><i class="fa fa-edit fa-fw"></i> Add New Notice</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/notices"><i class="fa fa-edit fa-fw"></i> Edit Notice</a>
+                                </li>
+                            </ul>
+                        </li> --}}
+                        <li>
+                            <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> NITJ Message<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/nitjMessage"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Message</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/nitjMessage"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Message</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-history"></i> Processes<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/processes"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Process</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/processes"><i class="fa fa-edit fa-fw"></i> Edit Process</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-institution" aria-hidden="true"></i> Policies<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/policies"><i class="fa fa-edit fa-fw"></i> Add New Policy</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/policies"><i class="fa fa-edit fa-fw"></i> Edit Policy</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Placement Insights<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Insight info</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Insight info</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-image" aria-hidden="true"></i> Insights Images <span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights_img"><i class="fa fa-edit fa-fw"></i> Add
+                                        New Insight Images</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/placement_insights_img"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Insight Images</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Internship Insights<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/internship_insights"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Insight</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/internship_insights"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Insight</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-download" aria-hidden="true"></i> Downloadable Content<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/download"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Content</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/download"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Content</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-question" aria-hidden="true"></i> FAQ's<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/faqs"><i class="fa fa-edit fa-fw"></i> Add New FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/faqs"><i class="fa fa-edit fa-fw"></i> Edit FAQ</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-users" aria-hidden="true"></i> People<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/people"><i class="fa fa-edit fa-fw"></i> Add New Person</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/people"><i class="fa fa-edit fa-fw"></i> Edit Person</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> Placement Stats<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/placement_stats"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Stats</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/placement_stats"><i class="fa fa-edit fa-fw"></i> Edit
+                                        Stats</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-code" aria-hidden="true"></i> Post Recruiters<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{URL}}/admin/PRDetails"><i class="fa fa-edit fa-fw"></i> Add New
+                                        Recruiters Details</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/PRDetails"><i class="fa fa-edit fa-fw"></i> Edit Recruiters
+                                        Details</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-user" aria-hidden="true"></i> Users<span
+                                    class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+
+                                <li>
+                                    <a href="{{URL}}/admin/users"><i class="fa fa-edit fa-fw"></i> Add New Person</a>
+                                </li>
+                                <li>
+                                    <a href="{{URL}}/admin/users"><i class="fa fa-edit fa-fw"></i> Edit Person</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    <!-- navbar ends  -->
+
+    <!-- page wrapper div  -->
+    <div id="page-wrapper">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3>Add Message</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <form role="form" id="addForm">
+                    <div class="form-group">
+                      <label>Select Type</label>
+                      <select id="addcategory" name="menu" class="form-control">
+                        <option value="">Select type of Message.</option>
+                        <option value="Director Message">
+                          Director Message
+                        </option>
+                        <option value="Head Message">
+                          Head Message
+                        </option>
+                        <option value="Training and Placement Message">
+                          Training and Placement Message
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Content</label> <br>
+                      <textarea id="addMessage" name="Content" rows="2" cols="78"></textarea>
+                    </div>
+
+                    <button type="submit" name="action" value="add_menu" class="btn btn-default">
+                      Insert
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <!-- row (nested) -->
+            </div>
+            <!-- panel-body -->
+          </div>
+          <!--panel -->
+        </div>
+        <!--col-lg-12 -->
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12" id="come_here">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3>Edit Message</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <form role="form" id="editForm">
+                    <div class="form-group">
+                      <label>id</label>
+                      <input class="form-control" placeholder="Enter id" id="editid" name="id" />
+                    </div>
+                    <div class="form-group">
+                      <label>Select Type</label>
+                      <select id="editcategory" name="menu" class="form-control">
+                       <option value="">Select type of Message.</option>
+                        <option value="Director Message">
+                          Director Message
+                        </option>
+                        <option value="Head Message">
+                          Head Message
+                        </option>
+                        <option value="Training and Placement Message">
+                          Training and Placement Message
+                        </option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                       <label>Content</label>
+                      <textarea id="editMessage" name="Content" rows="2" cols="78"></textarea>
+                    
+                    </div>
+
+                    <button type="submit" name="action" value="add_menu" class="btn btn-default">
+                      Insert
+                    </button>
+                  </form>
+                </div>
+                <!-- col-lg-6 (nested) -->
+              </div>
+              <!-- row (nested) -->
+            </div>
+            <!-- panel-body -->
+          </div>
+          <!-- panel -->
+        </div>
+        <!--col-lg-12 -->
+      </div>
+
+      <div class="panel-body">
+        <div class="dataTable_wrapper">
+          <table class="table table-striped table-bordered table-hover" id="dataTables-example_n">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Category</th>
+                <th>Content</th>
+                <th>Date</th>
+                <th>UpdateDate</th>
+                <th>options</th>
+              </tr>
+            </thead>
+            <tbody id="tablebody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="/adm-assets/bower_components/jquery/dist/jquery.min.js"></script>
+
+  <!-- CKeditor -->
+  <script src="../ckeditor/ckeditor.js"></script>
+  <script>
+    CKEDITOR.replace("addcontent", {
+      fullPage: true,
+      allowedContent: true,
+      autoGrow_onStartup: true,
+      enterMode: CKEDITOR.ENTER_P,
+    });
+
+    CKEDITOR.replace("editcontent", {
+      fullPage: true,
+      allowedContent: true,
+      autoGrow_onStartup: true,
+      enterMode: CKEDITOR.ENTER_P,
+    });
+  </script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="/adm-assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- Metis Menu Plugin JavaScript -->
+  <script src="/adm-assets/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src="/adm-assets/dist/js/sb-admin-2.js"></script>
+  <script src="/adm-assets/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+  <script
+    src="/adm-assets/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Js file -->
+  <script>
+    //import dom
+    const tableBodyDom = document.getElementById("tablebody");
+    const addFormDom = document.getElementById("addForm");
+    const editFormDom = document.getElementById("editForm");
+    const editdiv = document.getElementById("come_here");
+    editdiv.style.display = "none";
+
+    let apiData;
+
+    function EditData(e) {
+      const policyId = e.getAttribute("policy-id");
+
+      //finding data from apiData using id
+      const data = apiData.find((item) => item._id == policyId);
+
+      editid.value = data._id;
+      editcategory.value = data.category;
+      editMessage.value = data.content;
+      if (editdiv.style.display === "none") {
+        editdiv.style.display = "block";
+      }
+      editdiv.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function deleteNotice(e) {
+      console.log("this");
+      const policyId = e.getAttribute("policy-id");
+
+      axios
+        .post(`{{URL}}/NitjMessage/${policyId}`)
+        .then((response) => {
+          console.log(response);
+          alert("Data deleted successfully");
+          location.reload();
+        })
+        .catch((error) => {
+          console.log(error);
+          alert("Error occurred while deleting data from the server");
+        });
+    }
+
+    // adding data to table
+    function addDataToTable(data) {
+      for (let i = 0; i < data.length; i++) {
+        let showStatus = "";
+        if (!data[i].show) {
+          showStatus = "disabled";
+        }
+
+        tableBodyDom.innerHTML += `<tr>
+        <td>${data[i]._id}</td>
+        <td>${data[i].category}</td>
+        <td>${data[i].content}</td>
+        <td>${new Date(data[i].createdAt).toDateString()}</td>
+        <td>${new Date(data[i].updatedAt).toDateString()}</td>
+        <td>
+            <button type="button" onclick="EditData(this)" policy-id="${data[i]._id
+          }" class="btn btn-primary btn-xs ">Edit</button>
+            <button onclick="deleteNotice(this)" policy-id="${data[i]._id
+          }" type="button" class="btn btn-danger btn-xs" ${showStatus}>Disable</button>
+        </td>
+    </tr>`;
+      }
+    }
+
+    //fetch data from server
+    axios
+      .get(`{{URL}}/NitjMessage/get/all`)
+      .then((response) => {
+        apiData = response.data;
+        addDataToTable(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Error occured while fetching data from server");
+      });
+
+    // add form event
+    addFormDom.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const category = document.getElementById("addcategory").value;
+      const content =  document.getElementById("addMessage").value
+
+      if (
+        category == "" ||
+        content == ""
+      ) {
+        alert("Please enter all fields");
+        return;
+      }
+
+      axios
+        .post(`{{URL}}/NitjMessage/`, {
+          category: category,
+          content: content,
+        })
+        .then((response) => {
+          console.log(response);
+          alert("Data added successfully");
+          location.reload();
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Error occured while adding data to server");
+        });
+    });
+
+    // edit from event
+    editFormDom.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = document.getElementById("editid").value;
+      const category = document.getElementById("editcategory").value;
+      const content = document.getElementById("editMessage").value;
+
+      if (
+        category == "" ||
+        content == ""
+      ) {
+        alert("Please enter all fields");
+        return;
+      }
+
+      axios
+        .patch(`{{URL}}/NitjMessage/${id}`, {
+          category: category,
+          content: content,
+        })
+        .then((response) => {
+          console.log(response);
+          alert("Data updated successfully");
+          location.reload();
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Error occured while updating data to server");
+        });
+    });
+
+  </script>
+</body>
+<!-- default date and time picker-->
+
+<!-- default date and time picker ends here-->
+
+</html>

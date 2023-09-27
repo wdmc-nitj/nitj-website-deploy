@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Placements</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon-16x16.png" />
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+  {{!--
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  --}}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: "Poppins";
+    }
+
+    #header {
+      position: sticky;
+      top: 0;
+    }
+
+    #btn-back-to-top {
+      position: fixed;
+      display: none;
+    }
+
+    .tpoplacements {
+      background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(70, 70, 70, 0.70) 99.11%), url(../img/bg_placements.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .image-grid {
+           
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
+            gap: 1rem; /* Adjust the gap between images */
+        }
+        .image-grid img {
+            width: 100%; /* Force images to take the full width of their container */
+            height: auto; /* Maintain the image's aspect ratio */
+            max-height: 200px; /* Adjust the maximum height as needed */
+            object-fit: cover; /* Preserve the aspect ratio and crop if necessary */
+        }
+        /* Custom CSS for the fixed-width right part */
+        .fixed-width-right {
+            width: 400px; /* Adjust the width as needed */
+        }
+  </style>
+</head>
+
+<body>
+  <div>{{>header}}</div>
+  <br /><br /><br /><br /><br /><br />
+
+  <!-- Back to top button -->
+  <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light"
+    class="inline-block p-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out bottom-5 right-5"
+    id="btn-back-to-top">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" class="w-4 h-4" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="currentColor"
+        d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z">
+      </path>
+    </svg>
+  </button>
+
+  <!-- backgroud pic and heading -->
+  <div>
+    <div class="tpoplacements flex flex-col justify-center items-start h-[224px] px-4 lg:px-[11%] py-[48px]">
+      <p class="font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">Placements</p>
+    </div>
+    <nav class="flex px-4 lg:px-[11%] bg-gray-200 py-[8px] text-black" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center">
+        <li class="inline-flex items-center">
+          <a href="" class="inline-flex items-center text-sm font-medium hover:text-gray-900">
+          </a><a href="{{URL}}" class="text-lg font-medium ml-2"><i class="fa fa-home"></i> CTP</a>
+        </li>
+        <li aria-current="page">
+          <div class="inline-flex items-center">
+            <i style="color: rgb(128, 128, 128); font-size: 12px; margin-left: 12px"
+              class="fa-solid fa-angle-right ml-2"></i>
+            <a href="{{URL}}/index_placements" class="text-lg font-medium ml-2">Placements</a>
+          </div>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="grid grid-cols-2 m-[5%] lg:grid-cols-4 gap-8 max-w-4xl lg:mx-auto">
+    <div
+      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl"
+      onclick="insightClick()" id="insight">
+      <div class="flex flex-col space-y-4 items-center justify-center">
+        <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
+          style="font-size: 48px">
+          insights</span>
+        <p class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
+          Insights
+        </p>
+      </div>
+    </div>
+    <div
+      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl"
+      onclick="statsClick()">
+      <div class="flex flex-col space-y-4 items-center justify-center">
+        <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
+          style="font-size: 48px">
+          bar_chart
+        </span>
+        <p class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
+          Stats
+        </p>
+      </div>
+    </div>
+    <div
+      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl"
+      onclick="processClick()">
+      <div class="flex flex-col space-y-4 items-center justify-center">
+        <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
+          style="font-size: 48px">
+          call_to_action
+        </span>
+        <p class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
+          Process
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-2xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl"
+      onclick="policyClick()">
+      <div class="flex flex-col space-y-4 items-center justify-center">
+        <span class="group-hover:text-white group-hover:animate-bounce animate-delay material-symbols-outlined"
+          style="font-size: 48px">
+          policy
+        </span>
+        <p
+          class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
+          Policy
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {{!-- to fill content --}}
+  <div id="content" class="main-body mx-5 sm:mx-10 md:mx-28 my-10"></div>
+  <br />
+
+  <div>{{>footer}}</div>
+</body>
+<script>
+  document.getElementById("insight").click();
+  const content = document.getElementById("content");
+
+  function processClick() {
+    let pro_link = `{{URL}}/Processes/Placement Process`;
+    fetch(pro_link)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length > 0) {
+          content.innerHTML = data[data.length - 1].content;
+        }
+      });
+
+    addStylingToContent();
+
+    document
+      .getElementById("come_here")
+      .scrollIntoView({ behavior: "smooth" });
+  }
+
+  function policyClick() {
+    const p_link = `{{URL}}/Policies/Placement Policy`;
+    fetch(p_link)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length > 0) {
+          content.innerHTML = data[data.length - 1].content;
+        }
+      });
+
+    addStylingToContent();
+
+    document
+      .getElementById("come_here")
+      .scrollIntoView({ behavior: "smooth" });
+  }
+
+  function insightClick() {
+    const content1 = document.getElementById("content");
+    const link1 = `{{URL}}/Placement_Insights/`;
+    const link2 = `{{URL}}/Placement_Insights_Img/`;
+    let innerHTML = "";
+    fetch(link2)
+      .then((response) => response.json())
+      .then(async (data) => {
+         console.log(data)
+        innerHTML += `<div class="flex h-screen"><div class="w-3/4 p-4">`
+        innerHTML += `
+        <div class ="image-grid">`
+        for(let i = 0; i < data.length; i++) {
+          if(data[i].category == "pi_images")
+          innerHTML += `<img src=${data[i].link} alt="Image">`
+        }
+
+        innerHTML += `</div>`
+      });
+      
+       
+      fetch(link1)
+      .then((response) => response.json())
+      .then(async (data) => {
+        console.log(data)
+        innerHTML += `</div><div class="w-1/4 h-1/2 p-4 overflow-y-auto flex justify-end">`
+        let str1 = `<div class="mx-auto">`;
+        let str2 = "";
+        let i =0
+          for (  i = 0; i < data.length-1; i++) {
+          var student = data[i];
+          str2 += `
+<p style="border: 2px solid rgb(55, 141, 246); border-bottom: none; padding:5px; padding-left: 20px; padding-right: 20px;">${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}</p>
+            `;
+          }
+
+        let str3 = `<p style="border: 2px solid rgb(55, 141, 246);  padding:5px; padding-left: 20px; padding-right: 20px;">${data[i].name} (${data[i].department}), ${data[i].company}, ${data[i].course}</p></div>`;
+        innerHTML += str1 + str2 + str3;
+        innerHTML +="</div></div>"
+        content1.innerHTML = innerHTML;
+        console.log(innerHTML)
+      });
+       
+  }
+    
+    
+    
+
+  function statsClick() {
+    const link = `{{URL}}/Placement_Stats/`;
+    fetch(link)
+      .then((response) => response.json())
+      .then((data) => {
+        content.innerHTML = "";
+        let str1 = `<div class="grid grid-cols-1 m-[5%] lg:grid-cols-2 gap-14 max-w-7xl lg:mx-auto">`;
+        let str2 = "";
+
+        let cnt = 0;
+
+        for (let i = 0; i < data.length; i++) {
+          var image = data[i];
+
+          str2 += `
+            <div class="w-full max-w-lg bg-white border border-gray-200 rounded-lg shadow shadow-sky-500 px-3 py-5">
+                <img src="${image.link}">
+            </div>
+            `;
+          cnt++;
+
+          if (cnt == 10) break;
+        }
+
+        let str3 = `</div>`;
+        content.innerHTML = str1 + str2 + str3;
+      });
+
+
+  }
+
+  function addStylingToContent() {
+    // Add bullots
+    setInterval(() => {
+      const ulists = document.getElementById("content").getElementsByTagName('ul');
+      const olists = document.getElementById("content").getElementsByTagName('ol');
+      const lists = document.getElementById("content").getElementsByTagName('li');
+      const headings = document.getElementById("content").getElementsByTagName('h2');
+      const para = document.getElementById("content").getElementsByTagName('p');
+
+      for (let i = 0; i < headings.length; i++) {
+        headings[i].classList.add("font2");
+        headings[i].classList.add("font-medium");
+        headings[i].classList.add("text-[28px]");
+        headings[i].classList.add("lg:text-[32px]");
+        headings[i].classList.add("mx-5");
+        headings[i].classList.add("my-2");
+        headings[i].classList.add("lg:mx-10");
+        headings[i].classList.add("lg:my-5");
+      }
+      for (let i = 0; i < ulists.length; i++) {
+        ulists[i].classList.add("list-disc");
+        ulists[i].classList.add("font-body");
+        ulists[i].classList.add("mx-5");
+        ulists[i].classList.add("my-2");
+        ulists[i].classList.add("lg:mx-10");
+        ulists[i].classList.add("lg:my-5");
+        ulists[i].style.listStylePosition = "inside";
+      }
+      for (let i = 0; i < olists.length; i++) {
+        olists[i].classList.add("list-decimal");
+        olists[i].classList.add("font-body");
+        olists[i].classList.add("mx-5");
+        olists[i].classList.add("my-2");
+        olists[i].classList.add("lg:mx-10");
+        olists[i].classList.add("lg:my-5");
+        olists[i].style.listStylePosition = "inside";
+      }
+      for (let i = 0; i < lists.length; i++) {
+        lists[i].classList.add("p-0.5");
+        lists[i].classList.add("my-2");
+        lists[i].classList.add("text-md");
+        lists[i].classList.add("text-gray-800");
+        lists[i].classList.add("lg:text-[18px]");
+        lists[i].classList.add("lg:leading-[30px]");
+        lists[i].classList.add("text-justify");
+      }
+      for (let i = 0; i < lists.length; i++) {
+        para[i].classList.add("font-body");
+        para[i].classList.add("mx-5");
+        para[i].classList.add("my-2");
+        para[i].classList.add("lg:mx-10");
+        para[i].classList.add("lg:my-5");
+        para[i].classList.add("p-0.5");
+        para[i].classList.add("text-md");
+        para[i].classList.add("text-gray-800");
+        para[i].classList.add("lg:text-[18px]");
+        para[i].classList.add("lg:leading-[30px]");
+        para[i].classList.add("text-justify");
+      }
+    });
+  }
+
+  // Get the button
+  let mybutton = document.getElementById("btn-back-to-top");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+  // When the user clicks on the button, scroll to the top of the document
+  mybutton.addEventListener("click", backToTop);
+
+  function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
+</script>
+
+</html>

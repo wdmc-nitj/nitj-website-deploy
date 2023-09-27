@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - NITJ</title>
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- font-family: 'Barlow', sans-serif;
+    font-family: 'Poppins', sans-serif; -->
+
+    <script>
+        let leastpri = 5
+        function executor() {
+            if (priority < leastpri) {
+                leastpri = priority
+            } else {
+                leastpri++
+                return
+            }
+            switch (leastpri) {
+                case 1:
+                    close_menu()
+                    break
+                case 2:
+                    keep_menu_open()
+                    break
+                case 3:
+                    close_menu()
+                    break
+                case 4:
+                    close_menu()
+                    break
+            }
+            leastpri++
+        }
+        function open_menu() {
+            let sideMenu = document.querySelector('#nav-menu')
+            if (sideMenu.style.display == 'none') {
+                sideMenu.setAttribute('style', 'display:block;')
+                leastpri = 5
+            }
+        }
+        function keep_menu_open() {
+            let sideMenu = document.querySelector('#nav-menu')
+            if (sideMenu.style.display == 'block') {
+                sideMenu.setAttribute('style', 'display:block;')
+            }
+            if (onmenu) {
+                closeDropDowns()
+                openDropDowns(9)
+            }
+            onmenu = true
+        }
+        function close_menu() {
+            let sideMenu = document.querySelector('#nav-menu')
+            if (sideMenu.style.display == 'block') {
+                sideMenu.setAttribute('style', 'display:none;')
+            }
+        }
+    </script>
+
+    <style>
+        /* Customizing the Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .bg-accent {
+            --tw-bg-opacity: 1;
+            background-color: hsl(201 96% 32% / var(--tw-bg-opacity));
+        }
+
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(30, 58, 138, 1);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: gray;
+        }
+
+        ::-webkit-resizer {
+            background-color: #ffffff;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 300, "grad" 0, "opzs" 20;
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .font2 {
+            font-family: 'Barlow', sans-serif;
+        }
+
+        :root {
+            --primary-color: #fff;
+            --background-color: #212121;
+
+            --blue-color: #0369A1;
+            --light-blue-color: #F6F6FE;
+            --purple-color: #040320;
+            --font1: 'Poppins', sans-serif;
+            --font2: 'Barlow', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-body {
+            font-family: var(--font1);
+        }
+    </style>
+</head>
+
+<body>
+    <script src="partials/header.js"></script>
+</body>
+
+</html>

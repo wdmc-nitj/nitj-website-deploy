@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our People</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon-16x16.png" />
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: "Poppins";
+    }
+
+    #header {
+      position: sticky;
+      top: 0;
+    }
+
+    #btn-back-to-top {
+      position: fixed;
+      display: none;
+    }
+
+    .tpopeople {
+      background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(70, 70, 70, 0.70) 99.11%), url(../img/bg_people.JPG);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    {{>header}}
+  </div>
+  <br><br><br><br><br><br>
+
+  <!-- Back to top button -->
+  <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light"
+    class="inline-block p-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out bottom-5 right-5"
+    id="btn-back-to-top">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" class="w-4 h-4" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="currentColor"
+        d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z">
+      </path>
+    </svg>
+  </button>
+
+  <!-- backgroud pic and heading -->
+  <div>
+    <div class="tpopeople flex flex-col justify-center items-start h-[224px] px-4 lg:px-[11%] py-[48px]">
+      <p class="font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">People</p>
+    </div>
+    <nav class="flex px-4 lg:px-[11%] bg-gray-200 py-[8px] text-black" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center">
+        <li class="inline-flex items-center">
+          <a href="" class="inline-flex items-center text-sm font-medium hover:text-gray-900">
+          </a><a href="{{URL}}" class="text-lg font-medium ml-2"><i class="fa fa-home"></i> CTP</a>
+        </li>
+        <li aria-current="page">
+          <div class="inline-flex items-center">
+            <i style="color: rgb(128, 128, 128); font-size: 12px; margin-left: 12px"
+              class="fa-solid fa-angle-right ml-2"></i>
+            <a href="{{URL}}/index_people" class="text-lg font-medium ml-2">People</a>
+          </div>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="grid grid-cols-1 m-[5%] lg:grid-cols-2 gap-8 max-w-4xl lg:mx-auto">
+    <div
+      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl"
+      onclick="facultyClick()">
+      <div class="flex flex-col space-y-4 items-center justify-center">
+        <p class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
+          Faculty
+        </p>
+      </div>
+    </div>
+    <div
+      class="group transition delay-100 duration-300 hover:cursor-pointer hover:shadow-xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 flex flex-col space-y-4 items-center justify-center w-full h-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl"
+      onclick="studentClick()">
+      <div class="flex flex-col space-y-4 items-center justify-center">
+        <p class="group-hover:text-white text-lg lg:text-xl whitespace-nowrap text-center text-dark-purple uppercase">
+          Student
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="content" class="flex flex-col space-y-5 m-5">
+  </div>
+  <br>
+
+  <div>
+    {{>footer}}
+  </div>
+</body>
+
+<script>
+  const link1 = `{{URL}}/People/Director`
+  const link2 = `{{URL}}/People/Head`
+  const content = document.getElementById('content')
+  let innerHTMLD = "", innerHTMLH = "";
+  fetch(link1)
+    .then(response => response.json())
+    .then(data => {
+
+      let str1 = "";
+      let str2 = "";
+      let str3 = "</div>";
+
+      str1 += `<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 gap-1 lg:gap-5 mx-auto w-[90%] my-5" style ="display:flex; justify-content:center; align-item:center;">`;
+      let i = data.length - 1;
+        str2 += `<div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md my-auto p-4">
+            <div class="flex flex-col items-center pb-2 space-y-1">
+                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="${data[i].link}" alt="image">
+                <h5 class="mb-1 text-xl font-medium text-gray-900">${data[i].name}</h5>
+                <p class="text-sm text-gray-500">${data[i].department}</p>
+                <p class="text-sm text-gray-500">${data[i].designation}</p>
+                <div class="flex flex-col lg:flex-row items-center w-[80%] justify-between">
+                  <span class="text-lg font2 text-sky-500">${data[i].mobileno}</span>
+                  <span class="text-lg font2 max-w-[70%] text-sky-500">${data[i].email}</span>
+                </div>
+            </div></div>`
+      
+       innerHTMLD = str1 + str2 + str3;
+    })
+
+    fetch(link2)
+    .then(response => response.json())
+    .then(data => {
+
+      let str1 = "";
+      let str2 = "";
+      let str3 = "</div>";
+
+      str1 += `<div class="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-5 mx-auto w-[90%] my-5" style = "padding-left:190px; margin-top: 150px;"> `;
+      for(let i = 0; i < data.length ;i++) {
+        str2 += `<div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md my-auto p-4">
+            <div class="flex flex-col items-center pb-2 space-y-1">
+                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="${data[i].link}" alt="image">
+                <h5 class="mb-1 text-xl font-medium text-gray-900">${data[i].name}</h5>
+                <p class="text-sm text-gray-500">${data[i].department}</p>
+                <p class="text-sm text-gray-500">${data[i].designation}</p>
+                <div class="flex flex-col lg:flex-row items-center w-[80%] justify-between">
+                  <span class="text-lg font2 text-sky-500">${data[i].mobileno}</span>
+                  <span class="text-lg font2 max-w-[70%] text-sky-500">${data[i].email}</span>
+                </div>
+            </div></div>`
+      }
+       innerHTMLH = str1 + str2 + str3;
+    })
+
+  function facultyClick() {
+    let pro_link = `{{URL}}/People/Faculty`
+    fetch(pro_link)
+      .then(response => response.json())
+      .then(data => {
+        content.innerHTML = innerHTMLD + innerHTMLH;
+
+        let str1 = "";
+        let str2 = "";
+        let str3 = "</div>";
+
+        str1 += `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 mx-auto w-[90%] my-5" style = "margin-top: 150px;">`;
+        for (let i = 0; i < data.length; i++) {
+          str2 += `<div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md my-auto p-4">
+            <div class="flex flex-col items-center pb-2 space-y-1">
+                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="${data[i].link}" alt="image">
+                <h5 class="mb-1 text-xl font-medium text-gray-900">${data[i].name}</h5>
+                <p class="text-sm text-gray-500">${data[i].department}</p>
+                <p class="text-sm text-gray-500">${data[i].designation}</p>
+                <div class="flex flex-col lg:flex-row items-center w-[80%] justify-between">
+                  <span class="text-lg font2 text-sky-500">${data[i].mobileno}</span>
+                  <span class="text-lg font2 max-w-[70%] text-sky-500">${data[i].email}</span>
+                </div>
+            </div>
+          </div>`;
+        }
+        content.innerHTML += str1 + str2 + str3;
+      })
+  }
+  function studentClick() {
+    let pro_link = `{{URL}}/People/Student`
+    fetch(pro_link)
+      .then(response => response.json())
+      .then(data => {
+        content.innerHTML = innerHTMLD;
+
+        let str1 = "";
+        let str2 = "";
+        let str3 = "</div>";
+
+        str1 += `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5 mx-auto w-[90%] my-5" style = "margin-top: 150px;">`;
+        for (let i = 0; i < data.length; i++) {
+          str2 += `<div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md my-auto p-4">
+            <div class="flex flex-col items-center pb-2 space-y-1">
+                <img class="mb-3 w-24 h-24 rounded-full shadow-lg" src="${data[i].link}" alt="image">
+                <h5 class="mb-1 text-xl font-medium text-gray-900">${data[i].name}</h5>
+                <p class="text-sm text-gray-500">${data[i].department}</p>
+                <p class="text-sm text-gray-500">${data[i].designation}</p>
+                <div class="flex flex-col lg:flex-row items-center w-[80%] justify-between">
+                  <span class="text-lg font2 text-sky-500">${data[i].mobileno}</span>
+                  <span class="text-lg font2 max-w-[70%] text-sky-500">${data[i].email}</span>
+                </div>
+            </div>
+          </div>`;
+        }
+        content.innerHTML += str1 + str2 + str3;
+      })
+  }
+
+  // Get the button
+  let mybutton = document.getElementById("btn-back-to-top");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+  // When the user clicks on the button, scroll to the top of the document
+  mybutton.addEventListener("click", backToTop);
+
+  function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+</html>

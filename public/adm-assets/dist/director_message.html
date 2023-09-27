@@ -1,0 +1,695 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>NITJ - SuperUser</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="adm-assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="adm-assets/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="adm-assets/dist/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="adm-assets/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="adm-assets/bower_components/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="adm-assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png" />
+    <link rel="shortcut icon" href="/images/ico/favicon.ico" />
+
+    <script src="ckeditor/ckeditor.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="datetimepicker-master/jquery.datetimepicker.css"/ >
+    
+<script src="datetimepicker-master/jquery.js"></script>
+    
+<script src="datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
+
+</head>
+<!-- /.navbar-header -->
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#" style="color:#990000;">Hello... </a>
+          </div>
+<ul class="nav navbar-top-links navbar-right">
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-messages">
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>John Smith</strong>
+                        <span class="pull-right text-muted">
+                            <em>Yesterday</em>
+                        </span>
+                    </div>
+                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>John Smith</strong>
+                        <span class="pull-right text-muted">
+                            <em>Yesterday</em>
+                        </span>
+                    </div>
+                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <strong>John Smith</strong>
+                        <span class="pull-right text-muted">
+                            <em>Yesterday</em>
+                        </span>
+                    </div>
+                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>Read All Messages</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- /.dropdown-messages -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-tasks">
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 1</strong>
+                            <span class="pull-right text-muted">40% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <span class="sr-only">40% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 2</strong>
+                            <span class="pull-right text-muted">20% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                <span class="sr-only">20% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 3</strong>
+                            <span class="pull-right text-muted">60% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                <span class="sr-only">60% Complete (warning)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <p>
+                            <strong>Task 4</strong>
+                            <span class="pull-right text-muted">80% Complete</span>
+                        </p>
+                        <div class="progress progress-striped active">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                <span class="sr-only">80% Complete (danger)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>See All Tasks</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- /.dropdown-tasks -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-alerts">
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-comment fa-fw"></i> New Comment
+                        <span class="pull-right text-muted small">4 minutes ago</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                        <span class="pull-right text-muted small">12 minutes ago</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-envelope fa-fw"></i> Message Sent
+                        <span class="pull-right text-muted small">4 minutes ago</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-tasks fa-fw"></i> New Task
+                        <span class="pull-right text-muted small">4 minutes ago</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <div>
+                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                        <span class="pull-right text-muted small">4 minutes ago</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="#">
+                    <strong>See All Alerts</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- /.dropdown-alerts -->
+    </li>
+    <!-- /.dropdown -->
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+            </li>
+            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+            </li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            </li>
+        </ul>
+        <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+</ul>
+<!-- /.navbar-top-links -->
+          <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+
+                        <li>
+                          <a href="#"><i class="fa fa-sitemap fa-fw"></i> Menus<span class="fa arrow"></span></a>
+                          <ul class="nav nav-second-level">
+                            <li><a href="#"><i class="fa fa-edit fa-fw"></i> Add New Menus</a></li>
+                            <li><a href="#"><i class="fa fa-edit fa-fw"></i> Edit Menus Contents</a></li>
+                          </ul>
+                        </li>
+
+
+
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Pages<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                              <li><a href="#"><i class="fa fa-edit fa-fw"></i> Add New Pages</a></li>
+                              <li><a href="#"><i class="fa fa-edit fa-fw"></i> Edit Pages Contents</a></li>
+                            </ul>
+                        </li>
+
+
+
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Users<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#"><i class="fa fa-user fa-fw"></i> Administrator</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-user fa-fw"></i> Faculty</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+
+
+
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Advanced Pages<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                              <li>
+                                  <a href="#"><i class="fa fa-files-o fa-fw"></i> News Section</a>
+                              </li>
+
+                              <li>
+                                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Upcoming Events</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Student Corner</a>
+                                </li>
+
+                                <li>
+                                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Tenders</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Scholarship</a>
+                                </li>
+
+                                <li>
+                                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Recruitment</a>
+                                </li>
+
+                                <li>
+                                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Downloads Section</a>
+                                </li>
+
+                                <li>
+                                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Other Links Section</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>Admissions</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>Results</a>
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-upload fa-fw"></i> Add Files</a>
+                        </li>
+
+                        <li>
+                         <a href="#"><i class="fa fa-camera fa-fw"></i> Add Images<span class="fa arrow"></span></a>
+                           <ul class="nav nav-second-level">
+                               <li>
+                                   <a href="#"><i class="fa fa-camera fa-fw"></i> Home Page Image Slider</a>
+                               </li>
+                               <li>
+                                   <a href="#"><i class="fa fa-camera fa-fw"></i> Home Page Photo Gallery</a>
+                               </li>
+                               <li>
+                                   <a href="#"><i class="fa fa-camera fa-fw"></i> Photo Gallery </a>
+                               </li>
+                           </ul>
+                         </li>
+
+
+                        <li>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>Home Setting</a>
+                        </li>
+                      
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+          </nav>
+
+<div id="page-wrapper">
+
+    
+         <!-- /.row -->
+         <div class="row">
+             <div class="col-lg-12">
+                 <div class="panel panel-default">
+                     <div class="panel-heading">
+                        <h3> Add message</h3>
+                     </div>
+                     <div class="panel-body">
+                         <div class="row">
+                             <div class="col-lg-6">
+              
+                                 <form role="form">
+                                
+                                     <div class="form-group">
+                                         <label>messageText</label>
+                                         <input class="form-control" placeholder="Enter Title of news" id = "messageText" name = "messageText"><br>
+                                         <label>Name</label>
+                                         <input class="form-control" placeholder="Enter Text of news" id = "Name" name = "Name"><br>
+                                         <label>designation</label>
+                                         <input class="form-control" placeholder="Enter Category of news" id = "designation" name = "designation"><br>
+                                         <label>Date(when it was uploaded)</label>
+                                         <input type="date" placeholder="Enter date of news" id = "uploadDate" name = "uploadDate"><br>
+                                      <!-- <label>Date(last-updated)</label>
+                                         <input type="date" placeholder="Updated date" id = "News_name" name = "News_name"><br>-->
+                                         <label>Name</label>
+                                    <input class="form-control" placeholder="Name" id = "name" name = "name"><br>
+                                    <label>E-mail</label>
+                                    <input class="form-control" placeholder="E-mail" id = "email" name = "email"><br>
+                                    <label>Designation</label>
+                                    <input class="form-control" placeholder="Designation" id = "designation" name = "designation"><br>
+                                    <label>Department</label>
+                                    <input class="form-control" placeholder="Department" id = "department" name = "department"><br>
+                                       <label>Content Image</label>
+                                       <input class="form-control" type = "file" value = "upload" id = "userfile" name = "userfile">
+                                    <br>
+                                </div>
+
+                                   <button type="submit" name = "action" value ="add_news" class="btn btn-default">Insert</button>
+
+                                  <div class="form-group">
+                                     <h3 class="page-header">Delete News</h3>
+                                         <select  id = "del_menu" name = "del_menu"  class="form-control">
+                                           <option value = 0>Select News </option>
+                                     
+                                         </select>
+                                     </div>
+                                     <button type="Submit" name = "action" value ="delete_menu" class="btn btn-default">Delete</button>
+
+                                 </form>
+
+                             </div>
+                         </div>
+                         <!-- /.row (nested) -->
+                     </div>
+                     <!-- /.panel-body -->
+                 </div>
+                 <!-- /.panel -->
+             </div>
+             <!-- /.col-lg-12 -->
+         </div>
+         <!-- /.row -->
+         <div class="row">
+             <div class="col-lg-12">
+                 <div class="panel panel-default">
+                     <div class="panel-heading">
+                         <h3>Edit </h3>
+                         <label style="color:#990000">Note: , <a href="<?php echo base_url();?>index.php/Sadmin/advPages/Edit_Menus">Click Here</a></label>
+                      </div>
+                     <div class="panel-body">
+                         <div class="row">
+                             <div class="col-lg-6">
+                               <!-- form for the second content option**************************************-->
+                              
+             
+
+                                   <div class="form-group">
+                                    <label>messageText</label>
+                                    <input class="form-control" placeholder="Enter Title of news" id = "messageText" name = "messageText"><br>
+                                    <label>Name</label>
+                                    <input class="form-control" placeholder="Enter Text of news" id = "Name" name = "Name"><br>
+                                    <label>designation</label>
+                                    <input class="form-control" placeholder="Enter Category of news" id = "designation" name = "designation"><br>
+                                 <!--  <label>Date(when it was uploaded)</label>
+                                    <input type="date" placeholder="Enter date of news" id = "uploadDate" name = "uploadDate"><br>-->
+                                  <label>Date(last-updated)</label>
+                                    <input type="date" placeholder="Updated date" id = "updateDate" name = "updateDate"><br>
+                                    <label>Name</label>
+                               <input class="form-control" placeholder="Name" id = "name" name = "name"><br>
+                               <label>E-mail</label>
+                               <input class="form-control" placeholder="E-mail" id = "email" name = "email"><br>
+                               <label>Designation</label>
+                               <input class="form-control" placeholder="Designation" id = "designation" name = "designation"><br>
+                               <label>Department</label>
+                               <input class="form-control" placeholder="Department" id = "department" name = "department"><br>
+                                  <label>Content Image</label>
+                                  <input class="form-control" type = "file" value = "upload" id = "userfile" name = "userfile">
+                               <br>
+                           </div>
+
+                                  
+                                 
+                                     <button type="submit" class="btn btn-default">Insert</button>
+                                     <fieldset disabled></fieldset><!-- this is the field set inside it everything will be disabled-->
+                                 <!-- form the second content option ended....**************************************-->
+                             </div>
+                             <!-- /.col-lg-6 (nested) -->
+                             <div class="col-lg-6">
+                                 </br>
+                          <!--
+                                 <button type="submit" class="btn btn-primary">Submit Menu Item</button>
+                                 </br>
+                                 </br>
+                                 </br>
+                                 <button type="submit" class="btn btn-primary">Submit Menu Item</button>-->
+                                 </form>
+                                 <script>
+                                            CKEDITOR.replace( 'content' );
+                                        </script>
+                             </div>
+                             <!-- /.col-lg-6 (nested) -->
+                         </div>
+                         <!-- /.row (nested) -->
+                     </div>
+                     <!-- /.panel-body -->
+                 </div>
+                 <!-- /.panel -->
+             </div>
+             <!-- /.col-lg-12 -->
+         </div>
+         <!-- /.row -->
+     </div>
+
+     <!-- /.panel-footer -->
+     </div>
+     <!-- /.panel .chat-panel -->
+     </div>
+     <!-- /.col-lg-4 -->
+     </div>
+     <!-- /.row -->
+     </div>
+     <!-- /#page-wrapper -->
+
+     </div>
+     <!-- /#wrapper -->
+<script>
+jQuery('#datetimepicker').datetimepicker(
+  {
+  formatTime: 'g:i A',
+  step:30,
+  ampm: true,
+  validateOnBlur: false
+  }
+);
+</script>
+
+<script>
+jQuery('#datetimepicker2').datetimepicker(
+  {
+  formatTime: 'g:i A',
+  step:30,
+  ampm: true,
+  validateOnBlur: false
+  }
+);
+</script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script>
+   // using JQUERY's ready method to know when all dom elements are rendered
+   $( document ).ready(function () {
+     // set an on click on the button
+     $("#button").click(function () {
+       // get the time if clicked via an ajax get queury
+       // see the code in the controller time.php
+       $.get("index.php/Sadmin/Time", function (time) {
+         // update the textarea with the time
+         $("#text").html("Time on the server is:" + time);
+       });
+     });
+   });
+ </script>
+ <script src='/tinymce/tinymce.min.js'></script>
+
+
+
+  <script>
+  // https://www.tinymce.com/docs/get-started/first-steps/
+  tinymce.init({
+      selector: '.myeditablediv',
+      inline: true
+    });
+  </script>
+
+<!-- jQuery -->
+<script src="adm-assets/bower_components/jquery/dist/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="adm-assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="adm-assets/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="adm-assets/dist/js/sb-admin-2.js"></script>
+<script src="adm-assets/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="adm-assets/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+
+<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+
+<script>
+
+$(document).ready(function() {
+    $('#dataTables-example').DataTable({
+            responsive: true,
+            aaSorting : [[0, 'desc']],
+      iDisplayLength: 250
+    });
+});
+</script>
+
+
+<script>
+$(document).ready(function() {
+    $('#dataTables-example2').DataTable({
+            responsive: true,
+            aaSorting : [[0, 'desc']],
+      iDisplayLength: 10
+    });
+});
+</script>
+
+
+<script>
+$(document).ready(function() {
+    $('#dataTables-example3').DataTable({
+            responsive: true,
+            aaSorting : [[0, 'desc']],
+      iDisplayLength: 10
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    $('#dataTables-example4').DataTable({
+            responsive: true,
+            aaSorting : [[0, 'desc']],
+      iDisplayLength: 10
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    $('#dataTables-example5').DataTable({
+            responsive: true,
+            aaSorting : [[0, 'desc']],
+      iDisplayLength: 10
+    });
+});
+</script>
+
+
+<script>
+$(document).ready(function() {
+    $('#dataTables-example_n').DataTable({
+            responsive: true,
+            aaSorting : [[0, 'asc']],
+      iDisplayLength: 100
+    });
+});
+</script>
+</body>
+<!-- default date and time picker-->
+
+
+
+
+
+
+
+
+
+<!-- default date and time picker ends here-->
+</html>

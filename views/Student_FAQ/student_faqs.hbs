@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why Recruit</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon-16x16.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: "Poppins";
+        }
+
+        #header {
+            position: sticky;
+            top: 0;
+        }
+
+        #content {
+            margin: 20px;
+        }
+
+        #btn-back-to-top {
+            position: fixed;
+            display: none;
+        }
+
+        .tpofaqs {
+            background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(211, 211, 211, 0.7) 99.11%), url(../img/bg_faqs.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <div>
+        {{>header}}
+    </div>
+    <br><br><br><br><br><br>
+
+    <!-- Back to top button -->
+    <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light"
+        class="inline-block p-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out bottom-5 right-5"
+        id="btn-back-to-top">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" class="w-4 h-4" role="img"
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path fill="currentColor"
+                d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z">
+            </path>
+        </svg>
+    </button>
+
+    <!-- backgroud pic and heading -->
+    <div>
+        <div class="tpofaqs flex flex-col justify-center items-start h-[224px] px-4 lg:px-[11%] py-[48px]">
+            <p class="font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">FAQ's</p>
+        </div>
+        <nav class="flex px-4 lg:px-[11%] bg-gray-200 py-[8px] text-black" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center">
+                <li class="inline-flex items-center">
+                    <a href="" class="inline-flex items-center text-sm font-medium hover:text-gray-900">
+                    </a><a href="{{URL}}" class="text-lg font-medium ml-2"><i class="fa fa-home"></i> CTP</a>
+                </li>
+                <li aria-current="page">
+                    <div class="inline-flex items-center">
+                        <i style="color: rgb(128, 128, 128); font-size: 12px; margin-left: 12px"
+                            class="fa-solid fa-angle-right ml-2"></i>
+                        <a href="{{URL}}/index_student_faqs" class="text-lg font-medium ml-2">FAQ's</a>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+
+    <div id="content" class="main-body m-10">
+    </div>
+    <br>
+    <div>
+        {{>footer}}
+    </div>
+</body>
+
+<script>
+
+    const content = document.getElementById('content')
+
+
+    let faq_link = `{{URL}}/FAQs/Student`
+    fetch(faq_link)
+        .then(response => response.json())
+        .then(data => {
+
+            content.innerHTML = "";
+            let str1 = `<div class="grid grid-cols-1 m-[5%] lg:grid-cols-2 gap-8 max-w-5xl lg:mx-auto">`;
+            let str2 = "";
+
+            let cnt = 0;
+
+            for (let i = 0; i < data.length; i++) {
+                var faq = data[i];
+
+                if (faq.related === "Student") {
+                    str2 += `
+            <div class="w-full max-w-md bg-white border border-gray-200 rounded-lg shadow shadow-sky-500 px-3 py-5">
+                <div class="flex flex-col space-y-2">
+                    <h5 class="mb-1 font2 text-xl font-bold text-black">${faq.question}</h5>
+                    <span class="text-lg font2 font-bold text-sky-500">Answer</span>
+                    <p class="font2 text-sm text-black">${faq.answer}</p>
+                </div>
+            </div>
+            `;
+                    cnt++;
+                }
+            }
+
+            let str3 = `</div>
+              </div>
+            </div>`
+            content.innerHTML += str1 + str2 + str3;
+        })
+
+    // Get the button
+    let mybutton = document.getElementById("btn-back-to-top");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        if (
+            document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20
+        ) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+    // When the user clicks on the button, scroll to the top of the document
+    mybutton.addEventListener("click", backToTop);
+
+    function backToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+
+</script>
+
+</html>

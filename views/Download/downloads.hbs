@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Downloads</title>
+  <link rel="icon" type="image/x-icon" href="/img/favicon-16x16.png" />
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: "Poppins";
+    }
+
+    #header {
+      position: sticky;
+      top: 0;
+      
+    }
+
+    #btn-back-to-top {
+      position: fixed;
+      display: none;
+    }
+
+    .tpodownload {
+      background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(../img/bg_downloads.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
+
+  <script>
+    function resizeIframe(obj) {
+      obj.style.height =
+        obj.contentWindow.document.documentElement.scrollHeight + "px";
+    }
+  </script>
+</head>
+
+<body>
+  <!-- navbar -->
+  <div>
+    {{>header}}
+  </div>
+  <br><br><br><br><br><br>
+
+  <!-- Back to top button -->
+  <button type="button" data-mdb-ripple="true" data-mdb-ripple-color="light"
+    class="inline-block p-3 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out bottom-5 right-5"
+    id="btn-back-to-top">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" class="w-4 h-4" role="img"
+      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="currentColor"
+        d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z">
+      </path>
+    </svg>
+  </button>
+
+  <!-- backgroud pic and heading -->
+  <div>
+    <div class="tpodownload flex flex-col justify-center items-start h-[224px] px-4 lg:px-[11%] py-[48px]">
+      <p class="font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">Downloads</p>
+    </div>
+    <nav class="flex px-4 lg:px-[11%] bg-gray-200 py-[8px] text-black" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center">
+        <li class="inline-flex items-center">
+          <a href="" class="inline-flex items-center text-sm font-medium hover:text-gray-900">
+          </a><a href="{{URL}}" class="text-lg font-medium ml-2"><i class="fa fa-home"></i> CTP</a>
+        </li>
+        <li aria-current="page">
+          <div class="inline-flex items-center">
+            <i style="color: rgb(128, 128, 128); font-size: 12px; margin-left: 12px"
+              class="fa-solid fa-angle-right ml-2"></i>
+            <a href="{{URL}}/index_download" class="text-lg font-medium ml-2">Downloads</a>
+          </div>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- option section -->
+  <!-- <div class="flex flex-col gap-3 md:flex-row w-full my-20">
+    <div class="mx-auto px-20 py-10"
+      style="background-color: #E8E8E8;border: 1px solid #E8E8E8; box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.2); border-radius: 2px;">
+      <a href="/pr.pdf" class="flex-col item-center justify-content " download="Placement_Report">
+        <img src="./img/placement_reports.png" alt="reports" class="mx-auto px-4 py-4">
+        <h6 class="text-md text-center font-bold">Placement Report</h6>
+      </a>
+    </div>
+    <div class="mx-auto px-20 py-10"
+      style="background-color: #E8E8E8;border: 1px solid #E8E8E8; box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.2); border-radius: 2px;">
+      <a href="/pb.pdf" class="flex-col item-center justify-content" download="Placement_Brochures">
+        <img src="./img/brochures.png" alt="brochures" class="mx-auto px-4 py-4">
+        <h6 class="text-md text-center font-bold">Brochures</h6>
+      </a>
+    </div>
+    <div class="mx-auto px-20 py-10"
+      style="background-color: #E8E8E8;border: 1px solid #E8E8E8; box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.2); border-radius: 2px;">
+      <a href="/p.pdf" class="flex-col item-center justify-content" download="Policies">
+        <img src="./img/policies.png" alt="policies" class="mx-auto px-4 py-4">
+        <h6 class="text-md text-center font-bold">Policies</h6>
+      </a>
+    </div>
+  </div> -->
+  <!-- Student and Department Links -->
+     
+     {{!-- <h1 class="text-2xl sm:text-4xl title-font font-medium text-gray-900 p-2 sm:p-3">Student</h1> 
+   <div  class="flex h-screen">
+    <div class="xl:w-full md:w-full p-3">
+        <div class="p-6 rounded-lg overflow-scroll"
+          style="height: 550px; border: 1px solid #2167A7; box-shadow: 0px 6px 10px 4px rgba(79, 154, 239, 0.2); border-radius: 6px;">
+           
+          <ul class="list-disc font2" id="student">
+
+          </ul>
+        </div>
+      </div>
+       </div>
+     <h1 class="text-2xl sm:text-4xl title-font font-medium text-gray-900 p-2 sm:p-3">Department</h1> 
+      <div class="flex h-screen">
+      <div class="xl:w-full md:w-full p-3">
+        <div class="p-6 rounded-lg overflow-scroll"
+          style="height: 550px; border: 1px solid #2167A7; box-shadow: 0px 6px 10px 4px rgba(79, 154, 239, 0.2); border-radius: 6px;">
+           
+          <ul class="list-disc font2" id="department">
+             
+
+          </ul>
+        </div>
+ 
+       </div>
+   </div> --}}
+   <div class="flex flex-col sm:flex-row overflow-auto mb-4" style="margin-top: 60px;">
+    <!-- announcement section -->
+    <div class="w-11/12 sm:w-3/4 flex flex-col ml-2 sm:ml-5 mr-2">
+      <h1 class="text-2xl sm:text-4xl title-font font-medium text-gray-900 p-2 sm:p-3">Student</h1>
+      <div class="xl:w-full md:w-full p-3">
+        <div class="p-6 rounded-lg overflow-scroll"
+          style="height: 550px; border: 1px solid #2167A7; box-shadow: 0px 6px 10px 4px rgba(79, 154, 239, 0.2); border-radius: 6px;">
+          <!-- list of announcement -->
+          <ul class="list-disc font2" id="student">
+            <!-- announcement 1 -->
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="w-11/12 sm:w-3/4 flex flex-col ml-2 sm:ml-5 mr-2">
+      <h1 class="text-2xl sm:text-4xl title-font font-medium text-gray-900 p-2 sm:p-3">Department</h1>
+      <div class="xl:w-full md:w-full p-3">
+        <div class="p-6 rounded-lg overflow-scroll"
+          style="height: 550px; border: 1px solid #2167A7; box-shadow: 0px 6px 10px 4px rgba(79, 154, 239, 0.2); border-radius: 6px;">
+          <!-- list of announcement -->
+          <ul class="list-disc font2" id="department">
+            <!-- announcement 1 -->
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- notice board -->
+    {{!-- <div class="flex flex-col w-11/12 sm:w-1/2 ml-2 mr-2 sm:mr-5">
+      <h1 class="text-2xl sm:text-4xl title-font font-medium text-gray-900 p-2 sm:p-3">Notices</h1>
+      <div id="notes" class="font2 font-semibold">
+
+      </div>
+    </div> --}}
+  </div>
+
+   
+  <!-- footer -->
+  <br>
+  <div>
+    {{>footer}}
+  </div>
+</body>
+
+<script>
+
+  const link1 = `{{URL}}/Download/Student`
+  const link2 = `{{URL}}/Download/Department`
+
+   fetch(link1)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      console.log("come");
+      let student = document.getElementById('student');
+
+      for (let i =0; i<data.length; i++) {
+        let el = document.createElement('li');
+        el.classList.add("ml-3")
+        el.classList.add("mt-1")
+        el.classList.add("mb-1")
+
+        let el1 = document.createElement('a');
+        let span = document.createElement('span');
+        span.style.cssText = "color: #FF8534; font-size: small;"
+        span.classList.add("p-3");
+        el1.style.cssText = "color: #002A51; font-weight:bold; font-size:large";
+
+        el1.target = "_blank";
+        el1.href = data[i].link;
+        el1.innerText = data[i].text;
+
+        span.textContent = data[i].updatedAt.substring(0, 10);
+        el1.appendChild(span);
+        el.appendChild(el1);
+        student.appendChild(el);
+      }
+    });
+
+      fetch(link2)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      let department = document.getElementById('department');
+
+      for (let i =0; i<data.length; i++) {
+        let el = document.createElement('li');
+        el.classList.add("ml-3")
+        el.classList.add("mt-1")
+        el.classList.add("mb-1")
+
+        let el1 = document.createElement('a');
+        let span = document.createElement('span');
+        span.style.cssText = "color: #FF8534; font-size: small;"
+        span.classList.add("p-3");
+        el1.style.cssText = "color: #002A51; font-weight:bold; font-size:large";
+
+        el1.target = "_blank";
+        el1.href = data[i].link;
+        el1.innerText = data[i].text;
+
+        span.textContent = data[i].updatedAt.substring(0, 10);
+        el1.appendChild(span);
+        el.appendChild(el1);
+        department.appendChild(el);
+      }
+    });  
+  // Get the button
+  let mybutton = document.getElementById("btn-back-to-top");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+  // When the user clicks on the button, scroll to the top of the document
+  mybutton.addEventListener("click", backToTop);
+
+  function backToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+</html>

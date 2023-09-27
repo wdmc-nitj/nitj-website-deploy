@@ -1,0 +1,208 @@
+<div class=" z-50 p-0 top-0 flex items-start justify-start h-full w-full fixed bg-transparent backdrop-blur-2xl"
+  id="nav-menu" style="display: none" onclick="priority=4;executor();">
+  <div id="menu" class="h-screen w-2/3 z-10 relative" onclick="priority=3;executor();">
+    <div id="menu-content" class="menu-content z-50 bg-accent h-full relative" onclick="priority=2;executor();">
+      <!-- cross button-->
+      <div class="top-bar">
+        <div class="menu-btn z-50 flex justify-end py-4 px-4">
+          <div class="line bg-white w-[20px] h-[2px] rotate-45 absolute" onclick="priority=1;executor();"></div>
+          <div class="line bg-white w-[20px] h-[2px] -rotate-45" onclick="priority=1;executor();"></div>
+        </div>
+      </div>
+
+      <a href="/index_placements" type="button"
+        class="dropdown-buttons capitalize z-10 w-full inline-flex flex-shrink-0 items-center border border-gray-300 py-2.5 px-4 text-center text-sm font-medium bg-white text-black hover:bg-blue-800 focus:bg-blue-800 focus:text-white">Placements
+      </a>
+
+      <a href="/index_internship" type="button"
+        class="dropdown-buttons capitalize z-10 w-full inline-flex flex-shrink-0 items-center border border-gray-300 py-2.5 px-4 text-center text-sm font-medium bg-white text-black hover:bg-blue-800 focus:bg-blue-800 focus:text-white">Internships
+      </a>
+
+      <a href="/index_wrecruit" type="button"
+        class="dropdown-buttons capitalize z-10 w-full inline-flex flex-shrink-0 items-center border border-gray-300 py-2.5 px-4 text-center text-sm font-medium bg-white text-black hover:bg-blue-800 focus:bg-blue-800 focus:text-white">Why
+        Recruit
+      </a>
+
+      <a href="/index_download" type="button"
+        class="dropdown-buttons capitalize z-10 w-full inline-flex flex-shrink-0 items-center border border-gray-300 py-2.5 px-4 text-center text-sm font-medium bg-white text-black hover:bg-blue-800 focus:bg-blue-800 focus:text-white">Downloads
+      </a>
+
+      <a href="/index_people" type="button"
+        class="dropdown-buttons capitalize z-10 w-full inline-flex flex-shrink-0 items-center border border-gray-300 py-2.5 px-4 text-center text-sm font-medium bg-white text-black hover:bg-blue-800 focus:bg-blue-800 focus:text-white">People
+      </a>
+
+      <a href="/index_student_faqs" type="button"
+        class="dropdown-buttons capitalize z-10 w-full inline-flex flex-shrink-0 items-center border border-gray-300 py-2.5 px-4 text-center text-sm font-medium bg-white text-black hover:bg-blue-800 focus:bg-blue-800 focus:text-white">FAQ's
+      </a>
+    </div>
+  </div>
+</div>
+<!-- Menu for mobile ends-->
+<header class="fixed mx-auto bg-white top-0 right-0 left-0 z-40">
+  <!-- TOP NAV BAR stats -->
+  <div id="top_bar"
+    class="absolute top-0 right-0 left-0 transition-transform delay-200 h-7 bg-accent py-0.5 px-2 sm:px-12 text-xs uppercase text-white shadow-md">
+    <div class="container mx-auto flex flex-row justify-between">
+      <div class="basis-1/2">
+        <div class="flex flex-row justify-left px-5 gap-4 sm:gap-6">
+          <a href="https://nitj.ac.in">
+            <div class="flex items-center">
+              <span class="material-symbols-outlined" style="
+                      font-variation-settings: 'FILL' 0, 'wght' 200, 'grad' 0,
+                        'opzs' 40;
+                    ">
+                house
+              </span>
+              <p class="pl-1.5 text-xs">Main Website</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="basis-1/2 sm:pl-8 pl-1">
+        <div class="flex flex-row gap-4 justify-between">
+          <div class="hidden sm:flex basis-1/6 gap-4 flex-row items-center">
+            <a href="https://www.facebook.com/NITJofficial"><i class="fa-brands fa-facebook text-lg"></i></a>
+            <a href="https://www.instagram.com/nitjofficial/"><i class="fa-brands fa-instagram text-lg"></i></a>
+            <a href="https://twitter.com/NITJofficial"><i class="fa-brands fa-twitter text-lg"></i></a>
+          </div>
+          <div class="flex sm:basis-1/3 basis-1/2 justify-center items-center">
+            <span class="material-symbols-outlined" style="
+                    font-variation-settings: 'FILL' 0, 'wght' 200, 'grad' 0,
+                      'opzs' 40;
+                  ">
+              g_translate
+            </span>
+            <a href="" class="hidden sm:block pl-1">हिन्दी / <span class="text-lg">A</span>+A-</a>
+          </div>
+          <div class="flex sm:basis-1/3 basis-1/2 justify-center items-center">
+            <span class="material-symbols-outlined" style="
+                    font-variation-settings: 'FILL' 0, 'wght' 200, 'grad' 0,
+                      'opzs' 40;
+                  ">
+              contacts
+            </span>
+            <a href="http://smile.nitj.ac.in/erp/login" class="hidden sm:block pl-1.5 text-xs">ERP</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- top nav bar ends -->
+  <!-- INSTITUTE LOGO & NAME starts -->
+  <div id="instituteNameContainer"
+    class="relative sm:px-0 sm:w-full p-0 left-[10px] sm:left-0 h-14 max-h-14 sm:h-20 sm:max-h-20">
+    <div class="mySlides mt-7">
+      <div class="align-center sm:px-10 md:px-20 flex flex-row justify-end sm:justify-between bg-white py-2.5">
+        <div
+          class="institute_name sm:max-w-lg sm:basis-1/2 justify-start text-center sm:text-lg font-semibold uppercase hidden sm:block">
+          <p>Dr B R AMBEDKAR NATIONAL INSTITUTE OF TECHNOLOGY JALANDHAR</p>
+        </div>
+        <div
+          class="institute_name flex sm:max-w-lg sm:basis-1/2 justify-end sm:px-16 text-center text-sm sm:text-lg font-bold uppercase">
+          <p>डॉ बी आर अंबेडकर राष्ट्रीय प्रौद्योगिकी संस्थान जालंधर</p>
+        </div>
+      </div>
+    </div>
+    <div class="mySlides mt-7">
+      <div class="align-center sm:px-10 md:px-20 flex flex-row justify-end sm:justify-between bg-white py-2.5">
+        <div
+          class="institute_name sm:max-w-lg sm:basis-1/2 justify-center px-16 text-center sm:text-lg font-bold uppercase hidden sm:block">
+          <p>डॉ बी आर अंबेडकर राष्ट्रीय प्रौद्योगिकी संस्थान जालंधर</p>
+        </div>
+        <div
+          class="institute_name flex sm:max-w-lg sm:basis-1/2 justify-center sm:px-8 text-center text-sm sm:text-lg font-bold uppercase">
+          <p>ਡਾ ਬੀ ਆਰ ਅੰਬੇਡਕਰ ਨੈਸ਼ਨਲ ਇੰਸਟੀਚਿਊਟ ਟੈਕਨਾਲੋਜੀ ਜਲੰਧਰ</p>
+        </div>
+      </div>
+    </div>
+    <div class="mySlides mt-7">
+      <div class="align-center sm:px-10 md:px-20 flex flex-row justify-end sm:justify-between bg-white py-2.5">
+        <div
+          class="institute_name sm:max-w-lg sm:basis-1/2 justify-center px-8 text-center sm:text-lg font-bold uppercase hidden sm:block">
+          <p>ਡਾ ਬੀ ਆਰ ਅੰਬੇਡਕਰ ਨੈਸ਼ਨਲ ਇੰਸਟੀਚਿਊਟ ਟੈਕਨਾਲੋਜੀ ਜਲੰਧਰ</p>
+        </div>
+        <div
+          class="institute_name flex sm:max-w-lg sm:basis-1/2 justify-center text-center text-xs sm:text-lg font-semibold uppercase">
+          <p>Dr B R AMBEDKAR NATIONAL INSTITUTE OF TECHNOLOGY JALANDHAR</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- INSTITUTE LOGO & NAME ends -->
+  <!-- Logo CONTAINER starts -->
+  <div
+    class="absolute hidden sm:block left-[50px] z-40 mx-auto -translate-x-1/2 -translate-y-1/3 sm:translate-y-0 scale-75 sm:scale-100 sm:left-1/2"
+    style="width: 230px">
+    <img src="partials/img/Rectangle 47 (1).png" alt="" />
+  </div>
+  <a href="https://nitj.ac.in">
+    <div id="logo_250"
+      class="absolute h-[120px] aspect-square left-[50px] sm:left-1/2 scale-[0.40] sm:scale-100 -translate-y-1/3 top-9 sm:top-7 sm:translate-y-0 z-40 -translate-x-1/2 sm:py-0">
+      <img src="partials/img/logo_250.png" alt="" />
+    </div>
+  </a>
+  <!-- Logo CONTAINER ends -->
+  <!-- NAV BAR starts-->
+
+
+  <div class="sm:block bg-accent drop-shadow-lg z-40">
+    <div>
+      <div class="z-40 flex h-7 sm:h-10 max-w-screen px-4 flex-row justify-between bg-accent text-sm lg:text-lg text-white">
+        <div class="flex items-center sm:hidden h-full">
+          <span class="material-symbols-outlined pr-2"
+            style='font-variation-settings: "FILL" 0, "wght" 200, "grad" 0, "opzs" 40;' onclick="open_menu();"> menu
+          </span>
+          <a href="/" class="h-full">
+            <span class="material-symbols-outlined" style="
+                      font-variation-settings: 'FILL' 0, 'wght' 200, 'grad' 0,
+                        'opzs' 40;
+                    ">
+              home
+            </span>
+          </a>
+        </div>
+        <div class="basis-2/5 hidden sm:block ml-12">
+          <div class="flex w-full flex-row justify-between px-4 py-1.5 lg:py-0">
+            <div class="flex items-center">
+              <a href="/" class="hidden sm:block text-xs">
+                <span class="material-symbols-outlined" style="
+                      font-variation-settings: 'FILL' 0, 'wght' 200, 'grad' 0,
+                        'opzs' 40;
+                    ">
+                  home
+                </span>
+              </a>
+            </div>
+            <a href="/index_placements" class="group cursor-default hover:bg-blue-800">
+              <div id="Placements" class="p-1 font-medium uppercase">Placements</div>
+            </a>
+            <a href="/index_internship" class="group cursor-default hover:bg-blue-800">
+              <div id="Internships" class="p-1 font-medium uppercase">Internships</div>
+            </a>
+            <a href="/index_wrecruit" class="group cursor-default hover:bg-blue-800">
+              <div id="Why_Recruit" class="p-1 font-medium uppercase">Why Recruit</div>
+            </a>
+          </div>
+        </div>
+        <div class="basis-2/5 hidden sm:block w-full mr-12">
+          <div class="flex w-full flex-row justify-between">
+            <div class="basis-4/5">
+              <div class="flex flex-row justify-between py-1.5 lg:py-0">
+                <a href="/index_download" class="group cursor-default hover:bg-blue-800">
+                  <div id="Downloads" class="p-1 font-medium uppercase">Downloads</div>
+                </a>
+                <a href="/index_people" class="group cursor-default hover:bg-blue-800">
+                  <div id="People" class="p-1 font-medium uppercase">People</div>
+                </a>
+                <a href="/index_student_faqs" class="group relative cursor-default hover:bg-blue-800">
+                  <div id="Student_FAQ's" class="p-1 font-medium uppercase">FAQ's</div>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- NAV BAR ends-->
+</header>
