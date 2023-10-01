@@ -939,6 +939,48 @@
   <div class="base-image hidden overflow-hidden lg:block"></div>
   <!-- === LIFE AT NITJ Ends === -->
 
+  <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var slideIndex = 0;
+    carousel();
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > x.length) {
+        slideIndex = 1;
+      }
+      x[slideIndex - 1].style.display = "block";
+      setTimeout(carousel, 2500);
+    }
+    var tooltipTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+    // var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    //   return new Tooltip(tooltipTriggerEl);
+    // });
+    function slideCards(e, direction) {
+      // var container = document.getElementById('cards')
+      const container = e.parentNode.querySelector('div')
+      scrollCompleted = 0
+      var slideVar = setInterval(function () {
+        if (direction == 'left') {
+          container.scrollLeft -= container.clientWidth
+        } else {
+          container.scrollLeft += container.clientWidth
+        }
+        scrollCompleted += 100
+        if (scrollCompleted >= 1000) {
+          window.clearInterval(slideVar)
+        }
+      }, 2)
+    }
+  </script>
+
 
   <script type="module" src="/js/app.js"></script>
   <!-- <script type="module" src="./js/navbar.js"></script> -->
