@@ -8,8 +8,7 @@
   <!-- Favicon and title -->
   <link rel="icon" type="image/x-icon" href="./public/assets/images/nitj-logo.png" />
   <title>Dr. B.R. Ambedkar National Institute of Technology, Jalandhar</title>
-  <!-- Google Fonts  -->
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -18,39 +17,8 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <!-- CSS linking -->
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="/css/magic.min.css">
   <script src="./js/data.js" defer></script>
   <style>
-    /* Customizing the Scrollbar */
-
-    .material-symbols-outlined {
-      font-variation-settings: "FILL" 0, "wght" 400, "grad" 0, "opzs" 48;
-    }
-
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-resizer {
-      background-color: #ffffff;
-    }
-
-    /* Track */
-    ::-webkit-scrollbar-track {
-      border-radius: 10px;
-    }
-
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-      background: hsla(201, 96%, 26%);
-      border-radius: 10px;
-    }
-
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-      background: #212121;
-    }
-
     /* Gallery Effects */
     .box {
       flex: 1;
@@ -97,50 +65,6 @@
       background-position: 0% 28%;
       background-repeat: no-repeat;
       background-size: cover;
-    }
-
-    .base-image-2 {
-      margin-top: 40px;
-      background-image: url("public/assets/images/nitj3.jpg"),
-        linear-gradient(rgb(255, 255, 255), rgba(4, 4, 4));
-      background-color: #cccccc;
-      height: 300px;
-      background-position: 58% 28%;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-
-    .main-shadow {
-      text-shadow: rgb(0 0 0) 6px -1px 5px;
-    }
-
-    .carousel-open:checked+.carousel-item {
-      position: static;
-      opacity: 100;
-    }
-
-    .carousel-item {
-      -webkit-transition: opacity 0.9s ease-in-out;
-      transition: opacity 1s ease-in-out 0.2s;
-    }
-
-    #carousel-1:checked~.control-1,
-    #carousel-2:checked~.control-2,
-    #carousel-3:checked~.control-3,
-    #carousel-4:checked~.control-4 {
-      display: block;
-    }
-
-    .carousel-indicators {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      bottom: 2%;
-      left: 0;
-      right: 0;
-      text-align: center;
-      z-index: 10;
     }
 
     #menu .menu-content ul li.selected a {
@@ -720,7 +644,7 @@
           </div> -->
       </div>
       <div id="publications"
-        class="h-full md:col-start-3 md:col-end-4 row-span-3 py-3 px-8 h-fit border-accent border-t-4 bg-light-purple border-b-4 rounded-lg">
+        class="h-full md:col-start-3 md:col-end-4 row-span-3 py-3 px-8 border-accent border-t-4 bg-light-purple border-b-4 rounded-lg">
         <div class="flex flex-col gap-3 mb-8">
           <div class="flex items-center justify-start space-x-6 group">
             <h1 class="uppercase text-4xl font-semibold">Publications</h1>
@@ -939,82 +863,6 @@
                 </div>
               </div>
 
-
-              <!-- 
-                
-              <div id="club-card" class="overflow-hidden rounded-xl bg-white shadow-lg">
-                <div class="flex w-full flex-col items-stretch justify-start sm:flex-row">
-                  <div class="w-2/5 bg-[url(./public/assets/images/rtist_logo.png)] bg-cover bg-center bg-no-repeat">
-                  </div>
-                  <div class="flex flex-col p-6 w-full sm:w-3/5">
-                    <div class="flex flex-col items-start justify-start space-y-3">
-                      <h4 class="text-2xl font-bold uppercase">RTist</h4>
-                      <div
-                        class="flex items-start justify-start rounded-full border-2 border-green-500 bg-green-100 px-2 py-0.5 mt-2">
-                        <p class="text-xs font-bold uppercase text-green-500">
-                          Robotics Club
-                        </p>
-                      </div>
-                      <p class="line-clamp-3 leading-5">
-                        The club is all about robotics. This club serves as a
-                        platform for students to enhance their robotic skills
-                        and contribute for the development of the college.
-                      </p>
-                    </div>
-                    <div class="mt-5 flex items-center justify-start space-x-3">
-                      <a class="uppercase cursor-pointer font-semibold text-sm text-sky-500">Learn more
-                        <span>&rarr;</span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div id="club-card" class="overflow-hidden rounded-xl bg-white shadow-lg">
-                <div class="flex w-full flex-col items-stretch justify-start sm:flex-row">
-                  <div class="w-2/5 bg-[url(./public/assets/images/DSC_Logo.svg)] bg-cover bg-center bg-no-repeat">
-                  </div>
-                  <div class="flex flex-col p-6 w-full sm:w-3/5">
-                    <div class="flex flex-col items-start justify-start space-y-3">
-                      <h4 class="text-2xl font-bold uppercase">Criminalz Crew</h4>
-                      <div
-                        class="flex items-start justify-start rounded-full border-2 border-lime-500 bg-lime-100 px-2 py-0.5 mt-2">
-                        <p class="text-xs font-bold uppercase text-lime-500">Dance Club</p>
-                      </div>
-                      <p class="line-clamp-3 leading-5">The club is all about robotics. This club serves as a platform
-                        for students to enhance their robotic skills and contribute for the development of the
-                        college.
-                      </p>
-                    </div>
-                    <div class="mt-5 flex items-center justify-start space-x-3">
-                      <a class="uppercase cursor-pointer font-semibold text-sm text-sky-500">Learn more
-                        <span>&rarr;</span></a>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-              <!-- <div id="club-card" class="overflow-hidden rounded-xl bg-white shadow-lg">
-                <div class="flex w-full flex-col items-stretch justify-start sm:flex-row">
-                  <div
-                    class="w-2/5 bg-[url(./public/assets/images/mediacell_logo.png)] bg-cover bg-center bg-no-repeat">
-                  </div>
-                  <div class="flex flex-col p-6 w-full sm:w-3/5">
-                    <div class="flex flex-col items-start justify-start space-y-3">
-                      <h4 class="text-2xl font-bold uppercase">Mediacell</h4>
-                      <div
-                        class="flex items-start justify-start rounded-full border-2 border-red-500 bg-red-100 px-2 py-0.5 mt-2">
-                        <p class="text-xs font-bold uppercase text-red-500">Reporting Club</p>
-                      </div>
-                      <p class="line-clamp-3 leading-5">The club is all about robotics. This club serves as a platform
-                        for students to enhance their robotic skills and contribute for the development of the
-                        college.
-                      </p>
-                    </div>
-                    <div class="mt-5 flex items-center justify-start space-x-3">
-                      <a class="uppercase cursor-pointer font-semibold text-sm text-sky-500">Learn more
-                        <span>&rarr;</span></a>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
             </div>
           </div>
         </div>
@@ -1134,52 +982,10 @@
   </script>
 
 
-  <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
-  <script type="text/javascript">
-    var slideIndex = 0;
-    carousel();
-    function carousel() {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > x.length) {
-        slideIndex = 1;
-      }
-      x[slideIndex - 1].style.display = "block";
-      setTimeout(carousel, 2500);
-    }
-    var tooltipTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    );
-    // var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    //   return new Tooltip(tooltipTriggerEl);
-    // });
-    function slideCards(e, direction) {
-      // var container = document.getElementById('cards')
-      const container = e.parentNode.querySelector('div')
-      scrollCompleted = 0
-      var slideVar = setInterval(function () {
-        if (direction == 'left') {
-          container.scrollLeft -= container.clientWidth
-        } else {
-          container.scrollLeft += container.clientWidth
-        }
-        scrollCompleted += 100
-        if (scrollCompleted >= 1000) {
-          window.clearInterval(slideVar)
-        }
-      }, 2)
-    }
-  </script>
-
   <script type="module" src="/js/app.js"></script>
   <!-- <script type="module" src="./js/navbar.js"></script> -->
-  <script src="/js/footer.js"></script>
-  <script src="/template/footer.js"></script>
+  <!-- <script src="/js/footer.js"></script> -->
+  <script defer src="/template/footer.js"></script>
   <script src="/template/helper.js"></script>
   <!-- <script type="module" src="./js/navbar-mobile.js"></script> -->
 
