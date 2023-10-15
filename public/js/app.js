@@ -1,4 +1,5 @@
-import imgSlider from './utils/app/imgSlider.js'
+import './utils/app/imgSlider.js'
+import './utils/app/sliderTextAnimation.js'
 import navbarUtil from './utils/app/navUtils.js'
 import {
   backToTop,
@@ -8,7 +9,6 @@ import {
   clubsCardsScroll,
 } from './utils/app/scrollUtils.js'
 import notificationTabs from './utils/app/tabUits.js'
-import './utils/app/sliderTextAnimation.js'
 
 window.onscroll = navbarUtil
 // window.onload = getNavbar
@@ -67,8 +67,6 @@ for (const link of tabLinks) {
 }
 // ///////////////////////////
 // Image Slider Animation::
-
-setInterval(imgSlider, 2000)
 
 // News Cards Auto Scroll
 
