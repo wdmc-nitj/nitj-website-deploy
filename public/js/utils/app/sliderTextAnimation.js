@@ -1,5 +1,5 @@
 import { dataFilter } from '../routingUtils.js'
-
+console.log('sliderTextAnimation.js')
 let stringsArray = [
   'THE PLACE OF TRANSFORMATION',
   '72<sup>nd</sup> IN OVERALL NIRF RANKING',
@@ -12,7 +12,7 @@ let isPaused = false
 let currentElementInside = null
 let animationTimeout = null
 
-function animateText(stringsArray) {
+export default function animateText(stringsArray) {
   if (isPaused) return
   const currentString = stringsArray[currentIndex]
   const newLink = document.createElement('a')
@@ -79,3 +79,5 @@ fetch('/api/initiative')
     console.log(err)
     animateText(stringsArray)
   })
+
+animateText(stringsArray)

@@ -1,4 +1,5 @@
 const mainImg = document.getElementById('main-image')
+console.log(mainImg)
 const slider = [
   ['The Place of transformation', '/public/assets/images/IMG_0196.JPG'],
   ['78th IN OVERALL NIRF RANKING', '/public/assets/images/IMG_0198.JPG'],
@@ -8,8 +9,8 @@ const slider = [
 let i = 0
 const imgSlider = () => {
   // mainText.innerText = slider[i % slider.length][0]
-  mainImg.style.backgroundImage = `url('${slider[i % slider.length][1]}')`
+  mainImg.style.backgroundImage = `url(${slider[i % slider.length][1]})`
   i++
 }
 
-export default imgSlider
+setInterval(imgSlider, 2000)
