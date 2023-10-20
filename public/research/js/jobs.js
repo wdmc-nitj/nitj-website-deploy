@@ -30,7 +30,7 @@ fetch(`${data_url}` + `/recruitments/updates/defaultTab`)
       nonfacultycontract.click()
     }
     else if(update.defaultTabName === "faculty" && slug[slug.length - 1] !== "research"){
-      const faculty = document.getElementById("facultyButton");
+      const faculty = document.getElementById("facultybutton");
       faculty.click()
     };
   });
