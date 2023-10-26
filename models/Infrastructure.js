@@ -7,6 +7,7 @@ const Schema=new mongoose.Schema({
     },
     title: {type:String},
     img: {type:String},
+    imgdesp:{type:String},
     type:{
       type:String,
       enum:["Research Labs","Research Area","Department Labs","Infrastructure"]
