@@ -20,7 +20,6 @@ let currentElementInside = null
 let animationTimeout = null
 
 export default function animateText(stringsArray) {
-  console.log('animating text', stringsArray)
   if (isPaused) return
   const currentString = stringsArray[currentIndex]
   const newLink = document.createElement('a')
