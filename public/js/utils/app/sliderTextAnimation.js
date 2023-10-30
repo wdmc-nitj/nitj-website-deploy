@@ -1,9 +1,16 @@
 import { dataFilter } from '../routingUtils.js'
-console.log('sliderTextAnimation.js')
+
 let stringsArray = [
-  'THE PLACE OF TRANSFORMATION',
-  '72<sup>nd</sup> IN OVERALL NIRF RANKING',
-  '46<sup>th</sup> IN ENGINEERING NIRF',
+  { title1: 'THE PLACE OF TRANSFORMATION', _id: '1' },
+
+  {
+    title1: '72<sup>nd</sup> IN OVERALL NIRF RANKING',
+    _id: '2',
+  },
+  {
+    title1: '46<sup>th</sup> IN ENGINEERING NIRF',
+    _id: '3',
+  },
 ]
 
 const mainSliderText = document.getElementById('main-slider-text')
@@ -13,6 +20,7 @@ let currentElementInside = null
 let animationTimeout = null
 
 export default function animateText(stringsArray) {
+  console.log('animating text', stringsArray)
   if (isPaused) return
   const currentString = stringsArray[currentIndex]
   const newLink = document.createElement('a')
