@@ -11,6 +11,9 @@ const Schema=new mongoose.Schema({
     email:{
         type:String
     },
+    rollNumber:{
+        type: String,
+    },
     img:{
         type:String
     },
