@@ -451,13 +451,11 @@ fetch(`${baseURL}/club/get/all`)
       div.innerHTML = `
         <div class="flex w-full flex-col items-stretch justify-start sm:flex-row">
           <div class="w-full sm:w-2/5 bg-cover bg-center bg-no-repeat">
-          <img src ='${
-            e.img
-          }' class="w-full h-full object-cover" alt="Club Image" />
+          <img src ='${e.clubLogo}' class="w-full h-full object-cover" alt="Club Image" />
           </div>
           <div class="flex flex-col p-6 w-full sm:w-3/5">
             <div class="flex flex-col items-start justify-start space-y-3">
-              <h4 class="text-2xl font-bold uppercase">${e.name}</h4>
+              <h4 class="text-2xl font-bold uppercase">${e.clubName}</h4>
               <div
                 class="flex items-start justify-start rounded-full border-2 border-purple-500 bg-purple-100 px-2 py-0.5 mt-2">
                 <p class="text-xs font-bold uppercase text-purple-500">
@@ -465,7 +463,7 @@ fetch(`${baseURL}/club/get/all`)
                 </p>
               </div>
               <p class="line-clamp-2 leading-5">
-                ${e.desc}
+                ${e.description}
               </p>
             </div>
             <div class="mt-5 flex items-center justify-start space-x-3">

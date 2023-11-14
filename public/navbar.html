@@ -11,9 +11,8 @@
   <body>
     <div class="flex flex-col m-2 mt-4 items-center p-4">
       <select
-        id="menu"
-        class="w-72 h-10 border-2 border-black rounded-lg p-2 py-4 my-2"
-      >
+        id="menu" name="menu" 
+        class="w-72 h-10 border-2 border-black rounded-lg pl-1 my-2">
         <option value="">Select Menu</option>
         <option value="Administration">Administration</option>
         <option value="Admissions">Admissions</option>
@@ -59,13 +58,20 @@
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
         style="display: none"
       >
-        Edit
+        Save Edits
       </button>
     </div>
     <div class="flex flex-col m-2">
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-          <div class="overflow-hidden">
+          <div class="overflow-hidden flex flex-col items-center justify-center">
+            <a href="/api/dashboard/navbar/add">
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
+              >
+                Add New
+              </button>
+            </a>
             <table class="min-w-full text-left text-sm font-light">
               <thead class="border-b font-medium dark:border-neutral-500">
                 <tr>
@@ -78,13 +84,7 @@
               </thead>
               <tbody id="table"></tbody>
             </table>
-            <a href="/api/dashboard/navbar/add">
-              <button
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
-              >
-                Add New
-              </button>
-            </a>
+            
           </div>
         </div>
       </div>
