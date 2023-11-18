@@ -71,6 +71,23 @@
       --direction: 50%;
     }
 
+    .tooltiptext {
+      visibility: hidden;
+      width: 180px;
+      background-color: rgb(255, 255, 255);
+      color: #000;
+      text-align: center;
+      border-radius: 15px;
+      padding: 0px;
+      margin-left: 10%;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+    }
+    #meet_16dec2023:hover .tooltiptext{
+      visibility: visible;
+    }
     @keyframes slide {
       to {
         -webkit-transform: translateY(var(--direction, -50%));
@@ -445,22 +462,26 @@
             <h1 class="">NIT Jalandhar</h1>
           </div>
 
-          
+
 
         </div>
 
         <div class="w-[45vw] sm:w-[35vw] lg:w-[20vw] ">
 
-          <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem] my-1 sm:my-2">The Annual Alumni Meet and Silver Jubilee Meet for the 1998 Batch on 16th December 2023.</p>
-        </div> 
+          <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem] my-1 sm:my-2">The Annual Alumni Meet and Silver
+            Jubilee Meet for the 1998 Batch on 16th December 2023.</p>
+        </div>
         <br>
 
-        
-        <a href="https://nitj.ac.in/files/1697451542621-unnamed.png"><img alt="Click to Enlarge Image"
-          src="https://nitj.ac.in/files/1697451542621-unnamed.png" style="width:50%">
-       </a>
-    
+
+        <a id="meet_16dec2023" href="https://nitj.ac.in/files/1697451542621-unnamed.png">
+          <span class="tooltiptext">Click to Enlarge Image</span>
+          <img src="https://nitj.ac.in/files/1697451542621-unnamed.png" alt="Invitation image" style="height: 30%; margin-left: 2vw;">
+
+        </a>
+
       </div>
+      
 
 
       <!-- <h2
@@ -498,23 +519,23 @@
 
 
 
-        <!--LATEST UPDATES STARTS-->
-        <div class="grid items-center p-3 sm:p-5 bg-[#f5f5f5] h-[45vh] sm:h-[50vh] md:h-[50vh] lg:h-[90vh] bg-center ">
+    <!--LATEST UPDATES STARTS-->
+    <div class="relative grid items-center p-3 sm:p-5 bg-[#f5f5f5]  bg-center ">
 
-          <div class="mx-2 sm:mx-12 lg:mx-20 mt-5 sm:mt-6 lg:mt-20 flex align-middle">
-            <div>
-              <div
-                class="text-[#2167A7] text-xl sm:text-2xl lg:text-[1.75rem] font-bold lg:ml-4 mb-4 lg:mb-8 w-44 sm:w-52 lg:w-64">
-                LATEST UPDATES
-              </div>
-            </div>
-            <div class="w-full mt-3 lg:mt-2">
-              <hr
-                class="border-[0.2rem] lg:border-[0.22rem]  border-[#277BC7] border-solid border-t-0 border-x-0 lg:border-t-0 lg:border-x-0 rounded mb-6">
-            </div>
+      <div class="mx-2 sm:mx-12 lg:mx-20 mt-5 sm:mt-6 lg:mt-20 flex align-middle">
+        <div>
+          <div
+            class="text-[#2167A7] text-xl sm:text-2xl lg:text-[1.75rem] font-bold lg:ml-4 mb-4 lg:mb-8 w-44 sm:w-52 lg:w-64">
+            LATEST UPDATES
           </div>
-    
-          <!-- <h2><strong>An MoU signed between NIT Jalandhar and KISCO India Private Limited (KIPL)</strong></h2>
+        </div>
+        <div class="w-full mt-3 lg:mt-2">
+          <hr
+            class="border-[0.2rem] lg:border-[0.22rem]  border-[#277BC7] border-solid border-t-0 border-x-0 lg:border-t-0 lg:border-x-0 rounded mb-6">
+        </div>
+      </div>
+
+      <!-- <h2><strong>An MoU signed between NIT Jalandhar and KISCO India Private Limited (KIPL)</strong></h2>
 
           <p>The MoU was signed by Prof. Binod Kumar Kanaujia, Director of NIT Jalandhar, and Mr. Rohit Khanna, Managing Director of KIPL. The main objective of this collaboration is to extend vital financial support to academically gifted yet economically challenged students at NIT Jalandhar. KIPL has generously provided financial assistance amounting to Rs 3.2 lacs to these deserving students as part of their Corporate Social Responsibility (CSR) Initiative. This marks the 5th consecutive year of their support, and the institute appreciates the dedication of KIPL to nurture the future leaders.&nbsp;<strong>It&#39;s worth mentioning that Mr. Rohit Khanna is an alumnus of NIT Jalandhar, having graduated from the institution in the class of 1994.</strong></p>
 
@@ -522,14 +543,14 @@
 
           <p style="text-align: center;">&nbsp;<a href="https://nitj.ac.in/files/1699504870804-MoU.jpg"><img alt="" src="https://nitj.ac.in/files/1699504870804-MoU.jpg" style="width:40%" /></a></p> -->
 
-          <h2
-            class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-14 mb-4 sm:mb-5 lg:mb-8 mx-2 sm:mx-12 lg:ml-24 align-left">
-            An MoU signed between NIT Jalandhar and KISCO India Private Limited (KIPL) </h2>
-    
-          
-            <div class="mx-2 sm:mx-12 lg:mx-24 flex mb-16 lg:mb-20">
-            <div class="w-[10vw] sm:w-[25vw] lg:w-[20vw] text-[#2167A7] text-xs sm:text-sm lg:text-[1.1rem]">
-              <!-- <div class="my-1 sm:my-2">
+      <h2
+        class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-14 mb-4 sm:mb-5 lg:mb-8 mx-2 sm:mx-12 lg:ml-24 align-left">
+        An MoU signed between NIT Jalandhar and KISCO India Private Limited (KIPL) </h2>
+
+
+      <div class="relative mx-2 sm:mx-12 lg:mx-24  mb-8 lg:mb-10">
+        <div class="w-[10vw] sm:w-[25vw] lg:w-[20vw] text-[#2167A7] text-xs sm:text-sm lg:text-[1.1rem]">
+          <!-- <div class="my-1 sm:my-2">
                 <h1 class="font-semibold">16th December, 2023</h1>
               </div>
      
@@ -537,27 +558,37 @@
                 <i class="fa-solid fa-clock mr-3 my-1"></i>
                 <h1 class="">8:30 AM</h1>
               </div> -->
-    
-              <!-- <div class="flex my-1 sm:my-2">
+
+          <!-- <div class="flex my-1 sm:my-2">
                 <i class="fa-solid fa-location-dot mr-3 my-1"></i>
                 <h1 class="">NIT Jalandhar</h1>
               </div> -->
 
-              
-            </div>
-            <div class="w-[55vw] sm:w-[45vw] lg:w-[25vw] ">
-    
-              <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem] my-1 sm:my-2">The MoU was signed by Prof. Binod Kumar Kanaujia, Director of NIT Jalandhar, and Mr. Rohit Khanna, Managing Director of KIPL. The main objective of this collaboration is to extend vital financial support to academically gifted yet economically challenged students at NIT Jalandhar. KIPL has generously provided financial assistance amounting to Rs 3.2 lacs to these deserving students as part of their Corporate Social Responsibility (CSR) Initiative. This marks the 5th consecutive year of their support, and the institute appreciates the dedication of KIPL to nurture the future leaders. <strong>It's worth mentioning that Mr. Rohit Khanna is an alumnus of NIT Jalandhar, having graduated from the institution in the class of 1994.</strong></p> 
-              <p><a href="https://nitj.ac.in/template/index.html?id=654868447740daae16b57a0f?category=researchHighlights">Read More &rarr;</a></p>
-            </div>
-            
-          </div>
-          <!-- <a href="https://nitj.ac.in/files/1699424123955-MoU.jpg"><img alt="Click to Enlarge Image"
+
+        </div>
+        <div class="relative w-[150vw] sm:w-[45vw] lg:w-[150vw]">
+
+          <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem] my-1 sm:my-2">The MoU was signed by Prof. Binod
+            Kumar Kanaujia, Director of NIT Jalandhar, and Mr. Rohit Khanna, Managing Director of KIPL. The main
+            objective of this collaboration is to extend vital financial support to academically gifted yet economically
+            challenged students at NIT Jalandhar. KIPL has generously provided financial assistance amounting to Rs 3.2
+            lacs to these deserving students as part of their Corporate Social Responsibility (CSR) Initiative. This
+            marks the 5th consecutive year of their support, and the institute appreciates the dedication of KIPL to
+            nurture the future leaders. <strong>It's worth mentioning that Mr. Rohit Khanna is an alumnus of NIT
+              Jalandhar, having graduated from the institution in the class of 1994.</strong></p>
+          <p><a
+              href="https://nitj.ac.in/template/index.html?id=654868447740daae16b57a0f?category=researchHighlights">Read
+              More &rarr;</a></p>
+        </div>
+        
+
+      </div>
+      <!-- <a href="https://nitj.ac.in/files/1699424123955-MoU.jpg"><img alt="Click to Enlarge Image"
             src="https://nitj.ac.in/files/1699424123955-MoU.jpg" style="width:50%">
          </a>
           -->
-    
-          <!-- <h2
+
+      <!-- <h2
             class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-14 mb-4 sm:mb-5 lg:mb-8 mx-5 sm:mx-12 lg:ml-24 align-left">
             Reunite 22</h2>
     
@@ -585,10 +616,10 @@
                 batches of 1995, 1996 and 1997. It marked the silver jubilee of the class of 1997.</p>
             </div>
           </div> -->
-        </div>
-        
-    
-        <!--RECENT EVENTS ENDS-->
+    </div>
+
+
+    <!--RECENT EVENTS ENDS-->
 
 
 
@@ -1035,25 +1066,30 @@
           <i class="fas fa-location-dot pr-[8px]"></i><span class="opacity-90">G.T Road, Amritsar Bypass, Jalandhar,
             Punjab, India-144008</span>
         </div>
-        <div class="flex flex-row pb-[6px]">
-          <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780609d" class="hover:text-[#82C3FF]">
-            
+
+        <div class=" pb-[6px]">
+          <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780609d"
+            class="hover:text-[#82C3FF]">
+
             <div>
               <span class="font-bold ">Dr. Anish Kumar Sachdeva</span> (Dean Student Welfare)
           </a>
-          <a href="https://departments.nitj.ac.in/dept/me/Faculty/6430446638bff038a7807afd" class="hover:text-[#82C3FF]">
-            
+          <a href="https://departments.nitj.ac.in/dept/me/Faculty/6430446638bff038a7807afd"
+            class="hover:text-[#82C3FF]">
+
             <div>
               <span class="font-bold ">Dr. Manoj Kumar</span> (Alumni Coordinator)
           </a>
-          <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780601a" class="hover:text-[#82C3FF]">
-            
+          <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780601a"
+            class="hover:text-[#82C3FF] clear-right">
+
             <div>
               <span class="font-bold ">Dr. Ajay Gupta</span> (Alumni Coordinator)
           </a>
-          
-          <i class="fas fa-envelope mt-1 pr-[8px]"></i>
-          <h3 class="opacity-90"> office.alumniaffairs@nitj.ac.in</h3>
+
+
+          <h3 class="opacity-90"><i class="fas fa-envelope mt-1 pr-[8px]"></i> office.alumniaffairs@nitj.ac.in</h3>
+
         </div>
 
       </div>
