@@ -12,7 +12,7 @@ const getAllInfrastructure=async(req,res)=>{
 const getByIdInfrastructure=async(req,res)=>{
 
     try {
-        const result=await Infrastructure.find(req.params.id);
+        const result=await Infrastructure.findById(req.params.id);
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json("Error: " + error);

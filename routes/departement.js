@@ -120,6 +120,7 @@ Router.get("/:dept/programmeInfo",programmeInfoController.getByDeptprogrammeInfo
 // Router.delete("/:dept/Placement/:id", deletePlacement);
 
 Router.get("/:dept/Infrastructure", getByDeptInfrastructure);
+Router.get("/:dept/Infrastructure/:id", getByIdInfrastructure);
 // Router.post("/:dept/Infrastructure", addInfrastructure);
 // Router.put("/:dept/Infrastructure/:id", updateInfrastructure);
 // Router.delete("/:dept/Infrastructure/:id", deleteInfrastructure);

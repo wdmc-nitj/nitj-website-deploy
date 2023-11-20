@@ -6,10 +6,18 @@ const Schema=new mongoose.Schema({
         enum: ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai']
     },
     title: {type:String},
-    img: {
+    desc:{type: String},
+    mainImage:{type:String},
+    incharge:{
+      type: String,
+    },
+    location:{
+      type: String
+    },
+    images: {
       type: [
         {
-          'link':{
+          'img':{
             type: String,
           },
           'heading':{
