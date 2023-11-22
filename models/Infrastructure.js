@@ -7,7 +7,7 @@ const Schema=new mongoose.Schema({
     },
     title: {type:String},
     desc:{type: String},
-    mainImage:{type:String},
+    img:{type:String},
     incharge:{
       type: String,
     },
