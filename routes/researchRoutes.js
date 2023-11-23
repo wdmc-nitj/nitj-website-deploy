@@ -18,7 +18,7 @@ researchRouter.use('/MOUs', MOUsRoutes);
 
 researchRouter.use('/consultancies', consultanciesRouter);
 
-researchRouter.use('/events', eventsRouter);
+researchRouter.use('/Events', eventsRouter);
 
 researchRouter.use('/sponsoredProjects', sponsoredProjectsRouter);
 
