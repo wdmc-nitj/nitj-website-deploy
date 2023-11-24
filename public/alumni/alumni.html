@@ -88,6 +88,23 @@
     #meet_16dec2023:hover .tooltiptext{
       visibility: visible;
     }
+    .base-image {
+      margin-top: 40px;
+      background-image: url("img/footer image.png"),
+        linear-gradient(rgb(255, 255, 255), rgba(4, 4, 4));
+      mask-image: linear-gradient(0deg, white, white, white, transparent);
+      -webkit-mask-image: linear-gradient(0deg,
+          white,
+          white,
+          white,
+          transparent);
+      background-color: #cccccc;
+      height: 400px;
+      background-position: 0% 28%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
     @keyframes slide {
       to {
         -webkit-transform: translateY(var(--direction, -50%));
@@ -1039,9 +1056,7 @@
 
 
     <!--Footer image starts-->
-    <div class="w-full">
-      <img src="img/footer image.png" alt="footer image">
-    </div>
+    <div class="base-image hidden overflow-hidden lg:block"></div>
     <!--Footer image ends-->
 
 
