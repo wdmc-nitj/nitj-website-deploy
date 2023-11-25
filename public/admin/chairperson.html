@@ -166,7 +166,8 @@
     </div>
     <script>
         async function callAPi() {
-            let result = await fetch('/api/administration?id=63a9694ae409adbff760f814');
+            // let result = await fetch('/api/administration?id=63a9694ae409adbff760f814');
+            let result = await fetch('/api/administration?id=6398228ae58d544e4a46ff34');
             result = await result.json();
             console.log(result);
             document.getElementById("name").innerHTML =
