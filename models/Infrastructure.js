@@ -29,6 +29,16 @@ const Schema=new mongoose.Schema({
         }
       ]
     },
+    syllabus: {
+      type: [{
+        type: {
+          type: String
+        },
+        link: {
+          type: String
+        }}
+      ]
+    },
     type:{
       type:String,
       enum:["Research Labs","Research Area","Department Labs","Infrastructure"]
