@@ -21,7 +21,7 @@ const getByIdPlacement=async(req,res)=>{
 
 const getByDeptPlacement=async(req,res)=>{
     try {
-        const result=await Placement.find({show:true,department:req.params.dept});
+        const result=await Placement.find({show:true,department:req.params.dept}).sort('-package');
         res.status(200).json(result);
     } catch (error) {
         res.status(400).json("Error: " + error);
