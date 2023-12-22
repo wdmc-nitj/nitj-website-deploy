@@ -4,11 +4,20 @@ const mongoose = require("mongoose");
 //Schema---------------------------->
 const Schema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
-    desc: { type: String, default: "" },
-    type: { type: String, default: "" },
-    img: { type: String, default: "", required: true },
-    url:{type:String,default:""},
+    name: { type: String, required: true,  },
+    clubName: { type: String, default: "Club Name" },
+    description: { type: String, default: "Club-description" },
+    objective: {
+      type: [{
+        description: {
+          type: String,
+          default: "Club-objective"
+        }
+      }],
+    },
+    type: { type: String, default: "Club-type" },
+    clubLogo: { type: String, default: "club logo image-url", required: true },
+    clubWebsiteURL: { type: String, default: "club website url" },
     show: { type: Boolean, default: true },
     order: {
       type: Number,
@@ -30,6 +39,105 @@ const Schema = new mongoose.Schema(
     sourceOfInfoDepartment: {
       type: String,
     },
+
+    upcomingEvents: {
+      type: [{
+        description: {
+          type: String
+        }
+      }],
+    },
+
+    facultyCoordinator: {
+      type: [{
+        name: {
+          type: String,
+          default: "Faculty Name"
+        },
+        designation: {
+          type: String,
+          default: "Designation",
+        },
+        designationClub: {
+          type: String,
+          default: "Designation in Club",
+        },
+        department: {
+          type: String,
+          default: "Department",
+        },
+        email: {
+          type: String,
+          default: "Email",
+        },
+        image: {
+          type:String,
+          default:"https://www.iconpacks.net/icons/1/free-user-icon-244-thumb.png"
+        }
+
+      }],
+    },
+
+    studentCoordinator: {
+      type: [{
+        name: {
+          type: String,
+          default: "Student Name"
+        },
+        designationClub: {
+          type: String,
+          default: "Designation in Club",
+        },
+
+        department: {
+          type: String,
+          default: "Department",
+        },
+        year: {
+          type: String,
+          default: "Year",
+        },
+        email: {
+          type: String,
+          default: "Email",
+        },
+        phone: {
+          type: String,
+          default: "Phone",
+        },
+        image: {
+          type:String,
+          default:"https://www.iconpacks.net/icons/1/free-user-icon-244-thumb.png"
+        }
+      }],
+    },
+
+    // social links
+    instagramHandleURL: {
+      type: String,
+      default: "",
+    },
+    facebookHandleURL: {
+      type: String,
+      default: "",
+    },
+    youtubeHandleURL: {
+      type: String,
+      default: "",
+    },
+    linkedinHandleURL: {
+      type: String,
+      default: "",
+    },
+
+    clubImages: {
+      type: [{
+        link: {
+          type: String
+        }
+      }],
+    },
+
     newPage: {
       type: Boolean,
     },

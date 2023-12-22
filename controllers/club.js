@@ -7,7 +7,10 @@ exports.addClub = async (req, res) => {
 
     const data = new Club({
         name: req.body?.name,
+        clubName: req.body?.clubName,
         desc: req.body?.desc,
+        objective: req.body?.objective,
+        url: req.body?.url,
         type: req.body?.type,
         img: req.body?.img,
         order: req.body?.order,
@@ -17,7 +20,20 @@ exports.addClub = async (req, res) => {
             email: req.body?.sourceOfInfo?.email,
             designation: req.body?.sourceOfInfo?.designation,
             department: req.body?.sourceOfInfo?.department,
-        }
+        },
+
+        upcomingEvents: req.body?.upcomingEvents,
+        faculty: req.body?.faculty,
+        student: req.body?.student,
+
+        instagram: req.body?.instagram,
+        facebook: req.body?.facebook,
+        youtube: req.body?.youtube,
+        linkedin: req.body?.linkedin,
+        Images: req.body?.Images,
+        newPage: req.body?.newPage,
+        updateLogs: req.body?.updateLogs,
+
     });
 
     data.save()
@@ -26,21 +42,27 @@ exports.addClub = async (req, res) => {
 };
 
 exports.getClub = async (req, res) => {
-    if(req.query.id !== undefined){
+    if (req.query.id !== undefined) {
         Club.find({ _id: req.params.id })
             .then((data) => res.status(200).send(data))
             .catch((err) => res.status(400).send("Error: " + err));
     }
-    else{
+    else {
         Club.find({ show: true })
             .then((data) => res.status(200).send(data))
             .catch((err) => res.status(400).send("Error: " + err));
     }
 };
 
+exports.getClubbyName = async (req, res) => {
+    const name = req.params.name;
+    Club.find({ name: name })
+        .then((data) => res.status(200).send(data))
+        .catch((err) => res.status(400).send("Error: " + err));
+};
 
 exports.updateClub = async (req, res) => {
-    Club.findByIdAndUpdate(req.params.id,{
+    Club.findByIdAndUpdate(req.params.id, {
         name: req.body?.name,
         desc: req.body?.desc,
         type: req.body?.type,
@@ -53,7 +75,7 @@ exports.updateClub = async (req, res) => {
             designation: req.body?.sourceOfInfo?.designation,
             department: req.body?.sourceOfInfo?.department,
         }
-        
+
     })
         .then(() => {
             res.status(200).send("Club updated successfully");
@@ -69,8 +91,21 @@ exports.deleteClub = async (req, res) => {
         .catch((err) => res.status(400).send("Error: " + err));
 };
 
+// exports.getAllClub = async (req, res) => {
+//     Club.find()
+//         .then((data) => res.status(200).send(data))
+//         .catch((err) => res.status(400).send("Error: " + err));
+// };
 exports.getAllClub = async (req, res) => {
     Club.find()
-        .then((data) => res.status(200).send(data))
+        .then((data) => {
+            let obj = [];
+
+            obj = data.map((item) => {
+                return { ...item._doc, title: item.clubName }
+            })
+            console.log(obj);
+            res.status(200).send(obj);
+        })
         .catch((err) => res.status(400).send("Error: " + err));
 };
