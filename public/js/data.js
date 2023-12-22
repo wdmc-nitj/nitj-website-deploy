@@ -2,113 +2,110 @@
 const baseURL = "/api";
 // temp clubs data (hotfix until db is updated)
 const tempClubsData = [{
-name:"FINE ARTS SOCIETY",
-type:"DESIGN CLUB",
-desc:"The Fine Arts Society, or 'FAS' is the official club of NIT Jalandhar that",
-url:"https://www.nitj.ac.in/clubs/finearts.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/16_20230411_213129_0015.png",
-show:true
-},
-{
-name:"RURAL ACTIVITY CLUB",
-type:"SOCIAL WELFARE",
-desc:"The objective of the Rural Activity Club is to organize various activities in rural schools. The main motive is to guide",
-url:"https://www.nitj.ac.in/clubs/rural-activity.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/6_20230411_213129_0005.png",
-show:true
-},
-{
-name:"REGIONAL LANGUAGE CLUB",
-type:"SKILL DEVELOPMENT",
-desc:"To promote and nurture different regional languages of India",
-url:"https://www.nitj.ac.in/clubs/rlc.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/10_20230411_213129_0009.png",
-show:true
-},
-{
-name:"CREATIVITY AND WEB DESIGNING CLUB",
-type:"DESIGN CLUB",
-desc:"A web designing club is a community of individuals who share a passion for designing websites. The club provides.",
-url:"https://www.nitj.ac.in/clubs/webdesigning.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/3_20230411_213129_0002.png",
-show:true
-},
-{
-name:"GOOGLE DEVELOPER STUDENT CLUB",
-type:"DEVELOPMENTAL CLUB",
-desc:"The Google Developer Student Clubs (DSC) program aims to empower university.",
-url:"https://www.nitj.ac.in/clubs/gdsc.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/12_20230411_213129_0011.png",
-show:true
-},
-{
-name:"KALAKAAR",
-type:"DRAMATICS CLUB",
-desc:"Kalakaar is the official dramatics club of NIT Jalandhar that strives to provide a.",
-url:"https://www.nitj.ac.in/clubs/kalakaar.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/15_20230411_213129_0014.png",
-show:true
-},
-{
-name:"SEED",
-type:"ELECTRICAL DEPARTMENT SOCIETY",
-desc:"SEED is a professional society that brings together individuals working in the field",
-url:"https://www.nitj.ac.in/admin/seed.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/seed.png",
-show:true
-},
-{
-name:"ECSTASY",
-type:"FASHION CLUB",
-desc:"A fashion club of NITJ to promote the inner and outer beauty of the students and to give them stage confidence",
-url:"https://www.nitj.ac.in/clubs/ecstasy.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/19_20230411_213129_0018.png",
-show:true
-},
-{
-name:"ZEAL SOCIETY",
-type:"SKILL DEVELOPMENT",
-desc:"Zeal Society is a thriving community dedicated to nurturing your speaking",
-url:"https://www.nitj.ac.in/clubs/zeal.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/2_20230411_213129_0001.png",
-show:true
-},
-{
-name:"SPICE SOCIETY",
-type:"ICE DEPARTMENT SOCIERY",
-desc:"Society for Progression of Instrumentation and Control Engineering (SPICE) is a society which was establishe",
-url:"https://www.nitj.ac.in/clubs/spice-society.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/13_20230411_213129_0012.png",
-show:true
-},
-{
-name:"ANIMANIACS",
-type:"DEVELOPMENTAL CLUB",
-desc:"Animaniacs is the first official animation club of NITJ founded by Mohit Vansal",
-url:"https://www.nitj.ac.in/clubs/animanics.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/14_20230411_213129_0013.png",
-show:true
-},
-{
-name:"TEDXNITJALANDHAR",
-type:"SKILL DEVELOPMENT",
-desc:"We started off as a group of driven people to launch the TEDx community at our",
-url:"https://www.tedxnitjalandhar.org/",
-img:"https://v1.nitj.ac.in/NITJ/logos/7.png",
-show:true
-},
-{
-name:"TEAM DAKSH",
-type:"DESIGN CLUB ",
-desc:"Undergraduates of NIT Jalandhar honing their skills by designing and fabricating",
-url:"https://www.nitj.ac.in/clubs/daksh.html",
-img:"https://v1.nitj.ac.in/NITJ/logos/5_20230411_213129_0004.png",
-show:true
-},
-{
-
-},]
-
+  name:"FINE ARTS SOCIETY",
+  type:"DESIGN CLUB",
+  desc:"The Fine Arts Society, or 'FAS' is the official club of NIT Jalandhar that",
+  url:"https://www.nitj.ac.in/clubs/finearts.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/16_20230411_213129_0015.png",
+  show:true
+  },
+  {
+  name:"RURAL ACTIVITY CLUB",
+  type:"SOCIAL WELFARE",
+  desc:"The objective of the Rural Activity Club is to organize various activities in rural schools. The main motive is to guide",
+  url:"https://www.nitj.ac.in/clubs/rural-activity.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/6_20230411_213129_0005.png",
+  show:true
+  },
+  {
+  name:"REGIONAL LANGUAGE CLUB",
+  type:"SKILL DEVELOPMENT",
+  desc:"To promote and nurture different regional languages of India",
+  url:"https://www.nitj.ac.in/clubs/rlc.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/10_20230411_213129_0009.png",
+  show:true
+  },
+  {
+  name:"CREATIVITY AND WEB DESIGNING CLUB",
+  type:"DESIGN CLUB",
+  desc:"A web designing club is a community of individuals who share a passion for designing websites. The club provides.",
+  url:"https://www.nitj.ac.in/clubs/webdesigning.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/3_20230411_213129_0002.png",
+  show:true
+  },
+  {
+  name:"GOOGLE DEVELOPER STUDENT CLUB",
+  type:"DEVELOPMENTAL CLUB",
+  desc:"The Google Developer Student Clubs (DSC) program aims to empower university.",
+  url:"https://www.nitj.ac.in/clubs/gdsc.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/12_20230411_213129_0011.png",
+  show:true
+  },
+  {
+  name:"KALAKAAR",
+  type:"DRAMATICS CLUB",
+  desc:"Kalakaar is the official dramatics club of NIT Jalandhar that strives to provide a.",
+  url:"https://www.nitj.ac.in/clubs/kalakaar.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/15_20230411_213129_0014.png",
+  show:true
+  },
+  {
+  name:"SEED",
+  type:"ELECTRICAL DEPARTMENT SOCIETY",
+  desc:"SEED is a professional society that brings together individuals working in the field",
+  url:"https://www.nitj.ac.in/admin/seed.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/seed.png",
+  show:true
+  },
+  {
+  name:"ECSTASY",
+  type:"FASHION CLUB",
+  desc:"A fashion club of NITJ to promote the inner and outer beauty of the students and to give them stage confidence",
+  url:"https://www.nitj.ac.in/clubs/ecstasy.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/19_20230411_213129_0018.png",
+  show:true
+  },
+  {
+  name:"ZEAL SOCIETY",
+  type:"SKILL DEVELOPMENT",
+  desc:"Zeal Society is a thriving community dedicated to nurturing your speaking",
+  url:"https://www.nitj.ac.in/clubs/zeal.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/2_20230411_213129_0001.png",
+  show:true
+  },
+  {
+  name:"SPICE SOCIETY",
+  type:"ICE DEPARTMENT SOCIERY",
+  desc:"Society for Progression of Instrumentation and Control Engineering (SPICE) is a society which was establishe",
+  url:"https://www.nitj.ac.in/clubs/spice-society.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/13_20230411_213129_0012.png",
+  show:true
+  },
+  {
+  name:"ANIMANIACS",
+  type:"DEVELOPMENTAL CLUB",
+  desc:"Animaniacs is the first official animation club of NITJ founded by Mohit Vansal",
+  url:"https://www.nitj.ac.in/clubs/animanics.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/14_20230411_213129_0013.png",
+  show:true
+  },
+  {
+  name:"TEDXNITJALANDHAR",
+  type:"SKILL DEVELOPMENT",
+  desc:"We started off as a group of driven people to launch the TEDx community at our",
+  url:"https://www.tedxnitjalandhar.org/",
+  img:"https://v1.nitj.ac.in/NITJ/logos/7.png",
+  show:true
+  },
+  {
+  name:"TEAM DAKSH",
+  type:"DESIGN CLUB ",
+  desc:"Undergraduates of NIT Jalandhar honing their skills by designing and fabricating",
+  url:"https://www.nitj.ac.in/clubs/daksh.html",
+  img:"https://v1.nitj.ac.in/NITJ/logos/5_20230411_213129_0004.png",
+  show:true
+  },
+  ]
 function dataFilter(apiData) {
   const data = apiData.filter((n) => n.show === true);
   data.sort((a, b) => {
@@ -172,31 +169,36 @@ fetch(`${baseURL}/news/`)
 
       newsCard.innerHTML = `
             <a 
-                ${news.newPage
-          ? `target = "_blank" href= "${news.pdfLink}"`
-          : `href = "/template/index.html?id=${news._id}?category=news"`
-        }
+                ${
+                  news.newPage
+                    ? `target = "_blank" href= "${news.pdfLink}"`
+                    : `href = "/template/index.html?id=${news._id}?category=news"`
+                }
             
             >
               <div class="flex flex-col items-start justify-start space-y-1 border-l-4 border-gray-800 pl-5">
               
               <p class="w-full text-lg font-semibold">
-              ${news.new || isPinned
-          ? `
+              ${
+                news.new || isPinned
+                  ? `
                 
                 <span class="absolute -top-1 -left-1">
                   <span class="relative flex h-3 w-3">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full ${isPinned ? "bg-green-500" : "bg-orange-400"
-          } opacity-75"></span>
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full  ${isPinned ? "bg-green-500" : "bg-orange-400"
-          } opacity-75"></span>
-                    <span class="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex rounded-full h-3 w-3  ${isPinned ? "bg-green-500" : "bg-orange-500"
-          }"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full ${
+                      isPinned ? "bg-green-500" : "bg-orange-400"
+                    } opacity-75"></span>
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full  ${
+                      isPinned ? "bg-green-500" : "bg-orange-400"
+                    } opacity-75"></span>
+                    <span class="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex rounded-full h-3 w-3  ${
+                      isPinned ? "bg-green-500" : "bg-orange-500"
+                    }"></span>
                   </span>
                 </span>
                 `
-          : ""
-        }  
+                  : ""
+              }  
               ${news.title}</p>
 
                 <p class="w-full line-clamp-2">
@@ -315,8 +317,9 @@ fetch(`${baseURL}/latestEvent/get/all`)
             <div
                 class="flex flex-col overflow-hidden rounded-xl bg-light-purple shadow-xl border-t-4 border-b-4 border-accent h-full w-60">
                 <div class="flex h-full w-full flex-col p-2.5">
-                  <img class="h-44 basis-full w-full object-cover rounded-lg" src="${e.image
-        }" />
+                  <img class="h-44 basis-full w-full object-cover rounded-lg" src="${
+                    e.image
+                  }" />
                   <div class="flex flex-col p-4 basis-full">
                   <div>
                     <p class="text-sm font-bold uppercase text-gray-900 opacity-50">
@@ -329,10 +332,11 @@ fetch(`${baseURL}/latestEvent/get/all`)
                     <div class="pt-5 mt-auto whitespace-nowrap">
                       <a
 
-                      ${e.newPage
-          ? `target = "_blank" href= "${e.pdfLink}"`
-          : `href = "/template/index.html?id=${e._id}?category=latestEvent"`
-        }
+                      ${
+                        e.newPage
+                          ? `target = "_blank" href= "${e.pdfLink}"`
+                          : `href = "/template/index.html?id=${e._id}?category=latestEvent"`
+                      }
                        
                       class="cursor-pointer font-medium text-sky-500 hover:text-sky-600"
                       >Read More &rarr;</a>
@@ -386,8 +390,9 @@ fetch(`${baseURL}/researchHighlights/get/all`)
            <div
                 class="rounded-xl h-full bg-light-purple shadow-xl border-t-4 border-b-4 border-accent w-60">
                 <div class=" h-full w-full flex flex-col p-2.5">
-                  <img class="h-44 basis-3/5 object-cover rounded-lg" src="${e.image
-        }" />
+                  <img class="h-44 basis-3/5 object-cover rounded-lg" src="${
+                    e.image
+                  }" />
                   <div class="flex flex-col justify-between p-4 basis-2/5">
                     <p class="text-lg line-clamp-3 font-semibold text-gray-900">
                       ${e.title}
@@ -395,10 +400,11 @@ fetch(`${baseURL}/researchHighlights/get/all`)
                     <div class="mt-auto pt-5 flex whitespace-nowrap items-center justify-start space-x-3">
                       <a
 
-                      ${e.newPage
-          ? `target = "_blank" href= "${e.pdfLink}"`
-          : `href = "/template/index.html?id=${e._id}?category=researchHighlights"`
-        }
+                      ${
+                        e.newPage
+                          ? `target = "_blank" href= "${e.pdfLink}"`
+                          : `href = "/template/index.html?id=${e._id}?category=researchHighlights"`
+                      }
                        
                       class="cursor-pointer font-medium text-sky-500 hover:text-sky-600">
                       
@@ -530,18 +536,16 @@ fetch(`${baseURL}/publication`)
     });
   });
 
-fetch(`${baseURL}/club/get/all`)
-  .then((res) => res.json())
-  .then((apidata) => {
+// fetch(`${baseURL}/club/get/all`)
+//   .then((res) => res.json())
+//   .then((apidata) => {
     // console.log(data)
-    // const data = apidata.sort((a, b) => Math.random() - 0.5);
-    // temp hotfix for the db data , as the schema is changed and data would be updated later on , will fetch from db when data is avail
     const data = tempClubsData.sort((a, b) => Math.random() - 0.5);
 
     const parentDiv = document.getElementById("clubs-and-socs");
     parentDiv.innerHTML = "";
     data.forEach((e) => {
-      // console.log(e)
+      // console.log("huifheaufe" , e)
       // const content = e
       const div = document.createElement("div");
       div.setAttribute("id", "club-card");
@@ -552,8 +556,9 @@ fetch(`${baseURL}/club/get/all`)
       div.innerHTML = `
         <div class="flex w-full flex-col items-stretch justify-start sm:flex-row">
           <div class="w-full sm:w-2/5 bg-cover bg-center bg-no-repeat">
-          <img src ='${e.img
-        }' class="w-full h-full object-cover" alt="Club Image" />
+          <img src ='${
+            e.img
+          }' class="w-full h-full object-cover" alt="Club Image" />
           </div>
           <div class="flex flex-col p-6 w-full sm:w-3/5">
             <div class="flex flex-col items-start justify-start space-y-3">
@@ -571,8 +576,9 @@ fetch(`${baseURL}/club/get/all`)
             <div class="mt-5 flex items-center justify-start space-x-3">
               <a 
               target = "_blank"
-              href="${e?.url || "#"
-        }" class="uppercase cursor-pointer font-semibold text-sm text-sky-500">Learn more
+              href="${
+                e?.url || "#"
+              }" class="uppercase cursor-pointer font-semibold text-sm text-sky-500">Learn more
                 <span>&rarr;</span></a>
             </div>
           </div>
@@ -580,7 +586,7 @@ fetch(`${baseURL}/club/get/all`)
       `;
       e.show && parentDiv.appendChild(div);
     });
-  });
+  // });
 
 // Making the cards dynamic
 var size_images = 0;
