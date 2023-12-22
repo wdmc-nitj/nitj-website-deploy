@@ -11,7 +11,6 @@ const [id, category] = getParams()
 
 //   Putting Category in the page
 console.log(id, category)
-console.log(`/api/${category}/get/all`)
 
 const titleDiv = document.getElementById('title')
 const desp = document.getElementById('description')
@@ -28,31 +27,38 @@ if (parseInt(id) === 0) {
       console.log(apidata)
       putCategory(category)
 
-      const data = (category === 'club' ? apidata : dataFilter(apidata))
+      const data = dataFilter(apidata)
       console.log(data)
       data.forEach((e) => {
         const listItem = document.createElement('li')
 
         listItem.innerHTML = `  
-        <a class="underline underline-offset-4 decoration-accent decoration-0 hover:decoration-2"
-          ${e.newPage
-            ? `target="_blank" href="${e.pdfLink}"`
-            : `href="${category === 'club' ? '/clubs/template.html?id=' + e.name : '/template/index.html?id=' + e._id + '?category=' + category}"`}
-        >
-          ${e?.title || e?.desc}
-        </a>
-      
-        ${category !== 'club' && e?.new
+                <a
+                class = 'underline underline-offset-4 decoration-accent decoration-0 hover:decoration-2'
+                    ${e.newPage
+            ? `target = "_blank" href= "${e.pdfLink}"`
+            : `href = "/template/index.html?id=${e._id}?category=${category}"`
+          }
+                  >
+                  ${e?.title || e?.desc}
+                </a>
+
+
+                ${e?.new
             ? `<div id="new-tag" class="inline-flex ml-2 items-center justify-start space-x-2">
-              <span class="material-symbols-outlined text-accent-orange">
-                auto_awesome
-              </span>
-              <p class="text-lg font-bold uppercase text-accent-orange">
-                New
-              </p>
-            </div>`
+            <span class="material-symbols-outlined text-accent-orange">
+              auto_awesome
+            </span>
+            <p class="text-lg font-bold uppercase text-accent-orange">
+              New
+            </p>
+          </div>`
             : ''
-          }`;
+          }
+
+
+
+              `
         list.appendChild(listItem)
       })
     })
@@ -63,6 +69,7 @@ if (parseInt(id) === 0) {
   fetch(`/api/${category}?id=${id}`)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data)
       let title = data[0]?.title2 || data[0].title
       putCategory(data[0]?.title1 || category)
 
@@ -74,9 +81,9 @@ if (parseInt(id) === 0) {
       dateDiv.innerHTML = dateManipulator(data[0].updatedAt)
       if (data[0].image)
         imgContainer.innerHTML = ` <img src = "${data[0].image}" id="image" class="max-w-4xl rounded-xl mt-10 w-full" />`
-      pageTitleUpdater(category, data[0]?.title1 || data[0].title)
-      // pageTitleUpdater(data[0]?.title1 || data[0].title)
-      //  pageTitleUpdater(data[0].title1)
+        pageTitleUpdater(category, data[0]?.title1 || data[0].title)
+        // pageTitleUpdater(data[0]?.title1 || data[0].title)
+        //  pageTitleUpdater(data[0].title1)
     })
     .catch((err) => {
       console.log(err)

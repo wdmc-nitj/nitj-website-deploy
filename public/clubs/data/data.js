@@ -15,30 +15,30 @@ fetch(`${baseURL}/club/${id}`)
     console.log("API Response:", APIdata);
     const clubsDoc = document.getElementById("clubs");
 
-    // Conditional rendering for the website link
+    // Website Link
     const websiteLink = APIdata.clubWebsiteURL
       ? `
-  <div class="w-full flex my-4 flex-col items-start mb-5">
-    <p class="font2 font-medium text-[28px] lg:text-[32px]">Website link</p>
-    <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[3px]"></div>
-  </div>
-  <a href="${APIdata.clubWebsiteURL}" class="my-2 rounded-lg p-2 text-white bg-accent hover:bg-blue-500 w-36 h-10">
-    Website Link
-  </a>`
+<div class="w-full flex my-4 flex-col items-start mb-5">
+  <p class="font2 font-medium text-[28px] lg:text-[32px]">Website link</p>
+  <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[3px]"></div>
+</div>
+<a href="${APIdata.clubWebsiteURL}" class="my-2 rounded-lg p-2 text-white bg-accent hover:bg-blue-500 w-36 h-10">
+  Website Link
+</a>`
       : "";
 
     // Render the website section only if website data exists
-    const websiteSection = APIdata.clubWebsiteURL ? websiteLink : "";
+    const websiteSection = websiteLink ? websiteLink : "<p>No website link available.</p>";
 
-    // ojectives 
+    // Objectives
     let objectivesHTML = "";
     if (APIdata.objective && APIdata.objective.length > 0) {
       APIdata.objective.forEach((objective) => {
         objectivesHTML += `
-            <p class="my-2 text-lg font-semibold">
-            &#8226; ${objective.description}
-            </p>
-          `;
+        <p class="my-2 text-lg font-semibold">
+        &#8226; ${objective.description}
+        </p>
+      `;
       });
     } else {
       objectivesHTML = "<p>No objectives available.</p>";
@@ -49,14 +49,15 @@ fetch(`${baseURL}/club/${id}`)
     if (APIdata.upcomingEvents && APIdata.upcomingEvents.length > 0) {
       APIdata.upcomingEvents.forEach((event) => {
         upcomingEventsHTML += `
-          <p class="my-2 text-red-500 text-base font-semibold">
-          &#8226; ${event.description}
-          </p>
-        `;
+      <p class="my-2 text-red-500 text-base font-semibold">
+      &#8226; ${event.description}
+      </p>
+    `;
       });
     } else {
       upcomingEventsHTML = "<p>No upcoming events available.</p>";
     }
+
 
     // Gallery
     let galleryImages = '';
@@ -68,10 +69,10 @@ fetch(`${baseURL}/club/${id}`)
         }
 
         galleryImages += `
-          <div class="box overflow-hidden mx-2">
-            <img src="${image.link}" alt="Gallery Image" style="height: 200px;" />
-          </div>
-        `;
+      <div class="box overflow-hidden mx-2">
+        <img src="${image.link}" alt="Gallery Image" style="height: 200px;" />
+      </div>
+    `;
 
         if ((index + 1) % 3 === 0 || (index + 1) === APIdata.clubImages.length) {
           // Close the row after every 3 images or at the end of the loop
@@ -90,27 +91,33 @@ fetch(`${baseURL}/club/${id}`)
     // Function to generate HTML for faculty committee members
     function generateFacultyHTML(facultyData) {
       let html = "";
-      facultyData.forEach((faculty) => {
-        html += `
-      <div class="rounded-lg border border-gray-200 shadow-md flex flex-row items-center justify-center">
-          <img class="m-2 rounded-lg shadow-lg" style="height:150px; width:150px;" src="${faculty.image ? faculty.image : "https://www.iconpacks.net/icons/1/free-user-icon-244-thumb.png"}" alt="faculty-image">
-          <div class="flex my-3 ml-2 md:mr-4 mr-2 flex-col items-start justify-start md:gap-1 gap-0">
-            <div class="mb-1 md:text-lg text-base font-medium text-gray-900">${faculty.name}</div>
-            <div class="text-sm  flex text-gray-500">${faculty.designation}</div>
-            <div class="text-sm  flex text-gray-500">${faculty.designationClub}</div>
-            <div class="text-sm  md:w-64 w-48 text-start items-center self-center  text-gray-500">${faculty.department}</div>
-            <div class="md:text-base text-sm  flex font2  text-sky-500">${faculty.email}</div>
-          </div>
-      </div>
-    `;
-      });
+      if (facultyData && facultyData.length > 0) {
+        facultyData.forEach((faculty) => {
+          html += `
+        <div class="rounded-lg border border-gray-200 shadow-md flex flex-row items-center justify-center">
+            <img class="m-2 rounded-lg shadow-lg" style="height:150px; width:150px;" src="${faculty.image ? faculty.image : "https://www.iconpacks.net/icons/1/free-user-icon-244-thumb.png"}" alt="faculty-image">
+            <div class="flex my-3 ml-2 md:mr-4 mr-2 flex-col items-start justify-start md:gap-1 gap-0">
+              <div class="mb-1 md:text-lg text-base font-medium text-gray-900">${faculty.name}</div>
+              <div class="text-sm  flex text-gray-500">${faculty.designation}</div>
+              <div class="text-sm  flex text-gray-500">${faculty.designationClub}</div>
+              <div class="text-sm  md:w-64 w-48 text-start items-center self-center  text-gray-500">${faculty.department}</div>
+              <div class="md:text-base text-sm  flex font2  text-sky-500">${faculty.email}</div>
+            </div>
+        </div>
+      `;
+        });
+      } else {
+        html = "<p>No faculty committee members available.</p>";
+      }
       return html;
     }
+
     // Function to generate HTML for student committee members
     function generateStudentHTML(studentData) {
       let html = "";
-      studentData.forEach((student) => {
-        html += `
+      if (studentData && studentData.length > 0) {
+        studentData.forEach((student) => {
+          html += `
         <div class="rounded-lg border border-gray-200 shadow-md flex flex-row items-center justify-center">
           <img class="m-2 rounded-lg shadow-lg" style="height:150px; width:150px;" src="${student.image ? student.image : "https://www.iconpacks.net/icons/1/free-user-icon-244-thumb.png"}" alt="faculty-image">
           <div class="flex my-3 md:mr-4 mr-2 flex-col items-center justify-start md:gap-1 gap-0">
@@ -120,9 +127,12 @@ fetch(`${baseURL}/club/${id}`)
             <div class="md:text-base text-sm  flex font2  text-sky-500">${student.email}</div>
             <div class="md:text-base text-sm  flex font2  text-sky-500">${student.phone}</div>
           </div>
-      </div>
-    `;
-      });
+        </div>
+      `;
+        });
+      } else {
+        html = "<p>No student committee members available.</p>";
+      }
       return html;
     }
 

@@ -141,17 +141,12 @@ function navbarhelper(array, dropdown) {
   )
 
   for (let i = 2; i < array.length; i++) {
-    const listItem = document.createElement('li');
-    listItem.setAttribute('class', 'hover:text-[#FF6600]');
-    // Check if the content is "Read More" and apply the style if true
-    if (array[i]['name'] === 'Read More') {
-      listItem.style.color = 'blue';
-      listItem.style.fontWeight= 'bold';
-    }
-    listItem.innerHTML = `<a ${
-      array[i]?.newPage ? "target='_blank'" : ''
-    } href="${array[i].link}">${array[i]['name']}</a>`;
-    list.appendChild(listItem);
+    const listItem = document.createElement('li')
+    listItem.setAttribute('class', 'hover:text-[#FF6600]')
+    listItem.innerHTML = `<a ${array[i]?.newPage ? "target='_blank'" : ''
+      } href="${array[i].link}">${array[i]['name']}</a>
+      `
+    list.appendChild(listItem)
   }
   const bigCol = document.createElement('div')
   bigCol.setAttribute('class', 'flex flex-col gap-5 min-h-full')
