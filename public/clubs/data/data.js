@@ -6,13 +6,13 @@ const currentURL = window.location.href;
 const url = new URL(currentURL);
 // Extract the "id" parameter
 const id = url.searchParams.get("id");
-console.log(id); // This will log "sample"
+// console.log(id); // This will log "sample"
 
 fetch(`${baseURL}/club/${id}`)
   .then((response) => response.json())
   .then((data) => {
     const APIdata = data[0];
-    console.log("API Response:", APIdata);
+    // console.log("API Response:", APIdata);/
     const clubsDoc = document.getElementById("clubs");
 
     // Website Link
