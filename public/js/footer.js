@@ -12,7 +12,7 @@ async function callAPi() {
   // document.getElementById("quicklinks").innerHTML = footer;
   let x = `
   <h2 class="my-1 text-xl font-semibold">Quick Links</h2>
-    <div class="flex flex-row p-[15px]">
+    <div class="grid md:grid-cols-4 grid-cols-2 gap-10 p-15">
         <div class="flex basis-1/4 flex-col text-[11px] lg:text-[14px]">
     `;
 
