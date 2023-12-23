@@ -80,7 +80,7 @@ const minorProgramme = require("./models/admissions/minorProgramme.js");
 const newpage = require("./models/newpage");
 // adminbro model
 const User = require("./models/AdminBroUser");
-const ClubsBroUser = require("./models/ClubsBroUser");
+const ClubsBroUser = require("./models/clubsBroUser");
 
 const { query } = require("express");
 const { filter } = require("compression");
