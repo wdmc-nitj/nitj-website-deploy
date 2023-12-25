@@ -3,7 +3,7 @@ async function callAPi() {
   let result = await fetch('/api/footer/get/all')
   result = await result.json()
   // result = result[2]
-  console.log(result)
+  // console.log(result)
   //sort result according to order
   result.sort((a, b) => {
     return a.order - b.order
