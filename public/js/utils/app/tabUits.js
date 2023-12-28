@@ -52,6 +52,8 @@ export default async function notificationTabs(e, subscribed) {
 
   tabContainer.innerHTML = loadingSkeleton
 
+  fetchTabContent(e.dataset.notif, tabContainer)
+
   for (let i = 0; i < tablinks.length; i++) {
     tablinks[i].classList.add('hover:bg-blue-50', 'text-slate-400')
     tablinks[i].classList.remove(
@@ -62,9 +64,6 @@ export default async function notificationTabs(e, subscribed) {
   }
   e.classList.remove('hover:bg-blue-50', 'text-slate-400')
   e.classList.add('bg-blue-100', 'hover:bg-blue-200', 'text-accent')
-
-  fetchTabContent(currentTab, tabContainer)
-
 }
 
 async function fetchTabContent(tabName, tabContainer) {
@@ -72,7 +71,7 @@ async function fetchTabContent(tabName, tabContainer) {
     .then((res) => res.json())
     .then((apidata) => {
       const data = dataFilter(apidata)
-      // console.log(data)
+      console.log(data)
       tabContainer.innerHTML = ''
       const viewAll = document.getElementById('tab-view-all')
       data.forEach((e) => {
@@ -149,20 +148,4 @@ async function fetchTabContent(tabName, tabContainer) {
     .catch((err) => {
       console.log(err)
     })
-}
-
-
-const tabsUI = document.getElementsByClassName('notif-link')
-
-for (const link of tabsUI) {
-  link.addEventListener('click', () => {
-    notificationTabs(link)
-  })
-}
-
-
-window.onload = () =>
-{
-  // console.log(tabsUI[1])
-notificationTabs(tabsUI[1])
 }

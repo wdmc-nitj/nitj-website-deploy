@@ -1,10 +1,9 @@
+const newsCardsContainer = document.getElementById("not-pinned");
+let newsCardContainerTop = newsCardsContainer.scrollTop;
 
 let newsDirection = true;
 
 export function newsCardsScroll() {
-  const newsCardsContainer = document.getElementById("not-pinned");
-let newsCardContainerTop = newsCardsContainer.scrollTop;
-
   let currTop = newsCardContainerTop;
   let flag = true;
 

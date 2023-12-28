@@ -1,11 +1,4 @@
-var leastpri = 5;
-var dropdownmenus = document.getElementsByClassName("DropDowns");
-var subdropdownmenus = document.getElementsByClassName("subDropDowns");
-var dropdownmenubuttons = document.getElementsByClassName("dropdown-buttons");
-var subdropdownmenubuttons = document.getElementsByClassName("subDropButtons");
-var droparrows = document.getElementsByClassName("DropArrows");
-
-
+let leastpri = 5;
 function executor() {
   if (priority < leastpri) {
     leastpri = priority;
@@ -54,7 +47,11 @@ function close_menu() {
   }
 }
 
-
+let dropdownmenus = document.getElementsByClassName("DropDowns");
+let subdropdownmenus = document.getElementsByClassName("subDropDowns");
+let dropdownmenubuttons = document.getElementsByClassName("dropdown-buttons");
+let subdropdownmenubuttons = document.getElementsByClassName("subDropButtons");
+let droparrows = document.getElementsByClassName("DropArrows");
 function openDropDowns(id) {
   for (var i = 0; i < dropdownmenubuttons.length; i++) {
     if (
