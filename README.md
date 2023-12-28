@@ -20,6 +20,3 @@ yarn dev
 ```
 
 This will start the server on port 8000, if no port is specified in the environment variables.
-
-# Usage : Admin Note 
-- The NavBar content can be created/updated/edited with the Route : /api/dashboard/navbar instead of admin panel 

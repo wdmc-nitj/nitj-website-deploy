@@ -68,7 +68,7 @@ fetch('/api/initiative')
       }
       return returnArray
     })
-    // console.log(stringsArray)
+    console.log(stringsArray)
     animateText(stringsArray)
     mainSliderText.addEventListener('mouseenter', () => {
       isPaused = true
