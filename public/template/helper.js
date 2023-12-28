@@ -1,4 +1,6 @@
+
 let leastpri = 5;
+
 
 function executor() {
   if (priority < leastpri) {
@@ -48,11 +50,13 @@ function close_menu() {
   }
 }
 
+
 let dropdownmenus = document.getElementsByClassName("DropDowns");
 let subdropdownmenus = document.getElementsByClassName("subDropDowns");
 let dropdownmenubuttons = document.getElementsByClassName("dropdown-buttons");
 let subdropdownmenubuttons = document.getElementsByClassName("subDropButtons");
 let droparrows = document.getElementsByClassName("DropArrows");
+
 
 function openDropDowns(id) {
   for (var i = 0; i < dropdownmenubuttons.length; i++) {
