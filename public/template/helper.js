@@ -1,9 +1,5 @@
-var leastpri = 5;
-var dropdownmenus = document.getElementsByClassName("DropDowns");
-var subdropdownmenus = document.getElementsByClassName("subDropDowns");
-var dropdownmenubuttons = document.getElementsByClassName("dropdown-buttons");
-var subdropdownmenubuttons = document.getElementsByClassName("subDropButtons");
-var droparrows = document.getElementsByClassName("DropArrows");
+
+let leastpri = 5;
 
 
 function executor() {
@@ -53,6 +49,13 @@ function close_menu() {
     sideMenu.setAttribute("style", "display:none;");
   }
 }
+
+
+let dropdownmenus = document.getElementsByClassName("DropDowns");
+let subdropdownmenus = document.getElementsByClassName("subDropDowns");
+let dropdownmenubuttons = document.getElementsByClassName("dropdown-buttons");
+let subdropdownmenubuttons = document.getElementsByClassName("subDropButtons");
+let droparrows = document.getElementsByClassName("DropArrows");
 
 
 function openDropDowns(id) {
