@@ -1,5 +1,5 @@
 const mainImg = document.getElementById('main-image')
-console.log(mainImg)
+// console.log(mainImg)
 const slider = [
   ['The Place of transformation', '/public/assets/images/IMG_0196.JPG'],
   ['78th IN OVERALL NIRF RANKING', '/public/assets/images/IMG_0198.JPG'],

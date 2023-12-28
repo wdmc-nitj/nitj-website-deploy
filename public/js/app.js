@@ -8,7 +8,7 @@ import {
   publicationCardsScroll,
   clubsCardsScroll,
 } from './utils/app/scrollUtils.js'
-import notificationTabs from './utils/app/tabUits.js'
+import './utils/app/tabUits.js'
 
 window.onscroll = navbarUtil
 // window.onload = getNavbar
@@ -53,18 +53,6 @@ function showSearchPage(event) {
   }
 }
 
-const tabLinks = document.getElementsByClassName('notif-link')
-
-window.addEventListener('load', () => {
-  notificationTabs(tabLinks[0])
-})
-
-for (const link of tabLinks) {
-  link.addEventListener('click', () => {
-    console.log(link)
-    notificationTabs(link)
-  })
-}
 // ///////////////////////////
 // Image Slider Animation::
 
