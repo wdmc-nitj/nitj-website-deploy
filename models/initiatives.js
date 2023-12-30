@@ -25,6 +25,18 @@ const Schema = new mongoose.Schema(
     link: {
       type: String,
     },
+     morder: {
+      type: Number,
+      default: 0,
+    },
+     marquee: {
+      type: Boolean,
+      default: false,
+    },
+     mshow: {
+      type: Boolean,
+      default: false,
+    },
     sourceOfInfoName: {
       type: String,
     },
