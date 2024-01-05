@@ -14,7 +14,8 @@ export default function fetchData() {
           (item, index) => `
                   <div class="flex items-center gap-1">
                   <span class="w-2 h-2 mt-1 rounded-full bg-accent"></span>
-                  <h3 class="text-lg">${item?.title1}</h3>
+                  <a class="text-xl underline-offset-4 underline uderline-[1px]" href=${item?.link}>${item?.title1}</a>
+      
                   </div>
   `
         )
