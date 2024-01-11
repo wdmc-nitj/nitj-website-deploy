@@ -64,7 +64,6 @@ export default async function notificationTabs(e, subscribed) {
   e.classList.add('bg-blue-100', 'hover:bg-blue-200', 'text-accent')
 
   fetchTabContent(currentTab, tabContainer)
-
 }
 
 async function fetchTabContent(tabName, tabContainer) {
@@ -151,7 +150,6 @@ async function fetchTabContent(tabName, tabContainer) {
     })
 }
 
-
 const tabsUI = document.getElementsByClassName('notif-link')
 
 for (const link of tabsUI) {
@@ -160,9 +158,7 @@ for (const link of tabsUI) {
   })
 }
 
-
-window.onload = () =>
-{
+window.onload = () => {
   // console.log(tabsUI[1])
-notificationTabs(tabsUI[1])
+  notificationTabs(tabsUI[0])
 }
