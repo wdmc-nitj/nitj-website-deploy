@@ -1,4 +1,7 @@
-let leastpri = 5
+
+let leastpri = 5;
+
+
 function executor() {
   if (priority < leastpri) {
     leastpri = priority
@@ -47,11 +50,22 @@ function close_menu() {
   }
 }
 
+<<<<<<< HEAD
 let dropdownmenus = document.getElementsByClassName('DropDowns')
 let subdropdownmenus = document.getElementsByClassName('subDropDowns')
 let dropdownmenubuttons = document.getElementsByClassName('dropdown-buttons')
 let subdropdownmenubuttons = document.getElementsByClassName('subDropButtons')
 let droparrows = document.getElementsByClassName('DropArrows')
+=======
+
+let dropdownmenus = document.getElementsByClassName("DropDowns");
+let subdropdownmenus = document.getElementsByClassName("subDropDowns");
+let dropdownmenubuttons = document.getElementsByClassName("dropdown-buttons");
+let subdropdownmenubuttons = document.getElementsByClassName("subDropButtons");
+let droparrows = document.getElementsByClassName("DropArrows");
+
+
+>>>>>>> 2e8f0b2ee0012b97dbcd604935f24dca4180e9a0
 function openDropDowns(id) {
   for (var i = 0; i < dropdownmenubuttons.length; i++) {
     if (
