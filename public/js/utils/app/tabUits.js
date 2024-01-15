@@ -164,5 +164,5 @@ for (const link of tabsUI) {
 window.onload = () =>
 {
   // console.log(tabsUI[1])
-notificationTabs(tabsUI[1])
+notificationTabs(tabsUI[0])
 }
