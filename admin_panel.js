@@ -82,6 +82,10 @@ const minorProgramme = require("./models/admissions/minorProgramme.js");
 const newpage = require("./models/newpage");
 
 const User = require("./models/AdminBroUser");
+const ClubsBroUser = require("./models/clubsBroUser");
+
+
+const User = require("./models/AdminBroUser");
 const { query } = require("express");
 const { filter } = require("compression");
 const specialCentres = require("./models/specialCentres");
