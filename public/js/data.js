@@ -1,111 +1,6 @@
 // TODO : use promise.all to fetch all data at once
 const baseURL = "/api";
-// temp clubs data (hotfix until db is updated)
-const tempClubsData = [{
-  name:"FINE ARTS SOCIETY",
-  type:"DESIGN CLUB",
-  desc:"The Fine Arts Society, or 'FAS' is the official club of NIT Jalandhar that",
-  url:"https://www.nitj.ac.in/clubs/finearts.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/16_20230411_213129_0015.png",
-  show:true
-  },
-  {
-  name:"RURAL ACTIVITY CLUB",
-  type:"SOCIAL WELFARE",
-  desc:"The objective of the Rural Activity Club is to organize various activities in rural schools. The main motive is to guide",
-  url:"https://www.nitj.ac.in/clubs/rural-activity.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/6_20230411_213129_0005.png",
-  show:true
-  },
-  {
-  name:"REGIONAL LANGUAGE CLUB",
-  type:"SKILL DEVELOPMENT",
-  desc:"To promote and nurture different regional languages of India",
-  url:"https://www.nitj.ac.in/clubs/rlc.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/10_20230411_213129_0009.png",
-  show:true
-  },
-  {
-  name:"CREATIVITY AND WEB DESIGNING CLUB",
-  type:"DESIGN CLUB",
-  desc:"A web designing club is a community of individuals who share a passion for designing websites. The club provides.",
-  url:"https://www.nitj.ac.in/clubs/webdesigning.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/3_20230411_213129_0002.png",
-  show:true
-  },
-  {
-  name:"GOOGLE DEVELOPER STUDENT CLUB",
-  type:"DEVELOPMENTAL CLUB",
-  desc:"The Google Developer Student Clubs (DSC) program aims to empower university.",
-  url:"https://www.nitj.ac.in/clubs/gdsc.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/12_20230411_213129_0011.png",
-  show:true
-  },
-  {
-  name:"KALAKAAR",
-  type:"DRAMATICS CLUB",
-  desc:"Kalakaar is the official dramatics club of NIT Jalandhar that strives to provide a.",
-  url:"https://www.nitj.ac.in/clubs/kalakaar.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/15_20230411_213129_0014.png",
-  show:true
-  },
-  {
-  name:"SEED",
-  type:"ELECTRICAL DEPARTMENT SOCIETY",
-  desc:"SEED is a professional society that brings together individuals working in the field",
-  url:"https://www.nitj.ac.in/admin/seed.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/seed.png",
-  show:true
-  },
-  {
-  name:"ECSTASY",
-  type:"FASHION CLUB",
-  desc:"A fashion club of NITJ to promote the inner and outer beauty of the students and to give them stage confidence",
-  url:"https://www.nitj.ac.in/clubs/ecstasy.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/19_20230411_213129_0018.png",
-  show:true
-  },
-  {
-  name:"ZEAL SOCIETY",
-  type:"SKILL DEVELOPMENT",
-  desc:"Zeal Society is a thriving community dedicated to nurturing your speaking",
-  url:"https://www.nitj.ac.in/clubs/zeal.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/2_20230411_213129_0001.png",
-  show:true
-  },
-  {
-  name:"SPICE SOCIETY",
-  type:"ICE DEPARTMENT SOCIERY",
-  desc:"Society for Progression of Instrumentation and Control Engineering (SPICE) is a society which was establishe",
-  url:"https://www.nitj.ac.in/clubs/spice-society.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/13_20230411_213129_0012.png",
-  show:true
-  },
-  {
-  name:"ANIMANIACS",
-  type:"DEVELOPMENTAL CLUB",
-  desc:"Animaniacs is the first official animation club of NITJ founded by Mohit Vansal",
-  url:"https://www.nitj.ac.in/clubs/animanics.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/14_20230411_213129_0013.png",
-  show:true
-  },
-  {
-  name:"TEDXNITJALANDHAR",
-  type:"SKILL DEVELOPMENT",
-  desc:"We started off as a group of driven people to launch the TEDx community at our",
-  url:"https://www.tedxnitjalandhar.org/",
-  img:"https://v1.nitj.ac.in/NITJ/logos/7.png",
-  show:true
-  },
-  {
-  name:"TEAM DAKSH",
-  type:"DESIGN CLUB ",
-  desc:"Undergraduates of NIT Jalandhar honing their skills by designing and fabricating",
-  url:"https://www.nitj.ac.in/clubs/daksh.html",
-  img:"https://v1.nitj.ac.in/NITJ/logos/5_20230411_213129_0004.png",
-  show:true
-  },
-  ]
+
 function dataFilter(apiData) {
   const data = apiData.filter((n) => n.show === true);
   data.sort((a, b) => {
@@ -536,16 +431,16 @@ fetch(`${baseURL}/publication`)
     });
   });
 
-// fetch(`${baseURL}/club/get/all`)
-//   .then((res) => res.json())
-//   .then((apidata) => {
+fetch(`${baseURL}/club/get/all`)
+  .then((res) => res.json())
+  .then((apidata) => {
     // console.log(data)
-    const data = tempClubsData.sort((a, b) => Math.random() - 0.5);
+    const data = apidata.sort((a, b) => Math.random() - 0.5);
 
     const parentDiv = document.getElementById("clubs-and-socs");
     parentDiv.innerHTML = "";
     data.forEach((e) => {
-      // console.log("huifheaufe" , e)
+      // console.log(e)
       // const content = e
       const div = document.createElement("div");
       div.setAttribute("id", "club-card");
@@ -586,7 +481,7 @@ fetch(`${baseURL}/publication`)
       `;
       e.show && parentDiv.appendChild(div);
     });
-  // });
+  });
 
 // Making the cards dynamic
 var size_images = 0;

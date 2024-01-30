@@ -49,7 +49,7 @@ document.write(`
             </div>
         </div>
 
-        <div class="hidden basis-2/3 p-[25px] lg:block" id="quicklinks">
+        <div class="basis-2/3 p-[25px]" id="quicklinks">
             <h2 class="my-1 text-xl font-semibold">Quick Links</h2>
             <div class="flex flex-row p-[15px]">
                 <!-- <div class="flex basis-1/4 flex-col text-[11px] lg:text-[14px]">

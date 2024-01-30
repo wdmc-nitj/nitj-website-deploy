@@ -37,7 +37,7 @@ exports.getNews = async (req, res) => {
             .then((news) => res.status(200).send(news))
             .catch((err) => res.status(400).send("Error: " + err));
     } else {
-        LatestNews.find({ show: true, department: req.params.dept })
+        LatestNews.find({ show: true, department: req.params.dept }).sort('-order')
             .then((news) => {res.status(200).send(news)})
             .catch((err) => res.status(400).send("Error: " + err));
     }
