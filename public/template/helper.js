@@ -319,3 +319,31 @@ function waitForElm(selector) {
       });
   });
 }
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+}
+
+// once google translate element is initialized, remove the google translate logo
+document.addEventListener("DOMContentLoaded", function() {
+  // console.log("DOM loaded, waiting for google translate element to initialize");
+  waitForElm(".goog-te-gadget").then(elm => {
+    // console.log("google translate element initialized");
+    var goog_gadget =  document.getElementsByClassName('goog-te-gadget')[0];
+    // console.log(goog_gadget.childNodes)
+    //just keep the child node 0 remove rest
+    for (var i = 1; i < goog_gadget.childNodes.length; i++) {
+      goog_gadget.removeChild(goog_gadget.childNodes[i]);
+    }
+    goog_gadget.removeChild(goog_gadget.lastChild);
+    // console.log(goog_gadget.childNodes)
+  });
+});
+
+// Include the script source for Google Translate
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+
+// Append the script to the document body
+document.body.appendChild(script);
