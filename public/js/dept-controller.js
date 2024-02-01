@@ -18,7 +18,7 @@ const dict = {
         "ipe":"Industrial and Production Enginnering",
         "hm" : "Humanities and Management",
         "chem" : "Chemistry",
-        "math" : "Mathematics", 
+        "math" : "Mathematics and Computing", 
         "phy" : "Physics"
 }
 
