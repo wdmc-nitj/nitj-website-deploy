@@ -46,7 +46,7 @@ document.write(`
                         </div>
                         <div class="text-l text-white">
                             <a href="https://v1.nitj.ac.in/">
-                                <div class="flex items-center">
+                                
                                 <span class=" material-symbols-outlined h-5 w-5" style="
                                         font-variation-settings: 'FILL' 0, 'wght' 200, 'grad' 0,
                                         'opzs' 40;
@@ -57,7 +57,7 @@ document.write(`
                                     </svg>
                                 </span>
                                 <p class="hidden sm:block pl-1.5 text-xs">OLD WEBSITE</p>
-                                </div>
+
                             </a>
                         </div>
                         
