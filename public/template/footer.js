@@ -57,7 +57,7 @@ document.write(`
                                     </svg>
                                 </span>
                                 <p class="hidden sm:block pl-1.5 text-xs">OLD WEBSITE</p>
-                                
+
                             </a>
                         </div>
                         
