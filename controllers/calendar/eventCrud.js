@@ -1,8 +1,7 @@
-const { Event } = require("../../models/calendar/eventModule");
+const { Event } = require("../../models/calendar/eventsCalendar");
 
 const saveEvent = (req, res) => {
     const newEvent = req.body.eventObj;
-
     Event.create(newEvent)
         .then((createdEvent) => {
             res.status(200).send("Object Successfully created");
