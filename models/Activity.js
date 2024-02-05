@@ -18,9 +18,11 @@ const Schema = new mongoose.Schema({
   },
   sourceOfInfo: {
     type:  String
-},
-  show: { type: Boolean, default: true }
-
+  },
+  show: { 
+    type: Boolean, 
+    default: true 
+  }
 }, { timestamps: true })
 
 module.exports = mongoose.model('Activity', Schema);
