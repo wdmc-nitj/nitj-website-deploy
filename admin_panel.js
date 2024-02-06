@@ -32,6 +32,7 @@ const Navbar = require("./models/navbar");
 const Footer = require("./models/footer");
 const Clubs = require("./models/club");
 const ClubsPage = require("./models/clubsPage");
+const ClubsPage = require("./models/clubsPage");
 const News = require("./models/news");
 const About = require("./models/about");
 const AcademicCalendar = require("./models/academicCalendar");
@@ -58,11 +59,8 @@ const Testimonial = require("./models/testimonial");
 const Timeline = require("./models/timeline");
 const upcommingEvent = require("./models/upcomingEvent");
 const yearlyRanking = require("./models/yearlyRanking");
-const scholarship = require("./models/scholarship");
-const initiative = require("./models/initiatives");
-
-// Events Calendar 
-const eventsCalendar = require("./models/calendar/eventsCalendar.js")
+const scholarship=require("./models/scholarship");
+const initiative=require("./models/initiatives");
 
 // Research Menu
 const researchMenuName = "Research";
@@ -98,9 +96,6 @@ const canModifyUsers = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
 const isAdmin = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
-const isClubAdmin = ({ currentAdmin }) =>
-  currentAdmin && currentAdmin.role === "clubadmin";
-
 function removefields(arr) {
   var index = arr.indexOf("department");
   if (index > -1) {
@@ -172,75 +167,6 @@ function removefields(arr) {
   }
   return arr;
 }
-
-const removefieldsAdmin = (arr) => {
-  var index = arr.indexOf("role");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("__v");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("_id");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("sourceOfInfo");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("password");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("createdAt");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("updatedAt");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("newPage");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("order");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("sourceOfInfoName");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("sourceOfInfoEmail");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("sourceOfInfoDesignation");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("sourceOfInfoDepartment");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("show");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("new");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  var index = arr.indexOf("updateLogs");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
-  return arr;
-};
-
 const canEditDept = ({ currentAdmin, record }) => {
   if (currentAdmin.role === "admin") {
     return true;
@@ -2484,56 +2410,7 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-    
-    // clubs page config , all clubs accessible by admin , and clubadmin can only access their club
-    {
-      resource: ClubsPage,
-      options: {
-        navigation: "Home",
-        actions: {
-          edit: {
-            layout: (currentAdmin) => {
-              if (currentAdmin.role === "clubadmin") {
-                return removefields(Object.keys(ClubsPage.schema.paths));
-              }
-              return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
-            },
-            isAccessible: (canEditClub || isAdmin)
-          },
-          list: {
-            before: async (request, context) => {
-              const { currentAdmin } = context;
-              query_fetched = { ...request.query };
-              if (currentAdmin && currentAdmin.role === "clubadmin") {
-                query_fetched["filters.name"] = currentAdmin.department;
-              }
-              return {
-                ...request,
-                query: query_fetched,
-              };
-            },
-            isAccessible: (canEditClub || isAdmin)
-          },
-          show: {
-            layout: (currentAdmin) => {
-              if (currentAdmin.role === "clubadmin") {
-                return removefields(Object.keys(ClubsPage.schema.paths));
-              }
-              return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
-            },
-            isAccessible: (canEditClub || isAdmin)
-          },
-          delete: { isAccessible: isAdmin },
-          bulkDelete: { isAccessible: isAdmin },
-          new: {
-            layout: () => {
-              return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
-            },
-            isAccessible: (isAdmin)
-          }
-        },
-      },
-    },
+
     {
       resource: Clubs,
       options: {
