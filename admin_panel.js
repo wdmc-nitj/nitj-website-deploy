@@ -843,8 +843,7 @@ const AdminBroOptions = {
               if (adminUser && adminUser.role === 'restricted') {
                 eventsCalendar.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
                   if (err) {
-                    console.log("HHH")
-                    // console.log(err)
+                    console.log(err)
                   } else {
                     console.log("Result :", result)
                   }
