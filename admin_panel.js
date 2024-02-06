@@ -843,7 +843,8 @@ const AdminBroOptions = {
               if (adminUser && adminUser.role === 'restricted') {
                 eventsCalendar.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
                   if (err) {
-                    console.log(err)
+                    console.log("HHH")
+                    // console.log(err)
                   } else {
                     console.log("Result :", result)
                   }
@@ -852,7 +853,7 @@ const AdminBroOptions = {
               if (adminUser) {
                 eventsCalendar.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
                   if (err) {
-                    console.log(err)
+                     console.log(err)
                   } else {
                     console.log("Result :", result)
                   }
@@ -2441,7 +2442,13 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-
+    {
+      resource: eventsCalendar,
+      options: {
+        navigation: "Home",
+        actions: { list: { isAccessible: isAdmin } },
+      },
+    },
     {
       resource: DefaultJobsTab,
       options: {
