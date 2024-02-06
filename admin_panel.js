@@ -32,7 +32,6 @@ const Navbar = require("./models/navbar");
 const Footer = require("./models/footer");
 const Clubs = require("./models/club");
 const ClubsPage = require("./models/clubsPage");
-const ClubsPage = require("./models/clubsPage");
 const News = require("./models/news");
 const About = require("./models/about");
 const AcademicCalendar = require("./models/academicCalendar");

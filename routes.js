@@ -30,7 +30,6 @@ const academicnoticesRouter = require("./routes/academicnotices");
 const studyProgramRouter = require("./routes/studyprog");
 const clubRouter = require("./routes/club");
 const clubPageRouter = require("./routes/clubsPage");
-const clubPageRouter = require("./routes/clubsPage");
 const upcomingEventRouter = require("./routes/upcomingEvent");
 const departmentRouter = require("./routes/departement");
 const searchRouter = require("./routes/search");
@@ -45,6 +44,7 @@ const recruitmentsRoutes = require("./routes/recruitmentRoutes");
 const curriculumRouter = require("./routes/curriculum");
 const deptCalendarRouter = require("./routes/deptCalendar");
 const examinationRouter = require("./routes/examination");
+const eventsCalendarRouter = require("./routes/calendar/eventsCalendarRouter")
 
 const adminPath = "dashboard";
 
