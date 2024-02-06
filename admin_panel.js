@@ -71,6 +71,8 @@ const researchPublications = require("./models/research/researchPublications");
 const sponsoredProjects = require("./models/research/sponsoredProjects");
 const IPRs = require("./models/research/IPRs");
 
+const eventsCalendar = require("./models/calendar/eventsCalendar.js")
+
 const RecruitmentUpdates =
   require("./models/recruitmentUpdates").RecruitmentUpdate;
 const DefaultJobsTab = require("./models/recruitmentUpdates").DefaultJobsTab;
