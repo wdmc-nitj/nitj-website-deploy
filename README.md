@@ -20,3 +20,6 @@ yarn dev
 ```
 
 This will start the server on port 8000, if no port is specified in the environment variables.
+
+## Routing Note :
+Navbar Dashboard panel route : http://localhost:8000/api/dashboard/navbar/login (different from rest of the dashboard route)

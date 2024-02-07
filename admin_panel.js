@@ -31,6 +31,7 @@ const DeptDescription = require("./models/deptDescription");
 const Navbar = require("./models/navbar");
 const Footer = require("./models/footer");
 const Clubs = require("./models/club");
+// clubs page model define all the clubs data , whereas clubs is the model for home page club section
 const ClubsPage = require("./models/clubsPage");
 const News = require("./models/news");
 const About = require("./models/about");

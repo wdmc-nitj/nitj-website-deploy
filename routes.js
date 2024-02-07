@@ -46,6 +46,8 @@ const deptCalendarRouter = require("./routes/deptCalendar");
 const examinationRouter = require("./routes/examination");
 const eventsCalendarRouter = require("./routes/calendar/eventsCalendarRouter")
 
+const eventsCalendarRouter = require("./routes/calendar/eventsCalendar")
+
 const adminPath = "dashboard";
 
 // The endpoint for the admin panel which used a non-GET request must be added to this array
