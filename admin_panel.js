@@ -31,6 +31,8 @@ const DeptDescription = require("./models/deptDescription");
 const Navbar = require("./models/navbar");
 const Footer = require("./models/footer");
 const Clubs = require("./models/club");
+// clubs page model define all the clubs data , whereas clubs is the model for home page club section
+const ClubsPage = require("./models/clubsPage");
 const News = require("./models/news");
 const About = require("./models/about");
 const AcademicCalendar = require("./models/academicCalendar");
@@ -57,8 +59,8 @@ const Testimonial = require("./models/testimonial");
 const Timeline = require("./models/timeline");
 const upcommingEvent = require("./models/upcomingEvent");
 const yearlyRanking = require("./models/yearlyRanking");
-const scholarship=require("./models/scholarship");
-const initiative=require("./models/initiatives");
+const scholarship = require("./models/scholarship");
+const initiative = require("./models/initiatives");
 
 // Research Menu
 const researchMenuName = "Research";
@@ -77,11 +79,13 @@ const addmissionUpdate = require("./models/admissions/admissionUpdate");
 const importantLink = require("./models/admissions/importantLink");
 const majorProgramme = require("./models/admissions/majorProgramme.js");
 const minorProgramme = require("./models/admissions/minorProgramme.js");
-
-
 const newpage = require("./models/newpage");
 
+// adminbro model : model for super admin and department credentaials
 const User = require("./models/AdminBroUser");
+// model for clubadmin credentials
+const ClubsBroUser = require("./models/clubsBroUser.js");
+
 const { query } = require("express");
 const { filter } = require("compression");
 const specialCentres = require("./models/specialCentres");
@@ -89,10 +93,15 @@ const curriculum = require("./models/curriculum");
 const examSchedule = require("./models/examSchedule");
 const deptwiseFaculty = require("./models/deptwiseFaculty");
 
+// defined new role : clubadmin , can access their respective club
 const canModifyUsers = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
 const isAdmin = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
+const isClubAdmin = ({ currentAdmin }) =>
+  currentAdmin && currentAdmin.role === "clubadmin";
+
+  // removal of feilds that should not be changed by the admin panel / non required fields
 function removefields(arr) {
   var index = arr.indexOf("department");
   if (index > -1) {
@@ -110,23 +119,169 @@ function removefields(arr) {
   if (index > -1) {
     arr.splice(index, 1);
   }
+  var index = arr.indexOf("name");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("type");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("show");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("new");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("updateLogs");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("order");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoName");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoEmail");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoDesignation");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoDepartment");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("createdAt");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("updatedAt");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("newPage");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
   return arr;
 }
+  // removal of feilds that should not be changed by the admin panel / non required fields
+
+const removefieldsAdmin = (arr) => {
+  var index = arr.indexOf("role");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("__v");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("_id");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfo");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("password");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("createdAt");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("updatedAt");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("newPage");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("order");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoName");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoEmail");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoDesignation");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoDepartment");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("show");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("new");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("updateLogs");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  return arr;
+};
 const canEditDept = ({ currentAdmin, record }) => {
-  // console.log(removefields(Object.keys(DeptDescription.schema.paths)))
   if (currentAdmin.role === "admin") {
     return true;
   }
+
   if (!currentAdmin.role) {
     return false;
+  }
+
+  if (!record) {
+    return true;
+  }
+
+  if (record) {
+    return currentAdmin.department === record.param("department");
+  }
+};
+
+const canEditClub = ({ currentAdmin, record }) => {
+  // check for admin full access
+  if (currentAdmin.role === "admin") {
+    return true;
+  }
+  // if doesnt have any role , dont give access
+  if (!currentAdmin.role) {
+    return false;
+  }
+  // added check that department should not access the club data
+  if (currentAdmin.role === "restricted") {
+    return false
   }
   if (!record) {
     return true;
   }
-  if (record) {
-    return currentAdmin.department == record.param("department");
+  // if record is present then check for the department(club) of the clubadmin and show only that clubdata
+  if (record && currentAdmin.role == "clubadmin") {
+    return currentAdmin.department == record.param("name");
   }
 };
+
 const canEditprofile = ({ currentAdmin, record }) => {
   if (currentAdmin.role === "admin") {
     return true;
@@ -142,6 +297,10 @@ const canEditprofile = ({ currentAdmin, record }) => {
   }
 };
 
+// excluding clubadmin from accessing the department data : updated each deptmt model config with this logic 
+const notAccessibleByClubs = ({ currentAdmin, record }) => {
+  return !isClubAdmin({ currentAdmin }) && canEditDept({ currentAdmin, record })
+}
 AdminBro.registerAdapter(AdminBroMongoose);
 const AdminBroOptions = {
   branding: {
@@ -198,7 +357,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -241,7 +400,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           },
         },
@@ -292,7 +451,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -335,7 +494,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -386,7 +545,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -429,7 +588,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -480,7 +639,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -523,7 +682,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -574,7 +733,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -617,7 +776,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -683,7 +842,7 @@ const AdminBroOptions = {
                   ...request,
                   query: query_fetched
                 }
-              },  
+              },
               isAccessible: canEditDept
             }
           },
@@ -701,7 +860,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -762,7 +921,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -805,7 +964,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -856,7 +1015,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -899,7 +1058,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -950,7 +1109,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -993,7 +1152,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           },
         },
@@ -1046,7 +1205,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -1091,7 +1250,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1142,7 +1301,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -1185,7 +1344,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1236,7 +1395,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -1279,7 +1438,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1330,7 +1489,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -1373,7 +1532,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1424,7 +1583,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -1467,7 +1626,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1518,7 +1677,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -1561,7 +1720,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1612,7 +1771,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -1655,7 +1814,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1706,7 +1865,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -1749,7 +1908,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1784,7 +1943,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           delete: { isAccessible: isAdmin },
           list: {
@@ -1800,7 +1959,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -1843,7 +2002,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1894,7 +2053,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -1937,7 +2096,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1988,7 +2147,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -2031,7 +2190,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -2082,7 +2241,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
@@ -2125,7 +2284,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -2233,7 +2392,59 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-
+    // clubs page config , all clubs accessible by admin , and clubadmin can only access their club
+    {
+      resource: ClubsPage,
+      options: {
+        navigation: "Home",
+        actions: {
+          edit: {
+            layout: (currentAdmin) => {
+              if (currentAdmin.role === "clubadmin") {
+                return removefields(Object.keys(ClubsPage.schema.paths));
+              }
+              return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
+            },
+            isAccessible: (canEditClub || isAdmin)
+          },
+          list: {
+            before: async (request, context) => {
+              const { currentAdmin } = context;
+              query_fetched = { ...request.query };
+              // to filter by clubName to show only their club
+              if (currentAdmin && currentAdmin.role === "clubadmin") {
+                query_fetched["filters.name"] = currentAdmin.department;
+              }
+              return {
+                ...request,
+                query: query_fetched,
+              };
+            },
+            // only club admin can access their club and super admin can access all clubs
+            isAccessible: (canEditClub || isAdmin)
+          },
+          show: {
+            layout: (currentAdmin) => {
+              if (currentAdmin.role === "clubadmin") {
+                return removefields(Object.keys(ClubsPage.schema.paths));
+              }
+              return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
+            },
+            isAccessible: (canEditClub || isAdmin)
+          },
+          // only super admin can delete club
+          delete: { isAccessible: isAdmin },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+            layout: () => {
+              return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
+            },
+            // only super admin can create new club
+            isAccessible: (isAdmin)
+          }
+        },
+      },
+    },
     {
       resource: Clubs,
       options: {
@@ -2665,7 +2876,7 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-    
+
     {
       resource: specialCentres,
       options: {
@@ -2944,13 +3155,21 @@ const admin_panel = new AdminBro(AdminBroOptions);
 const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
   authenticate: async (email, password) => {
     const user = await User.findOne({ email });
+    const clubuser = await ClubsBroUser.findOne({ email });
     const faculty = await Faculty.findOne({ email });
     if (user) {
       const matched = password == user.password;
       if (matched) {
         return user;
       }
-    } else if (faculty) {
+    }
+    else if (clubuser) {
+      const matched = password == clubuser.password;
+      if (matched) {
+        return clubuser;
+      }
+    }
+    else if (faculty) {
       var status = false;
       await bcrypt.compare(password, faculty.password).then((value) => {
         if (value) {
