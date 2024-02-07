@@ -72,6 +72,9 @@ const eventSchema = new mongoose.Schema({
     },
     sourceOfInfo: {
         type: String
+    },
+    posterUrl: {
+        type: String
     }
 });
 
