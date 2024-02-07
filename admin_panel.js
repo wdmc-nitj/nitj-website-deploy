@@ -93,6 +93,9 @@ const curriculum = require("./models/curriculum");
 const examSchedule = require("./models/examSchedule");
 const deptwiseFaculty = require("./models/deptwiseFaculty");
 
+// Events Calendar 
+const eventsCalendar = require("./models/calendar/eventsCalendar.js")
+
 // defined new role : clubadmin , can access their respective club
 const canModifyUsers = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
@@ -777,6 +780,100 @@ const AdminBroOptions = {
                 query: query_fetched
               }
             },
+            isAccessible: canEditDept
+          }
+        },
+        properties: {
+          sourceOfInfo: { isVisible: false },
+        },
+      },
+    },
+    {
+      resource: eventsCalendar,
+      options: {
+        navigation: "Home",
+        actions: {
+          edit: {
+            layout: (currentAdmin) => {
+              if (currentAdmin.role === "restricted") {
+                return removefields(Object.keys(eventsCalendar.schema.paths));
+              }
+              return Object.keys(eventsCalendar.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                request.record.params.department = adminUser.department;
+              }
+              if (adminUser) {
+                request.record.params.sourceOfInfo = adminUser.email;
+              }
+              return {
+                ...request,
+                query: query_fetched,
+              };
+            },
+            isAccessible: canEditDept,
+          },
+          delete: { isAccessible: isAdmin },
+          list: {
+            before: async (request, context) => {
+              const { currentAdmin } = context;
+              query_fetched = { ...request.query };
+              if (currentAdmin && currentAdmin.role === "restricted") {
+                // to filter by department
+                query_fetched["filters.department"] = currentAdmin.department;
+              }
+              return {
+                ...request,
+                query: query_fetched,
+              };
+            },
+            isAccessible: notAccessibleByClubs,
+          },
+          show: {
+            layout: (currentAdmin) => {
+              if (currentAdmin.role === "restricted") {
+                return removefields(Object.keys(eventsCalendar.schema.paths));
+              }
+              return Object.keys(eventsCalendar.schema.paths);
+            },
+            isAccessible: canEditDept,
+          },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+            layout: (currentAdmin) => {
+              if (currentAdmin.role === 'restricted') {
+                return removefields(Object.keys(eventsCalendar.schema.paths))
+              }
+              return Object.keys(eventsCalendar.schema.paths)
+            }, after: async (request, context) => {
+              const adminUser = context.session.adminUser
+              query_fetched = { ...request.query }
+              if (adminUser && adminUser.role === 'restricted') {
+                eventsCalendar.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
+                  if (err) {
+                    console.log(err)
+                  } else {
+                    console.log("Result :", result)
+                  }
+                })
+              }
+              if (adminUser) {
+                eventsCalendar.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                  if (err) {
+                     console.log(err)
+                  } else {
+                    console.log("Result :", result)
+                  }
+                })
+              }
+              return {
+                ...request,
+                query: query_fetched
+              }
+            },  
             isAccessible: canEditDept
           }
         },
@@ -2355,7 +2452,13 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-
+    {
+      resource: eventsCalendar,
+      options: {
+        navigation: "Home",
+        actions: { list: { isAccessible: isAdmin } },
+      },
+    },
     {
       resource: DefaultJobsTab,
       options: {
