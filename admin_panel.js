@@ -59,8 +59,8 @@ const Testimonial = require("./models/testimonial");
 const Timeline = require("./models/timeline");
 const upcommingEvent = require("./models/upcomingEvent");
 const yearlyRanking = require("./models/yearlyRanking");
-const scholarship=require("./models/scholarship");
-const initiative=require("./models/initiatives");
+const scholarship = require("./models/scholarship");
+const initiative = require("./models/initiatives");
 
 // Research Menu
 const researchMenuName = "Research";
@@ -70,8 +70,6 @@ const MoUs = require("./models/research/MoUs");
 const researchPublications = require("./models/research/researchPublications");
 const sponsoredProjects = require("./models/research/sponsoredProjects");
 const IPRs = require("./models/research/IPRs");
-
-const eventsCalendar = require("./models/calendar/eventsCalendar.js")
 
 const RecruitmentUpdates =
   require("./models/recruitmentUpdates").RecruitmentUpdate;
@@ -102,6 +100,7 @@ const isAdmin = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
 const isClubAdmin = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "clubadmin";
+
   // removal of feilds that should not be changed by the admin panel / non required fields
 function removefields(arr) {
   var index = arr.indexOf("department");
@@ -174,7 +173,6 @@ function removefields(arr) {
   }
   return arr;
 }
-
   // removal of feilds that should not be changed by the admin panel / non required fields
 
 const removefieldsAdmin = (arr) => {
@@ -244,7 +242,6 @@ const removefieldsAdmin = (arr) => {
   }
   return arr;
 };
-
 const canEditDept = ({ currentAdmin, record }) => {
   if (currentAdmin.role === "admin") {
     return true;
@@ -780,100 +777,6 @@ const AdminBroOptions = {
                 query: query_fetched
               }
             },
-            isAccessible: canEditDept
-          }
-        },
-        properties: {
-          sourceOfInfo: { isVisible: false },
-        },
-      },
-    },
-    {
-      resource: eventsCalendar,
-      options: {
-        navigation: "Home",
-        actions: {
-          edit: {
-            layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(eventsCalendar.schema.paths));
-              }
-              return Object.keys(eventsCalendar.schema.paths);
-            },
-            after: async (request, context) => {
-              const adminUser = context.session.adminUser;
-              query_fetched = { ...request.query };
-              if (adminUser && adminUser.role === "restricted") {
-                request.record.params.department = adminUser.department;
-              }
-              if (adminUser) {
-                request.record.params.sourceOfInfo = adminUser.email;
-              }
-              return {
-                ...request,
-                query: query_fetched,
-              };
-            },
-            isAccessible: canEditDept,
-          },
-          delete: { isAccessible: isAdmin },
-          list: {
-            before: async (request, context) => {
-              const { currentAdmin } = context;
-              query_fetched = { ...request.query };
-              if (currentAdmin && currentAdmin.role === "restricted") {
-                // to filter by department
-                query_fetched["filters.department"] = currentAdmin.department;
-              }
-              return {
-                ...request,
-                query: query_fetched,
-              };
-            },
-            isAccessible: notAccessibleByClubs,
-          },
-          show: {
-            layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(eventsCalendar.schema.paths));
-              }
-              return Object.keys(eventsCalendar.schema.paths);
-            },
-            isAccessible: canEditDept,
-          },
-          bulkDelete: { isAccessible: isAdmin },
-          new: {
-            layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(eventsCalendar.schema.paths))
-              }
-              return Object.keys(eventsCalendar.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                eventsCalendar.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
-                  }
-                })
-              }
-              if (adminUser) {
-                eventsCalendar.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                     console.log(err)
-                  } else {
-                    console.log("Result :", result)
-                  }
-                })
-              }
-              return {
-                ...request,
-                query: query_fetched
-              }
-            },  
             isAccessible: canEditDept
           }
         },
@@ -2452,13 +2355,7 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-    {
-      resource: eventsCalendar,
-      options: {
-        navigation: "Home",
-        actions: { list: { isAccessible: isAdmin } },
-      },
-    },
+
     {
       resource: DefaultJobsTab,
       options: {
@@ -2495,7 +2392,6 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-    
     // clubs page config , all clubs accessible by admin , and clubadmin can only access their club
     {
       resource: ClubsPage,

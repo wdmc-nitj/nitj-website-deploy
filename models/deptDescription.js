@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 //Schema---------------------------->
 const deptDescription = new mongoose.Schema(
     {
+
         description:{
             type:String
         },
