@@ -226,7 +226,7 @@ function createEventCard(event) {
                     <div>
                     <div class="flex flex-row gap-3 " style="align-items: baseline;">
                     <div>
-                                <p class="text-red-400 font-medium mb-1" style="margin-top: -5px; font-size: 16; margin-bottom: 10px;">
+                                <p class="text-accent-orange font-semibold mb-1" style="margin-top: -5px; font-size: 16; margin-bottom: 10px;">
                                     ${fetchtime(event.startDateTime,event.endDateTime)}
                                 </p>
                             </div>
@@ -330,7 +330,7 @@ function createEventCard(event) {
         </div>
 
         <br/>
-        <h3 class="text-red-400 font-medium mb-1" style="margin-top: -5px; font-size: 16; margin-bottom: 10px;">
+        <h3 class="text-accent-orange font-semibold mb-1" style="margin-top: -5px; font-size: 16; margin-bottom: 10px;">
         ${fetchtime(event.startDateTime,event.endDateTime)}
         </h3>   <p>${event.description}</p>
         </div>
