@@ -1,67 +1,71 @@
 [
-  {
-    "id": 1,
-    "name": "Event 1",
-    "date": "2024-02-04",
-    "time": "10:00",
-    "venue": "Meeting Room 1",
-    "organizer": "Organizer A",
-    "imageurl": "https://source.unsplash.com/random",
-    "tag": "Academic",
-    "download": "",
-    "register": "",
-    "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Etiam non elit dui. Nullam vel eros sit amet arcu vestibulum accumsan in in leo."
+  { "_id": "61f3e3e3e3e3e3e3e3e3e3e3",
+    "eventName": "Event 1",
+    "startDateTime": "2024-02-09T00:00:00Z",
+    "endDateTime": "2024-02-09T02:00:00Z",
+    "organisingDept": "Computer Science",
+    "category": "academic",
+    "type": "online",
+    "venue": "Online",
+    "meetlink": "https://meet.google.com",
+    "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "studentCoordinator": {
+      "coordinator1": {
+        "phoneNumber": "1234567890",
+        "name": "Coordinator 1"
+      },
+      "coordinator2": {
+        "phoneNumber": "0987654321",
+        "name": "Coordinator 2"
+      }
+    },
+    "facultyCoordinator": {
+      "name": "Faculty Coordinator",
+      "email": "faculty@university.edu"
+    },
+    "socialMediaLinks": {
+      "whatsapp": "https://wa.me/1234567890",
+      "instagram": "https://instagram.com/sample",
+      "twitter": "https://twitter.com/sample"
+    },
+    "department": "cse",
+    "show": true,
+    "sourceOfInfo": "Website",
+    "posterUrl": "https://source.unsplash.com/random"
   },
   {
-    "id": 2,
-    "name": "Event 2",
-    "date": "2024-02-04",
-    "time": "14:30",
-    "venue": "Conference Hall",
-    "organizer": "Organizer B",
-    "imageurl": "https://source.unsplash.com/random",
-    "download": "https://youtube.com",
-    "register": "https://google.com",
-    "tag": "Cultural",
-    "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Etiam non elit dui. Nullam vel eros sit amet arcu vestibulum accumsan in in leo."
-  },
-  {
-    "id": 3,
-    "name": "Event 3",
-    "date": "2024-02-11",
-    "time": "15:45",
-    "venue": "Auditorium",
-    "organizer": "Organizer C",
-    "imageurl": "https://source.unsplash.com/random",
-    "download": "https://youtube.com",
-    "register": "https://google.com",
-    "tag": "Fest",
-    "description": "lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Etiam non elit dui. Nullam vel eros sit amet arcu vestibulum accumsan in in leo."
-  },
-  {
-    "id": 4,
-    "name": "Event 4",
-    "date": "2024-02-02",
-    "time": "09:30",
-    "venue": "Hall A",
-    "organizer": "Organizer D",
-    "imageurl": "https://source.unsplash.com/random",
-    "download": "https://youtube.com",
-    "register": "https://google.com",
-    "tag": "Training & Placement",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Etiam non elit dui. Nullam vel eros sit amet arcu vestibulum accumsan in in leo."
-  },
-  {
-    "id": 5,
-    "name": "Event 5",
-    "date": "2024-02-15",
-    "time": "17:00",
-    "venue": "Outdoor Stage",
-    "organizer": "Organizer E",
-    "imageurl": "https://source.unsplash.com/random",
-    "download": "https://youtube.com",
-    "register": "https://google.com",
-    "tag": "Sports",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Etiam non elit dui. Nullam vel eros sit amet arcu vestibulum accumsan in in leo."
+    "_id": "61f3e3e3e3e3e3e3e3e3e3e4",
+    "eventName": "Event 2",
+    "startDateTime": "2024-03-01T00:00:00Z",
+    "endDateTime": "2024-03-01T02:00:00Z",
+    "organisingDept": "Computer Science",
+    "category": "academic",
+    "type": "online",
+    "venue": "Online",
+    "meetlink": "https://meet.google.com",
+    "description": "This is Event 2.",
+    "studentCoordinator": {
+      "coordinator1": {
+        "phoneNumber": "1234567890",
+        "name": "Coordinator 1"
+      },
+      "coordinator2": {
+        "phoneNumber": "0987654321",
+        "name": "Coordinator 2"
+      }
+    },
+    "facultyCoordinator": {
+      "name": "Faculty Coordinator",
+      "email": "faculty@university.edu"
+    },
+    "socialMediaLinks": {
+      "whatsapp": "https://wa.me/1234567890",
+      "instagram": "https://instagram.com/sample",
+      "twitter": "https://twitter.com/sample"
+    },
+    "department": "cse",
+    "show": true,
+    "sourceOfInfo": "Website",
+    "posterUrl": "https://source.unsplash.com/random"
   }
 ]

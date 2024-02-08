@@ -1,34 +1,107 @@
-const backendEndpoint = "https://example.com/api/events";
+const getevents = "http://localhost:8000/api/eventsCalendar/events";
+const geteventsbytype = "http://localhost:8000/api/eventsCalendar/findbytype";
+const geteventsbycategory = "http://localhost:8000/api/eventsCalendar/findeventbycategory";
+const geteventsbytime = "http://localhost:8000/api/eventsCalendar/findeventsbytime";
 
 // Function to fetch events from the backend
-// async function fetchEvents() {
-//   try {
-//     const response = await fetch(backendEndpoint);
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error('Error fetching events:', error);
-//     return [];
-//   }
-// }
-
 async function fetchEvents() {
   try {
-    const response = await fetch("dummy.json");
+    const response = await fetch(getevents);
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error fetching dummy events:", error);
+    console.error('Error fetching events:', error);
     return [];
   }
 }
 
+// Function to fetch events by type from the backend
+async function fetchEventsByType(type) {
+  try {
+    const response = await fetch(`${geteventsbytype}?type=${type}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching events by type:', error);
+    return [];
+  }
+}
+
+
+// Function to fetch events by category from the backend
+async function fetchEventsByCategory(category) {
+  try {
+    const response = await fetch(`${geteventsbycategory}?category=${category}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching events by category:', error);
+    return [];
+  }
+}
+
+// Function to fetch events by time from the backend
+async function fetchEventsByTime(year, month, week, day) {
+  try {
+    const response = await fetch(`${geteventsbytime}?year=${year}&month=${month}&week=${week}&day=${day}`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching events by time:', error);
+    return [];
+  }
+}
+
+// async function fetchEvents() {
+//   try {
+//     const response = await fetch("dummy.json");
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error("Error fetching dummy events:", error);
+//     return [];
+//   }
+// }
+
+// function fetchtime(startDateTime)
+// {
+//   let starttime = startDataTime.toISOString().split('T')[0]; // Extracts the date
+//   return start;
+// }
+
+
+
 // Function to format a date as "YYYY-MM-DD"
-function formatDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
+// function formatDate(date) {
+//   const year = date.getFullYear();
+//   const month = String(date.getMonth() + 1).padStart(2, "0");
+//   const day = String(date.getDate()).padStart(2, "0");
+//   return `${year}-${month}-${day}`;
+// }
+
+function fetchdate(datetime) {
+  if (!datetime) {
+    return null;
+  }
+  let date = datetime.split('T')[0]; // Extracts the date
+  return date;
+}
+
+function fetchtime(datetime) {
+  let time = datetime.split('T')[1]; // Extracts the time
+  if (!time) {
+    return null;
+  }
+  const [hours, minutes] = time.split(':');
+  let formattedTime;
+  if (hours < 12) {
+    formattedTime = `${hours}:${minutes} AM`;
+  } else if (hours === '12') {
+    formattedTime = `${hours}:${minutes} PM`;
+  } else {
+    formattedTime = `${hours - 12}:${minutes} PM`;
+  }
+  return formattedTime;
 }
 
 async function addEventsToHTML() {
@@ -36,17 +109,37 @@ async function addEventsToHTML() {
 
   const eventsByDate = {};
 
-  events.forEach((event) => {
-    const formattedDate = formatDate(new Date(event.date));
+
+  const filteredEvents = []; // Array to store filtered events
+
+
+  events.forEach((event)=>{
+    const formattedDate = new Date(fetchdate(event.startDateTime));
+    const currentDate = new Date();
+
+    
+    console.log(formattedDate.getFullYear() == currentDate.getFullYear());
+    console.log(formattedDate.getFullYear());
+    currentDate.setHours(0, 0, 0, 0); // to ignore time and compare only the date
+    if ((formattedDate.getFullYear() == currentDate.getFullYear()) &&( formattedDate >= currentDate)) {
+      filteredEvents.push(event);
+    }
+  })
+
+  filteredEvents.forEach((event) => {
+    const formattedDate = new Date(fetchdate(event.startDateTime));
     if (!eventsByDate[formattedDate]) {
       eventsByDate[formattedDate] = [];
     }
     eventsByDate[formattedDate].push(event);
-  });
+
+    });
+
+  console.log(filteredEvents);
 
   // Create HTML elements for each event
   for (const date in eventsByDate) {
-    const formattedDate = new Date(date);
+    const formattedDate = new Date(fetchdate(events.startDateTime));
     const day = formattedDate.getDate();
     const month = formattedDate.toLocaleString("default", { month: "short" });
     let currentDate = new Date();
@@ -55,23 +148,25 @@ async function addEventsToHTML() {
     let eventDate = new Date(date);
     eventDate.setHours(0, 0, 0, 0); // to ignore time and compare only the date
 
+
     let displayDate;
-    if (currentDate.getTime() === eventDate.getTime()) {
+    if (currentDate.getDate() == eventDate.getDate() && currentDate.getMonth() == eventDate.getMonth() && currentDate.getFullYear() == eventDate.getFullYear()){
       displayDate = "Today";
     } else {
+      const day = eventDate.getDate();
+      const month = eventDate.toLocaleString("default", { month: "short" });
       displayDate = `${day} ${month}`;
     }
 
     const timelineItem = document.createElement("div");
     timelineItem.className = "timeline-item ";
 
-    const list = document.createElement("li");
     const timelineContent = document.createElement("div");
     timelineContent.className = "timeline-content -ml-6 ";
 
     timelineContent.innerHTML = `
     <div class="h-4 w-4  rounded-full flex items-center justify-center " style="margin-left: -9.5px;  background-color: #D47400;border:"2px solid #6a4210"; "></div>      <div class="ml-6 " >
-        <h3 class="text-lg font-semibold" style="margin-top: -25px; margin-bottom: 15px;">${displayDate} <span>${getDayOfWeek(new Date(date))}</span></h3>
+        <h3 class="text-lg font-semibold" style="margin-top: -25px; margin-bottom: 15px;">${displayDate} <span>${getDayOfWeek(new Date(fetchdate(events.startDateTime)))}</span></h3>
         <div class="flex flex-col ">
           ${eventsByDate[date].map((event) => createEventCard(event)).join("")}
         </div>
@@ -86,31 +181,29 @@ async function addEventsToHTML() {
 }
 
 
-
-
 function createEventCard(event) {
   return `
   <div class=" card group mb-4 border border-dashed rounded-lg flex flex-col justify-between cursor-pointer hover:shadow-xl hover:border-slate-900 hover:border-4 transition dark:bg-slate-900 dark:shadow-slate-700/[.7]" 
   onclick="openModal('${
-      event.id
-    }')">            <div class="bg-white border rounded-xl shadow-sm sm:flex dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] flex flex-row justify-between hover:border-slate-900 hover:border-4">
+      event._id
+    }')">            <div class="bg-white border rounded-xl shadow-sm sm:flex dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] flex flex-row justify-between hover:border-slate-900 hover:border-4" >
                 <div class="p-4 flex flex-col justify-between">
                     <div>
                     <div class="flex flex-row gap-3 " style="align-items: baseline;">
                     <div>
                                 <p class="text-gray-300 dark:text-gray-400 mb-1" style="margin-top: -5px; font-size: 16; margin-bottom: 10px;">
-                                    ${event.time}
+                                    ${fetchtime(event.startDateTime)}
                                 </p>
                             </div>
                             <div>
-                            <span class="tag text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold" style="background-color:${getTagColor(event.tag)}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;" >${event.tag}</span>
+                            <span class="tag text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold" style="background-color:${getTagColor(event.category)}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;" >${event.category}</span>
                             </div>
                         </div>
                         <h3 class=" font-semibold text-slate-700 text-lg">
-                            ${event.name}
+                            ${event.eventName}
                         </h3>
                         <p class="mt-1 text-gray-400 dark:text-gray-700" style="font-size: 14;">
-                            Organized by ${event.organizer}
+                            Organized by ${event.organisingDept}
                         </p>
                     </div>
                     <div class="mt-3 flex flex-col gap-1">
@@ -124,22 +217,22 @@ function createEventCard(event) {
                         </div>
                         <div>
                             <div class="button-group flex-ror flex" style="gap: 15px;">
-                            ${event.register ? `<button type="button" data-te-ripple-init Button class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0" style="border: 2px solid rgb(72, 139, 206);"
+                            ${event.meetlink ? `<button type="button" data-te-ripple-init Button class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0" style="border: 2px solid rgb(72, 139, 206);"
                             onclick="event.stopPropagation(); window.open('${
-                              event.register
+                              event.meetlink
                             }', '_blank');">
                             <span class="material-symbols-outlined">
                             link
                             </span>
-                                    Register
+                                    Link
                                 </button>`: ''}
                                 ${event.download ? `<button type="button" data-te-ripple-init Button class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0" style="border: 2px solid rgb(72, 139, 206);"
                                 onclick="event.stopPropagation(); window.open('${
                                   event.download
                                 }', '_blank');">
                                 <span class="material-symbols-outlined">
-download
-</span>
+                            download
+                            </span>
                                     Download
                                 </button>` : ''}
                                 
@@ -149,13 +242,13 @@ download
                 </div>
                 <div class="relative overflow-hidden md:rounded-se-none p-2 ">
                     <img class="object-cover rounded-xl w-48 h-48 group-hover:scale-105 transition-transform duration-500 ease-in-out" src="${
-                      event.imageurl
+                      event.posterUrl
                     }" alt="Image Description">
                 </div>
             </div>
         </div>
 
-        <div id="modal-${event.id}" class="modal hidden fixed z-50 inset-0 w-full h-full overflow-auto" onclick="closeModal('${
+        <div id="modal-${event._id}" class="modal hidden fixed z-50 inset-0 w-full h-full overflow-auto" onclick="closeModal('${
           event.id
         }')" style="  background-color: #000000C8;">
             <style> .modal-content{
@@ -170,25 +263,25 @@ download
                 transform: translateX(0);
               }
             }</style>
-              <div class="modal-content m-auto mt-60 p-5 w-3/5 h-full fixed  left-1/2 transform translate-x-1/2 translate-y-1/2 bg-white bg-opacity-65 backdrop-blur-md rounded-l-lg border border-opacity-40 overflow-scroll"  onclick="event.stopPropagation()">
+              <div class="modal-content m-auto mt-60 p-5 w-3/5  h-full fixed  left-1/2 transform translate-x-1/2 translate-y-1/2 bg-white bg-opacity-65 backdrop-blur-md rounded-l-lg border border-opacity-40 overflow-scroll"  onclick="event.stopPropagation()">
             <!-- Close button -->
-            <span class="close text-gray-500 float-right text-lg scale-150 font-bold w-5 h-5 pb-0.5 items-center justify-center flex rounded-full border border-gray-700 hover:text-black focus:text-white focus:outline-none cursor-pointer" onclick="closeModal('${event.id}')">&times;</span>
+            <span class="close text-gray-500 float-right text-lg scale-150 font-bold w-5 h-5 pb-0.5 items-center justify-center flex rounded-full border border-gray-700 hover:text-black focus:text-white focus:outline-none cursor-pointer" onclick="closeModal('${event._id}')">&times;</span>
         
             <!-- Modal content -->
             <div class="p-4 flex justify-center">
             <img class="object-cover" src="${
-              event.imageurl
+              event.posterUrl
             }" alt="Event Image" style="border-radius: 8px; height:300px;width:300px;">
             </div>
            
-        <div class="flex flex-col gap-4 p-3">
+        <div class="flex flex-col gap-4 p-3 ">
         <div class="">
         <b><h2 style="margin-bottom: 15px; font-size: larger; color:"#000000"; ">${
-          event.name
+          event.eventName
         }</h2></b>
         
                             
-        <span class="tag text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold" style="background-color:${getTagColor(event.tag)}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;" >${event.tag}</span>
+        <span class="tag text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold" style="background-color:${getTagColor(event.category)}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;" >${event.category}</span>
        
         </div>
         <div style="font-size: medium; color: rgba(0, 0, 0, 0.681);">  <h2 style=" color:#1E1E1E;">${
@@ -196,7 +289,7 @@ download
         }</h2>
         <br/>
         <h3> ${
-          event.time
+          event.startDateTime
         }  </h3>   <p>${event.description}</p>
         </div>
         </div>
@@ -204,14 +297,14 @@ download
             <!-- Example: Register and Download buttons -->
             <div style="margin-top: 20px;">
             <div class="button-group flex-row flex p-3" style="gap: 15px;">
-            ${event.register ? `<button type="button" data-te-ripple-init Button class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0" style="border: 2px solid rgb(72, 139, 206);"
+            ${event.meetlink ? `<button type="button" data-te-ripple-init Button class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0" style="border: 2px solid rgb(72, 139, 206);"
             onclick="event.stopPropagation(); window.open('${
-              event.register
+              event.meetlink
             }', '_blank');">
             <span class="material-symbols-outlined">
             link
             </span>
-                    Register
+                    Link
                 </button>`: ''}
                 ${event.download ? `<button type="button" data-te-ripple-init Button class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0" style="border: 2px solid rgb(72, 139, 206);"
                 onclick="event.stopPropagation(); window.open('${
@@ -240,7 +333,7 @@ function closeModal(eventId) {
   modal.style.display = "none";
 }
 
-function openDialog(name, time, organizer, venue, imageUrl) {
+function openDialog(name, time, organizer, venue, posterUrl) {
   // You can implement your dialog box logic here
   alert(
     `Event Details:\nName: ${name}\nTime: ${time}\nOrganizer: ${organizer}\nVenue: ${venue}`
@@ -262,17 +355,13 @@ function getDayOfWeek(date) {
 
 function getTagColor(tagName) {
   switch (tagName) {
-    case "Academic":
+    case "academic":
       return "#0284C7";
-    case "Cultural":
+    case "placements":
       return "#9333EA";
-    case "Fest":
+    case "club":
       return "#E11D48";
-    case "Sports":
-      return "#3F6212";
-    case "Club Event":
-      return "#B45309";
-    case "Training & Placement":
+    case "sports":
       return "#059669";
     default:
       return "#B45309";
