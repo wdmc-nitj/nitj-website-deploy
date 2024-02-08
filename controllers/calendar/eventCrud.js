@@ -1,4 +1,4 @@
-const { Event } = require("../../models/calendar/eventsCalendar");
+const Event= require("../../models/calendar/eventsCalendar");
 
 const saveEvent = (req, res) => {
     const newEvent = req.body.eventObj;
@@ -16,6 +16,7 @@ const showEvent = async (req, res) => {
         const eventData = await Event.find({}).exec();
         res.status(200).send(eventData);
     } catch (error) {
+        console.log(error);
         res.status(500).send(error);
     }
 };
