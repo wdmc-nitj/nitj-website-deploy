@@ -1,19 +1,20 @@
-const getevents = "/api/eventsCalendar/events";
-const geteventsbytype = "/api/eventsCalendar/findbytype";
-const geteventsbycategory = "/api/eventsCalendar/findeventbycategory";
-const geteventsbytime = "/api/eventsCalendar/findeventsbytime";
+const getevents = `http://localhost:8000/api/eventsCalendar/events`;
+const geteventsbytype = "http://localhost:8000/api/eventsCalendar/findbytype";
+const geteventsbycategory = "http://localhost:8000/api/eventsCalendar/findeventbycategory";
+const geteventsbytime = "http://localhost:8000/api/eventsCalendar/findeventsbytime";
 
 // Function to fetch events from the backend
-async function fetchEvents() {
-  try {
-    const response = await fetch(getevents);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching events:', error);
-    return [];
-  }
-}
+// async function fetchEvents() {
+//   try {
+//     const response = await fetch(getevents);
+//     const data = await response.json();
+//     console.log(data);
+//     return data;
+//   } catch (error) {
+//     console.error('Error fetching events:', error);
+//     return [];
+//   }
+// }
 
 // Function to fetch events by type from the backend
 async function fetchEventsByType(type) {
@@ -52,16 +53,16 @@ async function fetchEventsByTime(year, month, week, day) {
   }
 }
 
-// async function fetchEvents() {
-//   try {
-//     const response = await fetch("dummy.json");
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error("Error fetching dummy events:", error);
-//     return [];
-//   }
-// }
+async function fetchEvents() {
+  try {
+    const response = await fetch("dummy.json");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching dummy events:", error);
+    return [];
+  }
+}
 
 // function fetchtime(startDateTime)
 // {
@@ -87,19 +88,53 @@ function fetchdate(datetime) {
   return date;
 }
 
-function fetchtime(datetime) {
-  let time = datetime.split('T')[1]; // Extracts the time
-  if (!time) {
+function fetchtime(startdatetime, enddatetime) {
+  let start = startdatetime.split('T')[1]; // Extracts the time
+  let end = enddatetime.split('T')[1]; // Extracts the time
+  if (!start) {
     return null;
   }
-  const [hours, minutes] = time.split(':');
+  const [starthours, startminutes] = start.split(':');
+  const [endhours, endminutes] = end.split(':');
   let formattedTime;
-  if (hours < 12) {
-    formattedTime = `${hours}:${minutes} AM`;
-  } else if (hours === '12') {
-    formattedTime = `${hours}:${minutes} PM`;
+  const currentDateTime = new Date();
+  const currentHours = currentDateTime.getHours();
+  const currentMinutes = currentDateTime.getMinutes();
+  let startPeriod = "AM";
+  let endPeriod = "AM";
+  
+  // Convert start hours to 12-hour format
+  let startHours12 = parseInt(starthours);
+  if (startHours12 >= 12) {
+    startPeriod = "PM";
+    if (startHours12 > 12) {
+      startHours12 -= 12;
+    }
+  }
+  
+  // Convert end hours to 12-hour format
+  let endHours12 = parseInt(endhours);
+  if (endHours12 >= 12) {
+    endPeriod = "PM";
+    if (endHours12 > 12) {
+      endHours12 -= 12;
+    }
+  }
+  
+  if (
+    currentHours > parseInt(starthours) ||
+    (currentHours === parseInt(starthours) && currentMinutes >= parseInt(startminutes))
+  ) {
+    if (
+      currentHours < parseInt(endhours) ||
+      (currentHours === parseInt(endhours) && currentMinutes < parseInt(endminutes))
+    ) {
+      formattedTime = `⦿ LIVE ${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod}`;
+    } else {
+      formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod}`;
+    }
   } else {
-    formattedTime = `${hours - 12}:${minutes} PM`;
+    formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod}`;
   }
   return formattedTime;
 }
@@ -191,8 +226,8 @@ function createEventCard(event) {
                     <div>
                     <div class="flex flex-row gap-3 " style="align-items: baseline;">
                     <div>
-                                <p class="text-gray-300 dark:text-gray-400 mb-1" style="margin-top: -5px; font-size: 16; margin-bottom: 10px;">
-                                    ${fetchtime(event.startDateTime)}
+                                <p class="text-red-400 font-medium mb-1" style="margin-top: -5px; font-size: 16; margin-bottom: 10px;">
+                                    ${fetchtime(event.startDateTime,event.endDateTime)}
                                 </p>
                             </div>
                             <div>
@@ -295,8 +330,8 @@ function createEventCard(event) {
         </div>
 
         <br/>
-        <h3> 
-                                            ${fetchtime(event.startDateTime)}
+        <h3 class="text-red-400 font-medium mb-1" style="margin-top: -5px; font-size: 16; margin-bottom: 10px;">
+        ${fetchtime(event.startDateTime,event.endDateTime)}
         </h3>   <p>${event.description}</p>
         </div>
         </div>
