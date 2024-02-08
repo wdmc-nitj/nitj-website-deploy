@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Academic Calender</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- <link rel="stylesheet" href="./events.css"> -->
+
+</head>
+
+<body style="background-color: #F1F5F9;
+">
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <script type="module" src="../template/header.js"></script>
+        <script src="../template/helper.js"></script>
+    <script src="./script.js"></script>
+
+
+    <div class="h-full object-cover w-full ">
+        <!-- FILEPATH: /d:/Aditya/XCEED/nitj-website-deploy/public/events/index.html -->
+        <!-- BEGIN: ed8c6549bwf9 -->
+        <img src="./assets/header.png" alt="" class="h-full object-cover w-full top-0 float-right">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" class="h-full object-cover w-full top-0 float-right">
+            <image href="./assets/svgheader.svg" width="100%" height="100%" />
+        </svg> -->
+        <!-- END: ed8c6549bwf9 -->
+    </div>
+
+    <div class=" mx-10 gap-10 flex flex-row mb-10">
+        <div class="events " style="width: 65vw;">
+            <div style="display: flex; flex-direction: row; margin-top: 30px; justify-content: space-between; margin-bottom: 20px;">
+                <div style="font-size:32px; color: #4E4E4E;font-weight: 400;"> <b> Upcoming Events
+                    </b>
+                </div>
+                <div class="button-group flex flex-row items-center w-2/5 gap-2" >
+                    <!-- <script>
+                        function toggleButtonActive(buttonId) {
+                            const button = document.getElementById(buttonId);
+                            button.classList.add('button-active');
+
+                            // get the other button and remove the 'button-active' class
+                            const otherButtonId = buttonId === 'Default' ? 'Monthly' : 'Default';
+                            const otherButton = document.getElementById(otherButtonId);
+                            otherButton.classList.remove('button-active');
+                        }
+                    </scrip> -->
+
+                    <button type="button" data-te-ripple-init Button class="group flex flex-row gap-1 text-accent text-lg font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-1.5 py-2.5 me-2 mb-2 w-full text-nowrap transform transition duration-300 hover:scale-105 shadow-md" style="border: 2px solid rgb(72, 139, 206);">
+                        <span class="material-symbols-outlined">
+        more_vert
+        </span>
+                        <h2>Default view</h2>
+                    </button>
+
+                    <button type="button" data-te-ripple-init Button class="group flex flex-row gap-1 text-accent text-lg font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-1.5 py-2.5 me-2 mb-2 w-full text-nowrap transform transition duration-300 hover:scale-105 shadow-md" style="border: 2px solid rgb(72, 139, 206);">
+                        <span class="material-symbols-outlined">
+                            calendar_month
+                        </span>
+                        <h2>Month view</h2>
+                    </button>
+                </div>
+            </div>
+            <div>
+
+
+                <ol class="timeline border-l-4 ml-4 " style="border-color: rgba(235, 152, 93, 0.652);">
+
+                    <!-- Here the Cards are added in the timeline -->
+
+
+                </ol>
+            </div>
+        </div>
+        <div class="filter flex justify-center align-middle" style=" margin-top: 140px;
+        width: 25vw;">
+            <div class="filter-box">
+                <div class="search">
+                   
+
+                    <form>   
+                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 " placeholder="Filter" required>
+                            <button type="submit" class="text-accent  hover:text-white absolute end-2.5 bottom-2.5 bg-accent bg-opacity-50 hover:bg-accent focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                        </div>
+                    </form>
+                    
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../template/footer.js"></script>
+</body>
+
+
+
