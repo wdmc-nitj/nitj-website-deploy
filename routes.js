@@ -44,7 +44,6 @@ const recruitmentsRoutes = require("./routes/recruitmentRoutes");
 const curriculumRouter = require("./routes/curriculum");
 const deptCalendarRouter = require("./routes/deptCalendar");
 const examinationRouter = require("./routes/examination");
-
 const eventsCalendarRouter = require("./routes/calendar/eventsCalendar")
 
 const adminPath = "dashboard";
