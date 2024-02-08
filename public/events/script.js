@@ -4,16 +4,16 @@ const geteventsbycategory = "http://localhost:8000/api/eventsCalendar/findeventb
 const geteventsbytime = "http://localhost:8000/api/eventsCalendar/findeventsbytime";
 
 // Function to fetch events from the backend
-async function fetchEvents() {
-  try {
-    const response = await fetch(getevents);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching events:', error);
-    return [];
-  }
-}
+// async function fetchEvents() {
+//   try {
+//     const response = await fetch(getevents);
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error('Error fetching events:', error);
+//     return [];
+//   }
+// }
 
 // Function to fetch events by type from the backend
 async function fetchEventsByType(type) {
@@ -52,16 +52,16 @@ async function fetchEventsByTime(year, month, week, day) {
   }
 }
 
-// async function fetchEvents() {
-//   try {
-//     const response = await fetch("dummy.json");
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error("Error fetching dummy events:", error);
-//     return [];
-//   }
-// }
+async function fetchEvents() {
+  try {
+    const response = await fetch("dummy.json");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching dummy events:", error);
+    return [];
+  }
+}
 
 // function fetchtime(startDateTime)
 // {
@@ -166,7 +166,7 @@ async function addEventsToHTML() {
 
     timelineContent.innerHTML = `
     <div class="h-4 w-4  rounded-full flex items-center justify-center " style="margin-left: -9.5px;  background-color: #D47400;border:"2px solid #6a4210"; "></div>      <div class="ml-6 " >
-        <h3 class="text-lg font-semibold" style="margin-top: -25px; margin-bottom: 15px;">${displayDate} <span>${getDayOfWeek(new Date(fetchdate(events.startDateTime)))}</span></h3>
+        <h3 class="text-lg font-semibold" style="margin-top: -25px; margin-bottom: 15px;">${displayDate} <span class="text-slate-500 font-normal text-base"> ${getDayOfWeek(new Date(fetchdate(events.startDateTime)))}</span></h3>
         <div class="flex flex-col ">
           ${eventsByDate[date].map((event) => createEventCard(event)).join("")}
         </div>
@@ -183,7 +183,7 @@ async function addEventsToHTML() {
 
 function createEventCard(event) {
   return `
-  <div class=" card group mb-4 border border-dashed rounded-lg flex flex-col justify-between cursor-pointer hover:shadow-xl hover:border-slate-900 hover:border-4 transition dark:bg-slate-900 dark:shadow-slate-700/[.7]" 
+  <div class=" card group mb-6 border border-dashed rounded-lg flex flex-col justify-between cursor-pointer hover:shadow-xl hover:border-slate-900 hover:border-4 transition dark:bg-slate-900 dark:shadow-slate-700/[.7]" 
   onclick="openModal('${
       event._id
     }')">            <div class="bg-white border rounded-xl shadow-sm sm:flex dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] flex flex-row justify-between hover:border-slate-900 hover:border-4" >
@@ -196,7 +196,7 @@ function createEventCard(event) {
                                 </p>
                             </div>
                             <div>
-                            <span class="tag text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold" style="background-color:${getTagColor(event.category)}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;" >${event.category}</span>
+                            <span class="tag uppercase text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold " style="background-color:${getTagColor(event.category)}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;" >${event.category}</span>
                             </div>
                         </div>
                         <h3 class=" font-semibold text-slate-700 text-lg">
@@ -276,25 +276,31 @@ function createEventCard(event) {
            
         <div class="flex flex-col gap-4 p-3 ">
         <div class="">
+
         <b><h2 style="margin-bottom: 15px; font-size: larger; color:"#000000"; ">${
           event.eventName
         }</h2></b>
         
-                            
-        <span class="tag text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold" style="background-color:${getTagColor(event.category)}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;" >${event.category}</span>
        
+        <span class="tag uppercase text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold" style="background-color:${getTagColor(event.category)}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;" >${event.category}</span>
+
         </div>
-        <div style="font-size: medium; color: rgba(0, 0, 0, 0.681);">  <h2 style=" color:#1E1E1E;">${
+        <div style="font-size: medium; color: rgba(0, 0, 0, 0.681);">  
+        <div class="flex flex-row space-between w-full justify-between items-baseline">
+
+        <h2  class="font-semibold text-lg" style=" color:#1E1E1E;">${
           event.venue
         }</h2>
+        <h3 class=" font-semibold text-accent-orange text-lg"> Organizer : ${event.organisingDept}</h3>
+        </div>
+
         <br/>
-        <h3> ${
-          event.startDateTime
-        }  </h3>   <p>${event.description}</p>
+        <h3> 
+                                            ${fetchtime(event.startDateTime)}
+        </h3>   <p>${event.description}</p>
         </div>
         </div>
             
-            <!-- Example: Register and Download buttons -->
             <div style="margin-top: 20px;">
             <div class="button-group flex-row flex p-3" style="gap: 15px;">
             ${event.meetlink ? `<button type="button" data-te-ripple-init Button class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0" style="border: 2px solid rgb(72, 139, 206);"
@@ -364,7 +370,7 @@ function getTagColor(tagName) {
     case "sports":
       return "#059669";
     default:
-      return "#B45309";
+      return "#B43909";
   }
 }
 
