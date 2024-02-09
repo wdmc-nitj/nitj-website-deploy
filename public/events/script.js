@@ -4,17 +4,17 @@ const geteventsbycategory = "http://localhost:8000/api/eventsCalendar/findeventb
 const geteventsbytime = "http://localhost:8000/api/eventsCalendar/findeventsbytime";
 
 // Function to fetch events from the backend
-// async function fetchEvents() {
-//   try {
-//     const response = await fetch(getevents);
-//     const data = await response.json();
-//     console.log(data);
-//     return data;
-//   } catch (error) {
-//     console.error('Error fetching events:', error);
-//     return [];
-//   }
-// }
+async function fetchEvents() {
+  try {
+    const response = await fetch(getevents);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    return [];
+  }
+}
 
 // Function to fetch events by type from the backend
 async function fetchEventsByType(type) {
@@ -53,16 +53,16 @@ async function fetchEventsByTime(year, month, week, day) {
   }
 }
 
-async function fetchEvents() {
-  try {
-    const response = await fetch("dummy.json");
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching dummy events:", error);
-    return [];
-  }
-}
+// async function fetchEvents() {
+//   try {
+//     const response = await fetch("dummy.json");
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error("Error fetching dummy events:", error);
+//     return [];
+//   }
+// }
 
 // function fetchtime(startDateTime)
 // {
