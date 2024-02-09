@@ -1,7 +1,7 @@
-const getevents = `http://localhost:8000/api/eventsCalendar/events`;
-const geteventsbytype = "http://localhost:8000/api/eventsCalendar/findbytype";
-const geteventsbycategory = "http://localhost:8000/api/eventsCalendar/findeventbycategory";
-const geteventsbytime = "http://localhost:8000/api/eventsCalendar/findeventsbytime";
+const getevents = `/api/eventsCalendar/events`;
+const geteventsbytype = "/api/eventsCalendar/findbytype";
+const geteventsbycategory = "/api/eventsCalendar/findeventbycategory";
+const geteventsbytime = "/api/eventsCalendar/findeventsbytime";
 
 // Function to fetch events from the backend
 async function fetchEvents() {
@@ -63,13 +63,6 @@ async function fetchEventsByTime(year, month, week, day) {
 //     return [];
 //   }
 // }
-
-// function fetchtime(startDateTime)
-// {
-//   let starttime = startDataTime.toISOString().split('T')[0]; // Extracts the date
-//   return start;
-// }
-
 
 
 // Function to format a date as "YYYY-MM-DD"
