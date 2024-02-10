@@ -1077,9 +1077,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Infrastructure.schema.paths));
-              }
               return Object.keys(Infrastructure.schema.paths);
             },
             after: async (request, context) => {
@@ -1116,9 +1113,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Infrastructure.schema.paths));
-              }
               return Object.keys(Infrastructure.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1126,9 +1120,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(Infrastructure.schema.paths))
-              }
               return Object.keys(Infrastructure.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1739,9 +1730,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(PhdScholar.schema.paths));
-              }
               return Object.keys(PhdScholar.schema.paths);
             },
             after: async (request, context) => {
@@ -1778,9 +1766,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(PhdScholar.schema.paths));
-              }
               return Object.keys(PhdScholar.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1788,9 +1773,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(PhdScholar.schema.paths))
-              }
               return Object.keys(PhdScholar.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
