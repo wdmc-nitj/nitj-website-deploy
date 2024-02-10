@@ -209,15 +209,22 @@ async function addEventsToHTML() {
 }
 
 
+const camelToFlat=(camel)=>{
+  const camelCase =camel.replace(/([a-z])([A-Z])/g, '$1 $2').split(" ")
 
+  let flat =""
+
+  camelCase.forEach(word=>{    
+      flat = flat + word.charAt(0).toUpperCase() + word.slice(1) + " "
+  })  
+  return flat;
+}
 
 function createEventCard(event) {
 
   return `
   <div class=" card group mb-6 border border-dashed rounded-lg flex flex-col justify-between cursor-pointer hover:shadow-xl hover:border-slate-900 hover:border-4 transition dark:bg-slate-900 dark:shadow-slate-700/[.7]"
-    onclick="openModal('${
-      event._id
-    }')">
+    onclick="openModal('${event._id}')">
     <div
         class="bg-white border rounded-xl shadow-sm sm:flex dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] flex flex-row justify-between hover:border-slate-900 hover:border-4">
         <div class="p-4 flex flex-col justify-between">
@@ -226,13 +233,17 @@ function createEventCard(event) {
                     <div>
                         <p class="text-red-400 font-semibold mb-1"
                             style="margin-top: -5px; font-size: 16; margin-bottom: 10px;">
-                            ${fetchtime(event.startDateTime,event.endDateTime)}
+                            ${fetchtime(event.startDateTime, event.endDateTime)}
                         </p>
                     </div>
                     <div>
                         <span
                             class="tag uppercase text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold "
-                            style="background-color:${getTagColor(event.category)}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;">${event.category}</span>
+                            style="background-color:${getTagColor(
+                              event.category
+                            )}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;">${
+    event.category
+  }</span>
                     </div>
                 </div>
                 <h3 class=" font-semibold text-slate-700 text-lg">
@@ -251,31 +262,35 @@ function createEventCard(event) {
                             fill="#E58818" />
                     </svg>
                     <span style="vertical-align: middle; margin-bottom: 20; color:#4E4E4E;">${
-                        event.venue
-                        }</span>
+                      event.venue
+                    }</span>
                 </div>
                 <div>
                     <div class="button-group flex-ror flex" style="gap: 15px;">
-                        ${event.meetlink ? `<button type="button" data-te-ripple-init Button
+                        ${
+                          event.meetlink
+                            ? `<button type="button" data-te-ripple-init Button
                             class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
-                            style="border: 2px solid rgb(72, 139, 206);" onclick="event.stopPropagation(); window.open('${
-                              event.meetlink
-                            }', '_blank');">
+                            style="border: 2px solid rgb(72, 139, 206);" onclick="event.stopPropagation(); window.open('${event.meetlink}', '_blank');">
                             <span class="material-symbols-outlined">
                                 link
                             </span>
                             Link
-                        </button>`: ''}
-                        ${event.download ? `<button type="button" data-te-ripple-init Button
+                        </button>`
+                            : ""
+                        }
+                        ${
+                          event.download
+                            ? `<button type="button" data-te-ripple-init Button
                             class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
-                            style="border: 2px solid rgb(72, 139, 206);" onclick="event.stopPropagation(); window.open('${
-                                  event.download
-                                }', '_blank');">
+                            style="border: 2px solid rgb(72, 139, 206);" onclick="event.stopPropagation(); window.open('${event.download}', '_blank');">
                             <span class="material-symbols-outlined">
                                 download
                             </span>
                             Download
-                        </button>` : ''}
+                        </button>`
+                            : ""
+                        }
 
                     </div>
                 </div>
@@ -283,16 +298,16 @@ function createEventCard(event) {
         </div>
         <div class="relative overflow-hidden md:rounded-se-none p-2 ">
             <img class="object-cover rounded-xl w-48 h-48 group-hover:scale-105 transition-transform duration-500 ease-in-out"
-                src="${
-                      event.posterUrl
-                    }" alt="Image Description">
+                src="${event.posterUrl}" alt="Image Description">
         </div>
     </div>
 </div>
 
-<div id="modal-${event._id}" class="modal hidden fixed z-50 inset-0 w-full h-full overflow-auto" onclick="closeModal('${
-          event._id
-        }')" style="  background-color: #000000C8;">
+<div id="modal-${
+    event._id
+  }" class="modal hidden fixed z-50 inset-0 w-full h-full overflow-auto" onclick="closeModal('${
+    event._id
+  }')" style="  background-color: #000000C8;">
     <style>
         .modal-content {
             animation: slideRight 0.4s ease-in-out;
@@ -308,7 +323,7 @@ function createEventCard(event) {
             }
         }
     </style>
-    <div class="modal-content m-auto mt-60 p-5 w-3/5  h-full fixed  left-1/2 transform translate-x-1/2 translate-y-1/2 bg-white bg-opacity-65 backdrop-blur-md rounded-l-lg border border-opacity-40 overflow-scroll" 
+    <div class="modal-content m-auto mt-60 p-5 sm:w-3/5 w-full  h-full fixed  left-1/2 transform translate-x-1/2 translate-y-1/2 bg-white bg-opacity-65 backdrop-blur-md rounded-l-lg border border-opacity-40 overflow-scroll" 
         onclick="event.stopPropagation()">
         <!-- Close button -->
         <span
@@ -327,12 +342,14 @@ function createEventCard(event) {
 
                 <b>
                     <h2 style="margin-bottom: 15px; font-size: larger; color:" #000000"; ">${
-          event.eventName
-        }</h2></b>
+                      event.eventName
+                    }</h2></b>
         
        
         <span class=" tag uppercase text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold"
-                        style="background-color:${getTagColor(event.category)}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;">
+                        style="background-color:${getTagColor(
+                          event.category
+                        )}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;">
                         ${event.category}</span>
 
             </div>
@@ -340,15 +357,17 @@ function createEventCard(event) {
                 <div class="flex flex-row space-between justify-between items-baseline">
 
                     <h2 class="font-semibold text-lg" style=" color:#1E1E1E;">${
-                        event.venue
-                        }</h2>
-                    <h3 class=" font-semibold text-accent-orange text-lg"> Organizer : ${event.organisingDept}</h3>
+                      event.venue
+                    }</h2>
+                    <h3 class=" font-semibold text-accent-orange text-lg"> Organizer : ${
+                      event.organisingDept
+                    }</h3>
                 </div>
 
                 <br />
                 <h3 class="text-red-400 font-semibold mb-1 "
                     style="margin-top: -5px; font-size: 16; margin-bottom: 10px;">
-                    ${fetchtime(event.startDateTime,event.endDateTime)}
+                    ${fetchtime(event.startDateTime, event.endDateTime)}
                 </h3>
                 <p>${event.description}</p>
             </div>
@@ -356,78 +375,125 @@ function createEventCard(event) {
 
         <div style="margin-top: 20px;"> 
             <div class="info flex-row flex p-3" style="gap: 15px;">
-                ${event.meetlink ? `<button type="button" data-te-ripple-init Button
+                ${
+                  event.meetlink
+                    ? `<button type="button" data-te-ripple-init Button
                     class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
-                    style="border: 2px solid rgb(72, 139, 206);" onclick="event.stopPropagation(); window.open('${
-              event.meetlink
-            }', '_blank');">
+                    style="border: 2px solid rgb(72, 139, 206);" onclick="event.stopPropagation(); window.open('${event.meetlink}', '_blank');">
                     <span class="material-symbols-outlined">
                         link
                     </span>
                     Link
-                </button>`: ''}
-                ${event.download ? `<button type="button" data-te-ripple-init Button
-                    class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
-                    style="border: 2px solid rgb(72, 139, 206);" onclick="event.stopPropagation(); window.open('${
+                </button>`
+                    : ""
+                }
+                ${
                   event.download
-                }', '_blank');">
+                    ? `<button type="button" data-te-ripple-init Button
+                    class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
+                    style="border: 2px solid rgb(72, 139, 206);" onclick="event.stopPropagation(); window.open('${event.download}', '_blank');">
                     <span class="material-symbols-outlined">
                         download
                     </span>
                     Download
-                </button>` : ''}
+                </button>`
+                    : ""
+                }
                 
             </div>
             <div class="flex flex-col p-3 gap-3">
-                ${Object.entries(event).map(([key, value]) => {
-                  if (!['_id', 'eventName', 'startDateTime', 'endDateTime', 'organisingDept', 'category', 'venue', 'type', 'meetlink', 'description', 'department', 'posterUrl'].includes(key)) {
-                    if (typeof value === 'object') {
-                      return `
-                        <div class="flex flex-col gap-2">
-                          <p><b>${key} :</b></p>
-                          <div class="flex flex-col gap-1">
-                            ${Object.entries(value).map(([subKey, subValue]) => {
-                              if (typeof subValue === 'object') {
-                                return `
-                                  <p><b>${subKey} :</b></p>
-                                  <div>
-                                    ${Object.entries(subValue).map(([subSubKey, subSubValue]) => {
-                                      if (typeof subSubValue === 'string' && subSubValue.startsWith('http')) {
-                                        return `
-                                          <div>
-                                            <p><b>${subSubKey} :</b> <a href="${subSubValue}" target="_blank">${subSubValue}</a></p>
-                                          </div>
-                                        `;
+                ${Object.entries(event)
+                  .map(([key, value]) => {
+                    const flatKey = camelToFlat(key);
+                    if (
+                      ![
+                        "_id",
+                        "eventName",
+                        "startDateTime",
+                        "endDateTime",
+                        "organisingDept",
+                        "category",
+                        "venue",
+                        "type",
+                        "meetlink",
+                        "description",
+                        "department",
+                        "posterUrl",
+                        "show"
+                      ].includes(key) &&
+                      value
+                    ) {
+                      if (typeof value === "object") {
+                        return `
+                          <div class="flex flex-col gap-2">
+                            <div class="bg-accent rounded-md p-1 pl-3">
+                            <p class=" text-white "><b>${flatKey}</b></p>
+                            </div>
+                            <div class="flex flex-col gap-1" style="margin-left: 20px;">
+                              ${Object.entries(value)
+                                .map(([subKey, subValue]) => {
+                                  const flatSubKey = camelToFlat(subKey);
+                                  if (!subKey.includes("_id")) {
+                                    if (typeof subValue === "object") {
+                                      return `
+                                        <p><b>${flatSubKey}</b></p>
+                                        <div >
+                                          ${Object.entries(subValue)
+                                            .map(([subSubKey, subSubValue]) => {
+                                              const flatSubSubKey =
+                                                camelToFlat(subSubKey);
+                                              if (!subSubKey.includes("_id")) {
+                                                if (
+                                                  typeof subSubValue ===
+                                                    "string" &&
+                                                  subSubValue.startsWith("http")
+                                                ) {
+                                                  return `
+                                                    <div>
+                                                      <p><b>${flatSubSubKey}</b>: <a href="${subSubValue}" target="_blank">${subSubValue}</a></p>
+                                                    </div>
+                                                  `;
+                                                } else {
+                                                  return `
+                                                    <div>
+                                                      <p>${flatSubSubKey}: ${subSubValue}</p>
+                                                    </div>
+                                                  `;
+                                                }
+                                              }
+                                            })
+                                            .join("")}
+                                        </div>
+                                      `;
+                                    } else {
+                                      if (
+                                        typeof subValue === "string" &&
+                                        subValue.startsWith("http")
+                                      ) {
+                                        return `<p>${flatSubKey}: <a href="${subValue}" target="_blank">${subValue}</a></p>`;
                                       } else {
-                                        return `
-                                          <div>
-                                            <p><b>${subSubKey} :</b> ${subSubValue}</p>
-                                          </div>
-                                        `;
+                                        return `<p>${flatSubKey}: ${subValue}</p>`;
                                       }
-                                    }).join('')}
-                                  </div>
-                                `;
-                              } else {
-                                if (typeof subValue === 'string' && subValue.startsWith('http')) {
-                                  return `<p><b>${subKey} :</b> <a href="${subValue}" target="_blank">${subValue}</a></p>`;
-                                } else {
-                                  return `<p><b>${subKey} :</b> ${subValue}</p>`;
-                                }
-                              }
-                            }).join('')}
+                                    }
+                                  }
+                                })
+                                .join("")}
+                            </div>
                           </div>
-                        </div>
-                      `;
-                    } else {
-                      if (typeof value === 'string' && value.startsWith('http')) {
-                        return `<p>${key} : <a href="${value}" target="_blank">${value}</a></p>`;
+                        `;
                       } else {
-                        return `<p>${key} : ${value}</p>`;
+                        if (
+                          typeof value === "string" &&
+                          value.startsWith("http")
+                        ) {
+                          return `<p>${flatKey}: <a href="${value}" target="_blank">${value}</a></p>`;
+                        } else {
+                          return `<p><b>${flatKey}</b> : ${value}</p>`;
+                        }
                       }
                     }
-                  }
-                }).join('')}
+                  })
+                  .join("")}
                       
                 </div>
         </div>
