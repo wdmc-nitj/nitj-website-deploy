@@ -32,7 +32,7 @@ const eventSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['online', 'offline', 'hybrid', 'Holidays', 'STC/FDP', 'International/National conference'],
+        enum: ['online', 'offline', 'hybrid'],
         required: true
     },
     venue: {
@@ -75,18 +75,6 @@ const eventSchema = new mongoose.Schema({
     },
     posterUrl: {
         type: String
-    },
-    openToAnyone: {
-        type: Boolean,
-        default: false
-    },
-    regReq: {
-        type: Boolean,
-        default: false
-    },
-    onSpotReg: {
-        type: Boolean,
-        default: false
     }
 });
 
