@@ -19,7 +19,8 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     endDateTime: {
-        type: Date
+        type: Date,
+        required:true
     },
     organisingDept: {
         type: String,
@@ -27,12 +28,12 @@ const eventSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ['academic', 'club', 'sports', 'placement'],
+        enum: ['academic', 'club', 'sports', 'placement', 'Holidays', 'STC/FDP', 'International/National conference'],
         required: true
     },
     type: {
         type: String,
-        enum: ['online', 'offline', 'hybrid', 'Holidays', 'STC/FDP', 'International/National conference'],
+        enum: ['online', 'offline', 'hybrid'],
         required: true
     },
     venue: {
