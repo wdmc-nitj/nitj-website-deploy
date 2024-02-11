@@ -4,21 +4,21 @@ const geteventsbycategory = "/api/eventsCalendar/findeventbycategory";
 const geteventsbytime = "/api/eventsCalendar/findeventsbytime";
 
 // Function to fetch events from the backend
-// async function fetchEvents() {
-//   try {
-//     const currentDate = new Date();
-//     const year = currentDate.getFullYear();
-//     const month = currentDate.getMonth()+1;
+async function fetchEvents() {
+  try {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth()+1;
 
-//     const response = await fetch(`${getevents}?year=${year}&month=${month}`);
-//     const data = await response.json();
-//     console.log(data);
-//     return data;
-//   } catch (error) {
-//     console.error('Error fetching events:', error);
-//     return [];
-//   }
-// }
+    const response = await fetch(`${getevents}?year=${year}&month=${month}`);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error('Error fetching events:', error);
+    return [];
+  }
+}
 
 // Function to fetch events by type from the backend
 async function fetchEventsByType(type) {
@@ -57,16 +57,16 @@ async function fetchEventsByTime(year, month, week, day) {
   }
 }
 
-async function fetchEvents() {
-  try {
-    const response = await fetch("dummy.json");
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching dummy events:", error);
-    return [];
-  }
-}
+// async function fetchEvents() {
+//   try {
+//     const response = await fetch("dummy.json");
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error("Error fetching dummy events:", error);
+//     return [];
+//   }
+// }
 
 
 // Function to format a date as "YYYY-MM-DD"
@@ -318,8 +318,8 @@ ${event.category}
               </div>
           </div>
           <div class="relative overflow-hidden md:rounded-se-none p-2 justify-center items-center hidden md:block">
-              <img class="object-cover rounded-xl w-48 h-48 group-hover:scale-105 transition-transform duration-500 ease-in-out"
-                  src="${event.posterUrl}" alt="Image Description">
+              <img class="object-scale-down rounded-xl w-48 h-48 group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                src="${event.posterUrl ? event.posterUrl : './assets/logo_nitj.png'}" alt="Image Description">
           </div>
       </div>
   </div>
@@ -353,9 +353,7 @@ ${event.category}
   
           <!-- Modal content -->
           <div class="p-4 flex justify-center" style="min-width:47vw">
-              <img class="object-cover" src="${
-            event.posterUrl
-          }" alt="Event Image" style="border-radius: 8px; height:300px;width:300px;">
+              <img class="object-scale-down" src="${event.posterUrl ? event.posterUrl : './assets/logo_nitj.png'}" alt="Event Image" style="border-radius: 8px; height:300px;width:300px;">
           </div>
   
           <div class="flex flex-col gap-4 p-3 ">
