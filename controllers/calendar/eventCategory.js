@@ -1,4 +1,4 @@
-const Event  = require("../../models/calendar/eventsCalendar");
+const Event = require("../../models/calendar/eventsCalendar");
 
 const findEventByType = async (req, res) => {
     const type = req.query.type;
