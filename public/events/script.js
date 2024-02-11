@@ -323,7 +323,7 @@ function createEventCard(event) {
             }
         }
     </style>
-    <div class="modal-content m-auto mt-60 p-5 sm:w-3/5 w-full  h-full fixed  left-1/2 transform translate-x-1/2 translate-y-1/2 bg-white bg-opacity-65 backdrop-blur-md rounded-l-lg border border-opacity-40 overflow-scroll" 
+    <div class="modal-content m-auto mt-60 p-5 sm:w-3/5 w-full h-full fixed left-1/2 transform translate-x-1/2 translate-y-1/2 bg-white bg-opacity-65 backdrop-blur-md rounded-l-lg border border-opacity-40 overflow-scroll" 
         onclick="event.stopPropagation()">
         <!-- Close button -->
         <span
@@ -536,15 +536,23 @@ function getDayOfWeek(date) {
 function getTagColor(tagName) {
   switch (tagName) {
     case "academic":
-      return "#0284C7";
+      return "#A55B00"; // Orange
     case "placements":
-      return "#9333EA";
+      return "#D4B932"; // Yellow
     case "club":
-      return "#E11D48";
+      return "#E51347"; // Pink
     case "sports":
-      return "#059669";
+      return "#029C40"; // Green
+    case "holiday":
+      return "#66078C"; // Purple
+    case "fest":
+      return "#059A84"; // Deep Pink
+    case "STC/FDP":
+      return "#D0551C"; // Orange
+    case "conference":
+      return "#AF1C1C"; // Cyan
     default:
-      return "#B43909";
+      return "#FF00FF"; // Magenta
   }
 }
 
