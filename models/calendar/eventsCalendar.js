@@ -29,6 +29,7 @@ const eventSchema = new mongoose.Schema({
     category: {
         type: String,
         enum: ['academic', 'club', 'sports', 'placement', 'Holidays', 'STC/FDP', 'International/National conference'],
+        
         required: true
     },
     type: {
@@ -76,18 +77,6 @@ const eventSchema = new mongoose.Schema({
     },
     posterUrl: {
         type: String
-    },
-    openToAnyone: {
-        type: Boolean,
-        default: false
-    },
-    regReq: {
-        type: Boolean,
-        default: false
-    },
-    onSpotReg: {
-        type: Boolean,
-        default: false
     }
 });
 
