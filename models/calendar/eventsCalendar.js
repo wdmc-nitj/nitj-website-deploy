@@ -19,7 +19,8 @@ const eventSchema = new mongoose.Schema({
         required: true
     },
     endDateTime: {
-        type: Date
+        type: Date,
+        required:true
     },
     organisingDept: {
         type: String,
@@ -75,6 +76,18 @@ const eventSchema = new mongoose.Schema({
     },
     posterUrl: {
         type: String
+    },
+    openToAnyone: {
+        type: Boolean,
+        default: false
+    },
+    regReq: {
+        type: Boolean,
+        default: false
+    },
+    onSpotReg: {
+        type: Boolean,
+        default: false
     }
 });
 
