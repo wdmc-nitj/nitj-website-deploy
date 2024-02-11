@@ -95,6 +95,11 @@ function fetchtime(startdatetime, enddatetime) {
   const currentMinutes = currentDateTime.getMinutes();
   let startPeriod = "AM";
   let endPeriod = "AM";
+
+
+
+
+
   
   // Convert start hours to 12-hour format
   let startHours12 = parseInt(starthours);
@@ -113,24 +118,35 @@ function fetchtime(startdatetime, enddatetime) {
       endHours12 -= 12;
     }
   }
-  
-  if (
-    currentHours > parseInt(starthours) ||
-    (currentHours === parseInt(starthours) && currentMinutes >= parseInt(startminutes))
-  ) {
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
+const startDateTime = new Date(startdatetime);
+const startDay = startDateTime.getDate();
+const startMonth = monthNames[startDateTime.getMonth()];
+const endDateTime = new Date(enddatetime);
+const endDay = endDateTime.getDate();
+const endMonth = monthNames[endDateTime.getMonth()];
     if (
-      currentHours < parseInt(endhours) ||
-      (currentHours === parseInt(endhours) && currentMinutes < parseInt(endminutes))
+      currentHours > parseInt(starthours) ||
+      (currentHours === parseInt(starthours) && currentMinutes >= parseInt(startminutes))
     ) {
-      formattedTime = `⦿ LIVE ${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod}`;
+      if (
+        currentHours < parseInt(endhours) ||
+        (currentHours === parseInt(endhours) && currentMinutes < parseInt(endminutes))
+      ) {
+        formattedTime = `⦿ LIVE ${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod}`;
+      } else {
+      
+
+        formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod}`;
+      }
     } else {
       formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod}`;
     }
-  } else {
-    formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod}`;
+    return formattedTime;
   }
-  return formattedTime;
-}
 
 async function addEventsToHTML() {
   const events = await fetchEvents();
@@ -193,12 +209,13 @@ async function addEventsToHTML() {
     timelineContent.className = "timeline-content -ml-6 ";
 
     timelineContent.innerHTML = `
-    <div class="h-4 w-4  rounded-full flex items-center justify-center " style="margin-left: -9.5px;  background-color: #D47400;border:"2px solid #6a4210"; "></div>      <div class="ml-6 " >
+    <div class="h-4 w-4  rounded-full flex items-center justify-center " style="margin-left: -9.5px;  background-color: #D47400;border:"2px solid #6a4210"; "></div>      
+        <div class="ml-6 flex flex-col" >
         <h3 class="text-lg font-semibold" style="margin-top: -25px; margin-bottom: 15px;">${displayDate} <span class="text-slate-500 font-normal text-base"> ${getDayOfWeek(new Date(fetchdate(events.startDateTime)))}</span></h3>
-        <div class="flex flex-col ">
+        <div class="flex flex-col">
           ${eventsByDate[date].map((event) => createEventCard(event)).join("")}
-        </div>
-      </div>
+          </div>
+          </div>
     `; 
 
     timelineItem.appendChild(timelineContent);
@@ -223,28 +240,27 @@ const camelToFlat=(camel)=>{
 function createEventCard(event) {
 
   return `
-  <div class=" card group mb-6 border border-dashed rounded-lg flex flex-col justify-between cursor-pointer hover:shadow-xl hover:border-slate-900 hover:border-4 transition dark:bg-slate-900 dark:shadow-slate-700/[.7]"
+  <div class="card group mb-6 rounded-xl shadow-lg flex flex-col justify-between cursor-pointer hover:shadow-xl"
     onclick="openModal('${event._id}')">
     <div
-        class="bg-white border rounded-xl shadow-sm sm:flex dark:bg-slate-900 dark:border-gray-700 dark:shadow-slate-700/[.7] flex flex-row justify-between hover:border-slate-900 hover:border-4">
+      class="card-content bg-white border rounded-xl shadow-sm sm:flex dark:bg-slate-900 border-slate-500/90 dark:shadow-slate-700/[.7] flex sm:flex-row flex-col-reverse justify-between hover:border-slate-900 hover:border-4">
         <div class="p-4 flex flex-col justify-between">
             <div>
-                <div class="flex flex-row gap-3 " style="align-items: baseline;">
+                <div class="flex flex-row gap-3 " >
                     <div>
-                        <p class="text-red-400 font-semibold mb-1"
-                            style="margin-top: -5px; font-size: 16; margin-bottom: 10px;">
+                        <p class="text-accent font-semibold mb-1 text-sm">
                             ${fetchtime(event.startDateTime, event.endDateTime)}
                         </p>
                     </div>
-                    <div>
-                        <span
-                            class="tag uppercase text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold "
-                            style="background-color:${getTagColor(
-                              event.category
-                            )}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;">${
-    event.category
-  }</span>
-                    </div>
+                    <div
+                class="flex items-start justify-start rounded-full border-2 ${getTagColor(
+                  event.category
+                )} px-2 py-0.5">
+                <p class="text-xs font-bold uppercase">
+                 ${event.category}
+                </p>
+        </div>
+
                 </div>
                 <h3 class=" font-semibold text-slate-700 text-lg">
                     ${event.eventName}
@@ -296,9 +312,9 @@ function createEventCard(event) {
                 </div>
             </div>
         </div>
-        <div class="relative overflow-hidden md:rounded-se-none p-2 ">
-            <img class="object-cover rounded-xl w-48 h-48 group-hover:scale-105 transition-transform duration-500 ease-in-out"
-                src="${event.posterUrl}" alt="Image Description">
+        <div class="relative overflow-hidden md:rounded-se-none p-2 justify-center items-center hidden md:block">
+          <img class="object-cover rounded-xl w-48 h-48 group-hover:scale-105 transition-transform duration-500 ease-in-out"
+            src="${event.posterUrl}" alt="Image Description">
         </div>
     </div>
 </div>
@@ -323,8 +339,8 @@ function createEventCard(event) {
             }
         }
     </style>
-    <div class="modal-content m-auto mt-60 p-5 sm:w-3/5 w-full h-full fixed left-1/2 transform translate-x-1/2 translate-y-1/2 bg-white bg-opacity-65 backdrop-blur-md rounded-l-lg border border-opacity-40 overflow-scroll" 
-        onclick="event.stopPropagation()">
+    <div class="modal-content m-auto mt-60 p-5 ${window.innerWidth <= 640 ? 'w-full' : 'w-3/5'} h-full fixed sm:left-1/2 md:transform md:translate-x-1/2 md:translate-y-1/2 bg-white bg-opacity-65 backdrop-blur-md rounded-l-lg border border-opacity-40 overflow-scroll" 
+      onclick="event.stopPropagation()">
         <!-- Close button -->
         <span
             class="close text-gray-500 float-left text-lg scale-200 font-bold w-5 h-5 pb-1 items-center justify-center flex rounded-full border border-gray-700 hover:text-black focus:text-white focus:outline-none cursor-pointer"
@@ -346,11 +362,15 @@ function createEventCard(event) {
                     }</h2></b>
         
        
-        <span class=" tag uppercase text-center text-lg me-2 px-3 py-1 rounded-full opacity-90 font-semibold"
-                        style="background-color:${getTagColor(
-                          event.category
-                        )}; margin-top:2.2px; font-size:13px ;   color: #FFFFFFB0;">
-                        ${event.category}</span>
+                    <div
+                    class="w-fit rounded-full border-2 ${getTagColor(
+                      event.category
+                    )} px-2 py-0.5 mt-2">
+                    <p class="text-xs font-bold uppercase">
+                     ${event.category}
+                    </p>
+            </div>
+    
 
             </div>
             <div style="font-size: medium; color: rgba(0, 0, 0, 0.681);">
@@ -450,13 +470,13 @@ function createEventCard(event) {
                                                 ) {
                                                   return `
                                                     <div>
-                                                      <p><b>${flatSubSubKey}</b>: <a href="${subSubValue}" target="_blank">${subSubValue}</a></p>
+                                                      <p><span class="font-extrabold">${flatSubSubKey}</span>: <a href="${subSubValue}" target="_blank">${subSubValue}</a></p>
                                                     </div>
                                                   `;
                                                 } else {
                                                   return `
                                                     <div>
-                                                      <p>${flatSubSubKey}: ${subSubValue}</p>
+                                                      <p><span class="font-medium">${flatSubSubKey}:</span> ${subSubValue}</p>
                                                     </div>
                                                   `;
                                                 }
@@ -470,9 +490,9 @@ function createEventCard(event) {
                                         typeof subValue === "string" &&
                                         subValue.startsWith("http")
                                       ) {
-                                        return `<p>${flatSubKey}: <a href="${subValue}" target="_blank">${subValue}</a></p>`;
+                                        return `<p><span class="font-medium">${flatSubKey}</span>: <a href="${subValue}" target="_blank">${subValue}</a></p>`;
                                       } else {
-                                        return `<p>${flatSubKey}: ${subValue}</p>`;
+                                        return `<p><span class="font-medium">${flatSubKey}</span>: ${subValue}</p>`;
                                       }
                                     }
                                   }
@@ -486,7 +506,7 @@ function createEventCard(event) {
                           typeof value === "string" &&
                           value.startsWith("http")
                         ) {
-                          return `<p>${flatKey}: <a href="${value}" target="_blank">${value}</a></p>`;
+                          return `<p><b>${flatKey}<b>: <a href="${value}" target="_blank">${value}</a></p>`;
                         } else {
                           return `<p><b>${flatKey}</b> : ${value}</p>`;
                         }
@@ -536,21 +556,21 @@ function getDayOfWeek(date) {
 function getTagColor(tagName) {
   switch (tagName) {
     case "academic":
-      return "#A55B00"; // Orange
-    case "placements":
-      return "#D4B932"; // Yellow
+      return 'border-purple-500 bg-purple-100 text-purple-500' //
+    case "placement":
+      return 'border-red-500 bg-red-100 text-red-500' //    
     case "club":
-      return "#E51347"; // Pink
+      return 'border-emerald-500 bg-emerald-100 text-emerald-500' 
     case "sports":
-      return "#029C40"; // Green
+      return 'border-green-500 bg-green-100 text-green-500' // 
     case "holiday":
-      return "#66078C"; // Purple
+      return 'border-orange-500 bg-orange-100 text-orange-500'//
     case "fest":
-      return "#059A84"; // Deep Pink
+      return 'border-green-500 bg-green-100 text-green-500' 
     case "STC/FDP":
-      return "#D0551C"; // Orange
+      return 'border-yellow-500 bg-yellow-100 text-yellow-500'
     case "conference":
-      return "#AF1C1C"; // Cyan
+      return 'border-yellow-500 bg-yellow-100 text-yellow-500' 
     default:
       return "#FF00FF"; // Magenta
   }
