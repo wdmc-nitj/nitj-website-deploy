@@ -28,8 +28,7 @@
 
 </head>
 
-<body style="background-color: #F1F5F9;
-">
+<body class="bg-white">
     <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -38,8 +37,9 @@
         <script src="../template/helper.js"></script>
     <script src="./script.js"></script>
 
+    <div class="w-full h-28 bg-accent"></div>
 
-    <div class="h-full object-cover w-full ">
+    <div class="h-full object-cover w-full" type="block">
         <!-- FILEPATH: /d:/Aditya/XCEED/nitj-website-deploy/public/events/index.html -->
         <!-- BEGIN: ed8c6549bwf9 -->
         <img src="./assets/header.png" alt="" class="h-full object-cover w-full top-0 float-right">
@@ -49,13 +49,20 @@
         <!-- END: ed8c6549bwf9 -->
     </div>
 
-    <div class=" mx-10 gap-10 flex flex-row mb-10 justify-center">
-        <div class="events " style="width: 70vw;">
-            <div style="display: flex; flex-direction: row; margin-top: 30px; justify-content: space-between; margin-bottom: 20px;">
-                <div style="font-size:32px; color: #4E4E4E;font-weight: 400;"> <b> Upcoming Events
+    <div class="mx-2 gap-10 flex flex-row mb-10 justify-center" >
+        <div class="events">
+        <style>
+        @media (min-width: 768px) {
+            .events {
+                width: 70vw;
+            }
+        }
+        </style>
+                   <div style="margin-top: 30px; margin-bottom: 20px;" class="flex-col gap-2 flex md:flex-row lg:flex-row items-center sm:justify-between ">
+                <div class="sm:text-4xl text-2xl font-normal text-gray-700 "><b>Today @NITJ
                     </b>
                 </div>
-                <div class="button-group flex flex-row items-center w-2/5 gap-2" >
+                <div class="button-group flex flex-row  gap-2  sm:justify-end" >
                     <!-- <script>
                         function toggleButtonActive(buttonId) {
                             const button = document.getElementById(buttonId);
@@ -68,14 +75,14 @@
                         }
                     </scrip> -->
 
-                    <button type="button" data-te-ripple-init Button class="group flex flex-row gap-1 text-accent text-lg font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-1.5 py-2.5 me-2 mb-2 w-full text-nowrap transform transition duration-300 hover:scale-105 shadow-md" style="border: 2px solid rgb(72, 139, 206);">
-                        <span class="material-symbols-outlined">
-        more_vert
-        </span>
+                    <button type="button" data-te-ripple-init Button class="group scale-75 sm:scale-100 flex flex-row gap-1 text-accent sm:text-lg text-sm shrink-0 font-semibold bg-white hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-1.5 sm:py-2.5 py-1  me-2 mb-2 text-nowrap transform transition duration-300 hover:scale-105 shadow-md" style="border: 2px solid rgb(72, 139, 206);">
+                        <span class="material-symbols-outlined hidden sm:inline">
+                            more_vert
+                        </span>
                         <h2>Default view</h2>
                     </button>
 
-                    <button type="button" data-te-ripple-init Button class="group flex flex-row gap-1 text-accent text-lg font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-1.5 py-2.5 me-2 mb-2 w-full text-nowrap transform transition duration-300 hover:scale-105 shadow-md" style="border: 2px solid rgb(72, 139, 206);">
+                    <button type="button" data-te-ripple-init Button class="group scale-75 sm:scale-100 flex flex-row gap-1 text-accent sm:text-lg text-sm shrink-0 font-semibold bg-white hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-1.5 sm:py-2.5 py-1  me-2 mb-2 text-nowrap transform transition duration-300 hover:scale-105 shadow-md" style="border: 2px solid rgb(72, 139, 206);">
                         <span class="material-symbols-outlined">
                             calendar_month
                         </span>
@@ -122,6 +129,5 @@
 
     <script src="../template/footer.js"></script>
 </body>
-
 
 

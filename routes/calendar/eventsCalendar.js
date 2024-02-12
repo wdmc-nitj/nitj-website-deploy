@@ -21,8 +21,8 @@ router.get('/events', showEvent);
 router.put('/events/:id', updateEvent);
 router.delete('/events/:id', deleteEvent);
 
-router.get('/findbytype', findEventByType);
-router.get('/findeventbycategory', findEventByCategory);
-router.get('/findeventsbytime', findEventsByTime);
+router.get('/findByType', findEventByType);
+router.get('/findeventByCategory', findEventByCategory);
+router.get('/findeventsByTime', findEventsByTime);
 
 module.exports = router;
