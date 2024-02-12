@@ -2452,13 +2452,13 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-    {
-      resource: eventsCalendar,
-      options: {
-        navigation: "Home",
-        actions: { list: { isAccessible: isAdmin } },
-      },
-    },
+    // {
+    //   resource: eventsCalendar,
+    //   options: {
+    //     navigation: "Home",
+    //     actions: { list: { isAccessible: isAdmin } },
+    //   },
+    // },
     {
       resource: DefaultJobsTab,
       options: {
