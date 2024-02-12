@@ -52,14 +52,14 @@
     "description": "An evening of live performances by talented musicians from the college.",
     "studentCoordinator": {
       "coordinator1": {
-        "name": "Alexandra White",
-        "email": "alexandra.white@example.com",
-        "phone": "123-456-7890"
+        "name": "",
+        "email": "",
+        "phone": ""
       },
       "coordinator2": {
-        "name": "William Johnson",
-        "email": "william.johnson@example.com",
-        "phone": "987-654-3210"
+        "name": "",
+        "email": "",
+        "phone": ""
       }
     },
     "facultyCoordinator": {
