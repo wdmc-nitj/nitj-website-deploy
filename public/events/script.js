@@ -85,6 +85,14 @@ function fetchdate(datetime) {
   return date;
 }
 
+function fetchdate(datetime) {
+  if (!datetime) {
+    return null;
+  }
+  let date = datetime.split('T')[0]; // Extracts the date
+  return date;
+}
+
 function fetchtime(startdatetime, enddatetime) {
   let start = startdatetime.split('T')[1]; // Extracts the time
   let end = enddatetime.split('T')[1]; // Extracts the time
@@ -97,15 +105,23 @@ function fetchtime(startdatetime, enddatetime) {
   const currentDateTime = new Date();
   const currentHours = currentDateTime.getHours();
   const currentMinutes = currentDateTime.getMinutes();
-  let startPeriod = "AM";
-  let endPeriod = "AM";
+  const currentDate = currentDateTime.getDate();
+  const currentMonth = currentDateTime.getMonth();
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
+  const startDateTime = new Date(startdatetime);
+  const endDateTime = new Date(enddatetime);
+  const startDay = startDateTime.getDate();
+  const startMonth = startDateTime.getMonth();
+  const startingMonth = monthNames[startDateTime.getMonth()];
+  const endDay = endDateTime.getDate();
+  const endMonth = endDateTime.getMonth();
+  const endingMonth = monthNames[endDateTime.getMonth()];
+  const isMultiDayEvent = startDay !== endDay || startMonth !== endMonth;
 
-
-
-
-
-  
   // Convert start hours to 12-hour format
+  let startPeriod = "AM";
   let startHours12 = parseInt(starthours);
   if (startHours12 >= 12) {
     startPeriod = "PM";
@@ -113,8 +129,9 @@ function fetchtime(startdatetime, enddatetime) {
       startHours12 -= 12;
     }
   }
-  
+
   // Convert end hours to 12-hour format
+  let endPeriod = "AM";
   let endHours12 = parseInt(endhours);
   if (endHours12 >= 12) {
     endPeriod = "PM";
@@ -122,72 +139,63 @@ function fetchtime(startdatetime, enddatetime) {
       endHours12 -= 12;
     }
   }
-  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-];
 
-const startDateTime = new Date(startdatetime);
-const startDay = startDateTime.getDate();
-const startMonth = monthNames[startDateTime.getMonth()];
-const endDateTime = new Date(enddatetime);
-const endDay = endDateTime.getDate();
-const endMonth = monthNames[endDateTime.getMonth()];
+  if (currentDate === startDay && currentMonth === startMonth) {
     if (
       currentHours > parseInt(starthours) ||
       (currentHours === parseInt(starthours) && currentMinutes >= parseInt(startminutes))
     ) {
       if (
-        currentHours < parseInt(endhours) ||
-        (currentHours === parseInt(endhours) && currentMinutes < parseInt(endminutes))
-      ) { 
-        formattedTime = `<span class="text-red-600">⦿ LIVE </span> ${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded" > ${endDay} ${endMonth} </span>`;
+        currentHours < 12 || // For multi-day event, live till 12 PM
+        (currentDate < endDay || (currentDate === endDay && currentMonth === endMonth))
+      ) {
+        // formattedTime = `<span class="text-red-600">⦿ LIVE </span> ${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded text-nowrap whitespace-pre" style="white-space: pre;" > ${endDay} ${endingMonth} </span>`;
+        formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded text-nowrap whitespace-pre" style="white-space: pre;" > ${endDay} ${endingMonth} </span>`;
       } else {
-      
-
-        formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded" > ${endDay} ${endMonth} </span>`;
+        formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded text-nowrap whitespace-pre" style="white-space: pre;" > ${endDay} ${endingMonth} </span>`;
       }
     } else {
-      formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded bottom-1" > ${endDay} ${endMonth} </span>`;
+      formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded text-nowrap whitespace-pre" style="white-space: pre;" > ${endDay} ${endingMonth} </span>`;
     }
-    return formattedTime;
+  } else {
+    formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded text-nowrap whitespace-pre" style="white-space: pre;" > ${endDay} ${endingMonth} </span>`;
   }
+  return formattedTime;
+}
+
+
 
 async function addEventsToHTML() {
   const events = await fetchEvents();
 
   const eventsByDate = {};
 
-
-  const filteredEvents = []; // Array to store filtered events
-
-
-  events.forEach((event)=>{
+  const filteredEvents = events.filter((event) => {
     const formattedDate = new Date(fetchdate(event.startDateTime));
     const currentDate = new Date();
-
-    
-    console.log(formattedDate.getFullYear() == currentDate.getFullYear());
-    console.log(formattedDate.getFullYear());
     currentDate.setHours(0, 0, 0, 0); // to ignore time and compare only the date
-    if ((formattedDate.getFullYear() == currentDate.getFullYear()) &&( formattedDate >= currentDate)) {
-      filteredEvents.push(event);
-    }
-  })
+    return formattedDate.getFullYear() === currentDate.getFullYear() && formattedDate >= currentDate;
+  });
 
   filteredEvents.forEach((event) => {
     const formattedDate = new Date(fetchdate(event.startDateTime));
-    if (!eventsByDate[formattedDate]) {
-      eventsByDate[formattedDate] = [];
+    const dateKey = formattedDate.toISOString().split("T")[0]; // Use ISO string as the key
+    if (!eventsByDate[dateKey]) {
+      eventsByDate[dateKey] = [];
     }
-    eventsByDate[formattedDate].push(event);
+    eventsByDate[dateKey].push(event);
+  });
 
-    });
-
-  console.log(filteredEvents);
+  // Sort events by date
+  const sortedEvents = Object.entries(eventsByDate).sort(([dateA], [dateB]) => {
+    const dateObjA = new Date(dateA);
+    const dateObjB = new Date(dateB);
+    return dateObjA - dateObjB;
+  });
 
   // Create HTML elements for each event
-  for (const date in eventsByDate) {
-    const formattedDate = new Date(fetchdate(events.startDateTime));
+  for (const [date, events] of sortedEvents) {
+    const formattedDate = new Date(date);
     const day = formattedDate.getDate();
     const month = formattedDate.toLocaleString("default", { month: "short" });
     let currentDate = new Date();
@@ -196,14 +204,23 @@ async function addEventsToHTML() {
     let eventDate = new Date(date);
     eventDate.setHours(0, 0, 0, 0); // to ignore time and compare only the date
 
-
     let displayDate;
-    if (currentDate.getDate() == eventDate.getDate() && currentDate.getMonth() == eventDate.getMonth() && currentDate.getFullYear() == eventDate.getFullYear()){
-      displayDate = "Today";
+    if (
+      currentDate.getDate() == eventDate.getDate() &&
+      currentDate.getMonth() == eventDate.getMonth() &&
+      currentDate.getFullYear() == eventDate.getFullYear()
+    ) {
+      const day = currentDate.getDate();
+      const month = currentDate.toLocaleString("default", { month: "short" });
+      displayDate = `Today ${day} ${month} <span class="text-slate-500 font-normal text-base">${getDayOfWeek(
+        new Date(currentDate)
+      )}</span>`;
     } else {
       const day = eventDate.getDate();
       const month = eventDate.toLocaleString("default", { month: "short" });
-      displayDate = `${day} ${month}`;
+      displayDate = `${day} ${month} <span class="text-slate-500 font-normal text-base">${getDayOfWeek(
+        new Date(eventDate)
+      )}</span>`;
     }
 
     const timelineItem = document.createElement("div");
@@ -212,17 +229,15 @@ async function addEventsToHTML() {
     const timelineContent = document.createElement("div");
     timelineContent.className = "timeline-content -ml-6 ";
 
-    console.log(eventsByDate[date]);
-
     timelineContent.innerHTML = `
-    <div class="h-4 w-4  rounded-full flex items-center justify-center " style="margin-left: -9.5px;  background-color: #D47400;border:"2px solid #6a4210"; "></div>      
+    <div class="h-4 w-4  rounded-full flex items-center justify-center " style="margin-left: -9.5px;background-color:#D47400;border:"2px solid #6a4210";"></div>      
         <div class="ml-6 ">
-          <h3 class="text-lg font-semibold" style="margin-top: -25px; margin-bottom: 15px;">${displayDate} <span class="text-slate-500 font-normal text-base"> ${getDayOfWeek(new Date(fetchdate(events.startDateTime)))}</span></h3>
+          <h3 class="text-lg font-semibold" style="margin-top: -25px; margin-bottom: 15px;">${displayDate}</h3>
           <div class="flex flex-col ">
-            ${eventsByDate[date].map((events) => createEventCard(events)).join("")}
+            ${events.map((event) => createEventCard(event)).join("")}
           </div>
         </div>
-    `; 
+    `;
 
     timelineItem.appendChild(timelineContent);
 
@@ -252,8 +267,8 @@ function createEventCard(event) {
           class="card-content bg-white border rounded-xl shadow-sm sm:flex border-slate-500/50 flex sm:flex-row flex-col-reverse justify-between hover:border-slate-900 ">
           <div class="p-4 flex flex-col justify-between">
               <div>
-                  <div class="flex flex-row gap-3 items-baseline" style="align-items:baseline;">
-                      <div>
+                  <div class="flex sm:flex-row flex-col items-baseline" style="align-items:baseline;">
+                      <div class="mr-3">
                           <p class="text-accent font-semibold mb-1 text-sm">
                               ${fetchtime(event.startDateTime, event.endDateTime)}
                           </p>
@@ -278,11 +293,23 @@ ${event.category}
                   </p>
               </div>
               <div class="mt-3 flex flex-col gap-1" >
-                  <div class="flex flex-row mb-2 gap-1 items-baseline">
-                      <svg xmlns="http://www.w3.org/2000/svg" height="17" viewBox="0 -960 960 960" width="17" style="vertical-align: middle;"><path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"   fill="#3D3D3D"/></svg>
-                      <span style="vertical-align: middle; margin-bottom: 20; color:#4E4E4E;">${
-                          event.venue
-                          }</span>
+                  <div class="flex flex-row mb-2 gap-1 items-center" >
+                  <a href="https://xceed.nitj.ac.in/classrooms" target="_blank" rel="noopener noreferrer">
+                      <svg class=" " xmlns="http://www.w3.org/2000/svg" height="17" viewBox="0 -960 960 960" width="17" style="vertical-align: middle;">
+                        <style>
+                          svg:hover path {
+                            fill: blue;
+                          }
+                          
+                        </style>
+                        <path d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z"/>
+                      </svg>
+                      </a>
+                      <span class="text-slate-700 hover:text-accent" style="venue vertical-align: middle; margin-bottom: 20; ">
+                        <a href="https://xceed.nitj.ac.in/classrooms" target="_blank" rel="noopener noreferrer">
+                          ${event.venue}
+                        </a>
+                      </span>
                   </div>
                   <div>
                       <div class="button-group flex-ror flex" style="gap: 15px;">
@@ -348,7 +375,7 @@ ${event.category}
       onclick="event.stopPropagation()">
           <!-- Close button -->
           <span
-              class="close text-gray-500 float-left text-lg scale-200 font-bold w-5 h-5 pb-1 items-center justify-center flex rounded-full border border-gray-700 hover:text-black focus:text-white focus:outline-none cursor-pointer"
+                class="close text-white bg-accent float-left text-lg font-bold w-5 h-5 items-center justify-center flex rounded-full border border-gray-700 hover:text-white focus:text-white focus:outline-none cursor-pointer" style="padding-bottom:2px; transform: scale(125%);"
               onclick="closeModal('${event._id}')">&times;</span>
   
           <!-- Modal content -->
@@ -427,101 +454,80 @@ ${event.category}
   
           </div>
           <div class="flex flex-col p-3 gap-3">
-              ${Object.entries(event)
-              .map(([key, value]) => {
-              const flatKey = camelToFlat(key);
-              if (
-              ![
-              "_id",
-              "eventName",
-              "startDateTime",
-              "endDateTime",
-              "organisingDept",
-              "category",
-              "venue",
-              "type",
-              "meetlink",
-              "description",
-              "department",
-              "posterUrl",
-              "show"
-              ].includes(key) &&
-              value
-              ) {
-              if (typeof value === "object") {
-              return `
-              <div class="flex flex-col gap-2">
-                  <div class="bg-accent rounded-md p-1 pl-3">
-                      <p class=" text-white "><b>${flatKey}</b></p>
-                  </div>
-                  <div class="flex flex-col gap-1" style="margin-left: 20px;">
-                      ${Object.entries(value)
-                      .map(([subKey, subValue]) => {
-                      const flatSubKey = camelToFlat(subKey);
-                      if (!subKey.includes("_id")) {
-                      if (typeof subValue === "object") {
-                      return `
-                      <p><b>${flatSubKey}</b></p>
-                      <div>
-                          ${Object.entries(subValue)
-                          .map(([subSubKey, subSubValue]) => {
-                          const flatSubSubKey =
-                          camelToFlat(subSubKey);
-                          if (!subSubKey.includes("_id")) {
-                          if (
-                          typeof subSubValue ===
-                          "string" &&
-                          subSubValue.startsWith("http")
-                          ) {
-                          return `
-                          <div>
-                              <p><span class="font-extrabold">${flatSubSubKey}</span>: <a href="${subSubValue}"
-                                      target="_blank">${subSubValue}</a></p>
-                          </div>
-                          `;
-                          } else {
-                          return `
-                          <div>
-                              <p><span class="font-medium">${flatSubSubKey}:</span> ${subSubValue}</p>
-                          </div>
-                          `;
-                          }
-                          }
-                          })
-                          .join("")}
-                      </div>
-                      `;
-                      } else {
-                      if (
-                      typeof subValue === "string" &&
-                      subValue.startsWith("http")
-                      ) {
-                      return `<p><span class="font-medium">${flatSubKey}</span>: <a href="${subValue}"
-                              target="_blank">${subValue}</a></p>`;
-                      } else {
-                      return `<p><span class="font-medium">${flatSubKey}</span>: ${subValue}</p>`;
-                      }
-                      }
-                      }
-                      })
-                      .join("")}
-                  </div>
-              </div>
-              `;
-              } else {
-              if (
-              typeof value === "string" &&
-              value.startsWith("http")
-              ) {
-              return `<p><b>${flatKey}<b>: <a href="${value}" target="_blank">${value}</a></p>`;
-              } else {
-              return `<p><b>${flatKey}</b> : ${value}</p>`;
-              }
-              }
-              }
-              })
-              .join("")}
-  
+
+          ${Object.entries(event)
+            .map(([key, value]) => {
+                const flatKey = camelToFlat(key);
+                if (
+                    ![
+                        "_id",
+                        "eventName",
+                        "startDateTime",
+                        "endDateTime",
+                        "organisingDept",
+                        "category",
+                        "venue",
+                        "type",
+                        "meetlink",
+                        "description",
+                        "department",
+                        "posterUrl",
+                        "show"
+                    ].includes(key) &&
+                    ((typeof value !== "boolean" && value && value.toString().trim() !== "" && !isEmptyObject(value)) ||
+                    (typeof value === "boolean" && value))
+                ) {
+                    if (typeof value === "object") {
+                        const subEntries = Object.entries(value)
+                            .map(([subKey, subValue]) => {
+                                const flatSubKey = camelToFlat(subKey);
+                                if (subKey !== "_id" && subValue && subValue.toString().trim() !== "" && !isEmptyObject(subValue)) {
+                                    if (typeof subValue === "object") {
+                                        const subSubEntries = Object.entries(subValue)
+                                            .map(([subSubKey, subSubValue]) => {
+                                                const flatSubSubKey = camelToFlat(subSubKey);
+                                                if (subSubKey !== "_id" && subSubValue && subSubValue.toString().trim() !== "" && !isEmptyObject(subSubValue)) {
+                                                    if (typeof subSubValue === "string" && subSubValue.startsWith("http")) {
+                                                        return `<div><p><span class="font-extrabold">${flatSubSubKey}</span>: <a href="${subSubValue}" target="_blank">${subSubValue}</a></p></div>`;
+                                                    } else {
+                                                        return `<div><p><span class="font-medium">${flatSubSubKey}:</span> ${subSubValue}</p></div>`;
+                                                    }
+                                                }
+                                            })
+                                            .filter(Boolean)
+                                            .join("");
+                                        if (subSubEntries) {
+                                            return `<div class="flex flex-col gap-2"><p><b>${flatSubKey}</b></p><div class="flex flex-col gap-1" style="margin-left: 20px;">${subSubEntries}</div></div>`;
+                                        }
+                                    } else {
+                                        if (typeof subValue === "string" && subValue.startsWith("http")) {
+                                            return `<p><span class="font-medium">${flatSubKey}</span>: <a href="${subValue}" target="_blank">${subValue}</a></p>`;
+                                        } else {
+                                            return `<p><span class="font-medium">${flatSubKey}</span>: ${subValue}</p>`;
+                                        }
+                                    }
+                                }
+                            })
+                            .filter(Boolean)
+                            .join("");
+                        if (subEntries) {
+                            return `<div class="flex flex-col gap-2"><div class="bg-accent rounded-md p-1 pl-3"><p class="text-white"><b>${flatKey}</b></p></div><div class="flex flex-col gap-1" style="margin-left: 20px;">${subEntries}</div></div>`;
+                        }
+                    } else {
+                        if (typeof value === "boolean") {
+                            return `<p><b>${flatKey}</b>: ${value ? "✅" : "❌"}</p>`;
+                        } else if (typeof value === "string" && value.startsWith("http")) {
+                            return `<p><b>${flatKey}</b>: <a href="${value}" target="_blank">${value}</a></p>`;
+                        } else {
+                            return `<p><b>${flatKey}</b>: ${value}</p>`;
+                        }
+                    }
+                }
+            })
+            .filter(Boolean)
+            .join("")}
+        
+        
           </div>
           </div>
       </div>
@@ -529,6 +535,20 @@ ${event.category}
   </>`;
 }
 
+function isEmptyObject(obj) {
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      if (typeof obj[key] === 'object' && obj[key] !== null) {
+        if (!isEmptyObject(obj[key])) {
+          return false;
+        }
+      } else if (obj[key] !== null && obj[key] !== undefined && obj[key].toString().trim() !== "") {
+        return false;
+      }
+    }
+  }
+  return true;
+}
 function openModal(eventId) {
   const modal = document.getElementById(`modal-${eventId}`);
   modal.style.display = "block";
@@ -587,7 +607,7 @@ function getDayOfWeek(date) {
 function getTagColor(tagName) {
   switch (tagName) {
     case "academic":
-      return "#9C5505"; // Orange
+      return "#C46902"; // Orange
     case "placement":
       return "#4F46E5"; // Yellow
     case "club":
@@ -601,7 +621,7 @@ function getTagColor(tagName) {
     case "STC/FDP":
       return "#5EA304"; // Orange
     case "conference":
-      return "#CA8A04"; // Cyan
+      return "#6F6F07"; // Cyan
     default:
       return "#FF00FF"; // Magenta
   }
@@ -610,21 +630,21 @@ function getTagColor(tagName) {
 function getTagbgColor(tagName) {
   switch (tagName) {
     case "academic":
-      return "#9C56054D"; // Orange
+      return "#FFA94854"; // Orange
     case "placement":
-      return "#4E46E54F"; // Yellow
+      return "#635BFF4F"; // Yellow
     case "club":
-      return "#BF26D353"; // Pink
+      return "#DC3FF153"; // Pink
     case "sports":
-      return "#047A4753"; // Green
+      return "#29BE7E53"; // Green
     case "holiday":
-      return "#DC262657"; // Purple
+      return "#FF5A5A57"; // Purple
     case "fest":
-      return "#BE185D59"; // Deep Pink
+      return "#EF498E59"; // Deep Pink
     case "STC/FDP":
-      return "#5EA30452"; // Orange
+      return "#9CE04352"; // Orange
     case "conference":
-      return "#CA8B0457"; // Cyan
+      return "#FFE065C7"; // Cyan
     default:
       return "#FF00FF57"; // Magenta
   }
