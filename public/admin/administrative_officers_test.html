@@ -159,12 +159,36 @@
         <div id="academic-adminstration"
             class="scroll-mt-32 flex flex-col lg:flex-row container gap-[32px] lg:gap-[64px]">
             <div class="w-full flex flex-col items-start">
-                <p class="font2 font-medium text-[28px] lg:text-[44px]">Academic Administration</p>
+                <p class="font2 font-medium text-[28px] lg:text-[44px]">Assistant Regisrar</p>
                 <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[5px]"></div>
             </div>
+
+            <div id="firstDean-sw" class="tabcontent block">
+                <div id="x_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                </div>
+				<br>
+				<div id="x1_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                </div>
+				<br>
+				<div id="x2_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                </div>
+				<br>
+				<div id="x3_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                </div>
+				<br>
+				<div id="x4_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                </div>
+				<br>
+				<div id="x5_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                </div>
+				<br>
+				<div id="x6_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                </div>
+            </div>
+            
         </div>
 
-        <div class="container mb-12">
+        <!-- <div class="container mb-12">
             <div class="tab">
                 <button class="tablinks active" onclick="openTab(event,'firstDean-sw')">Dean</button>
                 <button class="tablinks " onclick="openTab(event,'Associate-Dean-P-sw')">Associate Dean PG</button>
@@ -174,220 +198,24 @@
             </div>
 
 
-            <div id="firstDean-sw" class="tabcontent block">
-                <div id="x_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                </div>
-				<br>
-				<div id="xad1_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                </div>
-				<br>
-				<div id="xad1_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                </div>
-				<br>
-				<div id="xad1_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                </div>
-				<br>
-				<div id="xad1_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                </div>
-				<br>
-				<div id="xad1_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                </div>
-				<br>
-				<div id="xad1_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                </div>
-            </div>
-         
-        </div>
-
-        
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aa9cbe82a0f8be20179bf8');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("p_name").innerHTML =
-                ` <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-                          </div>
-    <div class="lg:basis-3/4">
-           
-            <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] normal-case">${result[0].name}</p>
-            <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-            <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-            <div class="w-[100%] flex flex-col gap-[4px]">
-            <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
             
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-          </div>
-          </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aaa19682a0f8be20179c01');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("pad1_name").innerHTML =
-                `
-                <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aaa3a982a0f8be20179c12');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("pad2_name").innerHTML =
-                `
-                <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-        </div>
-        </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
+         
+        </div> -->
 
     <script>
         async function callAPi() {
-            let result = await fetch('/api/administration?id=64189bcb5b32c49bd602374f');
+            let result = await fetch('/api/administration?id=65cc47357d5fedafbc7c3846');
             result = await result.json();
             console.log(result);
-            document.getElementById("pad3_name").innerHTML =
+            document.getElementById("x_name").innerHTML =
                 `
             <div class="m-auto">
-            <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-<div class="flex flex-col items-start"> 
-   <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-   <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation},  ${result[0].department}</p>
-   <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-   <div class="w-[100%] flex flex-col gap-[4px]">
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-           <p class="">: &nbsp; &nbsp;</p>
-            <p>${result[0].contact.email}</p>
-       </div>
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-           <p class="">: &nbsp; &nbsp;</p>
-           <p>${result[0].contact["telNo"]}</p>
-       </div>
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-           <p class="">: &nbsp; &nbsp;</p>
-            <p>${result[0].contact.fax}</p>
-       </div>
-       <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-
-       </div>
-   </div>
-</div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aaa72a82a0f8be20179c39');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("f_name").innerHTML =
-                ` <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
+                <img src="${result[0].image}" width="115" height="180" alt="">
 </div>
 <div class="lg:basis-3/4">
    <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
+       <p class="font2 font-semibold text-[26px] lg:text-[32px] leading-[1.3] ">${result[0].name}</p>
+       <p class="text-400 text-[12px] lg:text-[20px]">${result[0].designation} (${result[0].department})</p>
        <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
        <div class="w-[100%] flex flex-col gap-[4px]">
            <div class="flex flex-row">
@@ -400,103 +228,11 @@
                <p class="">: &nbsp; &nbsp;</p>
                <p>${result[0].contact["telNo"]}</p>
            </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
+          
        </div>
    </div>
-</div>`
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aac9f759e0649df179c59a');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("fad1_name").innerHTML =
-                ` <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
 </div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aacc3759e0649df179c5a1');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("fad2_name").innerHTML =
-                `
-                <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
+    `
 
         }
         callAPi()
@@ -504,62 +240,18 @@
 
     <script>
         async function callAPi() {
-            let result = await fetch('/api/administration?id=641898845b32c49bd602371b');
+            let result = await fetch('/api/administration?id=65cc476c7d5fedafbc7c4fa2');
             result = await result.json();
             console.log(result);
-            document.getElementById("fad3_name").innerHTML =
+            document.getElementById("x1_name").innerHTML =
                 `
             <div class="m-auto">
-            <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-<div class="flex flex-col items-start"> 
-   <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-   <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-   <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-   <div class="w-[100%] flex flex-col gap-[4px]">
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-           <p class="">: &nbsp; &nbsp;</p>
-            <p>${result[0].contact.email}</p>
-       </div>
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-           <p class="">: &nbsp; &nbsp;</p>
-           <p>${result[0].contact["telNo"]}</p>
-       </div>
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-           <p class="">: &nbsp; &nbsp;</p>
-            <p>${result[0].contact.fax}</p>
-       </div>
-       <div class="mt-1 lg:mt-4">
-           <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-       </div>
-   </div>
-</div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-
-
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aacff859e0649df179c5ba');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("r_name").innerHTML =
-                ` <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
+                <img src="${result[0].image}" width="115" height="180" alt="">
 </div>
 <div class="lg:basis-3/4">
    <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
+       <p class="font2 font-semibold text-[26px] lg:text-[32px] leading-[1.3] ">${result[0].name}</p>
+       <p class="text-400 text-[12px] lg:text-[20px]">${result[0].designation} (${result[0].department})</p>
        <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
        <div class="w-[100%] flex flex-col gap-[4px]">
            <div class="flex flex-row">
@@ -572,507 +264,30 @@
                <p class="">: &nbsp; &nbsp;</p>
                <p>${result[0].contact["telNo"]}</p>
            </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
+          
        </div>
    </div>
-</div>`
+</div>
+    `
 
         }
         callAPi()
     </script>
-
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aad642184004bc94830d50');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("rad1_name").innerHTML =
-                ` <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aad721184004bc94830d5b');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("rad2_name").innerHTML =
-                ` <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=64189ebb5b32c49bd602379e');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("rad3_name").innerHTML =
-                ` <div class="m-auto">
-            <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-<div class="flex flex-col items-start"> 
-   <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-   <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-   <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-   <div class="w-[100%] flex flex-col gap-[4px]">
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-           <p class="">: &nbsp; &nbsp;</p>
-            <p>${result[0].contact.email}</p>
-       </div>
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-           <p class="">: &nbsp; &nbsp;</p>
-           <p>${result[0].contact["telNo"]}</p>
-       </div>
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-           <p class="">: &nbsp; &nbsp;</p>
-            <p>${result[0].contact.fax}</p>
-       </div>
-       <div class="mt-1 lg:mt-4">
-           <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-       </div>
-   </div>
-</div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-
-
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aad862184004bc94830d66');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("s_name").innerHTML =
-                `
-                <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aad8f6184004bc94830d68');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("sad1_name").innerHTML =
-                `
-                <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aad990184004bc94830d6a');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("sad2_name").innerHTML =
-                ` <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=639ec2531abac50c0b5e1c36');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("sad3_name").innerHTML =
-                ` <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aaee70dd7b6701fdec621f');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("i_name").innerHTML =
-                ` <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aaf078dd7b6701fdec6221');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("iad1_name").innerHTML =
-                ` <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63aaf23bdd7b6701fdec629b');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("iad2_name").innerHTML =
-                ` <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-   <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-       <div class="w-[100%] flex flex-col gap-[4px]">
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.email}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-               <p class="">: &nbsp; &nbsp;</p>
-               <p>${result[0].contact["telNo"]}</p>
-           </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
-       </div>
-   </div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-    <script>
-        async function callAPi() {
-            let result = await fetch('/api/administration?id=63a733147c68df1466cc35d6');
-            result = await result.json();
-            console.log(result);
-            document.getElementById("iad3_name").innerHTML =
-                ` <div class="m-auto">
-            <img src="${result[0].image}" width="185" height="237" alt="">
-</div>
-<div class="lg:basis-3/4">
-<div class="flex flex-col items-start"> 
-   <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-   <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
-   <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
-   <div class="w-[100%] flex flex-col gap-[4px]">
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
-           <p class="">: &nbsp; &nbsp;</p>
-            <p>${result[0].contact.email}</p>
-       </div>
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
-           <p class="">: &nbsp; &nbsp;</p>
-           <p>${result[0].contact["telNo"]}</p>
-       </div>
-       <div class="flex flex-row">
-           <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-           <p class="">: &nbsp; &nbsp;</p>
-            <p>${result[0].contact.fax}</p>
-       </div>
-       <div class="mt-1 lg:mt-4">
-           <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-       </div>
-   </div>
-</div>
-</div>`
-
-        }
-        callAPi()
-    </script>
-
 
     <script>
         async function callAPi() {
             let result = await fetch('/api/administration?id=639ff71bf6453929c05e5cf9');
             result = await result.json();
             console.log(result);
-            document.getElementById("x_name").innerHTML =
+            document.getElementById("x2_name").innerHTML =
                 `
             <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
+                <img src="${result[0].image}" width="115" height="180" alt="">
 </div>
 <div class="lg:basis-3/4">
    <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3]">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
+       <p class="font2 font-semibold text-[26px] lg:text-[32px] leading-[1.3] ">${result[0].name}</p>
+       <p class="text-400 text-[12px] lg:text-[20px]">${result[0].designation} (${result[0].department})</p>
        <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
        <div class="w-[100%] flex flex-col gap-[4px]">
            <div class="flex flex-row">
@@ -1085,16 +300,115 @@
                <p class="">: &nbsp; &nbsp;</p>
                <p>${result[0].contact["telNo"]}</p>
            </div>
+          
+       </div>
+   </div>
+</div>
+    `
+
+        }
+        callAPi()
+    </script>
+
+    <script>
+        async function callAPi() {
+            let result = await fetch('/api/administration?id=639ff71bf6453929c05e5cf9');
+            result = await result.json();
+            console.log(result);
+            document.getElementById("x3_name").innerHTML =
+                `
+            <div class="m-auto">
+                <img src="${result[0].image}" width="115" height="180" alt="">
+</div>
+<div class="lg:basis-3/4">
+   <div class="flex flex-col items-start"> 
+       <p class="font2 font-semibold text-[26px] lg:text-[32px] leading-[1.3] ">${result[0].name}</p>
+       <p class="text-400 text-[12px] lg:text-[20px]">${result[0].designation} (${result[0].department})</p>
+       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
+       <div class="w-[100%] flex flex-col gap-[4px]">
            <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
+               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
                <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
+                <p>${result[0].contact.email}</p>
            </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
+           <div class="flex flex-row">
+               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
+               <p class="">: &nbsp; &nbsp;</p>
+               <p>${result[0].contact["telNo"]}</p>
            </div>
+          
+       </div>
+   </div>
+</div>
+    `
+
+        }
+        callAPi()
+    </script>
+
+    <script>
+        async function callAPi() {
+            let result = await fetch('/api/administration?id=639ff71bf6453929c05e5cf9');
+            result = await result.json();
+            console.log(result);
+            document.getElementById("x4_name").innerHTML =
+                `
+            <div class="m-auto">
+                <img src="${result[0].image}" width="115" height="180" alt="">
+</div>
+<div class="lg:basis-3/4">
+   <div class="flex flex-col items-start"> 
+       <p class="font2 font-semibold text-[26px] lg:text-[32px] leading-[1.3] ">${result[0].name}</p>
+       <p class="text-400 text-[12px] lg:text-[20px]">${result[0].designation} (${result[0].department})</p>
+       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
+       <div class="w-[100%] flex flex-col gap-[4px]">
+           <div class="flex flex-row">
+               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
+               <p class="">: &nbsp; &nbsp;</p>
+                <p>${result[0].contact.email}</p>
+           </div>
+           <div class="flex flex-row">
+               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
+               <p class="">: &nbsp; &nbsp;</p>
+               <p>${result[0].contact["telNo"]}</p>
+           </div>
+          
+       </div>
+   </div>
+</div>
+    `
+
+        }
+        callAPi()
+    </script>
+
+    <script>
+        async function callAPi() {
+            let result = await fetch('/api/administration?id=639ff71bf6453929c05e5cf9');
+            result = await result.json();
+            console.log(result);
+            document.getElementById("x5_name").innerHTML =
+                `
+            <div class="m-auto">
+                <img src="${result[0].image}" width="115" height="180" alt="">
+</div>
+<div class="lg:basis-3/4">
+   <div class="flex flex-col items-start"> 
+       <p class="font2 font-semibold text-[26px] lg:text-[32px] leading-[1.3] ">${result[0].name}</p>
+       <p class="text-400 text-[12px] lg:text-[20px]">${result[0].designation} (${result[0].department})</p>
+       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
+       <div class="w-[100%] flex flex-col gap-[4px]">
+           <div class="flex flex-row">
+               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
+               <p class="">: &nbsp; &nbsp;</p>
+                <p>${result[0].contact.email}</p>
+           </div>
+           <div class="flex flex-row">
+               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
+               <p class="">: &nbsp; &nbsp;</p>
+               <p>${result[0].contact["telNo"]}</p>
+           </div>
+          
        </div>
    </div>
 </div>
@@ -1109,15 +423,15 @@
             let result = await fetch('/api/administration?id=639eb9891abac50c0b5e1bd0');
             result = await result.json();
             console.log(result);
-            document.getElementById("xad1_name").innerHTML =
+            document.getElementById("x6_name").innerHTML =
                 `
             <div class="m-auto">
-                <img src="${result[0].image}" width="185" height="237" alt="">
+                <img src="${result[0].image}" width="115" height="180" alt="">
 </div>
 <div class="lg:basis-3/4">
    <div class="flex flex-col items-start"> 
-       <p class="font2 font-semibold text-[26px] lg:text-[48px] leading-[1.3] ">${result[0].name}</p>
-       <p class="text-gray-400 text-[12px] lg:text-[16px]">${result[0].designation}, ${result[0].department}</p>
+       <p class="font2 font-semibold text-[26px] lg:text-[32px] leading-[1.3] ">${result[0].name}</p>
+       <p class="text-400 text-[12px] lg:text-[20px]">${result[0].designation} (${result[0].department})</p>
        <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
        <div class="w-[100%] flex flex-col gap-[4px]">
            <div class="flex flex-row">
@@ -1130,16 +444,7 @@
                <p class="">: &nbsp; &nbsp;</p>
                <p>${result[0].contact["telNo"]}</p>
            </div>
-           <div class="flex flex-row">
-               <p class="basis-3/12 md:basis-1/12 font-semibold">Fax</p>
-               <p class="">: &nbsp; &nbsp;</p>
-                <p>${result[0].contact.fax}</p>
-           </div>
-           <div class="mt-1 lg:mt-4">
-               <a class="text-sm md:text-md hover:bg-accent hover:shadow-lg px-3 lg:px-4 py-2 lg:py-2 border-2 border-accent text-accent hover:text-white transition ease-in-out duration-300"
-            href="${result[0].profileLink}" target="_blank">View profile
-                            →</a>
-           </div>
+          
        </div>
    </div>
 </div>
