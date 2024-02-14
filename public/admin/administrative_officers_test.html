@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Administration - NITJ</title>
+    <title>Administrative Officers - NITJ</title>
 
     <script src="app.js" defer></script>
 
@@ -40,7 +40,7 @@
             color: white;
             overflow: hidden;
             border: 1px solid #ccc;
-            background-color: hsla(201, 96%, 32%);
+            /* background-color: hsla(201, 96%, 32%); */
         }
 
         /* Style the buttons inside the tab */
@@ -157,7 +157,7 @@
 
 
         <div id="academic-adminstration"
-            class="scroll-mt-32 flex flex-col lg:flex-row container gap-[32px] lg:gap-[64px]">
+            class="scroll-mt-32 flex flex-col lg:flex-row container gap-[32px] lg:gap-[48px]">
             <div class="w-full flex flex-col items-start">
                 <p class="font2 font-medium text-[28px] lg:text-[44px]">Deputy Regisrar</p>
                 <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[5px]"></div>
@@ -169,26 +169,12 @@
             
             <div class="tab">
                 <div id="firstDean-sw" class="tabcontent block">
-                    <div id="x_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                    <div id="y_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
                     </div>
                     <br>
-                    <div id="x1_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                    <div id="y1_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
                     </div>
-                    <br>
-                    <div id="x2_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                    </div>
-                    <br>
-                    <div id="x3_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                    </div>
-                    <br>
-                    <div id="x4_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                    </div>
-                    <br>
-                    <div id="x5_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                    </div>
-                    <br>
-                    <div id="x6_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
-                    </div>
+                    
                 </div>
                 <!-- <button class="tablinks active" onclick="openTab(event,'firstDean-sw')">Dean</button>
                 <button class="tablinks " onclick="openTab(event,'Associate-Dean-P-sw')">Associate Dean PG</button>
@@ -203,7 +189,7 @@
         </div>
         
         <div id="academic-adminstration"
-            class="scroll-mt-32 flex flex-col lg:flex-row container gap-[32px] lg:gap-[64px]">
+            class="scroll-mt-32 flex flex-col lg:flex-row container gap-[32px] lg:gap-[48px]">
             <div class="w-full flex flex-col items-start">
                 <p class="font2 font-medium text-[28px] lg:text-[44px]">Assistant Regisrar</p>
                 <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[5px]"></div>
@@ -470,6 +456,78 @@
             result = await result.json();
             console.log(result);
             document.getElementById("x6_name").innerHTML =
+                `
+            <div class="m-auto">
+                <img src="${result[0].image}" width="115" height="180" alt="">
+</div>
+<div class="lg:basis-3/4">
+   <div class="flex flex-col items-start"> 
+       <p class="font2 font-semibold text-[26px] lg:text-[32px] leading-[1.3] ">${result[0].name}</p>
+       <p class="text-400 text-[12px] lg:text-[20px]">${result[0].designation} (${result[0].department})</p>
+       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
+       <div class="w-[100%] flex flex-col gap-[4px]">
+           <div class="flex flex-row">
+               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
+               <p class="">: &nbsp; &nbsp;</p>
+                <p>${result[0].contact.email}</p>
+           </div>
+           <div class="flex flex-row">
+               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
+               <p class="">: &nbsp; &nbsp;</p>
+               <p>${result[0].contact["telNo"]}</p>
+           </div>
+          
+       </div>
+   </div>
+</div>
+    `
+
+        }
+        callAPi()
+    </script>
+    
+    <script>
+        async function callAPi() {
+            let result = await fetch('/api/administration?id=65cc47357d5fedafbc7c3846');
+            result = await result.json();
+            console.log(result);
+            document.getElementById("y_name").innerHTML =
+                `
+            <div class="m-auto">
+                <img src="${result[0].image}" width="115" height="180" alt="">
+</div>
+<div class="lg:basis-3/4">
+   <div class="flex flex-col items-start"> 
+       <p class="font2 font-semibold text-[26px] lg:text-[32px] leading-[1.3] ">${result[0].name}</p>
+       <p class="text-400 text-[12px] lg:text-[20px]">${result[0].designation} (${result[0].department})</p>
+       <div class="bg-accent w-[100%] h-[3px] mb-4 mt-2"></div>
+       <div class="w-[100%] flex flex-col gap-[4px]">
+           <div class="flex flex-row">
+               <p class="basis-3/12 md:basis-1/12 text-justify font-semibold">Email</p>
+               <p class="">: &nbsp; &nbsp;</p>
+                <p>${result[0].contact.email}</p>
+           </div>
+           <div class="flex flex-row">
+               <p class="basis-3/12 md:basis-1/12 font-semibold">Phone</p>
+               <p class="">: &nbsp; &nbsp;</p>
+               <p>${result[0].contact["telNo"]}</p>
+           </div>
+          
+       </div>
+   </div>
+</div>
+    `
+
+        }
+        callAPi()
+    </script>
+
+    <script>
+        async function callAPi() {
+            let result = await fetch('/api/administration?id=65cc476c7d5fedafbc7c4fa2');
+            result = await result.json();
+            console.log(result);
+            document.getElementById("y1_name").innerHTML =
                 `
             <div class="m-auto">
                 <img src="${result[0].image}" width="115" height="180" alt="">
