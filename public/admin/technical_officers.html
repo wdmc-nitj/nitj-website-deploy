@@ -192,7 +192,8 @@
         </div>
 
         
-
+    </div>
+    
     <script>
         async function callAPi() {
             let result = await fetch('/api/administration?id=65cc6659d9895028585125ac');
@@ -380,7 +381,7 @@
 
     <script>
         function openDeans() {
-            const deans = [ 'AO-cc', 'AO-lib', 'AO-disp', 'AO-p']
+            const deans = [ 'AO-cc']
             for (let i = 0; i < deans.length; i++) {
                 document.getElementById(deans[i]).style.display = "block";
             }
