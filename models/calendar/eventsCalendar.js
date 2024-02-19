@@ -46,12 +46,13 @@ const eventSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: true
+    },
+    multiDayEvent: {
+        type: Boolean
     },
     studentCoordinator: {
         coordinator1: {
             type: coordinatorSchema,
-            required: true,
         },
         coordinator2: coordinatorSchema,
     },

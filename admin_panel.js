@@ -325,9 +325,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptImages.schema.paths));
-              }
               return Object.keys(DeptImages.schema.paths);
             },
             after: async (request, context) => {
@@ -364,9 +361,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptImages.schema.paths));
-              }
               return Object.keys(DeptImages.schema.paths);
             },
             isAccessible: canEditDept,
@@ -374,11 +368,9 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptImages.schema.paths))
-              }
               return Object.keys(DeptImages.schema.paths)
-            }, after: async (request, context) => {
+            },
+            after: async (request, context) => {
               const adminUser = context.session.adminUser
               query_fetched = { ...request.query }
               if (adminUser && adminUser.role === 'restricted') {
@@ -419,9 +411,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptDescription.schema.paths));
-              }
               return Object.keys(DeptDescription.schema.paths);
             },
             after: async (request, context) => {
@@ -458,9 +447,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptDescription.schema.paths));
-              }
               return Object.keys(DeptDescription.schema.paths);
             },
             isAccessible: canEditDept,
@@ -468,11 +454,9 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptDescription.schema.paths))
-              }
               return Object.keys(DeptDescription.schema.paths)
-            }, after: async (request, context) => {
+            }, 
+            after: async (request, context) => {
               const adminUser = context.session.adminUser
               query_fetched = { ...request.query }
               if (adminUser && adminUser.role === 'restricted') {
@@ -513,9 +497,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Activity.schema.paths));
-              }
               return Object.keys(Activity.schema.paths);
             },
             after: async (request, context) => {
@@ -552,9 +533,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Activity.schema.paths));
-              }
               return Object.keys(Activity.schema.paths);
             },
             isAccessible: canEditDept,
@@ -562,11 +540,9 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(Activity.schema.paths))
-              }
               return Object.keys(Activity.schema.paths)
-            }, after: async (request, context) => {
+            }, 
+            after: async (request, context) => {
               const adminUser = context.session.adminUser
               query_fetched = { ...request.query }
               if (adminUser && adminUser.role === 'restricted') {
@@ -607,9 +583,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptNews.schema.paths));
-              }
               return Object.keys(DeptNews.schema.paths);
             },
             after: async (request, context) => {
@@ -646,9 +619,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptNews.schema.paths));
-              }
               return Object.keys(DeptNews.schema.paths);
             },
             isAccessible: canEditDept,
@@ -656,11 +626,9 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptNews.schema.paths))
-              }
               return Object.keys(DeptNews.schema.paths)
-            }, after: async (request, context) => {
+            }, 
+            after: async (request, context) => {
               const adminUser = context.session.adminUser
               query_fetched = { ...request.query }
               if (adminUser && adminUser.role === 'restricted') {
@@ -701,9 +669,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Placement.schema.paths));
-              }
               return Object.keys(Placement.schema.paths);
             },
             after: async (request, context) => {
@@ -740,9 +705,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Placement.schema.paths));
-              }
               return Object.keys(Placement.schema.paths);
             },
             isAccessible: canEditDept,
@@ -750,9 +712,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(Placement.schema.paths))
-              }
               return Object.keys(Placement.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -795,9 +754,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(eventsCalendar.schema.paths));
-              }
               return Object.keys(eventsCalendar.schema.paths);
             },
             after: async (request, context) => {
@@ -834,9 +790,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(eventsCalendar.schema.paths));
-              }
               return Object.keys(eventsCalendar.schema.paths);
             },
             isAccessible: canEditDept,
@@ -844,9 +797,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(eventsCalendar.schema.paths))
-              }
               return Object.keys(eventsCalendar.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -889,9 +839,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(HOD.schema.paths));
-              }
               return Object.keys(HOD.schema.paths);
             },
             after: async (request, context) => {
@@ -910,11 +857,9 @@ const AdminBroOptions = {
             },
             new: {
               layout: (currentAdmin) => {
-                if (currentAdmin.role === 'restricted') {
-                  return removefields(Object.keys(HOD.schema.paths))
-                }
                 return Object.keys(HOD.schema.paths)
-              }, after: async (request, context) => {
+              }, 
+              after: async (request, context) => {
                 const adminUser = context.session.adminUser
                 query_fetched = { ...request.query }
                 if (adminUser && adminUser.role === 'restricted') {
@@ -961,9 +906,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(HOD.schema.paths));
-              }
               return Object.keys(HOD.schema.paths);
             },
             isAccessible: canEditDept,
@@ -983,9 +925,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Achievements.schema.paths));
-              }
               return Object.keys(Achievements.schema.paths);
             },
             after: async (request, context) => {
@@ -1022,9 +961,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Achievements.schema.paths));
-              }
               return Object.keys(Achievements.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1032,9 +968,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(Achievements.schema.paths))
-              }
               return Object.keys(Achievements.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1162,9 +1095,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptContactUs.schema.paths));
-              }
               return Object.keys(DeptContactUs.schema.paths);
             },
             after: async (request, context) => {
@@ -1201,9 +1131,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptContactUs.schema.paths));
-              }
               return Object.keys(DeptContactUs.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1211,9 +1138,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptContactUs.schema.paths))
-              }
               return Object.keys(DeptContactUs.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1256,11 +1180,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(
-                  Object.keys(DeptProgrammeInfo.schema.paths)
-                );
-              }
               return Object.keys(DeptProgrammeInfo.schema.paths);
             },
             after: async (request, context) => {
@@ -1297,11 +1216,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(
-                  Object.keys(DeptProgrammeInfo.schema.paths)
-                );
-              }
               return Object.keys(DeptProgrammeInfo.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1309,9 +1223,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptProgrammeInfo.schema.paths))
-              }
               return Object.keys(DeptProgrammeInfo.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1354,9 +1265,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptCoordinators.schema.paths));
-              }
               return Object.keys(DeptCoordinators.schema.paths);
             },
             after: async (request, context) => {
@@ -1393,9 +1301,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptCoordinators.schema.paths));
-              }
               return Object.keys(DeptCoordinators.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1403,9 +1308,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptCoordinators.schema.paths))
-              }
               return Object.keys(DeptCoordinators.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1448,9 +1350,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptSyllabus.schema.paths));
-              }
               return Object.keys(DeptSyllabus.schema.paths);
             },
             after: async (request, context) => {
@@ -1487,9 +1386,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptSyllabus.schema.paths));
-              }
               return Object.keys(DeptSyllabus.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1497,9 +1393,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptSyllabus.schema.paths))
-              }
               return Object.keys(DeptSyllabus.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1542,9 +1435,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptTimeTable.schema.paths));
-              }
               return Object.keys(DeptTimeTable.schema.paths);
             },
             after: async (request, context) => {
@@ -1581,9 +1471,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptTimeTable.schema.paths));
-              }
               return Object.keys(DeptTimeTable.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1591,9 +1478,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptTimeTable.schema.paths))
-              }
               return Object.keys(DeptTimeTable.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1636,9 +1520,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptCalender.schema.paths));
-              }
               return Object.keys(DeptCalender.schema.paths);
             },
             after: async (request, context) => {
@@ -1675,9 +1556,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptCalender.schema.paths));
-              }
               return Object.keys(DeptCalender.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1685,9 +1563,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptCalender.schema.paths))
-              }
               return Object.keys(DeptCalender.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1815,9 +1690,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptStudents.schema.paths));
-              }
               return Object.keys(DeptStudents.schema.paths);
             },
             after: async (request, context) => {
@@ -1854,9 +1726,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptStudents.schema.paths));
-              }
               return Object.keys(DeptStudents.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1864,9 +1733,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptStudents.schema.paths))
-              }
               return Object.keys(DeptStudents.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1909,9 +1775,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Staff.schema.paths));
-              }
               return Object.keys(Staff.schema.paths);
             },
             after: async (request, context) => {
@@ -1948,9 +1811,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Staff.schema.paths));
-              }
               return Object.keys(Staff.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1958,9 +1818,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(Staff.schema.paths))
-              }
               return Object.keys(Staff.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -2003,9 +1860,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptPub.schema.paths));
-              }
               return Object.keys(DeptPub.schema.paths);
             },
             after: async (request, context) => {
@@ -2042,9 +1896,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptPub.schema.paths));
-              }
               return Object.keys(DeptPub.schema.paths);
             },
             isAccessible: canEditDept,
@@ -2052,9 +1903,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptPub.schema.paths))
-              }
               return Object.keys(DeptPub.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -2097,9 +1945,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptProjects.schema.paths));
-              }
               return Object.keys(DeptProjects.schema.paths);
             },
             after: async (request, context) => {
@@ -2136,9 +1981,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptProjects.schema.paths));
-              }
               return Object.keys(DeptProjects.schema.paths);
             },
             isAccessible: canEditDept,
@@ -2146,9 +1988,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptProjects.schema.paths))
-              }
               return Object.keys(DeptProjects.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -2191,9 +2030,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptConsultancy.schema.paths));
-              }
               return Object.keys(DeptConsultancy.schema.paths);
             },
             after: async (request, context) => {
@@ -2230,9 +2066,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptConsultancy.schema.paths));
-              }
               return Object.keys(DeptConsultancy.schema.paths);
             },
             isAccessible: canEditDept,
@@ -2240,9 +2073,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptConsultancy.schema.paths))
-              }
               return Object.keys(DeptConsultancy.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -2285,9 +2115,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptClub.schema.paths));
-              }
               return Object.keys(DeptClub.schema.paths);
             },
             after: async (request, context) => {
@@ -2324,9 +2151,6 @@ const AdminBroOptions = {
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptClub.schema.paths));
-              }
               return Object.keys(DeptClub.schema.paths);
             },
             isAccessible: canEditDept,
@@ -2334,9 +2158,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptClub.schema.paths))
-              }
               return Object.keys(DeptClub.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -2434,13 +2255,13 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-    {
-      resource: eventsCalendar,
-      options: {
-        navigation: "Home",
-        actions: { list: { isAccessible: isAdmin } },
-      },
-    },
+    // {
+    //   resource: eventsCalendar,
+    //   options: {
+    //     navigation: "Home",
+    //     actions: { list: { isAccessible: isAdmin } },
+    //   },
+    // },
     {
       resource: DefaultJobsTab,
       options: {
