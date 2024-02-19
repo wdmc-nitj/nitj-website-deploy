@@ -174,7 +174,7 @@ async function addEventsToHTML() {
     const formattedDate = new Date(fetchdate(event.startDateTime));
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0); // to ignore time and compare only the date
-    return formattedDate.getFullYear() === currentDate.getFullYear() && formattedDate >= currentDate;
+    return formattedDate.getFullYear() === currentDate.getFullYear() && formattedDate >= currentDate && event.show === true;
   });
 
   filteredEvents.forEach((event) => {
@@ -234,8 +234,8 @@ async function addEventsToHTML() {
         <div class="ml-6 ">
           <h3 class="text-lg font-semibold" style="margin-top: -25px; margin-bottom: 15px;">${displayDate}</h3>
           <div class="flex flex-col ">
-            ${events.map((event) => createEventCard(event)).join("")}
-          </div>
+          ${eventsByDate[date].map((events) => createEventCard(events)).join("")}
+           </div>
         </div>
     `;
 
@@ -265,7 +265,7 @@ function createEventCard(event) {
       onclick="openModal('${event._id}')">
       <div
           class="card-content bg-white border rounded-xl shadow-sm sm:flex border-slate-500/50 flex sm:flex-row flex-col-reverse justify-between hover:border-slate-900 ">
-          <div class="p-4 flex flex-col justify-between">
+          <div class="p-5 px-5 flex flex-col justify-between">
               <div>
                   <div class="flex sm:flex-row flex-col items-baseline" style="align-items:baseline;">
                       <div class="mr-3">
