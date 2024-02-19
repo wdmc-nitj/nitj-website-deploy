@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const coordinatorSchema = new mongoose.Schema({
-    phoneNumber: {
+    name: {
         type: String,
     },
-    name: {
+    phoneNumber: {
         type: String,
     },
 });

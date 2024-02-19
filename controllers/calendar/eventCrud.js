@@ -1,4 +1,5 @@
 const Event= require("../../models/calendar/eventsCalendar");
+const moment = require('moment-timezone');
 
 const saveEvent = (req, res) => {
     const newEvent = req.body.eventObj;
@@ -27,7 +28,6 @@ const showEvent = async (req, res) => {
     try {
         const { year, month } = req.query;
         
-
         const parsedYear = parseInt(year);
         const parsedMonth = parseInt(month);
 
@@ -40,11 +40,11 @@ const showEvent = async (req, res) => {
             return res.status(400).json({ message: "Invalid year or month parameter" });
         }
 
-        const startOfMonth = new Date(parsedYear, parsedMonth - 1, 1);
-        const endOfMonth = new Date(parsedYear, parsedMonth, 0, 23, 59, 59, 999);
+        const startOfMonth = moment.tz([parsedYear, parsedMonth - 1], 'Asia/Kolkata').startOf('month');
+        const endOfMonth = moment.tz([parsedYear, parsedMonth - 1], 'Asia/Kolkata').endOf('month');
 
         const eventData = await Event.find({
-            startDateTime: { $gte: startOfMonth, $lt: endOfMonth }
+            startDateTime: { $gte: startOfMonth.toDate(), $lt: endOfMonth.toDate() }
         }).exec();
 
         res.status(200).send(eventData);
@@ -53,6 +53,8 @@ const showEvent = async (req, res) => {
         res.status(500).send(error);
     }
 };
+
+
 const updateEvent = async (req, res) => {
     const id = req.params.id;
     const { fieldToUpdate, updatedValue } = req.body;
