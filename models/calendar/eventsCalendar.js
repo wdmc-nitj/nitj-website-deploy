@@ -90,6 +90,8 @@ const eventSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     }
+},{
+    timestamps: true
 });
 
 const Event = mongoose.model('Event', eventSchema);
