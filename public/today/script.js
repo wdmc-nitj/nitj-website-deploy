@@ -20,42 +20,42 @@ async function fetchEvents() {
   }
 }
 
-// Function to fetch events by type from the backend
-async function fetchEventsByType(type) {
-  try {
-    const response = await fetch(`${geteventsbytype}?type=${type}`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching events by type:', error);
-    return [];
-  }
-}
+// // Function to fetch events by type from the backend
+// async function fetchEventsByType(type) {
+//   try {
+//     const response = await fetch(`${geteventsbytype}?type=${type}`);
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error('Error fetching events by type:', error);
+//     return [];
+//   }
+// }
 
 
-// Function to fetch events by category from the backend
-async function fetchEventsByCategory(category) {
-  try {
-    const response = await fetch(`${geteventsbycategory}?category=${category}`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching events by category:', error);
-    return [];
-  }
-}
+// // Function to fetch events by category from the backend
+// async function fetchEventsByCategory(category) {
+//   try {
+//     const response = await fetch(`${geteventsbycategory}?category=${category}`);
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error('Error fetching events by category:', error);
+//     return [];
+//   }
+// }
 
-// Function to fetch events by time from the backend
-async function fetchEventsByTime(year, month, week, day) {
-  try {
-    const response = await fetch(`${geteventsbytime}?year=${year}&month=${month}&week=${week}&day=${day}`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error('Error fetching events by time:', error);
-    return [];
-  }
-}
+// // Function to fetch events by time from the backend
+// async function fetchEventsByTime(year, month, week, day) {
+//   try {
+//     const response = await fetch(`${geteventsbytime}?year=${year}&month=${month}&week=${week}&day=${day}`);
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error('Error fetching events by time:', error);
+//     return [];
+//   }
+// }
 
 // async function fetchEvents() {
 //   try {
@@ -186,6 +186,15 @@ async function addEventsToHTML() {
     eventsByDate[dateKey].push(event);
   });
 
+  // Sort events in eventsByDate based on start time
+  for (const dateKey in eventsByDate) {
+    eventsByDate[dateKey].sort((a, b) => {
+      const startTimeA = new Date(a.startDateTime).getTime();
+      const startTimeB = new Date(b.startDateTime).getTime();
+      return startTimeA - startTimeB;
+    });
+  }
+
   // Sort events by date
   const sortedEvents = Object.entries(eventsByDate).sort(([dateA], [dateB]) => {
     const dateObjA = new Date(dateA);
@@ -265,7 +274,7 @@ function createEventCard(event) {
       onclick="openModal('${event._id}')">
       <div
           class="card-content bg-white border rounded-xl shadow-sm sm:flex border-slate-500/50 flex sm:flex-row flex-col-reverse justify-between hover:border-slate-900 ">
-          <div class="p-5 px-5 flex flex-col justify-between">
+          <div class=" p-4   flex flex-col justify-between">
               <div>
                   <div class="flex sm:flex-row flex-col items-baseline" style="align-items:baseline;">
                       <div class="mr-3">
@@ -282,7 +291,6 @@ function createEventCard(event) {
                     )};">
 ${event.category}
 </span>
-
   
                   </div>
                   <h3 class=" font-semibold text-slate-700 text-lg">
@@ -391,8 +399,9 @@ ${event.category}
                     event.eventName
                   }</h2></b>
       
-     
-                  <span class="tag uppercase text-center text-me-2 px-2 py rounded-full opacity-90 font-semibold" style="background-color:${getTagbgColor(
+     <div class="flex flex-row  gap-3">
+     <div>
+                  <span class="tag uppercase text-center text-me-2 px-2 py-1 rounded-full opacity-90 font-semibold" style="background-color:${getTagbgColor(
                     event.category
                 )}; margin-top:2.2px; font-size:13px ; color:${getTagColor(
                     event.category
@@ -401,8 +410,14 @@ ${event.category}
                 )};">
 ${event.category}
 </span>
-  
-  
+</div>
+<div>
+${event.multiDayEvent ? `<span class=" text-sm text-white px-1 py-0.5 rounded text-nowrap inline-flex" style="background-color:#229B5B" > 
+<svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="m429-336 238-237-51-51-187 186-85-84-51 51 136 135Zm51 240q-79 0-149-30t-122.5-82.5Q156-261 126-331T96-480q0-80 30-149.5t82.5-122Q261-804 331-834t149-30q80 0 149.5 30t122 82.5Q804-699 834-629.5T864-480q0 79-30 149t-82.5 122.5Q699-156 629.5-126T480-96Zm0-72q130 0 221-91t91-221q0-130-91-221t-221-91q-130 0-221 91t-91 221q0 130 91 221t221 91Zm0-312Z" fill="#ffffff"/></svg>
+<span>
+Multi Day Event</span> </span>` : ''}
+</div>
+  </div>
           </div>
           <div style="font-size: medium; color: rgba(0, 0, 0, 0.681);">
               <div class="flex flex-row space-between justify-between items-baseline">
@@ -472,7 +487,8 @@ ${event.category}
                         "description",
                         "department",
                         "posterUrl",
-                        "show"
+                        "show",
+                        "multiDayEvent",
                     ].includes(key) &&
                     ((typeof value !== "boolean" && value && value.toString().trim() !== "" && !isEmptyObject(value)) ||
                     (typeof value === "boolean" && value))
