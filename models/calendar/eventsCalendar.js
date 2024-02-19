@@ -38,7 +38,6 @@ const eventSchema = new mongoose.Schema({
     },
     venue: {
         type: String,
-        required: true
     },
     meetlink: {
         type: String,
@@ -46,12 +45,10 @@ const eventSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: true
     },
     studentCoordinator: {
         coordinator1: {
             type: coordinatorSchema,
-            required: true,
         },
         coordinator2: coordinatorSchema,
     },
