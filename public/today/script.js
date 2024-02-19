@@ -319,7 +319,7 @@ ${event.category}
                         </a>
                       </span>
                   </div>
-                  <div>
+                  <div class=" items-center flex flex-wrap">
                       <div class="button-group flex-ror flex" style="gap: 15px;">
                           ${
                           event.meetlink
@@ -346,7 +346,13 @@ ${event.category}
                               Download
                           </button>`
                           : ""
-                          }
+                          } 
+                          <div>
+                          ${event.multiDayEvent ? `<span class=" text-sm text-white px-1 py-0.5 rounded text-nowrap inline-flex" style="background-color:#9CE2BD9B" > 
+                          <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="m429-336 238-237-51-51-187 186-85-84-51 51 136 135Zm51 240q-79 0-149-30t-122.5-82.5Q156-261 126-331T96-480q0-80 30-149.5t82.5-122Q261-804 331-834t149-30q80 0 149.5 30t122 82.5Q804-699 834-629.5T864-480q0 79-30 149t-82.5 122.5Q699-156 629.5-126T480-96Zm0-72q130 0 221-91t91-221q0-130-91-221t-221-91q-130 0-221 91t-91 221q0 130 91 221t221 91Zm0-312Z" fill="#0E6939"/></svg>
+                          <span class=" font-semibold"style="color:#0E6939;">
+                          Multi Day Event</span> </span>` : ''}
+                          </div>
   
                       </div>
                   </div>
@@ -354,7 +360,7 @@ ${event.category}
           </div>
           <div class="relative overflow-hidden md:rounded-se-none p-2 justify-center items-center hidden md:block">
               <img class="object-scale-down rounded-xl w-48 h-48 group-hover:scale-105 transition-transform duration-500 ease-in-out"
-                src="${event.posterUrl ? event.posterUrl : './assets/logo_nitj.png'}" alt="Image Description">
+                src="${event.posterUrl ? event.posterUrl : './assets/logo_nitj.webp'}" alt="Image Description">
           </div>
       </div>
   </div>
@@ -388,7 +394,7 @@ ${event.category}
   
           <!-- Modal content -->
           <div class="p-4 flex justify-center" style="min-width:47vw">
-              <img class="object-scale-down" src="${event.posterUrl ? event.posterUrl : './assets/logo_nitj.png'}" alt="Event Image" style="border-radius: 8px; height:300px;width:300px;">
+              <img class="object-scale-down" src="${event.posterUrl ? event.posterUrl : './assets/logo_nitj.webp'}" alt="Event Image" style="border-radius: 8px; height:300px;width:300px;">
           </div>
   
           <div class="flex flex-col gap-4 p-3 ">
