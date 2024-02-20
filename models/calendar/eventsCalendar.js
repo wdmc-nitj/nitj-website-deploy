@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const coordinatorSchema = new mongoose.Schema({
-    phoneNumber: {
+    name: {
         type: String,
     },
-    name: {
+    phoneNumber: {
         type: String,
     },
 });
@@ -46,12 +46,13 @@ const eventSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: true
+    },
+    multiDayEvent: {
+        type: Boolean
     },
     studentCoordinator: {
         coordinator1: {
             type: coordinatorSchema,
-            required: true,
         },
         coordinator2: coordinatorSchema,
     },
@@ -89,6 +90,8 @@ const eventSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     }
+},{
+    timestamps: true
 });
 
 const Event = mongoose.model('Event', eventSchema);

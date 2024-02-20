@@ -27,7 +27,6 @@ const showEvent = async (req, res) => {
     try {
         const { year, month } = req.query;
         
-
         const parsedYear = parseInt(year);
         const parsedMonth = parseInt(month);
 
@@ -40,11 +39,26 @@ const showEvent = async (req, res) => {
             return res.status(400).json({ message: "Invalid year or month parameter" });
         }
 
-        const startOfMonth = new Date(parsedYear, parsedMonth - 1, 1);
-        const endOfMonth = new Date(parsedYear, parsedMonth, 0, 23, 59, 59, 999);
+        const startOfMonth = new Date()
+        startOfMonth.setFullYear(parsedYear)
+        startOfMonth.setMonth(parsedMonth-1)
+        startOfMonth.setDate(1)
+        startOfMonth.setUTCHours(0,0,0,0)
+
+        const endOfMonth = new Date()
+        
+        if(parsedMonth===12){
+            parsedYear=parsedYear+1
+            parsedMonth=0
+        }
+
+        endOfMonth.setFullYear(parsedYear)
+        endOfMonth.setMonth(parsedMonth)
+        endOfMonth.setDate(1)
+        endOfMonth.setUTCHours(0,0,0,0)
 
         const eventData = await Event.find({
-            startDateTime: { $gte: startOfMonth, $lt: endOfMonth }
+            startDateTime: { $gte: startOfMonth, $lte: endOfMonth }
         }).exec();
 
         res.status(200).send(eventData);
@@ -53,6 +67,8 @@ const showEvent = async (req, res) => {
         res.status(500).send(error);
     }
 };
+
+
 const updateEvent = async (req, res) => {
     const id = req.params.id;
     const { fieldToUpdate, updatedValue } = req.body;
