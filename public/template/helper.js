@@ -230,7 +230,6 @@ for (let dept of dept_list) {
   fetch(`/api/dept/${dept}/Faculty`)
   .then((response) => response.json())
   .then((data) => {
-    console.log(dept, displayWordsArr);
     // Create an unordered list element
     data.forEach((element) => {
       element["ID"]["name"] = element["ID"]["name"]+" <span class=\"material-symbols-outlined align-middle\">person</span>";
