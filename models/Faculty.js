@@ -273,6 +273,18 @@ const Schema = new mongoose.Schema({
                 },
                 "Brief Research Profile": {
                     type: String
+                },
+                "Research Id":{
+                    type: [
+                        {
+                            title: {
+                                type: String
+                            },
+                            link:{
+                                type: String
+                            }
+                        }
+                    ]
                 }
             }
         ,

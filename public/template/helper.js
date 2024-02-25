@@ -225,6 +225,20 @@ fetch('/api/navbar')
       }
     });
   })
+dept_list = ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai'];
+for (let dept of dept_list) {
+  fetch(`/api/dept/${dept}/Faculty`)
+  .then((response) => response.json())
+  .then((data) => {
+    // Create an unordered list element
+    data.forEach((element) => {
+      element["ID"]["name"] = element["ID"]["name"]+" <span class=\"material-symbols-outlined align-middle\">person</span>";
+      displayWordsArr.push(element["ID"]["name"]);
+      links[element["ID"]["name"]] = `https://departments.nitj.ac.in/dept/${dept}/Faculty/${element["ID"]["_id"]}`;
+    });
+    // Loop through the properties of the data object
+  });
+}
 var resources = document.getElementById("resources");
 fetch('/api/resource')
   .then((response) => response.json())

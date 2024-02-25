@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const coordinatorSchema = new mongoose.Schema({
-    phoneNumber: {
+    name: {
         type: String,
     },
-    name: {
+    phoneNumber: {
         type: String,
     },
 });
@@ -90,6 +90,8 @@ const eventSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     }
+},{
+    timestamps: true
 });
 
 const Event = mongoose.model('Event', eventSchema);

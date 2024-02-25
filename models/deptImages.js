@@ -2,12 +2,15 @@ const mongoose = require("mongoose");
 //----------------------------------->
 
 //Schema---------------------------->
-const CoordSchema = new mongoose.Schema(
+const deptImagesSchema = new mongoose.Schema(
     {
 
         Images: {
             type: [{
                 link: {
+                    type: String
+                },
+                desc:{
                     type: String
                 }
             }],
@@ -26,7 +29,7 @@ const CoordSchema = new mongoose.Schema(
 );
 
 //Model---------------------------->
-const Model = mongoose.model("deptImages", CoordSchema);
+const Model = mongoose.model("deptImages", deptImagesSchema);
 
 //Export----------------------------->
 module.exports = Model;

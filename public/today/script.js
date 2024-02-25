@@ -94,8 +94,37 @@ function fetchdate(datetime) {
 }
 
 function fetchtime(startdatetime, enddatetime) {
-  let start = startdatetime.split('T')[1]; // Extracts the time
-  let end = enddatetime.split('T')[1]; // Extracts the time
+
+// Parse time string to obtain hours and minutes
+
+let [startn, startMillis] = startdatetime.split('T')[1].split('.')[0].split(':').map(Number);
+// Add 5 hours and 30 minutes
+startn += 5;
+startMillis += 30;
+// Handle overflow
+if (startMillis >= 60) {
+    startn += 1;
+    startMillis -= 60;
+}
+// Convert to string
+startn = `${startn.toString().padStart(2, '0')}:${startMillis.toString().padStart(2, '0')}`;
+
+// Parse end time
+let [endn, endMillis] = enddatetime.split('T')[1].split('.')[0].split(':').map(Number);
+// Add 5 hours and 30 minutes
+endn += 5;
+endMillis += 30;
+// Handle overflow
+if (endMillis >= 60) {
+    endn += 1;
+    endMillis -= 60;
+}
+// Convert to string
+endn = `${endn.toString().padStart(2, '0')}:${endMillis.toString().padStart(2, '0')}`;
+
+ 
+ let start=startn;
+ let end=endn;
   if (!start) {
     return null;
   }
