@@ -225,6 +225,20 @@ fetch('/api/navbar')
       }
     });
   })
+dept_list = ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai'];
+for (let dept of dept_list) {
+  fetch(`/api/dept/${dept}/Faculty`)
+  .then((response) => response.json())
+  .then((data) => {
+    // Create an unordered list element
+    data.forEach((element) => {
+      element["ID"]["name"] = element["ID"]["name"]+" <span class=\"material-symbols-outlined align-middle\">person</span>";
+      displayWordsArr.push(element["ID"]["name"]);
+      links[element["ID"]["name"]] = `https://departments.nitj.ac.in/dept/${dept}/Faculty/${element["ID"]["_id"]}`;
+    });
+    // Loop through the properties of the data object
+  });
+}
 var resources = document.getElementById("resources");
 fetch('/api/resource')
   .then((response) => response.json())
@@ -319,3 +333,31 @@ function waitForElm(selector) {
       });
   });
 }
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+}
+
+// once google translate element is initialized, remove the google translate logo
+document.addEventListener("DOMContentLoaded", function() {
+  // console.log("DOM loaded, waiting for google translate element to initialize");
+  waitForElm(".goog-te-gadget").then(elm => {
+    // console.log("google translate element initialized");
+    var goog_gadget =  document.getElementsByClassName('goog-te-gadget')[0];
+    // console.log(goog_gadget.childNodes)
+    //just keep the child node 0 remove rest
+    for (var i = 1; i < goog_gadget.childNodes.length; i++) {
+      goog_gadget.removeChild(goog_gadget.childNodes[i]);
+    }
+    goog_gadget.removeChild(goog_gadget.lastChild);
+    // console.log(goog_gadget.childNodes)
+  });
+});
+
+// Include the script source for Google Translate
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+
+// Append the script to the document body
+document.body.appendChild(script);

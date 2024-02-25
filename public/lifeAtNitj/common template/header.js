@@ -567,7 +567,7 @@ id="nav-menu" style="display: none">
                           Instrumentation and Control Engineering
                         </li>
                         <li class="hover:text-[#FF6600]">
-                          Mathematics
+                        Mathematics and Computing
                         </li>
                         <li class="hover:text-[#FF6600]">
                           Mechanical Engineering

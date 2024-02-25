@@ -24,6 +24,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+.yarn
+.yarnrc.yml
 
 # local env files
 .env*.local
@@ -40,3 +42,4 @@ package-lock.json
 /public/style.css
 
 /~
+public/events module/nitj-website-deploy.code-workspace
