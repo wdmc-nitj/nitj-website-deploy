@@ -499,6 +499,11 @@ Multi Day Event</span> </span>` : ''}
                     ((typeof value !== "boolean" && value && value.toString().trim() !== "" && !isEmptyObject(value)) ||
                     (typeof value === "boolean" && value))
                 ) {
+                  if (key === "createdAt" || key === "updatedAt") {
+                    // Parse the value as a date, format it to a locale string
+                    const date = new Date(value);
+                    value = date.toLocaleDateString();
+                  }
                     if (typeof value === "object") {
                         const subEntries = Object.entries(value)
                             .map(([subKey, subValue]) => {
