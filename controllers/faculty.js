@@ -70,4 +70,30 @@ const updateFaculty = async (req, res) => {
     }
 }
 
-module.exports = { getAllFaculty, getByDeptFaculty, getByIdFaculty, updateFaculty, deleteFaculty, addFaculty }
+const updateFacultyPeronalDetails = async (req, res) => {
+    try {
+        if(req.user.login && req.user.isFaculty){
+            let query = {};
+            const {img,address,education_qualification} = req.body
+            if(img){
+                query['img'] = img
+            }
+            if(address){
+                query['correspondence_address'] = address
+            }
+            if(education_qualification){
+                query['education_qualification'] = education_qualification
+            }
+            const result = await Faculty.findByIdAndUpdate(req.params.id, query);
+            await result.save()
+            return res.status(200).json("Faculty updated succesfully")
+        }
+        return res.status(401).json("Faculty not Updated");
+    } catch (error) {
+        console.log(error);
+        res.status(400).json("Error: " + error);
+
+    }
+}
+
+module.exports = { getAllFaculty, getByDeptFaculty, getByIdFaculty, updateFaculty, deleteFaculty, addFaculty, updateFacultyPeronalDetails }

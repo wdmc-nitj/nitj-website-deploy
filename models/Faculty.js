@@ -40,13 +40,10 @@ const Schema = new mongoose.Schema({
         ],
         default: []
     },
-    address: {
+    correspondence_address: {
         type: 
             {
-                "address1": {
-                    type: String
-                },
-                "address2": {
+                "address": {
                     type: String
                 },
                 "city": {
@@ -56,9 +53,6 @@ const Schema = new mongoose.Schema({
                     type: String
                 },
                 "pin": {
-                    type: String
-                },
-                "eid": {
                     type: String
                 },
                 "phone": {
@@ -71,6 +65,34 @@ const Schema = new mongoose.Schema({
         ,
         default: {}
     },
+    // address: {
+    //     type: 
+    //         {
+    //             "address1": {
+    //                 type: String
+    //             },
+    //             "address2": {
+    //                 type: String
+    //             },
+    //             "city": {
+    //                 type: String
+    //             },
+    //             "state": {
+    //                 type: String
+    //             },
+    //             "pin": {
+    //                 type: String
+    //             },
+    //             "phone": {
+    //                 type: String
+    //             },
+    //             "fax": {
+    //                 type: String
+    //             },
+    //         }
+    //     ,
+    //     default: {}
+    // },
     gender: {
         type: String,
         enum: ['male', 'female', 'other']
