@@ -551,7 +551,7 @@
           <a href="/admissions/index.html#btech">
             <div
               class="flex flex-col px-8 py-5 transition-all rounded-lg ring-2 ring-slate-300 hover:ring-accent hover:bg-light-purple hover:ring-4">
-              <p class="text-3xl font-bold">B.Tech</p>
+              <p class="text-3xl font-bold">B.Tech, B.Sc.-B.Ed.</p>
               <p class="text-lg text-slate-500">Undergraduate Program</p>
             </div>
           </a>
@@ -576,7 +576,7 @@
             <div
               class="flex flex-col px-8 py-5 transition-all rounded-lg ring-2 ring-slate-300 hover:ring-accent hover:bg-light-purple hover:ring-4">
               <p class="text-3xl font-bold">Ph.D</p>
-              <p class="text-lg text-slate-500">Doctrate Program</p>
+              <p class="text-lg text-slate-500">Doctorate Program</p>
             </div>
           </a>
         </div>
@@ -597,11 +597,14 @@
         <div class="flex flex-col items-center justify-center gap-5 p-5 ring-2 ring-accent rounded-xl">
           <ul class="flex items-stretch overflow-x-auto rounded-full ring-2 ring-accent">
             <li data-notif="upcomingEvent"
-              class="flex items-center justify-center px-2 py-1 text-sm font-semibold text-center rounded-full cursor-pointer notif-link sm:text-base sm:px-6 text-slate-400 hover:bg-blue-50">
+              class="flex items-center justify-center px-2 py-1 text-sm font-semibold text-center bg-blue-100 rounded-full cursor-pointer notif-link sm:text-base sm:px-6 text-accent hover:bg-blue-200">
+                
+              <!-- class="flex items-center justify-center px-2 py-1 text-sm font-semibold text-center rounded-full cursor-pointer notif-link sm:text-base sm:px-6 text-slate-400 hover:bg-blue-50"> -->
               Upcoming Events
             </li>
             <li data-notif="notice"
-              class="flex items-center justify-center px-2 py-1 text-sm font-semibold text-center bg-blue-100 rounded-full cursor-pointer notif-link sm:text-base sm:px-6 text-accent hover:bg-blue-200">
+              class="flex items-center justify-center px-2 py-1 text-sm font-semibold text-center rounded-full cursor-pointer notif-link sm:text-base sm:px-6 text-slate-400 hover:bg-blue-50">
+              <!-- class="flex items-center justify-center px-2 py-1 text-sm font-semibold text-center bg-blue-100 rounded-full cursor-pointer notif-link sm:text-base sm:px-6 text-accent hover:bg-blue-200"> -->
               Student's Corner
             </li>
             <li data-notif="tender"
@@ -1213,6 +1216,24 @@
   <script type="module" src="/js/app.js"></script>
 
   <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+  <script>
+    function slideCards(e, direction) {
+      // var container = document.getElementById('cards')
+      const container = e.parentNode.querySelector('div')
+      scrollCompleted = 0
+      var slideVar = setInterval(function () {
+        if (direction == 'left') {
+          container.scrollLeft -= container.clientWidth
+        } else {
+          container.scrollLeft += container.clientWidth
+        }
+        scrollCompleted += 100
+        if (scrollCompleted >= 1000) {
+          window.clearInterval(slideVar)
+        }
+      }, 2)
+    }
+  </script>
   <!-- <script type="text/javascript">
     var slideIndex = 0;
     carousel();

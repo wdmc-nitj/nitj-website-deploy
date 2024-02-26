@@ -46,6 +46,8 @@ const recruitmentsRoutes = require('./routes/recruitmentRoutes');
 const curriculumRouter = require('./routes/curriculum');
 const deptCalendarRouter = require('./routes/deptCalendar');
 
+const eventsCalendarRouter = require("./routes/calendar/eventsCalendar")
+
 //initialize app
 const app = express();
 
@@ -111,6 +113,9 @@ app.use("/dept", departmentRouter);
 app.use('/newpage', newpageRouter)
 app.use("/resource", resourceRouter);
 app.use("/upload", upload);
+
+// Events Calendar 
+app.use("/eventsCalendar",eventsCalendarRouter)
 
 app.use("/hostel", hostelRouter);
 app.use("/proctorialCell", proctorialCellRouter);

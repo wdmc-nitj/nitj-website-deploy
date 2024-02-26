@@ -31,6 +31,8 @@ const DeptDescription = require("./models/deptDescription");
 const Navbar = require("./models/navbar");
 const Footer = require("./models/footer");
 const Clubs = require("./models/club");
+// clubs page model define all the clubs data , whereas clubs is the model for home page club section
+const ClubsPage = require("./models/clubsPage");
 const News = require("./models/news");
 const About = require("./models/about");
 const AcademicCalendar = require("./models/academicCalendar");
@@ -57,8 +59,8 @@ const Testimonial = require("./models/testimonial");
 const Timeline = require("./models/timeline");
 const upcommingEvent = require("./models/upcomingEvent");
 const yearlyRanking = require("./models/yearlyRanking");
-const scholarship=require("./models/scholarship");
-const initiative=require("./models/initiatives");
+const scholarship = require("./models/scholarship");
+const initiative = require("./models/initiatives");
 
 // Research Menu
 const researchMenuName = "Research";
@@ -77,11 +79,13 @@ const addmissionUpdate = require("./models/admissions/admissionUpdate");
 const importantLink = require("./models/admissions/importantLink");
 const majorProgramme = require("./models/admissions/majorProgramme.js");
 const minorProgramme = require("./models/admissions/minorProgramme.js");
-
-
 const newpage = require("./models/newpage");
 
+// adminbro model : model for super admin and department credentaials
 const User = require("./models/AdminBroUser");
+// model for clubadmin credentials
+const ClubsBroUser = require("./models/clubsBroUser.js");
+
 const { query } = require("express");
 const { filter } = require("compression");
 const specialCentres = require("./models/specialCentres");
@@ -89,10 +93,18 @@ const curriculum = require("./models/curriculum");
 const examSchedule = require("./models/examSchedule");
 const deptwiseFaculty = require("./models/deptwiseFaculty");
 
+// Events Calendar 
+const eventsCalendar = require("./models/calendar/eventsCalendar.js")
+
+// defined new role : clubadmin , can access their respective club
 const canModifyUsers = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
 const isAdmin = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
+const isClubAdmin = ({ currentAdmin }) =>
+  currentAdmin && currentAdmin.role === "clubadmin";
+
+  // removal of feilds that should not be changed by the admin panel / non required fields
 function removefields(arr) {
   var index = arr.indexOf("department");
   if (index > -1) {
@@ -110,23 +122,169 @@ function removefields(arr) {
   if (index > -1) {
     arr.splice(index, 1);
   }
+  var index = arr.indexOf("name");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("type");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("show");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("new");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("updateLogs");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("order");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoName");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoEmail");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoDesignation");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoDepartment");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("createdAt");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("updatedAt");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("newPage");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
   return arr;
 }
+  // removal of feilds that should not be changed by the admin panel / non required fields
+
+const removefieldsAdmin = (arr) => {
+  var index = arr.indexOf("role");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("__v");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("_id");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfo");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("password");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("createdAt");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("updatedAt");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("newPage");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("order");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoName");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoEmail");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoDesignation");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("sourceOfInfoDepartment");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("show");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("new");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  var index = arr.indexOf("updateLogs");
+  if (index > -1) {
+    arr.splice(index, 1);
+  }
+  return arr;
+};
 const canEditDept = ({ currentAdmin, record }) => {
-  // console.log(removefields(Object.keys(DeptDescription.schema.paths)))
   if (currentAdmin.role === "admin") {
     return true;
   }
+
   if (!currentAdmin.role) {
     return false;
+  }
+
+  if (!record) {
+    return true;
+  }
+
+  if (record) {
+    return currentAdmin.department === record.param("department");
+  }
+};
+
+const canEditClub = ({ currentAdmin, record }) => {
+  // check for admin full access
+  if (currentAdmin.role === "admin") {
+    return true;
+  }
+  // if doesnt have any role , dont give access
+  if (!currentAdmin.role) {
+    return false;
+  }
+  // added check that department should not access the club data
+  if (currentAdmin.role === "restricted") {
+    return false
   }
   if (!record) {
     return true;
   }
-  if (record) {
-    return currentAdmin.department == record.param("department");
+  // if record is present then check for the department(club) of the clubadmin and show only that clubdata
+  if (record && currentAdmin.role == "clubadmin") {
+    return currentAdmin.department == record.param("name");
   }
 };
+
 const canEditprofile = ({ currentAdmin, record }) => {
   if (currentAdmin.role === "admin") {
     return true;
@@ -142,6 +300,10 @@ const canEditprofile = ({ currentAdmin, record }) => {
   }
 };
 
+// excluding clubadmin from accessing the department data : updated each deptmt model config with this logic 
+const notAccessibleByClubs = ({ currentAdmin, record }) => {
+  return !isClubAdmin({ currentAdmin }) && canEditDept({ currentAdmin, record })
+}
 AdminBro.registerAdapter(AdminBroMongoose);
 const AdminBroOptions = {
   branding: {
@@ -154,6 +316,7 @@ const AdminBroOptions = {
   rootPath: "/api/dashboard",
   loginPath: "/api/dashboard/login",
   logoutPath: "/api/dashboard/logout",
+  timezone: 'Asia/Kolkata',
   resources: [
     ////// Assessable By Department HOD /////
     {
@@ -163,9 +326,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptImages.schema.paths));
-              }
               return Object.keys(DeptImages.schema.paths);
             },
             after: async (request, context) => {
@@ -198,13 +358,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptImages.schema.paths));
-              }
               return Object.keys(DeptImages.schema.paths);
             },
             isAccessible: canEditDept,
@@ -212,11 +369,9 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptImages.schema.paths))
-              }
               return Object.keys(DeptImages.schema.paths)
-            }, after: async (request, context) => {
+            },
+            after: async (request, context) => {
               const adminUser = context.session.adminUser
               query_fetched = { ...request.query }
               if (adminUser && adminUser.role === 'restricted') {
@@ -241,7 +396,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           },
         },
@@ -257,9 +412,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptDescription.schema.paths));
-              }
               return Object.keys(DeptDescription.schema.paths);
             },
             after: async (request, context) => {
@@ -292,13 +444,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptDescription.schema.paths));
-              }
               return Object.keys(DeptDescription.schema.paths);
             },
             isAccessible: canEditDept,
@@ -306,11 +455,9 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptDescription.schema.paths))
-              }
               return Object.keys(DeptDescription.schema.paths)
-            }, after: async (request, context) => {
+            }, 
+            after: async (request, context) => {
               const adminUser = context.session.adminUser
               query_fetched = { ...request.query }
               if (adminUser && adminUser.role === 'restricted') {
@@ -335,7 +482,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -351,9 +498,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Activity.schema.paths));
-              }
               return Object.keys(Activity.schema.paths);
             },
             after: async (request, context) => {
@@ -386,13 +530,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Activity.schema.paths));
-              }
               return Object.keys(Activity.schema.paths);
             },
             isAccessible: canEditDept,
@@ -400,11 +541,9 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(Activity.schema.paths))
-              }
               return Object.keys(Activity.schema.paths)
-            }, after: async (request, context) => {
+            }, 
+            after: async (request, context) => {
               const adminUser = context.session.adminUser
               query_fetched = { ...request.query }
               if (adminUser && adminUser.role === 'restricted') {
@@ -429,7 +568,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -445,9 +584,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptNews.schema.paths));
-              }
               return Object.keys(DeptNews.schema.paths);
             },
             after: async (request, context) => {
@@ -480,13 +616,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptNews.schema.paths));
-              }
               return Object.keys(DeptNews.schema.paths);
             },
             isAccessible: canEditDept,
@@ -494,11 +627,9 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptNews.schema.paths))
-              }
               return Object.keys(DeptNews.schema.paths)
-            }, after: async (request, context) => {
+            }, 
+            after: async (request, context) => {
               const adminUser = context.session.adminUser
               query_fetched = { ...request.query }
               if (adminUser && adminUser.role === 'restricted') {
@@ -523,7 +654,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -539,9 +670,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Placement.schema.paths));
-              }
               return Object.keys(Placement.schema.paths);
             },
             after: async (request, context) => {
@@ -574,13 +702,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Placement.schema.paths));
-              }
               return Object.keys(Placement.schema.paths);
             },
             isAccessible: canEditDept,
@@ -588,9 +713,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(Placement.schema.paths))
-              }
               return Object.keys(Placement.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -617,6 +739,91 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
+            },
+            isAccessible: canEditDept
+          }
+        },
+        properties: {
+          sourceOfInfo: { isVisible: false },
+        },
+      },
+    },
+    {
+      resource: eventsCalendar,
+      options: {
+        navigation: "Home",
+        actions: {
+          edit: {
+            layout: (currentAdmin) => {
+              return Object.keys(eventsCalendar.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                request.record.params.department = adminUser.department;
+              }
+              if (adminUser) {
+                request.record.params.sourceOfInfo = adminUser.email;
+              }
+              return {
+                ...request,
+                query: query_fetched,
+              };
+            },
+            isAccessible: canEditDept,
+          },
+          delete: { isAccessible: isAdmin },
+          list: {
+            before: async (request, context) => {
+              const { currentAdmin } = context;
+              query_fetched = { ...request.query };
+              if (currentAdmin && currentAdmin.role === "restricted") {
+                // to filter by department
+                query_fetched["filters.department"] = currentAdmin.department;
+              }
+              return {
+                ...request,
+                query: query_fetched,
+              };
+            },
+            isAccessible: notAccessibleByClubs,
+          },
+          show: {
+            layout: (currentAdmin) => {
+              return Object.keys(eventsCalendar.schema.paths);
+            },
+            isAccessible: canEditDept,
+          },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+            layout: (currentAdmin) => {
+              return Object.keys(eventsCalendar.schema.paths)
+            }, after: async (request, context) => {
+              const adminUser = context.session.adminUser
+              query_fetched = { ...request.query }
+              if (adminUser && adminUser.role === 'restricted') {
+                eventsCalendar.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
+                  if (err) {
+                    console.log(err)
+                  } else {
+                    console.log("Result :", result)
+                  }
+                })
+              }
+              if (adminUser) {
+                eventsCalendar.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                  if (err) {
+                     console.log(err)
+                  } else {
+                    console.log("Result :", result)
+                  }
+                })
+              }
+              return {
+                ...request,
+                query: query_fetched
+              }
             },  
             isAccessible: canEditDept
           }
@@ -633,9 +840,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(HOD.schema.paths));
-              }
               return Object.keys(HOD.schema.paths);
             },
             after: async (request, context) => {
@@ -654,11 +858,9 @@ const AdminBroOptions = {
             },
             new: {
               layout: (currentAdmin) => {
-                if (currentAdmin.role === 'restricted') {
-                  return removefields(Object.keys(HOD.schema.paths))
-                }
                 return Object.keys(HOD.schema.paths)
-              }, after: async (request, context) => {
+              }, 
+              after: async (request, context) => {
                 const adminUser = context.session.adminUser
                 query_fetched = { ...request.query }
                 if (adminUser && adminUser.role === 'restricted') {
@@ -683,7 +885,7 @@ const AdminBroOptions = {
                   ...request,
                   query: query_fetched
                 }
-              },  
+              },
               isAccessible: canEditDept
             }
           },
@@ -701,13 +903,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(HOD.schema.paths));
-              }
               return Object.keys(HOD.schema.paths);
             },
             isAccessible: canEditDept,
@@ -727,9 +926,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Achievements.schema.paths));
-              }
               return Object.keys(Achievements.schema.paths);
             },
             after: async (request, context) => {
@@ -762,13 +958,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Achievements.schema.paths));
-              }
               return Object.keys(Achievements.schema.paths);
             },
             isAccessible: canEditDept,
@@ -776,9 +969,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(Achievements.schema.paths))
-              }
               return Object.keys(Achievements.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -805,7 +995,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -821,9 +1011,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Infrastructure.schema.paths));
-              }
               return Object.keys(Infrastructure.schema.paths);
             },
             after: async (request, context) => {
@@ -856,13 +1043,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Infrastructure.schema.paths));
-              }
               return Object.keys(Infrastructure.schema.paths);
             },
             isAccessible: canEditDept,
@@ -870,9 +1054,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(Infrastructure.schema.paths))
-              }
               return Object.keys(Infrastructure.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -899,7 +1080,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -915,9 +1096,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptContactUs.schema.paths));
-              }
               return Object.keys(DeptContactUs.schema.paths);
             },
             after: async (request, context) => {
@@ -950,13 +1128,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptContactUs.schema.paths));
-              }
               return Object.keys(DeptContactUs.schema.paths);
             },
             isAccessible: canEditDept,
@@ -964,9 +1139,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptContactUs.schema.paths))
-              }
               return Object.keys(DeptContactUs.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -993,7 +1165,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           },
         },
@@ -1009,11 +1181,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(
-                  Object.keys(DeptProgrammeInfo.schema.paths)
-                );
-              }
               return Object.keys(DeptProgrammeInfo.schema.paths);
             },
             after: async (request, context) => {
@@ -1046,15 +1213,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(
-                  Object.keys(DeptProgrammeInfo.schema.paths)
-                );
-              }
               return Object.keys(DeptProgrammeInfo.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1062,9 +1224,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptProgrammeInfo.schema.paths))
-              }
               return Object.keys(DeptProgrammeInfo.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1091,7 +1250,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1107,9 +1266,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptCoordinators.schema.paths));
-              }
               return Object.keys(DeptCoordinators.schema.paths);
             },
             after: async (request, context) => {
@@ -1142,13 +1298,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptCoordinators.schema.paths));
-              }
               return Object.keys(DeptCoordinators.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1156,9 +1309,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptCoordinators.schema.paths))
-              }
               return Object.keys(DeptCoordinators.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1185,7 +1335,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1201,9 +1351,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptSyllabus.schema.paths));
-              }
               return Object.keys(DeptSyllabus.schema.paths);
             },
             after: async (request, context) => {
@@ -1236,13 +1383,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptSyllabus.schema.paths));
-              }
               return Object.keys(DeptSyllabus.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1250,9 +1394,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptSyllabus.schema.paths))
-              }
               return Object.keys(DeptSyllabus.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1279,7 +1420,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1295,9 +1436,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptTimeTable.schema.paths));
-              }
               return Object.keys(DeptTimeTable.schema.paths);
             },
             after: async (request, context) => {
@@ -1330,13 +1468,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptTimeTable.schema.paths));
-              }
               return Object.keys(DeptTimeTable.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1344,9 +1479,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptTimeTable.schema.paths))
-              }
               return Object.keys(DeptTimeTable.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1373,7 +1505,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1389,9 +1521,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptCalender.schema.paths));
-              }
               return Object.keys(DeptCalender.schema.paths);
             },
             after: async (request, context) => {
@@ -1424,13 +1553,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptCalender.schema.paths));
-              }
               return Object.keys(DeptCalender.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1438,9 +1564,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptCalender.schema.paths))
-              }
               return Object.keys(DeptCalender.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1467,7 +1590,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1483,9 +1606,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(PhdScholar.schema.paths));
-              }
               return Object.keys(PhdScholar.schema.paths);
             },
             after: async (request, context) => {
@@ -1518,13 +1638,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(PhdScholar.schema.paths));
-              }
               return Object.keys(PhdScholar.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1532,9 +1649,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(PhdScholar.schema.paths))
-              }
               return Object.keys(PhdScholar.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1561,7 +1675,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1577,9 +1691,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptStudents.schema.paths));
-              }
               return Object.keys(DeptStudents.schema.paths);
             },
             after: async (request, context) => {
@@ -1612,13 +1723,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptStudents.schema.paths));
-              }
               return Object.keys(DeptStudents.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1626,9 +1734,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptStudents.schema.paths))
-              }
               return Object.keys(DeptStudents.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1655,7 +1760,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1671,9 +1776,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Staff.schema.paths));
-              }
               return Object.keys(Staff.schema.paths);
             },
             after: async (request, context) => {
@@ -1706,13 +1808,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(Staff.schema.paths));
-              }
               return Object.keys(Staff.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1720,9 +1819,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(Staff.schema.paths))
-              }
               return Object.keys(Staff.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1749,7 +1845,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1765,9 +1861,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptPub.schema.paths));
-              }
               return Object.keys(DeptPub.schema.paths);
             },
             after: async (request, context) => {
@@ -1784,7 +1877,7 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           delete: { isAccessible: isAdmin },
           list: {
@@ -1800,13 +1893,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptPub.schema.paths));
-              }
               return Object.keys(DeptPub.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1814,9 +1904,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptPub.schema.paths))
-              }
               return Object.keys(DeptPub.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1843,7 +1930,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1859,9 +1946,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptProjects.schema.paths));
-              }
               return Object.keys(DeptProjects.schema.paths);
             },
             after: async (request, context) => {
@@ -1894,13 +1978,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptProjects.schema.paths));
-              }
               return Object.keys(DeptProjects.schema.paths);
             },
             isAccessible: canEditDept,
@@ -1908,9 +1989,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptProjects.schema.paths))
-              }
               return Object.keys(DeptProjects.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -1937,7 +2015,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -1953,9 +2031,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptConsultancy.schema.paths));
-              }
               return Object.keys(DeptConsultancy.schema.paths);
             },
             after: async (request, context) => {
@@ -1988,13 +2063,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptConsultancy.schema.paths));
-              }
               return Object.keys(DeptConsultancy.schema.paths);
             },
             isAccessible: canEditDept,
@@ -2002,9 +2074,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptConsultancy.schema.paths))
-              }
               return Object.keys(DeptConsultancy.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -2031,7 +2100,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -2047,9 +2116,6 @@ const AdminBroOptions = {
         actions: {
           edit: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptClub.schema.paths));
-              }
               return Object.keys(DeptClub.schema.paths);
             },
             after: async (request, context) => {
@@ -2082,13 +2148,10 @@ const AdminBroOptions = {
                 query: query_fetched,
               };
             },
-            isAccessible: canEditDept,
+            isAccessible: notAccessibleByClubs,
           },
           show: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === "restricted") {
-                return removefields(Object.keys(DeptClub.schema.paths));
-              }
               return Object.keys(DeptClub.schema.paths);
             },
             isAccessible: canEditDept,
@@ -2096,9 +2159,6 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              if (currentAdmin.role === 'restricted') {
-                return removefields(Object.keys(DeptClub.schema.paths))
-              }
               return Object.keys(DeptClub.schema.paths)
             }, after: async (request, context) => {
               const adminUser = context.session.adminUser
@@ -2125,7 +2185,7 @@ const AdminBroOptions = {
                 ...request,
                 query: query_fetched
               }
-            },  
+            },
             isAccessible: canEditDept
           }
         },
@@ -2196,7 +2256,13 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-
+    // {
+    //   resource: eventsCalendar,
+    //   options: {
+    //     navigation: "Home",
+    //     actions: { list: { isAccessible: isAdmin } },
+    //   },
+    // },
     {
       resource: DefaultJobsTab,
       options: {
@@ -2233,7 +2299,59 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-
+    // clubs page config , all clubs accessible by admin , and clubadmin can only access their club
+    {
+      resource: ClubsPage,
+      options: {
+        navigation: "Home",
+        actions: {
+          edit: {
+            layout: (currentAdmin) => {
+              if (currentAdmin.role === "clubadmin") {
+                return removefields(Object.keys(ClubsPage.schema.paths));
+              }
+              return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
+            },
+            isAccessible: (canEditClub || isAdmin)
+          },
+          list: {
+            before: async (request, context) => {
+              const { currentAdmin } = context;
+              query_fetched = { ...request.query };
+              // to filter by clubName to show only their club
+              if (currentAdmin && currentAdmin.role === "clubadmin") {
+                query_fetched["filters.name"] = currentAdmin.department;
+              }
+              return {
+                ...request,
+                query: query_fetched,
+              };
+            },
+            // only club admin can access their club and super admin can access all clubs
+            isAccessible: (canEditClub || isAdmin)
+          },
+          show: {
+            layout: (currentAdmin) => {
+              if (currentAdmin.role === "clubadmin") {
+                return removefields(Object.keys(ClubsPage.schema.paths));
+              }
+              return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
+            },
+            isAccessible: (canEditClub || isAdmin)
+          },
+          // only super admin can delete club
+          delete: { isAccessible: isAdmin },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+            layout: () => {
+              return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
+            },
+            // only super admin can create new club
+            isAccessible: (isAdmin)
+          }
+        },
+      },
+    },
     {
       resource: Clubs,
       options: {
@@ -2665,7 +2783,7 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-    
+
     {
       resource: specialCentres,
       options: {
@@ -2944,13 +3062,21 @@ const admin_panel = new AdminBro(AdminBroOptions);
 const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
   authenticate: async (email, password) => {
     const user = await User.findOne({ email });
+    const clubuser = await ClubsBroUser.findOne({ email });
     const faculty = await Faculty.findOne({ email });
     if (user) {
       const matched = password == user.password;
       if (matched) {
         return user;
       }
-    } else if (faculty) {
+    }
+    else if (clubuser) {
+      const matched = password == clubuser.password;
+      if (matched) {
+        return clubuser;
+      }
+    }
+    else if (faculty) {
       var status = false;
       await bcrypt.compare(password, faculty.password).then((value) => {
         if (value) {
