@@ -316,6 +316,7 @@ const AdminBroOptions = {
   rootPath: "/api/dashboard",
   loginPath: "/api/dashboard/login",
   logoutPath: "/api/dashboard/logout",
+  timezone: 'Asia/Kolkata',
   resources: [
     ////// Assessable By Department HOD /////
     {
