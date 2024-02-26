@@ -251,7 +251,7 @@ fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=PHD")
   });
 
 // bscbed
-  fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=BSCBED")
+  fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=BSC-BED")
   .then((response) => response.json())
   .then((data) => {
     const bscbed_updates = document.getElementById("bscbed-updates");

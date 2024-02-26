@@ -112,7 +112,7 @@ const fields = {
             type: String,
             required: true,
             notEmpty: true,
-            enum: ['BTECH', 'MTECH-CCMT', 'MTECH-SELF', 'MSC', 'MBA', 'PHD', 'FOREIGN'],
+            enum: ['BTECH', 'MTECH-CCMT', 'MTECH-SELF', 'MSC', 'MBA', 'PHD', 'FOREIGN', 'BSC-BED'],
         },
     }
 };
