@@ -70,7 +70,9 @@
       align-self: flex-end;
       --direction: 50%;
     }
-
+    .font-times{
+      font-family: 'Times New Roman', Times, serif;
+    }
     .tooltiptext {
       visibility: hidden;
       width: 180px;
@@ -104,58 +106,59 @@
 
   <!--NAVBAR BEGINS-->
   <nav
-    class="fixed p-2 scroll-smooth z-50 max-w-screen w-full bg-white lg:flex lg:items-center lg:justify-around font-[Inter] shadow-2xl">
-    <div class="flex justify-around p-1 items-center ">
+    class="font-times fixed p-2 scroll-smooth z-50 max-w-screen w-full bg-white lg:flex lg:items-center lg:justify-around shadow-2xl">
+    
+    <div class="flex justify-around items-center overflow-hidden">
+      
       <a href="/alumni/alumni.html" target="_blank">
-        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline mx-2 lg:ml-12 cursor-pointer"
+        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline mx-2 lg:pl-0 cursor-pointer"
           src="img/logo.png" alt="logo">
       </a>
 
       <div
         class="text-[0.50rem] pl-2 sm:text-base w-[30rem] lg:w-[33rem] ml-2 sm:ml-3 leading-5 text-[#0054A6]  cursor-pointer font-bold">
         <a href="/alumni/alumni.html">
-          <div>NITJ Alumni Association (NITJAA)</div>Dr. B R Ambedkar National Institute of Technology Jalandhar
-        </a>
+          <div>NITJ Alumni Association (NITJAA)</div>Dr. BR Ambedkar National Institute of Technology Jalandhar</a>
       </div>
 
       <span class="text-2xl sm:text-3xl cursor-pointer text-black mx-2 mr-3 lg:hidden block">
         <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
       </span>
     </div>
-
+     
     <ul
-      class="lg:flex lg:items-center z-50 lg:z-auto lg:relative absolute bg-white w-full lg:top-0 lg:w-auto lg:py-0 p-4 lg:opacity-100 opacity-0 transition-all ease-in duration-500 left-0">
+      class="lg:flex lg:items-center z-50 lg:z-auto lg:relative absolute bg-white w-full lg:top-0 lg:w-auto lg:py-0 lg:pl-1 lg:opacity-100 opacity-0 transition-all ease-in duration-500 left-0">
 
 
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="/index.html" target="_blank"
-          class=" text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">
+          class=" text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500">
           <span class="text-[#0054A6] hover:text-[#D3D3D3]"><i class="fa-solid fa-house"></i></span>
         </a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="#about_nitjaa" 
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">ABOUT</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="https://drive.google.com/file/d/1qKooGTBjiBW9yHjtnC6rhkqTY-dO1utk/view?usp=sharing" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">NEWSLETTER</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="awards.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">AWARDS</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
-        <a href="office_bearers.html" target="_blank"
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="officebearers2.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">OFFICE
           BEARERS</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="givingback.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">GIVING
           BACK</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="#contact_reference"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">
           CONTACT US</a>
@@ -163,7 +166,7 @@
 
       <a href="https://nitj.ac.in/alumni_fundraising/login" target="_blank">
         <button
-          class="bg-[#0054A6] ml-1 mb-4 mr-10 lg:mb-0 text-white text-[0.5rem] sm:text-xs xl:text-base duration-500 w-20 xl:w-24 py-2 px-2 text-center shadow-md border-2 border-[#FFD66E]  rounded hover:-translate-y-1 hover:scale-110 ">
+          class="bg-[#0054A6] ml-1.5 mb-4 mr-1.5 lg:mb-0 text-white text-[0.5rem] sm:text-xs xl:text-base duration-500 w-20 xl:w-24 py-2 px-2 text-center shadow-md border-2 border-[#FFD66E]  rounded hover:-translate-y-1 hover:scale-110 ">
           LOGIN
         </button>
       </a>
@@ -186,7 +189,7 @@
         It&apos;s now time to give back
       </div>
     </div>
-    <video autoplay loop muted class="fixed -z-10 w-auto min-w-full min-h-full max-w-none "
+    <video autoplay loop muted class="fixed -z-10 w-auto min-w-full min-h-full max-w-none"
       poster="img/Campus_Aerial_view.png">
       <source src="img/NITJ_Campus_Aerial_View.mp4" type="video/mp4" />Your browser does not support the video tag.
     </video>
@@ -246,14 +249,14 @@
 
   </div> -->
   <div
-    class="grid bg-white py-4 sm:py-10 lg:py-16 px-5 sm:px-10 lg:px-[4.5rem] md:w-[68vw] max-w-screen md:rounded-xl mx-auto  h-[45vh] md:h-auto z-40 relative shadow-xl shadow-gray-700">
+    class="grid bg-white py-4 sm:py-10 lg:py-16 px-5 sm:px-10 lg:px-[4.5rem] md:w-[68vw] max-w-screen md:rounded-xl mx-auto md:h-auto z-40 relative shadow-xl shadow-gray-700">
 
     <h2
       class="grid justify-center items-center grid-cols-1 font-bold text-sm sm:text-base md:text-lg lg:text-2xl my-3 sm:my-5 text-black text-center font-sans">
       <a name="about_nitjaa">NITJ ALUMNI ASSOCIATION (NITJAA)</a></h2>
 
     <p
-      class="justify-center font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-5 my-7 md:my-9 lg:my-19">
+      class="justify-center font-normal font-[Poppins] text-[0.5rem] text-xs sm:text-sm md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-5 my-7 md:my-9 lg:my-19">
       <i class="fa-sharp fa-solid fa-quote-left text-xl sm:text-4xl lg:text-6xl text-[#FEB7028C] mx-3"></i>
       NITJAA provides platform for students to interact with well settled alumni's of NITJ. It aids in gaining career
       advice and gives them direction towards better future by organising annual alumni meet. It renders students with
@@ -262,10 +265,10 @@
       and connect them with the Institute and provide career advice to prepare for the real world.
     </p>
 
-    <hr
-      class="justify-center border-[3px] sm:border-[0.25rem] lg:border-[0.5rem] w-full border-[#FFD66E] md:border-[#277BC7] border-solid border-t-0 border-x-0 lg:border-t-0 lg:border-x-0 rounded my-2 mt-1 hidden md:block">
-      <p
-      class="justify-center font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19">
+     <hr
+      class="justify-center border-[3px] sm:border-[0.25rem] lg:border-[0.5rem] w-full border-[#FFD66E] md:border-[#277BC7] border-solid border-t-0 border-x-0 lg:border-t-0 lg:border-x-0 rounded my-2 mt-1 hidden md:block"> 
+      <p 
+      class="justify-center font-normal font-[Poppins] text-[0.5rem] text-xs sm:text-sm md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-7 md:my-9 lg:my-19">
       <i class="fa-sharp fa-solid fa-quote-left text-xl sm:text-4xl lg:text-6xl text-[#FEB7028C] mx-3"></i>
       <b>Vision:</b> "To build a rich intellectual potential embedded with interdisciplinary knowledge, human values and professional ethics among the youth, aspirant of becoming engineers and technologists, so that they contribute to society and create a niche for a successful career".
       <br><br><b>Mission:</b> "To become a leading and unique institution of higher learning, offering state-of-the- art education, research and training in engineering and technology to students who are able and eager to become change agents for the industrial and economic progress of the nation. To nurture and sustain an academic ambience conducive to the development and growth of committed professionals for sustainable development of the nation and to accomplish its integration into the global economy. To strive to be a Swachch NIT providing a guarantee of clean hostel, clean mess, clean water and hygienic & wholesome food to its students". </p>
@@ -277,7 +280,7 @@
 
 
 
-  <div class="max-w-screen relative bg-[#fDfDfD] md:-top-80 w-full">
+  <div class="max-w-screen relative bg-[#fDfDfD] sm :- top-0 md:-top-80 w-full">
 
     <div class="md:h-[75vh]">
 
@@ -359,23 +362,23 @@
 
 
     <!--RECENT EVENT STARTS-->
-    <div class="grid items-center p-3 sm:p-5 bg-[#f5f5f5]  bg-center ">
+    <div class="grid items-center justify-center p-3 sm:p-5 bg-[#f5f5f5]  bg-center ">
 
       <div class="mx-2 sm:mx-12 lg:mx-20 mt-5 sm:mt-6 lg:mt-20 flex align-middle">
         <div>
           <div
-            class="text-[#2167A7] text-xl sm:text-2xl lg:text-[1.75rem] font-bold lg:ml-4 mb-4 lg:mb-8 w-44 sm:w-52 lg:w-64">
+            class="text-[#2167A7] text-xl sm:text-2xl lg:text-[1.75rem] font-bold lg:mx-4 mb-4 lg:mb-8 w-44 sm:w-52 lg:w-64">
             RECENT EVENTS
           </div>
         </div>
-        <div class="w-full mt-3 lg:mt-2">
+         <div class="w-full mt-3 lg:mt-5">
           <hr
             class="border-[0.2rem] lg:border-[0.22rem]  border-[#277BC7] border-solid border-t-0 border-x-0 lg:border-t-0 lg:border-x-0 rounded mb-6">
-        </div>
+         </div>
       </div>
 
       <h2
-        class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-14 mb-4 sm:mb-5 lg:mb-8 mx-2 sm:mx-12 lg:ml-24 align-left">
+        class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-14 mb-4 sm:mb-5 lg:mb-8 mx-2 sm:mx-12 lg:mx-24 align-left">
         Alumni Meet held at NITJ on December 16, 2023</h2>
 
 
@@ -397,14 +400,14 @@
 
 
         </div>
-        <div class="relative w-[60vw] sm:w-[45vw] lg:w-[80vw]">
+        <div class="relative">
 
           <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem]  sm:my-2 text-justify">The alumni meet held at NIT JALANDHAR on December 16, 2023, was a poignant occasion that evoked a strong sense of nostalgia among the attendees. This annual gathering, cherished by both former and current members of the NITJ community, serves a dual purpose. On one hand, it rekindles connections among alumni, allowing them to celebrate shared successes and achievements and also it provides a valuable platform for current students to engage with distinguished alumni, gaining insights across diverse professional fields.</strong></p>
           <p><a
               href="https://nitj.ac.in/template/index.html?id=65802d57a9bc398b52134c6e?category=latestEvent">Read
               More &rarr;</a></p>
         </div>
-        <img src="https://nitj.ac.in/files/1702970060204-am2_47145.jpeg" alt="image" class="max-w-4xl rounded-xl mt-10 w-full">
+        <img src="https://nitj.ac.in/files/1702970060204-am2_47145.jpeg" alt="image" class="mx-auto max-w-4xl rounded-xl mt-10 w-full">
         
 
       </div>
@@ -458,23 +461,23 @@
     
        
 
-    <div class=" grid items-center p-3 sm:p-5 lg:p-10 bg-[#f5f5f5]  bg-center ">
+    <div class=" grid items-center justify p-3 sm:p-5 bg-[#f5f5f5]  bg-center ">
 
       <div class="mx-2 sm:mx-12 lg:mx-20 mt-5 sm:mt-6 lg:mt-10 flex align-middle">
         <div>
           <div
-            class="text-[#2167A7] text-xl sm:text-2xl lg:text-[1.75rem] font-bold lg:ml-4 mb-4 lg:mb-8 w-44 sm:w-52 lg:w-64">
+            class="text-[#2167A7] text-xl sm:text-2xl lg:text-[1.75rem] font-bold lg:mx-4 mb-4 lg:mb-8 w-44 sm:w-52 lg:w-64">
             LATEST UPDATES
           </div>
         </div>
         <div class="w-full mt-3 lg:mt-5">
           <hr
             class="border-[0.2rem] lg:border-[0.22rem]  border-[#277BC7] border-solid border-t-0 border-x-0 lg:border-t-0 lg:border-x-0 rounded mb-6">
-        </div>
+         </div>
       </div>
 
       <h2
-        class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-8 mb-4 sm:mb-5 lg:mb-6 mx-2 sm:mx-12 lg:ml-24 align-left">
+        class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-8 mb-4 sm:mb-5 lg:mb-6 mx-2 sm:mx-12 lg:mx-24 align-left">
         NITJ Alumni of ECE Department Donated Funds for Upgradation of "Devices and Circuits Lab"</h2>
 
 
@@ -493,7 +496,7 @@
       </div>
 
       <h2
-        class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-8 mb-4 sm:mb-5 lg:mb-6 mx-2 sm:mx-12 lg:ml-24 align-left">
+        class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-8 mb-4 sm:mb-5 lg:mb-6 mx-2 sm:mx-12 lg:mx-24 align-left">
         NITJ Alumni Mr. Sudhir Chikhle (B.Tech-Mechanical Engineering) joins Tata Motors' EV Business as Chief Purchase Officer</h2>
 
 
@@ -512,7 +515,7 @@
       </div>
       
       <h2
-        class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-8 mb-4 sm:mb-5 lg:mb-6 mx-2 sm:mx-12 lg:ml-24 align-left">
+        class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-8 mb-4 sm:mb-5 lg:mb-6 mx-2 sm:mx-12 lg:mx-24 align-left">
         An MoU signed between NIT Jalandhar and KISCO India Private Limited (KIPL) </h2>
 
 
@@ -534,9 +537,9 @@
 
 
         </div>
-        <div class="relative w-[60vw] sm:w-[45vw] lg:w-[80vw]">
+        <div class="relative">
 
-          <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem]  sm:my-2 text-justify">The MoU was signed by Prof. Binod
+          <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem] sm:my-2 text-justify">The MoU was signed by Prof. Binod
             Kumar Kanaujia, Director of NIT Jalandhar, and Mr. Rohit Khanna, Managing Director of KIPL. The main
             objective of this collaboration is to extend vital financial support to academically gifted yet economically
             challenged students at NIT Jalandhar. KIPL has generously provided financial assistance amounting to Rs 3.2
@@ -548,7 +551,7 @@
               href="https://nitj.ac.in/template/index.html?id=654868447740daae16b57a0f?category=researchHighlights">Read
               More &rarr;</a></p>
         </div>
-        <img src="https://v1.nitj.ac.in/nitj_files/links/03_50486.jpg" alt="mou_image" class="max-w-4xl rounded-xl mt-10 w-full">
+        <img src="https://v1.nitj.ac.in/nitj_files/links/03_50486.jpg" alt="mou_image" class="mx-auto max-w-4xl rounded-xl mt-10 w-full">
         
 
       </div>
@@ -556,7 +559,7 @@
     </div>
 
 
-    <!--RECENT EVENTS ENDS-->
+    <!--LATEST UPDATES ENDS-->
 
 
 
@@ -987,7 +990,7 @@
 
 
     <!-- === FOOTER Starts === -->
-  <div class="z-10">
+  <div class="z-10 text-xs sm:text-sm md:text-base lg:text-lg">
     <div class=" bg-[#0054A6] text-white lg:flex-row px-5 pt-5 lg:px-20 h-full flex">
       <a href="/alumni/alumni.html" target="_blank" class="hover:text-[#82C3FF]">
         <img class="h-[2.2rem] sm:h-[3.6rem] inline cursor-pointer " src="img/SARC_logo.png" alt="logo">
@@ -1044,7 +1047,7 @@
 
   <div class="border-t border-zinc-400 bg-[#0054A6] p-3 text-center text-white">
     <div class="pb-[10px] text-[12px] lg:pb-0 lg:text-[15px] text-center">
-      &#169; Copyright 2022, All Rights Reserved NIT Jalandhar
+      &#169; Copyright 2024, All Rights Reserved NIT Jalandhar
     </div>
 
     <div class="text-[12px] lg:text-[15px]">

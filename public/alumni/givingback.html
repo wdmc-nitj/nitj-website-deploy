@@ -40,7 +40,9 @@
       overflow: hidden;
       background: #333;
     }
-
+    .font-times{
+      font-family: 'Times New Roman', Times, serif;
+    }
 
     @keyframes slide {
       to {
@@ -54,61 +56,61 @@
 </head>
 
 <body class="h-screen overflow-x-hidden">
-
-  <!--NAVBAR BEGINS-->
+<!--NAVBAR BEGINS-->
   <nav
-    class="fixed p-2 scroll-smooth z-50 max-w-screen w-full bg-white lg:flex lg:items-center lg:justify-around font-[Inter] shadow-2xl">
-    <div class="flex justify-around p-1 items-center ">
+    class="font-times fixed p-2 scroll-smooth z-50 max-w-screen w-full bg-white lg:flex lg:items-center lg:justify-around shadow-2xl">
+    
+    <div class="flex justify-around items-center overflow-hidden">
+      
       <a href="/alumni/alumni.html" target="_blank">
-        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline mx-2 lg:ml-12 cursor-pointer"
+        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline mx-2 lg:pl-0 cursor-pointer"
           src="img/logo.png" alt="logo">
       </a>
 
       <div
         class="text-[0.50rem] pl-2 sm:text-base w-[30rem] lg:w-[33rem] ml-2 sm:ml-3 leading-5 text-[#0054A6]  cursor-pointer font-bold">
         <a href="/alumni/alumni.html">
-          <div>NITJ Alumni Association (NITJAA)</div>Dr. B R Ambedkar National Institute of Technology Jalandhar
-        </a>
+          <div>NITJ Alumni Association (NITJAA)</div>Dr. BR Ambedkar National Institute of Technology Jalandhar</a>
       </div>
 
       <span class="text-2xl sm:text-3xl cursor-pointer text-black mx-2 mr-3 lg:hidden block">
         <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
       </span>
     </div>
-
+     
     <ul
-      class="lg:flex lg:items-center z-50 lg:z-auto lg:relative absolute bg-white w-full lg:top-0 lg:w-auto lg:py-0 p-4 lg:opacity-100 opacity-0 transition-all ease-in duration-500 left-0">
+      class="lg:flex lg:items-center z-50 lg:z-auto lg:relative absolute bg-white w-full lg:top-0 lg:w-auto lg:py-0 lg:pl-1 lg:opacity-100 opacity-0 transition-all ease-in duration-500 left-0">
 
 
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="/index.html" target="_blank"
-          class=" text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">
+          class=" text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500">
           <span class="text-[#0054A6] hover:text-[#D3D3D3]"><i class="fa-solid fa-house"></i></span>
         </a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
-        <a href="./alumni.html#about_nitjaa" 
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="alumni.html#about_nitjaa" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">ABOUT</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="https://drive.google.com/file/d/1qKooGTBjiBW9yHjtnC6rhkqTY-dO1utk/view?usp=sharing" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">NEWSLETTER</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="awards.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">AWARDS</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
-        <a href="office_bearers.html" target="_blank"
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="officebearers2.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">OFFICE
           BEARERS</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="givingback.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">GIVING
           BACK</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="#contact_reference"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">
           CONTACT US</a>
@@ -116,7 +118,7 @@
 
       <a href="https://nitj.ac.in/alumni_fundraising/login" target="_blank">
         <button
-          class="bg-[#0054A6] ml-1 mb-4 mr-10 lg:mb-0 text-white text-[0.5rem] sm:text-xs xl:text-base duration-500 w-20 xl:w-24 py-2 px-2 text-center shadow-md border-2 border-[#FFD66E]  rounded hover:-translate-y-1 hover:scale-110 ">
+          class="bg-[#0054A6] ml-1.5 mb-4 mr-1.5 lg:mb-0 text-white text-[0.5rem] sm:text-xs xl:text-base duration-500 w-20 xl:w-24 py-2 px-2 text-center shadow-md border-2 border-[#FFD66E]  rounded hover:-translate-y-1 hover:scale-110 ">
           LOGIN
         </button>
       </a>
@@ -528,97 +530,95 @@
 
   <!-- <div class="wrapper bg bg-cover bg-center bg-no-repeat h-screen" style="background-image: url('footer.png');"></div> -->
   <!-- === FOOTER Starts === -->
-  <div class="z-10">
-    <div class=" bg-[#0054A6] text-white lg:flex-row px-5 pt-5 lg:px-20 h-full flex">
-      <a href="/alumni/alumni.html" target="_blank" class="hover:text-[#82C3FF]">
-        <img class="h-[2.2rem] sm:h-[3.6rem] inline cursor-pointer " src="img/SARC_logo.png" alt="logo">
-      </a>&nbsp;&nbsp;
-      <p class="grid items-center font-semibold text-white lg:text-[20px] hover:text-[#82C3FF]">
-        <a href="/alumni/alumni.html" target="_blank">NITJ Alumni Association (NITJAA)</a>
-      </p>
+<div class="z-10 text-xs sm:text-sm md:text-base lg:text-lg">
+  <div class=" bg-[#0054A6] text-white lg:flex-row px-5 pt-5 lg:px-20 h-full flex">
+    <a href="/alumni/alumni.html" target="_blank" class="hover:text-[#82C3FF]">
+      <img class="h-[2.2rem] sm:h-[3.6rem] inline cursor-pointer " src="img/SARC_logo.png" alt="logo">
+    </a>&nbsp;&nbsp;
+    <p class="grid items-center font-semibold text-white lg:text-[20px] hover:text-[#82C3FF]">
+      <a href="/alumni/alumni.html" target="_blank">NITJ Alumni Association (NITJAA)</a>
+    </p>
+  </div>
+  <a name="contact_reference"></a>
+  <div class="px-5 pt-3 lg:px-20 bg-[#0054A6] text-white">
+    <div class="pb-[6px] lg:w-[85%]">
+      <i class="fas fa-location-dot pr-[8px]"></i><span class="opacity-90">G.T Road, Amritsar Bypass, Jalandhar,
+        Punjab, India-144008</span>
     </div>
-    <a name="contact_reference"></a>
-    <div class="px-5 pt-3 lg:px-20 bg-[#0054A6] text-white">
-      <div class="pb-[6px] lg:w-[85%]">
-        <i class="fas fa-location-dot pr-[8px]"></i><span class="opacity-90">G.T Road, Amritsar Bypass, Jalandhar,
-          Punjab, India-144008</span>
-      </div>
-      <div class=" pb-[6px]">
-        <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780609d"
-          class="hover:text-[#82C3FF]">
+    <div class=" pb-[6px]">
+      <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780609d" class="hover:text-[#82C3FF]">
 
-          <div>
-            <span class="font-bold ">Dr. Anish Kumar Sachdeva</span> (Dean Student Welfare)
-        </a>
-        <a href="https://departments.nitj.ac.in/dept/me/Faculty/6430446638bff038a7807afd"
-          class="hover:text-[#82C3FF]">
+        <div>
+          <span class="font-bold ">Dr. Anish Kumar Sachdeva</span> (Dean Student Welfare)
+      </a>
+      <a href="https://departments.nitj.ac.in/dept/me/Faculty/6430446638bff038a7807afd" class="hover:text-[#82C3FF]">
 
-          <div>
-            <span class="font-bold ">Dr. Manoj Kumar</span> (Alumni Coordinator)
-        </a>
-        <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780601a"
-          class="hover:text-[#82C3FF] clear-right">
+        <div>
+          <span class="font-bold ">Dr. Manoj Kumar</span> (Alumni Coordinator)
+      </a>
+      <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780601a"
+        class="hover:text-[#82C3FF] clear-right">
 
-          <div>
-            <span class="font-bold ">Dr. Ajay Gupta</span> (Alumni Coordinator)
-        </a>
+        <div>
+          <span class="font-bold ">Dr. Ajay Gupta</span> (Alumni Coordinator)
+      </a>
 
 
-        <h3 class="opacity-90"><i class="fas fa-envelope mt-1 pr-[8px]"></i> office.alumniaffairs@nitj.ac.in</h3>
-
-      </div>
-        
-        <div class="align-center flex flex-row pb-[14px] clear-both">
-          <i class="fas fa-phone mt-1 pr-[8px]"></i>
-          <h3 class="opacity-90">
-            +91-0181-5037855, 2690301, 2690453, 3082000
-          </h3>
-        </div>
-      </div>
+      <h3 class="opacity-90"><i class="fas fa-envelope mt-1 pr-[8px]"></i> office.alumniaffairs@nitj.ac.in</h3>
 
     </div>
-    
 
+    <div class="align-center flex flex-row pb-[14px] clear-both">
+      <i class="fas fa-phone mt-1 pr-[8px]"></i>
+      <h3 class="opacity-90">
+        +91-0181-5037855, 2690301, 2690453, 3082000
+      </h3>
+    </div>
   </div>
 
+</div>
 
 
-  <div class="border-t border-zinc-400 bg-[#0054A6] p-3 text-center text-white">
-    <div class="pb-[10px] text-[12px] lg:pb-0 lg:text-[15px] text-center">
-      &#169; Copyright 2022, All Rights Reserved NIT Jalandhar
-    </div>
+</div>
 
-    <div class="text-[12px] lg:text-[15px]">
-      <a href="https://www.facebook.com/sarc.nitjalandhar" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
-        target="_blank">
-        <i class="fa-brands fa-facebook"></i>
-      </a>
-      |
-      <a href="https://twitter.com/NITJofficial" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
-        target="_blank">
-        <i class="fab fa-twitter"></i>
-      </a>
-      |
-      <a href="https://www.linkedin.com/in/s-a-r-c-nit-jalandhar-ab6261259"
-        class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]" target="_blank">
-        <i class="fa-brands fa-linkedin"></i>
-      </a>
-      |
-      <a href="https://www.instagram.com/nitjofficial/?hl=en" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
-        target="_blank">
-        <i class="fa-brands fa-instagram "></i>
-      </a>
-      |
-      <a href="https://www.youtube.com/c/NITJOfficial" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
-        target="_blank">
-        <i class="fa-brands fa-youtube"></i>
-      </a>
-      |
-      <a href="credits.html" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]" target="_blank">Credits</a>
-    </div>
+
+
+<div class="border-t border-zinc-400 bg-[#0054A6] p-3 text-center text-white">
+  <div class="pb-[10px] text-[12px] lg:pb-0 lg:text-[15px] text-center">
+    &#169; Copyright 2024, All Rights Reserved NIT Jalandhar
   </div>
+
+  <div class="text-[12px] lg:text-[15px]">
+    <a href="https://www.facebook.com/sarc.nitjalandhar" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+      target="_blank">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+    |
+    <a href="https://twitter.com/NITJofficial" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+      target="_blank">
+      <i class="fab fa-twitter"></i>
+    </a>
+    |
+    <a href="https://www.linkedin.com/in/s-a-r-c-nit-jalandhar-ab6261259"
+      class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]" target="_blank">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+    |
+    <a href="https://www.instagram.com/nitjofficial/?hl=en" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+      target="_blank">
+      <i class="fa-brands fa-instagram "></i>
+    </a>
+    |
+    <a href="https://www.youtube.com/c/NITJOfficial" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+      target="_blank">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+    |
+    <a href="credits.html" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]" target="_blank">Credits</a>
   </div>
-  <!-- === FOOTER Ends === -->
+</div>
+</div>
+<!-- === FOOTER Ends === -->
 
 
   <script>

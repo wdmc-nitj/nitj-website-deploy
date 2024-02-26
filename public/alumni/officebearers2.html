@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" />
+  <link rel="stylesheet" href="/style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="icon" type="favicon" href="img/logo.png">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap" rel="stylesheet">
+
+
+
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="jquery-3.6.3.min.js"></script>
+
+  <script src="https://kit.fontawesome.com/46aac33939.js" crossorigin="anonymous"></script>
+
+  <title>Office Bearers</title>
+
+
+  <style>
+    .main {
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      background: #333;
+    }
+
+
+    @keyframes slide {
+      to {
+        -webkit-transform: translateY(var(--direction, -50%));
+        transform: translateY(var(--direction, -50%));
+      }
+    }
+     .font-times{
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+
+
+</head>
+
+<body class="h-screen overflow-x-hidden">
+
+  <!--NAVBAR BEGINS-->
+  <nav
+    class="font-times fixed p-2 scroll-smooth z-50 max-w-screen w-full bg-white lg:flex lg:items-center lg:justify-around shadow-2xl">
+    
+    <div class="flex justify-around items-center overflow-hidden">
+      
+      <a href="/alumni/alumni.html" target="_blank">
+        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline mx-2 lg:pl-0 cursor-pointer"
+          src="img/logo.png" alt="logo">
+      </a>
+
+      <div
+        class="text-[0.50rem] pl-2 sm:text-base w-[30rem] lg:w-[33rem] ml-2 sm:ml-3 leading-5 text-[#0054A6]  cursor-pointer font-bold">
+        <a href="/alumni/alumni.html">
+          <div>NITJ Alumni Association (NITJAA)</div>Dr. BR Ambedkar National Institute of Technology Jalandhar</a>
+      </div>
+
+      <span class="text-2xl sm:text-3xl cursor-pointer text-black mx-2 mr-3 lg:hidden block">
+        <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+      </span>
+    </div>
+     
+    <ul
+      class="lg:flex lg:items-center z-50 lg:z-auto lg:relative absolute bg-white w-full lg:top-0 lg:w-auto lg:py-0 lg:pl-1 lg:opacity-100 opacity-0 transition-all ease-in duration-500 left-0">
+
+
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="/index.html" target="_blank"
+          class=" text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500">
+          <span class="text-[#0054A6] hover:text-[#D3D3D3]"><i class="fa-solid fa-house"></i></span>
+        </a>
+      </li>
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="alumni.html#about_nitjaa" target="_blank"
+          class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">ABOUT</a>
+      </li>
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="https://drive.google.com/file/d/1qKooGTBjiBW9yHjtnC6rhkqTY-dO1utk/view?usp=sharing" target="_blank"
+          class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">NEWSLETTER</a>
+      </li>
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="awards.html" target="_blank"
+          class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">AWARDS</a>
+      </li>
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="officebearers2.html" target="_blank"
+          class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">OFFICE
+          BEARERS</a>
+      </li>
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="givingback.html" target="_blank"
+          class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">GIVING
+          BACK</a>
+      </li>
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="#contact_reference"
+          class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">
+          CONTACT US</a>
+      </li>
+
+      <a href="https://nitj.ac.in/alumni_fundraising/login" target="_blank">
+        <button
+          class="bg-[#0054A6] ml-1.5 mb-4 mr-1.5 lg:mb-0 text-white text-[0.5rem] sm:text-xs xl:text-base duration-500 w-20 xl:w-24 py-2 px-2 text-center shadow-md border-2 border-[#FFD66E]  rounded hover:-translate-y-1 hover:scale-110 ">
+          LOGIN
+        </button>
+      </a>
+
+    </ul>
+  </nav>
+  <!-- NAVBAR ENDS -->
+
+
+
+
+  <div class="relative max-w-screen flex items-center justify-center h-screen mb-12 overflow-hidden">
+    <!-- <p>Support by Sarthak Sharma</p> -->
+    <div class="relative z-30 p-5 text-white bg-opacity-50 rounded-xl flex-none">
+      <!-- <div class="text-xl md:text-4xl lg:text-5xl font-semibold italic animate-pulse md:py-2">
+        Welcome Home!
+      </div> -->
+      <div class="text-base md:text-4xl lg:text-5xl font-semibold italic ">
+        Your alma mater needs your support<br>
+        It&apos;s now time to give back
+      </div>
+    </div>
+    <video autoplay loop muted class="fixed -z-10 w-auto min-w-full min-h-full max-w-none "
+      poster="img/Campus_Aerial_view.png">
+      <source src="img/NITJ_Campus_Aerial_View.mp4" type="video/mp4" />Your browser does not support the video tag.
+    </video>
+  </div>
+
+
+  <!-- <div class="grid bg-white py-4 sm:py-8 lg:py-12 px-4 sm:px-8 lg:px-12 w-full sm:w-5/6 md:w-4/5 lg:w-4/5 xl:w-4/5 md:max-w-screen-md md:rounded-xl mx-auto h-auto z-40 relative mt-[-2rem] mb-[-2rem] text-xs sm:text-sm md:text-base lg:text-lg">
+    -->
+ 
+  <div
+    class="grid bg-white py-4 sm:py-10 lg:py-16 px-5 sm:px-10 lg:px-[4.5rem] md:w-[68vw] max-w-screen md:rounded-xl mx-auto md:h-auto z-40 relative shadow-xl shadow-gray-700 text-xs sm:text-sm md:text-base lg:text-lg">
+
+    <h2 class="text-center font-bold text-lg sm:text-xl lg:text-3xl my-3 sm:my-5 text-black font-sans">
+      NITJAA OFFICE BEARERS
+      </h2>
+  
+     <div class="flex justify-center mt-6 ">
+      <table class="w-full sm:w-5/6 md:w-4/5 lg:w-4/5 xl:w-4/5 shadow-md text-center border-separate border-spacing-2 border border-gray-400 mt-[-1rem]">
+  
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 p-2 sm:p-3 md:p-4 lg:p-5">
+              <strong class="text-base sm:text-xl md:text-2xl lg:text-3xl">
+                Prof Ajay Gupta
+              </strong>
+              <br>
+              Chairman
+            </td>
+  
+            <td class="border border-gray-300 p-2">
+              <img src="./img/aguptasir.jpg" alt="" width="120" height="120" class="m-auto">
+            </td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2 sm:p-3 md:p-4 lg:p-5">
+              <strong class="text-base sm:text-xl md:text-2xl lg:text-3xl">
+                Prof Ajay Bansal
+              </strong>
+              <br>
+              Registrar
+            </td>
+            <td class="border border-gray-300 p-2">
+              <img src="./img/ajaybansalsir.jpg" alt="" width="120" height="120" class="m-auto">
+            </td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2 sm:p-3 md:p-4 lg:p-5">
+              <strong class="text-base sm:text-xl md:text-2xl lg:text-3xl">
+                Prof Anish Sachdeva
+              </strong>
+              <br>
+              Dean Student Welfare
+            </td>
+            <td class="border border-gray-300 p-2">
+              <img src="./img/anishsir.jpg" alt="" width="120" height="90" class="m-auto">
+            </td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2 sm:p-3 md:p-4 lg:p-5">
+              <strong class="text-base sm:text-xl md:text-2xl lg:text-3xl">
+                Dr Manoj Kumar
+              </strong>
+              <br>
+              Alumni Coordinator
+            </td>
+            <td class="border border-gray-300 p-2">
+              <img src="./img/manojksir.jpg" alt="" width="120" height="120" class="m-auto">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="wrapper bg bg-cover bg-center bg-no-repeat md:h-10 sm:h-0"
+    style="background-image: url('footer.png'); width: 100%;"></div>
+
+  <script>
+    function closeall() {
+      const t1 = document.getElementById('info1');
+      const t2 = document.getElementById('info2');
+      const t3 = document.getElementById('info3');
+      const t4 = document.getElementById('info4');
+      const t5 = document.getElementById('info5');
+      const t6 = document.getElementById('info6');
+      const t7 = document.getElementById('info7');
+      const t8 = document.getElementById('info8');
+
+      t1.style.display = 'none';
+      t2.style.display = 'none';
+      t3.style.display = 'none';
+      t4.style.display = 'none';
+      t5.style.display = 'none';
+      t6.style.display = 'none';
+      t7.style.display = 'none';
+      t8.style.display = 'none';
+    }
+
+
+    function showInfo(infoId) {
+      // Get the text element by ID
+      closeall()
+      const textElement = document.getElementById(infoId);
+      textElement.style.display = 'block';
+
+      // Toggle the visibility of the text element
+      // if (textElement.style.display === "none" || textElement.style.display === "") {
+      //   textElement.style.display = "block";
+      // } else {
+      //   textElement.style.display = "none";
+      // }
+    }
+
+  </script>
+</body>
+
+<!-- === FOOTER Starts === -->
+
+<div class="z-10 text-xs sm:text-sm md:text-base lg:text-lg">
+  <div class=" bg-[#0054A6] text-white lg:flex-row px-5 pt-5 lg:px-20 h-full flex">
+    <a href="/alumni/alumni.html" target="_blank" class="hover:text-[#82C3FF]">
+      <img class="h-[2.2rem] sm:h-[3.6rem] inline cursor-pointer " src="img/SARC_logo.png" alt="logo">
+    </a>&nbsp;&nbsp;
+    <p class="grid items-center font-semibold text-white lg:text-[20px] hover:text-[#82C3FF]">
+      <a href="/alumni/alumni.html" target="_blank">NITJ Alumni Association (NITJAA)</a>
+    </p>
+  </div>
+  <a name="contact_reference"></a>
+  <div class="px-5 pt-3 lg:px-20 bg-[#0054A6] text-white">
+    <div class="pb-[6px] lg:w-[85%]">
+      <i class="fas fa-location-dot pr-[8px]"></i><span class="opacity-90">G.T Road, Amritsar Bypass, Jalandhar,
+        Punjab, India-144008</span>
+    </div>
+    <div class=" pb-[6px]">
+      <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780609d" class="hover:text-[#82C3FF]">
+
+        <div>
+          <span class="font-bold ">Dr. Anish Kumar Sachdeva</span> (Dean Student Welfare)
+      </a>
+      <a href="https://departments.nitj.ac.in/dept/me/Faculty/6430446638bff038a7807afd" class="hover:text-[#82C3FF]">
+
+        <div>
+          <span class="font-bold ">Dr. Manoj Kumar</span> (Alumni Coordinator)
+      </a>
+      <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780601a"
+        class="hover:text-[#82C3FF] clear-right">
+
+        <div>
+          <span class="font-bold ">Dr. Ajay Gupta</span> (Alumni Coordinator)
+      </a>
+
+
+      <h3 class="opacity-90"><i class="fas fa-envelope mt-1 pr-[8px]"></i> office.alumniaffairs@nitj.ac.in</h3>
+
+    </div>
+
+    <div class="align-center flex flex-row pb-[14px] clear-both">
+      <i class="fas fa-phone mt-1 pr-[8px]"></i>
+      <h3 class="opacity-90">
+        +91-0181-5037855, 2690301, 2690453, 3082000
+      </h3>
+    </div>
+  </div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="border-t border-zinc-400 bg-[#0054A6] p-3 text-center text-white">
+  <div class="pb-[10px] text-[12px] lg:pb-0 lg:text-[15px] text-center">
+    &#169; Copyright 2024, All Rights Reserved NIT Jalandhar
+  </div>
+
+  <div class="text-[12px] lg:text-[15px]">
+    <a href="https://www.facebook.com/sarc.nitjalandhar" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+      target="_blank">
+      <i class="fa-brands fa-facebook"></i>
+    </a>
+    |
+    <a href="https://twitter.com/NITJofficial" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+      target="_blank">
+      <i class="fab fa-twitter"></i>
+    </a>
+    |
+    <a href="https://www.linkedin.com/in/s-a-r-c-nit-jalandhar-ab6261259"
+      class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]" target="_blank">
+      <i class="fa-brands fa-linkedin"></i>
+    </a>
+    |
+    <a href="https://www.instagram.com/nitjofficial/?hl=en" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+      target="_blank">
+      <i class="fa-brands fa-instagram "></i>
+    </a>
+    |
+    <a href="https://www.youtube.com/c/NITJOfficial" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+      target="_blank">
+      <i class="fa-brands fa-youtube"></i>
+    </a>
+    |
+    <a href="credits.html" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]" target="_blank">Credits</a>
+  </div>
+</div>
+</div>
+<!-- === FOOTER Ends === -->
+</div>
+</div>
+</div>
+
+</html>
