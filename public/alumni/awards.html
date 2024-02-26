@@ -3,78 +3,112 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="favicon" href="img/logo.png">
-  <title>Awards</title>
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" />
+  <link rel="stylesheet" href="/style.css">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-  integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-  crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="icon" type="favicon" href="img/logo.png">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap" rel="stylesheet">
+
+
+
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="jquery-3.6.3.min.js"></script>
+
+  <script src="https://kit.fontawesome.com/46aac33939.js" crossorigin="anonymous"></script>
+
+  <title>Awards</title>
+
+
   <style>
-     .font-times{
-      font-family: 'Times New Roman', Times, serif;
+    .main {
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      background: #333;
+    }
+
+
+    @keyframes slide {
+      to {
+        -webkit-transform: translateY(var(--direction, -50%));
+        transform: translateY(var(--direction, -50%));
+      }
     }
   </style>
+
+
 </head>
 
 <body class="h-screen overflow-x-hidden">
 
   <!--NAVBAR BEGINS-->
   <nav
-    class="font-times fixed p-2 scroll-smooth z-50 max-w-screen w-full bg-white lg:flex lg:items-center lg:justify-around shadow-2xl">
-    
-    <div class="flex justify-around items-center overflow-hidden">
-      
+    class="fixed p-2 scroll-smooth z-50 max-w-screen w-full bg-white lg:flex lg:items-center lg:justify-around font-[Inter] shadow-2xl">
+    <div class="flex justify-around p-1 items-center ">
       <a href="/alumni/alumni.html" target="_blank">
-        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline mx-2 lg:pl-0 cursor-pointer"
+        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline mx-2 lg:ml-12 cursor-pointer"
           src="img/logo.png" alt="logo">
       </a>
 
       <div
         class="text-[0.50rem] pl-2 sm:text-base w-[30rem] lg:w-[33rem] ml-2 sm:ml-3 leading-5 text-[#0054A6]  cursor-pointer font-bold">
         <a href="/alumni/alumni.html">
-          <div>NITJ Alumni Association (NITJAA)</div>Dr. BR Ambedkar National Institute of Technology Jalandhar</a>
+          <div>NITJ Alumni Association (NITJAA)</div>Dr. B R Ambedkar National Institute of Technology Jalandhar
+        </a>
       </div>
 
       <span class="text-2xl sm:text-3xl cursor-pointer text-black mx-2 mr-3 lg:hidden block">
         <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
       </span>
     </div>
-     
+
     <ul
-      class="lg:flex lg:items-center z-50 lg:z-auto lg:relative absolute bg-white w-full lg:top-0 lg:w-auto lg:py-0 lg:pl-1 lg:opacity-100 opacity-0 transition-all ease-in duration-500 left-0">
+      class="lg:flex lg:items-center z-50 lg:z-auto lg:relative absolute bg-white w-full lg:top-0 lg:w-auto lg:py-0 p-4 lg:opacity-100 opacity-0 transition-all ease-in duration-500 left-0">
 
 
-      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
         <a href="/index.html" target="_blank"
-          class=" text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500">
+          class=" text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">
           <span class="text-[#0054A6] hover:text-[#D3D3D3]"><i class="fa-solid fa-house"></i></span>
         </a>
       </li>
-      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
-        <a href="alumni.html#about_nitjaa" target="_blank"
+      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+        <a href="./alumni.html#about_nitjaa"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">ABOUT</a>
       </li>
-      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
         <a href="https://drive.google.com/file/d/1qKooGTBjiBW9yHjtnC6rhkqTY-dO1utk/view?usp=sharing" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">NEWSLETTER</a>
       </li>
-      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
         <a href="awards.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">AWARDS</a>
       </li>
-      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
-        <a href="officebearers2.html" target="_blank"
+      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+        <a href="office_bearers.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">OFFICE
           BEARERS</a>
       </li>
-      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
         <a href="givingback.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">GIVING
           BACK</a>
       </li>
-      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
         <a href="#contact_reference"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">
           CONTACT US</a>
@@ -82,7 +116,7 @@
 
       <a href="https://nitj.ac.in/alumni_fundraising/login" target="_blank">
         <button
-          class="bg-[#0054A6] ml-1.5 mb-4 mr-1.5 lg:mb-0 text-white text-[0.5rem] sm:text-xs xl:text-base duration-500 w-20 xl:w-24 py-2 px-2 text-center shadow-md border-2 border-[#FFD66E]  rounded hover:-translate-y-1 hover:scale-110 ">
+          class="bg-[#0054A6] ml-1 mb-4 mr-10 lg:mb-0 text-white text-[0.5rem] sm:text-xs xl:text-base duration-500 w-20 xl:w-24 py-2 px-2 text-center shadow-md border-2 border-[#FFD66E]  rounded hover:-translate-y-1 hover:scale-110 ">
           LOGIN
         </button>
       </a>
@@ -90,7 +124,6 @@
     </ul>
   </nav>
   <!-- NAVBAR ENDS -->
-
 
 
 
@@ -114,7 +147,7 @@
 
 
   <div
-    class="grid bg-white py-4 sm:py-10 lg:py-16 px-5 sm:px-10 lg:px-[4.5rem] md:w-[68vw] max-w-screen md:rounded-xl mx-auto md:h-auto z-40 relative shadow-xl shadow-gray-700">
+    class="grid bg-white py-4 sm:py-10 lg:py-16 px-5 sm:px-10 lg:px-[4.5rem] md:w-[68vw] max-w-screen md:rounded-xl mx-auto  h-[45vh] md:h-auto z-40 relative shadow-xl shadow-gray-700">
 
     <h2
       class="grid justify-center items-center grid-cols-1 font-bold text-sm sm:text-base md:text-lg lg:text-2xl my-3 sm:my-5 text-black text-center font-sans">
@@ -226,14 +259,14 @@
       <table class="min-w-full divide-y divide-gray-200 whitespace-normal">
         <thead class="bg-[#0054A6]">
           <tr>
-            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Sr.No.</th>
-            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Distinguished
+            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Sr.No.</th>
+            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Distinguished
               Donor Award <br> (Categories)
             </th>
-            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Contribution by
+            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Contribution by
               alumni (INR)
             </th>
-            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Additional
+            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Additional
               Recognition apart from <br> the
               DDA award (apart from the incentives
               mentioned under various heads; refer
@@ -243,10 +276,10 @@
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
           <tr>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Diamond</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Greater than 20 Lakhs</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-left tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">
+            <td class="px-6 py-4">1</td>
+            <td class="px-6 py-4">Diamond</td>
+            <td class="px-6 py-4">Greater than 20 Lakhs</td>
+            <td class="px-6 py-4">
               <ul class="list-disc">
                 <li>Stage felicitation with a
                   gift
@@ -259,10 +292,10 @@
             </td>
           </tr>
           <tr>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">2</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Platinum</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10-20 Lakhs</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-left tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">
+            <td class="px-6 py-4">2</td>
+            <td class="px-6 py-4">Platinum</td>
+            <td class="px-6 py-4">10-20 Lakhs</td>
+            <td class="px-6 py-4">
               <ul class="list-disc">
                 <li>Stage felicitation with a
                   gift
@@ -277,10 +310,10 @@
             </td>
           </tr>
           <tr>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">3</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Gold</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1-10 Lakhs</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-left tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">
+            <td class="px-6 py-4">3</td>
+            <td class="px-6 py-4">Gold</td>
+            <td class="px-6 py-4">1-10 Lakhs</td>
+            <td class="px-6 py-4">
               <ul class="list-disc">
                 <li>The Donor’s profile (with
                   photo) will be permanently displayed on the Alumni
@@ -291,10 +324,10 @@
             </td>
           </tr>
           <tr>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">4</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Silver</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">0.05-1 Lakhs</td>
-            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-left tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">
+            <td class="px-6 py-4">4</td>
+            <td class="px-6 py-4">Silver</td>
+            <td class="px-6 py-4">0.05-1 Lakhs</td>
+            <td class="px-6 py-4">
               <ul class="list-disc">
               <li>The Donor’s profile (with
                 photo) will be permanently displayed on the Alumni
@@ -376,12 +409,7 @@
         </tbody>
       </table>
     </div>
-
-    <p class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-left tracking-wide leading-loose mt-2 my-2 md:my-9 lg:my-19 ">
-      <b>*The donation amounts would also be displayed in front of the Donor's names. </b>
-    </p>
-
-
+    <!-- <br><b>*The donation amounts would also be displayed in front of the Donor's names. </b> -->
     </p>
 
   </div>
@@ -393,7 +421,7 @@
 
 
 
-  <div class="wrapper bg bg-cover bg-center bg-no-repeat md:h-10 sm:h-0"
+  <div class="wrapper bg bg-cover bg-center bg-no-repeat h-screen"
     style="background-image: url('footer.png'); width: 100%;"></div>
 
   <script>
@@ -436,7 +464,7 @@
 </body>
 
 <!-- === FOOTER Starts === -->
-<div class="z-10 text-xs sm:text-sm md:text-base lg:text-lg">
+<div class="z-10">
   <div class=" bg-[#0054A6] text-white lg:flex-row px-5 pt-5 lg:px-20 h-full flex">
     <a href="/alumni/alumni.html" target="_blank" class="hover:text-[#82C3FF]">
       <img class="h-[2.2rem] sm:h-[3.6rem] inline cursor-pointer " src="img/SARC_logo.png" alt="logo">
@@ -491,7 +519,7 @@
 
 <div class="border-t border-zinc-400 bg-[#0054A6] p-3 text-center text-white">
   <div class="pb-[10px] text-[12px] lg:pb-0 lg:text-[15px] text-center">
-    &#169; Copyright 2024, All Rights Reserved NIT Jalandhar
+    &#169; Copyright 2022, All Rights Reserved NIT Jalandhar
   </div>
 
   <div class="text-[12px] lg:text-[15px]">
@@ -525,3 +553,8 @@
 </div>
 </div>
 <!-- === FOOTER Ends === -->
+</div>
+</div>
+</div>
+
+</html>
