@@ -79,7 +79,7 @@ const updateFacultyPeronalDetails = async (req, res) => {
                 query['img'] = img
             }
             if(address){
-                query['correspondence_address'] = address
+                query['address'] = address
             }
             if(education_qualification){
                 query['education_qualification'] = education_qualification
