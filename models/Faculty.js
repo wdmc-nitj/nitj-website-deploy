@@ -49,6 +49,9 @@ const Schema = new mongoose.Schema({
                 "address2": {
                     type: String
                 },
+                "address": {
+                    type: String
+                },
                 "city": {
                     type: String
                 },
@@ -56,9 +59,6 @@ const Schema = new mongoose.Schema({
                     type: String
                 },
                 "pin": {
-                    type: String
-                },
-                "eid": {
                     type: String
                 },
                 "phone": {
