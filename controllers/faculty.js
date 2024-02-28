@@ -74,18 +74,18 @@ const updateFacultyPeronalDetails = async (req, res) => {
     try {
         if(req.user.login && req.user.isFaculty){
             let query = {};
-            const {img,address,education_qualification} = req.body
+            const {img,correspondence_address,education_qualification} = req.body
             if(img){
                 query['img'] = img
             }
-            if(address){
-                query['address'] = address
+            if(correspondence_address){
+                query['correspondence_address'] = correspondence_address
             }
             if(education_qualification){
                 query['education_qualification'] = education_qualification
             }
-            const result = await Faculty.findByIdAndUpdate(req.params.id, query);
-            await result.save()
+            const result = await Faculty.findById(req.params.id);
+            await result.update({$set:query});
             return res.status(200).json("Faculty updated succesfully")
         }
         return res.status(401).json("Faculty not Updated");
