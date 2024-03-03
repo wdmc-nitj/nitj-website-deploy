@@ -30,6 +30,7 @@ const {
   updateFaculty,
   deleteFaculty,
   getByDeptFaculty,
+  updateFacultyPeronalDetails,
 } = require("../controllers/faculty");
 const {
   getByDeptHOD,
@@ -104,6 +105,7 @@ Router.get("/:dept/Acadcord", getByDeptCoordinator);
 
 Router.get("/:dept/Faculty", getByDeptFaculty);
 Router.put("/:dept/Faculty/:id/:token", authController.signInAuthentication,updateFaculty);
+Router.put("/:dept/Faculty/:id/:token/personalDetails", authController.signInAuthentication,updateFacultyPeronalDetails);
 Router.get("/:dept/Faculty/:id/:token",authController.signInAuthentication,getByIdFaculty);
 Router.get("/:dept/Faculty/:id",getByIdFaculty);
 // Router.post("/:dept/Faculty", addFaculty);
