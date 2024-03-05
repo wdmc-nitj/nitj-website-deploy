@@ -250,6 +250,50 @@ fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=PHD")
     });
   });
 
+// bscbed
+  fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=BSC-BED")
+  .then((response) => response.json())
+  .then((data) => {
+    const bscbed_updates = document.getElementById("bscbed-updates");
+    console.log(bscbed_updates)
+    data.forEach((update) => {
+      const bscbedupdate = document.createElement("li");
+      bscbedupdate.innerHTML = `
+              <div class="flex">
+              <span class="bg-[#0369A1]">|</span>
+              <div class="w-[80%] mx-2">
+                <a
+                 href='${update.link}'
+                  class="hover:text-orange-600 inline"
+                >
+                ${update.title}
+                </a>
+                </div>
+                ${update.new
+          ? ` 
+                   
+          <div>
+          <span id="new-tag" class="flex text-base text-accent-orange space-x-2">
+                      <span class="text-base material-symbols-outlined text-accent-orange">
+                        auto_awesome
+                      </span>
+                      <p class="font-bold uppercase text-accent-orange">
+                        New
+                      </p>
+                    </span>
+          </div>`
+          : `
+                      <div>
+                    </div>`
+        }
+              </div>
+            
+                `;
+      bscbed_updates.appendChild(bscbedupdate);
+    });
+  });
+
+
 // important links
 fetch(`${data_url}` + "/admissions/links/get?visible=visible&degree=BTECH")
   .then((response) => response.json())
