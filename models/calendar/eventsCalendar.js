@@ -44,6 +44,14 @@ const eventSchema = new mongoose.Schema({
         type: String,
         match: /^https?:\/\/.+$/,
     },
+    regLink: {
+        type: String,
+        match: /^https?:\/\/.+$/, 
+    },
+    pdfLink: {
+        type: String,
+        match: /^https?:\/\/.+$/, 
+    },
     description: {
         type: String,
     },
