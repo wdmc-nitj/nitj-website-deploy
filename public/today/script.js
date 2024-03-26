@@ -98,6 +98,9 @@ function fetchtime(startdatetime, enddatetime) {
 // Parse time string to obtain hours and minutes
 
 let [startn, startMillis] = startdatetime.split('T')[1].split('.')[0].split(':').map(Number);
+// Add 5 hours and 30 minutes
+startn += 5;
+startMillis += 30;
 // Handle overflow
 if (startMillis >= 60) {
     startn += 1;
@@ -108,6 +111,11 @@ startn = `${startn.toString().padStart(2, '0')}:${startMillis.toString().padStar
 
 // Parse end time
 let [endn, endMillis] = enddatetime.split('T')[1].split('.')[0].split(':').map(Number);
+
+// Add 5 hours and 30 minutes
+endn += 5;
+endMillis += 30;
+
 // Handle overflow
 if (endMillis >= 60) {
     endn += 1;
