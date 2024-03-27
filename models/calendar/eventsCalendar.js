@@ -92,7 +92,8 @@ const eventSchema = new mongoose.Schema({
     },
     regReq: {
         type: Boolean,
-        default: false
+        default: false,
+        required: true
     },
     onSpotReg: {
         type: Boolean,
