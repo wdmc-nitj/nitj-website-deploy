@@ -76,7 +76,11 @@ async function fetchEvents() {
 //   const day = String(date.getDate()).padStart(2, "0");
 //   return `${year}-${month}-${day}`;
 // }
-
+function formatDate(dateString) {
+  const options = { day: 'numeric', month: 'short' };
+  const date = new Date(dateString);
+  return date.toLocaleDateString(undefined, options);
+}
 function fetchdate(datetime) {
   if (!datetime) {
     return null;
@@ -181,15 +185,18 @@ endn = `${endn.toString().padStart(2, '0')}:${endMillis.toString().padStart(2, '
         (currentDate < endDay || (currentDate === endDay && currentMonth === endMonth))
       ) {
         // formattedTime = `<span class="text-red-600">⦿ LIVE </span> ${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded text-nowrap whitespace-pre" style="white-space: pre;" > ${endDay} ${endingMonth} </span>`;
-        formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded text-nowrap whitespace-pre" style="white-space: pre;" > ${endDay} ${endingMonth} </span>`;
+        formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} 
+      
+        `;
       } else {
-        formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded text-nowrap whitespace-pre" style="white-space: pre;" > ${endDay} ${endingMonth} </span>`;
+        formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod}
+        `;
       }
     } else {
-      formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded text-nowrap whitespace-pre" style="white-space: pre;" > ${endDay} ${endingMonth} </span>`;
+      formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} `;
     }
   } else {
-    formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} <span class="bg-accent text-white px-1 py-[0.5] rounded text-nowrap whitespace-pre" style="white-space: pre;" > ${endDay} ${endingMonth} </span>`;
+    formattedTime = `${startHours12}:${startminutes} ${startPeriod} - ${endHours12}:${endminutes} ${endPeriod} `;
   }
   return formattedTime;
 }
@@ -298,6 +305,8 @@ const camelToFlat=(camel)=>{
   return flat;
 }
 
+
+
 function createEventCard(event) {
 
   return `
@@ -305,7 +314,7 @@ function createEventCard(event) {
       onclick="openModal('${event._id}')">
       <div
           class="card-content bg-white border rounded-xl shadow-sm sm:flex border-slate-500/50 flex sm:flex-row flex-col-reverse justify-between hover:border-slate-900 ">
-          <div class=" p-4   flex flex-col justify-between">
+          <div class="Not-Poster p-4 flex flex-col justify-between"  style="width:100%;">
               <div>
                   <div class="flex sm:flex-row flex-col items-baseline" style="align-items:baseline;">
                       <div class="mr-3">
@@ -324,7 +333,7 @@ ${event.category}
 </span>
   
                   </div>
-                  <h3 class=" font-semibold text-slate-700 text-lg">
+                  <h3 class=" font-semibold text-slate-700 text-lg ">
                       ${event.eventName}
                   </h3>
                   <p class="mt-1 text-gray-400 dark:text-gray-700" style="font-size: 14;">
@@ -351,7 +360,7 @@ ${event.category}
                       </span>
                   </div>
                   <div class=" items-center flex flex-wrap">
-                      <div class="button-group flex-ror flex" style="gap: 15px;">
+                      <div class="button-group flex-ror flex flex-wrap" style="gap: 15px;">
                           ${
                           event.meetlink
                           ? `<button type="button" data-te-ripple-init Button
@@ -379,18 +388,19 @@ ${event.category}
                           : ""
                           } 
                           <div>
-                          ${event.multiDayEvent ? `<span class=" text-sm text-white px-1 py-0.5 rounded text-nowrap inline-flex" style="background-color:#9CE2BD9B" > 
+                          ${event.multiDayEvent ? `<span class="text-sm text-white px-1 py-1 rounded text-nowrap flex flex-wrap" style="background-color:#9CE2BD9B" > 
                           <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="m429-336 238-237-51-51-187 186-85-84-51 51 136 135Zm51 240q-79 0-149-30t-122.5-82.5Q156-261 126-331T96-480q0-80 30-149.5t82.5-122Q261-804 331-834t149-30q80 0 149.5 30t122 82.5Q804-699 834-629.5T864-480q0 79-30 149t-82.5 122.5Q699-156 629.5-126T480-96Zm0-72q130 0 221-91t91-221q0-130-91-221t-221-91q-130 0-221 91t-91 221q0 130 91 221t221 91Zm0-312Z" fill="#0E6939"/></svg>
-                          <span class=" font-semibold"style="color:#0E6939;">
-                          Multi Day Event</span> </span>` : ''}
-                          </div>
+                          <span class="font-semibold mr-2"style="color:#0E6939;">
+                          
+        Multi Day Event</span> <span class="px-1 font-medium" style="background-color:#37845C; border-radius:4px;"> ${formatDate(event.startDateTime)} - ${formatDate(event.endDateTime)} </span> </span>` : ''}
+        </div>
   
                       </div>
                   </div>
               </div>
           </div>
-          <div class="relative overflow-hidden md:rounded-se-none p-2 justify-center items-center hidden md:block">
-              <img class="object-scale-down rounded-xl w-48 h-48 group-hover:scale-105 transition-transform duration-500 ease-in-out"
+          <div class="Poster relative overflow-hidden md:rounded-se-none p-2 justify-center items-center hidden md:block ">
+              <img class="rounded-xl aspect-square object-center w-72"
                 src="${event.posterUrl ? event.posterUrl : './assets/logo_nitj.webp'}" alt="Image Description">
           </div>
       </div>
@@ -449,10 +459,11 @@ ${event.category}
 </span>
 </div>
 <div>
-${event.multiDayEvent ? `<span class=" text-sm text-white px-1 py-0.5 rounded text-nowrap inline-flex" style="background-color:#9CE2BD9B" > 
+${event.multiDayEvent ? `<span class=" text-sm text-white px-1 py-1 rounded text-nowrap flex flex-wrap  " style="background-color:#9CE2BD9B" > 
 <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="m429-336 238-237-51-51-187 186-85-84-51 51 136 135Zm51 240q-79 0-149-30t-122.5-82.5Q156-261 126-331T96-480q0-80 30-149.5t82.5-122Q261-804 331-834t149-30q80 0 149.5 30t122 82.5Q804-699 834-629.5T864-480q0 79-30 149t-82.5 122.5Q699-156 629.5-126T480-96Zm0-72q130 0 221-91t91-221q0-130-91-221t-221-91q-130 0-221 91t-91 221q0 130 91 221t221 91Zm0-312Z" fill="#0E6939"/></svg>
-<span class=" font-semibold"style="color:#0E6939;">
-Multi Day Event</span> </span>` : ''}
+<span class=" font-semibold mr-2"style="color:#0E6939;">
+
+Multi Day Event</span> <span class=" px-1 font-medium" style="background-color:#37845C; border-radius:4px;"> ${formatDate(event.startDateTime)} - ${formatDate(event.endDateTime)} </span> </span>` : ''}
 </div>
   </div>
           </div>
