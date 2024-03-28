@@ -77,8 +77,9 @@ async function fetchEvents() {
 //   return `${year}-${month}-${day}`;
 // }
 function formatDate(dateString) {
+  const [year, month, day] = dateString.split('T')[0].split('-');
+  const date = new Date(year, month - 1, day);
   const options = { day: 'numeric', month: 'short' };
-  const date = new Date(dateString);
   return date.toLocaleDateString(undefined, options);
 }
 function fetchdate(datetime) {
@@ -202,27 +203,60 @@ endn = `${endn.toString().padStart(2, '0')}:${endMillis.toString().padStart(2, '
 }
 
 
-
 async function addEventsToHTML() {
   const events = await fetchEvents();
 
   const eventsByDate = {};
+  const multiDayEvents = [];
 
   const filteredEvents = events.filter((event) => {
-    const formattedDate = new Date(fetchdate(event.startDateTime));
+    const formattedStartDate = new Date(fetchdate(event.startDateTime));
+    const formattedEndDate = new Date(fetchdate(event.endDateTime));
     const currentDate = new Date();
     currentDate.setHours(0, 0, 0, 0); // to ignore time and compare only the date
-    return formattedDate.getFullYear() === currentDate.getFullYear() && formattedDate >= currentDate && event.show === true;
+
+    // Check if the event is a multi-day event
+    if (formattedEndDate > formattedStartDate && event.show === true) {
+      multiDayEvents.push(event);
+    }
+
+    return formattedStartDate.getFullYear() === currentDate.getFullYear() && formattedStartDate >= currentDate && event.show === true;
   });
 
-  filteredEvents.forEach((event) => {
-    const formattedDate = new Date(fetchdate(event.startDateTime));
-    const dateKey = formattedDate.toISOString().split("T")[0]; // Use ISO string as the key
-    if (!eventsByDate[dateKey]) {
-      eventsByDate[dateKey] = [];
-    }
-    eventsByDate[dateKey].push(event);
-  });
+// Existing code...
+filteredEvents.forEach((event) => {
+  const formattedStartDate = new Date(fetchdate(event.startDateTime));
+  const formattedEndDate = new Date(fetchdate(event.endDateTime));
+  const dateKey = formattedStartDate.toISOString().split("T")[0]; // Use ISO string as the key
+  if (!eventsByDate[dateKey]) {
+    eventsByDate[dateKey] = [];
+  }
+  eventsByDate[dateKey].push(event);
+});
+
+// New code...
+const currentDate = new Date();
+const currentDateKey = `${currentDate.getUTCFullYear()}-${String(currentDate.getUTCMonth() + 1).padStart(2, '0')}-${String(currentDate.getUTCDate()).padStart(2, '0')}`;
+
+multiDayEvents.forEach((event) => {
+ const formattedStartDate = new Date(fetchdate(event.startDateTime));
+formattedStartDate.setHours(0, 0, 0, 0);
+
+const formattedEndDate = new Date(fetchdate(event.endDateTime));
+formattedEndDate.setHours(0, 0, 0, 0);
+
+const currentDate = new Date();
+currentDate.setHours(0, 0, 0, 0);
+
+// Check if the current date is within the range of the multi-day event
+if (formattedStartDate <= currentDate && formattedEndDate >= currentDate) {
+  if (!eventsByDate[currentDateKey]) {
+    eventsByDate[currentDateKey] = [];
+  }
+  eventsByDate[currentDateKey].push(event);
+}
+});
+// Rest of your code...
 
   // Sort events in eventsByDate based on start time
   for (const dateKey in eventsByDate) {
