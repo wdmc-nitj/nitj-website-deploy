@@ -402,25 +402,39 @@ ${event.category}
                               style="border: 2px solid rgb(72, 139, 206);"
                               onclick="event.stopPropagation(); window.open('${event.meetlink}', '_blank');">
                               <span class="material-symbols-outlined">
-                                  link
+                              video_camera_front
                               </span>
-                              Link
+                              Join
                           </button>`
                           : ""
                           }
                           ${
-                          event.download
-                          ? `<button type="button" data-te-ripple-init Button
-                              class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
-                              style="border: 2px solid rgb(72, 139, 206);"
-                              onclick="event.stopPropagation(); window.open('${event.download}', '_blank');">
-                              <span class="material-symbols-outlined">
-                                  download
-                              </span>
-                              Download
-                          </button>`
-                          : ""
-                          } 
+                            event.pdfLink
+                            ? `<button type="button" data-te-ripple-init Button
+                                class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-white bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
+                                style="border: 2px solid rgb(72, 139, 206);"
+                                onclick="event.stopPropagation(); window.open('${event.pdfLink}', '_blank');">
+                                <span class="material-symbols-outlined">
+                                    link
+                                </span>
+                                Link
+                            </button>`
+                            : ""
+                            }
+                            ${
+                              event.regLink
+                              ? `<button type="button" data-te-ripple-init Button
+                                  class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-white bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-1.5   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
+                                  style="border: 2px solid rgb(72, 139, 206);"
+                                  onclick="event.stopPropagation(); window.open('${event.regLink}', '_blank');">
+                                  <span class="material-symbols-outlined">
+                                  app_registration
+                                  </span>
+                                  Register
+                              </button>`
+                              : ""
+                              }
+                               
                           <div>
                           ${event.multiDayEvent ? `<span class="text-sm text-white px-1 py-1 rounded text-nowrap flex flex-wrap" style="background-color:#9CE2BD9B" > 
                           <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="m429-336 238-237-51-51-187 186-85-84-51 51 136 135Zm51 240q-79 0-149-30t-122.5-82.5Q156-261 126-331T96-480q0-80 30-149.5t82.5-122Q261-804 331-834t149-30q80 0 149.5 30t122 82.5Q804-699 834-629.5T864-480q0 79-30 149t-82.5 122.5Q699-156 629.5-126T480-96Zm0-72q130 0 221-91t91-221q0-130-91-221t-221-91q-130 0-221 91t-91 221q0 130 91 221t221 91Zm0-312Z" fill="#0E6939"/></svg>
@@ -522,12 +536,25 @@ Multi Day Event</span> <span class=" px-1 font-medium" style="background-color:#
   
           <div style="margin-top: 20px;">
           <div class="info flex-row flex p-3" style="gap: 15px;">
-              ${
-              event.meetlink
+          ${
+            event.meetlink
+            ? `<button type="button" data-te-ripple-init Button
+                class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-white bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
+                style="border: 2px solid rgb(72, 139, 206);"
+                onclick="event.stopPropagation(); window.open('${event.meetlink}', '_blank');">
+                <span class="material-symbols-outlined">
+                video_camera_front
+                </span>
+                Join
+            </button>`
+            : ""
+            }
+            ${
+              event.pdfLink
               ? `<button type="button" data-te-ripple-init Button
-                  class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-white hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
+                  class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-white bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
                   style="border: 2px solid rgb(72, 139, 206);"
-                  onclick="event.stopPropagation(); window.open('${event.meetlink}', '_blank');">
+                  onclick="event.stopPropagation(); window.open('${event.pdfLink}', '_blank');">
                   <span class="material-symbols-outlined">
                       link
                   </span>
@@ -536,19 +563,18 @@ Multi Day Event</span> <span class=" px-1 font-medium" style="background-color:#
               : ""
               }
               ${
-              event.download
-              ? `<button type="button" data-te-ripple-init Button
-                  class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-accent bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
-                  style="border: 2px solid rgb(72, 139, 206);"
-                  onclick="event.stopPropagation(); window.open('${event.download}', '_blank');">
-                  <span class="material-symbols-outlined">
-                      download
-                  </span>
-                  Download
-              </button>`
-              : ""
-              }
-  
+                event.regLink
+                ? `<button type="button" data-te-ripple-init Button
+                    class="group flex flex-row gap-1 text-accent text-sm font-semibold bg-white bg-opacity-50 hover:bg-accent hover:text-white hover:text-opacity-70 focus:outline-none focus:ring-4 focus:ring-offset-blue-950 rounded-lg text-center items-center justify-center align-middle px-2   text-nowrap transform transition duration-300 hover:scale-105 shadow-md py-0"
+                    style="border: 2px solid rgb(72, 139, 206);"
+                    onclick="event.stopPropagation(); window.open('${event.regLink}', '_blank');">
+                    <span class="material-symbols-outlined">
+                    app_registration
+                    </span>
+                    Register
+                </button>`
+                : ""
+                }
           </div>
           <div class="flex flex-col p-3 gap-3">
 
@@ -571,6 +597,8 @@ Multi Day Event</span> <span class=" px-1 font-medium" style="background-color:#
                         "posterUrl",
                         "show",
                         "multiDayEvent",
+                        "createdAt",
+                        "updatedAt"
                     ].includes(key) &&
                     ((typeof value !== "boolean" && value && value.toString().trim() !== "" && !isEmptyObject(value)) ||
                     (typeof value === "boolean" && value))
