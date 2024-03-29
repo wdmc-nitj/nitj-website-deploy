@@ -253,7 +253,10 @@ if (formattedStartDate <= currentDate && formattedEndDate >= currentDate) {
   if (!eventsByDate[currentDateKey]) {
     eventsByDate[currentDateKey] = [];
   }
-  eventsByDate[currentDateKey].push(event);
+  const isEventAlreadyAdded = eventsByDate[currentDateKey].some((e) => e._id === event._id);
+  if (!isEventAlreadyAdded) {
+    eventsByDate[currentDateKey].push(event);
+  }
 }
 });
 // Rest of your code...
