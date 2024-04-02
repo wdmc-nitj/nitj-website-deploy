@@ -18,6 +18,12 @@ const Schema = new mongoose.Schema({
     position: {
         type: String
     },
+    guest:{
+        type:{
+            "isGuest": Boolean,
+            default: false
+        }
+    },
     education_qualification: {
         type: [
             {
@@ -312,6 +318,22 @@ const Schema = new mongoose.Schema({
         ,
         default: {}
     },
+    research_collaboration:{
+        type:[
+            {
+                "professor":{
+                    type: String
+                },
+                "university":{
+                    type: String
+                },
+                "Link":{
+                    type: String
+                }
+            }
+        ],
+        default: []
+    },
     research_project: {
         type: [
             {
@@ -319,6 +341,40 @@ const Schema = new mongoose.Schema({
                     type: String
                 },
                 "Project Type": {
+                    type: String
+                },
+                "Title": {
+                    type: String
+                },
+                "Funding Agency": {
+                    type: String
+                },
+                "From": {
+                    type: String
+                },
+                "To": {
+                    type: String
+                },
+                "Amount": {
+                    type: String
+                },
+                "Status": {
+                    type: String
+                },
+                "Co-investigator": {
+                    type: String
+                }
+            }
+        ],
+        default: []
+    },
+    consultancy: {
+        type: [
+            {
+                "Role": {
+                    type: String
+                },
+                "Consultancy Type": {
                     type: String
                 },
                 "Title": {
