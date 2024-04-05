@@ -750,7 +750,7 @@ function getTagColor(tagName) {
       return "#047A47"; // Green
     case "holiday":
       return "#DC2626"; // Purple
-    case "Guest_Lecture":
+    case "Guest Lecture":
       return "#DC2626"; // Purple  
     case "fest":
       return "#BE185D"; // Deep Pink
@@ -775,8 +775,8 @@ function getTagbgColor(tagName) {
       return "#29BE7E53"; // Green
     case "holiday":
       return "#FF5A5A57"; // Purple
-    case "Guest_Lecture":
-      return "#DC2626"; // Purple  
+    case "Guest Lecture":
+      return "#FF5A5A57"; // Purple  
     case "fest":
       return "#EF498E59"; // Deep Pink
     case "STC/FDP":
