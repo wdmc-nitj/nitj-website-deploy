@@ -1,6 +1,7 @@
 
 const InternationalStudent = require("../../models/internationalStudents/studentData.js");
 
+//To add new entries or delete or update to internationaStudent use this path -: /api/studentData/student
 
 exports.addInternationalStudent = async (req, res) => {
     try {

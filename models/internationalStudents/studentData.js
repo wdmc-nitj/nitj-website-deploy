@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//To add new entries or delete or update to internationaStudent use this path -: /api/studentData/student
 const Schema = new mongoose.Schema({
     name: {
         type: String,
