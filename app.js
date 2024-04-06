@@ -46,8 +46,8 @@ const recruitmentsRoutes = require('./routes/recruitmentRoutes');
 const curriculumRouter = require('./routes/curriculum');
 const deptCalendarRouter = require('./routes/deptCalendar');
 
-const eventsCalendarRouter = require("./routes/calendar/eventsCalendar")
-
+const studentDataRouter=require("./routes/internationalStudents/studentData");
+const eventsCalendarRouter = require("./routes/calendar/eventsCalendar");
 //initialize app
 const app = express();
 
@@ -114,6 +114,7 @@ app.use('/newpage', newpageRouter)
 app.use("/resource", resourceRouter);
 app.use("/upload", upload);
 
+app.use("/studentData",studentDataRouter);
 // Events Calendar 
 app.use("/eventsCalendar",eventsCalendarRouter)
 

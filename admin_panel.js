@@ -93,8 +93,10 @@ const curriculum = require("./models/curriculum");
 const examSchedule = require("./models/examSchedule");
 const deptwiseFaculty = require("./models/deptwiseFaculty");
 
+const studentData=require("./models/internationalStudents/studentData.js");
 // Events Calendar 
 const eventsCalendar = require("./models/calendar/eventsCalendar.js")
+
 
 // defined new role : clubadmin , can access their respective club
 const canModifyUsers = ({ currentAdmin }) =>
