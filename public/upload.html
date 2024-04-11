@@ -23,6 +23,15 @@
         margin-bottom: 20px;
       }
 
+      input[type="link"] {
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        width: 23%;
+      }
+
       /* Style the submit button element */
       input[type="submit"] {
         background-color: #4caf50;
@@ -62,32 +71,51 @@
     </style>
   </head>
   <body>
-    <form
-      action="/api/upload"
+    <div>
+      <form
+        action="/api/upload"
+        method="post"
+        id="upload"
+        enctype="multipart/form-data"
+      >
+        <input type="file" name="file" />
+        <p style="color:red;">Maintain resolution 1280 x 720 pixels for better visibility of image.</p>
+        <input type="submit" value="Upload" />
+      </form>
+      <div id="link-container"></div>
+      
+      <form
+      action="/api/upload/delete"
       method="post"
-      id="upload"
-      enctype="multipart/form-data"
-    >
-      <input type="file" name="file" />
-      <input type="submit" value="Upload" />
+      id="delete"
+      
+      >
+      <input
+      type="link"
+      name="link"
+      id="delete_link"
+      placeholder="Enter the link of the URL to delete..."
+      />
+      <input type="submit" value="Delete" />
     </form>
-    <div id="link-container"></div>
+    </div>
     <button id="copy-button" style="display: none">Copy Link</button>
     <script>
       const form = document.getElementById("upload");
+      const deleteForm = document.getElementById("delete")
       const linkContainer = document.getElementById("link-container");
       const copyButton = document.getElementById("copy-button");
 
-      form.addEventListener("submit", (event) => {
+      const uploadAction = (event) => {
         event.preventDefault(); // prevent the form from submitting normally
 
         // Send the form data using fetch()
         fetch(form.action, {
           method: form.method,
           body: new FormData(form),
-          headers:{
-            "authorization":"HareKrishna"
-          }
+          headers: {
+            authorization: "HareKrishna",
+          },
         })
           .then((response) => response.json())
           .then((data) => {
@@ -102,9 +130,36 @@
           })
           .catch((error) => {
             console.error(error);
-            alert("An error occurred while uploading the file.");
+            alert("An error occurred.");
           });
-      });
+      };
+
+      form.addEventListener("submit", uploadAction);
+
+      const deleteAction = (event) => {
+        event.preventDefault();
+
+        fetch(deleteForm.action, {
+          method: deleteForm.method,
+          body: JSON.stringify({
+            link: document.getElementById('delete_link').value,
+          }),
+          headers: {
+            authorization: "HareKrishna",
+            "Content-Type": "application/json; charset=UTF-8"
+          },
+        })
+          .then((response) => response.json())
+          .then((res) => {
+            alert(res.message)
+          })
+          .catch((error) => {
+            console.error(error);
+            alert("An error occurred.");
+          });
+      };
+
+      deleteForm.addEventListener("submit", deleteAction)
 
       copyButton.addEventListener("click", () => {
         // Copy the link to the clipboard
