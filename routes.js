@@ -127,6 +127,9 @@ mainRouter.get(`/${adminPath}/ckeditor`, (req, res) => {
 mainRouter.get(`/${adminPath}/upload`, (req, res) => {
   res.sendFile(__dirname + "/public/upload.html");
 });
+mainRouter.get(`/${adminPath}/delete`, (req, res) => {
+  res.sendFile(__dirname + "/public/delete.html");
+});
 mainRouter.get(`/${adminPath}/store/add`, (req, res) => {
   res.sendFile(__dirname + "/public/add.html");
 });
