@@ -56,35 +56,35 @@ export default function animateText(stringsArray) {
   }, 2200);
 }
 
-// fetch("/api/initiative")
-//   .then((res) => res.json())
-//   .then((data) => {
-//     data = dataFilter(data);
-//     data = data.filter((n) => n.main === true);
-//     stringsArray = data.map((item) => {
-//       const returnArray = { title1: item.title1, _id: item._id };
-//       if (item.externalLink) {
-//         returnArray["link"] = item.link;
-//       }
-//       return returnArray;
-//     });
-//     // console.log(stringsArray)
-//     animateText(stringsArray);
-//     mainSliderText.addEventListener("mouseenter", () => {
-//       isPaused = true;
-//       clearTimeout(animationTimeout);
-//       currentElementInside.classList.remove("exit-animation");
-//       console.log("stopping animation");
-//     });
+fetch("/api/initiative")
+  .then((res) => res.json())
+  .then((data) => {
+    data = dataFilter(data);
+    data = data.filter((n) => n.main === true);
+    stringsArray = data.map((item) => {
+      const returnArray = { title1: item.title1, _id: item._id };
+      if (item.externalLink) {
+        returnArray["link"] = item.link;
+      }
+      return returnArray;
+    });
+    // console.log(stringsArray)
+    animateText(stringsArray);
+    mainSliderText.addEventListener("mouseenter", () => {
+      isPaused = true;
+      clearTimeout(animationTimeout);
+      currentElementInside.classList.remove("exit-animation");
+      console.log("stopping animation");
+    });
 
-//     mainSliderText.addEventListener("mouseleave", () => {
-//       isPaused = false;
-//       animateText(stringsArray);
-//     });
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//     animateText(stringsArray);
-//   });
+    mainSliderText.addEventListener("mouseleave", () => {
+      isPaused = false;
+      animateText(stringsArray);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+    animateText(stringsArray);
+  });
 
 animateText(stringsArray);
