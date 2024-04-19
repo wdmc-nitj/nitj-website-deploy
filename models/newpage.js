@@ -37,7 +37,8 @@ const Schema = new mongoose.Schema(
     type:{
       type:String,
       enum:['Notices','Student Corner','Upcoming Events','Tenders']
-    }
+    },
+    disable:{type:Boolean,default:false},
   },
   {
     timestamps: true,
