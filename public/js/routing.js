@@ -35,19 +35,17 @@ if (parseInt(id) === 0) {
         listItem.innerHTML = `  
                 <a
                 class = 'underline underline-offset-4 decoration-accent decoration-0 hover:decoration-2'
-                    ${
-                      e.newPage
-                        ? `target = "_blank" href= "${e.pdfLink}"`
-                        : `href = "/template/index.html?id=${e._id}?category=${category}"`
-                    }
+                    ${e.newPage
+            ? `target = "_blank" href= "${e.pdfLink}"`
+            : `href = "/template/index.html?id=${e._id}?category=${category}"`
+          }
                   >
                   ${e?.title || e?.desc}
                 </a>
 
 
-                ${
-                  e?.new
-                    ? `<div id="new-tag" class="inline-flex ml-2 items-center justify-start space-x-2">
+                ${e?.new
+            ? `<div id="new-tag" class="inline-flex ml-2 items-center justify-start space-x-2">
             <span class="material-symbols-outlined text-accent-orange">
               auto_awesome
             </span>
@@ -55,8 +53,8 @@ if (parseInt(id) === 0) {
               New
             </p>
           </div>`
-                    : ''
-                }
+            : ''
+          }
 
 
 
@@ -65,15 +63,13 @@ if (parseInt(id) === 0) {
       })
     })
     .catch((err) => {
-      // if (err.status === 400) {
-      window.location.href = '/404.html'
-      // }
-      console.log(Error(err))
+      console.log(err)
     })
 } else {
   fetch(`/api/${category}?id=${id}`)
     .then((response) => response.json())
     .then((data) => {
+
       // console.log(data)
       let localData = null
       if (Array.isArray(data) && data.length !== 0) {
@@ -89,7 +85,6 @@ if (parseInt(id) === 0) {
       if (title === undefined) title = category
 
       titleDiv.innerHTML = title.charAt(0).toUpperCase() + title.slice(1)
-
       if (localData?.desc) desp.innerHTML = localData?.desc
       dateDiv.innerHTML = dateManipulator(localData.updatedAt)
       if (localData.image)
@@ -97,11 +92,9 @@ if (parseInt(id) === 0) {
       pageTitleUpdater(category, localData?.title1 || localData?.title)
       // pageTitleUpdater(data[0]?.title1 || data[0].title)
       //  pageTitleUpdater(data[0].title1)
+
     })
     .catch((err) => {
-      // if (err.status === 400) {
-      window.location.href = '/404.html'
-      // }
-      console.log(Error(err))
+      console.log(err)
     })
 }
