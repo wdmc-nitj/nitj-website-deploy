@@ -74,25 +74,27 @@ if (parseInt(id) === 0) {
   fetch(`/api/${category}?id=${id}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
+      // console.log(data)
       let localData = null
-      if (Array.isArray(data) && data.length === 0) {
+      if (Array.isArray(data) && data.length !== 0) {
+        console.log(data)
         localData = data[0]
       } else {
         localData = data
       }
-      let title = localData?.title2 || localData.title
+      console.log('localData', localData)
+      let title = localData?.title2 || localData?.title
       putCategory(localData?.title1 || category)
 
       if (title === undefined) title = category
 
       titleDiv.innerHTML = title.charAt(0).toUpperCase() + title.slice(1)
 
-      if (localData.desc) desp.innerHTML = localData.desc
+      if (localData?.desc) desp.innerHTML = localData?.desc
       dateDiv.innerHTML = dateManipulator(localData.updatedAt)
       if (localData.image)
         imgContainer.innerHTML = ` <img src = "${localData.image}" id="image" class="max-w-4xl rounded-xl mt-10 w-full" />`
-      pageTitleUpdater(category, localData?.title1 || localData.title)
+      pageTitleUpdater(category, localData?.title1 || localData?.title)
       // pageTitleUpdater(data[0]?.title1 || data[0].title)
       //  pageTitleUpdater(data[0].title1)
     })
