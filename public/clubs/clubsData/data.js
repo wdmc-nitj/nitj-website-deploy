@@ -58,6 +58,14 @@ fetch(`${baseURL}/clubsPage/${id}`)
       upcomingEventsHTML = "<p>   </p>";
     }
 
+    let upcomingEventsTitleHTML = "";
+    if (APIdata.upcomingEvents && APIdata.upcomingEvents.length > 0) {
+      upcomingEventsTitleHTML = `
+        <p class="font2 font-medium text-2xl lg:text-3xl">Upcoming Events</p>
+        <div class="bg-accent w-full lg:w-[111px] h-[1px]"></div>
+    `;
+    }
+
 
     // Gallery
     let galleryImages = '';
@@ -248,8 +256,7 @@ fetch(`${baseURL}/clubsPage/${id}`)
 
 <!-- upcoming events -->
 <div id="quality-policy" class="md:mt-16 mt-4 container">
-  <p class="font2 font-medium text-2xl lg:text-3xl">Upcoming Events</p>
-  <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[3px]"></div>
+${upcomingEventsTitleHTML}
 </div>
 <div class="flex container flex-col md:gap-4 mt-4 gap-2">
   ${upcomingEventsHTML}
