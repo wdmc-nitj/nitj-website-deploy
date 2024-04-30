@@ -28,7 +28,7 @@ fetch(`${baseURL}/clubsPage/${id}`)
       : "";
 
     // Render the website section only if website data exists
-    const websiteSection = websiteLink ? websiteLink : "<p>No website link available.</p>";
+    const websiteSection = websiteLink ? websiteLink : "<p> </p>";
 
     // Objectives
     let objectivesHTML = "";
@@ -41,7 +41,7 @@ fetch(`${baseURL}/clubsPage/${id}`)
       `;
       });
     } else {
-      objectivesHTML = "<p>No objectives available.</p>";
+      objectivesHTML = "<p> </p>";
     }
 
     // Upcoming events
@@ -55,7 +55,7 @@ fetch(`${baseURL}/clubsPage/${id}`)
     `;
       });
     } else {
-      upcomingEventsHTML = "<p>No upcoming events available.</p>";
+      upcomingEventsHTML = "<p>   </p>";
     }
 
 
@@ -80,7 +80,7 @@ fetch(`${baseURL}/clubsPage/${id}`)
         }
       });
     } else {
-      galleryImages = "<p>No gallery images available.</p>";
+      galleryImages = "<p> </p>";
     }
 
     // Generate HTML for faculty committee members
@@ -107,7 +107,7 @@ fetch(`${baseURL}/clubsPage/${id}`)
       `;
         });
       } else {
-        html = "<p>No faculty committee members available.</p>";
+        html = "<p> </p>";
       }
       return html;
     }
@@ -131,7 +131,7 @@ fetch(`${baseURL}/clubsPage/${id}`)
       `;
         });
       } else {
-        html = "<p>No student committee members available.</p>";
+        html = "<p> </p>";
       }
       return html;
     }
