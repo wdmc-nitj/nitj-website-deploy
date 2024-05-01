@@ -21,7 +21,9 @@ const Schema = new mongoose.Schema({
     guest:{
         type:{
             "isGuest": Boolean,
-            default: false
+        },
+        default: {
+            "isGuest":false
         }
     },
     education_qualification: {
