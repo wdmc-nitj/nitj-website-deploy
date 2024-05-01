@@ -8,12 +8,21 @@ async function fetchEvents() {
   try {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
-    const month = currentDate.getMonth()+1;
+    const month = currentDate.getMonth() + 1;
 
-    const response = await fetch(`${getevents}?year=${year}&month=${month}`);
-    const data = await response.json();
-    console.log(data);
-    return data;
+    const events = [];
+
+    for (let i = 0; i < 5; i++) {
+      const currentYear = year + Math.floor((month + i - 1) / 12);
+      const currentMonth = (month + i) % 12 || 12;
+
+      const response = await fetch(`${getevents}?year=${currentYear}&month=${currentMonth}`);
+      const data = await response.json();
+      events.push(...data);
+    }
+
+    console.log(events);
+    return events;
   } catch (error) {
     console.error('Error fetching events:', error);
     return [];
