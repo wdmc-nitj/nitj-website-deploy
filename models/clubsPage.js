@@ -16,8 +16,8 @@ const Schema = new mongoose.Schema(
       }],
     },
     type: { type: String, default: "Club-type" },
-    clubLogo: { type: String, default: "club logo image-url", required: true },
-    clubWebsiteURL: { type: String, default: "club website url" },
+    clubLogo: { type: String, default: "", required: true },
+    clubWebsiteURL: { type: String, default: "" },
     show: { type: Boolean, default: true },
     order: {
       type: Number,
