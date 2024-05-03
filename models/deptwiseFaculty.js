@@ -13,7 +13,7 @@ const deptWiseFaculty = mongoose.Schema({
                 ref: 'Faculty'
             },
             order: Number,
-            postion: String
+            position: String
         }
     ]
 })
