@@ -20,6 +20,9 @@ const Schema = new mongoose.Schema({
     guest: {
         type: {
             "isGuest": Boolean,
+        },
+        default: {
+            "isGuest": false
         }
     },
     education_qualification: {
@@ -73,7 +76,16 @@ const Schema = new mongoose.Schema({
             },
         }
         ,
-        default: {}
+        default: {
+            "address1": "",
+            "address2": "",
+            "city": "",
+            "state": "",
+            "eid": "",
+            "pin": "",
+            "phone": "",
+            "fax": ""
+        }
     },
     correspondence_address: {
         type:
@@ -95,7 +107,13 @@ const Schema = new mongoose.Schema({
             }
         }
         ,
-        default: {}
+        default: {
+            "address": "",
+            "city": "",
+            "state": "",
+            "pin": "",
+            "phone": ""
+        }
     },
     gender: {
         type: String,
@@ -302,7 +320,11 @@ const Schema = new mongoose.Schema({
                 ]
             }
         },
-        default: {}
+        default: {
+            "Research Interests": [],
+            "Brief Research Profile": [],
+            "Research Id": []
+        }
     },
     research_collaboration: {
         type: [
@@ -396,6 +418,10 @@ const Schema = new mongoose.Schema({
                 link: String
             }]
         },
+        default:{
+            "Google Scholar Link": "",
+            "Personal Link": []
+        }
     },
     journal: {
         type: [
