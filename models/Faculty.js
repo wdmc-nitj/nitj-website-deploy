@@ -303,16 +303,18 @@ const Schema = new mongoose.Schema({
     research_profile: {
         type:
         {
-            "Research Interests": [{
-                type: String
-            }],
-            "Brief Research Profile": [{
-                type: String
-            }],
+            "Research Interests": {
+                type: [String]
+            },
+            "Brief Research Profile": {
+                type:[String]
+            },
             "Research Id": {
                 type: [
                     {
-                        title: String,
+                        title: {
+                            type: String
+                        },
                         link: {
                             type: String
                         }
@@ -412,11 +414,21 @@ const Schema = new mongoose.Schema({
     },
     personal_link: {
         type: {
-            "Google Scholar Link": String,
-            "Personal Link": [{
-                title: String,
-                link: String
-            }]
+            "Google Scholar Link": {
+                type: String
+            },
+            "Personal Link": {
+                type:[
+                    {
+                        title: {
+                            type: String
+                        },
+                        link: {
+                            type: String
+                        }
+                    }
+                ]
+            }
         },
         default:{
             "Google Scholar Link": "",
