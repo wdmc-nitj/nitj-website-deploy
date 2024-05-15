@@ -110,10 +110,10 @@ function removefields(arr) {
   if (index > -1) {
     arr.splice(index, 1);
   }
-  var index = arr.indexOf("__v");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
+  // var index = arr.indexOf("__v");
+  // if (index > -1) {
+  //   arr.splice(index, 1);
+  // }
   var index = arr.indexOf("_id");
   if (index > -1) {
     arr.splice(index, 1);
@@ -183,10 +183,10 @@ const removefieldsAdmin = (arr) => {
   if (index > -1) {
     arr.splice(index, 1);
   }
-  var index = arr.indexOf("__v");
-  if (index > -1) {
-    arr.splice(index, 1);
-  }
+  // var index = arr.indexOf("__v");
+  // if (index > -1) {
+  //   arr.splice(index, 1);
+  // }
   var index = arr.indexOf("_id");
   if (index > -1) {
     arr.splice(index, 1);
@@ -2400,12 +2400,10 @@ const AdminBroOptions = {
                   "personal_link",
                   "journal",
                   "event",
-                  "sourceOfInfo",
                   "show",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
-                  "__v",
                 ];
               }
               return [
@@ -2432,7 +2430,6 @@ const AdminBroOptions = {
                 "personal_link",
                 "journal",
                 "event",
-                "sourceOfInfo",
                 "show",
                 "affiliations",
               ];
@@ -2480,12 +2477,10 @@ const AdminBroOptions = {
                   "personal_link",
                   "journal",
                   "event",
-                  "sourceOfInfo",
                   "show",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
-                  "__v",
                 ];
               }
               return [
@@ -2545,12 +2540,10 @@ const AdminBroOptions = {
                   "personal_link",
                   "journal",
                   "event",
-                  "sourceOfInfo",
                   "show",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
-                  "__v",
                 ];
               }
               return [
@@ -2610,12 +2603,10 @@ const AdminBroOptions = {
                   "personal_link",
                   "journal",
                   "event",
-                  "sourceOfInfo",
                   "show",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
-                  "__v",
                 ];
               }
               return [
@@ -2676,12 +2667,10 @@ const AdminBroOptions = {
                   "personal_link",
                   "journal",
                   "event",
-                  "sourceOfInfo",
                   "show",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
-                  "__v",
                 ];
               }
               return [
@@ -2741,12 +2730,10 @@ const AdminBroOptions = {
                   "personal_link",
                   "journal",
                   "event",
-                  "sourceOfInfo",
                   "show",
                   "affiliations",
                   "createdAt",
                   "updatedAt",
-                  "__v",
                 ];
               }
               return [

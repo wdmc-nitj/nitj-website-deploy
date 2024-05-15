@@ -307,7 +307,7 @@ const Schema = new mongoose.Schema({
                 type: [String]
             },
             "Brief Research Profile": {
-                type:[String]
+                type: [String]
             },
             "Research Id": {
                 type: [
@@ -418,7 +418,7 @@ const Schema = new mongoose.Schema({
                 type: String
             },
             "Personal Link": {
-                type:[
+                type: [
                     {
                         title: {
                             type: String
@@ -430,7 +430,7 @@ const Schema = new mongoose.Schema({
                 ]
             }
         },
-        default:{
+        default: {
             "Google Scholar Link": "",
             "Personal Link": []
         }
@@ -494,7 +494,10 @@ const Schema = new mongoose.Schema({
     show: { type: Boolean, default: true },
     order: {
         type: Number,
-    }
+    },
+    sourceOfInfo: {
+        type: String,
+    },
 }, { timestamps: true })
 
 module.exports = mongoose.model("faculty_test", Schema);
