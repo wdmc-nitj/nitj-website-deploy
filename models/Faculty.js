@@ -482,7 +482,15 @@ const Schema = new mongoose.Schema({
         ],
         default: []
     },
-
+    createdAt: {
+        type: Date,
+    },
+    updatedAt: {
+        type: Date,
+    },
+    __v: {
+        type: Number,
+    },
     show: { type: Boolean, default: true },
     order: {
         type: Number,
