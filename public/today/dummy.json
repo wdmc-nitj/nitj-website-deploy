@@ -1,0 +1,202 @@
+[
+  {
+    "_id": "event1",
+    "eventName": "Annual Science Exhibition",
+    "startDateTime": "2024-02-11T22:00:00Z",
+    "endDateTime": "2024-02-12T10:00:00Z",
+    "organisingDept": "Physics",
+    "category": "academic",
+    "type": "offline",
+    "venue": "Science Building",
+    "meetlink": "",
+    "description": "A showcase of innovative projects and experiments in various scientific disciplines.",
+    "studentCoordinator": {
+      "coordinator1": {
+        "name": "Sarah Johnson",
+        "email": "sarah.johnson@example.com",
+        "phone": "123-456-7890"
+      },
+      "coordinator2": {
+        "name": "Mark Davis",
+        "email": "mark.davis@example.com",
+        "phone": "987-654-3210"
+      }
+    },
+    "facultyCoordinator": {
+      "name": "Dr. Rachel Adams",
+      "email": "rachel.adams@example.com"
+    },
+    "socialMediaLinks": {
+      "whatsapp": "",
+      "instagram": "https://instagram.example.com/science-exhibition",
+      "twitter": "https://twitter.example.com/science-exhibition"
+    },
+    "department": "ph",
+    "show": true,
+    "sourceOfInfo": "College newsletter",
+    "posterUrl": "https://source.unsplash.com/random",
+    "openToAnyone": true,
+    "regReq": false,
+    "onSpotReg": true
+  },
+  {
+    "_id": "event2",
+    "eventName": "Music Club Concert",
+    "startDateTime": "2024-06-05T18:00:00Z",
+    "endDateTime": "2024-06-05T22:00:00Z",
+    "organisingDept": "Music Club",
+    "category": "club",
+    "type": "offline",
+    "venue": "Auditorium",
+    "meetlink": "",
+    "description": "An evening of live performances by talented musicians from the college.",
+    "studentCoordinator": {
+      "coordinator1": {
+        "name": "",
+        "email": "",
+        "phone": ""
+      },
+      "coordinator2": {
+        "name": "",
+        "email": "",
+        "phone": ""
+      }
+    },
+    "facultyCoordinator": {
+      "name": "Prof. Michael Smith",
+      "email": "michael.smith@example.com"
+    },
+    "socialMediaLinks": {
+      "whatsapp": "",
+      "instagram": "https://instagram.example.com/music-club",
+      "twitter": "https://twitter.example.com/music-club"
+    },
+    "department": "",
+    "show": true,
+    "sourceOfInfo": "Social media",
+    "posterUrl": "https://source.unsplash.com/random",
+    "openToAnyone": true,
+    "regReq": false,
+    "onSpotReg": true
+  },
+  {
+    "_id": "event3",
+    "eventName": "Annual Hackathon",
+    "startDateTime": "2024-06-05T09:00:00Z",
+    "endDateTime": "2024-06-11T18:00:00Z",
+    "organisingDept": "Computer Science and Engineering",
+    "category": "club",
+    "type": "hybrid",
+    "venue": "Computer Lab",
+    "meetlink": "https://meet.example.com/hackathon",
+    "description": "A coding competition to develop innovative solutions to real-world problems.",
+    "studentCoordinator": {
+      "coordinator1": {
+        "name": "Daniel Brown",
+        "email": "daniel.brown@example.com",
+        "phone": "123-456-7890"
+      },
+      "coordinator2": {
+        "name": "Emma Johnson",
+        "email": "emma.johnson@example.com",
+        "phone": "987-654-3210"
+      }
+    },
+    "facultyCoordinator": {
+      "name": "Dr. David Miller",
+      "email": "david.miller@example.com"
+    },
+    "socialMediaLinks": {
+      "whatsapp": "",
+      "instagram": "",
+      "twitter": ""
+    },
+    "department": "cse",
+    "show": true,
+    "sourceOfInfo": "College notice board",
+    "posterUrl": "https://source.unsplash.com/random",
+    "openToAnyone": true,
+    "regReq": true,
+    "onSpotReg": false
+  },
+  {
+    "_id": "event4",
+    "eventName": "Career Fair 2024",
+    "startDateTime": "2024-06-05T09:00:00Z",
+    "endDateTime": "2024-06-05T18:00:00Z",
+    "organisingDept": "Training and Placement Cell",
+    "category": "placement",
+    "type": "offline",
+    "venue": "Multipurpose Hall",
+    "meetlink": "",
+    "description": "An opportunity for students to interact with potential employers and explore career options.",
+    "studentCoordinator": {
+      "coordinator1": {
+        "name": "Olivia Smith",
+        "email": "olivia.smith@example.com",
+        "phone": "123-456-7890"
+      },
+      "coordinator2": {
+        "name": "Ethan Johnson",
+        "email": "ethan.johnson@example.com",
+        "phone": "987-654-3210"
+      }
+    },
+    "facultyCoordinator": {
+      "name": "Prof. Emily Wilson",
+      "email": "emily.wilson@example.com"
+    },
+    "socialMediaLinks": {
+      "whatsapp": "",
+      "instagram": "https://instagram.example.com/career-fair",
+      "twitter": "https://twitter.example.com/career-fair"
+    },
+    "department": "tt",
+    "show": true,
+    "sourceOfInfo": "College website",
+    "posterUrl": "https://source.unsplash.com/random",
+    "openToAnyone": true,
+    "regReq": false,
+    "onSpotReg": true
+  },
+  {
+    "_id": "event5",
+    "eventName": "Literary Festival 2024",
+    "startDateTime": "2024-10-20T09:00:00Z",
+    "endDateTime": "2024-10-22T18:00:00Z",
+    "organisingDept": "English",
+    "category": "fest",
+    "type": "offline",
+    "venue": "Library",
+    "meetlink": "",
+    "description": "A celebration of literature, featuring discussions, poetry readings, and storytelling sessions.",
+    "studentCoordinator": {
+      "coordinator1": {
+        "name": "Sophia Williams",
+        "email": "sophia.williams@example.com",
+        "phone": "123-456-7890"
+      },
+      "coordinator2": {
+        "name": "Jacob Brown",
+        "email": "jacob.brown@example.com",
+        "phone": "987-654-3210"
+      }
+    },
+    "facultyCoordinator": {
+      "name": "Dr. Olivia Taylor",
+      "email": "olivia.taylor@example.com"
+    },
+    "socialMediaLinks": {
+      "whatsapp": "",
+      "instagram": "https://instagram.example.com/literary-festival",
+      "twitter": "https://twitter.example.com/literary-festival"
+    },
+    "department": "en",
+    "show": true,
+    "sourceOfInfo": "College newsletter",
+    "posterUrl": "https://source.unsplash.com/random",
+    "openToAnyone": true,
+    "regReq": false,
+    "onSpotReg": true
+  }
+]

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex flex-col m-2 mt-4 items-center p-4">
+      <select
+        id="menu"
+        class="w-72 h-10 border-2 border-black rounded-lg p-2 py-4 my-2"
+      >
+        <option value="">Select Menu</option>
+        <option value="Administration">Administration</option>
+        <option value="Admissions">Admissions</option>
+        <option value="Academics">Academics</option>
+        <option value="Research">Research</option>
+        <option value="Alumni">Alumni</option>
+        <option value="LifeatNITJ">LifeatNITJ</option>
+      </select>
+      <select
+        id="submenu"
+        class="w-72 h-10 border-2 border-black rounded-lg p-2 py-2 my-2"
+      ></select>
+      <input
+        style="display: none"
+        type="text"
+        id="name"
+        class="w-72 h-10 border-2 border-black rounded-lg p-2 py-2 my-2"
+        placeholder="Enter Name"
+      />
+      <input
+        style="display: none"
+        type="text"
+        id="link"
+        class="w-72 h-10 border-2 border-black rounded-lg p-2 py-2 my-2"
+        placeholder="Enter Link"
+      />
+      <input
+        style="display: none"
+        type="text"
+        id="order"
+        class="w-72 h-10 border-2 border-black rounded-lg p-2 py-2 my-2"
+        placeholder="Enter Order"
+      />
+      <input
+        type="hidden"
+        id="id"
+        class="w-72 h-10 border-2 border-black rounded-lg p-2 py-2 my-2"
+        placeholder="Enter Order"
+      />
+      <button
+        id="edit"
+        onclick="handleEditSubmit()"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
+        style="display: none"
+      >
+        Edit
+      </button>
+    </div>
+    <div class="flex flex-col m-2">
+      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+          <div class="overflow-hidden">
+            <table class="min-w-full text-left text-sm font-light">
+              <thead class="border-b font-medium dark:border-neutral-500">
+                <tr>
+                  <th scope="col" class="px-6 py-4">Name</th>
+                  <th scope="col" class="px-6 py-4">Link</th>
+                  <th scope="col" class="px-6 py-4">Order</th>
+                  <th scope="col" class="px-6 py-4">Edit</th>
+                  <th scope="col" class="px-6 py-4">Delete</th>
+                </tr>
+              </thead>
+              <tbody id="table"></tbody>
+            </table>
+            <a href="/api/dashboard/navbar/add">
+              <button
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
+              >
+                Add New
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const obj = {
+        Administration: [
+          "About Us",
+          "Leadership",
+          "Governing Bodies",
+          "Cells",
+          "Committees",
+        ],
+        Academics: [
+          "Departments",
+          "Centers",
+          "Academic System",
+          "Academic Services",
+          "Allied facilities",
+          "Programs of study",
+          "convocation",
+          "other links",
+        ],
+        Admissions: [
+          "Prospective Students",
+          "Anti Raging",
+          "Join NITJ",
+          "Institute Flyers",
+        ],
+        Research: [
+          "Research @NITJ",
+          "Incubation @NITJ",
+          "Consultancy @NITJ",
+          "Events",
+        ],
+        Alumni: ["NITJAA"],
+        LifeatNITJ: [
+          "Club & Societies",
+          "Scholarships",
+          "Campus Amenities",
+          "Health And Wellness",
+          "NITJ Festivals",
+          "Accomodation",
+        ],
+      };
+
+      load();
+      function load() {
+        menu.addEventListener("change", (e) => {
+          submenu.innerHTML = "";
+          let option = document.createElement("option");
+          option.value = "0";
+          option.innerHTML = "Select Submenu";
+          submenu.appendChild(option);
+          for (let i = 0; i < obj[e.target.value].length; i++) {
+            let option = document.createElement("option");
+            option.value = obj[e.target.value][i];
+            option.innerHTML = obj[e.target.value][i];
+            submenu.appendChild(option);
+          }
+        });
+
+        submenu.addEventListener("change", (e) => {
+          showTable();
+        });
+      }
+
+      function showTable() {
+        let menu = document.getElementById("menu").value;
+        let submenu = document.getElementById("submenu").value;
+        let table = document.getElementById("table");
+        table.innerHTML = "";
+
+        let url = "/api/navbar";
+        fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => {
+            res.json().then((data) => {
+              console.log(data);
+
+              let idx = -1;
+
+              for (let i = 0; i < data[`${menu}`].length; i++) {
+                if (data[`${menu}`][i][0] === submenu) {
+                  idx = i;
+                  break;
+                }
+              }
+
+              if (idx === -1) {
+                alert("Please select submenu and menu");
+                return;
+              }
+
+              data = data[`${menu}`][idx];
+              console.log(data);
+              for (let i = 2; i < data.length; i++) {
+                let d = data[i];
+
+                let tr = document.createElement("tr");
+                let td = document.createElement("td");
+                let td1 = document.createElement("td");
+                let td2 = document.createElement("td");
+                let td3 = document.createElement("td");
+                let td4 = document.createElement("td");
+
+                td.className = "whitespace-nowrap px-6 py-4";
+                td1.className = "whitespace-nowrap px-6 py-4";
+                td2.className = "whitespace-nowrap px-6 py-4";
+                td3.className = "whitespace-nowrap px-6 py-4";
+                td4.className = "whitespace-nowrap px-6 py-4";
+
+                td.innerHTML = d.name;
+                td1.innerHTML = d.link;
+                td2.innerHTML = d.order;
+                td3.innerHTML = `
+                  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="handleEdit('${d.id}','${d.name}',
+                  '${d.link}','${d.order}')">Edit</button>`;
+                td4.innerHTML = `<button onclick="handleDelete('${d.id}')" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>`;
+
+                tr.appendChild(td);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+
+                tr.className = "border-b dark:border-neutral-500";
+                table.appendChild(tr);
+              }
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
+      async function handleDelete(id) {
+        
+        let url = '/api/navbar/delete';
+        let menu = document.getElementById("menu").value;
+        let submenu = document.getElementById("submenu").value;
+
+        fetch(url, {
+          method: "POST",
+          body: JSON.stringify({
+            id: id,
+            menu: menu,
+            submenu: submenu,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            "authorization":"HareKrishna"
+          },
+        }).then((res) => {
+          res.json().then((data) => {
+            console.log(data);
+            showTable();
+          });
+        }).catch((err) => {
+          console.log(err);
+        });
+
+      }
+
+      function handleEdit(id, name, link, order) {
+        let menu = document.getElementById("menu").value;
+        let submenu = document.getElementById("submenu").value;
+
+        document.getElementById("name").value = name;
+        document.getElementById("link").value = link;
+        document.getElementById("order").value = order;
+        document.getElementById("id").value = id;
+
+        document.getElementById("name").style.display = "block";
+        document.getElementById("link").style.display = "block";
+        document.getElementById("order").style.display = "block";
+
+        document.getElementById("edit").style.display = "block";
+      }
+
+      async function handleEditSubmit() {
+        let url = `/api/navbar/edit`;
+        let menu = document.getElementById("menu").value;
+        let submenu = document.getElementById("submenu").value;
+
+        let name = document.getElementById("name").value;
+        let link = document.getElementById("link").value;
+        let order = document.getElementById("order").value;
+        let id = document.getElementById("id").value;
+
+        await fetch(url, {
+          method: "POST",
+          body: JSON.stringify({
+            id: id,
+            name: name,
+            link: link,
+            order: parseInt(order),
+            menu: menu,
+            submenu: submenu,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            "authorization":"HareKrishna"
+          },
+        });
+
+        url = `/api/navbar/sort`;
+
+        await fetch(url, {
+          method: "POST",
+          body: JSON.stringify({
+            menu: menu,
+            submenu: submenu,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            "authorization":"HareKrishna"
+          },
+        });
+
+        showTable();
+
+        document.getElementById("name").value = "";
+        document.getElementById("link").value = "";
+        document.getElementById("order").value = "";
+        document.getElementById("id").value = "";
+
+        document.getElementById("name").style.display = "none";
+        document.getElementById("link").style.display = "none";
+        document.getElementById("order").style.display = "none";
+        document.getElementById("edit").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

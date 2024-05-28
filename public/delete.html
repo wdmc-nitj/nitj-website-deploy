@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete</title>
+    <style>
+      /* Style the form element */
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+      }
+
+      /* Style the file input element */
+      input[type="file"] {
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      input[type="link"] {
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        width: 23%;
+      }
+
+      /* Style the submit button element */
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      /* Style the submit button element on hover */
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      #link-container {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+      }
+
+      #copy-button {
+        display: block;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #copy-button:hover {
+        background-color: #0069d9;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+  
+       <form
+          action="/api/upload/delete"
+          method="post"
+          id="delete"
+          >
+          <input
+          type="link"
+          name="link"
+          id="delete_link"
+          placeholder="Enter the link of the URL to delete..."
+          />
+          <input type="submit" value="Delete" />
+        </form>
+    </div>
+    <script>
+        const deleteForm = document.getElementById("delete");
+        const deleteAction = (event) => {
+        event.preventDefault();
+
+        fetch(deleteForm.action, {
+          method: deleteForm.method,
+          body: JSON.stringify({
+            link: document.getElementById('delete_link').value,
+          }),
+          headers: {
+            authorization: "HareKrishna",
+            "Content-Type": "application/json; charset=UTF-8"
+          },
+        })
+          .then((response) => response.json())
+          .then((res) => {
+            alert(res.message)
+          })
+          .catch((error) => {
+            console.error(error);
+            alert("An error occurred.");
+          });
+      };
+      deleteForm.addEventListener("submit", deleteAction)
+    </script>
+

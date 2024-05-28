@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex flex-col m-2 mt-4 items-center p-4">
+      <form action="#" id="form" class="flex flex-col items-center">
+        <select
+          id="menu"
+          class="w-72 h-10 border-2 border-black rounded-lg p-2 py-4 my-2"
+        >
+          <option value="">Select Menu</option>
+          <option value="Administration">Administration</option>
+          <option value="Admissions">Admissions</option>
+          <option value="Academics">Academics</option>
+          <option value="Research">Research</option>
+          <option value="Alumni">Alumni</option>
+          <option value="LifeatNITJ">LifeatNITJ</option>
+        </select>
+        <select
+          id="submenu"
+          class="w-72 h-10 border-2 border-black rounded-lg p-2 py-2 my-2"
+        ></select>
+        <input
+          type="text"
+          id="name"
+          class="w-72 h-10 border-2 border-black rounded-lg p-2 py-2 my-2"
+          placeholder="Enter Name"
+        />
+        <input
+          type="text"
+          id="link"
+          class="w-72 h-10 border-2 border-black rounded-lg p-2 py-2 my-2"
+          placeholder="Enter Link"
+        />
+        <input
+          type="text"
+          id="order"
+          class="w-72 h-10 border-2 border-black rounded-lg p-2 py-2 my-2"
+          placeholder="Enter Order"
+        />
+        <button
+          id="add"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
+        >
+          Add
+        </button>
+      </form>
+      <a href="/api/dashboard/navbar">
+
+        <button
+            id="back"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-5"
+          >
+           Back
+          </button>
+      </a>
+    </div>
+
+    <script>
+      const obj = {
+        Administration: [
+          "About Us",
+          "Leadership",
+          "Governing Bodies",
+          "Cells",
+          "Committees",
+        ],
+        Academics: [
+          "Departments",
+          "Centers",
+          "Academic System",
+          "Academic Services",
+          "Allied facilities",
+          "Programs of study",
+          "convocation",
+          "other links",
+        ],
+        Admissions: [
+          "Prospective Students",
+          "Anti Raging",
+          "Join NITJ",
+          "Institute Flyers",
+        ],
+        Research: [
+          "Research @NITJ",
+          "Incubation @NITJ",
+          "Consultancy @NITJ",
+          "Events",
+        ],
+        Alumni: ["NITJAA"],
+        LifeatNITJ: [
+          "Club & Societies",
+          "Scholarships",
+          "Campus Amenities",
+          "Health And Wellness",
+          "NITJ Festivals",
+          "Accomodation",
+        ],
+      };
+
+      load();
+      function load() {
+        menu.addEventListener("change", (e) => {
+          submenu.innerHTML = "";
+          let option = document.createElement("option");
+          option.value = "0";
+          option.innerHTML = "Select Submenu";
+          submenu.appendChild(option);
+          for (let i = 0; i < obj[e.target.value].length; i++) {
+            let option = document.createElement("option");
+            option.value = obj[e.target.value][i];
+            option.innerHTML = obj[e.target.value][i];
+            submenu.appendChild(option);
+          }
+        });
+      }
+
+      document.getElementById('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        let menu = document.getElementById('menu').value;
+        let submenu = document.getElementById('submenu').value;
+        let name = document.getElementById('name').value;
+        let link = document.getElementById('link').value;
+        let order = document.getElementById('order').value;
+
+        order = parseInt(order);
+
+        if (menu == '' || submenu == '' || name == '' || link == '') {
+          alert('Please fill all the fields');
+        } else {
+          let data = {
+            menu,
+            submenu,
+            name,
+            link,
+            order
+          }
+          console.log(data);
+          fetch('/api/navbar/update', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              "authorization":"HareKrishna"
+            },
+            body: JSON.stringify(data)
+          }).then((res) => {
+            if (res.status == 200) {
+              alert('Added Successfully');
+              document.getElementById('form').reset();
+              alert('Saved Successfully');
+            } else {
+              alert('Something went wrong');
+            }
+          })
+        }
+      })
+
+    </script>
+  </body>
+</html>

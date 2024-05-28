@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --dark-purple: hsla(242, 83%, 7%, 1);
+    --accent: hsla(201, 96%, 32%);
+    --light-purple: hsla(242, 83%, 98%);
+    --accent-orange: hsla(12, 87%, 56%, 1);
+  }
+
+  sub,
+  sup {
+    font-size: 50%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+    font-weight: normal;
+  }
+  sup {
+    top: 0em;
+    vertical-align: super;
+  }
+}
+
+@layer utilities {
+  .main-body {
+    font-family: 'Poppins', sans-serif;
+  }
+  .font2 {
+    font-family: 'Barlow', sans-serif;
+  }
+  .animate-delay {
+    animate-delay: 100ms;
+  }
+  .main-slider-text {
+    height: 160px;
+    overflow: hidden;
+    animation-name: constantBounce;
+    animation-duration: 1.8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  .exit-animation {
+    animation-name: slideUp;
+    animation-direction: normal;
+    animation-duration: 600ms;
+    animation-delay: 1s;
+  }
+  .enter-animation {
+    animation-name: slideDownReturn;
+    animation-direction: normal;
+    animation-duration: 600ms;
+  }
+
+  /* .testing-new-animation {
+    animation-direction: normal;
+    animation-duration: 500ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  } */
+
+  @media screen and (max-width: 992px) {
+    .main-slider-text {
+      height: 120px;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .main-slider-text {
+      height: 120px;
+    }
+  }
+}
+
+/* @keyframes rotate {
+  10% {
+    transform: translateY(-7%);
+  }
+  33.33% {
+    transform: translateY(0%);
+  }
+  43.33% {
+    transform: translateY(-107%);
+  }
+  66.66% {
+    transform: translateY(-100%);
+  }
+  76.66% {
+    transform: translateY(-207%);
+  }
+  100% {
+    transform: translateY(-200%);
+  }
+} */
+
+@keyframes constantBounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

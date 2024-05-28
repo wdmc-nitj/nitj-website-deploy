@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Favicon and title- -->
+  <link rel="icon" type="image/x-icon" href="./img/nitj-logo.png" />
+  <title>Contact Details</title>
+
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+  <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./tabs.css" />
+  <!--alpine js-->
+  <script defer src="https://unpkg.com/alpinejs@3.2.4/dist/cdn.min.js"></script>
+
+  <!-- Google Fonts  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+  <!--jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <!--font awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/style.css" />
+  <style type="text/tailwindcss">
+    @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+
+  <style>
+    :root {
+      --font1: 'Poppins', sans-serif;
+      --font2: 'Barlow', sans-serif;
+    }
+
+    .main-body {
+      font-family: var(--font1);
+    }
+
+    body {
+      scrollbar-color: #fff #fff;
+    }
+
+    /* Customizing the Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(30, 58, 138, 1);
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: gray;
+    }
+
+    ::-webkit-resizer {
+      background-color: #ffffff;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 400, "grad" 0, "opzs" 48;
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: gray;
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #212121;
+    }
+
+    /* Gallery Effects */
+    .box {
+      flex: 1;
+      overflow: hidden;
+      transition: 0.5s;
+      line-height: 0;
+    }
+
+    .box>img {
+      width: 100%;
+      height: 100%;
+      border: 0.2rem solid white;
+      border-radius: 8px;
+      -o-object-fit: cover;
+      object-fit: cover;
+      transition: ease 0.75s;
+    }
+
+    .box:hover {
+      flex: 1 1 30%;
+      /* box-shadow: 0px 6px 6px rgba(73, 73, 73, 0.65); */
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .box:hover>img {
+      opacity: 1;
+      width: 100%;
+      height: 100%;
+    }
+
+    .base-image {
+      margin-top: 40px;
+      background-image: url("img/nitj3.jpg"),
+        linear-gradient(rgb(255, 255, 255), rgba(4, 4, 4));
+      mask-image: linear-gradient(0deg, white, transparent);
+      -webkit-mask-image: linear-gradient(0deg, white, transparent);
+      background-color: #cccccc;
+      height: 400px;
+      background-position: 0% 28%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .base-image-2 {
+      margin-top: 40px;
+      background-image: url("img/nitj3.jpg"),
+        linear-gradient(rgb(255, 255, 255), rgba(4, 4, 4));
+      background-color: #cccccc;
+      height: 300px;
+      background-position: 58% 28%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .main-shadow {
+      text-shadow: rgb(0 0 0) 6px -1px 5px;
+    }
+
+    .carousel-open:checked+.carousel-item {
+      position: static;
+      opacity: 100;
+    }
+
+    .carousel-item {
+      -webkit-transition: opacity 0.9s ease-in-out;
+      transition: opacity 1s ease-in-out 0.2s;
+    }
+
+    #carousel-1:checked~.control-1,
+    #carousel-2:checked~.control-2,
+    #carousel-3:checked~.control-3,
+    #carousel-4:checked~.control-4 {
+      display: block;
+    }
+
+    .carousel-indicators {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      bottom: 2%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .titlebg {
+      background: linear-gradient(90.09deg,
+          rgba(0, 0, 0, 0.7) 0.08%,
+          rgba(255, 255, 255, 0) 99.11%),
+        url(../admin/img/about_top.jpg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
+
+
+   <style>
+       .titlebg {
+           background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(img/about_top.jpg);
+           background-repeat: no-repeat;
+           background-position: center;
+           background-size: cover;
+       }
+
+       /* Style the tab */
+       .tab {
+           color: white;
+           overflow: hidden;
+           border: 1px solid #ccc;
+           background-color: hsla(201, 96%, 32%);
+       }
+
+       /* Style the buttons inside the tab */
+       .tab button {
+           background-color: inherit;
+           float: left;
+           border: none;
+           outline: none;
+           cursor: pointer;
+           padding: 14px 16px;
+           transition: 0.3s;
+           font-size: 17px;
+       }
+
+       /* Change background color of buttons on hover */
+       .tab button:hover {
+           color: black;
+           background-color: hsla(242, 83%, 98%);
+       }
+
+       /* Create an active/current tablink class */
+       .tab button.active {
+           color: black;
+           background-color: hsla(242, 83%, 98%);
+       }
+
+       /* Style the tab content */
+       .tabcontent {
+           display: none;
+           padding: 6px 12px;
+           border: 1px solid #ccc;
+           border-top: none;
+       }
+
+       /* Transition on tab content */
+       .tabcontent {
+           animation: fadeEffect 1s;
+           /* Fading effect takes 1 second */
+       }
+
+       .font2 {
+           font-family: 'Barlow', sans-serif;
+       }
+
+       :root {
+           --primary-color: #fff;
+           --background-color: #212121;
+
+           --blue-color: #0369A1;
+           --light-blue-color: #F6F6FE;
+           --purple-color: #040320;
+           --font1: 'Poppins', sans-serif;
+           --font2: 'Barlow', sans-serif;
+       }
+
+       * {
+           margin: 0;
+           padding: 0;
+       }
+
+       .main-body {
+           font-family: var(--font1);
+       }
+
+       .titlebg {
+           background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(img/about_top.jpg);
+           background-repeat: no-repeat;
+           background-position: center;
+           background-size: cover;
+       }
+
+       @keyframes fadeEffect {
+
+           /* Go from zero to full opacity */
+           from {
+               opacity: 0;
+           }
+
+           to {
+               opacity: 1;
+           }
+       }
+   </style>
+</head>
+
+<body>
+  <script src="/template/header.js" type="module"></script>
+  <script src="/template/helper.js"></script>
+
+  <div class="main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px] lg:mb-32">
+    <div class="titlebg">
+        <div class="container flex flex-col justify-center items-start h-[224px] py-[px]">
+            <!-- px-4 lg:px-[11%] -->
+            <p class="font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">Contact Details for Admission
+            </p>
+        </div>
+        <nav class="flex bg-gray-200 py-[8px] text-black" aria-label="Breadcrumb">
+            <ol class="container inline-flex items-center">
+                <li class="inline-flex items-center">
+                    <a href="" class="inline-flex items-center text-sm font-medium hover:text-gray-900">
+                        <a href="../index.html" class="text-lg font-medium ml-2">Home</a>
+                    </a>
+                </li>
+                <li aria-current="page">
+                    <div class="inline-flex items-center">
+                        <i style="color: rgb(128, 128, 128); font-size: 12px; margin-left: 12px"
+                            class="fa-solid fa-angle-right ml-2"></i>
+                        <a href="#" class="text-lg font-medium ml-2">Contact Details for Admission</a>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+
+     
+        <div class="container mb-12">
+            <div class="tab">
+                <button class="tablinks active" onclick="openTab(event,'firstDean-sw')">B.Tech.</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-J-sw')">M.Tech.(CCMT)</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-P-sw')">M.Tech.(Self Sponsored)</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-U-sw')">M.Sc.</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-D-sw')">M.B.A.</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-S-sw')">Ph.D</button>
+            </div>
+
+
+            <div id="firstDean-sw" class="tabcontent flex flex-col">
+  
+                    <ul id="helplines">               
+         
+                </ul>  
+                <br>          
+                
+               <div><a Class = "text-accent" href="https://nitj.ac.in/files/1714711852852-Admission Help Desk.pdf"><b>Contact Detials for Admission Help Desk</b> </a><img src="https://www.nitj.ac.in//images/New.gif"  class="inline"> </div>
+                </div>
+
+                <div id="Associate-Dean-J-sw" class="tabcontent flex flex-col">
+                  
+                        <ul id="helplinesmtechccmt">
+          
+                        </ul>
+                    
+                </div>
+
+            <div id="Associate-Dean-P-sw" class="tabcontent flex flex-col">
+              
+                    <ul id="helplinesmtechss">
+      
+                    </ul>
+               
+            </div>
+
+            <div id="Associate-Dean-U-sw" class="tabcontent flex flex-col">
+            
+                    <ul id="helplinesmsc">
+      
+                    </ul>
+                
+            </div>
+
+            <div id="Associate-Dean-D-sw" class="tabcontent flex flex-col">
+             
+                    <ul id="helplinesmba">
+      
+                    </ul>
+               
+            </div>
+
+            <div id="Associate-Dean-S-sw" class="tabcontent flex flex-col">
+             
+                    <ul id="helplinesphd">
+      
+                    </ul>
+               
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="../admin/app.js"></script>
+    <script src="../template/footer.js"></script>
+    <script src="../admissions/js/data.js"></script>
+
+    <script>
+        function openDeans() {
+
+            const deans = ['firstDean-sw', 'Dean-ia', 'Dean-rc', 'Dean-pd', 'Dean-f', 'Dean-s']
+
+            for (let i = 0; i < deans.length; i++) {
+                document.getElementById(deans[i]).style.display = "flex";
+            }
+        }
+
+        function openTab(evt, deanName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                if (tabcontent[i].id[tabcontent[i].id.length - 1] == deanName[deanName.length - 1]) {
+                    tabcontent[i].style.display = "none";
+                }
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                if (tabcontent[i].id[tabcontent[i].id.length - 1] == deanName[deanName.length - 1]) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+            }
+            document.getElementById(deanName).style.display = "flex";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("load", openDeans())
+    </script>
+
+</body>
+
+</html>

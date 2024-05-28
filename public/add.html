@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Page</title>
+    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="m-2 p-2 space-y-2">
+      <input type="text" name="title" id="title" placeholder="Enter Title"
+        class="w-72 h-10 border-2 border-black rounded-lg p-2"
+      >
+
+
+      <textarea name="editor1"></textarea>
+      <button 
+        class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10"
+        onclick=handleSave()>
+          Save
+      </button>
+      <a href="/api/dashboard/store">
+        <button class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10">
+          Back
+        </button>
+      </a>
+    </div>
+    <script>
+      CKEDITOR.replace("editor1");
+        function handleSave() {
+            const content = CKEDITOR.instances.editor1.getData();
+            const title=document.getElementById('title').value;
+
+            console.log(content,title);
+
+            let url='/api/store';
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    "authorization":"HareKrishna"
+                },
+                body: JSON.stringify({
+                  title:title,
+                  content:content
+                })
+            }).then(()=>{
+              alert('Saved Succesfully');
+              document.getElementById('title').value="";
+              CKEDITOR.instances.editor1.value="";
+            })
+            
+        }
+    </script>
+  </body>
+</html>
