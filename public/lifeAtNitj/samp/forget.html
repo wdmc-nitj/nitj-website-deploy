@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Forget Password</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/main.css" />
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#form2").submit(function (event) {
+        event.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "./forgetpass",
+          data: $("#form2").serialize(),
+          dataType: "json",
+          success: function (response) {
+            //alert("a");
+            //console.log(response.Success);
+            $("#form2")[0].reset();
+            //alert("abc");
+            document.getElementById("check").innerHTML = response.Success;
+
+            setTimeout(function () {
+              document.getElementById("check").innerHTML = "";
+            }, 3000);
+            if (response.Success == "Password changed!") {
+              document.getElementById("aa").click();
+            }
+          },
+          error: function () { },
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="./images/sampLogo2.png" alt="Logo" />
+        <span class="website-name glow">SAMP</span>
+      </div>
+
+      <ul class="nav-links">
+        <li>
+          <a href="https://www.nitj.ac.in/" target="_blank">
+            <span class="home-icon"></span>
+            NITJ
+          </a>
+        </li>
+        <li>
+          <a href="index.html" class="active-link">Home</a>
+        </li>
+        <li><a href="index.html">About</a></li>
+        <li>
+          <div class="dropdown">
+            <button onclick="myFucntion()" class="dropbtn">
+              SAMP Committee
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="iSamp.html">I-SAMP</a>
+              <a href="dSamp.html">D-SAMP</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-input" />
+            <img src="./images/searchInterfaceSymbol.png" alt="Search Icon" class="search-icon" />
+          </div>
+        </li>
+      </ul>
+      <div class="burger-menu" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+  </body>
+
+  <div class="col-md-4 col-md-offset-4 forget_con">
+    <div class="login_back">
+      <p>Change Password</p>
+    </div>
+    <div class="form-group">
+      <form id="form2" method="post">
+        <input type="text" name="email" placeholder="E-mail" required="" class="form-control" />
+        <br />
+        <input type="password" name="password" placeholder="Password" required="" class="form-control" />
+        <br />
+        <input type="password" name="passwordConf" placeholder="Confirm Password" required="" class="form-control" />
+        <br />
+        <input type="submit" value="Change" class="btn btn-success" />
+      </form>
+    </div>
+    <div class="mssg bg-danger">
+      <span id="check"></span>
+    </div>
+    <div id="LangTable"><a href="./profile" id="aa"></a></div>
+    <div>
+      <span>Login?</span>
+      <a href="login.html">Click here</a>
+    </div>
+  </div>
+  <div id="LangTable"><a href="login.html" id="aa"></a></div>
+
+  <footer>
+    <p>
+      &copy;
+      <span id="currentYear"></span>
+      National Institute of Technology Jalandhar. All Rights Reserved!
+    </p>
+  </footer>
+  <script>
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+
+</html>
