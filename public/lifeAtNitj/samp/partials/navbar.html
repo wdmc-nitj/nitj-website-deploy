@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+  <title>SAMP portal</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="../css/reponsive.css" />
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+
+<body>
+  <div class="contain">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="../images/sampLogo2.png" alt="Logo" />
+        <span class="website-name glow">SAMP</span>
+      </div>
+
+      <ul class="nav-links">
+        <li>
+          <a href="https://www.nitj.ac.in/" target="_blank"><span class="home-icon"></span>NITJ</a>
+        </li>
+        <li><a href="../index.html" class="active-link">Home</a></li>
+        <li><a href="../index.html">About</a></li>
+        <li>
+          <div class="dropdown">
+            <button onclick="myFucntion()" class="dropbtn">
+              SAMP Committee
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="../iSamp.html">I-SAMP</a>
+              <a href="../dSamp.html">D-SAMP</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-input" />
+            <img src="../images/searchInterfaceSymbol.png" alt="Search Icon" class="search-icon" />
+          </div>
+        </li>
+
+        <li><a href="../login.html" class="btn">Login</a></li>
+      </ul>
+      <div class="burger-menu" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+  </div>
+</body>
+
+</html>

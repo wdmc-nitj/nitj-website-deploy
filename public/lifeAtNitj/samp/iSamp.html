@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+  <title>SAMP portal</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="./css/reponsive.css" />
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+</head>
+<style>
+  .email-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .committee-section {
+    text-align: center;
+    margin: 100px;
+    color: rgb(12, 12, 48);
+    margin: 150px 100px;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    margin: 10px 0;
+  }
+
+  .members-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .member {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .member-name {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .member p {
+    margin: 5px 0;
+    text-align: left;
+  }
+
+  .member i {
+    margin-right: 10px;
+    color: #555;
+  }
+
+  .member:hover {
+    background-color: #e9e9e9;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .members-container {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .members-container {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+
+  @media only screen and (max-width: 440px) {
+    .committee-section {
+      margin: 4px;
+      margin-top: 80px;
+    }
+  }
+</style>
+
+<body>
+  <div class="contain">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="./images/sampLogo2.png" alt="Logo" />
+        <span class="website-name glow">SAMP</span>
+      </div>
+
+      <ul class="nav-links">
+        <li>
+          <a href="https://www.nitj.ac.in/" target="_blank">
+            <span class="home-icon"></span>
+            NITJ
+          </a>
+        </li>
+        <li>
+          <a href="index.html" class="active-link">Home</a>
+        </li>
+        <li><a href="index.html">About</a></li>
+        <li>
+          <div class="dropdown">
+            <button onclick="myFucntion()" class="dropbtn">
+              SAMP Committee
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="iSamp.html">I-SAMP</a>
+              <a href="dSamp.html">D-SAMP</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-input" />
+            <img src="./images/searchInterfaceSymbol.png" alt="Search Icon" class="search-icon" />
+          </div>
+        </li>
+
+        <li><a href="login.html" class="btn">Login</a></li>
+      </ul>
+      <div class="burger-menu" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+  </div>
+  <div class="committee-section">
+    <h2>I-SAMP Committee</h2>
+    <div class="divider"></div>
+    <h3>Coordinators</h3>
+    <div class="members-container">
+      <div class="member">
+        <p class="member-name">Dr Monica Sikka</p>
+        <p>
+          <a href="mailto:sikkam@nitj.ac.in" class="email-link">
+            <i class="fa fa-envelope"></i>
+            sikkam@nitj.ac.in
+          </a>
+        </p>
+        <p>
+          <i class="fa fa-phone"></i>
+          9872995546
+        </p>
+      </div>
+
+      <div class="member">
+        <p class="member-name">Dr Samayveer Singh</p>
+        <p>
+          <a href="mailto:samays@nitj.ac.in" class="email-link">
+            <i class="fa fa-envelope"></i>
+            samays@nitj.ac.in
+          </a>
+        </p>
+        <p>
+          <i class="fa fa-phone"></i>
+          9953741966
+        </p>
+      </div>
+
+      <div class="member">
+        <p class="member-name">Dr Nisha Chaurasia</p>
+        <p>
+          <a href="mailto:chaurasian@nitj.ac.in" class="email-link">
+            <i class="fa fa-envelope"></i>
+            chaurasian@nitj.ac.in
+          </a>
+        </p>
+        <p>
+          <i class="fa fa-phone"></i>
+          7000591658
+        </p>
+      </div>
+    </div>
+  </div>
+  <section class="footer">
+    <!-- <div class="footer-row">
+      <div class="footer-col">
+        <h4 style="text-align: center">Links</h4>
+        <ul class="links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Credits</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 style="text-align: center">Resources</h4>
+        <ul class="links">
+          <li><a href="#">Study Materials</a></li>
+          <li><a href="#">Career Guidance</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 style="text-align: center">Legal</h4>
+        <ul class="links">
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Disclaimer</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p>
+          Subscribe to our newsletter for updates, resources, and mentorship
+          opportunities.
+        </p>
+        <form action="#">
+          <input type="email" placeholder="Your email" required />
+          <button type="submit">SUBMIT</button>
+        </form>
+        <div class="icons">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-github"></i>
+        </div>
+      </div>
+    </div> -->
+    <div class="center" style="text-align: center" class="footer_final">
+      copyright &copy; www.nitj.ac.in All rights reserved!
+    </div>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      var navLinks = document.querySelector(".nav-links");
+      navLinks.classList.toggle("active");
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="gallery.js" defer></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

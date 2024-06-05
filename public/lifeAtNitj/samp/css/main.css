@@ -1,0 +1,279 @@
+/*body,
+ table,
+    thead,
+    tr,
+    tbody,
+    th,
+    td {
+        text-align: center;
+    }*/
+body {
+  text-align: center !important;
+}
+p {
+  margin-top: 20px;
+  font-size: 30px;
+}
+input {
+  text-align: center;
+}
+.mssg {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.col-md-4 {
+  border: 2px solid rgb(20, 20, 59);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 300px;
+  margin-top: -160px;
+  width: 500px;
+  margin-left: -250px; /* half of you width */
+}
+.login_back {
+  background-color: rgb(19, 64, 116);
+  color: white;
+}
+
+/******navbar*/
+
+.burger-menu {
+  display: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #10182f;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 70px;
+  margin-right: 10px;
+}
+
+.website-name {
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  margin-right: 60px;
+}
+
+.nav-links li:last-child {
+  margin-right: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: color 0.3s ease;
+  font-size: 20px;
+}
+
+.nav-links li a:hover {
+  color: #069bb5;
+}
+
+.navbar .nav-links li .search-container {
+  position: relative;
+}
+
+.navbar .nav-links li .search-input {
+  padding: 5px 30px 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 190px;
+  outline: none;
+}
+
+.navbar .nav-links li .search-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+}
+
+/* .active-link{
+  border-bottom: 2px solid #069bb5;
+  color: #069bb5;
+} */
+
+.home-icon {
+  display: inline-block;
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  background-image: url("images/home.png"); /* Replace 'home-icon.png' with the path to your home icon image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 5px;
+}
+
+/* .navbar-line {
+    border-bottom: 1px solid #0f0a0a;
+    width: 5%;
+    margin: 0 auto;
+    margin-top: -17px;
+    margin-bottom: 5px;
+} */
+
+/* Dropdown container */
+.dropdown {
+  position: relative;
+}
+
+.dropdown .dropbtn {
+  font-size: 19px;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: inherit;
+  font-family: inherit;
+  padding: 6px 16px;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #000000;
+  min-width: 160px;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #555;
+}
+
+/***********HOME ICON*****************/
+.home-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("/images/home.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 5px;
+}
+
+/**login button**/
+.btn-success {
+  background-color: #120f44;
+  color: #fff;
+  border: 2px solid rgb(255, 255, 255);
+  padding: 10px 25px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: 2px 2px white;
+}
+
+.btn-success:hover {
+  background-color: #214288;
+}
+span {
+  font-weight: bold;
+  color: rgb(18, 18, 58);
+}
+
+/*****footer*/
+footer {
+  background-color: #10182f;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #fdfdfd;
+}
+footer span {
+  color: white;
+}
+
+.Register_con {
+  height: 500px;
+  margin-top: -250px;
+}
+.forget_con {
+  height: 350px;
+}
+.Role {
+  text-align: center;
+  color: rgb(153, 150, 150);
+}
+
+@media only screen and (max-width: 600px) {
+  .col-md-offset-4 {
+    max-width: 90%;
+    margin: 20px auto; /* Center the element horizontally with some margin */
+    position: static; /* Remove absolute positioning */
+    padding: 10px; /* Adjust padding */
+  }
+
+  .login_back {
+    font-size: 20px; /* Adjust font size */
+  }
+
+  .navbar .nav-links {
+    display: none; /* Hide nav links */
+  }
+
+  .navbar .burger-menu {
+    display: block; /* Show burger menu */
+  }
+
+  .footer {
+    position: static; /* Remove fixed positioning */
+  }
+}

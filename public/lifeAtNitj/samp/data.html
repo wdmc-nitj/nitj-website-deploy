@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Welcome</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="./images/sampLogo2.png" alt="Logo" />
+      <span class="website-name glow">SAMP</span>
+    </div>
+
+    <ul class="nav-links">
+      <li>
+        <a href="https://www.nitj.ac.in/" target="_blank"><span class="home-icon"></span>NITJ</a>
+      </li>
+      <li>
+        <a href="index.html" class="active-link">Home</a>
+      </li>
+      <li><a href="index.html">About</a></li>
+      <li>
+        <div class="dropdown">
+          <button onclick="myFucntion()" class="dropbtn">
+            SAMP Committee
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="iSamp.html">I-SAMP</a>
+            <a href="dSamp.html">D-SAMP</a>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="search-container">
+          <input type="text" placeholder="Search..." class="search-input" />
+          <img src="./images/searchInterfaceSymbol.png" alt="Search Icon" class="search-icon" />
+        </div>
+      </li>
+    </ul>
+    <div class="burger-menu" onclick="toggleMenu()">&#9776;</div>
+  </nav>
+  <div class="col-md-4 col-md-offset-4">
+    <div>
+      <p>Profile Detail</p>
+    </div>
+    <div>
+      <center>
+        <table class="table table-hover text-center">
+          <tr>
+            <td>Name</td>
+            <td>Sample Name</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>Sample Email</td>
+          </tr>
+        </table>
+      </center>
+    </div>
+    <div class="abc">
+      <a href="./logout">Logout</a>
+    </div>
+  </div>
+</body>
+
+</html>
+<footer>
+  <p>&copy; <span id="currentYear"></span> National Institute of Technology Jalandhar. All Rights Reserved!</p>
+</footer>
+<script>
+  document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
+</body>
+
+</html>

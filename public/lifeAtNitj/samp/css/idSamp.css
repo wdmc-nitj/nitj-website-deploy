@@ -1,0 +1,71 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.committee-section {
+  text-align: center;
+  margin: 20px;
+  color: rgb(12, 12, 48);
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  margin: 10px 0;
+}
+
+.members-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.member {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.member-name {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.member p {
+  margin: 5px 0;
+  text-align: left;
+}
+
+.member i {
+  margin-right: 10px;
+  color: #555;
+}
+
+.member:hover {
+  background-color: #e9e9e9;
+}
+
+@media only screen and (max-width: 768px) {
+  .members-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .members-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+/*
+.member i {
+    margin-right: 10px; 
+    color: black !important;
+  }
+   */
