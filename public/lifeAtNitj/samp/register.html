@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Registration</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./css/main.css" />
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $("#form1").submit(function (event) {
+        event.preventDefault();
+
+        $.ajax({
+          type: "POST",
+          url: "/",
+          data: $("#form1").serialize(),
+          dataType: "json",
+          success: function (response) {
+            //alert("a");
+            //console.log(response.Success);
+            $("#form1")[0].reset();
+
+            document.getElementById("check").innerHTML = response.Success;
+            //ADD THIS CODE
+            setTimeout(function () {
+              document.getElementById("check").innerHTML = "";
+            }, 3000);
+            if (response.Success == "You are regestered,You can login now.") {
+              document.getElementById("aa").click();
+            }
+          },
+          error: function () { },
+        });
+      });
+    });
+  </script>
+</head>
+<style>
+  @media only screen and (min-width: 200px) and (max-width: 600px) {
+    .col-md-4 {
+      margin-top: 100px;
+      margin-bottom: 100px;
+      height: 500px;
+    }
+
+    .register-btn {
+      background-color: #120f44;
+      color: #fff;
+      border: 2px solid rgb(255, 255, 255);
+      padding: 10px 25px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      box-shadow: 2px 2px white;
+    }
+
+    .register-btn:hover {
+      background-color: #214288;
+    }
+  }
+</style>
+
+<body>
+  <div class="contain">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="./images/sampLogo2.png" alt="Logo" />
+        <span class="website-name glow">SAMP</span>
+      </div>
+
+      <ul class="nav-links">
+        <li>
+          <a href="https://www.nitj.ac.in/" target="_blank">
+            <span class="home-icon"></span>
+            NITJ
+          </a>
+        </li>
+        <li>
+          <a href="index.html" class="active-link">Home</a>
+        </li>
+        <li><a href="index.html">About</a></li>
+        <li>
+          <div class="dropdown">
+            <button onclick="myFucntion()" class="dropbtn">
+              SAMP Committee
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="iSamp.html">I-SAMP</a>
+              <a href="dSamp.html">D-SAMP</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-input" />
+            <img src="./images/searchInterfaceSymbol.png" alt="Search Icon" class="search-icon" />
+          </div>
+        </li>
+
+        <li><a href="login.html" class="btn">Login</a></li>
+      </ul>
+      <div class="burger-menu" onclick="toggleMenu()">&#9776;</div>
+    </nav>
+  </div>
+  <div class="col-md-4 col-md-offset-4 Register_con">
+    <div class="login_back">
+      <p>Register Now</p>
+    </div>
+    <div class="form-group">
+      <form id="form1" method="post">
+        <input type="Roll number" name="Roll number" placeholder="Roll number" required="" class="form-control" /><br />
+        <input type="email" name="email" placeholder="E-mail" required="" class="form-control" /><br />
+        <input type="text" name="username" placeholder="Username" required="" class="form-control" /><br />
+        <select name="role" class="form-control Role" required="">
+          <option value="" selected>Select Role</option>
+          <option value="mentee">Mentee</option>
+          <option value="mentor">Mentor</option>
+        </select>
+        <br />
+        <input type="password" name="password" placeholder="Password" required="" class="form-control" /><br />
+        <input type="password" name="passwordConf" placeholder="Confirm Password" required=""
+          class="form-control" /><br />
+        <input type="submit" value="Register" class="btn-success register-btn" />
+      </form>
+    </div>
+
+    <div class="mssg bg-danger">
+      <span id="check"></span>
+    </div>
+    <div>
+      <span>Already Registered! <a href="/login">Login</a></span>
+    </div>
+    <div id="LangTable"><a href="/login" id="aa"></a></div>
+  </div>
+  <footer>
+    <p>
+      &copy; <span id="currentYear"></span> National Institute of Technology
+      Jalandhar. All Rights Reserved!
+    </p>
+  </footer>
+  <script>
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+
+</html>
