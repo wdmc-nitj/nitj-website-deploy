@@ -213,6 +213,7 @@ exports.create = async (req, res) => {
           ["Health And Wellness", true],
           ["NITJ Festivals", false],
           ["Accomodation", true],
+          ["SAMP", false],
         ],
       });
       await navbar.save();
