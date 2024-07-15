@@ -10,7 +10,6 @@ const MOUsRoutes = require('./research/MOUsRoutes');
 const IPRRouter = require('./research/IPRsRoutes');
 const BISRouter = require('./research/bis');
 
-
 researchRouter.use('/publications/citedResearches', citedResearchesRouter);
 
 researchRouter.use('/publications/refereedResearches', refereedResearchesRouter);

@@ -16,8 +16,7 @@ fetch(`${data_url}` + '/research/BIS/get')
     <td class="border px-8 py-2 text-sm" width="46%">${update.description}</td>
     <td class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600 border px-8 py-2 text-sm" width="13%"><a href="${update.url}">${update.url}</td>
     <td class="border px-8 py-2 text-sm" width="13%">${update.created_at}</td>
-    
-   ` 
+    ` 
       ugupdates.appendChild(ugupdate)
       i++;
     })

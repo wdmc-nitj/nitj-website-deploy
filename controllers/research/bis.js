@@ -30,7 +30,6 @@ const getBIS = (req, res) => {
     });
 
 
-
 };
 
 module.exports = {
