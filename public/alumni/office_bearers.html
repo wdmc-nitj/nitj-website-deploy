@@ -48,6 +48,9 @@
         transform: translateY(var(--direction, -50%));
       }
     }
+     .font-times{
+      font-family: 'Times New Roman', Times, serif;
+    }
   </style>
 
 
@@ -55,60 +58,61 @@
 
 <body class="h-screen overflow-x-hidden">
 
-  <!--NAVBAR BEGINS-->
-  <nav
-    class="fixed p-2 scroll-smooth z-50 max-w-screen w-full bg-white lg:flex lg:items-center lg:justify-around font-[Inter] shadow-2xl">
-    <div class="flex justify-around p-1 items-center ">
+ <!--NAVBAR BEGINS-->
+   <nav
+    class="font-times fixed p-5 sm:p-3 lg:p-2 scroll-smooth z-50 max-w-screen w-full bg-white lg:flex lg:items-center lg:justify-around shadow-2xl">
+    
+    <div class="flex justify-around items-center overflow-hidden">
+      
       <a href="/alumni/alumni.html" target="_blank">
-        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline mx-2 lg:ml-12 cursor-pointer"
+        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline mx-2 lg:pl-0 cursor-pointer"
           src="img/logo.png" alt="logo">
       </a>
 
       <div
         class="text-[0.50rem] pl-2 sm:text-base w-[30rem] lg:w-[33rem] ml-2 sm:ml-3 leading-5 text-[#0054A6]  cursor-pointer font-bold">
         <a href="/alumni/alumni.html">
-          <div>NITJ Alumni Association (NITJAA)</div>Dr. B R Ambedkar National Institute of Technology Jalandhar
-        </a>
+          <div>NITJ Alumni Association (NITJAA)</div>Dr. BR Ambedkar National Institute of Technology Jalandhar</a>
       </div>
 
       <span class="text-2xl sm:text-3xl cursor-pointer text-black mx-2 mr-3 lg:hidden block">
         <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
       </span>
     </div>
-
+     
     <ul
-      class="lg:flex lg:items-center z-50 lg:z-auto lg:relative absolute bg-white w-full lg:top-0 lg:w-auto lg:py-0 p-4 lg:opacity-100 opacity-0 transition-all ease-in duration-500 left-0">
+      class="lg:flex lg:items-center z-50 lg:z-auto lg:relative absolute bg-white w-full lg:top-0 lg:w-auto lg:py-0 lg:pl-1 lg:opacity-100 opacity-0 transition-all ease-in duration-500 left-0">
 
 
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="/index.html" target="_blank"
-          class=" text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">
+          class=" text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500">
           <span class="text-[#0054A6] hover:text-[#D3D3D3]"><i class="fa-solid fa-house"></i></span>
         </a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
-        <a href="./alumni.html#about_nitjaa"
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="alumni.html" 
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">ABOUT</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="https://drive.google.com/file/d/1qKooGTBjiBW9yHjtnC6rhkqTY-dO1utk/view?usp=sharing" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">NEWSLETTER</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="awards.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">AWARDS</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
-        <a href="office_bearers.html" target="_blank"
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="#" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">OFFICE
           BEARERS</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="givingback.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">GIVING
           BACK</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="#contact_reference"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">
           CONTACT US</a>
@@ -116,7 +120,7 @@
 
       <a href="https://nitj.ac.in/alumni_fundraising/login" target="_blank">
         <button
-          class="bg-[#0054A6] ml-1 mb-4 mr-10 lg:mb-0 text-white text-[0.5rem] sm:text-xs xl:text-base duration-500 w-20 xl:w-24 py-2 px-2 text-center shadow-md border-2 border-[#FFD66E]  rounded hover:-translate-y-1 hover:scale-110 ">
+          class="bg-[#0054A6] ml-1.5 mb-4 mr-1.5 lg:mb-0 text-white text-[0.5rem] sm:text-xs xl:text-base duration-500 w-20 xl:w-24 py-2 px-2 text-center shadow-md border-2 border-[#FFD66E]  rounded hover:-translate-y-1 hover:scale-110 ">
           LOGIN
         </button>
       </a>
@@ -124,6 +128,7 @@
     </ul>
   </nav>
   <!-- NAVBAR ENDS -->
+
 
 
 
@@ -146,43 +151,72 @@
   </div>
 
 
+  <!-- <div class="grid bg-white py-4 sm:py-8 lg:py-12 px-4 sm:px-8 lg:px-12 w-full sm:w-5/6 md:w-4/5 lg:w-4/5 xl:w-4/5 md:max-w-screen-md md:rounded-xl mx-auto h-auto z-40 relative mt-[-2rem] mb-[-2rem] text-xs sm:text-sm md:text-base lg:text-lg">
+    -->
+ 
   <div
-    class="grid bg-white py-4 sm:py-10 lg:py-16 px-5 sm:px-10 lg:px-[4.5rem] md:w-[68vw] max-w-screen md:rounded-xl mx-auto  h-[45vh] md:h-auto z-40 relative shadow-xl shadow-gray-700">
+    class="grid bg-white py-4 sm:py-10 lg:py-16 px-5 sm:px-10 lg:px-[4.5rem] md:w-[68vw] max-w-screen md:rounded-xl mx-auto md:h-auto z-40 relative shadow-xl shadow-gray-700 text-xs sm:text-sm md:text-base lg:text-lg">
 
-    <h2
-      class="grid justify-center items-center grid-cols-1 font-bold text-sm sm:text-base md:text-lg lg:text-3xl my-3 sm:my-5 text-black text-center font-sans">
-      NITJAA OFFICE BEARERS</h2>
-
-    <p
-      class="justify-center font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-5 my-7 md:my-9 lg:my-19">
-      
-      <b class="text-center text-xl sm:text-2xl lg:text-3xl">Prof Ajay Gupta</b><br>
-      Chairman
-      <br>
-    </p>
-    
-    <p
-      class="justify-center font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-5 my-7 md:my-9 lg:my-19">
-      
-      <b class="text-center text-xl sm:text-2xl lg:text-3xl">Prof Ajay Bansal</b><br>
-      Registrar
-      <br>
-    </p>
-    <p
-      class="justify-center font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-5 my-7 md:my-9 lg:my-19">
-      
-      <b class="text-center text-xl sm:text-2xl lg:text-3xl">Prof Anish Sachdeva</b><br>
-      Dean Student Welfare
-      <br>
-    </p>
-    <p
-      class="justify-center font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-5 my-7 md:my-9 lg:my-19">
-      
-      <b class="text-center text-xl sm:text-2xl lg:text-3xl">Dr Manoj Kumar</b><br>
-      Alumni Coordinator
-      <br><br>
-    </p>
-
+    <h2 class="text-center font-bold text-lg sm:text-xl lg:text-3xl my-3 sm:my-5 text-black font-sans">
+      NITJAA OFFICE BEARERS
+      </h2>
+  
+     <div class="flex justify-center mt-6 ">
+      <table class="w-full sm:w-5/6 md:w-4/5 lg:w-4/5 xl:w-4/5 shadow-md text-center border-separate border-spacing-2 border border-gray-400 mt-[-1rem]">
+  
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 p-2 sm:p-3 md:p-4 lg:p-5">
+              <strong class="text-base sm:text-xl md:text-2xl lg:text-3xl">
+                Prof Ajay Gupta
+              </strong>
+              <br>
+              Chairman
+            </td>
+  
+            <td class="border border-gray-300 p-2">
+              <img src="./img/agupta.jpg" alt="" width="120" height="120" class="m-auto">
+            </td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2 sm:p-3 md:p-4 lg:p-5">
+              <strong class="text-base sm:text-xl md:text-2xl lg:text-3xl">
+                Prof Ajay Bansal
+              </strong>
+              <br>
+              Registrar
+            </td>
+            <td class="border border-gray-300 p-2">
+              <img src="./img/ajaybansal.jpg" alt="" width="120" height="120" class="m-auto">
+            </td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2 sm:p-3 md:p-4 lg:p-5">
+              <strong class="text-base sm:text-xl md:text-2xl lg:text-3xl">
+                Prof Anish Sachdeva
+              </strong>
+              <br>
+              Dean Student Welfare
+            </td>
+            <td class="border border-gray-300 p-2">
+              <img src="./img/anish.jpg" alt="" width="120" height="90" class="m-auto">
+            </td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 p-2 sm:p-3 md:p-4 lg:p-5">
+              <strong class="text-base sm:text-xl md:text-2xl lg:text-3xl">
+                Dr Manoj Kumar
+              </strong>
+              <br>
+              Alumni Coordinator
+            </td>
+            <td class="border border-gray-300 p-2">
+              <img src="./img/manojk.jpg" alt="" width="120" height="120" class="m-auto">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
 
@@ -192,7 +226,8 @@
 
 
 
-  <div class="wrapper bg bg-cover bg-center bg-no-repeat h-screen"
+
+  <div class="wrapper bg bg-cover bg-center bg-no-repeat md:h-10 sm:h-0"
     style="background-image: url('footer.png'); width: 100%;"></div>
 
   <script>
@@ -230,12 +265,16 @@
       //   textElement.style.display = "none";
       // }
     }
-
+    function Menu(e) {
+      let list = document.querySelector('ul');
+      e.name === 'menu' ? (e.name = "close", list.classList.add('top-[80px]'), list.classList.add('opacity-100')) : (e.name = "menu", list.classList.remove('top-[80px]'), list.classList.remove('opacity-100'))
+    }
   </script>
 </body>
 
 <!-- === FOOTER Starts === -->
-<div class="z-10">
+
+<div class="z-10 text-xs sm:text-sm md:text-base lg:text-lg">
   <div class=" bg-[#0054A6] text-white lg:flex-row px-5 pt-5 lg:px-20 h-full flex">
     <a href="/alumni/alumni.html" target="_blank" class="hover:text-[#82C3FF]">
       <img class="h-[2.2rem] sm:h-[3.6rem] inline cursor-pointer " src="img/SARC_logo.png" alt="logo">
