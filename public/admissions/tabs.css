@@ -151,9 +151,31 @@ display: inline-block;
 }
 
 
+
+
          ::-webkit-scrollbar {
              width: 10px;
+			 background-color: black;
+			 border-radius: 4px;
          }
+		
+		 .scrollbar-default {
+			scrollbar-width: auto; /* Firefox */
+			scrollbar-color: auto; /* Firefox */
+		  }
+		  
+		  .admission::-webkit-scrollbar {
+			width: 4px;
+		  }
+		  
+		  .admission::-webkit-scrollbar-thumb {
+			background-color: darkgrey;
+			border-radius: 10px;
+		  }
+		  
+		  .admission::-webkit-scrollbar-track {
+			background: #f1f1f1;
+		  }
  
  .right ::-webkit-scrollbar-thumb{
      background-color: #2776c0;
