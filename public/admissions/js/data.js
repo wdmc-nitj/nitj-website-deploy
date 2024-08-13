@@ -7,7 +7,7 @@ fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=BTECH")
       const ugupdate = document.createElement("li");
       ugupdate.innerHTML = `
     <div class="flex">
-      <span class="bg-[#0369A1]">|</span>
+      <span class="bg-[#0369A1] ml-[2%]">|</span>
       <div class="w-[80%] mx-2">
         <a
         href='${update.link}'
@@ -48,7 +48,7 @@ fetch(
       const mtechupdate = document.createElement("li");
       mtechupdate.innerHTML = `
       <div class="flex">
-        <span class="bg-[#0369A1]">|</span>
+        <span class="bg-[#0369A1] ml-[2%]">|</span>
         <div class="w-[80%] mx-2">
           <a
           href='${update.link}'
@@ -92,7 +92,7 @@ fetch(
       const mtechselfupdate = document.createElement("li");
       mtechselfupdate.innerHTML = `
         <div class="flex">
-          <span class="bg-[#0369A1]">|</span>
+          <span class="bg-[#0369A1] ml-[2%]">|</span>
           <div class="w-[80%] mx-2">
             <a
             href='${update.link}'
@@ -134,7 +134,7 @@ fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=MSC")
       const mscupdate = document.createElement("li");
       mscupdate.innerHTML = `
           <div class="flex">
-          <span class="bg-[#0369A1]">|</span>
+          <span class="bg-[#0369A1] ml-[2%]">|</span>
           <div class="w-[80%] mx-2">
             <a
              href='${update.link}'
@@ -176,7 +176,7 @@ fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=MBA")
       const mbaupdate = document.createElement("li");
       mbaupdate.innerHTML = `
             <div class="flex">
-            <span class="bg-[#0369A1]">|</span>
+            <span class="bg-[#0369A1] ml-[2%]">|</span>
             <div class="w-[80%] mx-2">
               <a
                href='${update.link}'
@@ -217,7 +217,7 @@ fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=PHD")
       const phdupdate = document.createElement("li");
       phdupdate.innerHTML = `
               <div class="flex">
-              <span class="bg-[#0369A1]">|</span>
+              <span class="bg-[#0369A1] ml-[2%]">|</span>
               <div class="w-[80%] mx-2">
                 <a
                  href='${update.link}'
@@ -260,7 +260,7 @@ fetch(`${data_url}` + "/admissions/updates/get?visible=visible&degree=PHD")
       const bscbedupdate = document.createElement("li");
       bscbedupdate.innerHTML = `
               <div class="flex">
-              <span class="bg-[#0369A1]">|</span>
+              <span class="bg-[#0369A1] ml-[2%]">|</span>
               <div class="w-[80%] mx-2">
                 <a
                  href='${update.link}'
