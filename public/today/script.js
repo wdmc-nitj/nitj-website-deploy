@@ -13,8 +13,8 @@ async function fetchEvents() {
     const events = [];
 
     for (let i = 0; i < 3; i++) {
-      const currentMonth = (month + i) % 12 || 12;
       const currentYear = year + Math.floor((month + i - 1) / 12);
+      const currentMonth = (month + i) % 12 || 12;
       
 
       const response = await fetch(`${getevents}?year=${currentYear}&month=${currentMonth}`);
