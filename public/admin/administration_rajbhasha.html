@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administration - NITJ</title>
+
+    <script src="app.js" defer></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../style.css" />
+
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .titlebg {
+            background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(img/about_top.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* Style the tab */
+        .tab {
+            color: white;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: hsla(201, 96%, 32%);
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            color: black;
+            background-color: hsla(242, 83%, 98%);
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            color: black;
+            background-color: hsla(242, 83%, 98%);
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        /* Transition on tab content */
+        .tabcontent {
+            animation: fadeEffect 1s;
+            /* Fading effect takes 1 second */
+        }
+
+        .font2 {
+            font-family: 'Barlow', sans-serif;
+        }
+
+        :root {
+            --primary-color: #fff;
+            --background-color: #212121;
+
+            --blue-color: #0369A1;
+            --light-blue-color: #F6F6FE;
+            --purple-color: #040320;
+            --font1: 'Poppins', sans-serif;
+            --font2: 'Barlow', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-body {
+            font-family: var(--font1);
+        }
+
+        .titlebg {
+            background: linear-gradient(90.09deg, rgba(0, 0, 0, 0.7) 0.08%, rgba(255, 255, 255, 0) 99.11%), url(img/about_top.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        @keyframes fadeEffect {
+
+            /* Go from zero to full opacity */
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="/template/header.js" type="module"></script>
+    <script src="/template/helper.js"></script>
+
+    <div class="main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px] lg:mb-32">
+        <div class="titlebg">
+            <div class="container flex flex-col justify-center items-start h-[224px] py-[48px]">
+                <!-- px-4 lg:px-[11%] -->
+                <p class="font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">राजभाषा (हिन्दी प्रकोष्ठ)
+                </p>
+            </div>
+            <nav class="flex bg-gray-200 py-[8px] text-black" aria-label="Breadcrumb">
+                <ol class="container inline-flex items-center">
+                    <li class="inline-flex items-center">
+                        <a href="" class="inline-flex items-center text-sm font-medium hover:text-gray-900">
+                            <a href="../index.html" class="text-lg font-medium ml-2">Home</a>
+                        </a>
+                    </li>
+                    <li aria-current="page">
+                        <div class="inline-flex items-center">
+                            <i style="color: rgb(128, 128, 128); font-size: 12px; margin-left: 12px"
+                                class="fa-solid fa-angle-right ml-2"></i>
+                            <a href="#" class="text-lg font-medium ml-2">राजभाषा (हिन्दी प्रकोष्ठ)</a>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+
+
+        <div id="academic-adminstration"
+            class="scroll-mt-32 flex flex-col lg:flex-row container gap-[32px] lg:gap-[64px]">
+            <div class="w-full flex flex-col items-start">
+                <p class="font2 font-medium text-[28px] lg:text-[44px]">राजभाषा (हिन्दी प्रकोष्ठ)</p>
+                <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[5px]"></div>
+            </div>
+        </div>
+
+        <div class="container mb-12">
+            <div class="tab">
+                <button class="tablinks active" onclick="openTab(event,'firstDean-sw')">&nbsp;&nbsp;मुख्य पृष्ठ&nbsp;&nbsp;</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-P-sw')">&nbsp;&nbsp;सूचना पट्ट&nbsp;&nbsp;</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-U-sw')">&nbsp;&nbsp;प्रपत्र&nbsp;&nbsp;</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-E-sw')">>&nbsp;&nbsp;प्रकाशन&nbsp;&nbsp;</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-E-sw')">&nbsp;&nbsp;फोटो गैलरी&nbsp;&nbsp;</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-E-sw')">&nbsp;&nbsp;संपर्क सूत्र&nbsp;&nbsp;</button>
+                <button class="tablinks " onclick="openTab(event,'Associate-Dean-E-sw')">&nbsp;&nbsp;अन्य लिंक&nbsp;&nbsp;</button>
+            </div>
+
+
+            <div id="firstDean-sw" class="tabcontent block">
+                <div id="x_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                    <table border="0" cellpadding="5" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td width="250px"><img src="https://www.nitj.ac.in/images/rajbhasha/Director_NITJ.jpg" width="100px" /><br />
+                                <br />
+                                <font color="#990000"><b>प्रो. बिनोद कुमार कनौजिया</b></font><br />
+                                <b><font color="#49274A">निदेशक व संरक्षक</font></b></td>
+                                <td rowspan="4">
+                                <p><font size="5"><b>हिन्दी&nbsp;</b></font>को भारत की राजभाषा के रूप में १४ सितम्बर सन् १९४९ को स्वीकार किया गया । 26 जनवरी 1950 को संविधान के लागू होने के साथ ही इसके अनुच्छेद ३४३ से ३५१ तक राजभाषा के सम्बन्ध में व्यवस्था की गयी। इसकी स्मृति को ताजा रखने के लिये १४ सितम्बर का दिन प्रतिवर्ष हिन्दी दिवस के रूप में मनाया जाता है ।<br />
+                                <br />
+                                डा बी आर अम्बेडकर क्षेत्रीय अभियंत्रण महाविद्यालय से राष्ट्रीय प्रौद्योगिकी संस्थान के रूप में इसका रूपांतरण सन्&zwnj; 2002 में मानव संसाधन विकास मंत्रालय, भारत सरकार के अंतर्गत हुआ। तत्पश्चात संस्थान में राजभाषा से संबंधित कार्यों व प्रचार-प्रसार हेतु हिन्दी प्रकोष्ठ की स्थापना की गई।<br />
+                                <br />
+                                राजभाषा समिति द्वारा भारत सरकार द्वारा समय-समय पर जारी राजभाषा नियमों से संबंधित आदेशों, अनुदेशों का अनुपालन और परिषद् के प्रशासनिक कार्यों में हिन्दी के प्रयोग को सुनिश्चत करना एवं प्रचार प्रसार करना है । साथ ही संस्थान के विभागों/अनुभागों को हिन्दी प्रकोष्ठ, अनुवाद संबंधी सहायता, प्रशिक्षण व अन्य सुविधाएँ उपलब्ध करवाने में महत्वपूर्ण भूमिका निभाता है।</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="250px"><img src="https://www.nitj.ac.in/images/admin_page/Registrar/Dr_Ajay_Bansal_NITJ.jpg" width="100" /><br />
+                                <br />
+                                <font color="#990000"><b>प्रो. अजय बंसल</b></font><br />
+                                <b><font color="#49274A">कुलसचिव (I/C)</font></b></td>
+                            </tr>
+                            <tr>
+                                <td width="250px"><img height="106" src="https://www.nitj.ac.in/images/faculty/21010180455.jpg" width="92px" /><br />
+                                <br />
+                                <font color="#990000"><b>डा एच एम मित्तल</b></font><br />
+                                <b><font color="#49274A">अध्यक्ष, राजभाषा</font></b></td>
+                            </tr>
+                            <tr>
+                                <td width="250px"><img height="106" src="https://www.nitj.ac.in/images/faculty/19090213778.png" width="92px" /><br />
+                                <br />
+                                <font color="#990000"><b>डा सतीश कुमार अवस्थी</b></font><br />
+                                <b><font color="#49274A">समन्वयक, राजभाषा</font></b></td>
+                            </tr>
+                            <tr>
+                                <td width="250px"><img height="106" src="https://www.nitj.ac.in/images/faculty/20072736249.JPG" width="92px" /><br />
+                                <br />
+                                <font color="#990000"><b>डा नितिन नरेश पंधारेे</b></font><br />
+                                <b><font color="#49274A">सह-समन्वयक, राजभाषा</font></b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <p><br />
+                    <br />
+                    <img src="https://www.nitj.ac.in/images/rajbhasha/2022/Banner_2022.jpg" /></p>
+                    
+                </div>
+            </div>
+
+            <div id="Associate-Dean-P-sw" class="tabcontent">
+                <div id="xad1_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                </div>
+            </div>
+
+            <div id="Associate-Dean-U-sw" class="tabcontent">
+                <div id="xad2_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                </div>
+            </div>
+
+            <div id="Associate-Dean-E-sw" class="tabcontent">
+                <div id="xad3_name" class="flex flex-col lg:flex-row gap-[32px] lg:px-[16px] py-4">
+                </div>
+            </div>
+
+        </div>
+
+        
+    </div>
+
+    
+    <script src="app.js"></script>
+    <script src="../template/footer.js"></script>
+
+    <script>
+        function openDeans() {
+            const deans = ['firstDean-sw', 'Dean-ia', 'Dean-rc', 'Dean-pd', 'Dean-f', 'Dean-s']
+            for (let i = 0; i < deans.length; i++) {
+                document.getElementById(deans[i]).style.display = "block";
+            }
+        }
+
+        function openTab(evt, deanName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                if (tabcontent[i].id[tabcontent[i].id.length - 1] == deanName[deanName.length - 1]) {
+                    tabcontent[i].style.display = "none";
+                }
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                if (tabcontent[i].id[tabcontent[i].id.length - 1] == deanName[deanName.length - 1]) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                }
+            }
+            document.getElementById(deanName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        document.addEventListener("load", openDeans())
+    </script>
+
+</body>
+
+</html>
