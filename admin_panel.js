@@ -69,6 +69,8 @@ const DiiaHeroSlider = require("./models/diia/DiiaHeroSlider");
 const DiiaNewsSection = require("./models/diia/DiiaNewsSection");
 const DiiaTestimonials = require("./models/diia/DiiaTestimonials");
 const DiiaMous = require("./models/diia/DiiaMous");
+const DiiaOpportunities= require("./models/diia/DiiaOpportunities");
+const DiiaMap= require("./models/diia/DiiaMap");
 
 
 // Research Menu
@@ -2808,9 +2810,9 @@ const AdminBroOptions = {
               before: async (request, context) => {
                   const { currentAdmin } = context;
                   query_fetched = { ...request.query };
-                  if (currentAdmin && currentAdmin.role === "restricted") {
+                  /* if (currentAdmin && currentAdmin.role === "restricted") {
                       query_fetched["filters.department"] = currentAdmin.department;
-                  }
+                  } */
                   return {
                       ...request,
                       query: query_fetched,
@@ -2832,7 +2834,7 @@ const AdminBroOptions = {
               after: async (request, context) => {
                   const adminUser = context.session.adminUser;
                   query_fetched = { ...request.query };
-                  if (adminUser && adminUser.role === "restricted") {
+                /*   if (adminUser && adminUser.role === "restricted") {
                       DiiaRankings.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
                           if (err) {
                               console.log(err);
@@ -2840,7 +2842,7 @@ const AdminBroOptions = {
                               console.log("Result :", result);
                           }
                       });
-                  }
+                  } */
                   if (adminUser) {
                       DiiaRankings.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
                           if (err) {
@@ -2893,9 +2895,9 @@ const AdminBroOptions = {
               before: async (request, context) => {
                   const { currentAdmin } = context;
                   query_fetched = { ...request.query };
-                  if (currentAdmin && currentAdmin.role === "restricted") {
+                  /* if (currentAdmin && currentAdmin.role === "restricted") {
                       query_fetched["filters.department"] = currentAdmin.department;
-                  }
+                  } */
                   return {
                       ...request,
                       query: query_fetched,
@@ -2917,7 +2919,7 @@ const AdminBroOptions = {
               after: async (request, context) => {
                   const adminUser = context.session.adminUser;
                   query_fetched = { ...request.query };
-                  if (adminUser && adminUser.role === "restricted") {
+                 /*  if (adminUser && adminUser.role === "restricted") {
                       DiiaHeroSlider.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
                           if (err) {
                               console.log(err);
@@ -2925,7 +2927,7 @@ const AdminBroOptions = {
                               console.log("Result :", result);
                           }
                       });
-                  }
+                  } */
                   if (adminUser) {
                       DiiaHeroSlider.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
                           if (err) {
@@ -2978,9 +2980,9 @@ const AdminBroOptions = {
               before: async (request, context) => {
                   const { currentAdmin } = context;
                   query_fetched = { ...request.query };
-                  if (currentAdmin && currentAdmin.role === "restricted") {
+                 /*  if (currentAdmin && currentAdmin.role === "restricted") {
                       query_fetched["filters.department"] = currentAdmin.department;
-                  }
+                  } */
                   return {
                       ...request,
                       query: query_fetched,
@@ -3002,8 +3004,178 @@ const AdminBroOptions = {
               after: async (request, context) => {
                   const adminUser = context.session.adminUser;
                   query_fetched = { ...request.query };
-                  if (adminUser && adminUser.role === "restricted") {
+                 /*  if (adminUser && adminUser.role === "restricted") {
                       DiiaNewsSection.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  } */
+                  if (adminUser) {
+                      DiiaNewsSection.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          }
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+      },
+  },
+},
+{
+  resource: DiiaOpportunities,
+  options: {
+      navigation: "DIIA",
+      actions: {
+          edit: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaOpportunities.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      request.record.params.department = adminUser.department;
+                  }
+                  if (adminUser) {
+                      request.record.params.sourceOfInfo = adminUser.email;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          },
+          delete: { isAccessible: isAdmin },
+          list: {
+              before: async (request, context) => {
+                  const { currentAdmin } = context;
+                  query_fetched = { ...request.query };
+                 /*  if (currentAdmin && currentAdmin.role === "restricted") {
+                      query_fetched["filters.department"] = currentAdmin.department;
+                  } */
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: notAccessibleByClubs,
+          },
+          show: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaOpportunities.schema.paths);
+              },
+              isAccessible: canEditDept,
+          },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaOpportunities.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  /* if (adminUser && adminUser.role === "restricted") {
+                      DiiaOpportunities.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  } */
+                  if (adminUser) {
+                      DiiaOpportunities.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          }
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+      },
+  },
+},
+{
+  resource: DiiaMap,
+  options: {
+      navigation: "DIIA",
+      actions: {
+          edit: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaMap.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      request.record.params.department = adminUser.department;
+                  }
+                  if (adminUser) {
+                      request.record.params.sourceOfInfo = adminUser.email;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          },
+          delete: { isAccessible: isAdmin },
+          list: {
+              before: async (request, context) => {
+                  const { currentAdmin } = context;
+                  query_fetched = { ...request.query };
+                  if (currentAdmin && currentAdmin.role === "restricted") {
+                      query_fetched["filters.Department"] = currentAdmin.department;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: notAccessibleByClubs,
+          },
+          show: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaMap.schema.paths);
+              },
+              isAccessible: canEditDept,
+          },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaMap.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      DiiaMap.update({ _id: request.record.params._id }, { Department: adminUser.department }, function (err, result) {
                           if (err) {
                               console.log(err);
                           } else {
@@ -3012,7 +3184,7 @@ const AdminBroOptions = {
                       });
                   }
                   if (adminUser) {
-                      DiiaNewsSection.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                      DiiaMap.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
                           if (err) {
                               console.log(err);
                           } else {
@@ -3064,7 +3236,7 @@ const AdminBroOptions = {
                   const { currentAdmin } = context;
                   query_fetched = { ...request.query };
                   if (currentAdmin && currentAdmin.role === "restricted") {
-                      query_fetched["filters.department"] = currentAdmin.department;
+                      query_fetched["filters.dept"] = currentAdmin.department;
                   }
                   return {
                       ...request,
@@ -3088,7 +3260,7 @@ const AdminBroOptions = {
                   const adminUser = context.session.adminUser;
                   query_fetched = { ...request.query };
                   if (adminUser && adminUser.role === "restricted") {
-                      DiiaTestimonials.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
+                      DiiaTestimonials.update({ _id: request.record.params._id }, { dept: adminUser.department }, function (err, result) {
                           if (err) {
                               console.log(err);
                           } else {
@@ -3148,9 +3320,9 @@ const AdminBroOptions = {
               before: async (request, context) => {
                   const { currentAdmin } = context;
                   query_fetched = { ...request.query };
-                  if (currentAdmin && currentAdmin.role === "restricted") {
+                /*   if (currentAdmin && currentAdmin.role === "restricted") {
                       query_fetched["filters.department"] = currentAdmin.department;
-                  }
+                  } */
                   return {
                       ...request,
                       query: query_fetched,
@@ -3172,7 +3344,7 @@ const AdminBroOptions = {
               after: async (request, context) => {
                   const adminUser = context.session.adminUser;
                   query_fetched = { ...request.query };
-                  if (adminUser && adminUser.role === "restricted") {
+                 /*  if (adminUser && adminUser.role === "restricted") {
                       DiiaMous.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
                           if (err) {
                               console.log(err);
@@ -3180,7 +3352,7 @@ const AdminBroOptions = {
                               console.log("Result :", result);
                           }
                       });
-                  }
+                  } */
                   if (adminUser) {
                       DiiaMous.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
                           if (err) {
