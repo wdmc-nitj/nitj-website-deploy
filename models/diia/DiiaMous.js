@@ -26,26 +26,26 @@ const DiiaMousSchema = new mongoose.Schema({
     Link: {
         type: String, // URL link
     },
+    ExtLink: {
+        type: String, // URL for the external link
+    },
     showInSlider: {
-        type: Number, // 0/1 value
-        enum: [0, 1],
-        default: 1,
+        type: Boolean,
+        default: true,
     },
     sliderOrder: {
         type: Number,
     },
     showInSummary: {
-        type: Number, // 0/1 value
-        enum: [0, 1],
-        default: 0,
+        type: Boolean,
+        default: false,
     },
     summaryOrder: {
         type: Number,
     },
     disable: {
-        type: Number, // 0/1 value
-        enum: [0, 1],
-        default: 0,
+        type: Boolean,
+        default: false,
     }
 }, { timestamps: true });
 

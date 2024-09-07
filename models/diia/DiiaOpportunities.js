@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const DiiaNewsSectionSchema = new mongoose.Schema({
+const DiiaOpportunitiesSchema = new mongoose.Schema({
     Image: {
         type: String, // URL of the image
     },
@@ -33,7 +33,7 @@ const DiiaNewsSectionSchema = new mongoose.Schema({
     disable: {
         type: Boolean,
         default: false,
-    },
+    }
 }, { timestamps: true });
 
-module.exports = mongoose.model("DiiaNewsSection", DiiaNewsSectionSchema);
+module.exports = mongoose.model("DiiaOpportunities", DiiaOpportunitiesSchema);
