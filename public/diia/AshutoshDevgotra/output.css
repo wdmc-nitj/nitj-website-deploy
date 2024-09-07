@@ -1262,3 +1262,19 @@ video {
     --tw-ring-color: rgb(31 41 55 / 0.7);
   }
 }
+/* Full-width and responsive slider */
+#default-carousel {
+  width: 100%;
+  max-width: 100%;
+}
+
+#default-carousel img {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  #default-carousel {
+    height: 24rem; /* Adjust height for larger screens if needed */
+  }
+}

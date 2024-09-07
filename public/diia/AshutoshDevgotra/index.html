@@ -9,82 +9,86 @@
     
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-    
+    <style>
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translacsteY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 2s ease-in-out;
+      }
+    </style>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 
 <body class="bg-gray-100">
-  <nav class=" bg-white flex px-2 py-1 justify-between items-center  drop-shadow-lg relative z-50 ">
-    <a href="/" id="brand" >
-    
-      <span class="flex items-center gap-1 ">
-      <img class=" overflow-hidden  h-12  object-contain hover:scale-110" src="assets/logo.png" alt="logo"  />
-      <h1 class="text-sm flex font-barlow   text-black">
-        Dr.Br Ambedkar National Institute of Technology, Jalandhar
-      </h1>
-    </span>
-    </a>
-    <div id="nav-bar" class="hidden lg:flex gap-5 items-center justify-center ">
-     
-      <!-- {/* Dropdown Menu 1 */} -->
-     
   
-      <div class="relative group">
-        <a href="#" class="text-sm hover:text-black  bg-white cursor-pointer group transition-all rounded-full text-gray-500 flex items-center gap-1">
+  <nav class="bg-white flex px-4 py-2 left-0 right-0 top-0 justify-between items-center drop-shadow-2xl  z-50 fixed shadow-black ">
+    <a href="/" id="brand" class="flex items-center gap-2">
+      <img class="h-12 w-auto object-contain hover:scale-110" src="assets/logo.png" alt="logo" />
+      <span class="text-sm font-barlow text-black items-center ">
+        Dr. B.R. Ambedkar National Institute of Technology, Jalandhar
+      </span>
+    </a>
+  
+    <div id="nav-bar" class="hidden lg:flex h-fit  ">
+      <!-- Dropdown Menu 1 -->
+      <div class="relative group px-2">
+        <a href="#" class=" hover:text-black bg-white cursor-pointer group transition-all rounded-full text-gray-500 flex items-center">
           For Faculty
-          <i class="fa-solid px-1 fa-caret-down rotate-180 group-hover:rotate-0 items-center"></i>
+          <i class="fa-solid px-1.5 fa-caret-down rotate-180 group-hover:rotate-0"></i>
         </a>
-        <div class="absolute hidden w-auto bg-white flex-col gap-3 px-3 py-1  rounded-lg transition-all group-hover:flex shadow-slate-500 shadow-sm overflow-hidden">
+        <div class="absolute hidden w-auto bg-white flex-col gap-3 px-3 py-1 rounded-lg transition-all group-hover:flex shadow-slate-500 shadow-sm overflow-hidden">
           <div class="border-t-4 border-blue-700"></div>
-        
-          <a href="#" class=" text-black text-sm hover:bg-slate-300 hover:text-blue-700 ">International Faculty</a>
-          <a href="#" class=" text-black text-sm hover:bg-slate-300 hover:text-blue-700 ">NIT-J Faculty</a>
-          <a href="#" class=" text-black text-sm hover:bg-slate-300 hover:text-blue-700 ">Institute of Eminence</a>
-          <a href="#" class=" text-black text-sm hover:bg-slate-300 hover:text-blue-700 ">Conference Support</a>
-        </div>
+          <a href="#" class="text-black  hover:bg-slate-300 hover:text-blue-700 px-7">International Faculty</a>
+          <a href="#" class="text-black  hover:bg-slate-300 hover:text-blue-700 px-7">NIT-J Faculty</a>
+          <a href="#" class="text-black  hover:bg-slate-300 hover:text-blue-700 px-7">Institute of Eminence</a>
+          <a href="#" class="text-black  hover:bg-slate-300 hover:text-blue-700 px-7">Conference Support</a>
         </div>
       </div>
-      
-      <!-- {/* Dropdown Menu 2 */} -->
-      <div class="relative group px-1">
-        <a href="#" class="text-sm hover:text-black px-3  bg-white cursor-pointer group transition-all rounded-full  text-gray-500 flex items-center gap-1">
+  
+      <!-- Dropdown Menu 2 -->
+      <div class="relative group px-2">
+        <a href="#" class=" hover:text-black bg-white cursor-pointer group transition-all rounded-full text-gray-500 flex items-center ">
           For Students
-          <!-- dropdownarrow -->
-          <i class="fa-solid px-1 fa-caret-down rotate-180 group-hover:rotate-0 items-center"></i>
+          <i class="fa-solid px-1.5 fa-caret-down rotate-180 group-hover:rotate-0 "></i>
         </a>
-        <div class="absolute hidden w-auto px-3 py-1 bg-white flex-col gap-3 rounded-lg transition-all group-hover:flex shadow-slate-500 shadow-sm overflow-hidden">
-          
-          <div class="border-t-4 border-blue-700"> </div>
-          
-          <a href="#" class="px-  text-black text-sm hover:bg-slate-300 hover:text-blue-700">International Students</a>
-          <a href="#" class="px-  text-black text-sm hover:bg-slate-300 hover:text-blue-700">NIT-J Students</a>
-          <a href="#" class="px-  text-black text-sm hover:bg-slate-300 hover:text-blue-700">Institute of Eminence</a>
-          <a href="#" class="px-  text-black text-sm hover:bg-slate-300 hover:text-blue-700">Conference Support</a>
+        <div class="absolute hidden w-auto bg-white flex-col gap-3 px-3 py-1 rounded-lg transition-all group-hover:flex shadow-slate-500 shadow-sm overflow-hidden">
+          <div class="border-t-4 border-blue-700"></div>
+          <a href="#" class="text-black  hover:bg-slate-300 hover:text-blue-700 px-7">International Students</a>
+          <a href="#" class="text-black  hover:bg-slate-300 hover:text-blue-700 px-7">NIT-J Students</a>
+          <a href="#" class="text-black  hover:bg-slate-300 hover:text-blue-700 px-7">Institute of Eminence</a>
+          <a href="#" class="text-black  hover:bg-slate-300 hover:text-blue-700 px-7">Conference Support</a>
         </div>
       </div>
-    
-      <!-- {/* a Menu Items */} -->
-     <div class="relative group  text-gray-500 hover:text-black ">
-      <a href="#" >
-        Partnerships
-        <div class="hidden border-t-4 border-blue-700 rounded-full  group-hover:flex "></div>
-      </a>
-    </div> 
-    <div class="relative group  text-gray-500 hover:text-black">
-      <a href="#"">
-        Events
-        <div class="hidden border-t-4 border-blue-700 rounded-full  group-hover:flex "></div>
-      </a>
-    </div> 
-    
-      <div class="relative group  text-gray-500 hover:text-black">
-        <a href="#"">
-          About Us
-          <div class="hidden border-t-4 border-blue-700 rounded-full  group-hover:flex "></div>
+  
+      <!-- Menu Items -->
+      <div class="relative group text-gray-500 hover:text-black">
+        <a href="#" class="relative px-2 bg-white cursor-pointer group transition-all rounded-full">
+          Partnerships
+          <div class="absolute bottom-0 left-0 w-full h-[4px] rounded-full bg-transparent group-hover:bg-blue-700 transition-all duration-300"></div>
         </a>
-      </div> 
-    </div>  
+      </div>
+      <div class="relative group text-gray-500 hover:text-black">
+        <a href="#" class="relative px-2 bg-white cursor-pointer group transition-all rounded-full">
+          Events
+          <div class="absolute bottom-0 left-0 w-full h-[4px] rounded-full bg-transparent group-hover:bg-blue-700 transition-all duration-300"></div>
+        </a>
+      </div>
+      <div class="relative group text-gray-500 hover:text-black">
+        <a href="#" class="relative px-2 bg-white cursor-pointer group transition-all rounded-full">
+          About Us
+          <div class="absolute bottom-0 left-0 w-full h-[4px] rounded-full bg-transparent group-hover:bg-blue-700 transition-all duration-300"></div>
+        </a>
+      </div>
+    </div>
   
     <div class="hidden lg:flex">
       <button class="border rounded-lg bg-blue-700 hover:bg-gradient-to-r hover:from-blue-900 hover:to-blue-700 px-3 py-2 font-bold shadow-sm text-white">
@@ -93,67 +97,143 @@
     </div>
   </nav>
 
+ <!-- IMAGE SLIDER -->
+ <div class="relative w-full h-full ">
 
+  <div id="default-carousel" class="relative rounded-lg overflow-hidden shadow-lg w-full h-full" data-carousel="static">
+      <!-- Carousel wrapper -->
+      <div class="relative w-full h-full md:h-96" data-carousel-inner>
+          <!-- Item 1 -->
+          <div class="duration-700 ease-in-out" data-carousel-item>
+              <img src="./assets/nitjb.jpg"
+                  class="object-cover w-full h-full" alt="SLIDE-1">
+              <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-white md:text-2xl">First Slide</span>
+          </div>
+          <!-- Item 2 -->
+          <div class="duration-700 ease-in-out" data-carousel-item>
+              <img src="./assets/maxresdefault (3).jpg"
+                  class="object-cover w-full h-full" alt="Slide 2">
+          </div>
+          <!-- Item 3 -->
+          <div class="duration-700 ease-in-out" data-carousel-item>
+              <img src="./assets/event.jpg"
+                  class="object-cover w-full h-full" alt="Slide 3">
+          </div>
+      </div>
+      <!-- Slider indicators -->
+      <div class="flex absolute bottom-5 left-1/2 z-30 -translate-x-1/2 space-x-2" data-carousel-indicators>
+          <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
+          <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
+          <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
+      </div>
+      <!-- Slider controls -->
+      <button type="button"
+          class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 focus:outline-none transition"
+          data-carousel-prev>
+          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+      </button>
+      <button type="button"
+          class="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 focus:outline-none transition"
+          data-carousel-next>
+          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+      </button>
+  </div>
 
-  <!-- crousel -->
-  <div class="relative w-full h-auto mt-3">
-
-    <div id="default-carousel" class="relative rounded-lg overflow-hidden shadow-lg" data-carousel="static">
-        <!-- Carousel wrapper -->
-        <div class="relative h-180 md:h-96" data-carousel-inner>
-            <!-- Item 1 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="./assets/nitjb.jpg"
-                    class="object-cover w-full h-full" alt="Slide 1">
-                <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-white md:text-2xl dark:text-gray-800">First Slide</span>
-            </div>
-            <!-- Item 2 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="./assets/maxresdefault (3).jpg"
-                    class="object-cover w-full h-full" alt="Slide 2">
-            </div>
-            <!-- Item 3 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="./assets/event.jpg"
-                    class="object-cover w-full h-full" alt="Slide 3">
-            </div>
-        </div>
-        <!-- Slider indicators -->
-        <div class="flex absolute bottom-5 left-1/2 z-30 -translate-x-1/2 space-x-2" data-carousel-indicators>
-            <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
-            <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
-            <button type="button" class="w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 focus:outline-none focus:bg-gray-400 transition"></button>
-        </div>
-        <!-- Slider controls -->
-        <button type="button"
-            class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 focus:outline-none transition"
-            data-carousel-prev>
-            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-        </button>
-        <button type="button"
-            class="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-200/50 rounded-full hover:bg-gray-300 focus:outline-none transition"
-            data-carousel-next>
-            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-        </button>
-    </div>
-
-    <p class="mt-5 text-center text-gray-700 dark:text-gray-300">
-       
-        <a class="text-blue-600 hover:underline" href="https://flowbite.com/docs/getting-started/introduction/"
-            target="_blank">
-            
-        </a>.
-    </p>
-    <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
-
+  <p class="mt-5 text-center text-gray-700">
+      <a class="text-blue-600 hover:underline" href="https://flowbite.com/docs/getting-started/introduction/"
+          target="_blank">
+          
+      </a>.
+  </p>
+  <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 </div>
 
+ 
+ 
+  
+<!-- latest NEWs Setion -->
+
+  <div>
+ 
+    <!-- Caption and Heading -->
+    <div class="absolute bottom-10 left-10 z-10">
+      <a href="#" target="_blank" rel="noopener noreferrer" id="headingLink">
+        <h1
+          class="text-3xl md:text-4xl font-bold text-white mb-2"
+          id="heading"
+        ></h1>
+      </a>
+    </div>
+
+    <!-- Slider Indicator -->
+    <div
+      class="absolute bottom-5 left-10 flex space-x-2 z-10"
+      id="indicators"
+    ></div>
+  </div>
+
+  <!-- path -->
+  <div>
+    <nav
+      class="flex px-4 lg:px-[11%] bg-gray-200 py-[8px] text-black"
+      aria-label="Breadcrumb"
+    >
+      <ol class="container w-full inline-flex items-center">
+        <li class="inline-flex items-center">
+          <a
+            href=""
+            class="inline-flex items-center text-sm  hover:text-gray-900"
+          >
+            <a href="../index.html" class="text-lg  ml-2">Home</a>
+          </a>
+        </li>
+        <li aria-current="page">
+         <i
+            style="
+               color: grey;
+               font-size: 12px;
+               margin-left: 12px;"
+
+               class="fa-solid fa-angle-right ml-2"
+                ></i>
+                <a href="#" id="page-heading" class="page-title text-lg  ml-2"></a>
+
+          </li>
+      </ol>
+    </nav>
+     </div>
+     <div class="w-full flex flex-col items-start px-4">
+      <p id="title" class="font2  text-[28px] lg:text-[32px] leading-tight my-2 border-b-2 border-[#0369a0]">
+All Latest Events
+</p>
+
+         <ul id="list" class="list-disc ml-5 text-accent flex flex-col mt-5 gap-6 text-[#0369a0]">
+  <!-- List items will be inserted here -->
+          <li> 
+            <a>First Link</a>
+          </li> 
+       </ul>
+       <ul id="list" class="list-disc ml-5  text-accent flex flex-col mt-5 gap-6 text-[#0369a0]">
+        <!-- List items will be inserted here -->
+        <li> <a>Second Link</a></li>
+             </ul>
+
+</li>
+            </ul>
+     </div>
+
+  </div>
+
+ </div>
+
+
+  <script src="./news.js"></script>
    
 </body>
 </html>
