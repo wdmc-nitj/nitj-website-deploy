@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const DiiaRankingsSchema = new mongoose.Schema({
     Rank: {
-        type: Number,
+        type: String,
     },
     Image: {
         type: String, // Assuming the image URL will be stored as a string
@@ -24,9 +24,8 @@ const DiiaRankingsSchema = new mongoose.Schema({
         type: Number,
     },
     disable: {
-        type: Number, // 0/1 value
-        enum: [0, 1],
-        default: 0,
+        type: Boolean,
+        default: false,
     },
 }, { timestamps: true });
 

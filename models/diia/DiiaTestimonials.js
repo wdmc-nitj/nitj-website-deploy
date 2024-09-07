@@ -15,6 +15,7 @@ const DiiaTestimonialsSchema = new mongoose.Schema({
     },
     dept: {
         type: String,
+        enum: ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai']
     },
     degree: {
         type: String,
@@ -32,22 +33,19 @@ const DiiaTestimonialsSchema = new mongoose.Schema({
         type: String, // URL for LinkedIn profile
     },
     show: {
-        type: Number, // 0/1 value
-        enum: [0, 1],
-        default: 1,
+        type: Boolean,
+        default: true,
     },
     order: {
         type: Number,
     },
     ListInSummary: {
-        type: Number, // 0/1 value
-        enum: [0, 1],
-        default: 0,
+        type: Boolean,
+        default: false,
     },
     disable: {
-        type: Number, // 0/1 value
-        enum: [0, 1],
-        default: 0,
+        type: Boolean,
+        default: false,
     }
 }, { timestamps: true });
 
