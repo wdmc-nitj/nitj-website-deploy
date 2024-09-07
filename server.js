@@ -1,5 +1,5 @@
-const dotenv = require('dotenv')
-dotenv.config({ path: './.env' })
+const dotenv = require('dotenv');
+dotenv.config({ path: './.env' });
 
 const mongoose = require('mongoose')
 const express = require('express')
@@ -57,13 +57,14 @@ app.use('*', (req, res) => {
 })
 
 mongoose.set('strictQuery', false)
-
+console.log('MongoDB URI:',process.env.URI)
 //server listening------------------------------------------------->
 const port = process.env.PORT || 8000
 
 mongoose
   .connect(process.env.URI, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
   .then(() => {
     console.log('connection to database eshtablished')
@@ -72,7 +73,7 @@ mongoose
     })
   })
   .catch((err) => {
-    console.log(err)
+    console.log('Database connection error:',err)
   })
 
 process.on('uncoughtException', (err) => {
