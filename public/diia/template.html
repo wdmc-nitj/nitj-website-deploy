@@ -9,7 +9,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-
     <style>
       @keyframes fadeIn {
         0% {
@@ -21,33 +20,66 @@
           transform: translateY(0);
         }
       }
+
       .animate-fadeIn {
         animation: fadeIn 2s ease-in-out;
       }
 
-      /* Ensure background image covers the entire header */
+      /* Background image styling for the header */
       #headerImageContainer {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
       }
 
-      /* Position heading at the bottom-left corner */
+      /* Heading font styles */
       .header-heading {
         position: absolute;
         bottom: 0;
         left: 0;
         padding: 1rem;
         color: white;
-        font-size: 2rem;
+        font-size: 2.5rem;
         font-weight: bold;
+        letter-spacing: 1px;
       }
 
-      /* Style for the body image */
+      /* Title font styling */
+      #title {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #333;
+        border-bottom: 3px solid #0369a0;
+        padding-bottom: 0.3rem;
+      }
+
+      /* Body image styling */
       .body-image {
-        width: 100%;
+        width: 60%;
         height: auto;
         margin-top: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+
+      /* News description styling */
+      .news-description {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        margin-top: 1rem;
+        color: #4a4a4a;
+        margin-bottom: 2rem;
+      }
+
+      /* Content container for responsive layout */
+      .content-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
       }
     </style>
   </head>
@@ -70,7 +102,7 @@
     <!-- Navigation heading -->
     <div>
       <nav
-        class="flex px-4 lg:px-[11%] bg-gray-200 py-[8px] text-black"
+        class="flex px-4 lg:px-[4rem] bg-gray-200 py-[8px] text-black"
         aria-label="Breadcrumb"
       >
         <ol class="container w-full inline-flex items-center">
@@ -98,7 +130,7 @@
     </div>
 
     <!-- News Section -->
-    <div class="w-full flex flex-col items-start px-4">
+    <div class="w-full flex flex-col items-start px-4 lg:px-[4rem]">
       <p
         id="title"
         class="font2 font-medium text-[28px] lg:text-[32px] leading-tight my-2 border-b-2 border-[#0369a0]"
