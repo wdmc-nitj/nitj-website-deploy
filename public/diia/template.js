@@ -1,76 +1,74 @@
-// Fetch and display the header images
-// async function fetchHeaderImages() {
-//   try {
-//     const response = await fetch(
-//       "https://your-backend-endpoint.com/api/header-images"
-//     ); // Replace with your backend URL
-//     if (!response.ok) {
-//       throw new Error("Network response was not ok");
-//     }
-//     const images = await response.json();
-//     initHeader(images);
-//   } catch (error) {
-//     console.error("Failed to fetch header images:", error);
-//   }
-// }
-
-const images = [
-  {
-    url: "https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    link: "https://example.com/page1",
-  },
-  {
-    url: "https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    link: "https://example.com/page2",
-  },
-  {
-    url: "https://images.pexels.com/photos/757889/pexels-photo-757889.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    link: "https://example.com/page3",
-  },
-  {
-    url: "https://images.pexels.com/photos/206359/pexels-photo-206359.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-    link: "https://example.com/page4",
-  },
-];
-
-// Initialize the header background image change
-function initHeader(images) {
-  const headerImageContainer = document.getElementById("headerImageContainer");
-  let currentIndex = 0;
-
-  function updateHeaderImage() {
-    headerImageContainer.style.backgroundImage = `url(${images[currentIndex].url})`;
-    currentIndex = (currentIndex + 1) % images.length;
-  }
-
-  updateHeaderImage();
-  setInterval(updateHeaderImage, 5000); // Change image every 5 seconds
+// Function to get the ID from the URL parameters
+function getIdFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get("id");
 }
 
-// Fetch and display news
-// async function fetchNews() {
-//   try {
-//     const response = await fetch(
-//       "https://your-backend-endpoint.com/api/news"
-//     ); // Replace with your backend URL
-//     if (!response.ok) {
-//       throw new Error("Network response was not ok");
-//     }
-//     const newsItem = await response.json();
-//     document.getElementById("newsHeading").textContent = newsItem.heading;
-//     document.getElementById("newsImage").src = newsItem.image;
-//     document.getElementById("newsDescription").textContent = newsItem.description;
-//   } catch (error) {
-//     console.error("Failed to fetch news:", error);
-//   }
-// }
+// Fetch all news data from the API
+async function fetchNewsData() {
+  try {
+    const response = await fetch(
+      "https://nitjfinal.onrender.com/api/diia/news-section"
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch news data");
+    }
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching news data:", error);
+    return [];
+  }
+}
 
-// Initialize the page
-initHeader(images);
-// fetchNews();
+// Function to render the template with the specific news data
+function renderTemplate(newsItem) {
+  if (!newsItem) {
+    console.error("No news item found");
+    return;
+  }
 
-// for navigation Headers
+  // Set the header image
+  const headerImageContainer = document.getElementById("headerImageContainer");
+  headerImageContainer.style.backgroundImage = `url(${newsItem.Image})`;
 
-const currentLink = document.getElementById("page-heading");
-currentLink.textContent = "Janmashtami";
-currentLink.href = window.location.href;
+  // Set the page heading
+  const pageHeading = document.getElementById("page-heading");
+  pageHeading.textContent = newsItem.title1;
+
+  // Set the header heading text
+  const headerHeading = document.getElementById("headerHeading");
+  headerHeading.textContent = newsItem.title2;
+
+  // Set the news title
+  document.getElementById("title").textContent = newsItem.title1;
+
+  // Create an image and description element for the body section
+  const eventContainer = document.getElementById("event-container");
+
+  // Add the image first
+  if (newsItem.Image) {
+    const bodyImage = document.createElement("img");
+    bodyImage.src = newsItem.Image;
+    bodyImage.alt = newsItem.title1;
+    bodyImage.classList.add("body-image");
+    eventContainer.appendChild(bodyImage);
+  }
+
+  // Add the description after the image
+  const newsDescription = document.createElement("p");
+  newsDescription.textContent = newsItem.description;
+  eventContainer.appendChild(newsDescription);
+}
+
+// Main function to initialize the page
+async function initPage() {
+  const id = getIdFromUrl(); // Get the ID from the URL
+  const newsData = await fetchNewsData(); // Fetch all news data
+  const newsItem = newsData.find((item) => item._id === id); // Find the specific news item by ID
+  renderTemplate(newsItem); // Render the template with the found news item
+}
+
+// Initialize the page when the DOM is ready
+document.addEventListener("DOMContentLoaded", initPage);
