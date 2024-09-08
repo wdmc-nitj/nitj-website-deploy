@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"name": "TailwindProject",
+			"path": "."
+		}
+	],
+	"settings": {
+		"vscode-corda.isCordaProject": false,
+		"liveServer.settings.multiRootWorkspaceName": "TailwindProject"
+	}
+}
