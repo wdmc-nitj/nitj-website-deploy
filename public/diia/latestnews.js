@@ -64,7 +64,9 @@ function updateSlider() {
 
   const currentImage = data[currentIndex];
   document.getElementById("heading").textContent = currentImage.title1;
-  document.getElementById("headingLink").href = currentImage.link;
+  document.getElementById(
+    "headingLink"
+  ).href = ` https://nitjfinal.onrender.com/diia/template.html?id=${data._id}`;
 
   document.querySelectorAll("#indicators span").forEach((indicator, index) => {
     indicator.classList.toggle("bg-white", index === currentIndex);
@@ -89,7 +91,7 @@ function populateList() {
     const link = document.createElement("a");
     link.className =
       "underline underline-offset-4 decoration-accent decoration-0 hover:decoration-2 text-lg";
-    link.href = item.link;
+    link.href = ` https://nitjfinal.onrender.com/diia/template.html?id=${item._id}`;
     link.textContent = item.title1;
 
     const newTagDiv = document.createElement("div");

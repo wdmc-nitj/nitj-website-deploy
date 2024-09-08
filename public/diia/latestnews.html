@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Latest News</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
 
     <style>
       @keyframes fadeIn {
         0% {
           opacity: 0;
-          transform: translacsteY(20px);
+          transform: translateY(20px);
         }
         100% {
           opacity: 1;
@@ -50,10 +53,10 @@
       ></div>
     </div>
 
-    <!-- path -->
+    <!-- Navigation heading -->
     <div>
       <nav
-        class="flex px-4 lg:px-[11%] bg-gray-200 py-[8px] text-black"
+        class="flex px-4 lg:px-[4rem] bg-gray-200 py-[8px] text-black"
         aria-label="Breadcrumb"
       >
         <ol class="container w-full inline-flex items-center">
@@ -66,39 +69,38 @@
             </a>
           </li>
           <li aria-current="page">
-           <i
-              style="
-                 color: grey;
-                 font-size: 12px;
-                 margin-left: 12px;"
-                 
-                 class="fa-solid fa-angle-right ml-2"
-                  ></i>
-                  <a href="#" id="page-heading" class="page-title text-lg font-medium ml-2">Latest News</a>
-                 
-            </li>
+            <i
+              style="color: grey; font-size: 12px; margin-left: 12px"
+              class="fa-solid fa-angle-right ml-2"
+            ></i>
+            <a
+              href="#"
+              id="page-heading"
+              class="page-title text-lg font-medium ml-2"
+              >Latest News</a
+            >
+          </li>
         </ol>
       </nav>
-       </div>
-       <div class="w-full flex flex-col items-start px-4">
-        <p id="title" class="font2 font-medium text-[28px] lg:text-[32px] leading-tight my-2 border-b-2 border-[#0369a0]">
-  All Latest Events
-</p>
-        
-           <ul id="list" class="list-disc ml-5 text-accent flex flex-col mt-5 gap-6 text-[#0369a0]">
-    <!-- List items will be inserted here -->
-         </ul>
-
-
- </li>
-              </ul>
-       </div>
-     
     </div>
 
-   </div>
+    <!-- News Section -->
+    <div class="w-full flex flex-col items-start px-4 lg:px-[4rem]">
+      <p
+        id="title"
+        class="font2 font-medium text-[28px] lg:text-[32px] leading-tight my-2 border-b-2 border-[#0369a0]"
+      >
+        All Latest Events
+      </p>
 
-    
+      <ul
+        id="list"
+        class="list-disc ml-5 text-accent flex flex-col mt-5 gap-6 text-[#0369a0]"
+      >
+        <!-- List items will be inserted here -->
+      </ul>
+    </div>
+
     <script src="./latestnews.js" defer></script>
   </body>
 </html>
