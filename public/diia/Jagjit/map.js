@@ -47,9 +47,9 @@ function GJSONGenerator(dataS) {
 
 window.onload = function() {
     
-    var map = L.map('map').setView([0,0], 0);
-    var map2 = L.map('map2').setView([0,0], 0);
-    var map3 = L.map('map3').setView([0,0], 0);
+    var map = L.map('map').setView([0,0], 0.5);
+    var map2 = L.map('map2').setView([0,0], 0.5);
+    var map3 = L.map('map3').setView([0,0], 0.5);
     
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 3,

@@ -1,6 +1,6 @@
 .map {
     width: 100%;
-    aspect-ratio: 2/1;
+    aspect-ratio: 1/1;
     margin: auto;
     border: 2px solid navy;
     border-radius: 15px !important;
