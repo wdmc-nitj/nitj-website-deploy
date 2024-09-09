@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-const url="https://nitjfinal.onrender.com/"; 
 const Dashboard = () => {
   const [adminUser, setAdminUser] = useState(null);  // State to store admin user data
   const [role, setRole] = useState(null);  // Store role separately
@@ -8,7 +7,7 @@ const Dashboard = () => {
     // Fetch the current admin user details
     const fetchAdminUser = async () => {
       try {
-        const response = await fetch(`${url}/api/dashboard/get-current-admin`, {
+        const response = await fetch('/api/dashboard/get-current-admin', {
           method: 'GET',
           credentials: 'include', // Ensure cookies/session are included
         });
@@ -27,15 +26,15 @@ const Dashboard = () => {
 
   // Example handlers that use the fetched admin user info
   const handleClick = () => {
-    window.location.href = `${url}/api/dashboard/upload`;
+    window.location.href = '/api/dashboard/upload';
   };
 
   const navbar = () => {
-    window.location.href = `${url}/api/dashboard/navbar`;
+    window.location.href ='/api/dashboard/navbar';
   };
 
   const commontemplate = () => {
-    window.location.href = `${url}/api/dashboard/store`;
+    window.location.href = '/api/dashboard/store';
   };
 
   return (
