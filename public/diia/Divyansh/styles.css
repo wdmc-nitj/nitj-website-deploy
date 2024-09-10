@@ -6,8 +6,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    position: relative;
+    /* height: 100vh; */
+    /* position: relative; */
+    overflow:clip;
+    width:100%;
 }
 
 .numbers-section {
@@ -67,6 +69,6 @@ footer {
     padding: 20px;
     text-align: center;
     width: 100%;
-    position: absolute;
-    bottom: 0;
+    /* position: absolute; */
+    /* bottom: 0; */
 }
