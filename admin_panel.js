@@ -324,6 +324,9 @@ const AdminBroOptions = {
     favicon:
       "https://th.bing.com/th/id/OIP.33xhS0Ai3c5yQkxwtYXTQgAAAA?pid=ImgDet&rs=1",
   },
+  dashboard: {
+    component: AdminBro.bundle('./my-dashboard'),
+  },
   rootPath: "/api/dashboard",
   loginPath: "/api/dashboard/login",
   logoutPath: "/api/dashboard/logout",
