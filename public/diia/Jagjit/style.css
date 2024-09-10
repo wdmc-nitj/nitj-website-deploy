@@ -6,6 +6,13 @@
     border-radius: 15px !important;
 }
 
+body {
+    background-color: rgb(198, 214, 242);
+    color: rgb(37, 57, 133);
+    padding: 10px;
+    font-size: large;
+}
+
 .mapContainer {
     display: flex;
     justify-content: space-evenly;
