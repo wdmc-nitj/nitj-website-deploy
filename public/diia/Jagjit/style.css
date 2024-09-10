@@ -1,0 +1,20 @@
+.map {
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin: auto;
+    border: 2px solid navy;
+    border-radius: 15px !important;
+}
+
+.mapContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.mapCraddle {
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+}
