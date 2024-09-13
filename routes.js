@@ -45,7 +45,7 @@ const curriculumRouter = require("./routes/curriculum");
 const deptCalendarRouter = require("./routes/deptCalendar");
 const examinationRouter = require("./routes/examination");
 const eventsCalendarRouter = require("./routes/calendar/eventsCalendar")
-const diiaRouter = require("./routes/diiaRoutes");
+
 
 const adminPath = "dashboard";
 
@@ -119,7 +119,6 @@ mainRouter.use("/admissions", admissionsRoutes);
 mainRouter.use("/research", researchRoutes);
 mainRouter.use("/recruitments", recruitmentsRoutes);
 
-mainRouter.use("/diia",diiaRouter);
 
 mainRouter.use("/eventsCalendar",eventsCalendarRouter)
 
