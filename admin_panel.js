@@ -63,6 +63,15 @@ const scholarship = require("./models/scholarship");
 const initiative = require("./models/initiatives");
 
 
+//diia
+const DiiaRankings = require("./models/diia/DiiaRankings");
+const DiiaHeroSlider = require("./models/diia/DiiaHeroSlider");
+const DiiaNewsSection = require("./models/diia/DiiaNewsSection");
+const DiiaTestimonials = require("./models/diia/DiiaTestimonials");
+const DiiaMous = require("./models/diia/DiiaMous");
+const DiiaOpportunities= require("./models/diia/DiiaOpportunities");
+const DiiaMap= require("./models/diia/DiiaMap");
+
 
 // Research Menu
 const researchMenuName = "Research";
@@ -314,6 +323,9 @@ const AdminBroOptions = {
     logo: "https://th.bing.com/th/id/OIP.33xhS0Ai3c5yQkxwtYXTQgAAAA?pid=ImgDet&rs=1",
     favicon:
       "https://th.bing.com/th/id/OIP.33xhS0Ai3c5yQkxwtYXTQgAAAA?pid=ImgDet&rs=1",
+  },
+  dashboard: {
+    component: AdminBro.bundle('./my-dashboard'),
   },
   rootPath: "/api/dashboard",
   loginPath: "/api/dashboard/login",
@@ -2770,7 +2782,605 @@ const AdminBroOptions = {
         },
       },
     },
-    
+//diia
+{
+  resource: DiiaRankings,
+  options: {
+      navigation: "DIIA",
+      actions: {
+          edit: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaRankings.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      request.record.params.department = adminUser.department;
+                  }
+                  if (adminUser) {
+                      request.record.params.sourceOfInfo = adminUser.email;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          },
+          delete: { isAccessible: isAdmin },
+          list: {
+              before: async (request, context) => {
+                  const { currentAdmin } = context;
+                  query_fetched = { ...request.query };
+                  /* if (currentAdmin && currentAdmin.role === "restricted") {
+                      query_fetched["filters.department"] = currentAdmin.department;
+                  } */
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: notAccessibleByClubs,
+          },
+          show: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaRankings.schema.paths);
+              },
+              isAccessible: canEditDept,
+          },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaRankings.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                /*   if (adminUser && adminUser.role === "restricted") {
+                      DiiaRankings.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  } */
+                  if (adminUser) {
+                      DiiaRankings.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          }
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+      },
+  },
+},
+{
+  resource: DiiaHeroSlider,
+  options: {
+      navigation: "DIIA",
+      actions: {
+          edit: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaHeroSlider.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      request.record.params.department = adminUser.department;
+                  }
+                  if (adminUser) {
+                      request.record.params.sourceOfInfo = adminUser.email;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          },
+          delete: { isAccessible: isAdmin },
+          list: {
+              before: async (request, context) => {
+                  const { currentAdmin } = context;
+                  query_fetched = { ...request.query };
+                  /* if (currentAdmin && currentAdmin.role === "restricted") {
+                      query_fetched["filters.department"] = currentAdmin.department;
+                  } */
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: notAccessibleByClubs,
+          },
+          show: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaHeroSlider.schema.paths);
+              },
+              isAccessible: canEditDept,
+          },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaHeroSlider.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                 /*  if (adminUser && adminUser.role === "restricted") {
+                      DiiaHeroSlider.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  } */
+                  if (adminUser) {
+                      DiiaHeroSlider.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          }
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+      },
+  },
+},
+{
+  resource: DiiaNewsSection,
+  options: {
+      navigation: "DIIA",
+      actions: {
+          edit: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaNewsSection.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      request.record.params.department = adminUser.department;
+                  }
+                  if (adminUser) {
+                      request.record.params.sourceOfInfo = adminUser.email;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          },
+          delete: { isAccessible: isAdmin },
+          list: {
+              before: async (request, context) => {
+                  const { currentAdmin } = context;
+                  query_fetched = { ...request.query };
+                 /*  if (currentAdmin && currentAdmin.role === "restricted") {
+                      query_fetched["filters.department"] = currentAdmin.department;
+                  } */
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: notAccessibleByClubs,
+          },
+          show: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaNewsSection.schema.paths);
+              },
+              isAccessible: canEditDept,
+          },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaNewsSection.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                 /*  if (adminUser && adminUser.role === "restricted") {
+                      DiiaNewsSection.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  } */
+                  if (adminUser) {
+                      DiiaNewsSection.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          }
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+      },
+  },
+},
+{
+  resource: DiiaOpportunities,
+  options: {
+      navigation: "DIIA",
+      actions: {
+          edit: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaOpportunities.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      request.record.params.department = adminUser.department;
+                  }
+                  if (adminUser) {
+                      request.record.params.sourceOfInfo = adminUser.email;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          },
+          delete: { isAccessible: isAdmin },
+          list: {
+              before: async (request, context) => {
+                  const { currentAdmin } = context;
+                  query_fetched = { ...request.query };
+                 /*  if (currentAdmin && currentAdmin.role === "restricted") {
+                      query_fetched["filters.department"] = currentAdmin.department;
+                  } */
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: notAccessibleByClubs,
+          },
+          show: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaOpportunities.schema.paths);
+              },
+              isAccessible: canEditDept,
+          },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaOpportunities.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  /* if (adminUser && adminUser.role === "restricted") {
+                      DiiaOpportunities.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  } */
+                  if (adminUser) {
+                      DiiaOpportunities.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          }
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+      },
+  },
+},
+{
+  resource: DiiaMap,
+  options: {
+      navigation: "DIIA",
+      actions: {
+          edit: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaMap.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      request.record.params.department = adminUser.department;
+                  }
+                  if (adminUser) {
+                      request.record.params.sourceOfInfo = adminUser.email;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          },
+          delete: { isAccessible: isAdmin },
+          list: {
+              before: async (request, context) => {
+                  const { currentAdmin } = context;
+                  query_fetched = { ...request.query };
+                  if (currentAdmin && currentAdmin.role === "restricted") {
+                      query_fetched["filters.Department"] = currentAdmin.department;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: notAccessibleByClubs,
+          },
+          show: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaMap.schema.paths);
+              },
+              isAccessible: canEditDept,
+          },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaMap.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      DiiaMap.update({ _id: request.record.params._id }, { Department: adminUser.department }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  }
+                  if (adminUser) {
+                      DiiaMap.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          }
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+      },
+  },
+},
+{
+  resource: DiiaTestimonials,
+  options: {
+      navigation: "DIIA",
+      actions: {
+          edit: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaTestimonials.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      request.record.params.department = adminUser.department;
+                  }
+                  if (adminUser) {
+                      request.record.params.sourceOfInfo = adminUser.email;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          },
+          delete: { isAccessible: isAdmin },
+          list: {
+              before: async (request, context) => {
+                  const { currentAdmin } = context;
+                  query_fetched = { ...request.query };
+                  if (currentAdmin && currentAdmin.role === "restricted") {
+                      query_fetched["filters.dept"] = currentAdmin.department;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: notAccessibleByClubs,
+          },
+          show: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaTestimonials.schema.paths);
+              },
+              isAccessible: canEditDept,
+          },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaTestimonials.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      DiiaTestimonials.update({ _id: request.record.params._id }, { dept: adminUser.department }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  }
+                  if (adminUser) {
+                      DiiaTestimonials.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          }
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+      },
+  },
+},
+{
+  resource: DiiaMous,
+  options: {
+      navigation: "DIIA",
+      actions: {
+          edit: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaMous.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                  if (adminUser && adminUser.role === "restricted") {
+                      request.record.params.department = adminUser.department;
+                  }
+                  if (adminUser) {
+                      request.record.params.sourceOfInfo = adminUser.email;
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          },
+          delete: { isAccessible: isAdmin },
+          list: {
+              before: async (request, context) => {
+                  const { currentAdmin } = context;
+                  query_fetched = { ...request.query };
+                /*   if (currentAdmin && currentAdmin.role === "restricted") {
+                      query_fetched["filters.department"] = currentAdmin.department;
+                  } */
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: notAccessibleByClubs,
+          },
+          show: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaMous.schema.paths);
+              },
+              isAccessible: canEditDept,
+          },
+          bulkDelete: { isAccessible: isAdmin },
+          new: {
+              layout: (currentAdmin) => {
+                  return Object.keys(DiiaMous.schema.paths);
+              },
+              after: async (request, context) => {
+                  const adminUser = context.session.adminUser;
+                  query_fetched = { ...request.query };
+                 /*  if (adminUser && adminUser.role === "restricted") {
+                      DiiaMous.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  } */
+                  if (adminUser) {
+                      DiiaMous.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
+                          if (err) {
+                              console.log(err);
+                          } else {
+                              console.log("Result :", result);
+                          }
+                      });
+                  }
+                  return {
+                      ...request,
+                      query: query_fetched,
+                  };
+              },
+              isAccessible: canEditDept,
+          }
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+      },
+  },
+},
+
+
+
     {
       resource: AcademicCalendar,
       options: {
