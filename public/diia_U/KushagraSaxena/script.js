@@ -2,22 +2,22 @@
 if(window.outerWidth <= 425)
 {
     let elements1 = document.getElementsByClassName("section1")[1].childNodes
-    let elements2 = document.getElementsByClassName("section2")[1].childNodes
+    let elements2_1 = document.getElementsByClassName("section2")[0].childNodes
+    let elements2_2 = document.getElementsByClassName("section2")[2].childNodes
     let elements3 = document.getElementsByClassName("section3")[1].childNodes
     elements1[0].parentNode.insertBefore(elements1[3],elements1[1])   
-    elements2[0].parentNode.insertBefore(elements2[3],elements2[1])   
+    elements2_1[0].parentNode.insertBefore(elements2_1[3],elements2_1[1])   
+    elements2_2[0].parentNode.insertBefore(elements2_2[3],elements2_2[1])   
     elements3[0].parentNode.insertBefore(elements3[3],elements3[1])   
 }
-else
-{
-    let elements1 = document.getElementsByClassName("section1")[1].childNodes
-    let elements2 = document.getElementsByClassName("section2")[1].childNodes
-    let elements3 = document.getElementsByClassName("section3")[1].childNodes
-    elements1[0].parentNode.insertBefore(elements1[1],elements1[3])   
-    elements2[0].parentNode.insertBefore(elements2[1],elements2[3])   
-    elements3[0].parentNode.insertBefore(elements3[1],elements3[3]) 
-}
 
+let sectionContainer = document.getElementsByClassName("sectionContainer")
+for(let i of sectionContainer)
+{
+    i.addEventListener("click", () => {
+        window.open("/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section","_blank")
+    })
+}
 
 function sliderMOU(section)
 {
@@ -50,88 +50,13 @@ function sliderMOU(section)
         }
     }, 5000)
 }
-
 let section1 = document.getElementsByClassName("section1");
 let section2 = document.getElementsByClassName("section2");
 let section3 = document.getElementsByClassName("section3");
-
-
 sliderMOU(section1)
 sliderMOU(section2)
 sliderMOU(section3)
 
-let contentArray = [
-    {
-        image:"./img/mous.png",
-        type:"Internationally Signed MOU's",
-        name:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aperiam.",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora qui eum quibusdam voluptas maiores odit incidunt illo quo recusandae sequi excepturi sit ipsum, aut at."
-    },
-    {
-        image:"./img/MOU1.jpeg",
-        type:"Internationally Signed MOU's",
-        name:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aperiam.",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora qui eum quibusdam voluptas maiores odit incidunt illo quo recusandae sequi excepturi sit ipsum, aut at."
-    },
-    {
-        image:"./img/MOU2.jpeg",
-        type:"Internationally Signed MOU's",
-        name:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aperiam.",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora qui eum quibusdam voluptas maiores odit incidunt illo quo recusandae sequi excepturi sit ipsum, aut at."
-    },
-
-    {
-        image:"./img/mous.png",
-        type:"Industry Signed MOU's",
-        name:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aperiam.",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora qui eum quibusdam voluptas maiores odit incidunt illo quo recusandae sequi excepturi sit ipsum, aut at."
-    },
-    {
-        image:"./img/MOU1.jpeg",
-        type:"Industry Signed MOU's",
-        name:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aperiam.",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora qui eum quibusdam voluptas maiores odit incidunt illo quo recusandae sequi excepturi sit ipsum, aut at."
-    },
-    {
-        image:"./img/MOU2.jpeg",
-        type:"Industry Signed MOU's",
-        name:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aperiam.",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora qui eum quibusdam voluptas maiores odit incidunt illo quo recusandae sequi excepturi sit ipsum, aut at."
-    },
-    
-    {
-        image:"./img/mous.png",
-        type:"Collaborative Institutes",
-        name:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aperiam.",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora qui eum quibusdam voluptas maiores odit incidunt illo quo recusandae sequi excepturi sit ipsum, aut at."
-    },
-    {
-        image:"./img/MOU1.jpeg",
-        type:"Collaborative Institutes",
-        name:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aperiam.",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora qui eum quibusdam voluptas maiores odit incidunt illo quo recusandae sequi excepturi sit ipsum, aut at."
-    },
-    {
-        image:"./img/MOU2.jpeg",
-        type:"Collaborative Institutes",
-        name:"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aperiam.",
-        description:"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora qui eum quibusdam voluptas maiores odit incidunt illo quo recusandae sequi excepturi sit ipsum, aut at."
-    }
-]
-
-// console.log(contentArray.length)
-
-let card = document.getElementsByClassName("card")
-let image = document.getElementsByClassName("image")
-
-for(let i = 0; i < contentArray.length; i++)
-{
-    image[i].src = contentArray[i].image
-    card[i].children[0].innerHTML += contentArray[i].type
-    card[i].children[1].innerHTML += contentArray[i].name
-    card[i].children[2].innerHTML += contentArray[i].description
-    // console.log(card[i])
-}
 
 async function fetchDataMous(){                      
     try{
@@ -141,14 +66,100 @@ async function fetchDataMous(){
             throw new Error(`Status:${res.status}`)
         }
         const data = await res.json()
-        console.log(data)
+        // console.log(data)
         return data
     }catch(err)
     {
         console.log("failed:",err)
     }
 }
-fetchDataMous()
+
+async function addToHtmlMous(){
+    let card = document.getElementsByClassName("card")
+    let image = document.getElementsByClassName("image")
+    try{
+        let data = await fetchDataMous()
+        console.log(data)
+        let contentArrayMous = [
+            // international
+            {
+                image: data[0].Image,
+                type: data[0].type,
+                name: data[0].name,
+                description: data[0].description
+            },
+            {
+                image: data[1].Image,
+                type: data[1].type,
+                name: data[1].name,
+                description: data[1].description
+            },
+            {
+                image: data[2].Image,
+                type: data[2].type,
+                name: data[2].name,
+                description: data[2].description
+            },
+            
+            // industry
+            {
+                image: data[0].Image,
+                type: data[0].type,
+                name: data[0].name,
+                description: data[0].description
+            },
+            {
+                image: data[1].Image,
+                type: data[1].type,
+                name: data[1].name,
+                description: data[1].description
+            },
+            {
+                image: data[2].Image,
+                type: data[2].type,
+                name: data[2].name,
+                description: data[2].description
+            },
+            
+            // colaborative institutes
+            {
+                image: data[0].Image,
+                type: data[0].type,
+                name: data[0].name,
+                description: data[0].description
+            },
+            {
+                image: data[1].Image,
+                type: data[1].type,
+                name: data[1].name,
+                description: data[1].description
+            },
+            {
+                image: data[2].Image,
+                type: data[2].type,
+                name: data[2].name,
+                description: data[2].description
+            },
+        ]
+
+        for(let i = 0; i < contentArrayMous.length; i++)
+        {
+            image[i].src = contentArrayMous[i].image
+            card[i].children[0].innerHTML += contentArrayMous[i].type
+            card[i].children[1].innerHTML += contentArrayMous[i].name
+            card[i].children[2].innerHTML += contentArrayMous[i].description
+            // console.log(card[i])
+        }
+    }
+    catch(err)
+    {
+        console.log("Error in adding MOU's HTML")
+    }
+}
+
+
+
+
 /*rankings*/
 
 let cardRank = document.getElementsByClassName("cardRank")
@@ -178,14 +189,6 @@ for(let i of cardRank)
     }
     
 }
-
-
-
-let imageClass = document.getElementsByClassName("classImage")
-
-let rankClass = document.getElementsByClassName("classRank")
-
-let desClass = document.getElementsByClassName("classDes")
 
 
 let leftScroll = document.getElementById("scrollLeft") 
@@ -279,7 +282,7 @@ if(window.outerWidth <= 1024)
 }
 
 
-async function fetchData(){                      
+async function fetchDataRanking(){                      
     try{
         const res = await fetch("https://nitjfinal.onrender.com/api/diia/rankings")
         if(!res.ok)
@@ -295,9 +298,15 @@ async function fetchData(){
     }
 }
 
-async function addToHtml(){
+async function addToHtmlRanking(){
+    
+    let imageClass = document.getElementsByClassName("classImage")
+
+    let rankClass = document.getElementsByClassName("classRank")
+
+    let desClass = document.getElementsByClassName("classDes")
     try{
-        let data = await fetchData()
+        let data = await fetchDataRanking()
         console.log(data)
         let contentArrayRank = [
             {
@@ -364,8 +373,11 @@ async function addToHtml(){
     }
     catch(err)
     {
-        console.log("Error in adding HTML")
+        console.log("Error in adding Rankings HTML")
     }
 }
 
-window.onload = addToHtml
+window.onload = function() {
+    addToHtmlMous(),
+    addToHtmlRanking()
+}
