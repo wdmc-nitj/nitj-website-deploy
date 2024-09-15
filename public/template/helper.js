@@ -1,6 +1,4 @@
-
 let leastpri = 5;
-
 
 function executor() {
   if (priority < leastpri) {
@@ -50,13 +48,11 @@ function close_menu() {
   }
 }
 
-
 let dropdownmenus = document.getElementsByClassName("DropDowns");
 let subdropdownmenus = document.getElementsByClassName("subDropDowns");
 let dropdownmenubuttons = document.getElementsByClassName("dropdown-buttons");
 let subdropdownmenubuttons = document.getElementsByClassName("subDropButtons");
 let droparrows = document.getElementsByClassName("DropArrows");
-
 
 function openDropDowns(id) {
   for (var i = 0; i < dropdownmenubuttons.length; i++) {
@@ -154,16 +150,15 @@ function showSearchPage(event) {
 
 function display_resources() {
   let input = document.getElementById("searchbar");
-  if(input.reportValidity()){
+  if (input.reportValidity()) {
     let resources = document.getElementById("resources");
     if (resources.classList.contains("hidden")) {
       resources.classList.remove("hidden");
-    } 
+    }
     // else {
     //   resources.classList.add("hidden");
     // }
-  }
-  else{
+  } else {
     let resources = document.getElementById("resources");
     if (!resources.classList.contains("hidden")) {
       resources.classList.add("hidden");
@@ -210,43 +205,70 @@ async function displayWords(words, links) {
 }
 var displayWordsArr = [];
 var links = {};
-fetch('/api/navbar')
+fetch("/api/navbar")
   .then(async (res) => await res.json())
   .then((data) => {
-    Object.keys(data).forEach(key => {
-      for(let i=0;i<data[key].length;i++){
-        for(let j=2;j<data[key][i].length;j++){
+    Object.keys(data).forEach((key) => {
+      for (let i = 0; i < data[key].length; i++) {
+        for (let j = 2; j < data[key][i].length; j++) {
           // console.log(data[key][i][j].name)
           // console.log(data[key][i][j].link)
-          data[key][i][j].name = data[key][i][j].name+" <span class=\"material-symbols-outlined align-middle\" >open_in_new</span>";
+          data[key][i][j].name =
+            data[key][i][j].name +
+            ' <span class="material-symbols-outlined align-middle" >open_in_new</span>';
           displayWordsArr.push(data[key][i][j].name);
           links[data[key][i][j].name] = data[key][i][j].link;
         }
       }
     });
-  })
-dept_list = ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai'];
+  });
+dept_list = [
+  "bt",
+  "ch",
+  "cy",
+  "ce",
+  "cse",
+  "ee",
+  "ece",
+  "hm",
+  "ipe",
+  "it",
+  "ice",
+  "ma",
+  "me",
+  "ph",
+  "tt",
+  "cf",
+  "cee",
+  "cai",
+];
 for (let dept of dept_list) {
   fetch(`/api/dept/${dept}/Faculty`)
-  .then((response) => response.json())
-  .then((data) => {
-    // Create an unordered list element
-    data.forEach((element) => {
-      element["ID"]["name"] = element["ID"]["name"]+" <span class=\"material-symbols-outlined align-middle\">person</span>";
-      displayWordsArr.push(element["ID"]["name"]);
-      links[element["ID"]["name"]] = `https://departments.nitj.ac.in/dept/${dept}/Faculty/${element["ID"]["_id"]}`;
+    .then((response) => response.json())
+    .then((data) => {
+      // Create an unordered list element
+      data.forEach((element) => {
+        element["ID"]["name"] =
+          element["ID"]["name"] +
+          ' <span class="material-symbols-outlined align-middle">person</span>';
+        displayWordsArr.push(element["ID"]["name"]);
+        links[
+          element["ID"]["name"]
+        ] = `https://departments.nitj.ac.in/dept/${dept}/Faculty/${element["ID"]["_id"]}`;
+      });
+      // Loop through the properties of the data object
     });
-    // Loop through the properties of the data object
-  });
 }
 var resources = document.getElementById("resources");
-fetch('/api/resource')
+fetch("/api/resource")
   .then((response) => response.json())
   .then((data) => {
     // Create an unordered list element
     data.forEach((element) => {
       if (element.resourceType === "other") {
-        element["resourceName"] = element["resourceName"]+" <span class=\"material-symbols-outlined align-middle\">picture_as_pdf</span>";
+        element["resourceName"] =
+          element["resourceName"] +
+          ' <span class="material-symbols-outlined align-middle">picture_as_pdf</span>';
         displayWordsArr.push(element["resourceName"]);
         links[element["resourceName"]] = element["resourceLink"];
       }
@@ -258,16 +280,16 @@ function search_resources() {
   let input_element = document.getElementById("searchbar");
   let input = document.getElementById("searchbar").value;
   input = input.replace(/[^\w\s]/g, "").toLowerCase(); // Removing special characters and convert to lowercase
-  let searchTerms = input.split(/\s+/).filter(term => term !== ""); // Spliting input into search terms
+  let searchTerms = input.split(/\s+/).filter((term) => term !== ""); // Spliting input into search terms
   // if(!input_element.reportValidity()){
-    display_resources();
-    // return;
+  display_resources();
+  // return;
   // }
 
   let x = document.getElementsByClassName("resource");
   let header = document.getElementsByClassName("head");
   let uls = document.getElementsByClassName("uls");
-    for (let i = 0; i < x.length; i++) {
+  for (let i = 0; i < x.length; i++) {
     let resourceContent = x[i].innerHTML.toLowerCase().replace(/[^\w\s]/g, "");
     let showResource = true;
 
@@ -315,35 +337,41 @@ function search_resources() {
 }
 
 function waitForElm(selector) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
+    if (document.querySelector(selector)) {
+      return resolve(document.querySelector(selector));
+    }
+
+    const observer = new MutationObserver((mutations) => {
       if (document.querySelector(selector)) {
-          return resolve(document.querySelector(selector));
+        resolve(document.querySelector(selector));
+        observer.disconnect();
       }
+    });
 
-      const observer = new MutationObserver(mutations => {
-          if (document.querySelector(selector)) {
-              resolve(document.querySelector(selector));
-              observer.disconnect();
-          }
-      });
-
-      observer.observe(document.body, {
-          childList: true,
-          subtree: true
-      });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
   });
 }
 
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+  new google.translate.TranslateElement(
+    {
+      pageLanguage: "en",
+      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+    },
+    "google_translate_element"
+  );
 }
 
 // once google translate element is initialized, remove the google translate logo
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // console.log("DOM loaded, waiting for google translate element to initialize");
-  waitForElm(".goog-te-gadget").then(elm => {
+  waitForElm(".goog-te-gadget").then((elm) => {
     // console.log("google translate element initialized");
-    var goog_gadget =  document.getElementsByClassName('goog-te-gadget')[0];
+    var goog_gadget = document.getElementsByClassName("goog-te-gadget")[0];
     // console.log(goog_gadget.childNodes)
     //just keep the child node 0 remove rest
     for (var i = 1; i < goog_gadget.childNodes.length; i++) {
@@ -355,9 +383,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // Include the script source for Google Translate
-var script = document.createElement('script');
-script.type = 'text/javascript';
-script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+var script = document.createElement("script");
+script.type = "text/javascript";
+script.src =
+  "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
 
 // Append the script to the document body
 document.body.appendChild(script);
