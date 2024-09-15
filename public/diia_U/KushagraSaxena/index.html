@@ -29,14 +29,22 @@
         .image{
             height: 350px;;
         }
-        @media (max-width:768px) {
+        .card {
+            height: 350px;
+            overflow-y: scroll;
+        }
+        @media (max-width:770px) {
             .image
+            {
+                height: 260px;
+            }
+            .card
             {
                 height: 260px;
             }
         }
 
-        @media (max-width:430px) {
+        @media (max-width:450px) {
             .image
             {
                 height: 150px ;
@@ -71,6 +79,10 @@
         {
             background-color: white;
             color: #1E3A8A;
+        }
+        .sectionContainer:hover
+        {
+            cursor: pointer;
         }
       </style>
 </head>
@@ -239,23 +251,23 @@
             <div class="sectionContainer w-full h-full grid grid-cols-2">
                 <div class="section1 grid md:grid-cols-custom-grid gap-5 bg-white">
                     <img src="" alt="" class="image rounded-xl w-full" >
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;"></p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
-                        <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
+                        <p class="lg:text-sm xsm:text-xs text-darkPurple"></p>
                     </div>
                 </div>
                 <div class="section1 hidden md:grid-cols-custom-grid-2 gap-5 bg-white">
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold" style="color: #0056b3;"></p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
-                        <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
+                        <p class="lg:text-sm xsm:text-xs text-darkPurple"></p>
                     </div>
                     <img src="" alt="" class="image rounded-xl w-full">
                 </div>
                 <div class="section1 hidden md:grid-cols-custom-grid gap-5 bg-white" style="color: #0056b3;">
                     <img src="" alt="" class="image rounded-xl w-full">
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold"></p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
@@ -263,42 +275,42 @@
                 </div>
             </div>
             <div class="sectionContainer w-full h-full grid grid-cols-2">
-                <div class="section2 grid md:grid-cols-custom-grid gap-5 bg-white">
-                    <img src="" alt="" class="image rounded-xl w-full" >
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                <div class="section2 grid md:grid-cols-custom-grid-2 gap-5 bg-white">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;"></p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
                     </div>
+                    <img src="" alt="" class="image rounded-xl w-full" >
                 </div>
-                <div class="section2 hidden md:grid-cols-custom-grid-2 gap-5 bg-white">
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                <div class="section2 hidden md:grid-cols-custom-grid gap-5 bg-white">
+                    <img src="" alt="" class="image rounded-xl w-full">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold" style="color: #0056b3;"></p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
                     </div>
-                    <img src="" alt="" class="image rounded-xl w-full">
                 </div>
-                <div class="section2 hidden md:grid-cols-custom-grid gap-5 bg-white" style="color: #0056b3;">
-                    <img src="" alt="" class="image rounded-xl w-full">
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                <div class="section2 hidden md:grid-cols-custom-grid-2 gap-5 bg-white" style="color: #0056b3;">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold"></p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
                     </div>
+                    <img src="" alt="" class="image rounded-xl w-full">
                 </div>
             </div>
             <div class="sectionContainer w-full h-full grid grid-cols-2">
                 <div class="section3 grid md:grid-cols-custom-grid gap-5 bg-white">
                     <img src="" alt="" class="image rounded-xl w-full" >
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;"></p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
                     </div>
                 </div>
                 <div class="section3 hidden md:grid-cols-custom-grid-2 gap-5 bg-white">
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold" style="color: #0056b3;"></p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
@@ -307,7 +319,7 @@
                 </div>
                 <div class="section3 hidden md:grid-cols-custom-grid gap-5 bg-white" style="color: #0056b3;">
                     <img src="" alt="" class="image rounded-xl w-full">
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold"></p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
