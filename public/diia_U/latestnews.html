@@ -25,17 +25,7 @@
         animation: fadeIn 2s ease-in-out;
       }
     </style>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        fetch("../../diia_U/AshutoshDevgotra/navbar.html")
-          .then((response) => response.text())
-          .then((data) => {
-            document.getElementById("navbar").innerHTML = data;
-          });
-      });
-    </script>
   </head>
-  <header id="navbar"></header>
   <body class="bg-gray-100">
     <div
       class="relative w-full h-60 flex items-center justify-center overflow-hidden bg-gray-800"

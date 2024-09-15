@@ -55,41 +55,18 @@
         padding-bottom: 0.3rem;
       }
 
+      /* Body image styling */
       .body-image {
         width: 60%;
         height: auto;
         margin-top: 1rem;
-
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         margin-bottom: 2rem;
       }
 
-      @media (max-width: 768px) {
-        /* For tablets and smaller screens */
-        .body-image {
-          width: 95%;
-          margin-top: 0.5rem;
-          margin-bottom: 1rem;
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-
-      @media (max-width: 480px) {
-        /* For phones */
-        .body-image {
-          width: 95%;
-          margin-top: 0.5rem;
-          margin-bottom: 1rem;
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-
       /* News description styling */
       .news-description {
-        text-align: center;
         font-size: 1.125rem;
         line-height: 1.75rem;
         margin-top: 1rem;
@@ -105,20 +82,9 @@
         margin-bottom: 2rem;
       }
     </style>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        fetch("../diia_U/AshutoshDevgotra/navbar.html")
-          .then((response) => response.text())
-          .then((data) => {
-            document.getElementById("navbar").innerHTML = data;
-          });
-      });
-    </script>
   </head>
   <body class="bg-gray-100">
-    <p id="navbar"></p>
     <!-- Header with Changing Background Image -->
-
     <header
       class="relative w-full h-60 flex items-center justify-center bg-gray-800"
     >

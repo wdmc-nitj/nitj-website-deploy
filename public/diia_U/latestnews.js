@@ -1,42 +1,24 @@
 let data = [];
 let currentIndex = 0;
-const url = "https://nitjfinal.onrender.com";
-const furl = "https://nitjfinal.onrender.com";
-// async function fetchData() {
-//   try {
-//     const response = await fetch(`${url}/api/diia/news-section`);
-//     if (!response.ok) {
-//       throw new Error(`Network response was not ok: ${response.status}`);
-//     }
-//     data = await response.json();
-//     console.log("Fetched Data:", data);
-//     initSlider();
-//     populateList();
-//   } catch (error) {
-//     console.error("Failed to fetch data:", error);
-//   }
-// }
+
 async function fetchData() {
   try {
-    const response = await fetch(`${url}/api/diia/news-section`);
+    const response = await fetch(
+      "https://nitjfinal.onrender.com/api/diia/news-section"
+    );
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
     }
     data = await response.json();
     console.log("Fetched Data:", data);
-
-    // Sort data based on createdAt and take the latest 4 items
-    data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    dataSlider = data.slice(0, 4); // Take the most recent 4 items
-    console.log(data);
-    initSlider(dataSlider);
-    populateList(data);
+    initSlider();
+    populateList();
   } catch (error) {
     console.error("Failed to fetch data:", error);
   }
 }
 
-function initSlider(dataSlider) {
+function initSlider() {
   const imageContainer = document.getElementById("imageContainer");
   const indicatorsContainer = document.getElementById("indicators");
 
@@ -48,12 +30,12 @@ function initSlider(dataSlider) {
   imageContainer.innerHTML = "";
   indicatorsContainer.innerHTML = "";
 
-  if (dataSlider.length === 0) {
+  if (data.length === 0) {
     console.warn("No data available for slider");
     return;
   }
 
-  dataSlider.forEach((elt, index) => {
+  data.forEach((elt, index) => {
     const imgElement = document.createElement("img");
     imgElement.src = elt.Image;
     imgElement.alt = `Stack Image ${index + 1}`;
@@ -70,7 +52,7 @@ function initSlider(dataSlider) {
 }
 
 function updateSlider() {
-  if (dataSlider.length === 0) {
+  if (data.length === 0) {
     console.warn("No data available for slider update");
     return;
   }
@@ -82,20 +64,19 @@ function updateSlider() {
 
   const currentImage = data[currentIndex];
   document.getElementById("heading").textContent = currentImage.title1;
-
   document.getElementById(
     "headingLink"
-  ).href = ` ${furl}/diia_U/template.html?id=${currentImage._id}?category=news-section`;
+  ).href = ` https://nitjfinal.onrender.com/diia/template.html?id=${data._id}`;
 
   document.querySelectorAll("#indicators span").forEach((indicator, index) => {
     indicator.classList.toggle("bg-white", index === currentIndex);
     indicator.classList.toggle("bg-gray-500", index !== currentIndex);
   });
 
-  currentIndex = (currentIndex + 1) % dataSlider.length;
+  currentIndex = (currentIndex + 1) % data.length;
 }
 
-function populateList(data) {
+function populateList() {
   const list = document.getElementById("list");
 
   if (!list) {
@@ -110,7 +91,7 @@ function populateList(data) {
     const link = document.createElement("a");
     link.className =
       "underline underline-offset-4 decoration-accent decoration-0 hover:decoration-2 text-lg";
-    link.href = ` ${furl}/diia_U/template.html?id=${item._id}?category=news-section`;
+    link.href = ` https://nitjfinal.onrender.com/diia/template.html?id=${item._id}`;
     link.textContent = item.title1;
 
     const newTagDiv = document.createElement("div");
