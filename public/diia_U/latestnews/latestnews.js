@@ -1,7 +1,21 @@
 let data = [];
 let currentIndex = 0;
 const url = "https://nitjfinal.onrender.com";
-const furl = "http://localhost:8000";
+const furl = "https://nitjfinal.onrender.com";
+// async function fetchData() {
+//   try {
+//     const response = await fetch(`${url}/api/diia/news-section`);
+//     if (!response.ok) {
+//       throw new Error(`Network response was not ok: ${response.status}`);
+//     }
+//     data = await response.json();
+//     console.log("Fetched Data:", data);
+//     initSlider();
+//     populateList();
+//   } catch (error) {
+//     console.error("Failed to fetch data:", error);
+//   }
+// }
 async function fetchData() {
   try {
     const response = await fetch(`${url}/api/diia/news-section`);
@@ -10,14 +24,19 @@ async function fetchData() {
     }
     data = await response.json();
     console.log("Fetched Data:", data);
-    initSlider();
-    populateList();
+
+    // Sort data based on createdAt and take the latest 4 items
+    data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    dataSlider = data.slice(0, 4); // Take the most recent 4 items
+    console.log(data);
+    initSlider(dataSlider);
+    populateList(data);
   } catch (error) {
     console.error("Failed to fetch data:", error);
   }
 }
 
-function initSlider() {
+function initSlider(dataSlider) {
   const imageContainer = document.getElementById("imageContainer");
   const indicatorsContainer = document.getElementById("indicators");
 
@@ -29,12 +48,12 @@ function initSlider() {
   imageContainer.innerHTML = "";
   indicatorsContainer.innerHTML = "";
 
-  if (data.length === 0) {
+  if (dataSlider.length === 0) {
     console.warn("No data available for slider");
     return;
   }
 
-  data.forEach((elt, index) => {
+  dataSlider.forEach((elt, index) => {
     const imgElement = document.createElement("img");
     imgElement.src = elt.Image;
     imgElement.alt = `Stack Image ${index + 1}`;
@@ -51,7 +70,7 @@ function initSlider() {
 }
 
 function updateSlider() {
-  if (data.length === 0) {
+  if (dataSlider.length === 0) {
     console.warn("No data available for slider update");
     return;
   }
@@ -66,17 +85,17 @@ function updateSlider() {
 
   document.getElementById(
     "headingLink"
-  ).href = ` ${furl}/diia/template.html?id=${currentImage._id}?category=news-section`;
+  ).href = ` ${furl}/diia_U/template.html?id=${currentImage._id}?category=news-section`;
 
   document.querySelectorAll("#indicators span").forEach((indicator, index) => {
     indicator.classList.toggle("bg-white", index === currentIndex);
     indicator.classList.toggle("bg-gray-500", index !== currentIndex);
   });
 
-  currentIndex = (currentIndex + 1) % data.length;
+  currentIndex = (currentIndex + 1) % dataSlider.length;
 }
 
-function populateList() {
+function populateList(data) {
   const list = document.getElementById("list");
 
   if (!list) {
@@ -91,7 +110,7 @@ function populateList() {
     const link = document.createElement("a");
     link.className =
       "underline underline-offset-4 decoration-accent decoration-0 hover:decoration-2 text-lg";
-    link.href = ` ${furl}/diia/template.html?id=${item._id}?category=news-section`;
+    link.href = ` ${furl}/diia_U/template.html?id=${item._id}?category=news-section`;
     link.textContent = item.title1;
 
     const newTagDiv = document.createElement("div");
