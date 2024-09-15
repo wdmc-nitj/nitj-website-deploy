@@ -7,6 +7,7 @@
 }
 
 body {
+    font-family: 'Barlow', sans-serif;
     background-color: rgb(198, 214, 242);
     color: rgb(37, 57, 133);
     /* padding: 10px; */
@@ -25,6 +26,26 @@ body {
     width: 100%;
     margin: 10px;
     text-align: center;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0056b3;
+    text-align: center;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+    position: relative;
+}
+
+.heading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #007bff;
+    margin: 1rem auto;
+    border-radius: 2px;
 }
 
 @media only screen and (max-width: 950px) {
