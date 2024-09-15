@@ -89,27 +89,6 @@ module.exports = {
         "gradient-radial":
           "radial-gradient(ellipse at top, var(--tw-gradient-stops))",
       },
-      
-      /*DIIA Rankings and MOUs*/
-      transitionDuration: {
-        '0':'0ms',
-        '400': '200ms', 
-      },
-      transitionTimingFunction: {
-        'in-out-expo': 'linear', 
-      },
-      transitionProperty: {
-        'all': 'all', 
-      },
-      gridTemplateColumns: {
-        'custom-grid': '1.6fr 1fr',
-        'custom-grid-2':'1fr 1.6fr'
-      },boxShadow:{
-        'custom-shadow':'inset 0px 0px 20px rgba(255, 255, 255, 0.2686)'
-      },
-      screens: {
-        'xsm': '320px', 
-      }
     },
   },
   plugins: [
