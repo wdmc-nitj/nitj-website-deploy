@@ -1,11 +1,10 @@
 let data = [];
 let currentIndex = 0;
-
+const url = "https://nitjfinal.onrender.com";
+const furl = "http://localhost:8000";
 async function fetchData() {
   try {
-    const response = await fetch(
-      "https://nitjfinal.onrender.com/api/diia/news-section"
-    );
+    const response = await fetch(`${url}/api/diia/news-section`);
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
     }
@@ -64,9 +63,10 @@ function updateSlider() {
 
   const currentImage = data[currentIndex];
   document.getElementById("heading").textContent = currentImage.title1;
+
   document.getElementById(
     "headingLink"
-  ).href = ` https://nitjfinal.onrender.com/diia/template.html?id=${data._id}`;
+  ).href = ` ${furl}/diia/template.html?id=${currentImage._id}?category=news-section`;
 
   document.querySelectorAll("#indicators span").forEach((indicator, index) => {
     indicator.classList.toggle("bg-white", index === currentIndex);
@@ -91,7 +91,7 @@ function populateList() {
     const link = document.createElement("a");
     link.className =
       "underline underline-offset-4 decoration-accent decoration-0 hover:decoration-2 text-lg";
-    link.href = ` https://nitjfinal.onrender.com/diia/template.html?id=${item._id}`;
+    link.href = ` ${furl}/diia/template.html?id=${item._id}?category=news-section`;
     link.textContent = item.title1;
 
     const newTagDiv = document.createElement("div");
