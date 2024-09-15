@@ -24,9 +24,8 @@ const dataSet3 = [
 ]
 
 function getColor(val, dataS) {
-    for(const data of dataS) {
-        if(data.country == val) {console.log("returning", data.color);return data.color}
-    }
+    for(const data of dataS)
+        if(data.country == val) return data.color
 }
 
 function GJSONGenerator(dataS) {
@@ -45,22 +44,37 @@ function GJSONGenerator(dataS) {
     }
 }
 
-window.onload = function() {
+window.onload = async function() {
     
-    var map = L.map('map').setView([0,0], 0.5);
-    var map2 = L.map('map2').setView([0,0], 0.5);
-    var map3 = L.map('map3').setView([0,0], 0.5);
+    let config = {
+        center: [0,0],
+        zoom:0.5,
+        zoomControl: false, 
+        dragging: false,    
+        scrollWheelZoom: false, 
+        doubleClickZoom: false, 
+        boxZoom: false,         
+        keyboard: false,        
+        touchZoom: false 
+    }
+
+    var map = L.map('map', config);
+    var map2 = L.map('map2', config);
+    var map3 = L.map('map3', config);
     
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 3,
+        minZoom:0.5,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map)
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 3,
+        minZoom:1,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map2)
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 3,
+        minZoom:1,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map3)
     map.attributionControl.setPrefix('NITJ')
@@ -75,8 +89,39 @@ window.onload = function() {
                 'opacity': 0.8
             };
         }
-        L.geoJSON(GJSONGenerator(CDS), {style: style}).addTo(mp)
+        L.geoJSON(GJSONGenerator(CDS), {
+            style: style,
+            onEachFeature: function(feature, layer) {
+                layer.on({
+                    mouseover: function(e) {
+                        var layer0 = e.target;
+                        layer0.bindTooltip(feature.properties.ADMIN, {permanent:false, direction: 'top'}).openTooltip()
+                    },
+                    mouseout: function (e) {
+                        e.target.closeTooltip();
+                    }
+                })
+            }
+        }).addTo(mp)
     }
+
+    // console.log('t',window.location)
+    try {
+        const response = await fetch(`https://nitjfinal.onrender.com/api/diia/maps`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if(response) {
+            const data = await response.json()
+            if(data) console.log(data)
+        }
+    }
+    catch(e) {
+        console.log(e)
+    }
+
     SetColours(map, dataSet)
     SetColours(map2, dataSet2)
     SetColours(map3, dataSet3)
