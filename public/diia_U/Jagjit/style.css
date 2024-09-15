@@ -9,8 +9,9 @@
 body {
     background-color: rgb(198, 214, 242);
     color: rgb(37, 57, 133);
-    padding: 10px;
+    /* padding: 10px; */
     font-size: large;
+    height: 110%;
 }
 
 .mapContainer {
@@ -24,4 +25,10 @@ body {
     width: 100%;
     margin: 10px;
     text-align: center;
+}
+
+@media only screen and (max-width: 950px) {
+    .mapContainer {
+        flex-direction: column;
+    }
 }
