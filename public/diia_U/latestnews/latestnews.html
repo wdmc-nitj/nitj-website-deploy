@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latest News</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <style>
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fadeIn {
+        animation: fadeIn 2s ease-in-out;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("../../diia_U/AshutoshDevgotra/navbar.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("navbar").innerHTML = data;
+          });
+      });
+    </script>
+  </head>
+  <header id="navbar"></header>
+  <body class="bg-gray-100">
+    <div
+      class="relative w-full h-60 flex items-center justify-center overflow-hidden bg-gray-800"
+    >
+      <!-- Image Display -->
+      <div class="absolute inset-0 w-full h-full" id="imageContainer"></div>
+
+      <!-- Dark Overlay -->
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+
+      <!-- Caption and Heading -->
+      <div class="absolute bottom-10 left-10 z-10">
+        <a href="#" target="_blank" rel="noopener noreferrer" id="headingLink">
+          <h1
+            class="text-3xl md:text-4xl font-bold text-white mb-2"
+            id="heading"
+          ></h1>
+        </a>
+      </div>
+
+      <!-- Slider Indicator -->
+      <div
+        class="absolute bottom-5 left-10 flex space-x-2 z-10"
+        id="indicators"
+      ></div>
+    </div>
+
+    <!-- Navigation heading -->
+    <div>
+      <nav
+        class="flex px-4 lg:px-[4rem] bg-gray-200 py-[8px] text-black"
+        aria-label="Breadcrumb"
+      >
+        <ol class="container w-full inline-flex items-center">
+          <li class="inline-flex items-center">
+            <a
+              href=""
+              class="inline-flex items-center text-sm font-medium hover:text-gray-900"
+            >
+              <a href="../index.html" class="text-lg font-medium ml-2">Home</a>
+            </a>
+          </li>
+          <li aria-current="page">
+            <i
+              style="color: grey; font-size: 12px; margin-left: 12px"
+              class="fa-solid fa-angle-right ml-2"
+            ></i>
+            <a
+              href="#"
+              id="page-heading"
+              class="page-title text-lg font-medium ml-2"
+              >Latest News</a
+            >
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- News Section -->
+    <div class="w-full flex flex-col items-start px-4 lg:px-[4rem]">
+      <p
+        id="title"
+        class="font2 font-medium text-[28px] lg:text-[32px] leading-tight my-2 border-b-2 border-[#0369a0]"
+      >
+        All Latest Events
+      </p>
+
+      <ul
+        id="list"
+        class="list-disc ml-5 text-accent flex flex-col mt-5 gap-6 text-[#0369a0]"
+      >
+        <!-- List items will be inserted here -->
+      </ul>
+    </div>
+
+    <script src="./latestnews.js" defer></script>
+  </body>
+</html>
