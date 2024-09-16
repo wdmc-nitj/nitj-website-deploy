@@ -6,16 +6,13 @@ const countries = ['US', 'India', 'China', 'Canada', 'Australia', 'France', 'Ban
 const DiiaMapSchema = new mongoose.Schema({
     Name: {
         type: String,
-        required: true,
     },
     Batch: {
         type: String,  // Could be a string like '2020', '2021', etc.
-        required: true,
     },
     Department: {
         type: String,
         enum: ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai'],
-        required: true,
     },
     country: {
         type: String,
@@ -28,7 +25,7 @@ const DiiaMapSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['student', 'research', 'alumni'],  // Dropdown for types
+        enum: ['Student', 'Research', 'Alumni'],  // Dropdown for types
         required: true,
     },
     maptext: {

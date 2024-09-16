@@ -3,12 +3,15 @@ const mongoose = require('mongoose');
 const DiiaRankingsSchema = new mongoose.Schema({
     Rank: {
         type: String,
+        required: true,
     },
     Image: {
         type: String, // Assuming the image URL will be stored as a string
+        required: true
     },
     title1: {
         type: String,
+        required: true,
     },
     title2: {
         type: String,
