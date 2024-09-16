@@ -6,7 +6,7 @@ const DiiaNumberSchema = new mongoose.Schema({
         required: true,  // Title is mandatory
     },
     Number: {
-        type: Number,
+        type: String,
         required: true,  // Number is mandatory
     },
     order: {

@@ -5,3 +5,5 @@ import Component2 from '../ColorPickerComponent'
 AdminBro.UserComponents.Component2 = Component2
 import Component3 from '../ColorPickerComponent'
 AdminBro.UserComponents.Component3 = Component3
+import Component4 from '../ColorPickerComponent'
+AdminBro.UserComponents.Component4 = Component4

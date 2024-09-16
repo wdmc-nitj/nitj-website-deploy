@@ -10,7 +10,8 @@ const DiiaFooterSchema = new mongoose.Schema({
         required: true,
     },
     order: {
-        type: Number,  // Determines the display order of the footer links
+        type: [Number],  // Determines the display order of the footer links
+        required: true,
     },
     Col: {
         type: Number,  // Specifies the column number
