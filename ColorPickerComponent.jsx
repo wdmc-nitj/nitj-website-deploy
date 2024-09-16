@@ -6,7 +6,7 @@ const ColorPickerComponent = (props) => {
   const { property, onChange, record } = props;
 
   return (
-    <Box>
+    <Box mb="25px" mt="10px">
       <Label>{property.label}</Label>
       <Input
         type="color"

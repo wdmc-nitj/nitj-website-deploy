@@ -3161,12 +3161,19 @@ const AdminBroOptions = {
   options: {
     navigation: "DIIA",
     properties: {
-      color: {
+      textcolor: {
         type: 'string',
         components: {
           edit: AdminBro.bundle('./ColorPickerComponent'), // Custom component for color picker
         },
       },
+      buttoncolor: {
+        type: 'string',
+        components: {
+          edit: AdminBro.bundle('./ColorPickerComponent'), // Custom component for color picker
+        },
+      },
+
     },
     actions: {
       new: { isAccessible: isdiiaAdmin },
