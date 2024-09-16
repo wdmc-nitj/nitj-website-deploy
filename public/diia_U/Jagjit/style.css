@@ -9,6 +9,9 @@
 body {
     font-family: 'Barlow', sans-serif;
     background-color: rgb(198, 214, 242);
+    /* background: url("testbg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%; */
     color: rgb(37, 57, 133);
     /* padding: 10px; */
     font-size: large;

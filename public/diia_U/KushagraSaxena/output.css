@@ -1123,3 +1123,11 @@ sup {
     height:320px;
   }
 }
+
+.rankings
+{
+  background-color: #C2D7F5;
+  /* background: url("img/testbg\ copy.png"); */
+  /* background-repeat: no-repeat; */
+  /* background-size: 100% 100%; */
+}
