@@ -1,6 +1,6 @@
 .bg-square {
     position: absolute;
-    background-color: #B3C8E6;
+    /* background-color: #B3C8E6; */
     border-radius: 0.5rem;
     z-index: -1;
 }
@@ -65,7 +65,7 @@
 /* Decorative Circles */
 .decorative-circle {
     position: absolute;
-    background-color: #B3C8E6;
+    /* background-color: #B3C8E6; */
     border-radius: 50%;
     z-index: -1;
 }
@@ -92,7 +92,10 @@
 }
 
 body {
-    background-color: #C2D7F5;
+    /* background-color: #C2D7F5; */
+    background: url("testbg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     position: relative;
     font-family: 'Barlow', sans-serif;
 }
