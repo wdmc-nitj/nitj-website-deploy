@@ -100,13 +100,17 @@ body {
 /* Card Styles */
 .testimonial-card {
     background: linear-gradient(145deg, #ffffff, #d7e4f1);
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     padding: 1.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 1rem;
     position: relative;
     transition: all 0.3s ease;
-    max-width: 350px;
+    /* max-width: 350px; */
+    width: 100%;
+    max-height: 200px;
+    /* height: 30% !important; */
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
