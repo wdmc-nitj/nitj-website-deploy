@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const DiiaTestimonialsSchema = new mongoose.Schema({
     Image: {
         type: String, // URL of the image
+        required: true
     },
     name: {
         type: String,
@@ -22,6 +23,7 @@ const DiiaTestimonialsSchema = new mongoose.Schema({
     },
     description: {
         type: String,
+        required: true
     },
     currentDesignation: {
         type: String,

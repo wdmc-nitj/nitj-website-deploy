@@ -52,7 +52,7 @@
         }
         .section1, .section2, .section3
         {
-            opacity: 0;
+            /* opacity: 0; */
             animation: slider 1.2s ease forwards;
             box-shadow: 0px 0px 20px grey;
             padding: 10px;
@@ -90,13 +90,13 @@
     <!-- Rankings -->
     <div class="w-full container">
          
-        <div class="w-full flex flex-col gap-8" style="background-color: #C2D7F5; position: relative; z-index: 1; padding-top:35px; padding-bottom: 15px;">
-            <!-- Decorative Squares -->
-            <div class="bg-square square1"></div>
+        <div class="w-full flex flex-col gap-8 rankings" style="position: relative; z-index: 1; padding-top:35px; padding-bottom: 15px;">
+            <!-- Decorative Squares  -->
+            <div class="bg-square square1"></div> 
             <div class="bg-square square2"></div>
             <div class="bg-square square3"></div>
             <div class="bg-square square4"></div>
-    
+     
             <!-- Decorative Circles -->
             <div class="decorative-circle circle1"></div>
             <div class="decorative-circle circle2"></div>
@@ -111,7 +111,7 @@
                 <button id="scrollRight" ><img src="./img/frontArrow.svg" alt="" class="w-7 h-14 absolute" style="top: 50%; right: 3%;"></button>
 
                 <div class="scrollable p-5 flex overflow-x-scroll scrollbar-custom gap-5 m-auto w-10/12 ">
-                    <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <!-- <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                         
                         <div>
                             <img class="classImage w-36 h-20" alt="">
@@ -179,9 +179,6 @@
 
                     </div>
 
-                    
-
-
                     <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                         
                         <div>
@@ -231,7 +228,7 @@
                                 <hr class="head-border border-t-2 flex items-center justify-center w-full transition-all duration-400 ease-in-out-expo"></hr>
                                 <p class="classDes"></p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="m-auto" style="margin-bottom: 20px;">
@@ -248,8 +245,8 @@
                 <p class=" font-bold text-4xl ">NITJ</p>
                 <p class=" font-light text-4xl ">MOU's</p>
             </div>
-            <div class="sectionContainer w-full h-full grid grid-cols-2">
-                <div class="section1 grid md:grid-cols-custom-grid gap-5 bg-white">
+            <div class="sectionContainer national w-full h-full grid grid-cols-2">
+                <!-- <div class="section1 grid md:grid-cols-custom-grid gap-5 bg-white">
                     <img src="" alt="" class="image rounded-xl w-full" >
                     <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;"></p>
@@ -272,10 +269,10 @@
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
                     </div>
-                </div>
+                </div> -->
             </div>
-            <div class="sectionContainer w-full h-full grid grid-cols-2">
-                <div class="section2 grid md:grid-cols-custom-grid-2 gap-5 bg-white">
+            <div class="sectionContainer industry w-full h-full grid grid-cols-2">
+                <!-- <div class="section2 grid md:grid-cols-custom-grid-2 gap-5 bg-white">
                     <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;"></p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
@@ -298,10 +295,10 @@
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
                     </div>
                     <img src="" alt="" class="image rounded-xl w-full">
-                </div>
+                </div> -->
             </div>
-            <div class="sectionContainer w-full h-full grid grid-cols-2">
-                <div class="section3 grid md:grid-cols-custom-grid gap-5 bg-white">
+            <div class="sectionContainer international w-full h-full grid grid-cols-2">
+                <!-- <div class="section3 grid md:grid-cols-custom-grid gap-5 bg-white">
                     <img src="" alt="" class="image rounded-xl w-full" >
                     <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;"></p>
@@ -324,7 +321,7 @@
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
                     </div>
-                </div>
+                </div> -->
             </div>
         
             <div class="linkMOU">

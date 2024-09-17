@@ -3,13 +3,15 @@ const mongoose = require('mongoose');
 const DiiaMousSchema = new mongoose.Schema({
     Image: {
         type: String, // URL of the image
+        required: true
     },
     name: {
         type: String,
+        required: true,
     },
     type: {
         type: String, // Type of MoU
-        enum: ['national', 'international', 'industries', 'others'],
+        enum: ['Indian Institutions', 'International Institutions', 'Industry'],
     },
     startingDate: {
         type: Date,
@@ -19,6 +21,7 @@ const DiiaMousSchema = new mongoose.Schema({
     },
     description: {
         type: String,
+        required: true
     },
     Poc: {
         type: String, // Point of contact

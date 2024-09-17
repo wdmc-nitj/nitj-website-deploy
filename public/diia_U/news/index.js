@@ -101,6 +101,30 @@ function initializeSlider() {
       }, 400);
     }
   });
+
+  // Add touch event listeners for swipe functionality
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  slider.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  });
+
+  slider.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].clientX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    if (touchEndX < touchStartX) {
+      // Swipe left
+      nextButton.click();
+    }
+    if (touchEndX > touchStartX) {
+      // Swipe right
+      prevButton.click();
+    }
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
