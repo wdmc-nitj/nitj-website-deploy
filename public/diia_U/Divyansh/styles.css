@@ -21,7 +21,7 @@ body {
     margin: 0;
     background: url('https://best20.in/wp-content/uploads/2022/12/NIT-Jalandhar-Image-2048x964.jpeg') no-repeat center center fixed;
     background-size: cover;
-    min-height: 40vh; 
+    min-height: 30vh; /* Adjusted */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -83,7 +83,7 @@ body {
 @media (max-width: 768px) {
     .numbers-section {
         background-attachment: scroll;
-        min-height: 35vh; 
+        min-height: 25vh; /* Adjusted */
     }
 
     .number-item {
@@ -105,7 +105,7 @@ body {
 
 @media (max-width: 480px) {
     .numbers-section {
-        min-height: 30vh; 
+        min-height: 20vh; /* Adjusted */
     }
 
     .number-item {

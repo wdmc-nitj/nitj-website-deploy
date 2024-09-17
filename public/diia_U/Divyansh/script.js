@@ -1,3 +1,4 @@
+// Animate a number from start to end over a specified duration
 function animateNumber(id, start, end, duration) {
     let obj = document.getElementById(id);
     let range = end - start;
@@ -7,20 +8,77 @@ function animateNumber(id, start, end, duration) {
     let timer = setInterval(function () {
         current += increment;
         obj.textContent = current + '+';
-        if (current == end) {
+        if (current === end) {
             clearInterval(timer);
         }
     }, stepTime);
 }
 
-window.onload = function () {
-    animateNumber('mous', 0, 30, 2000);
-    animateNumber('international-projects', 0, 120, 2000);
-    animateNumber('international-collaborations', 0, 100, 2000);
-
-    // Parallax effect
+// Parallax effect
+function applyParallaxEffect() {
     window.addEventListener('scroll', function () {
         let scrollPosition = window.pageYOffset;
         document.querySelector('.numbers-section').style.backgroundPositionY = `${scrollPosition * 0.5}px`;
     });
+}
+
+// Fetch data and render it
+async function fetchData() {
+    try {
+        const response = await fetch('https://nitjfinal.onrender.com/api/diia/numbers');
+        const data = await response.json();
+        renderNumbers(data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+// Render numbers dynamically and animate them
+function renderNumbers(data) {
+    const numbersSection = document.querySelector('.numbers-section');
+    numbersSection.innerHTML = ''; // Clear existing content
+
+    data.forEach(item => {
+        const numberItem = document.createElement('div');
+        numberItem.classList.add('number-item');
+        
+        // Choose different icons based on the item title
+        let iconClass;
+        switch (item.title.toLowerCase()) {
+            case 'mous':
+                iconClass = 'fa-graduation-cap';
+                break;
+            case 'research collaborations':
+                iconClass = 'fa-users';
+                break;
+            case 'delegate visits':
+                iconClass = 'fa-briefcase';
+                break;
+            default:
+                iconClass = 'fa-question'; // Default icon
+        }
+
+        numberItem.innerHTML = `
+            <p id="${item.title.toLowerCase().replace(/\s+/g, '-')}" data-number="${item.Number}">${item.Number}</p>  
+            <h2>${item.title}</h2>  
+            <i class="fas ${iconClass} icon"></i>  
+        `;
+        numbersSection.appendChild(numberItem);
+    });
+
+    // Animate numbers after rendering
+    data.forEach(item => {
+        animateNumber(
+            item.title.toLowerCase().replace(/\s+/g, '-'),
+            0,
+            parseInt(item.Number),
+            2000
+        );
+    });
+}
+
+// Initialize everything
+window.onload = function () {
+    fetchData(); // Fetch data and render numbers
+    applyParallaxEffect(); // Apply parallax effect
 };
