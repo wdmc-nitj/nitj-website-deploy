@@ -1,0 +1,58 @@
+.map {
+    width: 100%;
+    aspect-ratio: 1/1;
+    margin: auto;
+    border: 2px solid navy;
+    border-radius: 15px !important;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    background-color: rgb(198, 214, 242);
+    /* background: url("testbg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%; */
+    color: rgb(37, 57, 133);
+    /* padding: 10px; */
+    font-size: large;
+    height: 110%;
+}
+
+.mapContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.mapCraddle {
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0056b3;
+    text-align: center;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+    position: relative;
+}
+
+.heading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #007bff;
+    margin: 1rem auto;
+    border-radius: 2px;
+}
+
+@media only screen and (max-width: 950px) {
+    .mapContainer {
+        flex-direction: column;
+    }
+}

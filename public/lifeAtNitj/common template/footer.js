@@ -4,7 +4,7 @@ document.write(`
     <div class="flex flex-row items-center gap-x-[10px] pb-3">
         <img src="img/logo_250.png" alt="NITJ logo" class="h-[67px] w-[67px]" />
         <p class="font-semibold text-white lg:text-[20px]">
-        Dr. B R Ambedkar National Institute of Technology, Jalandhar
+        Dr B R Ambedkar National Institute of Technology, Jalandhar
         </p>
     </div>
 
