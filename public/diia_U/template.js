@@ -9,10 +9,6 @@ function getIdFromUrl() {
   const searchParams = new URLSearchParams(urlParams.search);
   const id = searchParams.get("id");
   const category = searchParams.get("category");
-
-  console.log("ID:", id);
-  console.log("Category:", category);
-
   return { id, category };
 }
 
@@ -75,10 +71,10 @@ function renderTemplate(newsItem) {
 
 // Main function to initialize the page
 async function initPage() {
-  const obj = getIdFromUrl(); // Get the ID from the URL
-  const newsData = await fetchNewsData(); // Fetch all news data
-  const newsItem = newsData.find((item) => item._id === obj.id); // Find the specific news item by ID
-  renderTemplate(newsItem); // Render the template with the found news item
+  const obj = getIdFromUrl();
+  const newsData = await fetchNewsData();
+  const newsItem = newsData.find((item) => item._id === obj.id);
+  if (obj.category == "news-section") renderTemplate(newsItem);
 }
 
 // Initialize the page when the DOM is ready
