@@ -992,3 +992,142 @@ sup {
     width: 80%;
   }
 }
+
+.bg-square {
+  position: absolute;
+  background-color: #B3C8E6;
+  border-radius: 0.5rem;
+  z-index: -1;
+}
+
+.square1 {
+  width: 120px;
+  height: 120px;
+  top: 20px;
+  left: 10px;
+  transform: rotate(15deg);
+}
+
+.square2 {
+  width: 90px;
+  height: 90px;
+  bottom: 30px;
+  right: 50px;
+  transform: rotate(-10deg);
+}
+
+.square3 {
+  width: 80px;
+  height: 80px;
+  top: 120px;
+  left: 300px;
+  transform: rotate(5deg);
+}
+
+.square4 {
+  width: 100px;
+  height: 100px;
+  bottom: 150px;
+  left: 500px;
+  transform: rotate(-15deg);
+}
+
+/* Additional Squares on Right Side */
+.square5 {
+  width: 150px;
+  height: 150px;
+  top: 250px;
+  right: 20px;
+  transform: rotate(10deg);
+}
+
+.square6 {
+  width: 100px;
+  height: 100px;
+  top: 400px;
+  right: 50px;
+  transform: rotate(-5deg);
+}
+
+.square7 {
+  width: 120px;
+  height: 120px;
+  bottom: 100px;
+  right: 100px;
+  transform: rotate(20deg);
+}
+
+
+/* Decorative Circles */
+.decorative-circle {
+  position: absolute;
+  background-color: #B3C8E6;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.circle1 {
+  width: 120px;
+  height: 120px;
+  bottom: 50px;
+  left: 200px;
+}
+
+.circle2 {
+  width: 90px;
+  height: 90px;
+  top: 150px;
+  right: 100px;
+}
+
+.circle3 {
+  width: 70px;
+  height: 70px;
+  top: 300px;
+  left: 100px;
+}
+
+.head-color{
+  color: #1E3A8A;
+}
+
+.head-border
+{
+  border: 2px solid #1E3A8A;
+}
+
+@media (max-width:620px) {
+  .square4
+  {
+    left: 0px;
+  }
+  .square3
+  {
+    left: 200px;
+  }
+}
+
+.view-all-MOU
+{
+  background: linear-gradient(90deg, #007bff, #0056b3);
+}
+
+.view-all-MOU:hover
+{
+  background: linear-gradient(90deg, #0056b3, #003d7a);
+}
+
+@media (max-width:325px) {
+  .cardRank
+  {
+    height:320px;
+  }
+}
+
+.rankings
+{
+  background-color: #C2D7F5;
+  /* background: url("img/testbg\ copy.png"); */
+  /* background-repeat: no-repeat; */
+  /* background-size: 100% 100%; */
+}

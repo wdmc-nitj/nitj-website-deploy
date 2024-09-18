@@ -1,15 +1,26 @@
 // Function to get the ID from the URL parameters
+const url = "https://nitjfinal.onrender.com";
 function getIdFromUrl() {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get("id");
+  // Get the current URL
+
+  const url = window.location.href;
+  const fixedUrl = url.replace("?category=", "&category=");
+  const urlParams = new URL(fixedUrl);
+  const searchParams = new URLSearchParams(urlParams.search);
+  const id = searchParams.get("id");
+  const category = searchParams.get("category");
+
+  console.log("ID:", id);
+  console.log("Category:", category);
+
+  return { id, category };
 }
 
 // Fetch all news data from the API
 async function fetchNewsData() {
   try {
-    const response = await fetch(
-      "https://nitjfinal.onrender.com/api/diia/news-section"
-    );
+    const obj = getIdFromUrl();
+    const response = await fetch(`${url}/api/diia/${obj.category}`);
     if (!response.ok) {
       throw new Error("Failed to fetch news data");
     }
@@ -39,10 +50,10 @@ function renderTemplate(newsItem) {
 
   // Set the header heading text
   const headerHeading = document.getElementById("headerHeading");
-  headerHeading.textContent = newsItem.title2;
+  headerHeading.textContent = newsItem.title1;
 
   // Set the news title
-  document.getElementById("title").textContent = newsItem.title1;
+  document.getElementById("title").textContent = newsItem.title2;
 
   // Create an image and description element for the body section
   const eventContainer = document.getElementById("event-container");
@@ -64,9 +75,9 @@ function renderTemplate(newsItem) {
 
 // Main function to initialize the page
 async function initPage() {
-  const id = getIdFromUrl(); // Get the ID from the URL
+  const obj = getIdFromUrl(); // Get the ID from the URL
   const newsData = await fetchNewsData(); // Fetch all news data
-  const newsItem = newsData.find((item) => item._id === id); // Find the specific news item by ID
+  const newsItem = newsData.find((item) => item._id === obj.id); // Find the specific news item by ID
   renderTemplate(newsItem); // Render the template with the found news item
 }
 
