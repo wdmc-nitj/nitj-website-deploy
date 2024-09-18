@@ -40,7 +40,7 @@ app.use(cookieParser());
 app.use(bodyParser.json({ limit: "5mb" }));
 bodyParser.urlencoded({ extended: true });
 app.use(express.static(__dirname + "/public"));
-app.use(express.static(path.join(__dirname, "..", "nitj_files")));
+app.use('/files', express.static(path.join(__dirname, '..', 'nitj_files')))
 
 //allowing all cross origin requests
 app.use(
