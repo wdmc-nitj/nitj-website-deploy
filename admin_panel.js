@@ -73,6 +73,8 @@ const DiiaMap= require("./models/diia/DiiaMap");
 const DiiaFooter = require("./models/diia/DiiaFooter");
 const DiiaColorButton=require("./models/diia/DiiaColorButton");
 const DiiaNumber=require("./models/diia/DiiaNumber");
+const DiiaNavBar=require("./models/diia/DiiaNavBar")
+
 
 
 // Research Menu
@@ -3186,7 +3188,25 @@ const AdminBroOptions = {
     },
   },
 },
-
+{
+  resource: DiiaNavBar,
+  options: {
+    navigation: "DIIA",
+    properties: {
+      submenus: {
+        type: 'mixed',  // Define submenus as a mixed type to allow for flexible data entry
+      },
+    },
+    actions: {
+      new: { isAccessible: isdiiaAdmin },
+      edit: { isAccessible: isdiiaAdmin },
+      delete: { isAccessible: isdiiaAdmin },
+      show: { isAccessible: isdiiaAdmin },
+      bulkDelete: { isAccessible: isdiiaAdmin },
+      list: { isAccessible: isdiiaAdmin },
+    },
+  },
+},
 
     {
       resource: AcademicCalendar,

@@ -10,6 +10,7 @@ const DiiaMap=require('./diia/diiaMap');
 const DiiaNumber = require('./diia/diiaNumber');
 const DiiaFooter=require('./diia/diiaFooter');
 const DiiaColorButton = require('./diia/diiaColorButton');
+const DiiaNavBar=require('./diia/diiaNavBar');
 
 
 
@@ -23,5 +24,6 @@ diiaRouter.use('/maps',DiiaMap);
 diiaRouter.use('/numbers', DiiaNumber);
 diiaRouter.use('/footer', DiiaFooter);
 diiaRouter.use('/color-button', DiiaColorButton);
+diiaRouter.use('/navbar', DiiaNavBar);
 
 module.exports = diiaRouter;
