@@ -1789,7 +1789,7 @@ sup {
   padding-right: 2rem;
 }
 
-.px-10 {
+.px-5 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
@@ -2691,7 +2691,7 @@ sup {
     margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
   }
 
-  .md\:px-10 {
+  .md\:px-5 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
