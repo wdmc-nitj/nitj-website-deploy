@@ -3,7 +3,7 @@ const url = "https://nitjfinal.onrender.com";
 
 async function fetchData() {
   try {
-    const response = await fetch(`${url}/api/diia/news-section`);
+    const response = await fetch(`${url}/api/diia/opportunities`);
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
     }
@@ -33,7 +33,7 @@ function renderCards() {
         <p>${newElt.title2}</p>
         <a href="${url}/diia_U/template.html?id=${
       newElt._id
-    }?category=news-section" class="read-more">Read more</a>
+    }?category=opportunities" class="read-more">Read more</a>
       </div>
     `;
     cardsWrapper.appendChild(card);
