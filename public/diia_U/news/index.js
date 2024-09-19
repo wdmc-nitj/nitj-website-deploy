@@ -1,4 +1,4 @@
-let news = [];
+let opportunities = [];
 const url = "https://nitjfinal.onrender.com";
 
 async function fetchData() {
@@ -7,8 +7,8 @@ async function fetchData() {
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
     }
-    news = await response.json();
-    console.log("Fetched Data:", news);
+    opportunities = await response.json();
+    console.log("Fetched Data:", opportunities);
     renderCards();
   } catch (error) {
     console.error("Failed to fetch data:", error);
@@ -19,20 +19,20 @@ function renderCards() {
   const cardsWrapper = document.querySelector(".cards-wrapper");
   cardsWrapper.innerHTML = "";
 
-  news.forEach((newElt) => {
+  opportunities.forEach((opportunity) => {
     const card = document.createElement("div");
     card.classList.add("news-card");
 
     card.innerHTML = `
-      <img src="${newElt.Image}" alt="News Image" />
+      <img src="${opportunity.Image}" alt="News Image" />
       <div class="text-area">
         <span class="date">${new Date(
-          newElt.createdAt
+          opportunity.createdAt
         ).toLocaleDateString()}</span>
-        <h2 class="heading">${newElt.title1}</h2>
-        <p>${newElt.title2}</p>
+        <h2 class="heading">${opportunity.title1}</h2>
+        <p>${opportunity.title2}</p>
         <a href="${url}/diia_U/template.html?id=${
-      newElt._id
+      opportunity._id
     }?category=news-section" class="read-more">Read more</a>
       </div>
     `;
@@ -48,85 +48,27 @@ function initializeSlider() {
   const prevButton = document.querySelector(".arrow-left");
   const nextButton = document.querySelector(".arrow-right");
 
-  if (sliderItems.length === 0) return;
+    let scrollAmount = 0;
+    const cardWidth = sliderItems[0].offsetWidth + parseInt(getComputedStyle(sliderItems[0]).marginRight);
+    const totalWidth = cardWidth * sliderItems.length;
+    const visibleWidth = document.querySelector('.card-slider').clientWidth; // Width of the visible slider area
 
-  let cardWidth =
-    sliderItems[0].offsetWidth +
-    parseInt(getComputedStyle(sliderItems[0]).marginRight);
+    // Set the width of the cards-wrapper
+    slider.style.width = `${totalWidth}px`;
 
-  const firstCardClone = sliderItems[0].cloneNode(true);
-  const lastCardClone = sliderItems[sliderItems.length - 1].cloneNode(true);
-
-  slider.appendChild(firstCardClone);
-  slider.insertBefore(lastCardClone, sliderItems[0]);
-
-  let currentIndex = 1;
-  let scrollAmount = cardWidth;
-
-  slider.style.transform = `translateX(-${scrollAmount}px)`;
-
-  function updateSliderPosition() {
-    slider.style.transition = "transform 0.4s ease-in-out";
-    slider.style.transform = `translateX(-${scrollAmount}px)`;
-  }
-
-  nextButton.addEventListener("click", function () {
-    currentIndex++;
-    scrollAmount += cardWidth;
-
-    updateSliderPosition();
-
-    if (currentIndex >= sliderItems.length) {
-      setTimeout(() => {
-        slider.style.transition = "none";
-        currentIndex = 1;
-        scrollAmount = cardWidth;
+    nextButton.addEventListener('click', function () {
+        scrollAmount += cardWidth;
+        if (scrollAmount >= totalWidth - visibleWidth) {
+            scrollAmount = 0; // Loop back to the start
+        }
         slider.style.transform = `translateX(-${scrollAmount}px)`;
-      }, 400);
-    }
-  });
+    });
 
-  prevButton.addEventListener("click", function () {
-    currentIndex--;
-    scrollAmount -= cardWidth;
-
-    updateSliderPosition();
-
-    if (currentIndex <= 0) {
-      setTimeout(() => {
-        slider.style.transition = "none";
-        currentIndex = sliderItems.length - 1;
-        scrollAmount = cardWidth * currentIndex;
+    prevButton.addEventListener('click', function () {
+        scrollAmount -= cardWidth;
+        if (scrollAmount < 0) {
+            scrollAmount = totalWidth - visibleWidth; // Loop to the end
+        }
         slider.style.transform = `translateX(-${scrollAmount}px)`;
-      }, 400);
-    }
-  });
-
-  // Add touch event listeners for swipe functionality
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  slider.addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].clientX;
-  });
-
-  slider.addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].clientX;
-    handleSwipe();
-  });
-
-  function handleSwipe() {
-    if (touchEndX < touchStartX) {
-      // Swipe left
-      nextButton.click();
-    }
-    if (touchEndX > touchStartX) {
-      // Swipe right
-      prevButton.click();
-    }
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  fetchData();
+    });
 });

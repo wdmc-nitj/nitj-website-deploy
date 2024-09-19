@@ -1,5 +1,4 @@
 // Function to get the ID from the URL parameters
-const url = "https://nitjfinal.onrender.com";
 function getIdFromUrl() {
   // Get the current URL
 
@@ -9,14 +8,19 @@ function getIdFromUrl() {
   const searchParams = new URLSearchParams(urlParams.search);
   const id = searchParams.get("id");
   const category = searchParams.get("category");
+
+  console.log("ID:", id);
+  console.log("Category:", category);
+
   return { id, category };
 }
 
 // Fetch all news data from the API
 async function fetchNewsData() {
   try {
-    const obj = getIdFromUrl();
-    const response = await fetch(`${url}/api/diia/${obj.category}`);
+    const response = await fetch(
+      "https://nitjfinal.onrender.com/api/diia/news-section"
+    );
     if (!response.ok) {
       throw new Error("Failed to fetch news data");
     }
@@ -46,10 +50,10 @@ function renderTemplate(newsItem) {
 
   // Set the header heading text
   const headerHeading = document.getElementById("headerHeading");
-  headerHeading.textContent = newsItem.title1;
+  headerHeading.textContent = newsItem.title2;
 
   // Set the news title
-  document.getElementById("title").textContent = newsItem.title2;
+  document.getElementById("title").textContent = newsItem.title1;
 
   // Create an image and description element for the body section
   const eventContainer = document.getElementById("event-container");
@@ -71,10 +75,10 @@ function renderTemplate(newsItem) {
 
 // Main function to initialize the page
 async function initPage() {
-  const obj = getIdFromUrl();
-  const newsData = await fetchNewsData();
-  const newsItem = newsData.find((item) => item._id === obj.id);
-  if (obj.category == "news-section") renderTemplate(newsItem);
+  const obj = getIdFromUrl(); // Get the ID from the URL
+  const newsData = await fetchNewsData(); // Fetch all news data
+  const newsItem = newsData.find((item) => item._id === obj.id); // Find the specific news item by ID
+  renderTemplate(newsItem); // Render the template with the found news item
 }
 
 // Initialize the page when the DOM is ready
