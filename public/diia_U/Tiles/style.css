@@ -1,33 +1,36 @@
 .tileContainer {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     /* border:1px solid black; */
     padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 body {
+    height: 500px;
     padding: 0;
     margin: 0;
-}
-
-.tileRow {
-    display: flex;
-    width: 100%;
-    box-sizing: border-box;
-    justify-content: space-between;
-    gap:5px;
-    /* border:1px solid blue; */
-    padding: 5px;
+    font-family: 'Barlow', sans-serif;
 }
 
 .tile {
     text-align: left;
-    height: 100%;
-    box-sizing: border-box;
-    /* border:1px solid red; */
-    padding: 50px 20px;
+    /* border:1px solid blue; */
+    padding: 45px 20px;
     margin: 5px;
+    width: 40%;
+    text-emphasis-style: none;
+    font-weight: 700;
+    font-size: 1.5rem;
+    background-color: red;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 950px) {
+    .tile {
+        width: 100% !important;
+    }
 }
