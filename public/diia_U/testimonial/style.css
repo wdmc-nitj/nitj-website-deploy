@@ -1,6 +1,6 @@
 .bg-square {
     position: absolute;
-    /* background-color: #B3C8E6; */
+    background-color: #B3C8E6;
     border-radius: 0.5rem;
     z-index: -1;
 }
@@ -65,7 +65,7 @@
 /* Decorative Circles */
 .decorative-circle {
     position: absolute;
-    /* background-color: #B3C8E6; */
+    background-color: #B3C8E6;
     border-radius: 50%;
     z-index: -1;
 }
@@ -92,10 +92,7 @@
 }
 
 body {
-    /* background-color: #C2D7F5; */
-    background: url("testbg.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-color: #C2D7F5;
     position: relative;
     font-family: 'Barlow', sans-serif;
 }
@@ -103,17 +100,13 @@ body {
 /* Card Styles */
 .testimonial-card {
     background: linear-gradient(145deg, #ffffff, #d7e4f1);
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     padding: 1.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 1rem;
     position: relative;
     transition: all 0.3s ease;
-    /* max-width: 350px; */
-    width: 100%;
-    max-height: 200px;
-    /* height: 30% !important; */
-    box-sizing: border-box;
+    max-width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
