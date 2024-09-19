@@ -1,7 +1,9 @@
 // Fetch footer data from the backend
+const url = "https://nitjfinal.onrender.com"; // Base URL
+
 async function fetchFooterData() {
     try {
-        const response = await fetch('https://nitjfinal.onrender.com/api/diia/footer'); // Replace with your API endpoint
+        const response = await fetch(`${url}/api/diia/footer`); // Use the base URL for the fetch request
         const data = await response.json();
         if (data && data.length > 0) {
             renderFooter(data);
@@ -60,7 +62,6 @@ function renderFooter(data) {
                 </a>
             </div>
         </div>
-        
     `;
 }
 

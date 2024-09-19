@@ -1,13 +1,13 @@
 // Animate a number from start to end over a specified duration
 function animateNumber(id, start, end, duration) {
-    let obj = document.getElementById(id);
+    const obj = document.getElementById(id); // Use const for the element by ID
     let range = end - start;
     let current = start;
     let increment = end > start ? 1 : -1;
     let stepTime = Math.abs(Math.floor(duration / range));
     let timer = setInterval(function () {
         current += increment;
-        obj.textContent = current + '+';
+        obj.textContent = current + '+'; // Update the element's text content
         if (current === end) {
             clearInterval(timer);
         }
@@ -17,15 +17,17 @@ function animateNumber(id, start, end, duration) {
 // Parallax effect
 function applyParallaxEffect() {
     window.addEventListener('scroll', function () {
-        let scrollPosition = window.pageYOffset;
+        const scrollPosition = window.pageYOffset;
         document.querySelector('.numbers-section').style.backgroundPositionY = `${scrollPosition * 0.5}px`;
     });
 }
 
 // Fetch data and render it
+const url = "https://nitjfinal.onrender.com"; // Base URL
+
 async function fetchData() {
     try {
-        const response = await fetch('https://nitjfinal.onrender.com/api/diia/numbers');
+        const response = await fetch(`${url}/api/diia/numbers`); // Use const url for the fetch
         const data = await response.json();
         renderNumbers(data);
     } catch (error) {
