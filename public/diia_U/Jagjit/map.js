@@ -1,27 +1,4 @@
-// const {countryData} = require('./countriesGJSON/js')
 import countryData from './countriesGJSON.js'
-
-let dataSet = [
-    // {
-    //     country: 'IN',
-    //     color: '#00ff00',
-    //     maptext: 'Text ABC, India'
-    // }
-]
-let dataSet2 = [
-    // {
-    //     country: 'CA',
-    //     color:'#0000ff',
-    //     maptext: 'Text ABC, Canada'
-    // }
-]
-let dataSet3 = [
-    // {
-    //     country: 'ZM',
-    //     color: '#ff0000',
-    //     maptext: 'Text ABC, Zambia'
-    // }
-]
 
 function getColor(val, dataS) {
     for(const data of dataS)
@@ -52,10 +29,11 @@ function GJSONGenerator(dataS) {
 window.onload = async function() {
     
     let config = {
-        center: [0,0],
+        center: [0,10],
         zoom:0.5,
         zoomControl: false, 
         dragging: false,    
+        zoomSnap: 0.1,
         scrollWheelZoom: false, 
         doubleClickZoom: false, 
         boxZoom: false,         
@@ -67,31 +45,31 @@ window.onload = async function() {
     var map2 = L.map('map2', config);
     var map3 = L.map('map3', config);
     
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         maxZoom: 3,
-        minZoom:0.5,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        minZoom:0.2,
+        // attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map)
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         maxZoom: 3,
-        minZoom:1,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        minZoom:0.2
     }).addTo(map2)
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         maxZoom: 3,
-        minZoom:1,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        minZoom:0.2
     }).addTo(map3)
-    map.attributionControl.setPrefix('NITJ')
-    map2.attributionControl.setPrefix('NITJ')
-    map3.attributionControl.setPrefix('NITJ')
+    
+    map.attributionControl.setPrefix('')
+    map2.attributionControl.setPrefix('')
+    map3.attributionControl.setPrefix('')
     function SetColours(mp, CDS) {
         function style(feature) {
             return {
                 'fillColor': getColor(feature.properties.ADMIN, CDS),
                 'color': getColor(feature.properties.ADMIN, CDS),
                 'weight': 0.2,
-                'opacity': 0.8
+                'opacity': 0.8,
+                'fillOpacity': 1,
             };
         }
         L.geoJSON(GJSONGenerator(CDS), {
@@ -104,14 +82,19 @@ window.onload = async function() {
                     },
                     mouseout: function (e) {
                         e.target.closeTooltip();
-                    }
+                    },
+                    // click: function(e) {
+                    //     e.target.setStyle({
+                    //         border: 'none'
+                    //     })
+                    // }
                 })
             }
         }).addTo(mp)
     }
 
     try {
-        const response = await fetch(`https://nitjfinal.onrender.com/api/diia/maps`, {
+        const response = await fetch(`/api/diia/maps`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -119,21 +102,14 @@ window.onload = async function() {
         })
         if(response) {
             const data = await response.json()
-            if(data) console.log(data)
-
-            dataSet = data.filter(e=>e.type=='student')
-            dataSet2 = data.filter(e=>e.type=='research')
-            dataSet3 = data.filter(e=>e.type=='alumni')
-            SetColours(map, dataSet)
-            SetColours(map2, dataSet2)
-            SetColours(map3, dataSet3)
+            if(data) {
+                SetColours(map, data.filter(e=>e.type=='student'))
+                SetColours(map2, data.filter(e=>e.type=='research'))
+                SetColours(map3, data.filter(e=>e.type=='alumni'))
+            }
         }
     }
     catch(e) {
         console.log(e)
     }
-
-    // SetColours(map, dataSet)
-    // SetColours(map2, dataSet2)
-    // SetColours(map3, dataSet3)
 }
