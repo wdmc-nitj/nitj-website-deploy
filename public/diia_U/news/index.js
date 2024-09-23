@@ -1,4 +1,4 @@
-let opportunities = [];
+let news = [];
 const url = "https://nitjfinal.onrender.com";
 
 async function fetchData() {
@@ -7,8 +7,8 @@ async function fetchData() {
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
     }
-    opportunities = await response.json();
-    console.log("Fetched Data:", opportunities);
+    news = await response.json();
+    console.log("Fetched Data:", news);
     renderCards();
   } catch (error) {
     console.error("Failed to fetch data:", error);
@@ -19,20 +19,20 @@ function renderCards() {
   const cardsWrapper = document.querySelector(".cards-wrapper");
   cardsWrapper.innerHTML = "";
 
-  opportunities.forEach((opportunity) => {
+  news.forEach((newElt) => {
     const card = document.createElement("div");
     card.classList.add("news-card");
 
     card.innerHTML = `
-      <img src="${opportunity.Image}" alt="News Image" />
+      <img src="${newElt.Image}" alt="News Image" />
       <div class="text-area">
         <span class="date">${new Date(
-          opportunity.createdAt
+          newElt.createdAt
         ).toLocaleDateString()}</span>
-        <h2 class="heading">${opportunity.title1}</h2>
-        <p>${opportunity.title2}</p>
+        <h2 class="heading">${newElt.title1}</h2>
+        <p>${newElt.title2}</p>
         <a href="${url}/diia_U/template.html?id=${
-      opportunity._id
+      newElt._id
     }?category=news-section" class="read-more">Read more</a>
       </div>
     `;

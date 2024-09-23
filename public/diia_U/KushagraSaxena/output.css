@@ -7,7 +7,6 @@
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
-*,
 ::before,
 ::after {
   box-sizing: border-box;
@@ -467,7 +466,7 @@ sup {
   vertical-align: super;
 }
 
-*, ::before, ::after {
+::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;

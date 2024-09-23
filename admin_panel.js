@@ -73,7 +73,7 @@ const DiiaMap= require("./models/diia/DiiaMap");
 const DiiaFooter = require("./models/diia/DiiaFooter");
 const DiiaColorButton=require("./models/diia/DiiaColorButton");
 const DiiaNumber=require("./models/diia/DiiaNumber");
-const DiiaNavBar=require("./models/diia/DiiaNavBar")
+const DiiaNavBar=require("./models/diia/DiiaNavBar");
 
 
 
@@ -331,7 +331,7 @@ const canEditprofile = ({ currentAdmin, record }) => {
 
 // excluding clubadmin and diia from accessing the department data : updated each deptmt model config with this logic 
 const notAccessibleByClubs = ({ currentAdmin, record }) => {
-  return !isdiiaAdminonly({currentAdmin}) && !isClubAdmin({ currentAdmin }) && canEditDept({ currentAdmin, record })
+  return (!isdiiaAdminonly({currentAdmin}) && !isClubAdmin({ currentAdmin }) && canEditDept({ currentAdmin, record }));
 }
 AdminBro.registerAdapter(AdminBroMongoose);
 const AdminBroOptions = {
@@ -3451,7 +3451,7 @@ const AdminBroOptions = {
       },
     },
     {
-      resource: newpage,
+      resource: NewPage,
       options: {
         navigation: "New Page",
         actions: { list: { isAccessible: isAdmin } },

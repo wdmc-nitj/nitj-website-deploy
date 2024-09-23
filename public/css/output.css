@@ -2472,7 +2472,7 @@ sup {
   padding-right: 2rem;
 }
 
-.px-5 {
+.px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
@@ -3893,7 +3893,7 @@ sup {
     border-color: rgb(0 0 0 / var(--tw-border-opacity));
   }
 
-  .md\:px-5 {
+  .md\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
