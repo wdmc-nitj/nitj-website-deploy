@@ -25,7 +25,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      fetch("navbar.html")
+      fetch("./navbar.html")
         .then((response) => response.text())
         .then((data) => {
           document.getElementById("navbar").innerHTML = data;
@@ -89,7 +89,7 @@
     <div class="">
       <h2 class="text-2xl font-semibold text-center mb-2"></h2>
       <div class="flex flex-col  md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4">
-        <a href="https://example.com/news-1" target="_blank" class="text-3xl text-blue-600 text-gradient-to-b from-blue-700 to-black hover:underline">
+        <a href="https://example.com/news-1" target="_blank" class="text-3xl text-white underline text-gradient-to-b from-blue-700 to-black hover:underline">
           Nitj International Affairs Latest Events will be Highlighted Here!
         </a>
       </div>
