@@ -100,28 +100,6 @@
 <!-- Flowbite Carousel JS -->
 <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 
-<!-- Custom JS for Auto Carousel -->
-<script>
-  // Auto carousel function
-  const carouselImages = document.getElementById('carousel-images');
-  const carouselItems = carouselImages.querySelectorAll('[data-carousel-item]');
-  let activeIndex = 0;
-
-  function showNextSlide() {
-    // Hide the current active item
-    carouselItems[activeIndex].classList.remove('active');
-
-    // Update the active index to the next one
-    activeIndex = (activeIndex + 1) % carouselItems.length;
-
-    // Show the next active item
-    carouselItems[activeIndex].classList.add('active');
-  }
-
-  // Automatically switch slides every 2 seconds
-  setInterval(showNextSlide, 2000);
-</script>
-
 <script>
   function handleMenu() {
     const navDialog = document.getElementById("nav-dialog");
