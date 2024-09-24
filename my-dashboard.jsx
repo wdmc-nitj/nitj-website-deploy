@@ -42,7 +42,15 @@ const Dashboard = () => {
       <style>
         {`
           .dashboard-container { display: flex; flex-direction: column; align-items: center; padding: 20px; background-color: #f0f0f0; height: 100vh; }
-          h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 40px; color: #333; text-align: center; }
+         .heading {
+  font-size: 35px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  color: #333;
+  text-align: center;
+  line-height: 1.5; /* Adjust this value for more or less space */
+}
+
           .card-container { display: flex; justify-content: space-around; flex-wrap: wrap; width: 100%; max-width: 1200px; }
           .card { background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 220px; padding: 20px; margin: 10px; text-align: center; transition: transform 0.3s ease; }
           .card:hover { transform: scale(1.05); }
@@ -53,7 +61,7 @@ const Dashboard = () => {
       </style>
 
       <div className="dashboard-container">
-        <h1>WELCOME TO NITJ ADMIN DASHBOARD</h1>
+        <div className='heading '>WELCOME TO NITJ ADMIN DASHBOARD</div>
         <div className="card-container">
           {/* Conditionally render cards based on the role */}
           {role && (
