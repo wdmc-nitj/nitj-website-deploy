@@ -74,6 +74,7 @@ const DiiaFooter = require("./models/diia/DiiaFooter");
 const DiiaColorButton=require("./models/diia/DiiaColorButton");
 const DiiaNumber=require("./models/diia/DiiaNumber");
 const DiiaNavBar=require("./models/diia/DiiaNavBar");
+const DiiaDeandetails=require("./models/diia/DiiaDeandetails");
 
 
 
@@ -3197,6 +3198,21 @@ const AdminBroOptions = {
         type: 'mixed',  // Define submenus as a mixed type to allow for flexible data entry
       },
     },
+    actions: {
+      new: { isAccessible: isdiiaAdmin },
+      edit: { isAccessible: isdiiaAdmin },
+      delete: { isAccessible: isdiiaAdmin },
+      show: { isAccessible: isdiiaAdmin },
+      bulkDelete: { isAccessible: isdiiaAdmin },
+      list: { isAccessible: isdiiaAdmin },
+    },
+  },
+},
+
+{
+  resource: DiiaDeandetails,
+  options: {
+    navigation: "DIIA",
     actions: {
       new: { isAccessible: isdiiaAdmin },
       edit: { isAccessible: isdiiaAdmin },
