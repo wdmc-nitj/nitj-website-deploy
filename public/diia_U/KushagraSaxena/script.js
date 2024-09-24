@@ -62,7 +62,7 @@ function applyEffectToSection()
 
 async function fetchDataMous(){                      
     try{
-        const res = await fetch("https://nitjfinal.onrender.com/api/diia/mous")
+        const res = await fetch("/api/diia/mous")
         if(!res.ok)
         {
             throw new Error(`Status:${res.status}`)
@@ -161,7 +161,7 @@ async function addToHtmlMous(){
                 let national = document.getElementsByClassName("national")[0]
                 national.innerHTML += `<div class="section1 ${flagSection1 == 0? "grid": "hidden"} md:grid-cols-custom-grid gap-5 bg-white">
                     <img src=${data[i].Image} alt="" class="image rounded-xl w-full" >
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                    <div class="card w-10/12 flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;">${data[i].type}</p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple">${data[i].name}</p>
                         <p class="lg:text-sm xsm:text-xs text-darkPurple">${data[i].description}</p>
@@ -174,7 +174,7 @@ async function addToHtmlMous(){
             {
                 let industry = document.getElementsByClassName("industry")[0]
                 industry.innerHTML += `<div class="section2 ${flagSection2 == 0? "grid": "hidden"} md:grid-cols-custom-grid-2 gap-5 bg-white">
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                    <div class="card w-10/12 flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;">${data[i].type}</p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple">${data[i].name}</p>
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple">">${data[i].description}</p>
@@ -190,7 +190,7 @@ async function addToHtmlMous(){
                 let international = document.getElementsByClassName("international")[0]
                 international.innerHTML += ` <div class="section3 ${flagSection3 == 0? "grid": "hidden"} md:grid-cols-custom-grid gap-5 bg-white">
                     <img src=${data[i].Image} alt="" class="image rounded-xl w-full" >
-                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                    <div class="card w-10/12 flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;">${data[i].type}</p>
                         <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple">${data[i].name}</p>
                         <p class="lg:text-sm xsm:text-xs  text-darkPurple">${data[i].description}</p>
@@ -229,13 +229,13 @@ function applyEffectToRanking()
 
         if(window.outerWidth > 768 )
         {
-            i.classList.remove("w-full")
+            i.classList.remove("w-10/12")
             i.classList.add("w-1/3")
         }
 
         else if(window.outerWidth == 768)
         {
-            i.classList.remove("w-full","w-1/3")
+            i.classList.remove("w-10/12","w-1/3")
             i.classList.add("w-64")
         }
     }
@@ -334,7 +334,7 @@ if(window.outerWidth <= 1024)
 
 async function fetchDataRanking(){                      
     try{
-        const res = await fetch("https://nitjfinal.onrender.com/api/diia/rankings")
+        const res = await fetch("/api/diia/rankings")
         if(!res.ok)
         {
             throw new Error(`Status:${res.status}`)
@@ -421,7 +421,7 @@ async function addToHtmlRanking(){
             // rankClass[i].innerHTML += data[i].Rank
             // desClass[i].innerHTML += data[i].description
 
-            scroll.innerHTML += `<div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            scroll.innerHTML += `<div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-10/12 transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                         
                         <div>
                             <img class="classImage w-36 h-20" alt="" src=${data[i].Image}>
