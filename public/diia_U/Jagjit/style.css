@@ -2,8 +2,9 @@
     height: 100%;
     aspect-ratio: 20/13;
     margin: auto;
-    border: 2px solid navy;
-    border-radius: 15px !important;
+    /* border: 2px solid navy; */
+    border-radius: 12px !important;
+    filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.25));
 }
 
 body {
