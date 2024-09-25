@@ -27,6 +27,11 @@ body {
     font-size: 1.5rem;
     background-color: red;
     text-decoration: none;
+    transition: transform 0.25s ease-in-out;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4)
+}
+.tile:hover {
+    transform: scale(1.05);
 }
 
 @media screen and (max-width: 950px) {
