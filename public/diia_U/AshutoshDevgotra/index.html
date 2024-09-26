@@ -40,62 +40,88 @@
 <header id="navbar"></header>
  
 
-<!-- Image Slider Section -->
-<div class="relative w-full h-full overflow-hidden z-20">
-  <div class="relative rounded-lg shadow-lg w-full h-[70vh] md:h-screen" data-carousel="static">
+<!-- Container for Image Slider and Quick Links -->
+<div class="relative h-screen flex flex-col">
+  
+  <!-- Image Slider Section -->
+  <div class="relative w-full h-full md:h-full lg:h-full overflow-hidden z-20">
+    <div class="relative rounded-lg shadow-lg w-full h-full" data-carousel="static">
       <!-- Carousel wrapper -->
       <div class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black" data-carousel-inner id="carousel-images">
-          <!-- Item 1 -->
-          <div class="carousel-item duration-700 ease-in-out active" data-carousel-item>
-              <div class="relative w-full h-full">
-                  <img src="./assets/nitjb.jpg" class="object-cover w-full h-full" alt="SLIDE-1">
-                  <!-- Gradient overlay -->
-                  <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
-              </div>
+        <!-- Item 1 -->
+        <div class="carousel-item duration-700 ease-in-out active" data-carousel-item>
+          <div class="relative w-full h-full">
+            <img src="./assets/nitjb.jpg" class="object-cover w-full h-full" alt="SLIDE-1">
+            <!-- Gradient overlay -->
+            <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
           </div>
-          <!-- Item 2 -->
-          <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
-              <div class="relative w-full h-full">
-                  <img src="./assets/maxresdefault (3).jpg" class="object-cover w-full h-full" alt="Slide 2">
-                  <!-- Gradient overlay -->
-                  <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
-              </div>
+        </div>
+        <!-- Item 2 -->
+        <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
+          <div class="relative w-full h-full">
+            <img src="./assets/maxresdefault (3).jpg" class="object-cover w-full h-full" alt="Slide 2">
+            <!-- Gradient overlay -->
+            <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
           </div>
-          <!-- Item 3 -->
-          <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
-              <div class="relative w-full h-full">
-                  <img src="./assets/event.jpg" class="object-cover w-full h-full" alt="Slide 3">
-                  <!-- Gradient overlay -->
-                  <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
-              </div>
+        </div>
+        <!-- Item 3 -->
+        <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
+          <div class="relative w-full h-full">
+            <img src="./assets/event.jpg" class="object-cover w-full h-full" alt="Slide 3">
+            <!-- Gradient overlay -->
+            <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
           </div>
+        </div>
+
+
       </div>
 
       <!-- Slider controls -->
       <button type="button" class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-prev id="carousel-prev">
-          <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
+        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
       </button>
       <button type="button" class="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-next id="carousel-next">
-          <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
+        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
       </button>
-  </div>
-
-  <!-- Latest News Section positioned at 25% from the bottom of the image slider -->
-  <div class="absolute bottom-[2%] left-1/2 transform -translate-x-1/2 w-full px-4 z-50">
-    <div class="">
-      <h2 class="text-2xl font-semibold text-center mb-2"></h2>
-      <div class="flex flex-col  md:flex-row items-center justify-center space-y-2 md:space-y-0 md:space-x-4">
-        <a href="https://example.com/news-1" target="_blank" class="block text-base font-barlow sm-[14px] md:text-[28px] lg:text-[32px] xl:text-[48px] text-white underline bg-gradient-to-b from-blue-700 to-black bg-clip-text text-transparent whitespace-nowrap py-2  md:py-3 md:px-2 lg:py-4 lg:px-2">
-          Nitj International Affairs Latest Events will be Highlighted Here!
-      </a>
-      
-      </div>
     </div>
   </div>
+   <!-- Quick Link Section -->
+<div class="absolute bottom-0 left-0 right-0 h-[22%] bg-gradient-to-r from-blue-900 to-blue-700 border-white border-t-2 rounded-3xl z-30 flex items-center justify-center p-4 py-6  my-4 mx-10">
+  <!-- Elements Container -->
+  <div class="flex w-full max-w-6xl overflow-x-auto  text-white font-medium">
+    <!-- Element 1 link section -->
+    <div class="flex-shrink-0 border border-white rounded-xl p-4 mx-2 flex flex-col items-center   w-[18%] min-w-[120px] hover:border-orange-500">
+      <img class="w-12 h-12 mb-2" src="./assets/Graduation Cap.png" alt="Text1"/>
+      <span class="text-sm text-center">Opportunities</span>
+    </div>
+    <!-- Element 2 link section -->
+    <div class="flex-shrink-0 border border-white rounded-xl p-4 mx-2 flex flex-col items-center   w-[18%] min-w-[120px] hover:border-orange-500">
+      <img class="w-12 h-12 mb-2" src="./assets/People.png" alt="Text2"/>
+      <span class="text-sm text-center">Admissions</span>
+    </div>
+    <!-- Element 3 link section -->
+    <div class="flex-shrink-0 border border-white rounded-xl p-4 mx-2 flex flex-col items-center   w-[18%] min-w-[120px] hover:border-orange-500">
+      <img class="w-12 h-12 mb-2" src="./assets/Permanent Job.png" alt="Text3"/>
+      <span class="text-sm text-center">MOUs</span>
+    </div>
+    <!-- Element 4 link section -->
+    <div class="flex-shrink-0 border border-white rounded-xl p-4 mx-2 flex flex-col items-center   w-[18%] min-w-[120px] hover:border-orange-500">
+      <img class="w-12 h-12 mb-2" src="./assets/Financial Growth Analysis.png" alt="Text4"/>
+      <span class="text-sm text-center">Map</span>
+    </div>
+    <!-- Element 5 link section -->
+    <div class="flex-shrink-0 border border-white rounded-xl p-4 mx-2 flex flex-col items-center   w-[18%] min-w-[120px] hover:border-orange-500">
+      <img class="w-12 h-12 mb-2" src="./assets/Soccer.png" alt="Text5"/>
+      <span class="text-sm text-center">Testimonials</span>
+    </div>
+  </div>
+</div>
+
+
 </div>
 
 <!-- Flowbite Carousel JS -->
