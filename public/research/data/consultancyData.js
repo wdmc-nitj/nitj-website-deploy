@@ -116,10 +116,10 @@ async function helper2() {
       <tr>
       <th class="border bg-color-1 text-white px-8 py-2 w-[8%]">S. No.</th>
                   <th class="border bg-color-1 text-white px-8 py-2 w-[12%]">Name of Faculty (Chief Consultant)</th>
-                  <th class="border bg-color-1 text-white px-8 py-2 w-[15%]">Year</th>
+                  <th class="border bg-color-1 text-white px-8 py-2  w-[16%]">Year</th>
                   <th class="border bg-color-1 text-white px-8 py-2 w-[25%]">Client Organization</th>
                   <th class="border bg-color-1 text-white px-8 py-2 w-[25%]">Title of Consultancy of Project</th>
-                  <th class="border bg-color-1 text-white px-8 py-2 w-[15%]">Amount Received (in Rupees)</th>
+                  <th class="border bg-color-1 text-white px-8 py-2  w-[16%]">Amount Received (in Rupees)</th>
     </tr>
       `
       table.append(thead);
@@ -163,10 +163,10 @@ async function helper2() {
       <tr>
       <th class="border bg-color-1 text-white px-8 py-2 w-[8%]">S. No.</th>
                   <th class="border bg-color-1 text-white px-8 py-2 w-[12%]">Name of Faculty (Chief Consultant)</th>
-                  <th class="border bg-color-1 text-white px-8 py-2 w-[15%]">Year</th>
+                  <th class="border bg-color-1 text-white px-8 py-2  w-[16%]">Year</th>
                   <th class="border bg-color-1 text-white px-8 py-2 w-[25%]">Client Organization</th>
                   <th class="border bg-color-1 text-white px-8 py-2 w-[25%]">Title of Consultancy of Project</th>
-                  <th class="border bg-color-1 text-white px-8 py-2 w-[15%]">Amount Received (in Rupees)</th>
+                  <th class="border bg-color-1 text-white px-8 py-2  w-[16%]">Amount Received (in Rupees)</th>
     </tr>
       `
       table.append(thead);
