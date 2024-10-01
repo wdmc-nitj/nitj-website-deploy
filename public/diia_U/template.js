@@ -1,4 +1,3 @@
-const url = "https://nitjfinal.onrender.com";
 function getIdFromUrl() {
   const url = window.location.href;
   const fixedUrl = url.replace("?category=", "&category=");
@@ -14,7 +13,7 @@ function getIdFromUrl() {
 async function fetchNewsData() {
   try {
     const obj = getIdFromUrl();
-    const response = await fetch(`${url}/api/diia/${obj.category}`);
+    const response = await fetch(`/api/diia/${obj.category}`);
     if (!response.ok) {
       throw new Error("Failed to fetch news data");
     }

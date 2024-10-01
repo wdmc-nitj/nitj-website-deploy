@@ -1,164 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIIA</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="output.css" rel="stylesheet">
-    
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIIA</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="output.css" rel="stylesheet" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+
     <style>
-   /* Additional CSS for responsive navbar */
-@media (max-width: 1080px)  {
-    #nav-bar {
-        font-size: 0.75rem; /* Reduced font size */
-        padding: 0.5rem; /* Reduced padding */
-    }
-}
+      @media (max-width: 1080px) {
+        #nav-bar {
+          font-size: 0.75rem;
+          padding: 0.5rem;
+        }
 
+        #carousel-heading {
+          margin: 5rem;
+        }
+      }
 
-
-    
+      @media (max-width: 640px) {
+        #carousel-heading {
+          margin: 2rem;
+        }
+      }
     </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("./navbar.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("navbar").innerHTML = data;
-        });
-    });
-  </script>
-</head>
 
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-<body class="bg-gray-100">
- 
-<header id="navbar"></header>
- 
+  <body class="bg-gray-100">
+    <header id="navbar"></header>
 
-<!-- Container for Image Slider and Quick Links -->
-<div class="relative h-screen flex flex-col">
-  
-  <!-- Image Slider Section -->
-  <div class="relative w-full h-full md:h-full lg:h-full overflow-hidden z-20">
-    <div class="relative rounded-lg shadow-lg w-full h-full" data-carousel="static">
-      <!-- Carousel wrapper -->
-      <div class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black" data-carousel-inner id="carousel-images">
-        <!-- Item 1 -->
-        <div class="carousel-item duration-700 ease-in-out active" data-carousel-item>
-          <div class="relative w-full h-full">
-            <img src="./assets/nitjb.jpg" class="object-cover w-full h-full" alt="SLIDE-1">
-            <!-- Gradient overlay -->
-            <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
+    <!-- Container for Image Slider and Quick Links -->
+    <div class="relative h-screen flex flex-col">
+      <!-- Image Slider Section -->
+      <div
+        class="relative w-full h-full md:h-full lg:h-full overflow-hidden z-20"
+      >
+        <div
+          class="relative rounded-lg shadow-lg w-full h-full"
+          data-carousel="static"
+        >
+          <!-- Carousel wrapper -->
+          <div
+            class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black"
+            data-carousel-inner
+            id="carousel-images"
+          >
+            <!-- Image will be dynamically inserted here -->
+            <div class="carousel-item active h-full">
+              <img
+                src=""
+                alt="Carousel Image"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!-- Additional carousel items will be inserted dynamically -->
           </div>
-        </div>
-        <!-- Item 2 -->
-        <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
-          <div class="relative w-full h-full">
-            <img src="./assets/maxresdefault (3).jpg" class="object-cover w-full h-full" alt="Slide 2">
-            <!-- Gradient overlay -->
-            <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
-          </div>
-        </div>
-        <!-- Item 3 -->
-        <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
-          <div class="relative w-full h-full">
-            <img src="./assets/event.jpg" class="object-cover w-full h-full" alt="Slide 3">
-            <!-- Gradient overlay -->
-            <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
-          </div>
-        </div>
 
+          <!-- Dull Background Overlay
+          <div class="absolute inset-0 bg-black opacity-20"></div> -->
 
+          <!-- Slider controls -->
+          <button
+            type="button"
+            class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition"
+            id="carousel-prev"
+          >
+            <svg
+              class="w-5 h-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              ></path>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition"
+            id="carousel-next"
+          >
+            <svg
+              class="w-5 h-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              ></path>
+            </svg>
+          </button>
+        </div>
       </div>
-
-      <!-- Slider controls -->
-      <button type="button" class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-prev id="carousel-prev">
-        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-        </svg>
-      </button>
-      <button type="button" class="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-next id="carousel-next">
-        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-        </svg>
-      </button>
     </div>
-  </div>
-
-
-</div>
-<div class="overflow-hidden hide-scrollbar">
-     <!-- Quick Link Section -->
-<div class="absolute hide-scrollbar top-[92%] left-0 right-0 h-[25%] bg-gradient-to-r from-blue-900 to-blue-700 border-white border-t-2 rounded-3xl z-30 flex items-center justify-center  py-2 px-4  my-2 mx-10">
-  <!-- Elements Container -->
-  <div class="flex w-full max-w-6xl  overflow-hidden text-white font-medium my-6 hidden-scrollbar">
-    <!-- Element 1 link section -->
-    <div class="flex-shrink-0 border  border-white rounded-xl p-4 mx-4 flex flex-col items-center     w-[13%] min-w-[120px] hover:border-orange-500">
-      <img class="w-12 h-12 mb-2 hover:scale-105 " src="./assets/Graduation Cap.png" alt="Text1"/>
-      <span class="text-sm text-center">Opportunities</span>
+    <!-- Heading for the carousel -->
+    <div
+      class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white text-2xl font-bold p-4"
+      id="carousel-heading "
+    >
+      <!-- Heading will be dynamically updated here -->
     </div>
 
-    <!-- Element new link section -->
-    <div class="flex-shrink-0 border  border-white rounded-xl p-4 mx-4 flex flex-col items-center      w-[13%] min-w-[120px] hover:border-orange-500">
-      <img class="w-12 h-12 mb-2 hover:scale-105 " src="./assets/First Place Ribbon.png" alt="Text1"/>
-      <span class="text-sm text-center">Rankings</span>
+    <div class="overflow-hidden hide-scrollbar">
+      <!-- Quick Link Section -->
+      <div
+        class="absolute hide-scrollbar top-[92%] left-0 right-0 h-[25%] bg-gradient-to-r from-blue-900 to-blue-700 border-white border-t-2 rounded-3xl z-30 flex items-center justify-center py-2 px-4 my-2 mx-10"
+      >
+        <!-- Elements Container -->
+        <div
+          class="flex w-full max-w-6xl overflow-hidden text-white font-medium my-6 hidden-scrollbar"
+        >
+          <!-- Element 1 link section -->
+          <div
+            class="flex-shrink-0 border border-white rounded-xl p-4 mx-4 flex flex-col items-center w-[13%] min-w-[120px] hover:border-orange-500"
+          >
+            <img
+              class="w-12 h-12 mb-2 hover:scale-105"
+              src="./assets/Graduation Cap.png"
+              alt="Text1"
+            />
+            <span class="text-sm text-center">Opportunities</span>
+          </div>
+
+          <!-- Element new link section -->
+          <div
+            class="flex-shrink-0 border border-white rounded-xl p-4 mx-4 flex flex-col items-center w-[13%] min-w-[120px] hover:border-orange-500"
+          >
+            <img
+              class="w-12 h-12 mb-2 hover:scale-105"
+              src="./assets/First Place Ribbon.png"
+              alt="Text1"
+            />
+            <span class="text-sm text-center">Rankings</span>
+          </div>
+          <!-- Element 2 link section -->
+          <div
+            class="flex-shrink-0 border border-white rounded-xl p-4 mx-4 flex flex-col items-center w-[13%] min-w-[120px] hover:border-orange-500"
+          >
+            <img
+              class="w-12 h-12 mb-2 hover:scale-105"
+              src="./assets/People.png"
+              alt="Text2"
+            />
+            <span class="text-sm text-center">Admissions</span>
+          </div>
+          <!-- Element 3 link section -->
+          <div
+            class="flex-shrink-0 border border-white rounded-xl p-4 mx-4 flex flex-col items-center w-[13%] min-w-[120px] hover:border-orange-500"
+          >
+            <img
+              class="w-12 h-12 mb-2 hover:scale-105"
+              src="./assets/Permanent Job.png"
+              alt="Text3"
+            />
+            <span class="text-sm text-center">MOUs</span>
+          </div>
+          <!-- Element 4 link section -->
+          <div
+            class="flex-shrink-0 border border-white rounded-xl p-4 mx-4 flex flex-col items-center w-[13%] min-w-[120px] hover:border-orange-500"
+          >
+            <img
+              class="w-12 h-12 mb-2 hover:scale-105"
+              src="./assets/Financial Growth Analysis.png"
+              alt="Text4"
+            />
+            <span class="text-sm text-center">Map</span>
+          </div>
+          <!-- Element 5 link section -->
+          <div
+            class="flex-shrink-0 border border-white rounded-xl p-4 mx-4 flex flex-col items-center w-[13%] min-w-[120px] hover:border-orange-500"
+          >
+            <img
+              class="w-12 h-12 mb-2 hover:scale-105"
+              src="./assets/Soccer.png"
+              alt="Text5"
+            />
+            <span class="text-sm text-center">Testimonials</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- Element 2 link section -->
-    <div class="flex-shrink-0 border   border-white rounded-xl p-4 mx-4 flex flex-col items-center       w-[13%] min-w-[120px] hover:border-orange-500">
-      <img class="w-12 h-12 mb-2 hover:scale-105" src="./assets/People.png" alt="Text2"/>
-      <span class="text-sm text-center">Admissions</span>
-    </div>
-    <!-- Element 3 link section -->
-    <div class="flex-shrink-0 border border-white rounded-xl p-4 mx-4 flex flex-col items-center       w-[13%] min-w-[120px] hover:border-orange-500">
-      <img class="w-12 h-12 mb-2 hover:scale-105" src="./assets/Permanent Job.png" alt="Text3"/>
-      <span class="text-sm text-center">MOUs</span>
-    </div>
-    <!-- Element 4 link section -->
-    <div class="flex-shrink-0 border border-white rounded-xl p-4 mx-4 flex flex-col items-center       w-[13%] min-w-[120px] hover:border-orange-500">
-      <img class="w-12 h-12 mb-2 hover:scale-105" src="./assets/Financial Growth Analysis.png" alt="Text4"/>
-      <span class="text-sm text-center">Map</span>
-    </div>
-    <!-- Element 5 link section -->
-    <div class="flex-shrink-0 border  border-white rounded-xl p-4 mx-4 flex flex-col items-center       w-[13%] min-w-[120px] hover:border-orange-500">
-      <img class="w-12 h-12 mb-2 hover:scale-105" src="./assets/Soccer.png" alt="Text5"/>
-      <span class="text-sm text-center">Testimonials</span>
-    </div>
-  </div>
-</div>
 
-</div>
+    <script>
+      function handleMenu() {
+        const navDialog = document.getElementById("nav-dialog");
+        const hamburgerIcon = document.getElementById("hamburger-icon");
+        const closeIcon = document.getElementById("close-icon");
 
-<!-- Flowbite Carousel JS -->
-<script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+        // Toggle the visibility of the mobile menu
+        if (navDialog.classList.contains("hidden")) {
+          navDialog.classList.remove("hidden");
+          hamburgerIcon.classList.add("hidden");
+          closeIcon.classList.remove("hidden");
+        } else {
+          navDialog.classList.add("hidden");
+          hamburgerIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        }
+      }
+    </script>
 
-<script>
-  function handleMenu() {
-    const navDialog = document.getElementById("nav-dialog");
-    const hamburgerIcon = document.getElementById("hamburger-icon");
-    const closeIcon = document.getElementById("close-icon");
-
-    // Toggle the visibility of the mobile menu
-    if (navDialog.classList.contains("hidden")) {
-      navDialog.classList.remove("hidden");
-      hamburgerIcon.classList.add("hidden");
-      closeIcon.classList.remove("hidden");
-    } else {
-      navDialog.classList.add("hidden");
-      hamburgerIcon.classList.remove("hidden");
-      closeIcon.classList.add("hidden");
-    }
-  }
-</script>
-
-<script src="script.js"></script>
-
-  
-
-   
-</body>
+    <script src="script.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html>
