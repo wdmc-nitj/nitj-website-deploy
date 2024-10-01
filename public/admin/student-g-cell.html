@@ -167,15 +167,22 @@
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
-                        <table class="min-w-full">
+                        
+                        <style>
+                            table, th, td {
+                              border: 1px solid black;
+                              border-collapse: collapse;
+                            }
+                        </style>
+                        
+                        <table class="min-w-full table-bordered" >
                             <thead class="border-b bg-[#0369A1] text-white m-2">
                                 <tr>
                                     <th scope="col"
                                         class="border-b  w-fit text-xl  lg:text-lg font-medium  px-6 py-4 text-left">
                                         S.No
                                     </th>
-                                    <th scope="col"
-                                        class="border-b text-xl lg:text-lg font-medium  px-6 py-4 text-left">
+                                    <th scope="col" class="border-b text-xl lg:text-lg font-medium  px-6 py-4 text-left">
                                         Name of the Coordinator
                                     </th>
                                     <th scope="col" class="text-xl lg:text-lg font-medium  px-6 py-4 text-left">
