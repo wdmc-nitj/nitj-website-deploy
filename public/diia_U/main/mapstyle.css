@@ -56,13 +56,14 @@ body {
     font-family: 'Barlow', sans-serif;
     background-image: url('./mapbg.jpg');
     background-size: cover;
-    /* margin: -30px 0px -30px 0px; */
+    margin: -20px 0px -20px 0px;
 }
 
 .mapCraddle {
     width: 28%;
     text-align: center;
     position: relative;
+    z-index: 10;
 }
 
 .heading {
