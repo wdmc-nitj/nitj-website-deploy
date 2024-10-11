@@ -25,7 +25,8 @@ body {
     z-index:10;
     bottom: 10px;
     background-color: #284c84;
-    height: 15%;
+    /* height: 15%; */
+    padding: 5px;
     font-size: 0.95rem;
     font-weight: 600;
     border-radius: 5px;
@@ -87,5 +88,8 @@ body {
 @media only screen and (max-width: 950px) {
     .mapContainer {
         flex-direction: column;
+    }
+    .mapCraddle {
+        width: 95%;
     }
 }
