@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIIA</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="output.css" rel="stylesheet">
-    
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIIA</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="output.css" rel="stylesheet" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+
     <style>
-   /* Additional CSS for responsive navbar */
-@media (max-width: 1080px)  {
-    #nav-bar {
-        font-size: 0.75rem; /* Reduced font size */
-        padding: 0.5rem; /* Reduced padding */
-    }
-}
+      @media (max-width: 1080px) {
+        #nav-bar {
+          font-size: 0.75rem;
+          padding: 0.5rem;
+        }
 
+        #carousel-heading {
+          margin: 5rem;
+        }
+      }
 
-
-    
+      @media (max-width: 640px) {
+        #carousel-heading {
+          margin: 2rem;
+        }
+      }
     </style>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      fetch("./navbar.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("navbar").innerHTML = data;
-        });
-    });
-  </script>
-</head>
 
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
 
-<body class="bg-gray-100">
- 
-<header id="navbar"></header>
- 
+  <body class="bg-gray-100">
+    <header id="navbar"></header>
 
 <!-- Container for Image Slider and Quick Links -->
 <div class="relative h-screen flex flex-col">
@@ -75,8 +78,8 @@
           </div>
         </div>
 
-
-      </div>
+          <!-- Dull Background Overlay
+          <div class="absolute inset-0 bg-black opacity-20"></div> -->
 
       <!-- Slider controls -->
       <button type="button" class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-prev id="carousel-prev">
@@ -150,29 +153,26 @@
 <!-- Flowbite Carousel JS -->
 <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 
-<script>
-  function handleMenu() {
-    const navDialog = document.getElementById("nav-dialog");
-    const hamburgerIcon = document.getElementById("hamburger-icon");
-    const closeIcon = document.getElementById("close-icon");
+    <script>
+      function handleMenu() {
+        const navDialog = document.getElementById("nav-dialog");
+        const hamburgerIcon = document.getElementById("hamburger-icon");
+        const closeIcon = document.getElementById("close-icon");
 
-    // Toggle the visibility of the mobile menu
-    if (navDialog.classList.contains("hidden")) {
-      navDialog.classList.remove("hidden");
-      hamburgerIcon.classList.add("hidden");
-      closeIcon.classList.remove("hidden");
-    } else {
-      navDialog.classList.add("hidden");
-      hamburgerIcon.classList.remove("hidden");
-      closeIcon.classList.add("hidden");
-    }
-  }
-</script>
+        // Toggle the visibility of the mobile menu
+        if (navDialog.classList.contains("hidden")) {
+          navDialog.classList.remove("hidden");
+          hamburgerIcon.classList.add("hidden");
+          closeIcon.classList.remove("hidden");
+        } else {
+          navDialog.classList.add("hidden");
+          hamburgerIcon.classList.remove("hidden");
+          closeIcon.classList.add("hidden");
+        }
+      }
+    </script>
 
-<script src="script.js"></script>
-
-  
-
-   
-</body>
+    <script src="script.js"></script>
+    <script src="index.js"></script>
+  </body>
 </html>
