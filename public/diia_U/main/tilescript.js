@@ -1,13 +1,10 @@
 function sizeAlgo(num) {
     // this function returns true if the index of the tile is for a wide tile;
     const special = (a)=> (a%2)?(a+1)/2:a/2
-    // for(let i=0; i<20; i++) console.log('for',i,'is',special(i))
     for(let i=0; true; i++){
-        console.log('comparing',((2*special(i))+i),'with',num)
-        if(((2*special(i))+i) == num ) {console.log("condition matched");return true}
-        else if(((2*special(i))+i) > num ) {console.log("condition unfavourable");return false}
+        if(((2*special(i))+i) == num ) return true
+        else if(((2*special(i))+i) > num ) return false
     }
-    // return false;
 }
 
 function genTiles(dataset) {
@@ -17,7 +14,7 @@ function genTiles(dataset) {
         let a = document.createElement('a');
         a.href = dataset[x].link
         a.textContent = dataset[x].name
-        a.style.backgroundColor = dataset[x].color;
+        a.style.backgroundColor = dataset[x].buttoncolor || dataset[x].color;
         a.style.color = dataset[x].textcolor;
         a.style.width = (!x%2 && x==dataset.length-1)?'50%':
                         (
