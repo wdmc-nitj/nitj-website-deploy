@@ -14,6 +14,14 @@
     <link rel="stylesheet" href="numbersstyles.css">
     <script src="numbersscript.js"></script>
 
+    <!-- For Hero Slider -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    />
+
     <!-- For Tiles -->
     <link rel="stylesheet" href="./tilestyle.css">
     <script src="./tilescript.js"></script>
@@ -30,104 +38,122 @@
     <script src="./map.js" type="module"></script>
 </head>
 <body>
-    <script src="../main/navscript.js"></script>
-    
-    <!-- Hero Section -->
+  <script src="../main/navscript.js"></script>
+  
+  <!-- Hero Section -->
+
+  <div id="hero-div" style="overflow-x: hidden;">
+        
     <!-- Container for Image Slider and Quick Links -->
-<div class="relative h-screen flex flex-col">
-  
-    <!-- Image Slider Section -->
-    <div class="relative w-full h-full md:h-full lg:h-full overflow-hidden z-20">
-      <div class="relative rounded-lg shadow-lg w-full h-full" data-carousel="static">
-        <!-- Carousel wrapper -->
-        <div class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black" data-carousel-inner id="carousel-images">
-          <!-- Item 1 -->
-          <div class="carousel-item duration-700 ease-in-out active" data-carousel-item>
-            <div class="relative w-full h-full">
-              <img src="./assets/nitjb.jpg" class="object-cover w-full h-full" alt="SLIDE-1">
-              <!-- Gradient overlay -->
-              <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
+    <div class="relative h-screen flex flex-col">
+      <h1 class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-40"></span>
+        Bridging Global Academia
+      </h1>
+      <!-- Image Slider Section -->
+      <div class="relative w-full h-[80%] md:h-full lg:h-full overflow-hidden z-20">
+        <div class="relative rounded-lg shadow-lg w-full h-full" data-carousel="static">
+          <!-- Carousel wrapper -->
+          <div class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black" data-carousel-inner id="carousel-images">
+            <!-- Item 1 -->
+            <div class="carousel-item duration-700 ease-in-out active" data-carousel-item>
+              <div class="relative w-full h-full">
+                <img src="./assets/nitjb.jpg" class="object-cover w-full h-full" alt="SLIDE-1">
+                <!-- Gradient overlay -->
+                <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
+              </div>
             </div>
-          </div>
-          <!-- Item 2 -->
-          <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
-            <div class="relative w-full h-full">
-              <img src="./assets/maxresdefault (3).jpg" class="object-cover w-full h-full" alt="Slide 2">
-              <!-- Gradient overlay -->
-              <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
+            <!-- Item 2 -->
+            <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
+              <div class="relative w-full h-full">
+                <img src="./assets/maxresdefault (3).jpg" class="object-cover w-full h-full" alt="Slide 2">
+                <!-- Gradient overlay -->
+                <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
+              </div>
             </div>
-          </div>
-          <!-- Item 3 -->
-          <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
-            <div class="relative w-full h-full">
-              <img src="./assets/event.jpg" class="object-cover w-full h-full" alt="Slide 3">
-              <!-- Gradient overlay -->
-              <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
+            <!-- Item 3 -->
+            <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
+              <div class="relative w-full h-full">
+                <img src="./assets/event.jpg" class="object-cover w-full h-full" alt="Slide 3">
+                <!-- Gradient overlay -->
+                <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
+              </div>
             </div>
-          </div>
-  
-  
+
+              <!-- Dull Background Overlay
+              <div class="absolute inset-0 bg-black opacity-20"></div> -->
+
+          <!-- Slider controls -->
+          <button type="button" class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-prev id="carousel-prev">
+            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button type="button" class="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-next id="carousel-next">
+            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
         </div>
-  
-        <!-- Slider controls -->
-        <button type="button" class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-prev id="carousel-prev">
-          <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-        </button>
-        <button type="button" class="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-next id="carousel-next">
-          <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
+      </div>
+
+    </div>
+
+    <div class="overflow-hidden hide-scrollbar bottom-">
+      <!-- hero text -->
+      <h1 class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-[40%] "></span>
+        Bridging Global Academia
+      </h1>
+        <!-- Quick Link Section -->
+    <!-- Quick Link Section -->
+    <div class="absolute top-[92%] left-0 right-0  h-[25%]  bg-gradient-to-r from-blue-900 to-blue-700 border-white border-2 rounded-3xl z-30 flex items-center justify-center  mx-10">
+      
+      <!-- Elements Container -->
+      <div class="flex w-full max-w-7xl overflow-hidden text-white font-medium my-2 hidden-scrollbar">
+        
+        <!-- Element 1 link section -->
+        <div class="flex-shrink-0 border hover:text-blue-600 border-white rounded-xl sm:p-8 p-10 mx-4 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-solid fa-rocket text-5xl "></i>
+          <span class="text-lg text-center">Opportunities</span>
+        </div>
+
+        <!-- Element new link section -->
+        <div class="flex-shrink-0 border border-white rounded-xl p-10 sm:p-8 mx-3 flex flex-col items-center hover:text-blue-600  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-solid fa-medal text-5xl"></i>
+          <span class="text-lg text-center">Rankings</span>
+        </div>
+        
+        <!-- Element 2 link section --> 
+        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-solid fa-graduation-cap text-5xl"></i>
+          <span class="text-lg text-center">Admissions</span>
+        </div>
+        
+        <!-- Element 3 link section -->
+        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-solid fa-building-columns text-5xl"></i>
+          <span class="text-lg text-center">MOUs</span>
+        </div>
+        
+        <!-- Element 4 link section -->
+        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-solid fa-map-location-dot text-5xl"></i>
+          <span class="text-lg text-center ">Map</span>
+        </div>
+        
+        <!-- Element 5 link section -->
+        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-regular fa-star text-5xl"></i>
+          <span class="text-lg text-center">Testimonials</span>
+        </div>
       </div>
     </div>
-  
-  
-  </div>
-  <div class="overflow-hidden hide-scrollbar">
-       <!-- Quick Link Section -->
-  <div class="absolute hide-scrollbar top-[92%] left-0 right-0 h-[25%] bg-gradient-to-r from-blue-900 to-blue-700 border-white border-t-2 rounded-3xl z-30 flex items-center justify-center  py-2 px-4  my-2 mx-10">
-    <!-- Elements Container -->
-    <div class="flex w-full max-w-6xl  overflow-hidden text-white font-medium my-6 hidden-scrollbar">
-      <!-- Element 1 link section -->
-      <div class="flex-shrink-0 border  border-white rounded-xl p-4 mx-4 flex flex-col items-center     w-[13%] min-w-[120px] hover:border-orange-500">
-        <img class="w-12 h-12 mb-2 hover:scale-105 " src="./assets/Graduation Cap.png" alt="Text1"/>
-        <span class="text-sm text-center">Opportunities</span>
-      </div>
-  
-      <!-- Element new link section -->
-      <div class="flex-shrink-0 border  border-white rounded-xl p-4 mx-4 flex flex-col items-center      w-[13%] min-w-[120px] hover:border-orange-500">
-        <img class="w-12 h-12 mb-2 hover:scale-105 " src="./assets/First Place Ribbon.png" alt="Text1"/>
-        <span class="text-sm text-center">Rankings</span>
-      </div>
-      <!-- Element 2 link section -->
-      <div class="flex-shrink-0 border   border-white rounded-xl p-4 mx-4 flex flex-col items-center       w-[13%] min-w-[120px] hover:border-orange-500">
-        <img class="w-12 h-12 mb-2 hover:scale-105" src="./assets/People.png" alt="Text2"/>
-        <span class="text-sm text-center">Admissions</span>
-      </div>
-      <!-- Element 3 link section -->
-      <div class="flex-shrink-0 border border-white rounded-xl p-4 mx-4 flex flex-col items-center       w-[13%] min-w-[120px] hover:border-orange-500">
-        <img class="w-12 h-12 mb-2 hover:scale-105" src="./assets/Permanent Job.png" alt="Text3"/>
-        <span class="text-sm text-center">MOUs</span>
-      </div>
-      <!-- Element 4 link section -->
-      <div class="flex-shrink-0 border border-white rounded-xl p-4 mx-4 flex flex-col items-center       w-[13%] min-w-[120px] hover:border-orange-500">
-        <img class="w-12 h-12 mb-2 hover:scale-105" src="./assets/Financial Growth Analysis.png" alt="Text4"/>
-        <span class="text-sm text-center">Map</span>
-      </div>
-      <!-- Element 5 link section -->
-      <div class="flex-shrink-0 border  border-white rounded-xl p-4 mx-4 flex flex-col items-center       w-[13%] min-w-[120px] hover:border-orange-500">
-        <img class="w-12 h-12 mb-2 hover:scale-105" src="./assets/Soccer.png" alt="Text5"/>
-        <span class="text-sm text-center">Testimonials</span>
-      </div>
+
     </div>
+    
+    <!-- Flowbite Carousel JS -->
+    <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+    <script src="hero-index.js"></script>
   </div>
-  
-  </div>
-  
-  <!-- Flowbite Carousel JS -->
-  <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 
   <br>
   <br>
