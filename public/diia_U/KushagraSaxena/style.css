@@ -43,14 +43,17 @@
     .box
     {
         top: 280px;
-        right: 70px;
+        right: 60px;
     }
 }
 
 @media (max-width:430px) {
     .message
     {
-        width: 480px;
+        width: 100%;
+    }
+    .imageSection{
+        width: 100%;
     }
 }
 
