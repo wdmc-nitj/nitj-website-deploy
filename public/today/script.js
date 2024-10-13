@@ -12,7 +12,7 @@ async function fetchEvents() {
 
     const events = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
       const monthOffset = month + i - 1;
       const currentYear = year + Math.floor(monthOffset / 12);
     
