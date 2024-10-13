@@ -1,4 +1,5 @@
-async function fetchData(){
+async function dean_fetchData(){
+    console.log("fetching dean data")
     try
     {
         const deanDetails = await fetch("/api/diia/dean-details/")
@@ -16,8 +17,8 @@ async function fetchData(){
 }
 
 async function addHTML(){
-    // console.log("HTML adding..")
-    const dataDean = await fetchData()
+    console.log("HTML adding..")
+    const dataDean = await dean_fetchData()
 
     if(dataDean)
     {
