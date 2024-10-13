@@ -26,7 +26,7 @@ const saveEvent = (req, res) => {
 const showEvent = async (req, res) => {
     try {
         const { year, month } = req.query;
-        
+
         const parsedYear = parseInt(year);
         const parsedMonth = parseInt(month);
 
@@ -46,19 +46,22 @@ const showEvent = async (req, res) => {
         startOfMonth.setUTCHours(0,0,0,0)
 
         const endOfMonth = new Date()
-        
-        if(parsedMonth===12){
-            parsedYear=parsedYear+1
-            parsedMonth=0
-        }
 
-        endOfMonth.setFullYear(parsedYear)
-        endOfMonth.setMonth(parsedMonth)
+        if (parsedMonth === 12) {
+            // Move to the next year for December
+            endOfMonth.setFullYear(parsedYear + 1);
+            endOfMonth.setMonth(0); // January of the next year
+        } else {
+            // For other months, just increment the month
+            endOfMonth.setFullYear(parsedYear);
+            endOfMonth.setMonth(parsedMonth);
+        }
+        
         endOfMonth.setDate(1)
         endOfMonth.setUTCHours(0,0,0,0)
 
         const eventData = await Event.find({
-            startDateTime: { $gte: startOfMonth, $lte: endOfMonth }
+            startDateTime: { $gte: startOfMonth, $lt: endOfMonth }
         }).exec();
 
         res.status(200).send(eventData);
@@ -67,7 +70,6 @@ const showEvent = async (req, res) => {
         res.status(500).send(error);
     }
 };
-
 
 const updateEvent = async (req, res) => {
     const id = req.params.id;
