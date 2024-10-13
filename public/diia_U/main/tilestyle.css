@@ -18,7 +18,10 @@
 .tile {
     text-align: left;
     /* border:1px solid blue; */
+    border-radius: 13px;
     padding: 45px 20px;
+    border-style: solid;
+    border-width: 1px;
     margin: 5px;
     width: 40%;
     text-emphasis-style: none;
