@@ -359,7 +359,7 @@
     "@aws-sdk/types" "3.296.0"
     tslib "^2.5.0"
 
-"@aws-sdk/credential-providers@^3.186.0", "@aws-sdk/credential-providers@^3.188.0":
+"@aws-sdk/credential-providers@^3.186.0", "@aws-sdk/credential-providers@^3.201.0":
   version "3.297.0"
   resolved "https://registry.npmjs.org/@aws-sdk/credential-providers/-/credential-providers-3.297.0.tgz"
   integrity sha512-bBUV5EsSv9lH7GKw/7DGti/X9yMZ5LuC6gF7qNCFetHGCt5d+kTFwZAJccOtYv8GjzoQWvfjBnCkV8dz107j0A==
@@ -1971,13 +1971,6 @@
     semver "^7.3.5"
     tar "^6.1.11"
 
-"@mongodb-js/saslprep@^1.1.0":
-  version "1.1.9"
-  resolved "https://registry.npmjs.org/@mongodb-js/saslprep/-/saslprep-1.1.9.tgz"
-  integrity sha512-tVkljjeEaAhCqTzajSdgbQ6gE6f3oneVwa3iXR6csiEwXXOFsiC6Uh9iAjAhXPtqa/XMDHWjjeNH/77m/Yq2dw==
-  dependencies:
-    sparse-bitfield "^3.0.3"
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -2578,10 +2571,10 @@ bson@^4.7.2:
   dependencies:
     buffer "^5.6.0"
 
-bson@^5.5.0:
-  version "5.5.1"
-  resolved "https://registry.npmjs.org/bson/-/bson-5.5.1.tgz"
-  integrity sha512-ix0EwukN2EpC0SRWIj/7B5+A6uQMQy6KMREI9qQqvgpkV2frH63T0UDVd1SYedL6dNCmDBYB3QtXi4ISk9YT+g==
+bson@^5.4.0:
+  version "5.4.0"
+  resolved "https://registry.npmjs.org/bson/-/bson-5.4.0.tgz"
+  integrity sha512-WRZ5SQI5GfUuKnPTNmAYPiKIof3ORXAF4IRU5UcgmivNIon01rWQlw5RUH954dpu8yGL8T59YShVddIPaU/gFA==
 
 buffer-equal-constant-time@1.0.1:
   version "1.0.1"
@@ -3400,11 +3393,6 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
-
-fsevents@~2.3.2:
-  version "2.3.3"
-  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
-  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
 
 function-bind@^1.1.1:
   version "1.1.1"
@@ -4227,15 +4215,15 @@ mongodb-connection-string-url@^2.5.4, mongodb-connection-string-url@^2.6.0:
     whatwg-url "^11.0.0"
 
 mongodb@^5.1.0:
-  version "5.9.2"
-  resolved "https://registry.npmjs.org/mongodb/-/mongodb-5.9.2.tgz"
-  integrity sha512-H60HecKO4Bc+7dhOv4sJlgvenK4fQNqqUIlXxZYQNbfEWSALGAwGoyJd/0Qwk4TttFXUOHJ2ZJQe/52ScaUwtQ==
+  version "5.7.0"
+  resolved "https://registry.npmjs.org/mongodb/-/mongodb-5.7.0.tgz"
+  integrity sha512-zm82Bq33QbqtxDf58fLWBwTjARK3NSvKYjyz997KSy6hpat0prjeX/kxjbPVyZY60XYPDNETaHkHJI2UCzSLuw==
   dependencies:
-    bson "^5.5.0"
+    bson "^5.4.0"
     mongodb-connection-string-url "^2.6.0"
     socks "^2.7.1"
   optionalDependencies:
-    "@mongodb-js/saslprep" "^1.1.0"
+    saslprep "^1.0.3"
 
 mongodb@4.16.0:
   version "4.16.0"
@@ -5799,44 +5787,6 @@ wcwidth@^1.0.1:
   integrity sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==
   dependencies:
     defaults "^1.0.3"
-
-"wdmc-backend@file:":
-  version "1.0.0"
-  resolved "file:"
-  dependencies:
-    "@admin-bro/express" "^3.1.0"
-    "@admin-bro/mongoose" "^1.1.0"
-    "@rive-app/canvas" "^1.1.2"
-    "@tailwindcss/line-clamp" "^0.4.0"
-    admin-bro "^4.0.1"
-    admin-bro-expressjs "^2.1.1"
-    bcrypt "^5.1.0"
-    compression "^1.7.4"
-    connect-mongo "^5.0.0"
-    cookie-parser "^1.4.6"
-    cors "^2.8.5"
-    crypto "^1.0.1"
-    dotenv "^16.0.3"
-    express "^4.18.2"
-    express-formidable "^1.2.0"
-    express-parser "^1.0.0"
-    express-session "^1.17.3"
-    form-data "^4.0.0"
-    jsonwebtoken "^9.0.0"
-    moment-timezone "^0.5.45"
-    mongo-store "^0.0.2"
-    mongoose "^6.6.6"
-    multer "^1.4.5-lts.1"
-    node-gyp "^9.3.1"
-    nodemailer "^6.9.1"
-    nodemon "^2.0.20"
-    passport "^0.6.0"
-    passport-local "^1.0.0"
-    tailwind-scrollbar-hide "^1.1.7"
-    tinymce "^6.4.0"
-    tslib "^2.5.0"
-    uuid "^9.0.0"
-    wdmc-backend "file:"
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

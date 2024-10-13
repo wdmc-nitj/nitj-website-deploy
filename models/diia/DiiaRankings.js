@@ -21,7 +21,7 @@ const DiiaRankingsSchema = new mongoose.Schema({
     },
     show: {
         type: Boolean,
-        default: true,
+        default: false,
     },
     order: {
         type: Number,
