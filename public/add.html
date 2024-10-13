@@ -10,11 +10,15 @@
   </head>
   <body>
     <div class="m-2 p-2 space-y-2">
+      <!-- Category dropdown -->
+      <select name="category" id="category" class="w-72 h-10 border-2 border-black rounded-lg p-2">
+        <option value="">Select Category</option>
+        <option value="Main">Main Website</option>
+        <option value="DIIA">DIIA</option>
+      </select>
       <input type="text" name="title" id="title" placeholder="Enter Title"
         class="w-72 h-10 border-2 border-black rounded-lg p-2"
       >
-
-
       <textarea name="editor1"></textarea>
       <button 
         class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10"
@@ -28,31 +32,78 @@
       </a>
     </div>
     <script>
-      CKEDITOR.replace("editor1");
-        function handleSave() {
-            const content = CKEDITOR.instances.editor1.getData();
-            const title=document.getElementById('title').value;
+      let adminrole; // Declare globally
 
-            console.log(content,title);
-
-            let url='/api/store';
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    "authorization":"HareKrishna"
-                },
-                body: JSON.stringify({
-                  title:title,
-                  content:content
-                })
-            }).then(()=>{
-              alert('Saved Succesfully');
-              document.getElementById('title').value="";
-              CKEDITOR.instances.editor1.value="";
-            })
+      const fetchAdminUser = async () => {
+        try {
+          const response = await fetch('/api/dashboard/get-current-admin', {
+            method: 'GET',
+            credentials: 'include', // Ensure cookies/session are included
+          });
+          const data = await response.json();
+          if (data.adminUser) {
+            adminrole = data.adminUser.role;  // Set the global 'adminrole'
+            console.log('Admin role:', adminrole);
             
+            // If role is "diia", set category automatically to "DIIA"
+            if (adminrole === 'diia') {
+              document.getElementById('category').value = 'DIIA';
+              document.getElementById('category').disabled = true; // Disable the dropdown
+            }
+          }
+        } catch (error) {
+          console.error('Error fetching admin user:', error);
         }
+      };
+
+      CKEDITOR.replace("editor1");
+
+      fetchAdminUser(); // Call the function to fetch and check the admin role
+
+  function handleSave() {
+  const content = CKEDITOR.instances.editor1.getData();
+  const title = document.getElementById('title').value;
+  const category = document.getElementById('category').value;
+
+  // Alert after pressing the button if category is not selected when admin role is not 'diia'
+  if (adminrole !== 'diia' && !category) {
+    alert('Please select a category before saving.');
+    return; // Exit the function without saving
+  }
+
+  console.log(content, title, category);
+
+  let url = '/api/store/';
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      "authorization": "HareKrishna"
+    },
+    body: JSON.stringify({
+      title: title,
+      content: content,
+      category: category
+    })
+  }).then((res) => {
+    if (res.ok) {
+      console.log("Saved successfully");
+      alert('Saved Successfully');
+      document.getElementById('title').value = "";
+      CKEDITOR.instances.editor1.setData(""); // Clear editor
+      document.getElementById('category').value = ""; // Reset dropdown
+      if (adminrole !== 'diia') { 
+        document.getElementById('category').disabled = false; // Re-enable dropdown if not "diia"
+      }
+    } else {
+      console.log("Failed to save", res.status);
+      alert('Failed to save');
+    }
+  }).catch((err) => {
+    console.error("Error in fetch request:", err);
+    alert('An error occurred');
+  });
+}
     </script>
   </body>
 </html>
