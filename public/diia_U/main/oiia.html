@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- For Numbers -->
+    <link rel="stylesheet" href="numbersstyles.css">
+    <script src="numbersscript.js"></script>
+
+    <!-- For Hero Slider -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    />
+
+    <!-- Deans Message -->
+     <link rel="stylesheet" href="deansmessage-style.css">
+     <script src="deansMessage.js"></script>
+
+    <!-- For Tiles -->
+    <link rel="stylesheet" href="./tilestyle.css">
+    <script src="./tilescript.js"></script>
+
+    <!-- For Opportunities -->
+    <link rel="stylesheet" href="opp-style.css">
+
+    <!-- For MOUS -->
+    <script src="mous.js"></script>
+
+    <!-- For Maps -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+    <link rel="stylesheet" href="mapstyle.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+    <script src="./map.js" type="module"></script>
+
+    <!-- For Testimonials -->
+     <link rel="stylesheet" href="testimonial-style.css">
+     <script src="testimonialscript.js"></script>
+</head>
+<body>
+  <script src="../main/navscript.js"></script>
+  
+  <!-- Hero Section -->
+
+  <div id="hero-div" style="overflow-x: hidden;">
+        
+    <!-- Container for Image Slider and Quick Links -->
+    <div class="relative h-screen flex flex-col">
+      <h1 class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-40"></span>
+        Bridging Global Academia
+      </h1>
+      <!-- Image Slider Section -->
+      <div class="relative w-full h-[80%] md:h-full lg:h-full overflow-hidden z-20">
+        <div class="relative rounded-lg shadow-lg w-full h-full" data-carousel="static">
+          <!-- Carousel wrapper -->
+          <div class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black" data-carousel-inner id="carousel-images">
+            <!-- Item 1 -->
+            <div class="carousel-item duration-700 ease-in-out active" data-carousel-item>
+              <div class="relative w-full h-full">
+                <img src="./assets/nitjb.jpg" class="object-cover w-full h-full" alt="SLIDE-1">
+                <!-- Gradient overlay -->
+                <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
+              <div class="relative w-full h-full">
+                <img src="./assets/maxresdefault (3).jpg" class="object-cover w-full h-full" alt="Slide 2">
+                <!-- Gradient overlay -->
+                <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
+              <div class="relative w-full h-full">
+                <img src="./assets/event.jpg" class="object-cover w-full h-full" alt="Slide 3">
+                <!-- Gradient overlay -->
+                <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
+              </div>
+            </div>
+
+              <!-- Dull Background Overlay
+              <div class="absolute inset-0 bg-black opacity-20"></div> -->
+
+          <!-- Slider controls -->
+          <button type="button" class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-prev id="carousel-prev">
+            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+          <button type="button" class="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-next id="carousel-next">
+            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="overflow-hidden hide-scrollbar bottom-">
+      <!-- hero text -->
+      <h1 class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-[40%] "></span>
+        Bridging Global Academia
+      </h1>
+        <!-- Quick Link Section -->
+    <!-- Quick Link Section -->
+    <div class="absolute top-[92%] left-0 right-0  h-[25%]  bg-gradient-to-r from-blue-900 to-blue-700 border-white border-2 rounded-3xl z-30 flex items-center justify-center  mx-10">
+      
+      <!-- Elements Container -->
+      <div class="flex w-full max-w-7xl overflow-hidden text-white font-medium my-2 hidden-scrollbar">
+        
+        <!-- Element 1 link section -->
+        <div class="flex-shrink-0 border hover:text-blue-600 border-white rounded-xl sm:p-8 p-10 mx-4 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-solid fa-rocket text-5xl "></i>
+          <span class="text-lg text-center">Opportunities</span>
+        </div>
+
+        <!-- Element new link section -->
+        <div class="flex-shrink-0 border border-white rounded-xl p-10 sm:p-8 mx-3 flex flex-col items-center hover:text-blue-600  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-solid fa-medal text-5xl"></i>
+          <span class="text-lg text-center">Rankings</span>
+        </div>
+        
+        <!-- Element 2 link section --> 
+        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-solid fa-graduation-cap text-5xl"></i>
+          <span class="text-lg text-center">Admissions</span>
+        </div>
+        
+        <!-- Element 3 link section -->
+        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-solid fa-building-columns text-5xl"></i>
+          <span class="text-lg text-center">MOUs</span>
+        </div>
+        
+        <!-- Element 4 link section -->
+        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-solid fa-map-location-dot text-5xl"></i>
+          <span class="text-lg text-center ">Map</span>
+        </div>
+        
+        <!-- Element 5 link section -->
+        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
+          <i class="fa-regular fa-star text-5xl"></i>
+          <span class="text-lg text-center">Testimonials</span>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    
+    <!-- Flowbite Carousel JS -->
+    <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+    <script src="hero-index.js"></script>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <!-- Opportunities -->
+  <div class="opp-container">
+  <h1 class="heading">Opportunities</h1>
+  <div class="slider-wrapper">
+    <div class="arrow arrow-left">
+      <img src="./assets/opportunities/left-arrow.png" alt="Left Arrow" />
+    </div>
+    <div class="arrow arrow-right">
+      <img src="./assets/opportunities//right-arrow.png" alt="Right Arrow" />
+    </div>
+    <div class="card-slider">
+      <div class="cards-wrapper"></div>
+      <!-- Dynamic cards will be inserted here -->
+    </div>
+  </div>
+  <div class="view-all-wrapper">
+    <a href="../latestnews/latestnews.html" class="view-all"
+      >View All Opportunities</a
+    >
+  </div>
+</div>
+<script src="opp-index.js"></script>
+
+<!-- Deans Message -->
+<div id="dean-div">
+  <div class="container flex sm:flex-row flex-col items-center justify-center sm:gap-0 pt-8 m-auto text-justify p-1" style="gap:10px">
+    <div class="imageSection">
+        <div class="imageDiv p-6">
+            <img src="./assets/deansMessage/image 5.png" class="image rounded-3xl image-shadow " alt="">
+        </div>
+        <div class="box flex flex-col justify-center items-center">
+            <p class="font-semibold text-sm accent">Loading...</p>
+            <p class="text-xs whitespace-nowrap">Dean-Industry and International affairs</p>
+        </div>
+    </div>
+    <div class="message xl:pt-5 mr-0 flex flex-col justify-start gap-5">
+        <div class="head flex flex-row gap-5 items-center">
+            <h1 class="accent font-bold text-3xl">DEAN's MESSAGE</h1>
+            <img src="assets\deansMessage\Autograph.png" class="w-14 h-10" alt="">
+        </div>
+        <div class="content accent">
+            <p class="lg:text-lg md:text-sm">Loading...</p>
+        </div>
+        <div class="w-full flex items-center justify-baseline">
+          <div class="readMore flex flex-row items-center gap-2">
+              <a href="" class="font-bold p-3">Read More</a>
+              <img src="./assets/deansMessage/Arrow 5.png" alt="" class="w-5 h-1">
+          </div>
+        </div>
+      </div>
+</div>
+ </div>
+
+ 
+  <!-- Tiles -->
+    <div class="tileParent"><div style="background-color: rgba(0, 0, 0, 0.7);">
+      <div id="tileDiv"></div>
+      <p
+      class="text-center text-4xl p-8 text-white"
+      >INTERNATIONAL <b>STUDENTS</b> AND <b>COLLABORATIONS</b> <i class="fa-solid fa-globe"></i><br><br></p>
+    </div></div>
+    
+    <!-- Maps -->
+    <div class="mapContainer mapCraddleCraddle">
+          <div class="mapCraddle">
+              <div class="map" id="map"></div>
+              <div class="maptitle">International Students @ NITJ</div>
+          </div>
+          <div class="mapCraddle">
+              <div class="map" id="map2"></div>
+              <div class="maptitle">Research Collaborators @ NITJ</div>
+          </div>
+          <div class="mapCraddle">
+              <div class="map" id="map3"></div>
+              <div class="maptitle">Alumni @ NITJ</div>
+          </div>
+        <!-- </div> -->
+      </div>
+
+    <!-- MOUS -->
+     <div id="MOU-div">
+      <style>
+        .scrollbar-custom::-webkit-scrollbar {
+          width: 5px;
+          height: 5px;
+        }
+      
+        .scrollbar-custom::-webkit-scrollbar-thumb {
+          background-color: hidden; 
+          border-radius: 4px; 
+        }
+
+        .image{
+            height: 350px;
+        }
+        .card {
+            overflow-y: hidden;
+        }
+        @media (max-width:770px) {
+            .image
+            {
+                height: 260px;
+            }
+        }
+
+        @media (max-width:450px) {
+            .image
+            {
+                height: 150px ;
+            }
+        }
+        .section1, .section2, .section3
+        {
+            animation: slider 1.2s ease forwards;
+            padding: 10px;
+        }
+
+        @keyframes slider {
+            0%{
+                opacity: 0;
+                transform: scale(90%);
+            }
+    
+            100%{
+                opacity: 1;
+                transform: scale(100%);
+            }
+            
+        }
+      </style>
+      <div class="w-full h-full flex justify-center items-center m-auto" style="background: #154378;">
+        <div class="p-12 flex flex-col justify-center items-center xl:w-4/5 gap-10 h-full">
+            <div class="head flex flex-row gap-2 p-2 rounded-tl-2xl rounded-br-2xl" style="border: 2px solid white; color: white;">
+                <p class=" font-bold text-4xl ">NITJ</p>
+                <p class=" font-light text-4xl ">MOU's</p>
+            </div>
+            <div class="sectionContainer national w-full h-full">
+            </div>
+            <div class="sectionContainer industry w-full h-full ">
+            </div>
+            <div class="sectionContainer international w-full h-full ">
+            </div>
+        
+            <div class="linkMOU">
+                <a href="https://www.nitj.ac.in/template/index.html?id=64bf68ff2325112eba21be22?category=newpage"  target="_blank" class="text-white font-bold view-all-MOU" style=" padding: 10px; border-radius: 5px;">View all MOU's</a>
+            </div>
+        </div>
+    </div>
+     </div>
+    
+      <!-- Testimonials -->
+   <div id="testimonialbody">
+    <!-- Background Squares -->
+    <div class="bg-square square1"></div>
+    <div class="bg-square square2"></div>
+    <div class="bg-square square3"></div>
+    <div class="bg-square square4"></div>
+
+    <!-- Decorative Circles -->
+    <div class="decorative-circle circle1"></div>
+    <div class="decorative-circle circle2"></div>
+    <div class="decorative-circle circle3"></div>
+
+    <!-- Video and Heading Section -->
+    <section class="mx-auto px-4 flex flex-wrap">
+        <div class="w-full lg:w-1/2 p-2 video-section">
+            <!-- Header Section above the video -->
+            <div class="header-section">
+                <h1>Inspiring Journeys<br><span>at NITJ</span></h1>
+            </div>
+
+            <!-- Main Video -->
+            <div class="video-thumb">
+                <img src="./assets/testimonial/wp8774869.webp" alt="Main Video">
+            </div>
+
+            <!-- Smaller Videos -->
+            <div class="grid grid-cols-3 gap-2 mt-2">
+                <div class="video-thumb">
+                    <img src="./assets/testimonial/wp2225002.jpg" alt="Video 1">
+                </div>
+                <div class="video-thumb">
+                    <img src="./assets/testimonial/wp2225002.jpg" alt="Video 2">
+                </div>
+                <div class="video-thumb">
+                    <img src="./assets/testimonial/wp2225002.jpg" alt="Video 3">
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonial Section -->
+        <div class="w-full lg:w-1/2 p-2 testimonial-container" style="height: 100%; margin:auto">
+            <!-- Row 1 -->
+            <div class="testimonial-row" style="width: 100%;">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>
+                            <a class="cursor-pointer font-medium text-sky-500 hover:text-sky-600">
+                                Read More →</a>
+                        </p>
+                    </div>
+                    <div class="testimonial-footer">
+                        <div>
+                        <img alt="Flag">
+                        </div>
+                        <div>
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-row" style="width: 100%;">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>
+                            <a class="cursor-pointer font-medium text-sky-500 hover:text-sky-600">
+                                Read More →</a>
+                        </p>
+                    </div>
+                    <div class="testimonial-footer">
+                        <div>
+                        <img alt="Flag">
+                        </div>
+                        <div>
+                            <h4></h4>
+                            <p></p>
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="view-all-btn">View All Testimonials</a>
+        </div>
+    </section>
+  </div>
+
+    <!-- For Numbers Section -->
+    <div id="numbers-body">
+      <div class="main-content">
+        <section class="parallax">
+            <div class="numbers-section">  
+                
+            </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="../main/footerscript.js"></script>
+</html>

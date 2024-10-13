@@ -9,9 +9,16 @@ const DiiaMousSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    ShortDes:{
+        type: String
+    },
     type: {
         type: String, // Type of MoU
         enum: ['Indian Institutions', 'International Institutions', 'Industry'],
+    },
+
+    location:{
+        type: String
     },
     startingDate: {
         type: Date,
@@ -26,6 +33,7 @@ const DiiaMousSchema = new mongoose.Schema({
     Poc: {
         type: String, // Point of contact
     },
+
     Link: {
         type: String, // URL link
     },
@@ -34,7 +42,7 @@ const DiiaMousSchema = new mongoose.Schema({
     },
     showInSlider: {
         type: Boolean,
-        default: true,
+        default: false,
     },
     sliderOrder: {
         type: Number,
