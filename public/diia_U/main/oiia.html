@@ -39,6 +39,10 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
     <script src="./map.js" type="module"></script>
+
+    <!-- For Testimonials -->
+     <link rel="stylesheet" href="testimonial-style.css">
+     <script src="testimonialscript.js"></script>
 </head>
 <body>
   <script src="../main/navscript.js"></script>
@@ -221,6 +225,94 @@
   <!-- Tiles -->
   <div class="tileContainer" id="tileDiv"></div>
 
+
+  <!-- Testimonials -->
+   <div id="testimonialbody">
+     <!-- Background Squares -->
+     <div class="bg-square square1"></div>
+     <div class="bg-square square2"></div>
+     <div class="bg-square square3"></div>
+     <div class="bg-square square4"></div>
+ 
+     <!-- Decorative Circles -->
+     <div class="decorative-circle circle1"></div>
+     <div class="decorative-circle circle2"></div>
+     <div class="decorative-circle circle3"></div>
+ 
+     <!-- Video and Heading Section -->
+     <section class="mx-auto px-4 flex flex-wrap">
+         <div class="w-full lg:w-1/2 p-2 video-section">
+             <!-- Header Section above the video -->
+             <div class="header-section">
+                 <h1>Inspiring Journeys<br><span>at NITJ</span></h1>
+             </div>
+ 
+             <!-- Main Video -->
+             <div class="video-thumb">
+                 <img src="./assets/testimonial/wp8774869.webp" alt="Main Video">
+             </div>
+ 
+             <!-- Smaller Videos -->
+             <div class="grid grid-cols-3 gap-2 mt-2">
+                 <div class="video-thumb">
+                     <img src="./assets/testimonial/wp2225002.jpg" alt="Video 1">
+                 </div>
+                 <div class="video-thumb">
+                     <img src="./assets/testimonial/wp2225002.jpg" alt="Video 2">
+                 </div>
+                 <div class="video-thumb">
+                     <img src="./assets/testimonial/wp2225002.jpg" alt="Video 3">
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- Testimonial Section -->
+         <div class="w-full lg:w-1/2 p-2 testimonial-container" style="height: 100%; margin:auto">
+             <!-- Row 1 -->
+             <div class="testimonial-row" style="width: 100%;">
+                 <div class="testimonial-card">
+                     <div class="testimonial-content">
+                         <p>
+                             <a class="cursor-pointer font-medium text-sky-500 hover:text-sky-600">
+                                 Read More →</a>
+                         </p>
+                     </div>
+                     <div class="testimonial-footer">
+                         <div>
+                         <img alt="Flag">
+                         </div>
+                         <div>
+                             <h4></h4>
+                             <p></p>
+                         </div>
+                         <div></div>
+                     </div>
+                 </div>
+             </div>
+             <div class="testimonial-row" style="width: 100%;">
+                 <div class="testimonial-card">
+                     <div class="testimonial-content">
+                         <p>
+                             <a class="cursor-pointer font-medium text-sky-500 hover:text-sky-600">
+                                 Read More →</a>
+                         </p>
+                     </div>
+                     <div class="testimonial-footer">
+                         <div>
+                         <img alt="Flag">
+                         </div>
+                         <div>
+                             <h4></h4>
+                             <p></p>
+                         </div>
+                         <div></div>
+                     </div>
+                 </div>
+             </div>
+             <a href="#" class="view-all-btn">View All Testimonials</a>
+         </div>
+     </section>
+   </div>
 
     <script src="../main/footerscript.js"></script>
 </html>
