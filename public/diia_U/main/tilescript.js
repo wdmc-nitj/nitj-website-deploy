@@ -14,7 +14,8 @@ function genTiles(dataset) {
         let a = document.createElement('a');
         a.href = dataset[x].link
         a.textContent = dataset[x].name
-        a.style.backgroundColor = dataset[x].buttoncolor || dataset[x].color;
+        a.style.backgroundColor = (dataset[x].buttoncolor || dataset[x].color)+'aa';
+        a.style.borderColor = (dataset[x].buttoncolor || dataset[x].color);
         a.style.color = dataset[x].textcolor;
         a.style.width = (!x%2 && x==dataset.length-1)?'50%':
                         (
