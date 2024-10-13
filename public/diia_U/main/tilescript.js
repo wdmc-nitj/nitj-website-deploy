@@ -1,3 +1,12 @@
+let iconSet = [
+    'medal',
+    'star',
+    'medal',
+    'user-tie',
+    'plane',
+    'diagram-project'
+]
+
 function sizeAlgo(num) {
     // this function returns true if the index of the tile is for a wide tile;
     const special = (a)=> (a%2)?(a+1)/2:a/2
@@ -13,8 +22,9 @@ function genTiles(dataset) {
         
         let a = document.createElement('a');
         a.href = dataset[x].link
-        a.textContent = dataset[x].name
-        a.style.backgroundColor = dataset[x].buttoncolor || dataset[x].color;
+        a.innerHTML = dataset[x].name+` <i class="fa-solid fa-${iconSet[x]} text-3xl"></i>`
+        a.style.backgroundColor = (dataset[x].buttoncolor || dataset[x].color)+'aa';
+        a.style.borderColor = (dataset[x].buttoncolor || dataset[x].color);
         a.style.color = dataset[x].textcolor;
         a.style.width = (!x%2 && x==dataset.length-1)?'50%':
                         (
