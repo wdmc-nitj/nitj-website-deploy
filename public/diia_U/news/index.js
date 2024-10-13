@@ -1,9 +1,8 @@
 let news = [];
-const url = "https://nitjfinal.onrender.com";
 
 async function fetchData() {
   try {
-    const response = await fetch(`${url}/api/diia/news-section`);
+    const response = await fetch(`/api/diia/news-section`);
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
     }
@@ -24,7 +23,9 @@ function renderCards() {
     card.classList.add("news-card");
 
     card.innerHTML = `
-      <img src="${newElt.Image}" alt="News Image" />
+ <div class="card-Image">
+      <img  src="${newElt.Image}" alt="News Image" />
+      </div>
       <div class="text-area">
         <span class="date">${new Date(
           newElt.createdAt

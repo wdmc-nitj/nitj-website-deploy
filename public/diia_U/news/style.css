@@ -119,6 +119,9 @@ body {
   height: 250px;
   object-fit: cover;
 }
+.card-Image {
+  height: 250px;
+}
 
 .text-area {
   padding: 1rem;

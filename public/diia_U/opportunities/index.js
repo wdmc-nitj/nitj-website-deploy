@@ -1,9 +1,8 @@
 let news = [];
-const url = "https://nitjfinal.onrender.com";
 
 async function fetchData() {
   try {
-    const response = await fetch(`${url}/api/diia/opportunities`);
+    const response = await fetch(`/api/diia/opportunities`);
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
     }
@@ -24,16 +23,18 @@ function renderCards() {
     card.classList.add("news-card");
 
     card.innerHTML = `
-      <img src="${newElt.Image}" alt="News Image" />
+    <div class="card-Image">
+      <img  src="${newElt.Image}" alt="News Image" />
+      </div>
       <div class="text-area">
         <span class="date">${new Date(
           newElt.createdAt
         ).toLocaleDateString()}</span>
         <h2 class="heading">${newElt.title1}</h2>
         <p>${newElt.title2}</p>
-        <a href="${url}/diia_U/template.html?id=${
-      newElt._id
-    }?category=opportunities" class="read-more">Read more</a>
+        <a href="/diia_U/template.html?id=${
+          newElt._id
+        }?category=opportunities" class="read-more">Read more</a>
       </div>
     `;
     cardsWrapper.appendChild(card);

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="output.css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+    <title>Rankings</title>
+    <style>
+        
+        .scrollbar-custom::-webkit-scrollbar {
+          width: 5px;
+          height: 5px;
+        }
+      
+        .scrollbar-custom::-webkit-scrollbar-thumb {
+          background-color: hidden; 
+          border-radius: 4px; 
+        }
+      
+        /* .scrollbar-custom::-webkit-scrollbar-track {
+          background-color: #f3f4f6;
+        } */
+
+        .image{
+            height: 350px;
+        }
+        .card {
+            overflow-y: hidden;
+        }
+        @media (max-width:770px) {
+            .image
+            {
+                height: 260px;
+            }
+            /* .card
+            {
+                height: 260px;
+            } */
+        }
+
+        @media (max-width:450px) {
+            .image
+            {
+                height: 150px ;
+            }
+        }
+        .section1, .section2, .section3
+        {
+            /* opacity: 0; */
+            animation: slider 1.2s ease forwards;
+            padding: 10px;
+        }
+
+        @keyframes slider {
+            0%{
+                opacity: 0;
+                transform: scale(90%);
+            }
+    
+            100%{
+                opacity: 1;
+                transform: scale(100%);
+            }
+            
+        }
+    
+      </style>
+</head>
+<body class="text-darkPurple" style="font-family: Barlow; overflow-x: hidden;">
+    <div class="w-full h-full flex justify-center items-center m-auto" style="background: #154378;">
+        <div class="p-12 flex flex-col justify-center items-center xl:w-4/5 gap-10 h-full">
+            <div class="head flex flex-row gap-2 p-2 rounded-tl-2xl rounded-br-2xl" style="border: 2px solid white; color: white;">
+                <p class=" font-bold text-4xl ">NITJ</p>
+                <p class=" font-light text-4xl ">MOU's</p>
+            </div>
+            <div class="sectionContainer national w-full h-full">
+                <!-- <div class="section1 grid md:grid-cols-custom-grid gap-5 bg-white">
+                    <img src="" alt="" class="image rounded-xl w-full" >
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                        <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;"></p>
+                        <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
+                        <p class="lg:text-sm xsm:text-xs text-darkPurple"></p>
+                    </div>
+                </div>
+                <div class="section1 hidden md:grid-cols-custom-grid-2 gap-5 bg-white">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                        <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold" style="color: #0056b3;"></p>
+                        <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
+                        <p class="lg:text-sm xsm:text-xs text-darkPurple"></p>
+                    </div>
+                    <img src="" alt="" class="image rounded-xl w-full">
+                </div>
+                <div class="section1 hidden md:grid-cols-custom-grid gap-5 bg-white" style="color: #0056b3;">
+                    <img src="" alt="" class="image rounded-xl w-full">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                        <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold"></p>
+                        <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
+                        <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
+                    </div>
+                </div> -->
+            </div>
+            <div class="sectionContainer industry w-full h-full ">
+                <!-- <div class="section2 grid md:grid-cols-custom-grid-2 gap-5 bg-white">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                        <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;"></p>
+                        <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
+                        <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
+                    </div>
+                    <img src="" alt="" class="image rounded-xl w-full" >
+                </div>
+                <div class="section2 hidden md:grid-cols-custom-grid gap-5 bg-white">
+                    <img src="" alt="" class="image rounded-xl w-full">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                        <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold" style="color: #0056b3;"></p>
+                        <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
+                        <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
+                    </div>
+                </div>
+                <div class="section2 hidden md:grid-cols-custom-grid-2 gap-5 bg-white" style="color: #0056b3;">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                        <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold"></p>
+                        <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
+                        <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
+                    </div>
+                    <img src="" alt="" class="image rounded-xl w-full">
+                </div> -->
+            </div>
+            <div class="sectionContainer international w-full h-full ">
+                <!-- <div class="section3 grid md:grid-cols-custom-grid gap-5 bg-white">
+                    <img src="" alt="" class="image rounded-xl w-full" >
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                        <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;"></p>
+                        <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
+                        <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
+                    </div>
+                </div>
+                <div class="section3 hidden md:grid-cols-custom-grid-2 gap-5 bg-white">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                        <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold" style="color: #0056b3;"></p>
+                        <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
+                        <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
+                    </div>
+                    <img src="" alt="" class="image rounded-xl w-full">
+                </div>
+                <div class="section3 hidden md:grid-cols-custom-grid gap-5 bg-white" style="color: #0056b3;">
+                    <img src="" alt="" class="image rounded-xl w-full">
+                    <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
+                        <p class="bg-white rounded-3xl w-fit text-xs p-2  font-semibold"></p>
+                        <p class="lg:text-2xl md:text-sm xsm:text-sm text-darkPurple"></p>
+                        <p class="lg:text-sm xsm:text-xs  text-darkPurple"></p>
+                    </div>
+                </div> -->
+            </div>
+        
+            <div class="linkMOU">
+                <a href="https://www.nitj.ac.in/template/index.html?id=64bf68ff2325112eba21be22?category=newpage"  target="_blank" class="text-white font-bold view-all-MOU" style=" padding: 10px; border-radius: 5px;">View all MOU's</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="mous.js"></script>
+</body>
+</html>
