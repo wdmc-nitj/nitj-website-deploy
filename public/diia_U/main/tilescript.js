@@ -22,13 +22,16 @@ function genTiles(dataset) {
         
         let a = document.createElement('a');
         a.href = dataset[x].link
-        a.innerHTML = dataset[x].name+` <i class="fa-solid fa-${iconSet[x]} text-3xl"></i>`
-        a.style.backgroundColor = (dataset[x].buttoncolor || dataset[x].color)+'aa';
+        a.innerHTML = `<div style="display:flex; align-items:center; justify-content:space-between"><div>`+
+        dataset[x].name+
+        ` <i style="font-weight:thinner;" class="fa-solid fa-arrow-up-right-from-square"></i></div>`+
+        `<i style="right:0" class="fa-solid fa-${iconSet[x]} text-3xl"></i></div>`
+        a.style.backgroundColor = (dataset[x].buttoncolor || dataset[x].color)+'88';
         a.style.borderColor = (dataset[x].buttoncolor || dataset[x].color);
         a.style.color = dataset[x].textcolor;
         a.style.width = (!x%2 && x==dataset.length-1)?'50%':
                         (
-                            sizeAlgo(x)?'40%':'30%'
+                            sizeAlgo(x)?'50%':'40%'
                         )
         a.classList.add('tile');
 
