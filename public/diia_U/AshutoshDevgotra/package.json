@@ -14,7 +14,6 @@
   "dependencies": {
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.45",
-    "tailwindproject": "file:",
     "tw-elements": "^2.0.0"
   }
 }

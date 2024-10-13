@@ -52,8 +52,7 @@
     "tailwind-scrollbar-hide": "^1.1.7",
     "tinymce": "^6.4.0",
     "tslib": "^2.5.0",
-    "uuid": "^9.0.0",
-    "wdmc-backend": "file:"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.1"
