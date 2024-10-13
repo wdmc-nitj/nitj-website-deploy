@@ -26,8 +26,24 @@ footer {
     flex: 1;
 }
 
+.footer-logo {
+    display: flex;
+    align-items: center; /* Align logo and text vertically */
+    gap: 15px; /* Space between the logo and the name */
+}
+
+.footer-logo h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #0B407A;
+    margin: 0;
+    max-width: 250px; /* Adjust this as needed for text wrapping */
+    white-space: normal; /* Allow text wrapping */
+    line-height: 1.2em; /* Adjust line spacing */
+}
+
 .footer-logo img {
-    width: 120px;
+    width: 100px;
     height: auto;
 }
 
