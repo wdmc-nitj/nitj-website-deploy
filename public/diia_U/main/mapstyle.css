@@ -48,19 +48,23 @@ body {
     font-size: large;
     /* background-color: rgb(198, 214, 242); */
     color: rgb(37, 57, 133);
-    display: flex;
-    gap: 25px;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
     font-family: 'Barlow', sans-serif;
     background-image: url('./mapbg.jpg');
     background-size: cover;
-    margin: 0px 0px -20px 0px;
+    /* margin: -10px 0px 0px 0px; */
+    /* margin: 0px 0px -20px 0px; */
+    margin: -30px 0px -30px 0px;
+}
+.mapCraddleCraddle {
+    gap: 25px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
 .mapCraddle {
-    margin-top: -20px;
+    margin-top: -30px;
     width: 28%;
     text-align: center;
     position: relative;
