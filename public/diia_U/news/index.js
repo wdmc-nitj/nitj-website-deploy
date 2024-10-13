@@ -23,7 +23,9 @@ function renderCards() {
     card.classList.add("news-card");
 
     card.innerHTML = `
-      <img src="${newElt.Image}" alt="News Image" />
+ <div class="card-Image">
+      <img  src="${newElt.Image}" alt="News Image" />
+      </div>
       <div class="text-area">
         <span class="date">${new Date(
           newElt.createdAt

@@ -1,6 +1,6 @@
 let data = [];
 let currentIndex = 0;
-// const url = "https://nitjfinal.onrender.com";
+const url = "https://nitjfinal.onrender.com";
 // const furl= "https://nitjfinal.onrender.com";
 // async function fetchData() {
 //   try {
@@ -18,7 +18,7 @@ let currentIndex = 0;
 // }
 async function fetchData() {
   try {
-    const response = await fetch(`/api/diia/news-section`);
+    const response = await fetch(`${url}/api/diia/news-section`);
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
     }
