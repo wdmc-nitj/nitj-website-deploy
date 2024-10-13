@@ -20,7 +20,7 @@ async function fetchEvents() {
       let currentMonth = (monthOffset % 12);
       if (currentMonth === 0) currentMonth = 12;
     
-      const response = await fetch(${getevents}?year=${currentYear}&month=${currentMonth});
+      const response = await fetch(`${getevents}?year=${currentYear}&month=${currentMonth}`);
       const data = await response.json();
       events.push(...data);
     }
