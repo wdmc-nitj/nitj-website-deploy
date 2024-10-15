@@ -90,7 +90,7 @@ function applyEffectToSection()
 
 async function fetchDataMous(){                      
     try{
-        const res = await fetch("/api/diia/mous")
+        const res = await fetch("https://nitjfinal.onrender.com/api/diia/mous")
         if(!res.ok)
         {
             throw new Error(`Status:${res.status}`)
@@ -103,12 +103,15 @@ async function fetchDataMous(){
         console.log("failed:",err)
     }
 }
-let national = document.getElementsByClassName("national")[0]
-let industry = document.getElementsByClassName("industry")[0]
-let international = document.getElementsByClassName("international")[0]
-let count1 = 0, count2 = 0, count3 = 0
+
 
 async function addToHtmlMous(){
+    let national = document.getElementsByClassName("national")[0]
+    let industry = document.getElementsByClassName("industry")[0]
+    let international = document.getElementsByClassName("international")[0]
+    console.log("national:",national,international)
+    let count1 = 0, count2 = 0, count3 = 0
+    console.log("Loading MOU's")
     let card = document.getElementsByClassName("card")
     let image = document.getElementsByClassName("image")
     try{
