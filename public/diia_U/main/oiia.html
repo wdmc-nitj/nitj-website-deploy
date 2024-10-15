@@ -50,122 +50,86 @@
     <!-- For Testimonials -->
      <link rel="stylesheet" href="testimonial-style.css">
      <script src="testimonialscript.js"></script>
+
+     <style>
+      body {
+        overflow-x: hidden;
+      }
+     </style>
 </head>
 <body>
   <script src="../main/navscript.js"></script>
   
   <!-- Hero Section -->
 
-  <div id="hero-div" style="overflow-x: hidden;">
+  <div>
         
     <!-- Container for Image Slider and Quick Links -->
-    <div class="relative h-screen flex flex-col">
-      <h1 class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-40"></span>
-        Bridging Global Academia
-      </h1>
-      <!-- Image Slider Section -->
-      <div class="relative w-full h-[80%] md:h-full lg:h-full overflow-hidden z-20">
-        <div class="relative rounded-lg shadow-lg w-full h-full" data-carousel="static">
-          <!-- Carousel wrapper -->
-          <div class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black" data-carousel-inner id="carousel-images">
-            <!-- Item 1 -->
-            <div class="carousel-item duration-700 ease-in-out active" data-carousel-item>
-              <div class="relative w-full h-full">
-                <img src="./assets/nitjb.jpg" class="object-cover w-full h-full" alt="SLIDE-1">
-                <!-- Gradient overlay -->
-                <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
-              </div>
-            </div>
-            <!-- Item 2 -->
-            <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
-              <div class="relative w-full h-full">
-                <img src="./assets/maxresdefault (3).jpg" class="object-cover w-full h-full" alt="Slide 2">
-                <!-- Gradient overlay -->
-                <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
-              </div>
-            </div>
-            <!-- Item 3 -->
-            <div class="carousel-item duration-700 ease-in-out" data-carousel-item>
-              <div class="relative w-full h-full">
-                <img src="./assets/event.jpg" class="object-cover w-full h-full" alt="Slide 3">
-                <!-- Gradient overlay -->
-                <div class="absolute bottom-0 left-0 right-0 h-[25%] md:h-[30%] lg:h-[40%] bg-gradient-to-b from-transparent via-grey-900 to-black"></div>
-              </div>
-            </div>
+<div class="relative h-screen flex flex-col">
+  <h1 class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-40"></span>
+    Bridging Global Academia
+  </h1>
 
-              <!-- Dull Background Overlay
-              <div class="absolute inset-0 bg-black opacity-20"></div> -->
-
-          <!-- Slider controls -->
-          <button type="button" class="flex absolute top-1/2 left-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-prev id="carousel-prev">
-            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-          </button>
-          <button type="button" class="flex absolute top-1/2 right-3 z-40 items-center justify-center w-10 h-10 bg-gray-300 rounded-full hover:bg-white focus:outline-none transition" data-carousel-next id="carousel-next">
-            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
-        </div>
+  <!-- Image Slider Section -->
+  <div class="relative w-full h-[75%] sm:h-[75%] md:h-[100%] overflow-hidden z-30">
+    <div class="relative rounded-lg shadow-lg w-full h-full" data-carousel="static">
+      <!-- Carousel wrapper -->
+      <div class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black" data-carousel-inner id="carousel-images">
+        <!-- Carousel images... -->
       </div>
-
-    </div>
-
-    <div class="overflow-hidden hide-scrollbar bottom-">
-      <!-- hero text -->
-      <h1 class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-[40%] "></span>
-        Bridging Global Academia
-      </h1>
-        <!-- Quick Link Section -->
-    <!-- Quick Link Section -->
-    <div class="absolute top-[92%] left-0 right-0  h-[25%]  bg-gradient-to-r from-blue-900 to-blue-700 border-white border-2 rounded-3xl z-30 flex items-center justify-center  mx-10">
       
-      <!-- Elements Container -->
-      <div class="flex w-full max-w-7xl overflow-hidden text-white font-medium my-2 hidden-scrollbar">
-        
-        <!-- Element 1 link section -->
-        <div class="flex-shrink-0 border hover:text-blue-600 border-white rounded-xl sm:p-8 p-10 mx-4 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
-          <i class="fa-solid fa-rocket text-5xl "></i>
-          <span class="text-lg text-center">Opportunities</span>
-        </div>
+      <!-- Slider controls... -->
+    </div>
+  </div>
 
-        <!-- Element new link section -->
-        <div class="flex-shrink-0 border border-white rounded-xl p-10 sm:p-8 mx-3 flex flex-col items-center hover:text-blue-600  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
-          <i class="fa-solid fa-medal text-5xl"></i>
-          <span class="text-lg text-center">Rankings</span>
-        </div>
-        
-        <!-- Element 2 link section --> 
-        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
-          <i class="fa-solid fa-graduation-cap text-5xl"></i>
-          <span class="text-lg text-center">Admissions</span>
-        </div>
-        
-        <!-- Element 3 link section -->
-        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
-          <i class="fa-solid fa-building-columns text-5xl"></i>
-          <span class="text-lg text-center">MOUs</span>
-        </div>
-        
-        <!-- Element 4 link section -->
-        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
-          <i class="fa-solid fa-map-location-dot text-5xl"></i>
-          <span class="text-lg text-center ">Map</span>
-        </div>
-        
-        <!-- Element 5 link section -->
-        <div class="flex-shrink-0 border hover:text-blue-600 border-white sm:p-8 rounded-xl p-10 mx-3 flex flex-col items-center  w-[14.5%] min-w-[120px] hover:bg-white hover:border-orange-500">
-          <i class="fa-regular fa-star text-5xl"></i>
-          <span class="text-lg text-center">Testimonials</span>
-        </div>
-      </div>
+  <!-- Quick Link Section -->
+  <div class="absolute top-[72%] md:top-[92%] left-0 right-0 h-[25%] bg-gradient-to-r from-blue-900 to-blue-700 border-white border-2 rounded-[36px] z-40 flex items-center  justify-center mx-10  px-3 py-3">
+  <!-- Elements Container -->
+  <div class="grid grid-cols-3 gap-0.5 w-full max-w-7xl overflow-x-auto px-2 text-white font-medium gap-5  hidden-scrollbar sm:flex sm:w-full">
+    
+    <!-- Element 1 link section -->
+    <div class="border hover:text-blue-600 border-white rounded-2xl p-1 md:py-3   mx-0.5  flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500">
+      <i class="fa-solid fa-rocket text-lg sm:text-3xl"></i>
+      <span class="text-xs sm:text-sm  md:p-2 md:my-2 ">Opportunities</span>
     </div>
 
+    <!-- Element 2 link section -->
+    <div class="border hover:text-blue-600 border-white rounded-2xl p-1 md:py-3  mx-0.5   flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500">
+      <i class="fa-solid fa-medal text-lg sm:text-3xl"></i>
+      <span class="text-xs sm:text-sm text-center md:p-1 md:my-2">Rankings</span>
     </div>
     
-    <!-- Flowbite Carousel JS -->
-    <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+    <!-- Element 3 link section --> 
+    <div class="border hover:text-blue-600 border-white rounded-2xl p-1 md:py-3   mx-0.5  flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500">
+      <i class="fa-solid fa-graduation-cap text-lg sm:text-3xl"></i>
+      <span class="text-xs sm:text-sm text-center  md:p-2 md:my-2">Admissions</span>
+    </div>
+    
+    <!-- Element 4 link section -->
+    <div class="border hover:text-blue-600 border-white rounded-2xl p-1 md:py-3  mx-0.5  flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500">
+      <i class="fa-solid fa-building-columns text-lg sm:text-3xl"></i>
+      <span class="text-xs sm:text-sm md:p-2 md:my-2">MOUs</span>
+    </div>
+    
+    <!-- Element 5 link section -->
+    <div class="border hover:text-blue-600 border-white rounded-2xl p-1 md:py-3   mx-0.5  flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500">
+      <i class="fa-solid fa-map-location-dot text-lg sm:text-3xl"></i>
+      <span class="text-xs sm:text-sm  text-center md:p-2 md:my-2 mx-2 ">Map</span>
+    </div>
+    
+    <!-- Element 6 link section -->
+    <div class="border hover:text-blue-600 border-white rounded-2xl p-1  md:py-3 mx-0.5 flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500">
+      <i class="fa-regular fa-star text-lg sm:text-3xl"></i>
+      <span class="text-xs sm:text-sm text-center md:p-2 md:my-2">Testimonials</span> 
+    </div>
+  </div>
+</div>
+
+</div>
+ 
+<!-- Flowbite Carousel JS -->
+<script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+
     <script src="hero-index.js"></script>
   </div>
 
@@ -175,29 +139,27 @@
   <br>
   <br>
   <br>
-  <br>
-  <br>
 
   <!-- Opportunities -->
   <div class="opp-container">
-  <h1 class="heading">Opportunities</h1>
-  <div class="slider-wrapper">
-    <div class="arrow arrow-left">
-      <img src="./assets/opportunities/left-arrow.png" alt="Left Arrow" />
-    </div>
-    <div class="arrow arrow-right">
-      <img src="./assets/opportunities//right-arrow.png" alt="Right Arrow" />
-    </div>
-    <div class="card-slider">
-      <div class="cards-wrapper"></div>
-      <!-- Dynamic cards will be inserted here -->
-    </div>
-  </div>
-  <div class="view-all-wrapper">
-    <a href="../latestnews/latestnews.html" class="view-all"
-      >View All Opportunities</a
-    >
-  </div>
+    <h1 class="heading">Opportunities</h1>
+      <div class="slider-wrapper">
+        <div class="arrow arrow-left">
+          <img src="./assets/opportunities/left-arrow.png" alt="Left Arrow" />
+        </div>
+        <div class="arrow arrow-right">
+          <img src="./assets/opportunities/right-arrow.png" alt="Right Arrow" />
+        </div>
+        <div class="card-slider">
+          <div class="cards-wrapper m-auto"></div>
+          <!-- Dynamic cards will be inserted here -->
+        </div>
+      </div>
+      <div class="view-all-wrapper">
+        <a href="../allopportunities/latestnews.html" class="view-all"
+          >View All Opportunities</a
+        >
+      </div>
 </div>
 <script src="opp-index.js"></script>
 
@@ -260,15 +222,20 @@
     <!-- MOUS -->
      <div id="MOU-div">
       <style>
+        
         .scrollbar-custom::-webkit-scrollbar {
-          width: 5px;
-          height: 5px;
+          width: 0px;
+          height: 0px;
         }
       
         .scrollbar-custom::-webkit-scrollbar-thumb {
           background-color: hidden; 
-          border-radius: 4px; 
+          border-radius: 0px; 
         }
+      
+        /* .scrollbar-custom::-webkit-scrollbar-track {
+          background-color: #f3f4f6;
+        } */
 
         .image{
             height: 350px;
@@ -281,6 +248,10 @@
             {
                 height: 260px;
             }
+            /* .card
+            {
+                height: 260px;
+            } */
         }
 
         @media (max-width:450px) {
@@ -291,34 +262,32 @@
         }
         .section1, .section2, .section3
         {
-            animation: slider 1.2s ease forwards;
+            /* opacity: 0; */
+            /* animation: slider 1.2s ease forwards; */
             padding: 10px;
         }
 
-        @keyframes slider {
-            0%{
-                opacity: 0;
-                transform: scale(90%);
-            }
-    
-            100%{
-                opacity: 1;
-                transform: scale(100%);
-            }
-            
+        .view-all-MOU
+        {
+        background: linear-gradient(90deg, #002f62, #00356e);
         }
-      </style>
+
+        .view-all-MOU:hover
+        {
+        background: linear-gradient(90deg, #0056b3, #003d7a);
+        }
+
+
+    </style>
       <div class="w-full h-full flex justify-center items-center m-auto" style="background: #154378;">
-        <div class="p-12 flex flex-col justify-center items-center xl:w-4/5 gap-10 h-full">
+        <div class="p-12 pt-[100px] flex flex-col justify-center items-center xl:w-4/5 gap-10 h-full">
             <div class="head flex flex-row gap-2 p-2 rounded-tl-2xl rounded-br-2xl" style="border: 2px solid white; color: white;">
                 <p class=" font-bold text-4xl ">NITJ</p>
                 <p class=" font-light text-4xl ">MOU's</p>
             </div>
-            <div class="sectionContainer national w-full h-full">
-            </div>
-            <div class="sectionContainer industry w-full h-full ">
-            </div>
-            <div class="sectionContainer international w-full h-full ">
+            <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 sectionContainer national w-full h-full flex">            </div>
+            <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 flex sectionContainer industry w-full h-full ">            </div>
+            <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 flex sectionContainer international w-full h-full ">
             </div>
         
             <div class="linkMOU">

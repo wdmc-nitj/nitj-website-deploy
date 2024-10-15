@@ -1,36 +1,18 @@
-/* body {
-  font-family: "Barlow", sans-serif; */
-  /* background-color: #f0f4f8; */
-  /* background-color: white;
-  margin: 0;
-  padding: 0;
-} */
-
 .opp-container {
-  /* max-width: 1280px; */
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0 0.8rem; /* Reduced from 1rem */
   position: relative;
 }
 
 .heading {
-  font-size: 4rem;
+  font-size: 3.2rem; /* Reduced from 4rem */
   font-weight: 800;
   color: #0056b3;
   text-align: center;
-  letter-spacing: -1.5px;
+  letter-spacing: -1.2px; /* Reduced from -1.5px */
   line-height: 1.2;
   position: relative;
-}
-
-.heading::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: #007bff;
-  margin: 1rem auto;
-  border-radius: 2px;
 }
 
 .slider-wrapper {
@@ -48,57 +30,42 @@
   border: none;
   cursor: pointer;
   z-index: 20;
-  padding: 0.5rem;
+  padding: 0.4rem; /* Reduced from 0.5rem */
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .arrow img {
-  width: 20px;
-  height: 20px;
+  width: 16px; /* Reduced from 20px */
+  height: 16px; /* Reduced from 20px */
 }
 
 .arrow-left {
-  left: 10px;
+  left: 8px; /* Reduced from 10px */
 }
 
 .arrow-right {
-  right: 10px;
-}
-
-@media (max-width: 768px) {
-  .arrow-left {
-    left: 5px;
-  }
-
-  .arrow-right {
-    right: 5px;
-  }
-
-  .arrow img {
-    width: 16px;
-    height: 16px;
-  }
+  right: 8px; /* Reduced from 10px */
 }
 
 .card-slider {
   width: 100%;
-  height: 500px;
+  height: 350px; /* Reduced from 500px */
   position: relative;
-  padding: 20px;
+  padding: 16px; /* Reduced from 20px */
 }
 
 .cards-wrapper {
   display: flex;
   transition: transform 0.5s ease;
-  width: max-content; /* Ensure it can grow with content */
+  width: max-content;
 }
 
 .news-card {
-  flex: 0 0 320px;
-  height: 100%;
-  border-radius: 0.75rem;
-  margin-right: 1rem;
+  flex: 0 0 256px; /* Reduced from 320px */
+  height: 320px; /* Reduced from 400px */
+  border-radius: 0.6rem; /* Reduced from 0.75rem */
+  margin-right: 0.8rem; /* Reduced from 1rem */
   overflow: hidden;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px);
@@ -116,12 +83,12 @@
 
 .news-card img {
   width: 100%;
-  height: 250px;
+  height: 160px; /* Reduced from 200px */
   object-fit: cover;
 }
 
 .text-area {
-  padding: 1rem;
+  padding: 0.8rem; /* Reduced from 1rem */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -133,54 +100,56 @@
 }
 
 .text-area .date {
-  font-size: 0.75rem;
+  font-size: 0.6rem; /* Reduced from 0.75rem */
   color: #888888;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem; /* Reduced from 0.5rem */
 }
 
 .text-area .heading {
-  font-size: 1.25rem;
+  font-size: 1rem; /* Reduced from 1.25rem */
   font-weight: 700;
-  margin: 0.5rem 0;
+  margin: 0.4rem 0; /* Reduced from 0.5rem */
   color: #222222;
 }
 
 .text-area p {
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
+  font-size: 0.7rem; /* Reduced from 0.875rem */
+  margin-bottom: 0.8rem; /* Reduced from 1rem */
 }
 
-.text-area .read-more {
+.read-more {
   display: inline-block;
-  padding: 0.5rem 1.25rem;
+  padding: 0.4rem 1rem; /* Reduced from 0.5rem 1.25rem */
   background: linear-gradient(90deg, #007bff, #0056b3);
   color: #ffffff;
   text-transform: uppercase;
   font-weight: 600;
-  border-radius: 0.375rem;
+  border-radius: 0.3rem; /* Reduced from 0.375rem */
   text-decoration: none;
+  position: absolute;
+  bottom: 16px; /* Reduced from 20px */
+  left: 16px; /* Reduced from 20px */
   margin-top: auto;
 }
 
-.text-area .read-more:hover {
+.read-more:hover {
   background: linear-gradient(90deg, #0056b3, #003d7a);
 }
 
 .view-all-wrapper {
   text-align: center;
-  margin: 2rem 0;
 }
 
 .view-all {
   display: inline-block;
-  padding: 0.75rem 2rem;
+  padding: 0.6rem 1.6rem; /* Reduced from 0.75rem 2rem */
   background: linear-gradient(90deg, #007bff, #0056b3);
   color: #ffffff;
   text-transform: uppercase;
   font-weight: 600;
-  border-radius: 0.375rem;
+  border-radius: 0.3rem; /* Reduced from 0.375rem */
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1rem; /* Reduced from 1rem */
 }
 
 .view-all:hover {
