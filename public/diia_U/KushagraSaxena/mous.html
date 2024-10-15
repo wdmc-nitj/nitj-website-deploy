@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="output.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link
     href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
@@ -13,13 +17,13 @@
     <style>
         
         .scrollbar-custom::-webkit-scrollbar {
-          width: 5px;
-          height: 5px;
+          width: 0px;
+          height: 0px;
         }
       
         .scrollbar-custom::-webkit-scrollbar-thumb {
           background-color: hidden; 
-          border-radius: 4px; 
+          border-radius: 0px; 
         }
       
         /* .scrollbar-custom::-webkit-scrollbar-track {
@@ -52,23 +56,21 @@
         .section1, .section2, .section3
         {
             /* opacity: 0; */
-            animation: slider 1.2s ease forwards;
+            /* animation: slider 1.2s ease forwards; */
             padding: 10px;
         }
 
-        @keyframes slider {
-            0%{
-                opacity: 0;
-                transform: scale(90%);
-            }
-    
-            100%{
-                opacity: 1;
-                transform: scale(100%);
-            }
-            
+        .view-all-MOU
+        {
+        background: linear-gradient(90deg, #002f62, #00356e);
         }
-    
+
+        .view-all-MOU:hover
+        {
+        background: linear-gradient(90deg, #0056b3, #003d7a);
+        }
+
+
       </style>
 </head>
 <body class="text-darkPurple" style="font-family: Barlow; overflow-x: hidden;">
@@ -78,7 +80,7 @@
                 <p class=" font-bold text-4xl ">NITJ</p>
                 <p class=" font-light text-4xl ">MOU's</p>
             </div>
-            <div class="sectionContainer national w-full h-full">
+            <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 sectionContainer national w-full h-full flex">
                 <!-- <div class="section1 grid md:grid-cols-custom-grid gap-5 bg-white">
                     <img src="" alt="" class="image rounded-xl w-full" >
                     <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
@@ -104,7 +106,7 @@
                     </div>
                 </div> -->
             </div>
-            <div class="sectionContainer industry w-full h-full ">
+            <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 flex sectionContainer industry w-full h-full ">
                 <!-- <div class="section2 grid md:grid-cols-custom-grid-2 gap-5 bg-white">
                     <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">
                         <p class="bg-white rounded-3xl w-fit text-xs p-2 font-semibold" style="color: #0056b3;"></p>
@@ -130,7 +132,7 @@
                     <img src="" alt="" class="image rounded-xl w-full">
                 </div> -->
             </div>
-            <div class="sectionContainer international w-full h-full ">
+            <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 flex sectionContainer international w-full h-full ">
                 <!-- <div class="section3 grid md:grid-cols-custom-grid gap-5 bg-white">
                     <img src="" alt="" class="image rounded-xl w-full" >
                     <div class="card w-full h-full flex flex-col p-6 rounded-2xl lg:gap-8 md:gap-5 xsm:gap-5 transition-all duration-400 ease-in-out-expo shadow-custom-shadow scrollbar-custom" style="background: linear-gradient(87.67deg, rgba(232, 237, 252, 0.687) -84.93%, rgba(153, 153, 153, 0.568) 203.85%)">

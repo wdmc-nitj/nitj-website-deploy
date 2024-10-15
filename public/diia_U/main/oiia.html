@@ -260,15 +260,20 @@
     <!-- MOUS -->
      <div id="MOU-div">
       <style>
+        
         .scrollbar-custom::-webkit-scrollbar {
-          width: 5px;
-          height: 5px;
+          width: 0px;
+          height: 0px;
         }
       
         .scrollbar-custom::-webkit-scrollbar-thumb {
           background-color: hidden; 
-          border-radius: 4px; 
+          border-radius: 0px; 
         }
+      
+        /* .scrollbar-custom::-webkit-scrollbar-track {
+          background-color: #f3f4f6;
+        } */
 
         .image{
             height: 350px;
@@ -281,6 +286,10 @@
             {
                 height: 260px;
             }
+            /* .card
+            {
+                height: 260px;
+            } */
         }
 
         @media (max-width:450px) {
@@ -291,34 +300,32 @@
         }
         .section1, .section2, .section3
         {
-            animation: slider 1.2s ease forwards;
+            /* opacity: 0; */
+            /* animation: slider 1.2s ease forwards; */
             padding: 10px;
         }
 
-        @keyframes slider {
-            0%{
-                opacity: 0;
-                transform: scale(90%);
-            }
-    
-            100%{
-                opacity: 1;
-                transform: scale(100%);
-            }
-            
+        .view-all-MOU
+        {
+        background: linear-gradient(90deg, #002f62, #00356e);
         }
-      </style>
+
+        .view-all-MOU:hover
+        {
+        background: linear-gradient(90deg, #0056b3, #003d7a);
+        }
+
+
+    </style>
       <div class="w-full h-full flex justify-center items-center m-auto" style="background: #154378;">
         <div class="p-12 flex flex-col justify-center items-center xl:w-4/5 gap-10 h-full">
             <div class="head flex flex-row gap-2 p-2 rounded-tl-2xl rounded-br-2xl" style="border: 2px solid white; color: white;">
                 <p class=" font-bold text-4xl ">NITJ</p>
                 <p class=" font-light text-4xl ">MOU's</p>
             </div>
-            <div class="sectionContainer national w-full h-full">
-            </div>
-            <div class="sectionContainer industry w-full h-full ">
-            </div>
-            <div class="sectionContainer international w-full h-full ">
+            <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 sectionContainer national w-full h-full flex">            </div>
+            <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 flex sectionContainer industry w-full h-full ">            </div>
+            <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 flex sectionContainer international w-full h-full ">
             </div>
         
             <div class="linkMOU">
