@@ -18,73 +18,94 @@
                 <tr>
                   <th scope="col" class="px-6 py-4">Title</th>
                   <th scope="col" class="px-6 py-4">Content</th>
+                  <th scope="col" class="px-6 py-4">Category</th> <!-- Added Category column -->
                 </tr>
               </thead>
               <tbody id="table"></tbody>
             </table>
           </div>
           <a href="/api/dashboard/store/add">
-
-            <button 
-            class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10">
+            <button class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10">
               Add new
-          </button>
+            </button>
           </a>
         </div>
       </div>
     </div>
+
     <script>
-      showTable();
-      function showTable() {
+      let adminrole; // Declare globally
+  
+      const fetchAdminUser = async () => {
+        try {
+          const response = await fetch('/api/dashboard/get-current-admin', {
+            method: 'GET',
+            credentials: 'include', // Ensure cookies/session are included
+          });
+          const data = await response.json();
+          if (data.adminUser) {
+            adminrole = data.adminUser.role;  // Set the global 'adminrole'
+          }
+          console.log('Admin role:', adminrole);
+          return adminrole;
+        } catch (error) {
+          console.error('Error fetching admin user:', error);
+        }
+      };
+  
+      const showTable = async () => {
+        // Ensure fetchAdminUser is complete before calling showTable logic
+        await fetchAdminUser();
+  
         let table = document.getElementById("table");
         table.innerHTML = "";
-        let url = "/api/store/get/all";
+        let url = `/api/store/get/all?adminrole=${adminrole}`; // Use the fetched admin role
+  
         fetch(url, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
         })
-          .then((res) => {
-            res.json().then((data) => {
-              console.log(data);
-
-              for (let i = 0; i < data.length; i++) {
-                let d = data[i];
-
-                let tr = document.createElement("tr");
-                let td = document.createElement("td");
-                let td1 = document.createElement("td");
-                let td2=document.createElement("td");
-
-                td.className = "whitespace-nowrap px-6 py-4";
-                td1.className = "whitespace-nowrap px-6 py-4";
-                td2.className = "whitespace-nowrap px-6 py-4";
-                td.innerHTML = d.title;
-                td1.innerHTML = d.content;
-                td2.innerHTML=`<a href="/api/dashboard/store/edit/${d._id}">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded">Edit</button></a>`
-
-                tr.appendChild(td);
-                tr.appendChild(td1);
-                tr.appendChild(td2);
-
-                tr.className = "border-b dark:border-neutral-500";
-                table.appendChild(tr);
-              }
-            });
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-
-      // function copy(id) {
-      //   let copyText = `https://nitjmain.onrender.com/template/index.html?id=${id}?category=newpage`;
-
-      //   navigator.clipboard.writeText(copyText);
-      //   alert("Copied the text: " + copyText);
-      // }
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          for (let i = 0; i < data.length; i++) {
+            let d = data[i];
+  
+            let tr = document.createElement("tr");
+            let td = document.createElement("td");
+            let td1 = document.createElement("td");
+            let td3 = document.createElement("td"); // For Category column
+            let td2 = document.createElement("td");
+  
+            td.className = "whitespace-nowrap px-6 py-4";
+            td1.className = "whitespace-nowrap px-6 py-4";
+            td3.className = "whitespace-nowrap px-6 py-4"; // Category class
+            td2.className = "whitespace-nowrap px-6 py-4";
+  
+            td.innerHTML = d.title;
+            td1.innerHTML = d.content;
+            td3.innerHTML = d.category || 'N/A'; // Added Category value, default 'N/A'
+            td2.innerHTML = `<a href="/api/dashboard/store/edit/${d._id}">
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded">Edit</button></a>`;
+  
+            tr.appendChild(td);
+            tr.appendChild(td1);
+            tr.appendChild(td3); // Append category column
+            tr.appendChild(td2);
+  
+            tr.className = "border-b dark:border-neutral-500";
+            table.appendChild(tr);
+          }
+        })
+        .catch((err) => {
+          console.log('Error fetching table data:', err);
+        });
+      };
+  
+      // Call showTable after page load
+      window.onload = showTable;
     </script>
   </body>
 </html>

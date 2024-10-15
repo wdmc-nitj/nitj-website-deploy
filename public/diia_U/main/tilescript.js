@@ -1,13 +1,19 @@
+let iconSet = [
+    'medal',
+    'star',
+    'medal',
+    'user-tie',
+    'plane',
+    'diagram-project'
+]
+
 function sizeAlgo(num) {
     // this function returns true if the index of the tile is for a wide tile;
     const special = (a)=> (a%2)?(a+1)/2:a/2
-    // for(let i=0; i<20; i++) console.log('for',i,'is',special(i))
     for(let i=0; true; i++){
-        console.log('comparing',((2*special(i))+i),'with',num)
-        if(((2*special(i))+i) == num ) {console.log("condition matched");return true}
-        else if(((2*special(i))+i) > num ) {console.log("condition unfavourable");return false}
+        if(((2*special(i))+i) == num ) return true
+        else if(((2*special(i))+i) > num ) return false
     }
-    // return false;
 }
 
 function genTiles(dataset) {
@@ -16,12 +22,16 @@ function genTiles(dataset) {
         
         let a = document.createElement('a');
         a.href = dataset[x].link
-        a.textContent = dataset[x].name
-        a.style.backgroundColor = dataset[x].color;
+        a.innerHTML = `<div style="display:flex; align-items:center; justify-content:space-between"><div>`+
+        dataset[x].name+
+        ` <i style="font-weight:thinner;" class="fa-solid fa-arrow-up-right-from-square"></i></div>`+
+        `<i style="right:0" class="fa-solid fa-${iconSet[x]} text-3xl"></i></div>`
+        a.style.backgroundColor = (dataset[x].buttoncolor || dataset[x].color)+'88';
+        a.style.borderColor = (dataset[x].buttoncolor || dataset[x].color);
         a.style.color = dataset[x].textcolor;
         a.style.width = (!x%2 && x==dataset.length-1)?'50%':
                         (
-                            sizeAlgo(x)?'40%':'30%'
+                            sizeAlgo(x)?'50%':'40%'
                         )
         a.classList.add('tile');
 
