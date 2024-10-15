@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./index.html",
+    "./photogallery.html",
     // Add more paths if necessary
   ],
   theme: {
