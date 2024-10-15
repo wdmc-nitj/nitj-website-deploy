@@ -18,14 +18,15 @@ async function fetchData(){
 async function addHTML(){
     // console.log("HTML adding..")
     const dataDean = await fetchData()
-    if(! dataDean.length == 0)
+
+    if(dataDean)
     {
         const deanName = document.getElementsByClassName("box")[0].children
-        deanName[0].innerHTML = dataDean.name
-        deanName[1].innerHTML = dataDean.designation
+        deanName[0].innerHTML = dataDean.filter(e=>String(e.designation).toLowerCase() == 'dean')[0].name
+        deanName[1].innerHTML = dataDean.filter(e=>String(e.designation).toLowerCase() == 'dean')[0].designation
 
         const deanMessage = document.getElementsByClassName("content")[0].children
-        deanMessage[0].innerHTML = dataDean.message
+        deanMessage[0].innerHTML = dataDean.filter(e=>String(e.designation).toLowerCase() == 'dean')[0].message
 
         const readMore = document.getElementsByClassName("readMore")[0].children
         readMore[0].href = "/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section"
@@ -33,8 +34,5 @@ async function addHTML(){
     }
 }
 
-window.onload = async function(){
-    addHTML()
-}
-
+window.addEventListener('DOMContentLoaded', addHTML)
 

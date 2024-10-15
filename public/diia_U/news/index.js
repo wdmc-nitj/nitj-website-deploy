@@ -21,19 +21,17 @@ function renderCards() {
   news.forEach((newElt) => {
     const card = document.createElement("div");
     card.classList.add("news-card");
+    card.classList.add("m-auto");
 
     card.innerHTML = `
-      <img src="${newElt.Image}" alt="News Image" />
+      <div class="card-Image">
+        <img  src="${newElt.Image}" alt="News Image" />
+      </div>
       <div class="text-area">
-        <span class="date">${new Date(
-          newElt.createdAt
-        ).toLocaleDateString()}</span>
         <h2 class="heading">${newElt.title1}</h2>
         <p>${newElt.title2}</p>
-        <a href="${url}/diia_U/template.html?id=${
-      newElt._id
-    }?category=news-section" class="read-more">Read more</a>
       </div>
+      <a href="/diia_U/template.html?id=${newElt._id}?category=news-section" class="read-more">Read more</a>
     `;
     cardsWrapper.appendChild(card);
   });
@@ -53,16 +51,8 @@ function initializeSlider() {
     sliderItems[0].offsetWidth +
     parseInt(getComputedStyle(sliderItems[0]).marginRight);
 
-  const firstCardClone = sliderItems[0].cloneNode(true);
-  const lastCardClone = sliderItems[sliderItems.length - 1].cloneNode(true);
-
-  slider.appendChild(firstCardClone);
-  slider.insertBefore(lastCardClone, sliderItems[0]);
-
-  let currentIndex = 1;
-  let scrollAmount = cardWidth;
-
-  slider.style.transform = `translateX(-${scrollAmount}px)`;
+  let currentIndex = 0;
+  let scrollAmount = 0;
 
   function updateSliderPosition() {
     slider.style.transition = "transform 0.4s ease-in-out";
@@ -70,34 +60,18 @@ function initializeSlider() {
   }
 
   nextButton.addEventListener("click", function () {
-    currentIndex++;
-    scrollAmount += cardWidth;
-
-    updateSliderPosition();
-
-    if (currentIndex >= sliderItems.length) {
-      setTimeout(() => {
-        slider.style.transition = "none";
-        currentIndex = 1;
-        scrollAmount = cardWidth;
-        slider.style.transform = `translateX(-${scrollAmount}px)`;
-      }, 400);
+    if (currentIndex < sliderItems.length - 1) {
+      currentIndex++;
+      scrollAmount += cardWidth;
+      updateSliderPosition();
     }
   });
 
   prevButton.addEventListener("click", function () {
-    currentIndex--;
-    scrollAmount -= cardWidth;
-
-    updateSliderPosition();
-
-    if (currentIndex <= 0) {
-      setTimeout(() => {
-        slider.style.transition = "none";
-        currentIndex = sliderItems.length - 1;
-        scrollAmount = cardWidth * currentIndex;
-        slider.style.transform = `translateX(-${scrollAmount}px)`;
-      }, 400);
+    if (currentIndex > 0) {
+      currentIndex--;
+      scrollAmount -= cardWidth;
+      updateSliderPosition();
     }
   });
 
@@ -124,6 +98,11 @@ function initializeSlider() {
       prevButton.click();
     }
   }
+
+  // Ensure buttons and swipe work only when cards overflow
+  const containerWidth = slider.offsetWidth;
+  const totalWidth = cardWidth * sliderItems.length;
+  const canSlide = totalWidth > containerWidth;
 }
 
 document.addEventListener("DOMContentLoaded", function () {

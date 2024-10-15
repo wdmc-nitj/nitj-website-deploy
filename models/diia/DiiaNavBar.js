@@ -31,7 +31,7 @@ const DiiaNavbarSchema = new mongoose.Schema({
     ],
     show: {
         type: Boolean,  // Whether the item should be shown
-        default: true,
+        default: false,
     },
 }, { timestamps: true });
 

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-let store = new mongoose.Schema({
+const store = new mongoose.Schema({
+    category:{type:String},
     content:{type:String,default:""},
     title:{type:String,default:""}
 

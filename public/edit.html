@@ -11,23 +11,31 @@
   <body>
     <div class="m-2 p-2 space-y-2">
       <form id="form" action="#" class="space-y-2">
+        <!-- Category dropdown -->
+        <select name="category" id="category" class="w-72 h-10 border-2 border-black rounded-lg p-2">
+          <option value="">Select Category</option>
+        <option value="Main">Main Website</option>
+        <option value="DIIA">DIIA</option>
+        </select>
+
         <input
-          type="text"
-          name="title"
-          id="title"
-          placeholder="Enter Title"
-          class="w-72 h-10 border-2 border-black rounded-lg p-2"
-        />
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Enter Title"
+        class="w-72 h-10 border-2 border-black rounded-lg p-2"
+      />
 
         <textarea name="editor1"></textarea>
         <!-- <input type="hidden" name="show" id="show" value="" /> -->
         <input type="hidden" name="id" id="id" value="" />
         <button
           class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10"
-          onclick="handleSave()"
+          type="submit"
         >
           Save
         </button>
+       <!--  i have removed onclick=handleSave() -->
       </form>
       <a href="/api/dashboard/store">
         <button class="m-2 rounded-lg text-white bg-blue-700 w-36 h-10">
@@ -38,7 +46,31 @@
   </body>
   <script>
     CKEDITOR.replace("editor1");
+    let adminrole; // To store admin role
     loadData();
+    fetchAdminUser();
+
+    async function fetchAdminUser() {
+      try {
+        const response = await fetch('/api/dashboard/get-current-admin', {
+          method: 'GET',
+          credentials: 'include', // Ensure cookies/session are included
+        });
+        const data = await response.json();
+        if (data.adminUser) {
+          adminrole = data.adminUser.role;
+          console.log('Admin role:', adminrole);
+
+          // Lock the dropdown to "DIIA" if the role is diia
+          if (adminrole === 'diia') {
+            document.getElementById('category').value = 'DIIA';
+            document.getElementById('category').disabled = true; // Disable the dropdown
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching admin user:', error);
+      }
+    }
 
     function loadData() {
       let url = window.location.href;
@@ -55,9 +87,10 @@
         .then((res) => {
           res.json().then((data) => {
             console.log(data);
-            document.getElementById("title").value=data.title;
-            document.getElementById("id").value=data._id;
+            document.getElementById("title").value = data.title;
+            document.getElementById("id").value = data._id;
             CKEDITOR.instances.editor1.setData(data.content);
+            document.getElementById("category").value = data.category; // Set the category
           });
         })
         .catch((err) => {
@@ -73,8 +106,14 @@
     async function handleSave() {
       const content = CKEDITOR.instances.editor1.getData();
       const title = document.getElementById("title").value;
-      
+      const category = document.getElementById("category").value;
       const id = document.getElementById("id").value;
+
+      // If user role is 'admin', ensure category is selected
+      if (adminrole === 'admin' && !category) {
+        alert('Please select a category before saving.');
+        return; // Prevent the save action if category is not selected
+      }
 
       let url = `/api/store/${id}`;
 
@@ -82,18 +121,17 @@
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "authorization":"HareKrishna"
+          "authorization": "HareKrishna"
         },
         body: JSON.stringify({
           title: title,
           content: content,
+          category: category // Send the category
         }),
       });
 
       loadData();
       alert("Saved");
-
-      // window.location.href = "http://localhost:8000/admin/newpage";
     }
   </script>
 </html>
