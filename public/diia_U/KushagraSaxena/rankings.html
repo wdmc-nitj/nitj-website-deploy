@@ -1,239 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="output.css">
-    <link
-    href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-    <title>Rankings</title>
-    <style>
-        
-        .scrollbar-custom::-webkit-scrollbar {
-          width: 5px;
-          height: 5px;
-        }
-      
-        .scrollbar-custom::-webkit-scrollbar-thumb {
-          background-color: hidden; 
-          border-radius: 4px; 
-        }
-      
-        /* .scrollbar-custom::-webkit-scrollbar-track {
-          background-color: #f3f4f6;
-        } */
-
-        .image{
-            height: 350px;
-        }
-        .card {
-            height: 300px;
-            overflow-y: scroll;
-        }
-        @media (max-width:770px) {
-            .image
-            {
-                height: 260px;
-            }
-            .card
-            {
-                height: 260px;
-            }
-        }
-
-        @media (max-width:450px) {
-            .image
-            {
-                height: 150px ;
-            }
-        }
-        .section1, .section2, .section3
-        {
-            /* opacity: 0; */
-            animation: slider 1.2s ease forwards;
-            padding: 10px;
-        }
-
-        @keyframes slider {
-            0%{
-                opacity: 0;
-                transform: scale(90%);
-            }
-    
-            100%{
-                opacity: 1;
-                transform: scale(100%);
-            }
-            
-        }
-       
-        .rankLink
-        {
-            background-color: #1E3A8A; padding: 10px; border-radius: 5px;
-        }
-        .rankLink:hover
-        {
-            background-color: white;
-            color: #1E3A8A;
-        }
-    
-      </style>
-</head>
-<body class="text-darkPurple" style="font-family: Barlow; overflow-x: hidden;">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+        <title>Rankings</title>
+    </head>
+<body class="" style="font-family: Barlow; overflow-x: hidden;">
     <!-- Rankings -->
-    <div class="w-full container">
-         
-        <div class="w-full flex flex-col gap-8 rankings" style="position: relative; z-index: 1; padding-top:35px; padding-bottom: 15px;">
-            <!-- Decorative Squares  -->
-            <div class="bg-square square1"></div> 
-            <div class="bg-square square2"></div>
-            <div class="bg-square square3"></div>
-            <div class="bg-square square4"></div>
-     
-            <!-- Decorative Circles -->
-            <div class="decorative-circle circle1"></div>
-            <div class="decorative-circle circle2"></div>
-            <div class="decorative-circle circle3"></div>
-
-            <div class="head flex flex-row gap-2 p-2 head-border rounded-tl-2xl rounded-br-2xl m-auto">
-                <p class="nitj head-color font-bold text-4xl">NITJ</p>
-                <p class="ranking head-color font-light text-4xl">Rankings 2024</p>
+     <div class="sm:h-64 h-fit w-full p-2" style="background: linear-gradient(0deg, #1A4D89, #1A4D89);">
+        <div class="w-full container h-full flex sm:flex-row flex-col m-auto items-center justify-center sm:gap-0 gap-16" >
+            <div class="head flex flex-col gap-1 border border-white rounded-lg p-5 sm:mt-0 mt-5">
+                <div class="logo flex gap-3 items-center ">
+                    <p class="text-white font-bold lg:text-4xl sm:text-2xl text-4xl">NITJ</p>
+                    <img src="Ratings.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5 w-9 h-9">
+                </div>
+                <p class="text-white font-light lg:text-4xl sm:text-2xl text-4xl">RANKINGS</p>
+                <p class="text-white font-light lg:text-4xl sm:text-2xl text-4xl">2024</p>
             </div>
-            <div class="w-full relative">
-                <button id="scrollLeft"><img src="./img/backArrow.svg" alt="" class="w-7 h-14 absolute" style="top: 50%; left: 3%;"></button>
-                <button id="scrollRight" ><img src="./img/frontArrow.svg" alt="" class="w-7 h-14 absolute" style="top: 50%; right: 3%;"></button>
-
-                <div class="scrollable p-5 flex overflow-x-scroll scrollbar-custom gap-5 m-auto w-10/12 ">
-                    <!-- <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        
-                        <div>
-                            <img class="classImage w-36 h-20" alt="">
-                        </div>
-                        <div class="flex flex-col gap-3 p-2">
-                                <h2 class="classRank font-bold text-3xl "></h2>
-                                <hr class="head-border flex items-center justify-center w-full transition-all duration-400 ease-in-out-expo"></hr>
-                                <p class="classDes"></p>
-                        </div>
-                        
-
+            <div class="sm:ml-24 cards flex sm:flex-row flex-col gap-5 items-center justify-center">
+                <div class="card1 lg:w-48 lg:h-48 sm:w-32 sm:h-32 p-5 w-11/12 h-48 text-center rounded-lg flex flex-col gap-2 items-center justify-center" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%)">
+                    <p class="rank text-white lg:text-lg sm:text-sm"></p>
+                    <img src="Graph.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5">
+                </div>
+                <div class="flex flex-col sm:gap-3 gap-6 h-48 items-center justify-center">
+                    <div class="card2 lg:w-64 lg:h-24 sm:w-48 sm:h-14 h-24 w-11/12 p-5 text-center rounded-lg flex flex-row items-center justify-center" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%);">
+                        <p class="rank text-white lg:text-lg sm:text-sm"></p>
+                        <img src="Medal First Place.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5">
                     </div>
-
-                    <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        
-                        <div>
-                            <img class="classImage w-36 h-20" alt="">
-                        </div>
-                        <div class="flex flex-col gap-3 p-2">
-                                <h2 class="classRank font-bold text-3xl "></h2>
-                                <hr class="head-border flex items-center justify-center w-full transition-all duration-400 ease-in-out-expo"></hr>
-                                <p class="classDes"></p>
-                        </div>
-                        
-
+                    <div class="card3  lg:w-64 lg:h-24 sm:w-48 sm:h-14 h-24 w-11/12 p-5 text-center rounded-lg flex flex-row items-center justify-center gap-2" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%);">
+                        <img src="Army Star.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5">
+                        <p class="rank text-white lg:text-lg sm:text-sm">It is dummy data</p>
                     </div>
-
-                    <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        
-                        <div>
-                            <img class="classImage w-36 h-20" alt="">
+                </div>
+                <div class="card4 lg:w-48 lg:h-48 sm:w-32 sm:h-32 h-48 w-11/12 p-5 text-center rounded-lg flex flex-col items-center justify-center relative" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%);">
+                    <p class="rank text-white lg:text-lg sm:text-sm">It is dummy data</p>
+                    <div class="absolute bottom-0 right-0 lg:w-20 lg:h-9 sm:w-16 sm:h-6 p-1 rounded-tl-lg" style="background:#1A4D89;">
+                        <div class="lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white" style="background: #406DA2;">
+                            <a href="https://www.nitj.ac.in/admin/ranking.html" target="_blank">Read More</a>
                         </div>
-                        <div class="flex flex-col gap-3 p-2 w-full">
-                                <h2 class="classRank font-bold text-3xl "></h2>
-                                <hr class="head-border flex items-center justify-center w-full transition-all duration-400 ease-in-out-expo"></hr>
-                                <p class="classDes"></p>
-                        </div>
-                        
-
                     </div>
-                    <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        
-                        <div>
-                            <img class="classImage w-36 h-20" alt="">
-                        </div>
-                        <div class="flex flex-col gap-3 p-2">
-                                <h2 class="classRank font-bold text-3xl "></h2>
-                                <hr class="head-border flex items-center justify-center w-full transition-all duration-400 ease-in-out-expo"></hr>
-                                <p class="classDes"></p>
-                        </div>
-                        
-
-                    </div>
-                    <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        
-                        <div>
-                            <img class="classImage w-36 h-20" alt="">
-                        </div>
-                        <div class="flex flex-col gap-3 p-2">
-                                <h2 class="classRank font-bold text-3xl "></h2>
-                                <hr class="head-border flex items-center justify-center w-full transition-all duration-400 ease-in-out-expo"></hr>
-                                <p class="classDes"></p>
-                        </div>
-                        
-
-                    </div>
-
-                    <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        
-                        <div>
-                            <img class="classImage w-36 h-20" alt="">
-                        </div>
-                        <div class="flex flex-col gap-3 p-2">
-                                <h2 class="classRank font-bold text-3xl "></h2>
-                                <hr class="head-border flex items-center justify-center w-full transition-all duration-400 ease-in-out-expo"></hr>
-                                <p class="classDes"></p>
-                        </div>
-                        
-
-                    </div>
-                    <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        
-                        <div>
-                            <img class="classImage w-36 h-20" alt="">
-                        </div>
-                        <div class="flex flex-col gap-3 p-2">
-                                <h2 class="classRank font-bold text-3xl "></h2>
-                                <hr class="head-border flex items-center justify-center w-full transition-all duration-400 ease-in-out-expo"></hr>
-                                <p class="classDes"></p>
-                        </div>
-                        
-
-                    </div>
-                    <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        
-                        <div>
-                            <img class="classImage w-36 h-20" alt="">
-                        </div>
-                        <div class="flex flex-col gap-3 p-2">
-                                <h2 class="classRank font-bold text-3xl "></h2>
-                                <hr class="head-border flex items-center justify-center w-full transition-all duration-400 ease-in-out-expo"></hr>
-                                <p class="classDes"></p>
-                        </div>
-                        
-
-                    </div>
-                    <div class="cardRank flex-none flex flex-col gap-8 p-5 backdrop-blur-sm rounded-tl-2xl rounded-br-2xl h-72 w-full transition-all duration-400 ease-in-out-expo hover:border-accentOrange hover:scale-105" style="background: linear-gradient(145deg, #ffffff, #d7e4f1);border: 2px solid transparent; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        
-                        <div>
-                            <img class="classImage w-36 h-20" alt="">
-                        </div>
-                        <div class="flex flex-col gap-3 p-2">
-                                <h2 class="classRank font-bold text-3xl "></h2>
-                                <hr class="head-border border-t-2 flex items-center justify-center w-full transition-all duration-400 ease-in-out-expo"></hr>
-                                <p class="classDes"></p>
-                        </div>
-                    </div> -->
                 </div>
             </div>
-            <div class="m-auto" style="margin-bottom: 20px;">
-                <a href="http://www.nitj.ac.in/admin/ranking.html" target="_blank" class="rankLink text-white font-bold">More Rankings</a>
-            </div>
-
         </div>
     </div>
-
-    <script src="rankings.html"></script>
+    <script src="rankings.js"></script>
 </body>
 </html>
