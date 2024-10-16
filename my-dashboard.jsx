@@ -78,10 +78,10 @@ const Dashboard = () => {
             </div>
           )}
 
-          {role === 'admin' && (
+          {(role === 'admin' || role==='diia') && (
             <div className="card">
               <div className="card-title">Common Template</div>
-              <button onClick={commontemplate} className="custom-btn">Go to CT</button>
+              <button onClick={commontemplate} className="custom-btn">Go</button>
             </div>
           )}
 
