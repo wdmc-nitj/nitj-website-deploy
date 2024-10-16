@@ -1,9 +1,151 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIIA Photo Gallery</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="output.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+  </head>
 
-<body >
-    <div class="text-blue-700  font-inter text-sm ">
-        PHOTO GALLERY
+  <body class="bg-white">
+    <!-- Main container -->
+    <div class="max-w-screen-xl mx-auto p-2">
+      <!-- Title section -->
+      <div class="text-[#00387a] opacity-80 flex flex-col md:flex-row items-center justify-between">
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-light uppercase mt-1">
+          Photo Gallery
+        </h1>
+        <span>
+          <h1 class="text-[30px] md:text-[48px] lg:text-[48px] font-light uppercase leading-tight sm:mt-2 mt-6 md:mt-0 text-center">
+            Our Legacy
+            <br />in Every Frame
+          </h1>
+        </span>
+
+        <div class="relative w-[10%] h-[50px] hidden mg:flex lg:flex">
+          <!-- barcode img (top-right and above the dotted image) -->
+          <img
+            class=" absolute w-[100%] h-[150px] md:h-full lg:h-full object-cover rounded-lg top-0 right-0 z-30"
+            src="./assets/barcode topright.png"
+            alt="Barcode Image"
+          />
+
+          <!-- dotted img (below the barcode and behind it) -->
+          <img
+            class="absolute sm:w-[20%] sm:h-[80px] w-[100%] h-[400px] md:h-[250px] lg:h-[250px] object-cover rounded-lg top-0 right-0 z-20"
+            src="./assets/Group.png"
+            alt="Dotted Image"
+          />
+        </div>
+      </div>
     </div>
 
-</body>
+    <!-- Image grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-12 z-30 mb-5">
+      <!-- Image 1 (fixed height) -->
+      <div class="hidden md:flex lg:flex relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out">
+        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/Group.png" alt="Image 1" />
+      </div>
+
+      <!-- Image 2 -->
+      <div
+        class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out"
+        onmouseover="handleMouseOver(2)" onmouseout="handleMouseOut(2)"
+      >
+        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/gdsc.png" alt="Image 2" />
+        <div class="absolute inset-0 bg-[#00387a]/40 rounded-[17px]"></div>
+        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Tech</div>
+      </div>
+
+      <!-- Image 3 -->
+      <div
+        class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out"
+        onmouseover="handleMouseOver(3)" onmouseout="handleMouseOut(3)"
+      >
+        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/giddha.png" alt="Image 3" />
+        <div class="absolute inset-0 bg-[#00387a]/40 rounded-[17px]"></div>
+        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Cultural</div>
+      </div>
+
+      <!-- Image 4 -->
+      <div
+        class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out"
+        onmouseover="handleMouseOver(4)" onmouseout="handleMouseOut(4)"
+      >
+        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/dr. statue.png" alt="Image 4" />
+        <div class="absolute inset-0 bg-[#00387a]/40 rounded-[17px]"></div>
+        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Campus</div>
+      </div>
+
+      <!-- Image 5 -->
+      <div
+        class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out"
+        onmouseover="handleMouseOver(5)" onmouseout="handleMouseOut(5)"
+      >
+        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/director.png" alt="Image 5" />
+        <div class="absolute inset-0 bg-[#00387a]/40 rounded-[17px]"></div>
+        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Fest</div>
+      </div>
+
+      <!-- Image 6 (fixed height) -->
+      <div class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out z-20">
+        <button class="rounded-[14.95px] bg-[#00387a] px-3 py-2 text-white">
+          See All
+        </button>
+
+        <!-- Arrows -->
+        <div class="relative w-[60%] mx-auto h-[400px] transition-all duration-500 ease-in-out z-10 top-[70%]">
+          <img src="./assets/arrow circle.png" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function handleMouseOver(divNumber) {
+        const image2 = document.querySelectorAll('.grid > div')[1];
+        const image3 = document.querySelectorAll('.grid > div')[2];
+        const image4 = document.querySelectorAll('.grid > div')[3];
+        const image5 = document.querySelectorAll('.grid > div')[4];
+
+        switch (divNumber) {
+          case 2:
+            image2.style.height = '480px'; // Increase height of div 2 by 20%
+            image3.style.height = '320px'; // Decrease height of div 3 by 20%
+            image4.style.height = '320px'; // Decrease height of div 4 by 20%
+            image5.style.height = '320px'; // Decrease height of div 5 by 20%
+            break;
+          case 5:
+            image5.style.height = '480px'; // Increase height of div 5 by 20%
+            image5.style.transform = 'translateY(-80px)'; // Move div 5 upwards by 20%
+            image2.style.height = '320px'; // Reduce height of div 2 by 20%
+            break;
+        }
+      }
+
+      function handleMouseOut(divNumber) {
+        const image2 = document.querySelectorAll('.grid > div')[1];
+        const image3 = document.querySelectorAll('.grid > div')[2];
+        const image4 = document.querySelectorAll('.grid > div')[3];
+        const image5 = document.querySelectorAll('.grid > div')[4];
+
+        // Reset all divs back to initial height
+        image2.style.height = '400px';
+        image3.style.height = '400px';
+        image4.style.height = '400px';
+        image5.style.height = '400px';
+        image5.style.transform = 'translateY(0)'; // Reset div 5 position
+      }
+    </script>
+  </body>
 </html>
