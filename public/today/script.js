@@ -13,12 +13,18 @@ async function fetchEvents() {
     const events = [];
 
     for (let i = 0; i < 3; i++) {
-      // const currentYear = year + Math.floor((month + i - 1) / 12);
-      // const currentMonth = (month + i) % 12 || 12;
-      
       const monthOffset = month + i - 1;
+      
+      // Calculate the correct year and month
       const currentYear = year + Math.floor(monthOffset / 12);
-      const currentMonth = (monthOffset % 12) + 1;
+      let currentMonth = monthOffset % 12;
+
+      // Adjust currentMonth to be within the range of 1-12, accounting for December
+      if (currentMonth === 0) {
+        currentMonth = 12;
+      } else if (monthOffset < 0) {
+        currentMonth += 12;  // Handle negative months properly
+      }
 
       const response = await fetch(`${getevents}?year=${currentYear}&month=${currentMonth}`);
       const data = await response.json();

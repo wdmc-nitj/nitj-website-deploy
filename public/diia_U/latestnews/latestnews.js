@@ -1,6 +1,6 @@
 let data = [];
 let currentIndex = 0;
-// const url = "https://nitjfinal.onrender.com";
+const url = "https://nitjfinal.onrender.com";
 // const furl= "https://nitjfinal.onrender.com";
 // async function fetchData() {
 //   try {

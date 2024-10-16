@@ -12,7 +12,22 @@ const DiiaMapSchema = new mongoose.Schema({
     },
     Department: {
         type: String,
-        enum: ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai'],
+        enum:  [
+            "Bio Technology",
+            "Chemical Engineering",
+            "Civil Engineering",
+            "Computer Science and Engineering",
+            "Data Science and Engineering",
+            "Electrical Engineering",
+            "Electronics and Communication Engineering",
+            "Electronics and VLSI Engineering",
+            "Industrial and Production Engineering",
+            "Information Technology",
+            "Instrumental and Control Engineering",
+            "Mathematics and Computing",
+            "Mechanical Engineering",
+            "Textile Technology"
+          ]
     },
     country: {
         type: String,
