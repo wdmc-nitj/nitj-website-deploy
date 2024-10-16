@@ -99,4 +99,7 @@ body {
     .mapCraddle {
         width: 95%;
     }
+    .mapCraddleCraddle {
+        gap:50px;
+    }
 }
