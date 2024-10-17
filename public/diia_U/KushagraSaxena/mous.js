@@ -90,7 +90,7 @@ function applyEffectToSection()
 
 async function fetchDataMous(){                      
     try{
-        const res = await fetch("https://nitjfinal.onrender.com/api/diia/mous")
+        const res = await fetch("/api/diia/mous")
         if(!res.ok)
         {
             throw new Error(`Status:${res.status}`)
