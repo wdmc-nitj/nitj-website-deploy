@@ -26,6 +26,9 @@
      <link rel="stylesheet" href="deansmessage-style.css">
      <script src="deansMessage.js"></script>
 
+    <!-- For Rankings -->
+     <script src="rankings.js"></script>
+
     <!-- For Tiles -->
     <link rel="stylesheet" href="./tilestyle.css">
     <script src="./tilescript.js"></script>
@@ -212,6 +215,44 @@
 </div>
  </div>
 
+ <!-- Rankings -->
+ <div class="sm:h-64 h-fit w-full p-2" style="background: linear-gradient(0deg, #1A4D89, #1A4D89);">
+  <div class="w-full container h-full flex sm:flex-row flex-col m-auto items-center justify-center sm:gap-0 gap-16" >
+      <div class="head flex flex-col gap-1 border border-white rounded-lg p-5 sm:mt-0 mt-5">
+          <div class="logo flex gap-3 items-center ">
+              <p class="text-white font-bold lg:text-4xl sm:text-2xl text-4xl">NITJ</p>
+              <img src="./assets/rankings/Ratings.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5 w-9 h-9">
+          </div>
+          <p class="text-white font-light lg:text-4xl sm:text-2xl text-4xl">RANKINGS</p>
+          <p class="text-white font-light lg:text-4xl sm:text-2xl text-4xl">2024</p>
+      </div>
+      <div class="sm:ml-24 cards flex sm:flex-row flex-col gap-5 items-center justify-center">
+          <div class="card1 lg:w-48 lg:h-48 sm:w-32 sm:h-32 p-5 w-11/12 h-48 text-center rounded-lg flex flex-col gap-2 items-center justify-center" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%)">
+              <p class="rank text-white lg:text-lg sm:text-sm"></p>
+              <img src="./assets/rankings/Graph.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5">
+          </div>
+          <div class="flex flex-col sm:gap-3 gap-6 h-48 items-center justify-center">
+              <div class="card2 lg:w-64 lg:h-24 sm:w-48 sm:h-14 h-24 w-11/12 p-5 text-center rounded-lg flex flex-row items-center justify-center" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%);">
+                  <p class="rank text-white lg:text-lg sm:text-sm"></p>
+                  <img src="./assets/rankings/Medal First Place.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5">
+              </div>
+              <div class="card3  lg:w-64 lg:h-24 sm:w-48 sm:h-14 h-24 w-11/12 p-5 text-center rounded-lg flex flex-row items-center justify-center gap-2" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%);">
+                  <img src="./assets/rankings/Army Star.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5">
+                  <p class="rank text-white lg:text-lg sm:text-sm">It is dummy data</p>
+              </div>
+          </div>
+          <div class="card4 lg:w-48 lg:h-48 sm:w-32 sm:h-32 h-48 w-11/12 p-5 text-center rounded-lg flex flex-col items-center justify-center relative" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%);">
+              <p class="rank text-white lg:text-lg sm:text-sm">It is dummy data</p>
+              <div class="absolute bottom-0 right-0 lg:w-20 lg:h-9 sm:w-16 sm:h-6 p-1 rounded-tl-lg" style="background:#1A4D89;">
+                  <div class="lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white" style="background: #406DA2;">
+                      <a href="/admin/ranking.html" target="_blank">Read More</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
  
   <!-- Tiles -->
     <div class="tileParent"><div style="background-color: rgba(0, 0, 0, 0.7);">
@@ -315,6 +356,144 @@
         </div>
     </div>
      </div>
+
+
+    <!-- Photo Gallery -->
+    <div id="photo-gallery">
+      
+    <!-- Main container -->
+    <div class="max-w-screen-xl mx-auto p-2">
+      <!-- Title section -->
+      <div class="text-[#00387a] opacity-80 flex flex-col md:flex-row items-center justify-between">
+        <h1 class="text-2xl md:text-3xl lg:text-4xl font-light uppercase mt-1">
+          Photo Gallery
+        </h1>
+        <span>
+          <h1 class="text-[30px] md:text-[48px] lg:text-[48px] font-light uppercase leading-tight sm:mt-2 mt-6 md:mt-0 text-center">
+            Our Legacy
+            <br />in Every Frame
+          </h1>
+        </span>
+
+        <div class="relative w-[10%] h-[50px] hidden mg:flex lg:flex">
+          <!-- barcode img (top-right and above the dotted image) -->
+          <img
+            class=" absolute w-[100%] h-[150px] md:h-full lg:h-full object-cover rounded-lg top-0 right-0 z-30"
+            src="./assets/photo gallery/barcode topright.png"
+            alt="Barcode Image"
+          />
+
+          <!-- dotted img (below the barcode and behind it) -->
+          <img
+            class="absolute sm:w-[20%] sm:h-[80px] w-[100%] h-[400px] md:h-[250px] lg:h-[250px] object-cover rounded-lg top-0 right-0 z-20"
+            src="./assets/photo gallery/Group.png"
+            alt="Dotted Image"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Image grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-12 z-30 mb-5">
+      <!-- Image 1 (fixed height) -->
+      <div class="hidden md:flex lg:flex relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out">
+        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/photo gallery/Group.png" alt="Image 1" />
+      </div>
+
+      <!-- Image 2 -->
+      <div
+        id="pgc1"
+        class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out"
+        onmouseover="handleMouseOver(2)" onmouseout="handleMouseOut(2)"
+        >
+        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/photo gallery/gdsc.png" alt="Image 2" />
+        <div class="absolute inset-0 bg-[#00387a]/40 rounded-[17px]"></div>
+        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Tech</div>
+      </div>
+      
+      <!-- Image 3 -->
+      <div
+        id="pgc2"
+        class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out"
+        onmouseover="handleMouseOver(3)" onmouseout="handleMouseOut(3)"
+        >
+        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/photo gallery/giddha.png" alt="Image 3" />
+        <div class="absolute inset-0 bg-[#00387a]/40 rounded-[17px]"></div>
+        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Cultural</div>
+      </div>
+      
+      <!-- Image 4 -->
+      <div
+        id="pgc3"
+        class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out"
+        onmouseover="handleMouseOver(4)" onmouseout="handleMouseOut(4)"
+        >
+        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/photo gallery/dr. statue.png" alt="Image 4" />
+        <div class="absolute inset-0 bg-[#00387a]/40 rounded-[17px]"></div>
+        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Campus</div>
+      </div>
+      
+      <!-- Image 5 -->
+      <div
+        id="pgc4"
+        class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out"
+        onmouseover="handleMouseOver(5)" onmouseout="handleMouseOut(5)"
+      >
+        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/photo gallery/director.png" alt="Image 5" />
+        <div class="absolute inset-0 bg-[#00387a]/40 rounded-[17px]"></div>
+        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Fest</div>
+      </div>
+
+      <!-- Image 6 (fixed height) -->
+      <div class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out z-20">
+        <button class="rounded-[14.95px] bg-[#00387a] px-3 py-2 text-white">
+          See All
+        </button>
+
+        <!-- Arrows -->
+        <div class="relative w-[60%] mx-auto h-[400px] transition-all duration-500 ease-in-out z-10 top-[70%]">
+          <img src="./assets/photo gallery/arrow circle.png" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function handleMouseOver(divNumber) {
+        const image2 = document.getElementById('pgc1');
+        const image3 = document.getElementById('pgc2');
+        const image4 = document.getElementById('pgc3');
+        const image5 = document.getElementById('pgc4');
+        
+        switch (divNumber) {
+          case 2:
+            image2.style.height = '480px'; // Increase height of div 2 by 20%
+            image3.style.height = '320px'; // Decrease height of div 3 by 20%
+            image4.style.height = '320px'; // Decrease height of div 4 by 20%
+            image5.style.height = '320px'; // Decrease height of div 5 by 20%
+            break;
+            case 5:
+              image5.style.height = '480px'; // Increase height of div 5 by 20%
+              image5.style.transform = 'translateY(-80px)'; // Move div 5 upwards by 20%
+              image2.style.height = '320px'; // Reduce height of div 2 by 20%
+              break;
+            }
+          }
+          
+          function handleMouseOut(divNumber) {
+        const image2 = document.getElementById('pgc1');
+        const image3 = document.getElementById('pgc2');
+        const image4 = document.getElementById('pgc3');
+        const image5 = document.getElementById('pgc4');
+        
+        // Reset all divs back to initial height
+        image2.style.height = '400px';
+        image3.style.height = '400px';
+        image4.style.height = '400px';
+        image5.style.height = '400px';
+        image5.style.transform = 'translateY(0)'; // Reset div 5 position
+      }
+    </script>
+    </div>
     
       <!-- Testimonials -->
    <div id="testimonialbody">
