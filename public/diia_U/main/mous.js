@@ -90,7 +90,7 @@ function applyEffectToSection()
 
 async function fetchDataMous(){                      
     try{
-        const res = await fetch("https://nitjfinal.onrender.com/api/diia/mous")
+        const res = await fetch("/api/diia/mous")
         if(!res.ok)
         {
             throw new Error(`Status:${res.status}`)
@@ -126,7 +126,7 @@ async function addToHtmlMous(){
                     <div class="sm:w-2/3 w-full relative">
                         <img src=${data[i].Image} alt="" class=" image rounded-xl w-full" >
                         <div class="absolute bottom-0 w-full" >
-                            <p class = "text-white text-center lg:text-2xl md:text-xl text-sm font-semibold rounded-xl"  style="background: linear-gradient(180deg, rgba(53, 99, 154, 0.05) 0%, rgba(53, 99, 154, 0.82));">${data[i].location}</p>
+                            <p class = "text-white text-center lg:text-2xl md:text-xl text-sm font-semibold rounded-xl"  style="background: linear-gradient(180deg, rgba(53, 99, 154, 0.05) 0%, rgba(53, 99, 154, 0.82));">${(String(data[i].location) !== "undefined")?data[i].location:""}</p>
                         </div>
                     </div>
                     <div class="relative card sm:w-1/3 flex flex-col p-6 rounded-2xl lg:gap-7 md:gap-3 gap-5 transition-all duration-400 ease-in-out-expo scrollbar-custom text-white" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.2686) -84.93%, rgba(153, 153, 153, 0.1598) 203.85%);">
@@ -153,7 +153,7 @@ async function addToHtmlMous(){
                     <div class="relative sm:w-2/3 w-full">
                         <img src=${data[i].Image} alt="" class="image rounded-xl w-full" >
                         <div class="absolute bottom-0 w-full">
-                            <p class = "text-white text-center lg:text-2xl md:text-xl text-sm font-semibold rounded-xl"  style="background: linear-gradient(180deg, rgba(53, 99, 154, 0.05) 0%, rgba(53, 99, 154, 0.82));">${data[i].location}</p>
+                            <p class = "text-white text-center lg:text-2xl md:text-xl text-sm font-semibold rounded-xl"  style="background: linear-gradient(180deg, rgba(53, 99, 154, 0.05) 0%, rgba(53, 99, 154, 0.82));">${(String(data[i].location) !== "undefined")?data[i].location:""}</p>
                         </div>
                     </div>
                 </div>`
@@ -166,7 +166,7 @@ async function addToHtmlMous(){
                     <div class="relative sm:w-2/3 w-full">
                         <img src=${data[i].Image} alt="" class="image rounded-xl w-full" >
                         <div class="absolute bottom-0 w-full">
-                            <p class = "text-white text-center lg:text-2xl md:text-xl text-sm font-semibold rounded-xl"  style="background: linear-gradient(180deg, rgba(53, 99, 154, 0.05) 0%, rgba(53, 99, 154, 0.82));">${data[i].location}</p>
+                            <p class = "text-white text-center lg:text-2xl md:text-xl text-sm font-semibold rounded-xl"  style="background: linear-gradient(180deg, rgba(53, 99, 154, 0.05) 0%, rgba(53, 99, 154, 0.82));">${(String(data[i].location) !== "undefined")?data[i].location:""}</p>
                         </div>
                     </div>
                     <div class="relative card sm:w-1/3 flex flex-col p-6 rounded-2xl lg:gap-7 md:gap-3 gap-5   scrollbar-custom text-white" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.2686) -84.93%, rgba(153, 153, 153, 0.1598) 203.85%);">

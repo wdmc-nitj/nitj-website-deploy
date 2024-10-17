@@ -60,7 +60,7 @@ const allowedNonGetRoutes = [
   "/api/upload",
 ];
 
-mainRouter.use("/*", (req, res, next) => {
+/* mainRouter.use("/*", (req, res, next) => {
   if (req.method === "GET") {
     next();
   } else {
@@ -70,7 +70,7 @@ mainRouter.use("/*", (req, res, next) => {
       res.status(403).json({ message: "Unauthorized" });
     }
   }
-});
+}); */
 
 // mainRouter.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 mainRouter.use("/navbar", navBarRouter);

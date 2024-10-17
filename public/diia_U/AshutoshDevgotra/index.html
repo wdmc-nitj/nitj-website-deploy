@@ -11,7 +11,6 @@
       referrerpolicy="no-referrer"
     />
     <link href="output.css" rel="stylesheet" />
-
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -24,7 +23,6 @@
           font-size: 0.75rem;
           padding: 0.5rem;
         }
-
         #carousel-heading {
           margin: 5rem;
         }
@@ -35,6 +33,9 @@
           margin: 2rem;
         }
       }
+      .overlay {
+        background-color: rgb(0, 0, 0); /* Increase the opacity value */
+      }
     </style>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -43,24 +44,34 @@
   <body class="bg-gray-100">
     <header id="navbar"></header>
 
-<!-- Container for Image Slider and Quick Links -->
-<div class="relative h-screen flex flex-col">
-  <h1 class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-40"></span>
-    Bridging Global Academia
-  </h1>
+    <div class="relative h-screen flex flex-col">
+      <h1
+        class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-40"
+      >
+        Bridging Global Academia
+      </h1>
+      <div
+        class="relative w-full h-[75%] sm:h-[75%] md:h-[100%] overflow-hidden z-30"
+      >
+        <div
+          class="relative rounded-lg shadow-lg w-full h-full"
+          data-carousel="static"
+        >
+          <div
+            class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black"
+            data-carousel-inner
+            id="carousel-images"
+          ></div>
 
-  <!-- Image Slider Section -->
-  <div class="relative w-full h-[75%] sm:h-[75%] md:h-[100%] overflow-hidden z-30">
-    <div class="relative rounded-lg shadow-lg w-full h-full" data-carousel="static">
-      <!-- Carousel wrapper -->
-      <div class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black" data-carousel-inner id="carousel-images">
-        <!-- Carousel images... -->
+          <!-- Adjusted indicators container to be positioned absolutely -->
+          <div
+            id="carousel-indicators"
+            class="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-2 text-[red] z-40"
+          ></div>
+        </div>
       </div>
-      
-      <!-- Slider controls... -->
-    </div>
-  </div>
 
+<<<<<<< HEAD
   <!-- Quick Link Section -->
   <div class="absolute top-[72%] md:top-[92%] left-0 right-0 h-[25%] bg-gradient-to-r from-blue-900 to-blue-700 border-white border-2 rounded-[36px] z-40 flex items-center  justify-center mx-10  px-3 py-3">
   <!-- Elements Container -->
@@ -132,6 +143,63 @@
       }
     </script>
 
+=======
+      <div
+        class="absolute top-[72%] md:top-[92%] left-0 right-0 h-[25%] bg-gradient-to-r from-blue-900 to-blue-700 border-white border-2 rounded-[36px] z-40 flex items-center justify-center mx-10 px-3 py-3"
+      >
+        <div
+          class="grid grid-cols-3 gap-0.5 w-full max-w-7xl overflow-x-auto px-2 text-white font-medium hidden-scrollbar sm:flex sm:w-full"
+        >
+          <div
+            class="border hover:text-blue-600 border-white rounded-2xl p-1 md:py-3 mx-0.5 flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500"
+          >
+            <i class="fa-solid fa-rocket text-lg sm:text-3xl"></i>
+            <span class="text-xs sm:text-sm md:p-2 md:my-2">Opportunities</span>
+          </div>
+          <div
+            class="border hover:text-blue-600 border-white rounded-2xl p-1 md:py-3 mx-0.5 flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500"
+          >
+            <i class="fa-solid fa-medal text-lg sm:text-3xl"></i>
+            <span class="text-xs sm:text-sm text-center md:p-1 md:my-2"
+              >Rankings</span
+            >
+          </div>
+          <div
+            class="border hover:text-blue-600 border-white rounded-2xl p-1 md:py-3 mx-0.5 flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500"
+          >
+            <i class="fa-solid fa-graduation-cap text-lg sm:text-3xl"></i>
+            <span class="text-xs sm:text-sm text-center md:p-2 md:my-2"
+              >Admissions</span
+            >
+          </div>
+          <div
+            class="border hover:text-blue-600 border-white rounded-2xl p-1 md:py-3 mx-0.5 flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500"
+          >
+            <i class="fa-solid fa-building-columns text-lg sm:text-3xl"></i>
+            <span class="text-xs sm:text-sm md:p-2 md:my-2">MOUs</span>
+          </div>
+          <div
+            class="border hover:text-blue-600 border-white rounded-2xl p-1 md:py-3 mx-0.5 flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500"
+          >
+            <i class="fa-solid fa-map-location-dot text-lg sm:text-3xl"></i>
+            <span class="text-xs sm:text-sm text-center md:p-2 md:my-2 mx-2"
+              >Map</span
+            >
+          </div>
+          <div
+            class="border hover:text-blue-600 border-white rounded-2xl p-1 md:py-3 mx-0.5 flex flex-col items-center w-[100%] sm:w-[16.6%] hover:bg-white hover:border-orange-500"
+          >
+            <i class="fa-regular fa-star text-lg sm:text-3xl"></i>
+            <span class="text-xs sm:text-sm text-center md:p-2 md:my-2"
+              >Testimonials</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+>>>>>>> d17b09cae0a0251632dc2ac89fb708dc1146069e
     <script src="script.js"></script>
     <script src="index.js"></script>
   </body>

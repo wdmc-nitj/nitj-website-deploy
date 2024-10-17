@@ -2,7 +2,9 @@ let news = [];
 
 async function fetchData() {
   try {
-    const response = await fetch(`/api/diia/opportunities`);
+    const response = await fetch(
+      `https://nitjfinal.onrender.com/api/diia/opportunities`
+    );
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
     }

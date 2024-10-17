@@ -30,7 +30,8 @@ async function addToHtmlRanking(){
     }
 }
 
-window.onload = async function() {
-    await addToHtmlRanking()
-}
+// window.onload = async function() {
+//     await addToHtmlRanking()
+// }
 
+window.addEventListener('DOMContentLoaded', addToHtmlRanking)
