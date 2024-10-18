@@ -21,7 +21,7 @@ async function addToHtmlRanking(){
         console.log(data)
         for(let i = 0; i < data.length; i++)
         {
-            rank[i].innerHTML = `Ranked ${data[i].Rank}th in ${data[i].title1}`
+            rank[i].innerHTML = `${data[i].description}`
         }
     }
     catch(err)

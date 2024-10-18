@@ -1,6 +1,6 @@
 async function fetchDataRanking(){                      
     try{
-        const res = await fetch("/api/diia/rankings")
+        const res = await fetch("https://nitjfinal.onrender.com/api/diia/rankings")
         if(!res.ok)
         {
             throw new Error(`Status:${res.status}`)
@@ -21,7 +21,7 @@ async function addToHtmlRanking(){
         console.log(data)
         for(let i = 0; i < data.length; i++)
         {
-            rank[i].innerHTML = `Ranked ${data[i].Rank}th in ${data[i].title1}`
+            rank[i].innerHTML = `${data[i].description}`
         }
     }
     catch(err)
