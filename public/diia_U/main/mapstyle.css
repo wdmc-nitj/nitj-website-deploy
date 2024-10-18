@@ -62,6 +62,8 @@ body {
     display: flex;
     align-items: center;
     width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 .mapCraddle {
@@ -93,13 +95,14 @@ body {
 }
 
 @media only screen and (max-width: 950px) {
-    .mapContainer {
+    /* .mapContainer {
         flex-direction: column;
-    }
-    .mapCraddle {
-        width: 95%;
-    }
-    .mapCraddleCraddle {
-        gap:50px;
+        } */
+        .mapCraddle {
+            width: 95%;
+        }
+        .mapCraddleCraddle {
+            gap:50px;
+            flex-direction: column;
     }
 }
