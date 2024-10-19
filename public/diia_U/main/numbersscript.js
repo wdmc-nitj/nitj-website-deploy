@@ -24,10 +24,11 @@ function applyParallaxEffect() {
 }
 
 // Fetch data and render it
+const url = "https://nitjfinal.onrender.com"; // Base URL
 
 async function fetchData() {
     try {
-        const response = await fetch(`/api/diia/numbers`);
+        const response = await fetch(`${url}/api/diia/numbers`); // Use const url for the fetch
         const data = await response.json();
         renderNumbers(data);
     } catch (error) {
