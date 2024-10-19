@@ -23,12 +23,12 @@ function applyParallaxEffect() {
     });
 }
 
-// Fetch data and render it
-const url = "https://nitjfinal.onrender.com"; // Base URL
+
+
 
 async function fetchData() {
     try {
-        const response = await fetch(`${url}/api/diia/numbers`); // Use const url for the fetch
+        const response = await fetch("/api/diia/numbers"); // Use const url for the fetch
         const data = await response.json();
         renderNumbers(data);
     } catch (error) {
@@ -36,7 +36,7 @@ async function fetchData() {
     }
 }
 
-// Render numbers dynamically and animate them
+
 function renderNumbers(data) {
     const numbersSection = document.querySelector('.numbers-section');
     numbersSection.innerHTML = ''; // Clear existing content
@@ -45,7 +45,6 @@ function renderNumbers(data) {
         const numberItem = document.createElement('div');
         numberItem.classList.add('number-item');
         
-        // Choose different icons based on the item title
         let iconClass;
         switch (item.title.toLowerCase()) {
             case 'mous':
