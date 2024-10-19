@@ -34,27 +34,28 @@ function renderTemplate(newsItem) {
   }
 
   const headerImageContainer = document.getElementById("headerImageContainer");
-  headerImageContainer.style.backgroundImage = `url(${newsItem.Image})`;
+  headerImageContainer.style.backgroundImage = `url('./assets/flag.jpg')`;
 
   const pageHeading = document.getElementById("page-heading");
-  pageHeading.textContent = newsItem.title1;
+  pageHeading.textContent = newsItem.title2;
 
   const headerHeading = document.getElementById("headerHeading");
-  headerHeading.textContent = newsItem.title1;
+  headerHeading.textContent = newsItem.title2;
 
-  document.getElementById("title").textContent = newsItem.title2;
+  document.getElementById("title").textContent = newsItem.title1;
 
   const eventContainer = document.getElementById("event-container");
 
   if (newsItem.Image) {
     const bodyImage = document.createElement("img");
     bodyImage.src = newsItem.Image;
-    bodyImage.alt = newsItem.title1;
+    bodyImage.alt = newsItem.title2;
     bodyImage.classList.add("body-image");
     eventContainer.appendChild(bodyImage);
   }
 
   const newsDescription = document.createElement("p");
+  newsDescription.classList.add("text-justify");
   newsDescription.textContent = newsItem.description;
   eventContainer.appendChild(newsDescription);
 }
@@ -63,7 +64,7 @@ function renderTemplate(newsItem) {
 function renderMOUsCategory(mou) {
   // Set the page heading and title
   const headerImageContainer = document.getElementById("headerImageContainer");
-  headerImageContainer.style.backgroundImage = "url(./assets/nitj3.jpg)";
+  headerImageContainer.style.backgroundImage = "url('./assets/flag.jpg')";
   const pageHeading = document.getElementById("page-heading");
   pageHeading.textContent = "Memorandum of Understanding";
 
@@ -130,7 +131,8 @@ function renderMOUsCategory(mou) {
     "text-xl",
     "text-black",
     "overflow-visible",
-    "whitespace-normal"
+    "whitespace-normal",
+    "text-justify"
   );
 
   descriptionContainer.appendChild(mouDescription);
@@ -141,7 +143,7 @@ function renderMOUsCategory(mou) {
 
 function renderTestimonialCategory(testimonial) {
   const headerImageContainer = document.getElementById("headerImageContainer");
-  headerImageContainer.style.backgroundImage = "url(./assets/nitj3.jpg)";
+  headerImageContainer.style.backgroundImage = `url('./assets/flag.jpg')`;
   headerImageContainer.style.display = "flex";
   headerImageContainer.style.justifyContent = "center";
   headerImageContainer.style.alignItems = "center";
