@@ -129,7 +129,7 @@ async function addToHtmlMous(){
                             <p class="bg-white rounded-3xl w-fit h-5 text-xs p-2 flex items-center justify-center font-semibold" style="color: #0056b3;">Indian Institutions</p>
                             <img src="img/Edit File.png" alt="" class="absolute top-5 right-5 h-6">
                             <p class="lg:text-2xl md:text-sm text-sm">${data[i].name}</p>
-                            <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,100)}...</p>
+                            <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,200)}...</p>
                             <div class="lg:w-24 lg:h-8 sm:w-20 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white lg:p-3 p-1" style="background: #154378;">
                                 <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section" target="_blank" class="">Read More</a>
                             </div>
@@ -145,7 +145,7 @@ async function addToHtmlMous(){
                             <p class="bg-white rounded-3xl w-fit h-5 text-xs p-2 flex items-center justify-center font-semibold" style="color: #0056b3;">Industry Partners</p>
                             <img src="Student Center (1).png" alt="" class="absolute top-5 right-5 h-6">
                             <p class="lg:text-2xl md:text-sm text-sm">${data[i].name}</p>
-                            <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,100)}...</p>
+                            <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,200)}...</p>
                             <div class="lg:w-24 lg:h-8 sm:w-20 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white lg:p-3 p-1" style="background: #154378;">
                                 <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section" target="_blank" class="">Read More</a>
                             </div>
@@ -173,7 +173,7 @@ async function addToHtmlMous(){
                             <p class="bg-white rounded-3xl w-fit h-5 text-xs p-2 flex items-center justify-center font-semibold" style="color: #0056b3;">Global Partners</p>
                             <img src="img/Edit File.png" alt="" class="absolute top-5 right-5 h-6">
                             <p class="lg:text-2xl md:text-sm text-sm">${data[i].name}</p>
-                            <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,100)}...</p>
+                            <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,200)}...</p>
                             <div class="lg:w-24 lg:h-8 sm:w-20 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white lg:p-3 p-1" style="background: #154378;">
                                 <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section" target="_blank" class="">Read More</a>
                             </div>
