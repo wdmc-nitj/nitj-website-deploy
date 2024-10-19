@@ -29,9 +29,9 @@ function genTiles(dataset) {
         a.style.backgroundColor = (dataset[x].buttoncolor || dataset[x].color)+'88';
         a.style.borderColor = (dataset[x].buttoncolor || dataset[x].color);
         a.style.color = dataset[x].textcolor;
-        a.style.width = (!x%2 && x==dataset.length-1)?'50%':
+        a.style.width = (!x%2 && x==dataset.length-1)?'40%':
                         (
-                            sizeAlgo(x)?'50%':'40%'
+                            sizeAlgo(x)?'54%':'44%'
                         )
         a.classList.add('tile');
 
