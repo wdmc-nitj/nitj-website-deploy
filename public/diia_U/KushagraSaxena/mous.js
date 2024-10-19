@@ -90,13 +90,12 @@ function applyEffectToSection()
 
 async function fetchDataMous(){                      
     try{
-        const res = await fetch("/api/diia/mous")
+        const res = await fetch("https://nitjfinal.onrender.com/api/diia/mous")
         if(!res.ok)
         {
             throw new Error(`Status:${res.status}`)
         }
         const data = await res.json()
-        // console.log(data)
         return data
     }catch(err)
     {
@@ -116,7 +115,7 @@ async function addToHtmlMous(){
         for(let i = 0; i < data.length; i++)
         {
             // console.log("national")
-            if(data[i].type == "Indian Institutions")
+            if((data[i].type).toLowerCase() == "indian institutions")
                 {
                 count1 += 1 
                 national.innerHTML += `<div class=" section1 flex flex-none w-full gap-5 sm:flex-row flex-col">
@@ -131,12 +130,14 @@ async function addToHtmlMous(){
                         <img src="img/Edit File.png" alt="" class="absolute top-5 right-5 h-6">
                         <p class="lg:text-2xl md:text-sm text-sm">${data[i].name}</p>
                         <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,100)}...</p>
-                        <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section" target="_blank" class="underline">Read More</a>
+                        <div class="lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white p-3" style="background: #154378;">
+                            <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section" target="_blank" class="">Read More</a>
+                        </div>
                     </div>
                 </div>`
             }
 
-            else if(data[i].type == "Industry")
+            else if((data[i].type).toLowerCase() == "industry")
             {
                 count2 += 1 
                 industry.innerHTML += `<div class=" section2 flex flex-none w-full gap-5 sm:flex-row flex-col">
@@ -145,7 +146,9 @@ async function addToHtmlMous(){
                         <img src="Student Center (1).png" alt="" class="absolute top-5 right-5 h-6">
                         <p class="lg:text-2xl md:text-sm text-sm">${data[i].name}</p>
                         <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,100)}...</p>
-                        <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section" target="_blank"  class="underline">Read More</a>
+                        <div class="lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white p-3" style="background: #154378;">
+                            <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section" target="_blank" class="">Read More</a>
+                        </div>
                     </div>
                     <div class="relative sm:w-2/3 w-full">
                         <img src=${data[i].Image} alt="" class="image rounded-xl w-full" >
@@ -156,7 +159,7 @@ async function addToHtmlMous(){
                 </div>`
             }
 
-            else if(data[i].type == "International Institutions")
+            else if((data[i].type).toLowerCase() == "international institutions")
             {
                 count3 += 1  
                 international.innerHTML += `<div class=" section3 flex flex-none w-full gap-5 sm:flex-row flex-col">
@@ -171,7 +174,9 @@ async function addToHtmlMous(){
                         <img src="img/Edit File.png" alt="" class="absolute top-5 right-5 h-6">
                         <p class="lg:text-2xl md:text-sm text-sm">${data[i].name}</p>
                         <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,100)}...</p>
-                        <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section"  target="_blank" class="underline">Read More</a>
+                        <div class="lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white p-3" style="background: #154378;">
+                            <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section" target="_blank" class="">Read More</a>
+                        </div>
                     </div>
                 </div>`
             }
