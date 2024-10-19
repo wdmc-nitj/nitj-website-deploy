@@ -55,6 +55,7 @@ function renderImage(index) {
   );
 
   const titleElement = document.createElement("div");
+  // class="text-2xl text-center text-white uppercase lg:text-4xl"
   titleElement.classList.add(
     "absolute",
     "bottom-20",
@@ -62,10 +63,16 @@ function renderImage(index) {
     "transform",
     "-translate-x-1/2",
     "text-white",
-    "text-xl",
+    "text-2xl",
+    "uppercase",
     "font-bold",
+    "lg:text-4xl",
     "leading-none",
-    "p-2"
+    "p-2",
+    "whitespace-nowrap",
+    "underline",
+    // "m-25",
+    // "border-solid","border-red", "border-[10px]"
   );
   titleElement.textContent = images[index].title;
 
