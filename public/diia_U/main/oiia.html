@@ -60,6 +60,7 @@
       }
       .myborder {
         width:95% !important;
+        max-width: 1500px;
         margin: auto;
       }
      </style>
@@ -73,11 +74,11 @@
         
     <!-- Container for Image Slider and Quick Links -->
 <div class="relative h-screen flex flex-col">
-      <h1
+      <!-- <h1
         class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-40"
       >
         Bridging Global Academia
-      </h1>
+      </h1> -->
       <div
         class="relative w-full h-[75%] sm:h-[75%] md:h-[100%] overflow-hidden z-30"
       >
@@ -183,10 +184,10 @@
 
 <!-- Deans Message -->
 <div id="dean-div" class="myborder">
-  <div class="container flex sm:flex-row flex-col items-center justify-center sm:gap-0 pt-8 m-auto text-justify p-1" style="gap:10px">
+  <div class="container flex sm:flex-row flex-col items-center justify-center sm:gap-0 pt-8 m-auto text-justify p-5" style="gap:10px">
     <div class="imageSection">
         <div class="imageDiv p-6">
-            <img src="./assets/deansMessage/image 5.png" class="image rounded-3xl image-shadow " alt="">
+            <img class="image rounded-3xl image-shadow " alt="">
         </div>
         <div class="box flex flex-col justify-center items-center">
             <p class="font-semibold text-sm accent">Loading...</p>
@@ -196,17 +197,18 @@
     <div class="message xl:pt-5 mr-0 flex flex-col justify-start gap-5">
         <div class="head flex flex-row gap-5 items-center">
             <h1 class="accent font-bold text-3xl">DEAN's MESSAGE</h1>
-            <img src="assets\deansMessage\Autograph.png" class="w-14 h-10" alt="">
+            <!-- <img src="assets\deansMessage\Autograph.png" class="w-14 h-10" alt=""> -->
+             <i class="fa-regular fa-message text-3xl"></i>
         </div>
         <div class="content accent">
             <p class="lg:text-lg md:text-sm">Loading...</p>
         </div>
-        <div class="w-full flex items-center justify-baseline">
+        <!-- <div class="w-full flex items-center justify-baseline">
           <div class="readMore flex flex-row items-center gap-2">
               <a href="" class="font-bold p-3">Read More</a>
               <img src="./assets/deansMessage/Arrow 5.png" alt="" class="w-5 h-1">
           </div>
-        </div>
+        </div> -->
       </div>
 </div>
  </div>
@@ -224,21 +226,21 @@
       </div>
       <div class="sm:ml-24 cards flex sm:flex-row flex-col gap-5 items-center justify-center">
           <div class="card1 lg:w-48 lg:h-48 sm:w-32 sm:h-32 p-5 w-11/12 h-48 text-center rounded-lg flex flex-col gap-2 items-center justify-center" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%)">
-              <p class="rank text-white lg:text-lg sm:text-sm"></p>
-              <img src="./assets/rankings/Graph.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5">
+            <p class="rank text-white lg:text-lg sm:text-sm overflow-y-clip"></p>
+            <img src="./assets/rankings/Graph.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5">
           </div>
           <div class="flex flex-col sm:gap-3 gap-6 h-48 items-center justify-center">
               <div class="card2 lg:w-64 lg:h-24 sm:w-48 sm:h-14 h-24 w-11/12 p-5 text-center rounded-lg flex flex-row items-center justify-center" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%);">
-                  <p class="rank text-white lg:text-lg sm:text-sm"></p>
-                  <img src="./assets/rankings/Medal First Place.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5">
+                <p class="rank text-white lg:text-lg sm:text-sm overflow-y-clip"></p>
+                <img src="./assets/rankings/Medal First Place.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5">
               </div>
               <div class="card3  lg:w-64 lg:h-24 sm:w-48 sm:h-14 h-24 w-11/12 p-5 text-center rounded-lg flex flex-row items-center justify-center gap-2" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%);">
                   <img src="./assets/rankings/Army Star.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5">
-                  <p class="rank text-white lg:text-lg sm:text-sm">It is dummy data</p>
+                  <p class="rank text-white lg:text-lg sm:text-sm overflow-y-clip"></p>
               </div>
           </div>
           <div class="card4 lg:w-48 lg:h-48 sm:w-32 sm:h-32 h-48 w-11/12 p-5 text-center rounded-lg flex flex-col items-center justify-center relative" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%);">
-              <p class="rank text-white lg:text-lg sm:text-sm">It is dummy data</p>
+              <p class="rank text-white lg:text-lg sm:text-sm overflow-y-clip"></p>
               <div class="absolute bottom-0 right-0 lg:w-20 lg:h-9 sm:w-16 sm:h-6 p-1 rounded-tl-lg" style="background:#1A4D89;">
                   <div class="lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white" style="background: #406DA2;">
                       <a href="/admin/ranking.html" target="_blank">Read More</a>
@@ -277,7 +279,7 @@
       </div>
 
     <!-- MOUS -->
-     <div id="MOU-div">
+    <div id="MOU-div">
       <style>
         
         .scrollbar-custom::-webkit-scrollbar {
@@ -337,7 +339,7 @@
 
     </style>
       <div class="w-full h-full flex justify-center items-center m-auto" style="background: #154378;">
-        <div class="myborder p-12 pt-[100px] flex flex-col justify-center items-center xl:w-4/5 gap-10 h-full">
+        <div class="myborder pt-[100px] flex flex-col justify-center items-center xl:w-4/5 gap-10 h-full">
             <div class="head flex flex-row gap-2 p-2 rounded-tl-2xl rounded-br-2xl" style="border: 2px solid white; color: white;">
                 <p class=" font-bold text-4xl ">NITJ</p>
                 <p class=" font-light text-4xl ">MOU's</p>
@@ -345,7 +347,7 @@
             <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 flex sectionContainer international w-full h-full ">            </div>
             <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 flex sectionContainer industry w-full h-full ">            </div>        
             <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 sectionContainer national w-full h-full flex">            </div>
-            <div class="linkMOU">
+            <div class="linkMOU pb-[100px]">
                 <a href="https://www.nitj.ac.in/template/index.html?id=64bf68ff2325112eba21be22?category=newpage"  target="_blank" class="text-white font-bold view-all-MOU" style=" padding: 10px; border-radius: 5px;">View all MOU's</a>
             </div>
         </div>
@@ -532,9 +534,9 @@
             <div class="testimonial-row" style="width: 100%;">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>
-                            <a class="cursor-pointer font-medium text-sky-500 hover:text-sky-600">
-                                Read More →</a>
+                        <p style="text-align: justify;">
+                          <a class="cursor-pointer whitespace-nowrap font-medium text-sky-500 hover:text-sky-600">
+                              Read More →</a>
                         </p>
                     </div>
                     <div class="testimonial-footer">
@@ -552,9 +554,9 @@
             <div class="testimonial-row" style="width: 100%;">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>
-                            <a class="cursor-pointer font-medium text-sky-500 hover:text-sky-600">
-                                Read More →</a>
+                        <p style="text-align: justify;">
+                          <a class="cursor-pointer whitespace-nowrap font-medium text-sky-500 hover:text-sky-600">
+                              Read More →</a>
                         </p>
                     </div>
                     <div class="testimonial-footer">

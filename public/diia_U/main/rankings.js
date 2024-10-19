@@ -18,10 +18,12 @@ async function addToHtmlRanking(){
     let rank = document.getElementsByClassName("rank")
     try{
         let data = await fetchDataRanking()
-        console.log(data)
         for(let i = 0; i < data.length; i++)
         {
-            rank[i].innerHTML = `${data[i].description}`
+            if(data[i].show === true)
+            {
+                rank[data[i].order].innerHTML = `${data[i].description.substring(0,40)}...`
+            }
         }
     }
     catch(err)
