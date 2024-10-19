@@ -15,20 +15,15 @@ function animateNumber(id, start, end, duration) {
     }, stepTime);
 }
 
-// Parallax effect
-function applyParallaxEffect() {
-    window.addEventListener('scroll', function () {
-        const scrollPosition = window.pageYOffset;
-        document.querySelector('.numbers-section').style.backgroundPositionY = `${scrollPosition * 0.5}px`;
-    });
-}
 
-
+// Fetch data and render it
 
 
 async function fetchData() {
+    console.log("yes i am in fetch function")
     try {
         const response = await fetch("/api/diia/numbers"); // Use const url for the fetch
+        console.log(response);
         const data = await response.json();
         renderNumbers(data);
     } catch (error) {
@@ -36,7 +31,7 @@ async function fetchData() {
     }
 }
 
-
+// Render numbers dynamically and animate them
 function renderNumbers(data) {
     const numbersSection = document.querySelector('.numbers-section');
     numbersSection.innerHTML = ''; // Clear existing content
@@ -45,16 +40,17 @@ function renderNumbers(data) {
         const numberItem = document.createElement('div');
         numberItem.classList.add('number-item');
         
+        // Choose different icons based on the item title
         let iconClass;
         switch (item.title.toLowerCase()) {
             case 'mous':
                 iconClass = 'fa-graduation-cap';
                 break;
-            case 'research collaborations':
-                iconClass = 'fa-users';
-                break;
-            case 'delegate visits':
-                iconClass = 'fa-briefcase';
+                case 'research collaborations':
+                    iconClass = 'fa-users';
+                    break;
+                    case 'delegate visits':
+                        iconClass = 'fa-briefcase';
                 break;
             default:
                 iconClass = 'fa-question'; // Default icon
@@ -67,7 +63,15 @@ function renderNumbers(data) {
         `;
         numbersSection.appendChild(numberItem);
     });
-
+    // Parallax effect
+    function applyParallaxEffect() {
+        console.log("i am in parallax");
+        window.addEventListener('scroll', function () {
+            const scrollPosition = window.pageYOffset;
+            document.querySelector('.numbers-section').style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+        });
+    }
+    
     // Animate numbers after rendering
     data.forEach(item => {
         animateNumber(
