@@ -12,7 +12,32 @@ async function fetchDataMous(){
         console.log("failed:",err)
     }
 }
+async function addNavbar(){
+    let navbar = await fetch("/diia_U/AshutoshDevgotra/navbar.html")
+    let navbarData = await navbar.text()
+    document.getElementById("navbar").innerHTML = navbarData
 
+    let script = document.createElement("script")
+    script.src = "/diia_U/AshutoshDevgotra/script.js"
+
+    document.body.appendChild(script)
+}
+async function addFooter(){
+    let footer = await fetch("/diia_U/Divyansh/footer.html")
+    let footerData = await footer.text()
+    document.getElementById("footer").innerHTML = footerData
+
+    let script = document.createElement("script")
+    script.src = "/diia_U/Divyansh/fscript.js"
+
+    document.body.appendChild(script)
+
+    let stylesheet = document.createElement("link")
+    stylesheet.rel = "stylesheet"
+    stylesheet.href = "/diia_U/Divyansh/fstyles.css"
+    document.head.appendChild(stylesheet)
+
+}
 async function addToHtmlMous(){
     let national = document.getElementsByClassName("cardContainerNational")[0]
     let industry = document.getElementsByClassName("cardContainerIndustry")[0]
@@ -27,16 +52,20 @@ async function addToHtmlMous(){
                 count1 += 1
                 if((data[i].type).toLowerCase() === "indian institutions")
                 {
-                    national.innerHTML += `<div class="card w-full min-h-[270px] bg-blue-100 flex flex-col gap-10 rounded-2xl p-5">
+                    national.innerHTML += `<div class = "card relative w-full min-h-[300px] flex flex-col gap-5 rounded-2xl p-5" style = "border: 2px solid #1A4D89">
                     <p class="text-2xl font-semibold">${data[i].name}</p>
-                    <div class="text-lg flex flex-col gap-2">
-                        <p>${(String(data[i].Poc) !== "undefined")?"POC: "+data[i].Poc:""}</p>
-                        <p>${(String(data[i].location) !== "undefined")?data[i].location:""}</p>
-                        <p>${(String(data[i].location) !== "undefined")?"Starting Date: "+ data[i].startingDate:""}</p>
-                        <p>${(String(data[i].location) !== "undefined")?"Ending Date: "+ data[i].endingDate:""}</p>
+                    <div class="text-lg flex flex-col gap-2 mb-10">
+                        <p class="text-blue-700">${(String(data[i].Poc) !== "undefined" && String(data[i].Poc) !== "")?`<i class="fa-solid fa-user mr-4" ></i>POC: `+ data[i].Poc:""}</p>
+
+                        <p class="text-green-700">${(String(data[i].startingDate && String(data[i].startingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar mr-4"></i>Starting Date: `+ data[i].startingDate.substring(0,10):""}</p>
+
+                        <p class="text-red-700">${(String(data[i].endingDate && String(data[i].endingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar-check mr-4"></i>Ending Date: `+ data[i].endingDate.substring(0,10):""}</p>
+
+                        <p class="text-yellow-700">${(String(data[i].location) !== "undefined" && String(data[i].location) !== "")?`<i class="fa-solid fa-location-dot mr-4"></i>Location: ${data[i].location}`:""}</p>
                     </div>
-                    <div class="lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white lg:p-3 p-1" style="background: #154378;">
+                    <div class="absolute bottom-3 lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center gap-2 text-white lg:p-3 p-1" style="background: #154378;">
                         <a href="">MOU</a>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>
                 </div>`
                 }
@@ -44,16 +73,20 @@ async function addToHtmlMous(){
                 else if((data[i].type).toLowerCase() === "industry")
                 {
                     count2 += 1
-                    industry.innerHTML += `<div class="card w-full min-h-[270px] bg-blue-100 flex flex-col gap-10 rounded-2xl p-5">
+                    industry.innerHTML += `<div class = "card relative w-full min-h-[300px] flex flex-col gap-5 rounded-2xl p-5" style = "border: 2px solid #1A4D89">
                     <p class="text-2xl font-semibold">${data[i].name}</p>
-                                        <div class="text-lg flex flex-col gap-2">
-                        <p>${(String(data[i].Poc) !== "undefined")?"POC: "+data[i].Poc:""}</p>
-                        <p>${(String(data[i].location) !== "undefined")?data[i].location:""}</p>
-                        <p>${(String(data[i].location) !== "undefined")?"Starting Date: "+ data[i].startingDate:""}</p>
-                        <p>${(String(data[i].location) !== "undefined")?"Ending Date: "+ data[i].endingDate:""}</p>
+                    <div class="text-lg flex flex-col gap-2 mb-10">
+                        <p class="text-blue-700">${(String(data[i].Poc) !== "undefined" && String(data[i].Poc) !== "")?`<i class="fa-solid fa-user mr-4" ></i>POC: `+ data[i].Poc:""}</p>
+
+                        <p class="text-green-700">${(String(data[i].startingDate && String(data[i].startingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar mr-4"></i>Starting Date: `+ data[i].startingDate.substring(0,10):""}</p>
+
+                        <p class="text-red-700">${(String(data[i].endingDate && String(data[i].endingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar-check mr-4"></i>Ending Date: `+ data[i].endingDate.substring(0,10):""}</p>
+
+                        <p class="text-yellow-700">${(String(data[i].location) !== "undefined" && String(data[i].location) !== "")?`<i class="fa-solid fa-location-dot mr-4"></i>Location: ${data[i].location}`:""}</p>
                     </div>
-                    <div class="lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white lg:p-3 p-1" style="background: #154378;">
+                    <div class="absolute bottom-3 lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center gap-2 text-white lg:p-3 p-1" style="background: #154378;">
                         <a href="">MOU</a>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>
                 </div>`
                 }
@@ -61,16 +94,20 @@ async function addToHtmlMous(){
                 else if((data[i].type).toLowerCase() == "international institutions")
                 {
                     count3 += 1
-                    international.innerHTML += `<div class="card w-full min-h-[270px] bg-blue-100 flex flex-col gap-10 rounded-2xl p-5">
+                    international.innerHTML += `<div class = "card relative w-full min-h-[300px] flex flex-col gap-5 rounded-2xl p-5" style = "border: 2px solid #1A4D89">
                     <p class="text-2xl font-semibold">${data[i].name}</p>
-                                        <div class="text-lg flex flex-col gap-2">
-                        <p>${(String(data[i].Poc) !== "undefined")?"POC: "+data[i].Poc:""}</p>
-                        <p>${(String(data[i].location) !== "undefined")?data[i].location:""}</p>
-                        <p>${(String(data[i].location) !== "undefined")?"Starting Date: "+ data[i].startingDate:""}</p>
-                        <p>${(String(data[i].location) !== "undefined")?"Ending Date: "+ data[i].endingDate:""}</p>
+                    <div class="text-lg flex flex-col gap-2 mb-10">
+                        <p class="text-blue-700">${(String(data[i].Poc) !== "undefined" && String(data[i].Poc) !== "")?`<i class="fa-solid fa-user mr-4" ></i>POC: `+ data[i].Poc:""}</p>
+
+                        <p class="text-green-700">${(String(data[i].startingDate && String(data[i].startingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar mr-4"></i>Starting Date: `+ data[i].startingDate.substring(0,10):""}</p>
+
+                        <p class="text-red-700">${(String(data[i].endingDate && String(data[i].endingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar-check mr-4"></i>Ending Date: `+ data[i].endingDate.substring(0,10):""}</p>
+
+                        <p class="text-yellow-700">${(String(data[i].location) !== "undefined" && String(data[i].location) !== "")?`<i class="fa-solid fa-location-dot mr-4"></i>Location: ${data[i].location}`:""}</p>
                     </div>
-                    <div class="lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white lg:p-3 p-1" style="background: #154378;">
+                    <div class="absolute bottom-3 lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center gap-2 text-white lg:p-3 p-1" style="background: #154378;">
                         <a href="">MOU</a>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>
                 </div>`
                 }
@@ -97,5 +134,7 @@ async function addToHtmlMous(){
 }
 
 window.addEventListener('DOMContentLoaded', async()=>{
-    await addToHtmlMous()
+    await addToHtmlMous(),
+    await addNavbar(),
+    await addFooter()
 })
