@@ -30,7 +30,8 @@ function genLogo() {
   img.setAttribute("alt", "logo");
 
   let spanStyle =
-    "text-[8px] whitespace-nowrap md:text-[10px] lg:text-[14px] font-barlow font-bold text-blue-900 items-center custom-font-reduce mr-5";
+    // "text-[8px] whitespace-nowrap md:text-[10px] lg:text-[14px] font-barlow font-bold text-blue-900 items-center custom-font-reduce mr-5";
+    "sm:max-w-lg sm:basis-1/2 justify-center whitespace-nowrap px-8 text-center sm:text-xl font-bold uppercase hidden sm:block text-blue-900"
   let span = document.createElement("span");
   span.setAttribute("class", spanStyle);
   span.innerHTML = "OFFICE OF INDUSTRY AND INTERNATIONAL AFFAIRS";
@@ -86,8 +87,10 @@ function genDropdowns(edata) {
   let a = document.createElement("a");
   a.setAttribute(
     "class",
-    "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase flex items-center custom-font-reduce text-base font-medium text-[#00387A]"
+    "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase "+
+    "flex items-center custom-font-reduce text-base font-medium text-[#00387A]"
   );
+  a.style.fontSize = '1vw'
   a.setAttribute("href", edata.link);
   a.innerHTML = edata.title + '<i class="fa p-1 fa-chevron-down"></i>';
 
@@ -209,7 +212,7 @@ async function genNav() {
   navbarDiv.setAttribute("id", "nav-bar");
   navbarDiv.setAttribute(
     "class",
-    "flex items-center hidden md:flex md:text-sm h-fit gap-3 md:gap-3 lg:gap-10 custom-font-reduce"
+    "flex items-center hidden md:flex md:text-sm h-fit gap-[0.5vw] custom-font-reduce"
   );
   navbarDiv.appendChild(genHomeButton());
 
