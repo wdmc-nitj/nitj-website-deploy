@@ -74,7 +74,7 @@ body {
     z-index: 10;
 }
 
-.heading {
+/* .heading {
     font-size: 2rem;
     font-weight: 800;
     color: #0056b3;
@@ -82,9 +82,9 @@ body {
     letter-spacing: -1.5px;
     line-height: 1.2;
     position: relative;
-}
+} */
 
-.heading::after {
+/* .heading::after {
     content: '';
     display: block;
     width: 60px;
@@ -92,7 +92,7 @@ body {
     background: #007bff;
     margin: 1rem auto;
     border-radius: 2px;
-}
+} */
 
 @media only screen and (max-width: 950px) {
     /* .mapContainer {
