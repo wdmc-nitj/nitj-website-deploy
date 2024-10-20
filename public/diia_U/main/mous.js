@@ -189,7 +189,7 @@ async function addToHtmlMous(){
                             </div>
                         </div>
                         <div class="relative card sm:w-1/2 flex flex-col p-6 rounded-2xl lg:gap-7 gap-5   scrollbar-custom text-white" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.2686) -84.93%, rgba(153, 153, 153, 0.1598) 203.85%);">
-                            <p class="bg-white rounded-3xl w-fit h-5 text-xs p-3flex items-center justify-center font-semibold" style="color: #0056b3;">Global Partners</p>
+                            <p class="bg-white rounded-3xl w-fit h-5 text-xs p-3 flex items-center justify-center font-semibold" style="color: #0056b3;">Global Partners</p>
                             <img src="img/Edit File.png" alt="" class="absolute top-5 right-5 h-6">
                             <p class="lg:text-2xl md:text-sm text-sm">${data[i].name}</p>
                             <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,200)}...</p>
