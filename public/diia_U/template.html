@@ -59,7 +59,6 @@
         width: 60%;
         height: auto;
         margin-top: 1rem;
-
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         margin-bottom: 2rem;
@@ -105,7 +104,7 @@
         margin-bottom: 2rem;
       }
     </style>
-    <script>
+    <!-- <script>
       document.addEventListener("DOMContentLoaded", function () {
         fetch("../diia_U/AshutoshDevgotra/navbar.html")
           .then((response) => response.text())
@@ -113,10 +112,11 @@
             document.getElementById("navbar").innerHTML = data;
           });
       });
-    </script>
+    </script> -->
   </head>
-  <body class="bg-gray-100">
-    <p id="navbar"></p>
+  <script src="../diia_U/main/navscript.js"></script>
+  <body class="bg-gray-100 w-full">
+    <!-- <p id="navbar"></p> -->
     <!-- Header with Changing Background Image -->
 
     <header
@@ -129,20 +129,28 @@
       ></div>
 
       <!-- Dark Overlay -->
-      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <div class="absolute inset-0 bg-black opacity-35"></div>
+
       <!-- Single Heading -->
-      <div class="absolute z-10 header-heading" id="headerHeading"></div>
-    </header>
-    <!-- Navigation heading -->
-    <div>
+
       <nav
-        class="flex px-4 lg:px-[4rem] bg-gray-200 py-[8px] text-black"
+        class="header-heading text-xl md:text-3xl w-full z-10 lg:max-w-[1200px] mx-auto"
+        id="headerHeading"
+      >
+        <!-- Content here -->
+      </nav>
+    </header>
+
+    <!-- Navigation heading -->
+    <div class="bg-gray-200">
+      <nav
+        class="flex px-4 lg:px-[4rem] bg-gray-200 py-[8px] text-black lg:max-w-[1200px] mx-auto"
         aria-label="Breadcrumb"
       >
-        <ol class="container w-full inline-flex items-center">
+        <ol class="container inline-flex items-center">
           <li class="inline-flex items-center">
             <a
-              href=""
+              href="javascript:void(0)"
               class="inline-flex items-center text-sm font-medium hover:text-gray-900"
             >
               <a href="../index.html" class="text-lg font-medium ml-2">Home</a>
@@ -150,7 +158,7 @@
           </li>
           <li aria-current="page">
             <i
-              style="color: grey; font-size: 12px; margin-left: 12px"
+              style="color: #808080; font-size: 12px; margin-left: 12px"
               class="fa-solid fa-angle-right ml-2"
             ></i>
             <a
@@ -164,7 +172,9 @@
     </div>
 
     <!-- News Section -->
-    <div class="w-full flex flex-col items-start px-4 lg:px-[4rem]">
+    <div
+      class="w-full flex flex-col items-start px-4 lg:px-[4rem] lg:max-w-[1200px] mx-auto"
+    >
       <p
         id="title"
         class="font2 font-medium text-[28px] lg:text-[32px] leading-tight my-2 border-b-2 border-[#0369a0]"
@@ -172,10 +182,11 @@
         Latest Events
       </p>
 
-      <div id="event-container" class="w-full mt-5">
+      <div id="event-container" class="w-full mt-5 mb-[2rem]">
         <!-- Event items will be inserted here dynamically -->
       </div>
     </div>
+    <script src="../diia_U/main/footerscript.js"></script>
     <script src="./template.js"></script>
   </body>
 </html>

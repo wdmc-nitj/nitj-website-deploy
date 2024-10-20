@@ -4,7 +4,7 @@ const url = "https://nitjfinal.onrender.com";
 // const furl= "https://nitjfinal.onrender.com";
 // async function fetchData() {
 //   try {
-//     const response = await fetch(`${url}/api/diia/news-section`);
+//     const response = await fetch(`${url}/api/diia/opportunities`);
 //     if (!response.ok) {
 //       throw new Error(`Network response was not ok: ${response.status}`);
 //     }
@@ -85,7 +85,7 @@ function updateSlider() {
 
   document.getElementById(
     "headingLink"
-  ).href = `/diia_U/template.html?id=${currentImage._id}?category=news-section`;
+  ).href = `/diia_U/template.html?id=${currentImage._id}?category=opportunities`;
 
   document.querySelectorAll("#indicators span").forEach((indicator, index) => {
     indicator.classList.toggle("bg-white", index === currentIndex);
@@ -110,7 +110,7 @@ function populateList(data) {
     const link = document.createElement("a");
     link.className =
       "underline underline-offset-4 decoration-accent decoration-0 hover:decoration-2 text-lg";
-    link.href = `/diia_U/template.html?id=${item._id}?category=news-section`;
+    link.href = `/diia_U/template.html?id=${item._id}?category=opportunities`;
     link.textContent = item.title1;
 
     const newTagDiv = document.createElement("div");
