@@ -16,37 +16,48 @@
         <title>MOU Summary</title>
     </head>
 <body>
-    <p id="navbar"></p>
-    <div class="p-5 container flex flex-col gap-12 mt-20 bg-gray-100" style="font-family: Barlow; overflow-x: hidden;">
-        <div class="international w-full flex flex-col items-center justify-center gap-5">
-            <div class="head flex flex-row gap-3 text-3xl w-fit text-center rounded-tl-2xl rounded-br-2xl p-2" style="border: 3px solid #1A4D89; color: #1A4D89;">
-                <p class="font-bold">International</p>
-                <p>MOU's</p>
+    <script src="../main/navscript.js"></script>
+
+    <div class="relative w-full h-56 flex items-center justify-center mt-12">
+        <div class="absolute inset-0 w-full h-full" style="background: url(Common\ template.jpg); background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
+        <div class="absolute inset-0 bg-black opacity-35"></div>
+    </div>
+    <div class="flex bg-gray-200 text-black w-full h-full py-[8px] px-[4px]">
+        <a href="../index.html" class="text-lg font-medium lg:ml-56 sm:ml-32 ml-10">Home > </a>
+    </div> 
+    
+    <div class="w-full flex flex-col justify-center items-center">
+        <div class="p-5 w-full container flex flex-col gap-12 bg-gray-100 items-center justify-center" style="font-family: Barlow; overflow-x: hidden;">
+            <div class="international w-full flex flex-col items-center justify-center gap-5">
+                <div class="head flex flex-row gap-3 text-3xl w-fit text-center rounded-tl-2xl rounded-br-2xl p-2" style="border: 3px solid #1A4D89; color: #1A4D89;">
+                    <p class="font-bold">International</p>
+                    <p>MOU's</p>
+                </div>
+                <div class="cardContainerInternational grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 sm:p-12 p-5">
+                    
+                </div>
             </div>
-            <div class="cardContainerInternational grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 sm:p-12 p-5">
-                
+            <div class="industry w-full flex flex-col items-center justify-center gap-5">
+                <div class="head flex flex-row gap-3 text-3xl w-fit text-center rounded-tl-2xl rounded-br-2xl p-2" style="border: 3px solid #1A4D89; color: #1A4D89;">
+                    <p class="font-bold">Industry</p>
+                    <p>MOU's</p>
+                </div>
+                <div class="cardContainerIndustry grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 sm:p-12 p-5">
+                    
+                </div>
             </div>
-        </div>
-        <div class="industry w-full flex flex-col items-center justify-center gap-5">
-            <div class="head flex flex-row gap-3 text-3xl w-fit text-center rounded-tl-2xl rounded-br-2xl p-2" style="border: 3px solid #1A4D89; color: #1A4D89;">
-                <p class="font-bold">Industry</p>
-                <p>MOU's</p>
-            </div>
-            <div class="cardContainerIndustry grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 sm:p-12 p-5">
-                
-            </div>
-        </div>
-        <div class="national w-full flex flex-col items-center justify-center gap-5">
-            <div class="head flex flex-row gap-3 text-3xl w-fit text-center rounded-tl-2xl rounded-br-2xl p-2" style="border: 3px solid #1A4D89; color: #1A4D89;">
-                <p class="font-bold">National</p>
-                <p>MOU's</p>
-            </div>
-            <div class="cardContainerNational grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 sm:p-12 p-5">
-                
+            <div class="national w-full flex flex-col items-center justify-center gap-5">
+                <div class="head flex flex-row gap-3 text-3xl w-fit text-center rounded-tl-2xl rounded-br-2xl p-2" style="border: 3px solid #1A4D89; color: #1A4D89;">
+                    <p class="font-bold">National</p>
+                    <p>MOU's</p>
+                </div>
+                <div class="cardContainerNational grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 sm:p-12 p-5">
+                    
+                </div>
             </div>
         </div>
     </div>
-    <p id="footer"></p>
+    <script src="../main/footerscript.js"></script>
     <script src="mouSummary.js"></script>
 </body>
 </html>

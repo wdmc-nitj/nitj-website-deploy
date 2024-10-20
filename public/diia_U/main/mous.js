@@ -84,14 +84,23 @@ function applyEffectToSection()
             elements2[i].childNodes[0].parentNode.insertBefore(elements2[i].childNodes[3],elements2[i].childNodes[0])   
             // elements2[0].parentNode.insertBefore(elements2_2[3],elements2_2[1])   
             // elements3[0].parentNode.insertBefore(elements3[3],elements3[1])  
-            console.log(elements2[i].childNodes) 
+            // console.log(elements2[i].childNodes) 
+        }
+
+        let background = document.getElementsByClassName("background")
+        console.log("MOU",background)
+        for(let i of background)
+        {
+            i.classList.add("h-[200px]")
+            // console.log(i)
         }
     }
+
 }
 
 async function fetchDataMous(){                      
     try{
-        const res = await fetch("https://nitjfinal.onrender.com/api/diia/mous")
+        const res = await fetch("/api/diia/mous")
         if(!res.ok)
         {
             throw new Error(`Status:${res.status}`)
@@ -114,13 +123,13 @@ async function addToHtmlMous(){
         for(let i = 0; i < data.length; i++)
         {
             // console.log("national")
-            if(data[i].showInSlider === true && (data[i].Image !== undefined))
+            if(data[i].showInSlider === true && (data[i].Image !== undefined || data[i].Image == ""))
             {
                 if((data[i].type).toLowerCase() == "indian institutions")
                     {
                     count1 += 1 
                     national.innerHTML += `<div class="section1 flex flex-none w-full gap-5 sm:flex-row flex-col">
-                        <div class="w-full sm:h-[350px] h-[200px] relative rounded-xl" 
+                        <div class="background w-full relative rounded-xl" 
                                                     style = "background: url(${data[i].Image});
                                                             background-size: cover; 
                                                             background-position: center; 
@@ -129,11 +138,11 @@ async function addToHtmlMous(){
                                 <p class = "text-white text-center lg:text-2xl md:text-xl text-sm font-semibold rounded-xl"  style="background: linear-gradient(180deg, rgba(53, 99, 154, 0.05) 0%, rgba(53, 99, 154, 0.82));">${(String(data[i].location) !== "undefined")?data[i].location:""}</p>
                             </div>
                         </div>
-                        <div class="relative card sm:w-1/2 flex flex-col p-6 rounded-2xl lg:gap-7  gap-5 transition-all duration-400 ease-in-out-expo scrollbar-custom text-white" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.2686) -84.93%, rgba(153, 153, 153, 0.1598) 203.85%);">
+                        <div class="relative card sm:w-1/2 flex flex-col p-6 rounded-2xl lg:gap-7  gap-5 transition-all duration-400 ease-in-out-expo scrollbar-custom text-white" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.2686) -84.93%, rgba(153, 153, 153, 0.1598) 203.85%); ">
                             <p class="bg-white rounded-3xl w-fit h-5 text-xs p-3 flex items-center justify-center font-semibold" style="color: #0056b3;">Indian Institutions</p>
                             <img src="img/Edit File.png" alt="" class="absolute top-5 right-5 h-6">
                             <p class="lg:text-2xl md:text-sm text-sm">${data[i].name}</p>
-                            <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,100)}...</p>
+                            <p class="lg:text-sm text-xs lg:h-full h-8 overflow-clip">${data[i].description.substring(0,200)}...</p>
                             <div class="lg:w-24 lg:h-8 sm:w-20 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white lg:p-3 p-1" style="background: #154378;">
                                 <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section" target="_blank" class="">Read More</a>
                             </div>
@@ -149,12 +158,12 @@ async function addToHtmlMous(){
                             <p class="bg-white rounded-3xl w-fit h-5 text-xs p-3 flex items-center justify-center font-semibold" style="color: #0056b3;">Industry Partners</p>
                             <img src="Student Center (1).png" alt="" class="absolute top-5 right-5 h-6">
                             <p class="lg:text-2xl md:text-sm text-sm">${data[i].name}</p>
-                            <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,100)}...</p>
+                            <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,200)}...</p>
                             <div class="lg:w-24 lg:h-8 sm:w-20 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white lg:p-3 p-1" style="background: #154378;">
                                 <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section" target="_blank" class="">Read More</a>
                             </div>
                         </div>
-                        <div class="w-full sm:h-[350px] h-[200px] relative rounded-xl" 
+                        <div class="background w-full relative rounded-xl" 
                                                     style = "background: url(${data[i].Image});
                                                             background-size: cover; 
                                                             background-position: center; 
@@ -170,7 +179,7 @@ async function addToHtmlMous(){
                 {
                     count3 += 1  
                     international.innerHTML += `<div class=" section3 flex flex-none w-full gap-5 sm:flex-row flex-col">
-                        <div class="w-full sm:h-[350px] h-[200px] relative rounded-xl" 
+                        <div class="background w-full relative rounded-xl" 
                                                     style = "background: url(${data[i].Image});
                                                             background-size: cover; 
                                                             background-position: center; 
@@ -183,7 +192,7 @@ async function addToHtmlMous(){
                             <p class="bg-white rounded-3xl w-fit h-5 text-xs p-3flex items-center justify-center font-semibold" style="color: #0056b3;">Global Partners</p>
                             <img src="img/Edit File.png" alt="" class="absolute top-5 right-5 h-6">
                             <p class="lg:text-2xl md:text-sm text-sm">${data[i].name}</p>
-                            <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,100)}...</p>
+                            <p class="lg:text-sm text-xs lg:h-full h-12 overflow-clip">${data[i].description.substring(0,200)}...</p>
                             <div class="lg:w-24 lg:h-8 sm:w-20 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white lg:p-3 p-1" style="background: #154378;">
                                 <a href="/diia_U/template.html?id=66db5b05fc2d772903adefc0?category=news-section" target="_blank" class="">Read More</a>
                             </div>
