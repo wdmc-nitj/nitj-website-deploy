@@ -1,6 +1,6 @@
 async function fetchDataRanking(){                      
     try{
-        const res = await fetch("https://nitjfinal.onrender.com/api/diia/rankings")
+        const res = await fetch("/api/diia/rankings")
         if(!res.ok)
         {
             throw new Error(`Status:${res.status}`)
@@ -16,13 +16,23 @@ async function fetchDataRanking(){
 
 async function addToHtmlRanking(){
     let rank = document.getElementsByClassName("rank")
+    console.log(window.innerWidth)
     try{
         let data = await fetchDataRanking()
         for(let i = 0; i < data.length; i++)
         {
             if(data[i].show === true)
             {
-                rank[data[i].order].innerHTML = `${data[i].description.substring(0,40)}...`
+                if(window.innerWidth > 425)
+                {
+                    rank[data[i].order].innerHTML = `${data[i].description.substring(0,50)}...`
+                }
+
+                else
+                {
+                    rank[data[i].order].innerHTML = `${data[i].description.substring(0,125)}...`
+                    console.log("Chnaged")
+                }
             }
         }
     }

@@ -3,8 +3,9 @@ function showTesti(d) {
         let cont = document.querySelectorAll('.testimonial-card')[i];
         cont.querySelectorAll('.testimonial-content')[0].querySelector('p')
             // .innerHTML = '"'+d[i].description.split(' ').slice(0,20).join(' ')+'..."'
-            .innerHTML = '"'+d[i].description.substring(0,150)+'..."'
+            .innerHTML = '"'+d[i].description.substring(0,250)+'..."'
                 +cont.querySelectorAll('.testimonial-content')[0].querySelector('p').innerHTML
+        cont.get
         cont.querySelectorAll('.testimonial-footer')[0]
             .querySelectorAll('h4')[0].innerHTML =  d[i].name
         cont.querySelectorAll('.testimonial-footer')[0]
