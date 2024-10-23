@@ -75,6 +75,7 @@ function renderImage(index) {
     // "border-solid","border-red", "border-[10px]"
   );
   titleElement.textContent = images[index].title;
+  console.log('identify hyperlink', images[index])
 
   imgContainer.appendChild(imgElement);
   imgContainer.appendChild(gradientOverlay);

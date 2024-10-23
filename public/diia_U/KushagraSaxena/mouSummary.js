@@ -1,6 +1,6 @@
 async function fetchDataMous(){                      
     try{
-        const res = await fetch("https://nitjfinal.onrender.com/api/diia/mous")
+        const res = await fetch("/api/diia/mous")
         if(!res.ok)
         {
             throw new Error(`Status:${res.status}`)
@@ -13,29 +13,29 @@ async function fetchDataMous(){
     }
 }
 async function addNavbar(){
-    let navbar = await fetch("/diia_U/AshutoshDevgotra/navbar.html")
-    let navbarData = await navbar.text()
-    document.getElementById("navbar").innerHTML = navbarData
+    // let navbar = await fetch("/diia_U/AshutoshDevgotra/navbar.html")
+    // let navbarData = await navbar.text()
+    // document.getElementById("navbar").innerHTML = navbarData
 
-    let script = document.createElement("script")
-    script.src = "/diia_U/AshutoshDevgotra/script.js"
+    // let script = document.createElement("script")
+    // script.src = "/diia_U/main/navscript.js"
 
-    document.body.appendChild(script)
+    // document.body.appendChild(script)
 }
 async function addFooter(){
-    let footer = await fetch("/diia_U/Divyansh/footer.html")
-    let footerData = await footer.text()
-    document.getElementById("footer").innerHTML = footerData
+    // let footer = await fetch("/diia_U/Divyansh/footer.html")
+    // let footerData = await footer.text()
+    // document.getElementById("footer").innerHTML = footerData
 
-    let script = document.createElement("script")
-    script.src = "/diia_U/Divyansh/fscript.js"
+    // let script = document.createElement("script")
+    // script.src = "/diia_U/Divyansh/fscript.js"
 
-    document.body.appendChild(script)
+    // document.body.appendChild(script)
 
-    let stylesheet = document.createElement("link")
-    stylesheet.rel = "stylesheet"
-    stylesheet.href = "/diia_U/Divyansh/fstyles.css"
-    document.head.appendChild(stylesheet)
+    // let stylesheet = document.createElement("link")
+    // stylesheet.rel = "stylesheet"
+    // stylesheet.href = "/diia_U/Divyansh/fstyles.css"
+    // document.head.appendChild(stylesheet)
 
 }
 async function addToHtmlMous(){
