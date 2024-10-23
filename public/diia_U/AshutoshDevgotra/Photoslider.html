@@ -129,85 +129,94 @@
       <img id="sliderImage" src="" alt="Selected Image" class="w-full h-auto object-contain max-h-[80vh] rounded-lg" />
 
       <!-- Left Arrow -->
-      <button class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-600 bg-opacity-50 p-7 rounded-full hover:bg-opacity-75 z-50" onclick="prevImage()">
-        <img src="./assets/chevron-left-svgrepo-com.svg" width="50" height="50" />
+      <button class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-600 bg-opacity-50 p-5 rounded-full hover:bg-opacity-75 z-50" onclick="prevImage()">
+        <img src="./assets/chevron-left-svgrepo-com.svg" width="25" height="25" />
       </button>
 
       <!-- Right Arrow -->
-      <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-600 bg-opacity-50 p-7 rounded-full hover:bg-opacity-75 z-50" onclick="nextImage()">
-        <img src="./assets/chevron-right-svgrepo-com.svg" width="50" height="50" />
+      <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-600 bg-opacity-50 p-5 rounded-full hover:bg-opacity-75 z-50" onclick="nextImage()">
+        <img src="./assets/chevron-right-svgrepo-com.svg" width="25" height="25" />
       </button>
 
     </div>
   </div>
 
-  <!-- JavaScript -->
-  <script src="navscript.js"></script> <!-- Include the navbar script -->
-  <script>
-    // Call the function to load the navbar when the page is loaded
-    window.onload = function() {
-      loadNavbar(); // Load the navbar
-    };
-  
-    // Function to load navbar.html into the div with id "navbar"
-    function loadNavbar() {
-      fetch('navbar.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('navbar').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading the navbar:', error));
+ <!-- JavaScript -->
+<script src="navscript.js"></script> <!-- Include the navbar script -->
+<script>
+  // Call the function to load the navbar when the page is loaded
+  window.onload = function() {
+    loadNavbar(); // Load the navbar
+  };
+
+  // Function to load navbar.html into the div with id "navbar"
+  function loadNavbar() {
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading the navbar:', error));
+  }
+
+  // Array of image sources
+  const images = [
+    './assets/director.png',
+    './assets/gdsc.png',
+    './assets/giddha.png',
+    './assets/dr. statue.png'
+  ];
+
+  let currentImageIndex = 0;
+
+  // Function to add blur effect to the rest of the page
+  function addBlur() {
+    const elementsToBlur = document.body.children;
+    for (let element of elementsToBlur) {
+      if (element.id !== 'imageModal') {
+        element.classList.add('blur');
+      }
     }
+    document.getElementById('overlay').classList.remove('hidden'); // Show the overlay
+  }
 
-    // Array of image sources
-    const images = [
-      './assets/director.png',
-      './assets/gdsc.png',
-      './assets/giddha.png',
-      './assets/dr. statue.png'
-    ];
-
-    let currentImageIndex = 0;
-
-    // Function to add blur effect to the rest of the page
-    function addBlur() {
-      document.getElementById('navbar').classList.add('blur');
-      document.querySelector('.container').classList.add('blur');
-      document.getElementById('overlay').classList.remove('hidden'); // Show the overlay
+  // Function to remove blur effect from the rest of the page
+  function removeBlur() {
+    const elementsToUnblur = document.body.children;
+    for (let element of elementsToUnblur) {
+      if (element.id !== 'imageModal') {
+        element.classList.remove('blur');
+      }
     }
+    document.getElementById('overlay').classList.add('hidden'); // Hide the overlay
+  }
 
-    // Function to remove blur effect from the rest of the page
-    function removeBlur() {
-      document.getElementById('navbar').classList.remove('blur');
-      document.querySelector('.container').classList.remove('blur');
-      document.getElementById('overlay').classList.add('hidden'); // Hide the overlay
-    }
+  // Function to open the image in modal
+  function openImage(index) {
+    currentImageIndex = index - 1; // Update the current image index
+    document.getElementById('sliderImage').src = images[currentImageIndex]; // Set the image source
+    document.getElementById('imageModal').classList.remove('hidden'); // Show the modal
+    addBlur(); // Add blur effect to the background
+  }
 
-    // Function to open the image in modal
-    function openImage(index) {
-      currentImageIndex = index - 1; // Update the current image index
-      document.getElementById('sliderImage').src = images[currentImageIndex]; // Set the image source
-      document.getElementById('imageModal').classList.remove('hidden'); // Show the modal
-      addBlur(); // Add blur effect to the background
-    }
+  // Function to close the modal
+  function closeModal() {
+    document.getElementById('imageModal').classList.add('hidden'); // Hide the modal
+    removeBlur(); // Remove blur effect from the background
+  }
 
-    // Function to close the modal
-    function closeModal() {
-      document.getElementById('imageModal').classList.add('hidden'); // Hide the modal
-      removeBlur(); // Remove blur effect from the background
-    }
+  // Function to go to the previous image
+  function prevImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length; // Calculate previous index
+    document.getElementById('sliderImage').src = images[currentImageIndex]; // Update the image source
+  }
 
-    // Function to go to the previous image
-    function prevImage() {
-      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length; // Calculate previous index
-      document.getElementById('sliderImage').src = images[currentImageIndex]; // Update the image source
-    }
+  // Function to go to the next image
+  function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length; // Calculate next index
+    document.getElementById('sliderImage').src = images[currentImageIndex]; // Update the image source
+  }
+</script>
 
-    // Function to go to the next image
-    function nextImage() {
-      currentImageIndex = (currentImageIndex + 1) % images.length; // Calculate next index
-      document.getElementById('sliderImage').src = images[currentImageIndex]; // Update the image source
-    }
-  </script>
 </body>
 </html>
