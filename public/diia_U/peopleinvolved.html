@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peoples Involved</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    
+    <style>
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fadeIn {
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      /* Background image styling for the header */
+      #headerImageContainer {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+      }
+
+      /* Heading font styles */
+      .header-heading {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 1rem;
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      /* Title font styling */
+      #title {
+        font-size: 2.2rem;
+        font-weight: 500;
+        color: #333;
+        border-bottom: 3px solid #0369a0;
+        padding-bottom: 0.3rem;
+      }
+
+      .body-image {
+        width: 60%;
+        height: auto;
+        margin-top: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        /* For tablets and smaller screens */
+        .body-image {
+          width: 95%;
+          margin-top: 0.5rem;
+          margin-bottom: 1rem;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* For phones */
+        .body-image {
+          width: 95%;
+          margin-top: 0.5rem;
+          margin-bottom: 1rem;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      /* News description styling */
+      .news-description {
+        text-align: center;
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        margin-top: 1rem;
+        color: #4a4a4a;
+        margin-bottom: 2rem;
+      }
+
+      /* Content container for responsive layout */
+      .content-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("../diia_U/AshutoshDevgotra/navbar.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("navbar").innerHTML = data;
+          });
+
+        // Defer loading the background image
+        const headerImageContainer = document.getElementById(
+          "headerImageContainer"
+        );
+        setTimeout(() => {
+          headerImageContainer.style.backgroundImage =
+            "url('../images/people_background.jpg')";
+        }, 500); // 500ms delay for better UX
+
+        // Set heading title dynamically
+        document.getElementById("headerHeading").textContent =
+          "People Involved";
+        document.getElementById("page-heading").textContent =
+          "People Involved";
+      });
+      fetch("../diia_U/Divyansh/footer.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("footer").innerHTML = data;
+          });
+           // Load the CSS for the footer
+        const footerCssLink = document.createElement("link");
+        footerCssLink.rel = "stylesheet";
+        footerCssLink.href = "../diia_U/Divyansh/fstyles.css";
+        document.head.appendChild(footerCssLink);
+
+        // Load the JS for the footer
+        const footerJsScript = document.createElement("script");
+        footerJsScript.src = "../diia_U/Divyansh/fscript.js";
+        document.body.appendChild(footerJsScript);
+    </script>
+  </head>
+  <body class="bg-gray-100">
+    <p id="navbar"></p>
+    <!-- Header with Changing Background Image -->
+
+    <header
+      class="relative w-full h-56 flex items-center justify-center bg-gray-800 mt-12"
+    >
+      <!-- Background Image -->
+      <div
+        class="absolute inset-0 w-full h-full"
+        id="headerImageContainer"
+      ></div>
+
+      <!-- Dark Overlay -->
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+      <!-- Single Heading -->
+      <div class="absolute z-10 header-heading" id="headerHeading"></div>
+    </header>
+    <!-- Navigation heading -->
+    <div>
+      <nav
+        class="flex px-4 lg:px-[4rem] bg-gray-200 py-[8px] text-black"
+        aria-label="Breadcrumb"
+      >
+        <ol class="container w-full inline-flex items-center">
+          <li class="inline-flex items-center">
+            <a
+              href="javascript:void(0)"
+              class="inline-flex items-center text-sm font-medium hover:text-gray-900"
+            >
+              <a href="../index.html" class="text-lg font-medium ml-2">Home</a>
+            </a>
+          </li>
+          <li aria-current="page">
+            <i
+              style="color: grey; font-size: 12px; margin-left: 12px"
+              class="fa-solid fa-angle-right ml-2"
+            ></i>
+            <a
+              href="#"
+              id="page-heading"
+              class="page-title text-lg font-medium ml-2"
+            ></a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- People Involved Section -->
+    <div class="w-full flex flex-col items-start px-4 lg:px-[4rem]">
+      <p
+        id="title"
+        class="font2 font-medium text-[28px] lg:text-[32px] leading-tight my-2 border-b-2 border-[#0369a0]"
+      >
+        Peoples Involved in OIIA
+      </p>
+
+      <div id="people-container" class="w-full mt-5">
+        <!-- People profiles will be inserted here dynamically -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class=" ">
+      <div id="footer" >
+        <!-- Footer content will be loaded dynamically -->
+      </div>
+    </footer>
+
+    <script src="./template.js"></script>
+  </body>
+</html>

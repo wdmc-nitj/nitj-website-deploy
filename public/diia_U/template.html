@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fadeIn {
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      /* Background image styling for the header */
+      #headerImageContainer {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+      }
+
+      /* Heading font styles */
+      .header-heading {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 1rem;
+        color: white;
+        font-size: 2.5rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      /* Title font styling */
+      #title {
+        font-size: 2.2rem;
+        font-weight: 500;
+        color: #333;
+        border-bottom: 3px solid #0369a0;
+        padding-bottom: 0.3rem;
+      }
+
+      .body-image {
+        width: 60%;
+        height: auto;
+        margin-top: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        /* For tablets and smaller screens */
+        .body-image {
+          width: 95%;
+          margin-top: 0.5rem;
+          margin-bottom: 1rem;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      @media (max-width: 480px) {
+        /* For phones */
+        .body-image {
+          width: 95%;
+          margin-top: 0.5rem;
+          margin-bottom: 1rem;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      /* News description styling */
+      .news-description {
+        text-align: center;
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        margin-top: 1rem;
+        color: #4a4a4a;
+        margin-bottom: 2rem;
+      }
+
+      /* Content container for responsive layout */
+      .content-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+    </style>
+    <!-- <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("../diia_U/AshutoshDevgotra/navbar.html")
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById("navbar").innerHTML = data;
+          });
+      });
+    </script> -->
+  </head>
+  <script src="../diia_U/main/navscript.js"></script>
+  <body class="bg-gray-100 w-full">
+    <!-- <p id="navbar"></p> -->
+    <!-- Header with Changing Background Image -->
+
+    <header
+      class="relative w-full h-56 flex items-center justify-center bg-gray-800 mt-12"
+    >
+      <!-- Background Image -->
+      <div
+        class="absolute inset-0 w-full h-full"
+        id="headerImageContainer"
+      ></div>
+
+      <!-- Dark Overlay -->
+      <div class="absolute inset-0 bg-black opacity-35"></div>
+
+      <!-- Single Heading -->
+
+      <nav
+        class="header-heading text-xl md:text-3xl w-full z-10 lg:max-w-[1200px] mx-auto"
+        id="headerHeading"
+      >
+        <!-- Content here -->
+      </nav>
+    </header>
+
+    <!-- Navigation heading -->
+    <div class="bg-gray-200">
+      <nav
+        class="flex px-4 lg:px-[4rem] bg-gray-200 py-[8px] text-black lg:max-w-[1200px] mx-auto"
+        aria-label="Breadcrumb"
+      >
+        <ol class="container inline-flex items-center">
+          <li class="inline-flex items-center">
+            <a
+              href="javascript:void(0)"
+              class="inline-flex items-center text-sm font-medium hover:text-gray-900"
+            >
+              <a href="../index.html" class="text-lg font-medium ml-2">Home</a>
+            </a>
+          </li>
+          <li aria-current="page">
+            <i
+              style="color: #808080; font-size: 12px; margin-left: 12px"
+              class="fa-solid fa-angle-right ml-2"
+            ></i>
+            <a
+              href="#"
+              id="page-heading"
+              class="page-title text-lg font-medium ml-2"
+            ></a>
+          </li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- News Section -->
+    <div
+      class="w-full flex flex-col items-start px-4 lg:px-[4rem] lg:max-w-[1200px] mx-auto"
+    >
+      <p
+        id="title"
+        class="font2 font-medium text-[28px] lg:text-[32px] leading-tight my-2 border-b-2 border-[#0369a0]"
+      >
+        Latest Events
+      </p>
+
+      <div id="event-container" class="w-full mt-5 mb-[2rem]">
+        <!-- Event items will be inserted here dynamically -->
+      </div>
+    </div>
+    <script src="../diia_U/main/footerscript.js"></script>
+    <script src="./template.js"></script>
+  </body>
+</html>
