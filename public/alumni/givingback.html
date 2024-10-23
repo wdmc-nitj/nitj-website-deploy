@@ -1254,6 +1254,7 @@
             const textElement = document.getElementById(infoId);
             if (infoId === activeElement) {
                 textElement.style.display = 'none';
+                activeElement = null;
             } else {
                 textElement.style.display = 'block';
                 activeElement = infoId
@@ -1265,6 +1266,7 @@
             const textElement = document.getElementById(infoId);
             if (infoId === activeElementMobile) {
                 textElement.style.display = 'none';
+                activeElementMobile = null;
             } else {
                 textElement.style.display = 'flex';
                 activeElementMobile = infoId
