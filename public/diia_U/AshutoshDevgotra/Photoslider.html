@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Photo Slider with Full Width</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Fullscreen dark overlay */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.618); /* Dark overlay */
+      z-index: 40; /* Below the modal, above content */
+      display: none; /* Hidden by default */
+    }
+  
+    /* Modal should take up full screen width */
+    #imageModal {
+      z-index: 50;
+      width: 100%;
+      max-width: 100%; /* Ensure it spans the entire width */
+      height: auto; /* Adjust based on image height */
+      background-color: transparent; /* Optional to make it cleaner */
+      justify-content: center; /* Horizontally center the content */
+      align-items: center; /* Vertically center the content */
+    }
+  
+    /* Make the image full width and constrain its height */
+    #sliderImage {
+      width: 100%; /* Full width */
+      height: auto; /* Maintain aspect ratio */
+      max-height: 90vh; /* Ensure it doesn't exceed screen height */
+      object-fit: cover; /* Ensure the image covers the modal */
+    }
+  
+    /* Ensure left and right arrows are positioned correctly */
+    .slider-wrapper {
+      padding: 0 20px;
+    }
+  
+    .absolute.left-4,
+    .absolute.right-4 {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* Blur effect class */
+    .blur {
+      filter: blur(4px); /* Adjust blur strength as needed */
+      transition: filter 0.3s ease; /* Smooth transition for blur */
+    }
+  </style>
+  
+</head>
+<body class="bg-gray-100">
+
+  <!-- Navbar Section (Loaded via JS) -->
+  <div id="navbar"></div>
+  <script src="navscript.js"></script> <!-- Include the navbar script -->
+
+  <!-- Fullscreen Overlay for background blur -->
+  <div id="overlay" class="hidden"></div>
+
+  <!-- Title above Quick Link Tiles -->
+  <h2 class="text-3xl font-semibold px-3 mt-24">Event1</h2>
+
+  <!-- Quick Link Tiles Section -->
+  <div class="container mx-auto mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 z-30">
+    <div class="group relative cursor-pointer" onclick="openImage(1)">
+      <img src="./assets/director.png" alt="Group Image" class="w-full h-48 rounded-lg object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"></div>
+    </div>
+    
+    <div class="group relative cursor-pointer" onclick="openImage(2)">
+      <img src="./assets/gdsc.png" alt="GDSC Image" class="w-full h-48 rounded-lg object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"></div>
+    </div>
+    
+    <div class="group relative cursor-pointer" onclick="openImage(3)">
+      <img src="./assets/giddha.png" alt="Giddha Image" class="w-full h-48 rounded-lg object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"></div>
+    </div>
+
+    <div class="group relative cursor-pointer" onclick="openImage(4)">
+      <img src="./assets/dr. statue.png" alt="Dr. Statue Image" class="w-full h-48 rounded-lg object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"></div>
+    </div>
+  </div>
+
+  <!-- Duplicate Title and Quick Link Tiles Section -->
+  <h2 class="text-3xl font-semibold px-3 mt-12 mb-6">Event2</h2>
+
+  <div class="container mx-auto mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 z-30">
+    <div class="group relative cursor-pointer" onclick="openImage(1)">
+      <img src="./assets/director.png" alt="Group Image" class="w-full h-48 rounded-lg object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"></div>
+    </div>
+    
+    <div class="group relative cursor-pointer" onclick="openImage(2)">
+      <img src="./assets/gdsc.png" alt="GDSC Image" class="w-full h-48 rounded-lg object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"></div>
+    </div>
+    
+    <div class="group relative cursor-pointer" onclick="openImage(3)">
+      <img src="./assets/giddha.png" alt="Giddha Image" class="w-full h-48 rounded-lg object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"></div>
+    </div>
+
+    <div class="group relative cursor-pointer" onclick="openImage(4)">
+      <img src="./assets/dr. statue.png" alt="Dr. Statue Image" class="w-full h-48 rounded-lg object-cover">
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl"></div>
+    </div>
+  </div>
+
+  <!-- Modal (Image Slider) -->
+  <div id="imageModal" class="fixed inset-0 hidden bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div class="relative w-full max-w-[90%] bg-white rounded-lg shadow-lg mx-6">
+      <!-- Close Button -->
+      <button class="absolute top-2 right-2 text-gray-700 text-5xl" onclick="closeModal()">
+        &times;
+      </button>
+
+      <!-- Image -->
+      <img id="sliderImage" src="" alt="Selected Image" class="w-full h-auto object-contain max-h-[80vh] rounded-lg" />
+
+      <!-- Left Arrow -->
+      <button class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-600 bg-opacity-50 p-7 rounded-full hover:bg-opacity-75 z-50" onclick="prevImage()">
+        <img src="./assets/chevron-left-svgrepo-com.svg" width="50" height="50" />
+      </button>
+
+      <!-- Right Arrow -->
+      <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-600 bg-opacity-50 p-7 rounded-full hover:bg-opacity-75 z-50" onclick="nextImage()">
+        <img src="./assets/chevron-right-svgrepo-com.svg" width="50" height="50" />
+      </button>
+
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="navscript.js"></script> <!-- Include the navbar script -->
+  <script>
+    // Call the function to load the navbar when the page is loaded
+    window.onload = function() {
+      loadNavbar(); // Load the navbar
+    };
+  
+    // Function to load navbar.html into the div with id "navbar"
+    function loadNavbar() {
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading the navbar:', error));
+    }
+
+    // Array of image sources
+    const images = [
+      './assets/director.png',
+      './assets/gdsc.png',
+      './assets/giddha.png',
+      './assets/dr. statue.png'
+    ];
+
+    let currentImageIndex = 0;
+
+    // Function to add blur effect to the rest of the page
+    function addBlur() {
+      document.getElementById('navbar').classList.add('blur');
+      document.querySelector('.container').classList.add('blur');
+      document.getElementById('overlay').classList.remove('hidden'); // Show the overlay
+    }
+
+    // Function to remove blur effect from the rest of the page
+    function removeBlur() {
+      document.getElementById('navbar').classList.remove('blur');
+      document.querySelector('.container').classList.remove('blur');
+      document.getElementById('overlay').classList.add('hidden'); // Hide the overlay
+    }
+
+    // Function to open the image in modal
+    function openImage(index) {
+      currentImageIndex = index - 1; // Update the current image index
+      document.getElementById('sliderImage').src = images[currentImageIndex]; // Set the image source
+      document.getElementById('imageModal').classList.remove('hidden'); // Show the modal
+      addBlur(); // Add blur effect to the background
+    }
+
+    // Function to close the modal
+    function closeModal() {
+      document.getElementById('imageModal').classList.add('hidden'); // Hide the modal
+      removeBlur(); // Remove blur effect from the background
+    }
+
+    // Function to go to the previous image
+    function prevImage() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length; // Calculate previous index
+      document.getElementById('sliderImage').src = images[currentImageIndex]; // Update the image source
+    }
+
+    // Function to go to the next image
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % images.length; // Calculate next index
+      document.getElementById('sliderImage').src = images[currentImageIndex]; // Update the image source
+    }
+  </script>
+</body>
+</html>
