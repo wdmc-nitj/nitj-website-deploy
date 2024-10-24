@@ -27,7 +27,7 @@ async function fetchNewsData() {
 }
 
 // Rendering News-section and Opportunities page
-function renderTemplate(newsItem) {
+function renderTemplate([newsItem, category]) {
   if (!newsItem) {
     console.error("No news item found");
     return;
@@ -37,7 +37,10 @@ function renderTemplate(newsItem) {
   headerImageContainer.style.backgroundImage = `url('./assets/flag.jpg')`;
 
   const pageHeading = document.getElementById("page-heading");
-  pageHeading.textContent = newsItem.title2;
+  if (category == "news-section") pageHeading.textContent = "Latest Event";
+  else {
+    pageHeading.textContent = "Opportunity";
+  }
 
   const headerHeading = document.getElementById("headerHeading");
   headerHeading.textContent = newsItem.title2;
@@ -252,7 +255,7 @@ async function initPage() {
   const newsItem = newsData.find((item) => item._id === obj.id);
 
   if (obj.category === "news-section" || obj.category === "opportunities") {
-    renderTemplate(newsItem);
+    renderTemplate([newsItem, obj.category]);
   } else if (obj.category === "mous") {
     console.log(newsItem);
     renderMOUsCategory(newsItem);
