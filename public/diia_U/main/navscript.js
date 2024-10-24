@@ -196,12 +196,12 @@ function genMobileMenu(items) {
 document.addEventListener("DOMContentLoaded", genNav);
 async function genNav() {
   let nav = document.createElement("nav");
-  console.log("running navbar");
   // let nav = document.getElementById('navbar')
   nav.setAttribute(
     "class",
     "bg-white flex mx-auto px-4 md:px-3 py-3 left-0 right-0 top-0 justify-between items-center drop-shadow-2xl z-50 fixed shadow-black w-full custom-font-reduce"
   );
+  nav.setAttribute('id', 'navscript-bar')
 
   nav.appendChild(genLogo());
 
