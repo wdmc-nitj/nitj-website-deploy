@@ -34,7 +34,7 @@ function renderTemplate([newsItem, category]) {
   }
 
   const headerImageContainer = document.getElementById("headerImageContainer");
-  headerImageContainer.style.backgroundImage = `url('./assets/flag.jpg')`;
+  headerImageContainer.style.backgroundImage = `url('./assets/flags.jpg')`;
 
   const pageHeading = document.getElementById("page-heading");
   if (category == "news-section") pageHeading.textContent = "Latest Event";
@@ -67,7 +67,7 @@ function renderTemplate([newsItem, category]) {
 function renderMOUsCategory(mou) {
   // Set the page heading and title
   const headerImageContainer = document.getElementById("headerImageContainer");
-  headerImageContainer.style.backgroundImage = "url('./assets/flag.jpg')";
+  headerImageContainer.style.backgroundImage = "url('./assets/flags1.jpg')";
   const pageHeading = document.getElementById("page-heading");
   pageHeading.textContent = "Memorandum of Understanding";
 
@@ -146,7 +146,7 @@ function renderMOUsCategory(mou) {
 
 function renderTestimonialCategory(testimonial) {
   const headerImageContainer = document.getElementById("headerImageContainer");
-  headerImageContainer.style.backgroundImage = `url('./assets/flag.jpg')`;
+  headerImageContainer.style.backgroundImage = `url('./assets/flags2.jpg')`;
   headerImageContainer.style.display = "flex";
   headerImageContainer.style.justifyContent = "center";
   headerImageContainer.style.alignItems = "center";
