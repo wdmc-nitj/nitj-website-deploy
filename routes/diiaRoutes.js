@@ -13,6 +13,7 @@ const DiiaColorButton = require('./diia/diiaColorButton');
 const DiiaNavBar=require('./diia/diiaNavBar');
 const DiiaDeandetails=require('./diia/diiaDeandetails');
 const DiiaGallery=require('./diia/diiaGallery');
+const DiiaTiles=require('./diia/diiaTiles');
 
 
 diiaRouter.use('/hero-slider', DiiaHeroSlider);
@@ -28,5 +29,6 @@ diiaRouter.use('/color-button', DiiaColorButton);
 diiaRouter.use('/navbar', DiiaNavBar);
 diiaRouter.use('/dean-details', DiiaDeandetails);
 diiaRouter.use('/gallery', DiiaGallery);
+diiaRouter.use('/tiles', DiiaTiles);
 
 module.exports = diiaRouter;
