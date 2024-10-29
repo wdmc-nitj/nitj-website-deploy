@@ -43,7 +43,12 @@ function renderTemplate([newsItem, category]) {
   }
 
   const headerHeading = document.getElementById("headerHeading");
-  headerHeading.textContent = newsItem.title2;
+
+  if (category == "news-section") {
+    headerHeading.textContent = "Latest Events";
+  } else {
+    headerHeading.textContent = "Opportunities";
+  }
 
   document.getElementById("title").textContent = newsItem.title1;
 
@@ -69,10 +74,10 @@ function renderMOUsCategory(mou) {
   const headerImageContainer = document.getElementById("headerImageContainer");
   headerImageContainer.style.backgroundImage = "url('./assets/flags1.jpg')";
   const pageHeading = document.getElementById("page-heading");
-  pageHeading.textContent = "Memorandum of Understanding";
+  pageHeading.textContent = "MOUS";
 
   const headerHeading = document.getElementById("headerHeading");
-  headerHeading.textContent = "Memorandum of Understanding";
+  headerHeading.textContent = "MOUS";
 
   document.getElementById("title").textContent = mou.name;
 
