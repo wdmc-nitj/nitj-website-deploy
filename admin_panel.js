@@ -76,6 +76,11 @@ const DiiaNumber=require("./models/diia/DiiaNumber");
 const DiiaNavBar=require("./models/diia/DiiaNavBar");
 const DiiaDeandetails=require("./models/diia/DiiaDeandetails");
 const DiiaGallery=require("./models/diia/DiiaGallery");
+const DiiaTiles=require("./models/diia/DiiaTiles");
+
+
+
+
 
 // Research Menu
 const researchMenuName = "Research";
@@ -3238,6 +3243,21 @@ const AdminBroOptions = {
   },
 },
 
+{
+  resource: DiiaTiles,
+  options: {
+    navigation: "DIIA",
+    actions: {
+      new: { isAccessible: isdiiaAdmin },
+      edit: { isAccessible: isdiiaAdmin },
+      delete: { isAccessible: isdiiaAdmin },
+      show: { isAccessible: isdiiaAdmin },
+      bulkDelete: { isAccessible: isdiiaAdmin },
+      list: { isAccessible: isdiiaAdmin },
+    },
+  },
+},
+
     {
       resource: AcademicCalendar,
       options: {
@@ -3488,7 +3508,76 @@ const AdminBroOptions = {
       },
     },
 
+
+
+    //changed adminbro user handling for hashing and hiding it from frontend
     {
+      resource: User,
+      options: {
+        navigation: "AdminPanelUsers",
+        properties: {
+          password: {
+            isVisible: { list: false, edit: true, filter: false, show: false, new: true },  // Show in edit and new view
+          },
+        },
+        actions: {
+          list: { isAccessible: isAdmin },
+          new: {
+            isAccessible: canModifyUsers,
+            before: async (request) => {
+              const { email, role, password } = request.payload;
+    
+              // Validate required fields
+              if (!email || !role || !password) {
+                throw new AdminBro.ValidationError({
+                  email: { message: 'Email is required.' },
+                  role: { message: 'Role is required.' },
+                  password: { message: 'Password is required.' },
+                });
+              }
+    
+              console.log('Incoming request payload:', request.payload);
+    
+              if (password) {
+                try {
+                  const bcrypt = require('bcrypt');
+                  const salt = await bcrypt.genSalt(10);
+                  const hashedPassword = await bcrypt.hash(password, salt);
+    
+                  // Replace the plain password with the hashed version
+                  request.payload = {
+                    ...request.payload,
+                    password: hashedPassword,  // Store the hashed password
+                  };
+                } catch (error) {
+                  console.log('Error hashing password:', error);
+                  throw new AdminJS.ValidationError({
+                    password: {
+                      message: 'Error occurred during password hashing.',
+                    },
+                  });
+                }
+              }
+    
+              return request;
+            },
+          },
+          edit: {
+            isAccessible: canModifyUsers,
+            before: async (request) => {
+              const user = await User.findById(request.params.recordId); // Fetch the existing user
+              request.payload.password = user.password; // Keep the existing hashed password
+              return request;
+            },
+          },
+          delete: { isAccessible: canModifyUsers },
+        },
+      },
+    }
+    
+    
+
+    /* {
       resource: User,
       options: {
         navigation: "AdminPanelUsers",
@@ -3510,7 +3599,7 @@ const AdminBroOptions = {
           new: { isAccessible: canModifyUsers },
         },
       },
-    },
+    }, */
   ],
   locale: {
     translations: {
@@ -3541,10 +3630,10 @@ const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
     const clubuser = await ClubsBroUser.findOne({ email });
     const faculty = await Faculty.findOne({ email });
     if (user) {
-      const matched = password == user.password;
+      const matched = user.decryptPassword(password);
       if (matched) {
         return user;
-      }
+      } 
     } else if (clubuser) {
       const matched = password == clubuser.password;
       if (matched) {
