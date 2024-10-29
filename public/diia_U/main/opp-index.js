@@ -20,19 +20,35 @@ function renderCards() {
 
   news.forEach((newElt) => {
     const card = document.createElement("div");
-    card.classList.add("news-card");
-    card.classList.add("m-auto");
+    card.classList.add(
+      "news-card",
+      "flex",
+      "flex-col",
+      "rounded-xl",
+      "bg-light-purple",
+      "shadow-xl",
+      "border-t-4",
+      "border-b-4",
+      "border-accent",
+      "h-[27rem]",
+      "w-60",
+      "m-auto"
+    );
 
     card.innerHTML = `
-      <div class="card-Image">
-        <img  src="${newElt.Image}" alt="News Image" />
+      <div class="flex flex-col h-full w-full p-2.5">
+        <div class="card-Image">
+          <img class="h-44 w-full object-cover rounded-lg" src="${newElt.Image}" alt="News Image" />
+        </div>
+        <div class="text-area flex flex-col flex-grow p-4">
+          <h2 class="heading mt-5 text-lg line-clamp-3 font-semibold text-gray-900">${newElt.title1}</h2>
+          <div class="pt-5 mt-auto">
+            <a href="/diia_U/template.html?id=${newElt._id}?category=opportunities" class="read-more cursor-pointer font-medium text-sky-500 hover:text-sky-600">Read more →</a>
+          </div>
+        </div>
       </div>
-      <div class="text-area">
-        <h2 class="heading">${newElt.title1}</h2>
-        <p>${newElt.title2}</p>
-      </div>
-      <a target='_blank' href="/diia_U/template.html?id=${newElt._id}?category=opportunities" class="read-more">Read more</a>
     `;
+
     cardsWrapper.appendChild(card);
   });
 
