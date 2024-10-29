@@ -275,6 +275,7 @@
 .testimonial-footer img {
     width: 50%;
     border-radius: 50%;
+    aspect-ratio: 1/1;
     display: block;
     /* margin: 0 auto 0.5rem; */
     margin:10px;
@@ -301,4 +302,10 @@
     color: #ffffff;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     border-color: #1E3A8A;
+}
+
+@media (max-width:950px) {
+    .testimonial-container {
+        flex-direction: column;
+    }
 }

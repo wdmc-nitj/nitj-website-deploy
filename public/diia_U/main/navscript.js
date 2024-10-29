@@ -20,6 +20,7 @@ function genLogo() {
   let a = document.createElement("a");
   a.setAttribute("class", aStyle);
   a.setAttribute("href", "/");
+  a.setAttribute("target", "_blank");
   a.setAttribute("id", "brand");
 
   let imgStyle =
@@ -44,6 +45,7 @@ function genLogo() {
 function genHomeButton() {
   let a = document.createElement("a");
   a.setAttribute("href", "/diia");
+  a.setAttribute('target', '_blank')
 
   let div = document.createElement("div");
   div.setAttribute(
@@ -64,6 +66,7 @@ function genHomeButtonLARGE() {
 
   let a = document.createElement("a");
   a.setAttribute("href", "/");
+  a.setAttribute("target", "_blank");
   let button = document.createElement("button");
   button.setAttribute(
     "class",
@@ -89,6 +92,7 @@ function genDropdowns(edata) {
     "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase flex items-center custom-font-reduce text-base font-medium text-[#00387A]"
   );
   a.setAttribute("href", edata.link);
+  a.setAttribute("target", '_blank');
   a.innerHTML = edata.title + '<i class="fa p-1 fa-chevron-down"></i>';
 
   let div2 = document.createElement("div");
@@ -100,6 +104,7 @@ function genDropdowns(edata) {
   for (let x in edata.submenus) {
     let a2 = document.createElement("a");
     a2.setAttribute("href", edata.submenus[x].link);
+    a2.setAttribute("target", "_blank")
     a2.setAttribute(
       "class",
       "text-sm text-blue-700 hover:text-blue-500 hover:bg-blue-50 m-1 px-5 whitespace-nowrap custom-font-reduce py-1.5 rounded"
@@ -121,6 +126,7 @@ function genMenuItem(name) {
   );
   let a = document.createElement("a");
   a.setAttribute("href", "#");
+  a.setAttribute("target", "_blank");
   a.setAttribute(
     "class",
     "relative px-2 bg-white cursor-pointer group transition-all rounded-full custom-font-reduce uppercase"
@@ -180,6 +186,7 @@ function genMobileMenu(items) {
   for (let x in items) {
     let a = document.createElement("a");
     a.setAttribute("href", "/");
+    a.setAttribute("target", "_blank");
     a.setAttribute(
       "class",
       "block p-3 mt-3 font-medium border-2 border-blue-500 rounded-lg hover:text-blue-700 hover:bg-blue-100 custom-font-reduce"
