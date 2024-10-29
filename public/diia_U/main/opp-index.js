@@ -31,7 +31,7 @@ function renderCards() {
         <h2 class="heading">${newElt.title1}</h2>
         <p>${newElt.title2}</p>
       </div>
-      <a href="/diia_U/template.html?id=${newElt._id}?category=opportunities" class="read-more">Read more</a>
+      <a target='_blank' href="/diia_U/template.html?id=${newElt._id}?category=opportunities" class="read-more">Read more</a>
     `;
     cardsWrapper.appendChild(card);
   });

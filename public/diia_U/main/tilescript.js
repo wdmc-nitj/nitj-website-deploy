@@ -22,6 +22,7 @@ function genTiles(dataset) {
         
         let a = document.createElement('a');
         a.href = dataset[x].link
+        a.target = '_blank'
         a.innerHTML = `<div style="display:flex; align-items:center; justify-content:space-between"><div>`+
         dataset[x].name+
         ` <i style="font-weight:thinner;" class="fa-solid fa-arrow-up-right-from-square"></i></div>`+
