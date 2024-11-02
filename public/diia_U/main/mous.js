@@ -132,7 +132,7 @@ async function addToHtmlMous() {
                         </div>
                         <div class="relative card sm:w-1/2 flex flex-col p-6 rounded-2xl lg:gap-7  gap-5 transition-all duration-400 ease-in-out-expo scrollbar-custom text-white" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.2686) -84.93%, rgba(153, 153, 153, 0.1598) 203.85%); ">
                             <p class="bg-white rounded-3xl w-fit h-5 text-xs p-3 flex items-center justify-center font-semibold" style="color: #0056b3;">Indian Institutions</p>
-                            <img src="img/Edit File.png" alt="" class="absolute top-5 right-5 h-6">
+                            <img src="assets/mous/Edit File.png" alt="" class="absolute top-5 right-5 h-6">
                             <p class="lg:text-2xl md:text-sm text-sm">${
                               data[i].name
                             }</p>
@@ -151,7 +151,7 @@ async function addToHtmlMous() {
           industry.innerHTML += `<div class=" section2 flex flex-none w-full gap-5 sm:flex-row flex-col">
                         <div class="relative card sm:w-1/2 flex flex-col p-6 rounded-2xl lg:gap-7 gap-5 transition-all duration-400 ease-in-out-expo scrollbar-custom text-white" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.2686) -84.93%, rgba(153, 153, 153, 0.1598) 203.85%);">
                             <p class="bg-white rounded-3xl w-fit h-5 text-xs p-3 flex items-center justify-center font-semibold" style="color: #0056b3;">Industry Partners</p>
-                            <img src="Student Center (1).png" alt="" class="absolute top-5 right-5 h-6">
+                            <img src="assets/mous/Student Center.png" alt="" class="absolute top-5 right-5 h-6">
                             <p class="lg:text-2xl md:text-sm text-sm">${
                               data[i].name
                             }</p>
@@ -200,7 +200,7 @@ async function addToHtmlMous() {
                         </div>
                         <div class="relative card sm:w-1/2 flex flex-col p-6 rounded-2xl lg:gap-7 gap-5   scrollbar-custom text-white" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.2686) -84.93%, rgba(153, 153, 153, 0.1598) 203.85%);">
                             <p class="bg-white rounded-3xl w-fit h-5 text-xs p-3 flex items-center justify-center font-semibold" style="color: #0056b3;">Global Partners</p>
-                            <img src="img/Edit File.png" alt="" class="absolute top-5 right-5 h-6">
+                            <img src="assets/mous/Edit File.png" alt="" class="absolute top-5 right-5 h-6">
                             <p class="lg:text-2xl md:text-sm text-sm">${
                               data[i].name
                             }</p>
