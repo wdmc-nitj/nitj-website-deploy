@@ -65,8 +65,42 @@
         margin: auto;
       }
      </style>
+    
+
 </head>
-<body>
+<body class="relative">
+    <!-- scroll up button -->
+    <button id="scroll-to-top-button"
+    class="fixed bottom-0 right-0 z-50 p-2 mb-6 mr-6 font-bold text-white transition-all bg-orange-500 rounded-full opacity-60 hover:opacity-100 hover:bg-orange-700">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
+    </svg>
+</button>
+
+
+    <script>
+      // Show or hide the scroll-to-top button based on scroll position
+      window.addEventListener('scroll', function() {
+        const scrollToTopButton = document.querySelector("#scroll-to-top-button");
+        if (window.scrollY > 100) { // Show button when scrolled down 100px
+          scrollToTopButton.style.display = "block";
+        } else {
+          scrollToTopButton.style.display = "none";
+        }
+      });
+
+      // Smooth scroll to top when button is clicked
+      document.querySelector("#scroll-to-top-button").addEventListener("click", function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+
+
+
+
   <script src="../main/navscript.js"></script>
   
   <!-- Hero Section -->
