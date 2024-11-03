@@ -74,10 +74,10 @@ function renderMOUsCategory(mou) {
   const headerImageContainer = document.getElementById("headerImageContainer");
   headerImageContainer.style.backgroundImage = "url('./assets/flags1.jpg')";
   const pageHeading = document.getElementById("page-heading");
-  pageHeading.textContent = "MOUS";
+  pageHeading.textContent = "MOUs";
 
   const headerHeading = document.getElementById("headerHeading");
-  headerHeading.textContent = "MOUS";
+  headerHeading.textContent = "MOUs";
 
   document.getElementById("title").textContent = mou.name;
 
@@ -112,11 +112,6 @@ function renderMOUsCategory(mou) {
     "rounded-lg",
     "shadow-md"
   );
-
-  // MoU Title with increased size
-  const mouTitle = document.createElement("h2");
-  mouTitle.textContent = mou.name;
-  mouTitle.classList.add("text-3xl", "font-semibold", "text-gray-800");
 
   // MoU Dates
   const mouDates = document.createElement("p");

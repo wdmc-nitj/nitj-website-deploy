@@ -37,7 +37,7 @@ function displayStaticBackground() {
   imageContainer.style.backgroundImage = "url('./assets/flags.jpg')";
   imageContainer.style.backgroundSize = "cover";
   imageContainer.style.backgroundPosition = "center";
-  heading.textContent = "Our Esteemed Alumni";
+  heading.textContent = "Testimonials";
 }
 
 function populateList(data) {
