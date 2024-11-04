@@ -34,7 +34,7 @@ function renderTemplate([newsItem, category]) {
   }
 
   const headerImageContainer = document.getElementById("headerImageContainer");
-  headerImageContainer.style.backgroundImage = `url('./assets/flag.jpg')`;
+  headerImageContainer.style.backgroundImage = `url('./assets/flags.jpg')`;
 
   const pageHeading = document.getElementById("page-heading");
   if (category == "news-section") pageHeading.textContent = "Latest Event";
@@ -43,7 +43,12 @@ function renderTemplate([newsItem, category]) {
   }
 
   const headerHeading = document.getElementById("headerHeading");
-  headerHeading.textContent = newsItem.title2;
+
+  if (category == "news-section") {
+    headerHeading.textContent = "Latest Events";
+  } else {
+    headerHeading.textContent = "Opportunities";
+  }
 
   document.getElementById("title").textContent = newsItem.title1;
 
@@ -67,12 +72,12 @@ function renderTemplate([newsItem, category]) {
 function renderMOUsCategory(mou) {
   // Set the page heading and title
   const headerImageContainer = document.getElementById("headerImageContainer");
-  headerImageContainer.style.backgroundImage = "url('./assets/flag.jpg')";
+  headerImageContainer.style.backgroundImage = "url('./assets/flags1.jpg')";
   const pageHeading = document.getElementById("page-heading");
-  pageHeading.textContent = "Memorandum of Understanding";
+  pageHeading.textContent = "MOUs";
 
   const headerHeading = document.getElementById("headerHeading");
-  headerHeading.textContent = "Memorandum of Understanding";
+  headerHeading.textContent = "MOUs";
 
   document.getElementById("title").textContent = mou.name;
 
@@ -108,11 +113,6 @@ function renderMOUsCategory(mou) {
     "shadow-md"
   );
 
-  // MoU Title with increased size
-  const mouTitle = document.createElement("h2");
-  mouTitle.textContent = mou.name;
-  mouTitle.classList.add("text-3xl", "font-semibold", "text-gray-800");
-
   // MoU Dates
   const mouDates = document.createElement("p");
   const startDate = new Date(mou.startingDate).toLocaleDateString();
@@ -146,7 +146,7 @@ function renderMOUsCategory(mou) {
 
 function renderTestimonialCategory(testimonial) {
   const headerImageContainer = document.getElementById("headerImageContainer");
-  headerImageContainer.style.backgroundImage = `url('./assets/flag.jpg')`;
+  headerImageContainer.style.backgroundImage = `url('./assets/flags2.jpg')`;
   headerImageContainer.style.display = "flex";
   headerImageContainer.style.justifyContent = "center";
   headerImageContainer.style.alignItems = "center";

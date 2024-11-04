@@ -52,7 +52,7 @@ async function genFooter() {
             let h2 = document.createElement('h2')
             h2.setAttribute('class', 'text-2xl font-bold text-[#0B407A] m-0')
             h2.innerHTML = 'Dr B R Ambedkar National Institute of Technology Jalandhar'
-            footerLogo.appendChild(img)
+            // footerLogo.appendChild(img)
             footerLogo.appendChild(h2)
         }
         footerLeft.appendChild(footerLogo)
@@ -145,7 +145,7 @@ async function genFooter() {
         a.appendChild(img)
         flagCounter.appendChild(a)
 
-        footerRight.appendChild(h4)
+        // footerRight.appendChild(h4)
         footerRight.appendChild(flagCounter)
     }
     footerContainer.appendChild(footerRight)

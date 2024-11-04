@@ -23,11 +23,15 @@ async function addToHtmlRanking(){
         {
             if(data[i].show === true)
             {
-                if(window.innerWidth > 425)
+                if(window.innerWidth > 769)
                 {
                     rank[data[i].order].innerHTML = `${data[i].description.substring(0,50)}...`
                 }
 
+                else if(window.innerWidth > 426 && window.innerWidth <= 768)
+                {
+                    rank[data[i].order].innerHTML = `${data[i].description.substring(0,36)}...`
+                }
                 else
                 {
                     rank[data[i].order].innerHTML = `${data[i].description.substring(0,125)}...`
