@@ -1,6 +1,3 @@
-let data = [];
-let currentIndex = 0;
-
 async function fetchDataMous(){                      
     try{
         const res = await fetch("/api/diia/mous")
@@ -14,82 +11,6 @@ async function fetchDataMous(){
     {
         console.log("failed:",err)
     }
-}
-async function fetchData() {
-    try {
-      const response = await fetch(`/api/diia/opportunities`);
-      if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.status}`);
-      }
-      data = await response.json();
-      console.log("Fetched Data:", data);
-  
-      // Sort data based on createdAt and take the latest 4 items
-      data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      dataSlider = data.slice(0, 4); // Take the most recent 4 items
-    //   console.log(data);
-      initSlider(dataSlider);
-    } catch (error) {
-      console.error("Failed to fetch data:", error);
-    }
-}
-function initSlider(dataSlider) {
-    const imageContainer = document.getElementById("imageContainer");
-    const indicatorsContainer = document.getElementById("indicators");
-  
-    if (!imageContainer || !indicatorsContainer) {
-      console.error("Slider elements not found");
-      return;
-    }
-  
-    imageContainer.innerHTML = "";
-    indicatorsContainer.innerHTML = "";
-  
-    if (dataSlider.length === 0) {
-      console.warn("No data available for slider");
-      return;
-    }
-  
-    dataSlider.forEach((elt, index) => {
-      const imgElement = document.createElement("img");
-      imgElement.src = elt.Image;
-      imgElement.alt = `Stack Image ${index + 1}`;
-      imgElement.className = `absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000`;
-      if (index === 0) imgElement.classList.add("opacity-100");
-      imageContainer.appendChild(imgElement);
-  
-      const indicator = document.createElement("span");
-      indicator.className = `w-3 h-3 rounded-full bg-gray-500 ${
-        index === 0 ? "bg-white" : ""
-      }`;
-      indicatorsContainer.appendChild(indicator);
-    });
-}
-  
-function updateSlider() {
-    if (dataSlider.length === 0) {
-      console.warn("No data available for slider update");
-      return;
-    }
-  
-    document.querySelectorAll("#imageContainer img").forEach((img, index) => {
-      img.classList.toggle("opacity-100", index === currentIndex);
-      img.classList.toggle("opacity-0", index !== currentIndex);
-    });
-  
-    const currentImage = data[currentIndex];
-    document.getElementById("heading").textContent = currentImage.title1;
-  
-    document.getElementById(
-      "headingLink"
-    ).href = `/diia_U/template.html?id=${currentImage._id}?category=opportunities`;
-  
-    document.querySelectorAll("#indicators span").forEach((indicator, index) => {
-      indicator.classList.toggle("bg-white", index === currentIndex);
-      indicator.classList.toggle("bg-gray-500", index !== currentIndex);
-    });
-  
-    currentIndex = (currentIndex + 1) % dataSlider.length;
 }
 
 async function addNavbar(){
@@ -218,9 +139,6 @@ async function addToHtmlMous(){
         console.log("Error in adding MOU's HTML:",err)
     }
 }
-
-fetchData();
-setInterval(updateSlider, 3000);
 
 window.addEventListener('DOMContentLoaded', async()=>{
     await addToHtmlMous(),
