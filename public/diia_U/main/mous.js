@@ -106,6 +106,7 @@ async function fetchDataMous(){
             throw new Error(`Status:${res.status}`)
         }
         const data = await res.json()
+        console.log(data)
         return data
     }catch(err)
     {

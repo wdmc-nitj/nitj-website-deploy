@@ -16,26 +16,14 @@ function animateNumber(id, start, end, duration) {
 }
 
 // Parallax effect
-function applyParallaxEffect() {
+/* function applyParallaxEffect() {
+    console.log("hyy");
     window.addEventListener('scroll', function () {
         const scrollPosition = window.pageYOffset;
         document.querySelector('.numbers-section').style.backgroundPositionY = `${scrollPosition * 0.5}px`;
     });
 }
-
-
-
-
-async function fetchData() {
-    try {
-        const response = await fetch("/api/diia/numbers"); // Use const url for the fetch
-        const data = await response.json();
-        renderNumbers(data);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
-
+ */
 
 function renderNumbers(data) {
     const numbersSection = document.querySelector('.numbers-section');
@@ -79,8 +67,21 @@ function renderNumbers(data) {
     });
 }
 
+
+async function fetchData() {
+    try {
+        const response = await fetch("/api/diia/numbers"); // Use const url for the fetch
+        const data = await response.json();
+        renderNumbers(data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+
 // Initialize everything
 window.onload = function () {
+    console.log("hello");
     fetchData(); // Fetch data and render numbers
-    applyParallaxEffect(); // Apply parallax effect
+   /*  applyParallaxEffect();  */// Apply parallax effect
 };

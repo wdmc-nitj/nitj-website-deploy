@@ -21,7 +21,7 @@ async function fetchData() {
       src: item.Image,
       title: item.title1,
     }));
-    console.log(images);
+    /* console.log(images); */
     renderImage(currentImageIndex);
     renderIndicators();
     startAutoSlide();
@@ -75,7 +75,7 @@ function renderImage(index) {
     // "border-solid","border-red", "border-[10px]"
   );
   titleElement.textContent = images[index].title;
-  console.log('identify hyperlink', images[index])
+/*   console.log('identify hyperlink', images[index]) */
 
   imgContainer.appendChild(imgElement);
   imgContainer.appendChild(gradientOverlay);
