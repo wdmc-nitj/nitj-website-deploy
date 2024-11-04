@@ -68,7 +68,7 @@ function renderNumbers(data) {
 }
 
 
-async function fetchData() {
+async function fetchNumberData() {
     try {
         const response = await fetch("/api/diia/numbers"); // Use const url for the fetch
         const data = await response.json();
@@ -80,8 +80,13 @@ async function fetchData() {
 
 
 // Initialize everything
-window.onload = function () {
+
+/* window.onload = function () {
     console.log("hello");
     fetchData(); // Fetch data and render numbers
-   /*  applyParallaxEffect();  */// Apply parallax effect
-};
+   /*  applyParallaxEffect(); 
+}; */
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetchNumberData();
+});

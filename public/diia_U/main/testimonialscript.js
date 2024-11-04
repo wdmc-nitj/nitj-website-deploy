@@ -29,7 +29,7 @@ function showTesti(d) {
   }
 }
 
-window.onload = async function () {
+/* window.onload = async function () {
   try {
     const response = await fetch("/api/diia/testimonials", {
       method: "GET",
@@ -44,4 +44,21 @@ window.onload = async function () {
   } catch (e) {
     console.log(e);
   }
-};
+}; */
+
+document.addEventListener("DOMContentLoaded",async function() {
+  try {
+    const response = await fetch("/api/diia/testimonials", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response) {
+      const data = await response.json();
+      if (data) showTesti(data);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
