@@ -69,7 +69,9 @@ function renderImage(index) {
     "lg:text-4xl",
     "leading-none",
     "p-2",
-    "whitespace-nowrap",
+    "w-[85%]",
+    "text-center",
+    // "whitespace-nowrap",
     "underline",
     // "m-25",
     // "border-solid","border-red", "border-[10px]"
