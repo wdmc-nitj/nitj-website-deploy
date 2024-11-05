@@ -19,7 +19,7 @@ async function addHTML(){
     
     //for latest five events
     let endPoint = 5;
-    for(let i = 0 ; i < endPoint && endPoint <= imageData.length ; i++)
+    for(let i = 0 ; i < endPoint ; i++)
     {
       if(imageData[i].showIngallery == true)
       {

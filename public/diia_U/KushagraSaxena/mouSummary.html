@@ -22,32 +22,21 @@
     class="relative w-full h-60 flex items-center justify-center overflow-hidden bg-gray-800 mt-[4rem]"
   >
     <!-- Image Display -->
-    <div class="absolute inset-0 w-full h-full" id="imageContainer"></div>
+    <div class="absolute inset-0 w-full h-full" id="imageContainer" style="background: url(Common\ template.jpg); background-repeat: no-repeat; background-size:cover ; background-position: center;">
+    </div>
 
     <!-- Dark Overlay -->
-    <div class="absolute inset-0 bg-black opacity-40"></div>
+    <div class="absolute inset-0 bg-black opacity-40">
+    </div>
 
-    <!-- Caption and Heading -->
-    <div class="w-full lg:max-w-[1200px] mx-auto px-4 lg:px-[4rem]">
-      <div class="absolute bottom-10 z-10">
-        <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          id="headingLink"
-        >
-          <h1
-            class="text-xl md:text-3xl font-bold text-white mb-2"
-            id="heading"
-          ></h1>
-        </a>
-      </div>
-
-      <!-- Slider Indicator -->
+    <!-- Single Heading -->
+    <div class="w-full lg:max-w-[1200px] mx-auto px-4 lg:px-[4rem] mb-[-20px]">
       <div
-        class="absolute bottom-5 flex space-x-2 z-10"
-        id="indicators"
-      ></div>
+        class=" absolute  text-white text-[52px] lg:text-[68px] w-full z-10 lg:max-w-[1200px] mx-auto px-4"
+        id="headerHeading"
+      >
+        MOUs
+      </div>
     </div>
   </div>
 
