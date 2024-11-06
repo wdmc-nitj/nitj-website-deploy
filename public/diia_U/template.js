@@ -34,20 +34,28 @@ function renderTemplate([newsItem, category]) {
   }
 
   const headerImageContainer = document.getElementById("headerImageContainer");
-  headerImageContainer.style.backgroundImage = `url('./assets/flags.jpg')`;
+  if (category == "hero-slider") {
+    headerImageContainer.style.backgroundImage = `url('./assets/flags2.jpg')`;
+  } else {
+    headerImageContainer.style.backgroundImage = `url('./assets/flags.jpg')`;
+  }
 
   const pageHeading = document.getElementById("page-heading");
   if (category == "news-section") pageHeading.textContent = "Latest Event";
-  else {
+  else if (category == "opportunities") {
     pageHeading.textContent = "Opportunity";
+  } else {
+    pageHeading.textContent = "Latest News";
   }
 
   const headerHeading = document.getElementById("headerHeading");
 
   if (category == "news-section") {
     headerHeading.textContent = "Latest Events";
-  } else {
+  } else if (category == "opportunities") {
     headerHeading.textContent = "Opportunities";
+  } else {
+    headerHeading.textContent = "Latest News";
   }
 
   document.getElementById("title").textContent = newsItem.title1;
@@ -121,7 +129,6 @@ function renderMOUsCategory(mou) {
   mouDates.classList.add("text-lg", "font-medium", "text-[#0369a0]");
 
   card.appendChild(mouImage);
-  card.appendChild(mouTitle);
   card.appendChild(mouDates);
 
   const descriptionContainer = document.createElement("div");
@@ -143,7 +150,7 @@ function renderMOUsCategory(mou) {
   contentContainer.appendChild(card);
   contentContainer.appendChild(descriptionContainer);
 }
-
+// Testimonial
 function renderTestimonialCategory(testimonial) {
   const headerImageContainer = document.getElementById("headerImageContainer");
   headerImageContainer.style.backgroundImage = `url('./assets/flags2.jpg')`;
@@ -191,7 +198,7 @@ function renderTestimonialCategory(testimonial) {
   headerSection.style.marginBottom = "20px";
 
   const userImage = document.createElement("img");
-  userImage.src = "https://v1.nitj.ac.in/ecell/assets/img/knm_slshow/one.jpg";
+  userImage.src = `${testimonial.Image}`;
   userImage.alt = testimonial.name;
   userImage.classList.add("rounded-full", "object-cover");
   userImage.style.width = "150px";
@@ -210,7 +217,7 @@ function renderTestimonialCategory(testimonial) {
   userName.style.marginBottom = "5px";
   userName.style.fontSize = "28px";
   const userRole = document.createElement("p");
-  userRole.textContent = `${testimonial.degree}, ${testimonial.dept}, ${testimonial.batch}, Bangladesh`; // Added "Bangladesh"
+  userRole.textContent = `${testimonial.degree}, ${testimonial.dept}, ${testimonial.batch}, ${testimonial.country}`; // Added "Bangladesh"
   userRole.classList.add("text-md", "text-gray-700");
   userRole.style.fontSize = "18px";
   userRole.style.color = "#555";
@@ -235,16 +242,8 @@ function renderTestimonialCategory(testimonial) {
 
   quoteSection.appendChild(quote);
 
-  const countryInfo = document.createElement("p");
-  countryInfo.textContent = testimonial.country;
-  countryInfo.classList.add("text-sm", "text-[#3498db]");
-  countryInfo.style.fontSize = "16px";
-  countryInfo.style.color = "#3498db";
-  countryInfo.style.marginTop = "10px";
-
   card.appendChild(headerSection);
   card.appendChild(quoteSection);
-  card.appendChild(countryInfo);
 
   contentContainer.appendChild(card);
 }
@@ -254,7 +253,11 @@ async function initPage() {
   const newsData = await fetchNewsData();
   const newsItem = newsData.find((item) => item._id === obj.id);
 
-  if (obj.category === "news-section" || obj.category === "opportunities") {
+  if (
+    obj.category === "news-section" ||
+    obj.category === "opportunities" ||
+    obj.category === "hero-slider"
+  ) {
     renderTemplate([newsItem, obj.category]);
   } else if (obj.category === "mous") {
     console.log(newsItem);

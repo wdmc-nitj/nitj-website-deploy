@@ -27,7 +27,7 @@ function genLogo() {
     "h-10 md:h-12 w-auto object-contain hover:scale-110 custom-logo-reduce";
   let img = document.createElement("img");
   img.setAttribute("class", imgStyle);
-  img.setAttribute("src", "../main/assets/logo.png");
+  img.setAttribute("src", "/diia_U/main/assets/logo.png");
   img.setAttribute("alt", "logo");
 
   let spanStyle =
@@ -44,8 +44,8 @@ function genLogo() {
 
 function genHomeButton() {
   let a = document.createElement("a");
-  a.setAttribute("href", "/diia");
-  a.setAttribute('target', '_blank')
+  a.setAttribute("href", "/diia_U/main/oiia.html");
+  a.setAttribute("target", "_blank");
 
   let div = document.createElement("div");
   div.setAttribute(
@@ -92,7 +92,7 @@ function genDropdowns(edata) {
     "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase flex items-center custom-font-reduce text-base font-medium text-[#00387A]"
   );
   a.setAttribute("href", edata.link);
-  a.setAttribute("target", '_blank');
+  a.setAttribute("target", "_blank");
   a.innerHTML = edata.title + '<i class="fa p-1 fa-chevron-down"></i>';
 
   let div2 = document.createElement("div");
@@ -104,7 +104,7 @@ function genDropdowns(edata) {
   for (let x in edata.submenus) {
     let a2 = document.createElement("a");
     a2.setAttribute("href", edata.submenus[x].link);
-    a2.setAttribute("target", "_blank")
+    a2.setAttribute("target", "_blank");
     a2.setAttribute(
       "class",
       "text-sm text-blue-700 hover:text-blue-500 hover:bg-blue-50 m-1 px-5 whitespace-nowrap custom-font-reduce py-1.5 rounded"
@@ -208,7 +208,7 @@ async function genNav() {
     "class",
     "bg-white flex mx-auto px-4 md:px-3 py-3 left-0 right-0 top-0 justify-between items-center drop-shadow-2xl z-50 fixed shadow-black w-full custom-font-reduce"
   );
-  nav.setAttribute('id', 'navscript-bar')
+  nav.setAttribute("id", "navscript-bar");
 
   nav.appendChild(genLogo());
 
