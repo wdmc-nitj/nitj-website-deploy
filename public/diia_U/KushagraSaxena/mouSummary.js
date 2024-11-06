@@ -12,6 +12,7 @@ async function fetchDataMous(){
         console.log("failed:",err)
     }
 }
+
 async function addNavbar(){
     // let navbar = await fetch("/diia_U/AshutoshDevgotra/navbar.html")
     // let navbarData = await navbar.text()
@@ -64,7 +65,9 @@ async function addToHtmlMous(){
                         <p class="text-yellow-700">${(String(data[i].location) !== "undefined" && String(data[i].location) !== "")?`<i class="fa-solid fa-location-dot mr-4"></i>Location: ${data[i].location}`:""}</p>
                     </div>
                     <div class="absolute bottom-3 lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center gap-2 text-white lg:p-3 p-1" style="background: #154378;">
-                        <a href="">MOU</a>
+                        <a href="/diia_U/template.html?id=${
+                                  data[i]._id
+                                }?category=mous" target="_blank">MOU</a>
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>
                 </div>`
@@ -85,7 +88,9 @@ async function addToHtmlMous(){
                         <p class="text-yellow-700">${(String(data[i].location) !== "undefined" && String(data[i].location) !== "")?`<i class="fa-solid fa-location-dot mr-4"></i>Location: ${data[i].location}`:""}</p>
                     </div>
                     <div class="absolute bottom-3 lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center gap-2 text-white lg:p-3 p-1" style="background: #154378;">
-                        <a href="">MOU</a>
+                        <a href="/diia_U/template.html?id=${
+                                  data[i]._id
+                                }?category=mous" target="_blank">MOU</a>
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>
                 </div>`
@@ -106,7 +111,9 @@ async function addToHtmlMous(){
                         <p class="text-yellow-700">${(String(data[i].location) !== "undefined" && String(data[i].location) !== "")?`<i class="fa-solid fa-location-dot mr-4"></i>Location: ${data[i].location}`:""}</p>
                     </div>
                     <div class="absolute bottom-3 lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center gap-2 text-white lg:p-3 p-1" style="background: #154378;">
-                        <a href="">MOU</a>
+                        <a href="/diia_U/template.html?id=${
+                                  data[i]._id
+                                }?category=mous" target="_blank">MOU</a>
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>
                 </div>`

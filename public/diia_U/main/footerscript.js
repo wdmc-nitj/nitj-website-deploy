@@ -145,8 +145,8 @@ async function genFooter() {
         a.appendChild(img)
         flagCounter.appendChild(a)
 
-        footerRight.appendChild(h4)
-        // footerRight.appendChild(flagCounter)
+        // footerRight.appendChild(h4)
+        footerRight.appendChild(flagCounter)
     }
     footerContainer.appendChild(footerRight)
 

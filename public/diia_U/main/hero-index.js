@@ -22,7 +22,7 @@ async function fetchData() {
       src: item.Image,
       title: item.title1,
     }));
-    console.log(images);
+    /* console.log(images); */
     renderImage(currentImageIndex);
     renderIndicators();
     startAutoSlide();

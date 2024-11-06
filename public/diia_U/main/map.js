@@ -103,9 +103,9 @@ async function genMaps() {
         if(response) {
             const data = await response.json()
             if(data) {
-                SetColours(map, data.filter(e=>String(e.type).toLowerCase()=='student'))
-                SetColours(map2, data.filter(e=>String(e.type).toLowerCase()=='research'))
-                SetColours(map3, data.filter(e=>String(e.type).toLowerCase()=='alumni'))
+                SetColours(map, data.filter(e=>String(e.type).toLowerCase()=='student' && e.show))
+                SetColours(map2, data.filter(e=>String(e.type).toLowerCase()=='research' && e.show))
+                SetColours(map3, data.filter(e=>String(e.type).toLowerCase()=='alumni' && e.show))
             }
         }
     }
