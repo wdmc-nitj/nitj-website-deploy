@@ -129,7 +129,7 @@ function renderMOUsCategory(mou) {
   mouDates.classList.add("text-lg", "font-medium", "text-[#0369a0]");
 
   card.appendChild(mouImage);
-  card.appendChild(mouDates);
+  if (mou.startingDate) card.appendChild(mouDates);
 
   const descriptionContainer = document.createElement("div");
   descriptionContainer.classList.add("text-left", "mt-8", "ml-4", "pr-4");
