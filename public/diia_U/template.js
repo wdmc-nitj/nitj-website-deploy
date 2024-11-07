@@ -17,9 +17,7 @@ async function fetchNewsData() {
       obj.category = "news-section";
     }
 
-    const response = await fetch(
-      `https://nitjfinal.onrender.com/api/diia/${obj.category}`
-    );
+    const response = await fetch(`/api/diia/${obj.category}`);
     if (!response.ok) {
       throw new Error("Failed to fetch news data");
     }
