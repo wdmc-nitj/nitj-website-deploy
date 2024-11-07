@@ -3,7 +3,9 @@ const eventsContainer = document.getElementById("eventsContainer");
 // Fetch and render data
 async function fetchImageData() {
   try {
-    const response = await fetch("/api/diia/gallery");
+    const response = await fetch(
+      "https://nitjfinal.onrender.com/api/diia/gallery"
+    );
     if (!response.ok) throw new Error("Failed to fetch data");
 
     const imageData = await response.json();
@@ -23,10 +25,36 @@ function renderSliderImages(imageData) {
     const eventSection = document.createElement("div");
     eventSection.classList.add("mb-12");
 
+    // Event title in blue
     const title = document.createElement("h2");
-    title.classList.add("text-3xl", "font-semibold", "px-3", "mt-8", "mb-4");
+    title.classList.add(
+      "text-3xl",
+      "font-semibold",
+      "px-3",
+      "mt-8",
+      "mb-2",
+      "text-blue-500"
+    );
     title.textContent = event.title;
     eventSection.appendChild(title);
+
+    // Event date in gray and smaller font size
+    const date = document.createElement("p");
+    date.classList.add("text-sm", "px-3", "mb-4", "text-gray-500");
+
+    const eventDate = new Date(event.eventDate);
+    const formattedDate = `${String(eventDate.getDate()).padStart(
+      2,
+      "0"
+    )}-${String(eventDate.getMonth() + 1).padStart(
+      2,
+      "0"
+    )}-${eventDate.getFullYear()}`;
+
+    // Use innerHTML to make only "Event Date:" bold
+    date.innerHTML = `<span class="font-bold">Event Date:</span> ${formattedDate}`;
+
+    eventSection.appendChild(date);
 
     const imageGrid = document.createElement("div");
     imageGrid.classList.add(
