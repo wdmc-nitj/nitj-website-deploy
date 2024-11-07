@@ -7,26 +7,10 @@ const DiiaNewsSectionSchema = new mongoose.Schema({
     },
     title2: {
         type: String,
+        required: true, 
     },
     description: {
         type: String,
-    },
-    link: {
-        type: String, // URL for the link
-    },
-    ExtLink: {
-        type: String, // URL for the external link
-    },
-    show: {
-        type: Boolean,
-        default: false
-    },
-    order: {
-        type: Number,
-    },
-    ListInSummary: {
-        type: Boolean,
-        default: false,
     },
     disable: {
         type: Boolean,
