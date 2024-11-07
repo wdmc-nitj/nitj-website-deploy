@@ -27,7 +27,7 @@ function genLogo() {
     "h-10 md:h-12 w-auto object-contain hover:scale-110 custom-logo-reduce";
   let img = document.createElement("img");
   img.setAttribute("class", imgStyle);
-  img.setAttribute("src", "../main/assets/logo.png");
+  img.setAttribute("src", "/diia_U/main/assets/logo.png");
   img.setAttribute("alt", "logo");
 
   let spanStyle =
@@ -44,8 +44,8 @@ function genLogo() {
 
 function genHomeButton() {
   let a = document.createElement("a");
-  a.setAttribute("href", "/diia");
-  a.setAttribute('target', '_blank')
+  a.setAttribute("href", "/diia_U/main/oiia.html");
+  a.setAttribute("target", "_blank");
 
   let div = document.createElement("div");
   div.setAttribute(
@@ -92,7 +92,7 @@ function genDropdowns(edata) {
     "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase flex items-center custom-font-reduce text-base font-medium text-[#00387A]"
   );
   a.setAttribute("href", edata.link);
-  a.setAttribute("target", '_blank');
+  a.setAttribute("target", "_blank");
   a.innerHTML = edata.title + '<i class="fa p-1 fa-chevron-down"></i>';
 
   let div2 = document.createElement("div");
@@ -104,7 +104,7 @@ function genDropdowns(edata) {
   for (let x in edata.submenus) {
     let a2 = document.createElement("a");
     a2.setAttribute("href", edata.submenus[x].link);
-    a2.setAttribute("target", "_blank")
+    a2.setAttribute("target", "_blank");
     a2.setAttribute(
       "class",
       "text-sm text-blue-700 hover:text-blue-500 hover:bg-blue-50 m-1 px-5 whitespace-nowrap custom-font-reduce py-1.5 rounded"
@@ -170,125 +170,123 @@ function genMobileMenuToggle() {
 
   return div;
 }
-  function genMobileMenu(items) {
-    let div = document.createElement("div");
-    div.setAttribute("id", "nav-dialog");
-    div.setAttribute(
+function genMobileMenu(items) {
+  let div = document.createElement("div");
+  div.setAttribute("id", "nav-dialog");
+  div.setAttribute(
+    "class",
+    "fixed inset-x-0 top-16 p-3 bg-blue-50 text-black z-50 hidden lg:hidden md:hidden shadow-lg rounded-lg custom-font-reduce max-w-xs mx-auto" // Added max-w-sm and mx-auto
+  );
+
+  let menuContainer = document.createElement("div");
+  menuContainer.setAttribute("class", "mt-4 flex flex-col items-center");
+
+  items.forEach((item) => {
+    // Container for main menu item and dropdown toggle
+    let mainItemContainer = document.createElement("div");
+    mainItemContainer.setAttribute(
       "class",
-      "fixed inset-x-0 top-16 p-3 bg-blue-50 text-black z-50 hidden lg:hidden md:hidden shadow-lg rounded-lg custom-font-reduce max-w-xs mx-auto" // Added max-w-sm and mx-auto
+      "relative flex justify-between items-center p-3 mt-3 font-medium border-2 border-blue-500 rounded-lg hover:bg-blue-100 custom-font-reduce w-full"
     );
-  
-    let menuContainer = document.createElement("div");
-    menuContainer.setAttribute("class", "mt-4 flex flex-col items-center");
-  
-    items.forEach((item) => {
-      // Container for main menu item and dropdown toggle
-      let mainItemContainer = document.createElement("div");
-      mainItemContainer.setAttribute(
+
+    // Main menu link
+    let mainLink = document.createElement("a");
+    mainLink.setAttribute("href", item.link || "#");
+    mainLink.setAttribute("target", "_blank");
+    mainLink.setAttribute("class", "text-blue-700 hover:text-blue-500");
+    mainLink.innerHTML = item.title;
+
+    mainItemContainer.appendChild(mainLink);
+
+    // Dropdown icon
+    if (item.submenus && item.submenus.length > 0) {
+      let dropdownIcon = document.createElement("span");
+      dropdownIcon.setAttribute("class", "cursor-pointer text-blue-700 pl-2");
+      dropdownIcon.innerHTML = '<i class="fa fa-chevron-down"></i>';
+
+      mainItemContainer.appendChild(dropdownIcon);
+
+      // Submenu container with reduced width for mobile
+      let submenuContainer = document.createElement("div");
+      submenuContainer.setAttribute(
         "class",
-        "relative flex justify-between items-center p-3 mt-3 font-medium border-2 border-blue-500 rounded-lg hover:bg-blue-100 custom-font-reduce w-full"
+        "absolute left-0 right-0 top-full mt-2 bg-white shadow-md rounded-lg hidden transition-all duration-300 z-40 max-w-xs mx-auto"
       );
-  
-      // Main menu link
-      let mainLink = document.createElement("a");
-      mainLink.setAttribute("href", item.link || "#");
-      mainLink.setAttribute("target", "_blank");
-      mainLink.setAttribute("class", "text-blue-700 hover:text-blue-500");
-      mainLink.innerHTML = item.title;
-  
-      mainItemContainer.appendChild(mainLink);
-  
-      // Dropdown icon
-      if (item.submenus && item.submenus.length > 0) {
-        let dropdownIcon = document.createElement("span");
-        dropdownIcon.setAttribute("class", "cursor-pointer text-blue-700 pl-2");
-        dropdownIcon.innerHTML = '<i class="fa fa-chevron-down"></i>';
-  
-        mainItemContainer.appendChild(dropdownIcon);
-  
-        // Submenu container with reduced width for mobile
-        let submenuContainer = document.createElement("div");
-        submenuContainer.setAttribute(
+
+      item.submenus.forEach((submenu) => {
+        let submenuLink = document.createElement("a");
+        submenuLink.setAttribute("href", submenu.link || "#");
+        submenuLink.setAttribute("target", "_blank");
+        submenuLink.setAttribute(
           "class",
-          "absolute left-0 right-0 top-full mt-2 bg-white shadow-md rounded-lg hidden transition-all duration-300 z-40 max-w-xs mx-auto"
+          "block p-2 text-blue-700 hover:text-blue-500 hover:bg-blue-100 rounded custom-font-reduce"
         );
-  
-        item.submenus.forEach((submenu) => {
-          let submenuLink = document.createElement("a");
-          submenuLink.setAttribute("href", submenu.link || "#");
-          submenuLink.setAttribute("target", "_blank");
-          submenuLink.setAttribute(
-            "class",
-            "block p-2 text-blue-700 hover:text-blue-500 hover:bg-blue-100 rounded custom-font-reduce"
-          );
-          submenuLink.innerHTML = submenu.title;
-          submenuContainer.appendChild(submenuLink);
-        });
-  
-        // Toggle submenu visibility on dropdown icon click
-        dropdownIcon.addEventListener("click", (e) => {
-          e.stopPropagation(); // Prevent triggering main link
-          submenuContainer.classList.toggle("hidden");
-          dropdownIcon.innerHTML = submenuContainer.classList.contains("hidden")
-            ? '<i class="fa fa-chevron-down"></i>'
-            : '<i class="fa fa-chevron-up"></i>';
-        });
-  
-        mainItemContainer.appendChild(submenuContainer);
-      }
-  
-      menuContainer.appendChild(mainItemContainer);
-    });
-  
-    div.appendChild(menuContainer);
-    return div;
-  }
-  
-  
-document.addEventListener("DOMContentLoaded", genNav);
-  async function genNav() {
-    let nav = document.createElement("nav");
-    nav.setAttribute(
-      "class",
-      "bg-white flex mx-auto px-4 md:px-3 py-3 left-0 right-0 top-0 justify-between items-center drop-shadow-2xl z-50 fixed shadow-black w-full custom-font-reduce"
-    );
-    nav.setAttribute("id", "navscript-bar");
-  
-    nav.appendChild(genLogo());
-  
-    let navbarDiv = document.createElement("div");
-    navbarDiv.setAttribute("id", "nav-bar");
-    navbarDiv.setAttribute(
-      "class",
-      "flex items-center hidden md:flex md:text-sm h-fit gap-3 md:gap-3 lg:gap-10 custom-font-reduce"
-    );
-    navbarDiv.appendChild(genHomeButton());
-  
-    let mobileMenuData = []; // Store full data structure for mobile menu
-  
-    try {
-      const response = await fetch("/api/diia/navbar", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        submenuLink.innerHTML = submenu.title;
+        submenuContainer.appendChild(submenuLink);
       });
-      if (response.status == 200) {
-        const data = await response.json();
-        if (data) {
-          mobileMenuData = data; // Use the full data structure for mobile menu
-          for (let x in data) navbarDiv.appendChild(genDropdowns(data[x]));
-        }
-      }
-    } catch (e) {
-      console.log(e);
+
+      // Toggle submenu visibility on dropdown icon click
+      dropdownIcon.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent triggering main link
+        submenuContainer.classList.toggle("hidden");
+        dropdownIcon.innerHTML = submenuContainer.classList.contains("hidden")
+          ? '<i class="fa fa-chevron-down"></i>'
+          : '<i class="fa fa-chevron-up"></i>';
+      });
+
+      mainItemContainer.appendChild(submenuContainer);
     }
-  
-    navbarDiv.appendChild(genHomeButtonLARGE());
-    nav.appendChild(genMobileMenuToggle());
-    nav.appendChild(genMobileMenu(mobileMenuData)); // Pass the full data structure to genMobileMenu
-  
-    nav.appendChild(navbarDiv);
-    document.body.appendChild(nav);
+
+    menuContainer.appendChild(mainItemContainer);
+  });
+
+  div.appendChild(menuContainer);
+  return div;
+}
+
+document.addEventListener("DOMContentLoaded", genNav);
+async function genNav() {
+  let nav = document.createElement("nav");
+  nav.setAttribute(
+    "class",
+    "bg-white flex mx-auto px-4 md:px-3 py-3 left-0 right-0 top-0 justify-between items-center drop-shadow-2xl z-50 fixed shadow-black w-full custom-font-reduce"
+  );
+  nav.setAttribute("id", "navscript-bar");
+
+  nav.appendChild(genLogo());
+
+  let navbarDiv = document.createElement("div");
+  navbarDiv.setAttribute("id", "nav-bar");
+  navbarDiv.setAttribute(
+    "class",
+    "flex items-center hidden md:flex md:text-sm h-fit gap-3 md:gap-3 lg:gap-10 custom-font-reduce"
+  );
+  navbarDiv.appendChild(genHomeButton());
+
+  let mobileMenuData = []; // Store full data structure for mobile menu
+
+  try {
+    const response = await fetch("/api/diia/navbar", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.status == 200) {
+      const data = await response.json();
+      if (data) {
+        mobileMenuData = data; // Use the full data structure for mobile menu
+        for (let x in data) navbarDiv.appendChild(genDropdowns(data[x]));
+      }
+    }
+  } catch (e) {
+    console.log(e);
   }
-  
+
+  navbarDiv.appendChild(genHomeButtonLARGE());
+  nav.appendChild(genMobileMenuToggle());
+  nav.appendChild(genMobileMenu(mobileMenuData)); // Pass the full data structure to genMobileMenu
+
+  nav.appendChild(navbarDiv);
+  document.body.appendChild(nav);
+}
