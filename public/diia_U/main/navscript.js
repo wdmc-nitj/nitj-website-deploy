@@ -91,6 +91,7 @@ function genDropdowns(edata) {
     "class",
     "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase flex items-center custom-font-reduce text-base font-medium text-[#00387A]"
   );
+  a.style.fontSize = '1vw'
   a.setAttribute("href", edata.link);
   a.setAttribute("target", "_blank");
   a.innerHTML = edata.title + '<i class="fa p-1 fa-chevron-down"></i>';

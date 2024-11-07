@@ -45,7 +45,7 @@ function renderCards() {
             +'...'
           }</h2>
           <div class="pt-5 mt-auto">
-            <a href=${!newElt.show ?('/diia_U/template.html?id='+newElt._id+'?category=opportunities'):('/404.html') } 
+            <a href=${newElt.show ?('/diia_U/template.html?id='+newElt._id+'?category=opportunities'):('/404.html') } 
               class="read-more cursor-pointer font-medium text-sky-500 hover:text-sky-600" target="_blank">Read more →</a>
           </div>
         </div>

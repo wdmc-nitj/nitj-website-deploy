@@ -111,14 +111,14 @@
   <div>
         
     <!-- Container for Image Slider and Quick Links -->
-<div class="relative h-[100vh] flex flex-col">
+<div class="relative h-[100vh] sm:h-[100vh] md:h-[100vh] flex flex-col">
       <!-- <h1
         class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-40"
       >
         Bridging Global Academia
       </h1> -->
       <div
-        class="relative w-full h-[75%] sm:h-[75%] md:h-[100%] overflow-hidden z-30"
+        class="relative w-full h-[100%] sm:h-[100%] md:h-[100%] overflow-hidden z-30"
       >
         <div
           class="relative rounded-lg shadow-lg w-full h-full"
@@ -128,18 +128,22 @@
             class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black"
             data-carousel-inner
             id="carousel-images"
-          ></div>
+          >
+              <!-- This is where the banner goes -->
+          </div>
 
           <!-- Adjusted indicators container to be positioned absolutely -->
           <div
             id="carousel-indicators"
-            class="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-2 text-[red] z-40"
-          ></div>
+            class="absolute left-1/2 transform -translate-x-1/2 flex space-x-2 text-[red] z-40"
+          >
+          <!-- This is where dots show -->
+          </div>
         </div>
       </div>
 
 <!-- Quick Link Section -->
-<div class="quick_links absolute top-[68%] xs:top-[82%] sm:top-[68%] md:top-[92%] xl:top-[96%] left-0 right-0  bg-gradient-to-r from-blue-900 to-blue-700 border-white border-2 rounded-[36px] z-40 flex items-center justify-center mx-auto w-full max-w-[90%] xl:max-w-[65%] p-[20px]">
+<div id="quick_links_div" class="quick_links absolute left-0 right-0 bottom-0 bg-gradient-to-r from-blue-900 to-blue-700 border-white border-2 rounded-[36px] z-40 flex items-center justify-center mx-auto w-full max-w-[90%] xl:max-w-[65%] p-[20px]">
   <!-- Elements Container -->
   <style>
     .quick_links .border {
