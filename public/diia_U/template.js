@@ -13,7 +13,13 @@ function getIdFromUrl() {
 async function fetchNewsData() {
   try {
     const obj = getIdFromUrl();
-    const response = await fetch(`/api/diia/${obj.category}`);
+    if (obj.category === "newsPage") {
+      obj.category = "news-section";
+    }
+
+    const response = await fetch(
+      `https://nitjfinal.onrender.com/api/diia/${obj.category}`
+    );
     if (!response.ok) {
       throw new Error("Failed to fetch news data");
     }
@@ -59,6 +65,48 @@ function renderTemplate([newsItem, category]) {
   }
 
   document.getElementById("title").textContent = newsItem.title1;
+
+  const eventContainer = document.getElementById("event-container");
+
+  if (newsItem.Image) {
+    const bodyImage = document.createElement("img");
+    bodyImage.src = newsItem.Image;
+    bodyImage.alt = newsItem.title2;
+    bodyImage.classList.add("body-image");
+    eventContainer.appendChild(bodyImage);
+  }
+
+  const newsDescription = document.createElement("p");
+  newsDescription.classList.add("text-justify");
+  newsDescription.innerHTML = newsItem.description;
+  eventContainer.appendChild(newsDescription);
+}
+
+// Rendering newsPage
+function renderNewsPage(newsItem) {
+  if (!newsItem) {
+    console.error("No news item found");
+    return;
+  }
+
+  const headerImageContainer = document.getElementById("headerImageContainer");
+
+  headerImageContainer.style.backgroundImage = `url('./assets/flags.jpg')`;
+
+  const pageHeading = document.getElementById("page-heading");
+
+  pageHeading.textContent = "Latest News";
+
+  const headerHeading = document.getElementById("headerHeading");
+  headerHeading.textContent = newsItem.title1;
+  headerHeading.classList.add(
+    "text-white",
+    "text-[30px]",
+    "lg:text-[50px]",
+    "leading-tight"
+  );
+
+  document.getElementById("title").textContent = newsItem.title2;
 
   const eventContainer = document.getElementById("event-container");
 
@@ -286,6 +334,8 @@ async function initPage() {
   } else if (obj.category === "testimonials") {
     console.log(newsItem);
     renderTestimonialCategory(newsItem);
+  } else if (obj.category === "newsPage") {
+    renderNewsPage(newsItem);
   }
 }
 
