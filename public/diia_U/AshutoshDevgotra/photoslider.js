@@ -1,23 +1,23 @@
 const eventsContainer = document.getElementById("eventsContainer");
 
-// Fetch data from backend
+// Fetch and render data
 async function fetchImageData() {
   try {
-    const response = await fetch("/api/diia/gallery"); // Replace with your backend endpoint
+    const response = await fetch("/api/diia/gallery");
     if (!response.ok) throw new Error("Failed to fetch data");
 
     const imageData = await response.json();
-
-    // Filter and render images as before
     renderSliderImages(imageData);
   } catch (error) {
     console.error("Error fetching image data:", error);
   }
 }
 
-// Render images dynamically
+// Render sorted images by event date
 function renderSliderImages(imageData) {
-  const sliderImages = imageData.filter((event) => event.showInslider);
+  const sliderImages = imageData
+    .filter((event) => event.showInslider)
+    .sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate)); // Sort by eventDate (most recent first)
 
   sliderImages.forEach((event) => {
     const eventSection = document.createElement("div");
