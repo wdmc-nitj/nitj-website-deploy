@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const DiiaNewsSectionSchema = new mongoose.Schema({
-    Image: {
-        type: String, // URL of the image
-        required: true
-    },
     title1: {
         type: String,
         required: true,
