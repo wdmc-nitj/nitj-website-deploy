@@ -62,7 +62,7 @@ function renderImage(index) {
   const titleElement = document.createElement("div");
   titleElement.classList.add(
     "absolute",
-    "bottom-20",
+    // "bottom-21",
     "left-1/2",
     "transform",
     "-translate-x-1/2",
@@ -77,6 +77,8 @@ function renderImage(index) {
     "text-center",
     "underline"
   );
+  titleElement.style.bottom = `${document.getElementById('quick_links_div').clientHeight + 25}px`
+  document.getElementById('carousel-indicators').style.bottom = `${document.getElementById('quick_links_div').clientHeight + 10}px`
   titleElement.textContent = images[index].title;
 
   // Append elements to imgContainer
