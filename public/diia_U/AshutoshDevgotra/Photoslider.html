@@ -8,6 +8,10 @@
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       #overlay {
@@ -22,7 +26,7 @@
       }
 
       #imageModal {
-        z-index: 50;
+        z-index: 60;
         width: 100%;
         max-width: 100%;
         height: auto;
@@ -58,57 +62,68 @@
     <script src="../main/navscript.js"></script>
 
     <div
-    class="relative w-full h-60 flex items-center justify-center overflow-hidden bg-gray-800 mt-[4rem]"
+      class="relative w-full h-60 flex items-center justify-center overflow-hidden bg-gray-800 mt-[4rem]"
     >
-    <!-- Image Display -->
-    <div class="absolute inset-0 w-full h-full" id="imageContainer" style="background: url(assets/common_bg.jpg); background-repeat: no-repeat; background-size:cover ; background-position: center;">
-    </div>
-
-    <!-- Dark Overlay -->
-    <div class="absolute inset-0 bg-black opacity-40">
-    </div>
-
-    <!-- Single Heading -->
-    <div class="w-full lg:max-w-[1200px] mx-auto px-4 lg:px-[4rem] mb-[-20px]">
+      <!-- Image Display -->
       <div
-        class=" absolute  text-white text-[52px] lg:text-[68px] w-full z-10 lg:max-w-[1200px] mx-auto px-4 font-medium"
-        id="headerHeading"
+        class="absolute inset-0 w-full h-full"
+        id="imageContainer"
+        style="
+          background: url(assets/common_bg.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+        "
+      ></div>
+
+      <!-- Dark Overlay -->
+      <div class="absolute inset-0 bg-black opacity-40"></div>
+
+      <!-- Single Heading -->
+      <div
+        class="w-full lg:max-w-[1200px] mx-auto px-4 lg:px-[4rem] mb-[-20px]"
       >
-        Photo Gallery
+        <div
+          class="absolute text-white text-[52px] lg:text-[68px] w-full z-10 lg:max-w-[1200px] mx-auto px-4 font-medium"
+          id="headerHeading"
+        >
+          Photo Gallery
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Navigation heading -->
-  <div class="bg-gray-200">
-    <nav
-      class="flex px-4 lg:px-[4rem] bg-gray-200 py-[8px] text-black lg:max-w-[1200px] mx-auto"
-      aria-label="Breadcrumb"
-    >
-      <ol class="container w-full inline-flex items-center">
-        <li class="inline-flex items-center">
-          <a
-            href=""
-            class="inline-flex items-center text-sm font-medium hover:text-gray-900"
-          >
-            <a href="../main/oiia.html" class="text-lg font-medium ml-2">Home</a>
-          </a>
-        </li>
-        <li aria-current="page">
-          <i
-            style="color: grey; font-size: 12px; margin-left: 12px"
-            class="fa-solid fa-angle-right ml-2"
-          ></i>
-          <a
-            href="#"
-            id="page-heading"
-            class="page-title text-lg font-medium ml-2"
-            >Photo Gallery</a
-          >
-        </li>
-      </ol>
-    </nav>
-  </div>
+    <!-- Navigation heading -->
+    <div class="bg-gray-200">
+      <nav
+        class="flex px-4 lg:px-[4rem] bg-gray-200 py-[8px] text-black lg:max-w-[1200px] mx-auto"
+        aria-label="Breadcrumb"
+      >
+        <ol class="container w-full inline-flex items-center">
+          <li class="inline-flex items-center">
+            <a
+              href=""
+              class="inline-flex items-center text-sm font-medium hover:text-gray-900"
+            >
+              <a href="../main/oiia.html" class="text-lg font-medium ml-2"
+                >Home</a
+              >
+            </a>
+          </li>
+          <li aria-current="page">
+            <i
+              style="color: grey; font-size: 12px; margin-left: 12px"
+              class="fa-solid fa-angle-right ml-2"
+            ></i>
+            <a
+              href="#"
+              id="page-heading"
+              class="page-title text-lg font-medium ml-2"
+              >Photo Gallery</a
+            >
+          </li>
+        </ol>
+      </nav>
+    </div>
 
     <div id="overlay" class="hidden"></div>
 

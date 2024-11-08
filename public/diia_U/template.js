@@ -13,6 +13,10 @@ function getIdFromUrl() {
 async function fetchNewsData() {
   try {
     const obj = getIdFromUrl();
+    if (obj.category === "newsPage") {
+      obj.category = "news-section";
+    }
+
     const response = await fetch(`/api/diia/${obj.category}`);
     if (!response.ok) {
       throw new Error("Failed to fetch news data");
@@ -34,20 +38,28 @@ function renderTemplate([newsItem, category]) {
   }
 
   const headerImageContainer = document.getElementById("headerImageContainer");
-  headerImageContainer.style.backgroundImage = `url('./assets/flags.jpg')`;
+  if (category == "hero-slider") {
+    headerImageContainer.style.backgroundImage = `url('./assets/flags2.jpg')`;
+  } else {
+    headerImageContainer.style.backgroundImage = `url('./assets/flags.jpg')`;
+  }
 
   const pageHeading = document.getElementById("page-heading");
   if (category == "news-section") pageHeading.textContent = "Latest Event";
-  else {
+  else if (category == "opportunities") {
     pageHeading.textContent = "Opportunity";
+  } else {
+    pageHeading.textContent = "Latest News";
   }
 
   const headerHeading = document.getElementById("headerHeading");
 
   if (category == "news-section") {
     headerHeading.textContent = "Latest Events";
-  } else {
+  } else if (category == "opportunities") {
     headerHeading.textContent = "Opportunities";
+  } else {
+    headerHeading.textContent = "Latest News";
   }
 
   document.getElementById("title").textContent = newsItem.title1;
@@ -64,7 +76,49 @@ function renderTemplate([newsItem, category]) {
 
   const newsDescription = document.createElement("p");
   newsDescription.classList.add("text-justify");
-  newsDescription.textContent = newsItem.description;
+  newsDescription.innerHTML = newsItem.description;
+  eventContainer.appendChild(newsDescription);
+}
+
+// Rendering newsPage
+function renderNewsPage(newsItem) {
+  if (!newsItem) {
+    console.error("No news item found");
+    return;
+  }
+
+  const headerImageContainer = document.getElementById("headerImageContainer");
+
+  headerImageContainer.style.backgroundImage = `url('./assets/flags.jpg')`;
+
+  const pageHeading = document.getElementById("page-heading");
+
+  pageHeading.textContent = "Latest News";
+
+  const headerHeading = document.getElementById("headerHeading");
+  headerHeading.textContent = newsItem.title1;
+  headerHeading.classList.add(
+    "text-white",
+    "text-[30px]",
+    "lg:text-[50px]",
+    "leading-tight"
+  );
+
+  document.getElementById("title").textContent = newsItem.title2;
+
+  const eventContainer = document.getElementById("event-container");
+
+  if (newsItem.Image) {
+    const bodyImage = document.createElement("img");
+    bodyImage.src = newsItem.Image;
+    bodyImage.alt = newsItem.title2;
+    bodyImage.classList.add("body-image");
+    eventContainer.appendChild(bodyImage);
+  }
+
+  const newsDescription = document.createElement("p");
+  newsDescription.classList.add("text-justify");
+  newsDescription.innerHTML = newsItem.description;
   eventContainer.appendChild(newsDescription);
 }
 
@@ -117,18 +171,38 @@ function renderMOUsCategory(mou) {
   const mouDates = document.createElement("p");
   const startDate = new Date(mou.startingDate).toLocaleDateString();
   const endDate = new Date(mou.endingDate).toLocaleDateString();
-  mouDates.textContent = `Start Date: ${startDate} | End Date: ${endDate}`;
+  let mouDatesText = "";
+
+  if (mou.startingDate) {
+    mouDatesText += `Start Date: ${startDate}`;
+  }
+
+  if (mou.endingDate) {
+    if (mouDatesText) {
+      mouDatesText += " | ";
+    }
+    mouDatesText += `End Date: ${endDate}`;
+  }
+
+  mouDates.textContent = mouDatesText;
+
   mouDates.classList.add("text-lg", "font-medium", "text-[#0369a0]");
 
+  const mouPoc = document.createElement("p");
+  mouPoc.innerHTML = `Point of Contact: <span style="color: blue; ">${mou.Poc}</span>`;
+
+  mouPoc.classList.add("text-lg", "font-medium", "text-[#0369a0]");
+
   card.appendChild(mouImage);
-  
-  card.appendChild(mouDates);
+
+  if (mou.startingDate || mou.endingDate) card.appendChild(mouDates);
+  if (mou.Poc) card.appendChild(mouPoc);
 
   const descriptionContainer = document.createElement("div");
   descriptionContainer.classList.add("text-left", "mt-8", "ml-4", "pr-4");
 
   const mouDescription = document.createElement("p");
-  mouDescription.textContent = mou.description;
+  mouDescription.innerHTML = mou.description;
   mouDescription.classList.add(
     "leading-relaxed",
     "text-xl",
@@ -143,7 +217,7 @@ function renderMOUsCategory(mou) {
   contentContainer.appendChild(card);
   contentContainer.appendChild(descriptionContainer);
 }
-
+// Testimonial
 function renderTestimonialCategory(testimonial) {
   const headerImageContainer = document.getElementById("headerImageContainer");
   headerImageContainer.style.backgroundImage = `url('./assets/flags2.jpg')`;
@@ -191,7 +265,7 @@ function renderTestimonialCategory(testimonial) {
   headerSection.style.marginBottom = "20px";
 
   const userImage = document.createElement("img");
-  userImage.src = "https://v1.nitj.ac.in/ecell/assets/img/knm_slshow/one.jpg";
+  userImage.src = `${testimonial.Image}`;
   userImage.alt = testimonial.name;
   userImage.classList.add("rounded-full", "object-cover");
   userImage.style.width = "150px";
@@ -210,7 +284,7 @@ function renderTestimonialCategory(testimonial) {
   userName.style.marginBottom = "5px";
   userName.style.fontSize = "28px";
   const userRole = document.createElement("p");
-  userRole.textContent = `${testimonial.degree}, ${testimonial.dept}, ${testimonial.batch}, Bangladesh`; // Added "Bangladesh"
+  userRole.textContent = `${testimonial.degree}, ${testimonial.dept}, ${testimonial.batch}, ${testimonial.country}`; // Added "Bangladesh"
   userRole.classList.add("text-md", "text-gray-700");
   userRole.style.fontSize = "18px";
   userRole.style.color = "#555";
@@ -222,7 +296,7 @@ function renderTestimonialCategory(testimonial) {
 
   const quoteSection = document.createElement("blockquote");
   quoteSection.classList.add("text-gray-700", "text-lg");
-  quoteSection.style.fontSize = "20px";
+  quoteSection.style.fontSize = "18px";
   quoteSection.style.color = "#333";
   quoteSection.style.padding = "20px 30px";
   quoteSection.style.borderLeft = "5px solid #3498db";
@@ -235,16 +309,8 @@ function renderTestimonialCategory(testimonial) {
 
   quoteSection.appendChild(quote);
 
-  const countryInfo = document.createElement("p");
-  countryInfo.textContent = testimonial.country;
-  countryInfo.classList.add("text-sm", "text-[#3498db]");
-  countryInfo.style.fontSize = "16px";
-  countryInfo.style.color = "#3498db";
-  countryInfo.style.marginTop = "10px";
-
   card.appendChild(headerSection);
   card.appendChild(quoteSection);
-  card.appendChild(countryInfo);
 
   contentContainer.appendChild(card);
 }
@@ -254,7 +320,11 @@ async function initPage() {
   const newsData = await fetchNewsData();
   const newsItem = newsData.find((item) => item._id === obj.id);
 
-  if (obj.category === "news-section" || obj.category === "opportunities") {
+  if (
+    obj.category === "news-section" ||
+    obj.category === "opportunities" ||
+    obj.category === "hero-slider"
+  ) {
     renderTemplate([newsItem, obj.category]);
   } else if (obj.category === "mous") {
     console.log(newsItem);
@@ -262,6 +332,8 @@ async function initPage() {
   } else if (obj.category === "testimonials") {
     console.log(newsItem);
     renderTestimonialCategory(newsItem);
+  } else if (obj.category === "newsPage") {
+    renderNewsPage(newsItem);
   }
 }
 

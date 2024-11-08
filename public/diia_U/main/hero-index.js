@@ -18,6 +18,7 @@ async function fetchData() {
     }
     const data = await response.json();
     images = data.map((item) => ({
+      id: item._id, // Capture the id here
       src: item.Image,
       title: item.title1,
     }));
@@ -33,6 +34,10 @@ async function fetchData() {
 function renderImage(index) {
   const carouselInner = document.getElementById("carousel-images");
   carouselInner.innerHTML = "";
+
+  // Create a link element that wraps the image and title, redirecting to the template page
+  const linkContainer = document.createElement("a");
+  linkContainer.href = `/diia_U/template.html?id=${images[index].id}&category=hero-slider`; // Use the id from images array
 
   const imgContainer = document.createElement("div");
   imgContainer.classList.add("relative", "w-full", "h-full");
@@ -55,10 +60,9 @@ function renderImage(index) {
   );
 
   const titleElement = document.createElement("div");
-  // class="text-2xl text-center text-white uppercase lg:text-4xl"
   titleElement.classList.add(
     "absolute",
-    "bottom-20",
+    // "bottom-21",
     "left-1/2",
     "transform",
     "-translate-x-1/2",
@@ -71,18 +75,20 @@ function renderImage(index) {
     "p-2",
     "w-[85%]",
     "text-center",
-    // "whitespace-nowrap",
-    "underline",
-    // "m-25",
-    // "border-solid","border-red", "border-[10px]"
+    "underline"
   );
+  titleElement.style.bottom = `${document.getElementById('quick_links_div').clientHeight + 25}px`
+  document.getElementById('carousel-indicators').style.bottom = `${document.getElementById('quick_links_div').clientHeight + 10}px`
   titleElement.textContent = images[index].title;
-/*   console.log('identify hyperlink', images[index]) */
 
+  // Append elements to imgContainer
   imgContainer.appendChild(imgElement);
   imgContainer.appendChild(gradientOverlay);
   imgContainer.appendChild(titleElement);
-  carouselInner.appendChild(imgContainer);
+
+  // Append imgContainer to linkContainer
+  linkContainer.appendChild(imgContainer);
+  carouselInner.appendChild(linkContainer);
 
   updateActiveIndicator(index);
 }
