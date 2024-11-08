@@ -13,6 +13,10 @@ function getIdFromUrl() {
 async function fetchNewsData() {
   try {
     const obj = getIdFromUrl();
+    if (obj.category === "newsPage") {
+      obj.category = "news-section";
+    }
+
     const response = await fetch(`/api/diia/${obj.category}`);
     if (!response.ok) {
       throw new Error("Failed to fetch news data");
@@ -72,7 +76,49 @@ function renderTemplate([newsItem, category]) {
 
   const newsDescription = document.createElement("p");
   newsDescription.classList.add("text-justify");
-  newsDescription.textContent = newsItem.description;
+  newsDescription.innerHTML = newsItem.description;
+  eventContainer.appendChild(newsDescription);
+}
+
+// Rendering newsPage
+function renderNewsPage(newsItem) {
+  if (!newsItem) {
+    console.error("No news item found");
+    return;
+  }
+
+  const headerImageContainer = document.getElementById("headerImageContainer");
+
+  headerImageContainer.style.backgroundImage = `url('./assets/flags.jpg')`;
+
+  const pageHeading = document.getElementById("page-heading");
+
+  pageHeading.textContent = "Latest News";
+
+  const headerHeading = document.getElementById("headerHeading");
+  headerHeading.textContent = newsItem.title1;
+  headerHeading.classList.add(
+    "text-white",
+    "text-[30px]",
+    "lg:text-[50px]",
+    "leading-tight"
+  );
+
+  document.getElementById("title").textContent = newsItem.title2;
+
+  const eventContainer = document.getElementById("event-container");
+
+  if (newsItem.Image) {
+    const bodyImage = document.createElement("img");
+    bodyImage.src = newsItem.Image;
+    bodyImage.alt = newsItem.title2;
+    bodyImage.classList.add("body-image");
+    eventContainer.appendChild(bodyImage);
+  }
+
+  const newsDescription = document.createElement("p");
+  newsDescription.classList.add("text-justify");
+  newsDescription.innerHTML = newsItem.description;
   eventContainer.appendChild(newsDescription);
 }
 
@@ -125,17 +171,38 @@ function renderMOUsCategory(mou) {
   const mouDates = document.createElement("p");
   const startDate = new Date(mou.startingDate).toLocaleDateString();
   const endDate = new Date(mou.endingDate).toLocaleDateString();
-  mouDates.textContent = `Start Date: ${startDate} | End Date: ${endDate}`;
+  let mouDatesText = "";
+
+  if (mou.startingDate) {
+    mouDatesText += `Start Date: ${startDate}`;
+  }
+
+  if (mou.endingDate) {
+    if (mouDatesText) {
+      mouDatesText += " | ";
+    }
+    mouDatesText += `End Date: ${endDate}`;
+  }
+
+  mouDates.textContent = mouDatesText;
+
   mouDates.classList.add("text-lg", "font-medium", "text-[#0369a0]");
 
+  const mouPoc = document.createElement("p");
+  mouPoc.innerHTML = `Point of Contact: <span style="color: blue; ">${mou.Poc}</span>`;
+
+  mouPoc.classList.add("text-lg", "font-medium", "text-[#0369a0]");
+
   card.appendChild(mouImage);
-  if (mou.startingDate) card.appendChild(mouDates);
+
+  if (mou.startingDate || mou.endingDate) card.appendChild(mouDates);
+  if (mou.Poc) card.appendChild(mouPoc);
 
   const descriptionContainer = document.createElement("div");
   descriptionContainer.classList.add("text-left", "mt-8", "ml-4", "pr-4");
 
   const mouDescription = document.createElement("p");
-  mouDescription.textContent = mou.description;
+  mouDescription.innerHTML = mou.description;
   mouDescription.classList.add(
     "leading-relaxed",
     "text-xl",
@@ -229,7 +296,7 @@ function renderTestimonialCategory(testimonial) {
 
   const quoteSection = document.createElement("blockquote");
   quoteSection.classList.add("text-gray-700", "text-lg");
-  quoteSection.style.fontSize = "20px";
+  quoteSection.style.fontSize = "18px";
   quoteSection.style.color = "#333";
   quoteSection.style.padding = "20px 30px";
   quoteSection.style.borderLeft = "5px solid #3498db";
@@ -265,6 +332,8 @@ async function initPage() {
   } else if (obj.category === "testimonials") {
     console.log(newsItem);
     renderTestimonialCategory(newsItem);
+  } else if (obj.category === "newsPage") {
+    renderNewsPage(newsItem);
   }
 }
 
