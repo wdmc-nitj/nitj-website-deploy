@@ -3,9 +3,13 @@ const eventsContainer = document.getElementById("eventsContainer");
 // Fetch and render data
 async function fetchImageData() {
   try {
+<<<<<<< HEAD
+    const response = await fetch("/api/diia/gallery");
+=======
     const response = await fetch(
-      "https://nitjfinal.onrender.com/api/diia/gallery"
+      "/api/diia/gallery"
     );
+>>>>>>> bafdb11614ba9033980b3e1d5393c4a4d69b42a3
     if (!response.ok) throw new Error("Failed to fetch data");
 
     const imageData = await response.json();
