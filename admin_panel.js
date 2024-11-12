@@ -3035,23 +3035,34 @@ const AdminBroOptions = {
       },
   },
 
-{
-  resource: DiiaNewsSection,
-  options: {
+  {
+    resource: DiiaNewsSection,
+    options: {
       navigation: "DIIA",
       actions: {
-        new: { isAccessible: isdiiaAdmin},
+        new: { isAccessible: isdiiaAdmin },
         edit: { isAccessible: isdiiaAdmin },
         delete: { isAccessible: isdiiaAdmin },
         show: { isAccessible: isdiiaAdmin },
         bulkDelete: { isAccessible: isdiiaAdmin },
-        list: { isAccessible: isdiiaAdmin},
+        list: { isAccessible: isdiiaAdmin },
       },
       properties: {
-          sourceOfInfo: { isVisible: false },
+        sourceOfInfo: { isVisible: false },
+        copyLink: {
+          isVisible: { list: true, filter: false, show: false, edit: false },
+          components: {
+            list: AdminBro.bundle('./copylink'),
+          },
         },
       },
+      sort: {
+        direction: 'desc',
+        sortBy: 'createdAt'
+      },
+    },
   },
+  
 {
   resource: DiiaOpportunities,
   options: {
