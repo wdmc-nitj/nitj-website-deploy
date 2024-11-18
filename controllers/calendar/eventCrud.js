@@ -36,7 +36,7 @@ const showEvent = async (req, res) => {
             parsedMonth < 1 ||
             parsedMonth > 12
         ) {
-            return res.status(400).json({ message: "Invalid year or month parameter" });
+            return res.status(400).json({ message: " hello Invalid year or month parameter" });
         }
 
         const startOfMonth = new Date()
@@ -47,15 +47,18 @@ const showEvent = async (req, res) => {
 
         const endOfMonth = new Date()
         
-        if(parsedMonth===12){
-            parsedYear=parsedYear+1
-            parsedMonth=0
-        }
+        let endYear = parsedYear;
+let endMonth = parsedMonth;
 
-        endOfMonth.setFullYear(parsedYear)
-        endOfMonth.setMonth(parsedMonth)
-        endOfMonth.setDate(1)
-        endOfMonth.setUTCHours(0,0,0,0)
+if (parsedMonth === 12) {
+    endYear = parsedYear + 1;
+    endMonth = 0; // January of the next year
+}
+
+endOfMonth.setFullYear(endYear);
+endOfMonth.setMonth(endMonth);
+endOfMonth.setDate(1);
+endOfMonth.setUTCHours(0, 0, 0, 0);
 
         const eventData = await Event.find({
             startDateTime: { $gte: startOfMonth, $lte: endOfMonth }

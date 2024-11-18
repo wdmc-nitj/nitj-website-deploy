@@ -5,39 +5,52 @@ const geteventsbytime = "/api/eventsCalendar/findeventsbytime";
 
 // Function to fetch events from the backend
 async function fetchEvents() {
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth() + 1; // Current month (1-12)
+  const upcomingEvents = [];
+
+  console.log(`Fetching events starting from ${currentYear}-${currentMonth}`);
+
   try {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1;
+    // Fetch events from current month to December of current year and then continue to the next years
+    for (let year = currentYear; year <= currentYear + 1; year++) {
+      // Determine the start and end month for the loop
+      const startMonth = year === currentYear ? currentMonth : 1; // Start from current month or January for next year
+      const endMonth = year === currentYear ? 12 : 12; // Always fetch till December for current and next year
 
-    const events = [];
+      for (let month = startMonth; month <= endMonth; month++) {
+        console.log(`Fetching events for ${year}-${month}`);
 
-    for (let i = 0; i < 3; i++) {
-      const monthOffset = month + i - 1;
-      
-      // Calculate the correct year and month
-      const currentYear = year + Math.floor(monthOffset / 12);
-      let currentMonth = monthOffset % 12;
+        const response = await fetch(`${getevents}?year=${year}&month=${month}`);
+        console.log(`Response status for ${year}-${month}: ${response.status}`);
 
-      // Adjust currentMonth to be within the range of 1-12, accounting for December
-      if (currentMonth === 0) {
-        currentMonth = 12;
-      } else if (monthOffset < 0) {
-        currentMonth += 12;  // Handle negative months properly
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(`Fetched data for ${year}-${month}:`, data);
+
+        // Merge the data from each month into the upcomingEvents array
+        upcomingEvents.push(...data);
       }
-
-      const response = await fetch(`${getevents}?year=${currentYear}&month=${currentMonth}`);
-      const data = await response.json();
-      events.push(...data);
     }
 
-    console.log(events);
-    return events;
+    return upcomingEvents; // Return all upcoming events
   } catch (error) {
-    console.error('Error fetching events:', error);
-    return [];
+    console.error(`Error fetching events:`, error);
+    return []; // Return an empty array on error
   }
 }
+
+
+
+
+
+
+
+
 
 // // Function to fetch events by type from the backend
 // async function fetchEventsByType(type) {
@@ -224,122 +237,82 @@ endn = `${endn.toString().padStart(2, '0')}:${endMillis.toString().padStart(2, '
 
 async function addEventsToHTML() {
   const events = await fetchEvents();
-
   const eventsByDate = {};
-  const multiDayEvents = [];
 
+  // Get the current date and set time to 00:00:00 to include events happening today
+  const currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0);
+
+  // Filter events to include events from today and upcoming dates
   const filteredEvents = events.filter((event) => {
     const formattedStartDate = new Date(fetchdate(event.startDateTime));
     const formattedEndDate = new Date(fetchdate(event.endDateTime));
-    const currentDate = new Date();
-    currentDate.setHours(0, 0, 0, 0); // to ignore time and compare only the date
 
-    // Check if the event is a multi-day event
-    if (formattedEndDate > formattedStartDate && event.show === true) {
-      multiDayEvents.push(event);
-    }
+    // Check if the event starts or ends on or after the current date
+    const isUpcomingEvent = formattedStartDate >= currentDate || formattedEndDate >= currentDate;
 
-    return formattedStartDate.getFullYear() === currentDate.getFullYear() && formattedStartDate >= currentDate && event.show === true;
+    // Include only events that are visible and start/end on or after the current date
+    return isUpcomingEvent && event.show === true;
   });
 
-// Existing code...
-filteredEvents.forEach((event) => {
-  const formattedStartDate = new Date(fetchdate(event.startDateTime));
-  const formattedEndDate = new Date(fetchdate(event.endDateTime));
-  const dateKey = formattedStartDate.toISOString().split("T")[0]; // Use ISO string as the key
-  if (!eventsByDate[dateKey]) {
-    eventsByDate[dateKey] = [];
-  }
-  eventsByDate[dateKey].push(event);
-});
+  // Add events to the eventsByDate object, handling multi-day events
+  filteredEvents.forEach((event) => {
+    const formattedStartDate = new Date(fetchdate(event.startDateTime));
+    const formattedEndDate = new Date(fetchdate(event.endDateTime));
 
-// New code...
-const currentDate = new Date();
-const currentDateKey = `${currentDate.getUTCFullYear()}-${String(currentDate.getUTCMonth() + 1).padStart(2, '0')}-${String(currentDate.getUTCDate()).padStart(2, '0')}`;
-
-multiDayEvents.forEach((event) => {
- const formattedStartDate = new Date(fetchdate(event.startDateTime));
-formattedStartDate.setHours(0, 0, 0, 0);
-
-const formattedEndDate = new Date(fetchdate(event.endDateTime));
-formattedEndDate.setHours(0, 0, 0, 0);
-
-const currentDate = new Date();
-currentDate.setHours(0, 0, 0, 0);
-
-// Check if the current date is within the range of the multi-day event
-if (formattedStartDate <= currentDate && formattedEndDate >= currentDate) {
-  if (!eventsByDate[currentDateKey]) {
-    eventsByDate[currentDateKey] = [];
-  }
-  const isEventAlreadyAdded = eventsByDate[currentDateKey].some((e) => e._id === event._id);
-  if (!isEventAlreadyAdded) {
-    eventsByDate[currentDateKey].push(event);
-  }
-}
-});
-// Rest of your code...
-
-  // Sort events in eventsByDate based on start time
-  for (const dateKey in eventsByDate) {
-    eventsByDate[dateKey].sort((a, b) => {
-      const startTimeA = new Date(a.startDateTime).getTime();
-      const startTimeB = new Date(b.startDateTime).getTime();
-      return startTimeA - startTimeB;
-    });
-  }
-
-  // Sort events by date
-  const sortedEvents = Object.entries(eventsByDate).sort(([dateA], [dateB]) => {
-    const dateObjA = new Date(dateA);
-    const dateObjB = new Date(dateB);
-    return dateObjA - dateObjB;
+    // For multi-day events, only add the event to the start date
+    if (formattedEndDate > formattedStartDate) {
+      const startDateKey = formattedStartDate.toISOString().split("T")[0];
+      if (!eventsByDate[startDateKey]) {
+        eventsByDate[startDateKey] = [];
+      }
+      const isEventAlreadyAdded = eventsByDate[startDateKey].some((e) => e._id === event._id);
+      if (!isEventAlreadyAdded) {
+        eventsByDate[startDateKey].push({ ...event, isMultiDay: true, endDate: formattedEndDate });
+      }
+    } else {
+      // For single-day events, add them normally
+      const dateKey = formattedStartDate.toISOString().split("T")[0];
+      if (!eventsByDate[dateKey]) {
+        eventsByDate[dateKey] = [];
+      }
+      eventsByDate[dateKey].push(event);
+    }
   });
 
   // Create HTML elements for each event
-  for (const [date, events] of sortedEvents) {
+  for (const [date, events] of Object.entries(eventsByDate).sort(([dateA], [dateB]) => {
+    return new Date(dateA) - new Date(dateB);
+  })) {
     const formattedDate = new Date(date);
     const day = formattedDate.getDate();
     const month = formattedDate.toLocaleString("default", { month: "short" });
-    let currentDate = new Date();
-    currentDate.setHours(0, 0, 0, 0); // to ignore time and compare only the date
 
-    let eventDate = new Date(date);
-    eventDate.setHours(0, 0, 0, 0); // to ignore time and compare only the date
-
-    let displayDate;
-    if (
-      currentDate.getDate() == eventDate.getDate() &&
-      currentDate.getMonth() == eventDate.getMonth() &&
-      currentDate.getFullYear() == eventDate.getFullYear()
-    ) {
-      const day = currentDate.getDate();
-      const month = currentDate.toLocaleString("default", { month: "short" });
-      displayDate = `Today ${day} ${month} <span class="text-slate-500 font-normal text-base">${getDayOfWeek(
-        new Date(currentDate)
-      )}</span>`;
-    } else {
-      const day = eventDate.getDate();
-      const month = eventDate.toLocaleString("default", { month: "short" });
-      displayDate = `${day} ${month} <span class="text-slate-500 font-normal text-base">${getDayOfWeek(
-        new Date(eventDate)
-      )}</span>`;
-    }
+    let displayDate = `${day} ${month} <span class="text-slate-500 font-normal text-base">${getDayOfWeek(new Date(date))}</span>`;
 
     const timelineItem = document.createElement("div");
-    timelineItem.className = "timeline-item ";
+    timelineItem.className = "timeline-item";
 
     const timelineContent = document.createElement("div");
-    timelineContent.className = "timeline-content -ml-6 ";
+    timelineContent.className = "timeline-content -ml-6";
+
+    // Filter out multi-day events to display only once at their start date
+    const uniqueEvents = events.filter((event, index, self) => {
+      if (event.isMultiDay) {
+        // Ensure multi-day event cards are only displayed on their start date
+        return date === new Date(fetchdate(event.startDateTime)).toISOString().split("T")[0];
+      }
+      return true;
+    });
 
     timelineContent.innerHTML = `
-    <div class="h-4 w-4  rounded-full flex items-center justify-center " style="margin-left: -9.5px;background-color:#D47400;border:"2px solid #6a4210";"></div>      
-        <div class="ml-6 ">
-          <h3 class="text-lg font-semibold" style="margin-top: -25px; margin-bottom: 15px;">${displayDate}</h3>
-          <div class="flex flex-col ">
-          ${eventsByDate[date].map((events) => createEventCard(events)).join("")}
-           </div>
+      <div class="h-4 w-4 rounded-full flex items-center justify-center" style="margin-left: -9.5px; background-color: #D47400; border: 2px solid #6a4210;"></div>
+      <div class="ml-6">
+        <h3 class="text-lg font-semibold" style="margin-top: -25px; margin-bottom: 15px;">${displayDate}</h3>
+        <div class="flex flex-col">
+          ${uniqueEvents.map((event) => createEventCard(event)).join("")}
         </div>
+      </div>
     `;
 
     timelineItem.appendChild(timelineContent);
@@ -348,6 +321,22 @@ if (formattedStartDate <= currentDate && formattedEndDate >= currentDate) {
     timeline.appendChild(timelineItem);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const camelToFlat=(camel)=>{
