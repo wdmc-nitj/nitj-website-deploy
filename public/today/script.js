@@ -10,7 +10,7 @@ async function fetchEvents() {
   const currentMonth = currentDate.getMonth() + 1; // Current month (1-12)
   const upcomingEvents = [];
 
-  console.log(`Fetching events starting from ${currentYear}-${currentMonth}`);
+  //console.log(`Fetching events starting from ${currentYear}-${currentMonth}`);
 
   try {
     // Fetch events from current month to December of current year and then continue to the next years
@@ -20,17 +20,17 @@ async function fetchEvents() {
       const endMonth = year === currentYear ? 12 : 12; // Always fetch till December for current and next year
 
       for (let month = startMonth; month <= endMonth; month++) {
-        console.log(`Fetching events for ${year}-${month}`);
+       // console.log(`Fetching events for ${year}-${month}`);
 
         const response = await fetch(`${getevents}?year=${year}&month=${month}`);
-        console.log(`Response status for ${year}-${month}: ${response.status}`);
+       // console.log(`Response status for ${year}-${month}: ${response.status}`);
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
-        console.log(`Fetched data for ${year}-${month}:`, data);
+        //console.log(`Fetched data for ${year}-${month}:`, data);
 
         // Merge the data from each month into the upcomingEvents array
         upcomingEvents.push(...data);
