@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Photo Slider with Backend Integration</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* CSS remains as in your original HTML */
+  </style>
+</head>
+<body class="bg-gray-100">
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Fullscreen Overlay for background blur -->
+  <div id="overlay" class="hidden"></div>
+
+  <!-- Event Title (Dynamic) -->
+  <h2 id="eventTitle" class="text-3xl font-semibold px-3 mt-24">Event</h2>
+
+  <!-- Quick Link Tiles Section (Generated Dynamically) -->
+  <div id="eventContainer" class="container mx-auto mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 z-30"></div>
+
+  <!-- Modal (Image Slider) -->
+  <div id="imageModal" class="fixed inset-0 hidden bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div class="relative w-full max-w-[90%] bg-white rounded-lg shadow-lg mx-6">
+      <button class="absolute top-2 right-2 text-gray-700 text-5xl" onclick="closeModal()">&times;</button>
+      <img id="sliderImage" src="" alt="Selected Image" class="w-full h-auto object-contain max-h-[80vh] rounded-lg" />
+      <button class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-600 bg-opacity-50 p-5 rounded-full hover:bg-opacity-75 z-50" onclick="prevImage()">
+        <img src="./assets/chevron-left-svgrepo-com.svg" width="25" height="25" />
+      </button>
+      <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-gray-600 bg-opacity-50 p-5 rounded-full hover:bg-opacity-75 z-50" onclick="nextImage()">
+        <img src="./assets/chevron-right-svgrepo-com.svg" width="25" height="25" />
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const eventDate = '2024-10-28'; // You can dynamically set the date as needed
+      const response = await fetch(`/api/events?date=${eventDate}`);
+      const events = await response.json();
+
+      const images = events.map(event => event.imageUrl);
+      const titles = events.map(event => event.title);
+
+      // Dynamically populate event tiles
+      const eventContainer = document.getElementById('eventContainer');
+      eventContainer.innerHTML = events.map((event, index) => `
+        <div class="group relative cursor-pointer" onclick="openImage(${index + 1})">
+          <img src="${event.imageUrl}" alt="${event.title}" class="w-full h-48 rounded-lg object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white text-xl">${event.title}</div>
+        </div>
+      `).join('');
+
+      let currentImageIndex = 0;
+
+      function openImage(index) {
+        currentImageIndex = index - 1;
+        document.getElementById('sliderImage').src = images[currentImageIndex];
+        document.getElementById('eventTitle').innerText = titles[currentImageIndex];
+        document.getElementById('imageModal').classList.remove('hidden');
+        addBlur();
+      }
+
+      window.openImage = openImage; // Make function globally accessible
+
+      function closeModal() {
+        document.getElementById('imageModal').classList.add('hidden');
+        removeBlur();
+      }
+
+      window.closeModal = closeModal;
+
+      function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        document.getElementById('sliderImage').src = images[currentImageIndex];
+        document.getElementById('eventTitle').innerText = titles[currentImageIndex];
+      }
+
+      window.prevImage = prevImage;
+
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        document.getElementById('sliderImage').src = images[currentImageIndex];
+        document.getElementById('eventTitle').innerText = titles[currentImageIndex];
+      }
+
+      window.nextImage = nextImage;
+      
+      function addBlur() {
+        document.body.classList.add('blur');
+        document.getElementById('overlay').classList.remove('hidden');
+      }
+
+      function removeBlur() {
+        document.body.classList.remove('blur');
+        document.getElementById('overlay').classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
