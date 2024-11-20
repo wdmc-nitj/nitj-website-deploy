@@ -30,7 +30,7 @@
 
   <script src="https://kit.fontawesome.com/46aac33939.js" crossorigin="anonymous"></script>
 
-  <title>Alumni Portal</title>
+  <title>Alumni</title>
 
 
   <style>
@@ -98,6 +98,81 @@
     .font-times{
       font-family: 'Times New Roman', Times, serif;
     }
+
+
+
+
+    .modal-image {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    
+    .modal-image:hover {
+      opacity: 0.7;
+    }
+    
+    
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1; 
+      padding-top: 100px; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      overflow: auto; 
+      background-color: rgb(0, 0, 0); 
+      background-color: rgba(0, 0, 0, 0.9); 
+    }
+    
+    .modal-content {
+      margin: auto;
+      width: 100%;
+      max-width: 700px
+    }
+    
+    
+    .modal-content {
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+    
+    @keyframes zoom {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    
+    
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: #ff3939;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px) {
+      .modal-content {
+        width: 100%;
+      }
+    }
+    
   </style>
 
 
@@ -112,9 +187,21 @@
     <div class="flex justify-around items-center overflow-hidden">
       
       <a href="/alumni/alumni.html" target="_blank">
-        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline lg:mx-2 mr-6 ml-2 lg:pl-0 cursor-pointer"
-          src="img/logo.png" alt="logo">
+       <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline lg:mx-2 mr-6 ml-2 lg:pl-0 cursor-pointer"
+     src="img/logo.png" alt="logo">
+
       </a>
+
+
+
+
+        <!---Image Structure -->
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="img01">
+  </div>
+
+
 
       <div
         class="text-[10px] pl-2 sm:text-base w-[30rem] lg:w-[33rem] ml-2 sm:ml-3 leading-5 text-[#0054A6] cursor-pointer font-bold">
@@ -293,66 +380,107 @@
 
 
       <div class="single-column">
-        <a href="#"><img src="./img/utkansh19/1.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/2.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/3.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/4.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/5.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/7.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/8.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/9.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/10.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/11.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/12.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/13.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/14.jpg" alt="image"></a>
-        <a href="#"><img src="./img/utkansh19/15.jpg" alt="image"></a>
-        <!-- <a href="#"><img src="https://nitj.ac.in/files/1704542215568-11.JPG" alt="image"></a>
-        <a href="#"><img src="https://nitj.ac.in/files/1704542231799-12.JPG" alt="image"></a>
-        <a href="#"><img src="https://nitj.ac.in/files/1704542277568-13.JPG" alt="image"></a> -->
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/1.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/2.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/3.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/4.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/5.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/7.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/8.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/9.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/10.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/11.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/12.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/13.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/14.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src="./img/utkansh19/15.jpg" alt="image"></a>
+        <!-- <a href="#"><img class = "modal-image" src
+="https://nitj.ac.in/files/1704542215568-11.JPG" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="https://nitj.ac.in/files/1704542231799-12.JPG" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="https://nitj.ac.in/files/1704542277568-13.JPG" alt="image"></a> -->
       </div>
 
       <div class="single-column">
-        <a href="#"><img src="./img/alumni_meet/image-026.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-027.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-028.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-029.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-030.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-031.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-032.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-033.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-034.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-035.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-036.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-037.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-038.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-039.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-040.jpg" alt="image"></a>
-        <a href="#"><img src="./img/alumni_meet/image-041.jpg" alt="image"></a>
-        <!-- <a href="#"><img src="https://nitj.ac.in/files/1704542256181-14.JPG" alt="image"></a>
-        <a href="#"><img src="https://nitj.ac.in/files/1704542292881-15.JPG" alt="image"></a>
-        <a href="#"><img src="https://nitj.ac.in/files/1704542306011-16.JPG" alt="image"></a> -->
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-026.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-027.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-028.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-029.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-030.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-031.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-032.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-033.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-034.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-035.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-036.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-037.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-038.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-039.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-040.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/alumni_meet/image-041.jpg" alt="image"></a>
+        <!-- <a href="#"><img class = "modal-image" src
+="https://nitj.ac.in/files/1704542256181-14.JPG" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="https://nitj.ac.in/files/1704542292881-15.JPG" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="https://nitj.ac.in/files/1704542306011-16.JPG" alt="image"></a> -->
       </div>
       <div class="single-column">
-        <a href="#"><img src="./img/college_img/1.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/2.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/3.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/4.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/5.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/6.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/7.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/8.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/9.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/10.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/11.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/12.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/13.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/14.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/15.jpg" alt="image"></a>
-        <a href="#"><img src="./img/college_img/16.jpg" alt="image"></a>
-        <!-- <a href="#"><img src="https://nitj.ac.in/files/1704542332535-17.JPG" alt="image"></a>
-        <a href="#"><img src="https://nitj.ac.in/files/1704542344046-18.JPG" alt="image"></a>
-        <a href="#"><img src="https://nitj.ac.in/files/1704542355134-19.JPG" alt="image"></a>       -->
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/1.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/2.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/3.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/4.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/5.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/6.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/7.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/8.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/9.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/10.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/11.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/12.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/13.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/14.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/15.jpg" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="./img/college_img/16.jpg" alt="image"></a>
+        <!-- <a href="#"><img class = "modal-image" src
+="https://nitj.ac.in/files/1704542332535-17.JPG" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="https://nitj.ac.in/files/1704542344046-18.JPG" alt="image"></a>
+        <a href="#"><img class = "modal-image" src
+="https://nitj.ac.in/files/1704542355134-19.JPG" alt="image"></a>       -->
       </div>
 
 
@@ -362,9 +490,9 @@
   
 
 
-    <!--RECENT EVENT STARTS-->
+    
     <div class="grid items-center justify-center p-3 sm:p-5 bg-[#f5f5f5]  bg-center ">
-
+      <!--UPCOMING EVENT STARTS-->
       <div class="mx-2 sm:mx-12 lg:mx-20 mt-5 sm:mt-6 lg:mt-20 flex align-middle">
         <div>
           <div
@@ -382,8 +510,9 @@
         class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-14 mb-4 sm:mb-5 lg:mb-8 mx-2 sm:mx-12 lg:mx-24 align-left">
         Silver Jubilee Alumni Meet for 1999 Pass-out and Alumni Meet for other Batches on December 22, 2024 <img class="inline" src="https://v1.nitj.ac.in//images/New.gif" />
       </h2>
+      <!--UPCOMING EVENT ENDS-->
 
-
+      <!--RECENT EVENT STARTS-->
       <div class="mx-2 sm:mx-12 lg:mx-20 mt-5 sm:mt-6 lg:mt-20 flex align-middle">
         <div>
           <div
@@ -427,7 +556,8 @@
               href="https://nitj.ac.in/template/index.html?id=65802d57a9bc398b52134c6e?category=latestEvent">Read
               More &rarr;</a></p>
         </div>
-        <img src="https://nitj.ac.in/files/1702970060204-am2_47145.jpeg" alt="image" class="mx-auto max-w-4xl rounded-xl mt-10 w-full">
+        <img src
+="https://nitj.ac.in/files/1702970060204-am2_47145.jpeg" alt="image" class="modal-image mx-auto max-w-4xl rounded-xl mt-10 w-full">
         
 
       </div>
@@ -465,7 +595,8 @@
 
         <a id="meet_16dec2023" href="https://nitj.ac.in/files/1697451542621-unnamed.png">
           <span class="tooltiptext">Click to Enlarge Image</span>
-          <img src="https://nitj.ac.in/files/1697451542621-unnamed.png" alt="Invitation image" style="height: 50%; margin-left: 2vw;">
+          <img class = "modal-image" src
+="https://nitj.ac.in/files/1697451542621-unnamed.png" alt="Invitation image" style="height: 50%; margin-left: 2vw;">
 
         </a>
 
@@ -496,6 +627,99 @@
         </div>
       </div>
 
+      <h2
+        class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-14 mb-4 sm:mb-5 lg:mb-8 mx-2 sm:mx-12 lg:mx-24 align-left">
+        NIT Jalandhar and KISCO India Private Limited Sign MoU to Support Economically Disadvantaged Students</h2>
+
+
+      <div class="relative mx-2 sm:mx-12 lg:mx-24  mb-3 lg:mb-4">
+        <div class="w-[10vw] sm:w-[25vw] lg:w-[20vw] text-[#2167A7] text-xs sm:text-sm lg:text-[1.1rem]">
+          <!-- <div class="my-1 sm:my-2">
+                <h1 class="font-semibold">16th December, 2023</h1>
+              </div>
+     
+              <div class="flex my-1 sm:my-2">
+                <i class="fa-solid fa-clock mr-3 my-1"></i>
+                <h1 class="">8:30 AM</h1>
+              </div> -->
+
+          <!-- <div class="flex my-1 sm:my-2">
+                <i class="fa-solid fa-location-dot mr-3 my-1"></i>
+                <h1 class="">NIT Jalandhar</h1>
+              </div> -->
+
+
+        </div>
+        <div class="relative">
+
+          <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem]  sm:my-2 text-justify">
+            In a commendable step towards fostering academic talent and supporting students from economically disadvantaged backgrounds, Dr. B.R. Ambedkar National Institute of Technology, Jalandhar (NIT Jalandhar) has signed a Memorandum of Understanding (MoU) with KISCO India Private Limited (KIPL) on Nov 13, 2024. The MoU was formally signed by Prof. Binod Kumar Kanaujia, Director of NIT Jalandhar, and Mr. Rohit Khanna, Managing Director of KIPL, who is also an esteemed alumnus of NIT Jalandhar from the class of 1994.</p>
+                         
+          </p>
+          <p><a
+              href="https://nitj.ac.in/template/index.html?id=6735891c52f13f4cf336d146?category=researchHighlights">Read
+              More &rarr;</a></p>
+        </div>
+        
+        <!-- <img class = "modal-image" src
+="https://nitj.ac.in/files/1713955875705-unnamed.jpg" alt="image" class="max-w-lg rounded-lg mt-10 w-full"> -->
+        
+        <img src="https://nitj.ac.in/files/1731561921814-KISTO-2%202024.jpeg" alt="image" class="modal-image mx-auto max-w-xl rounded-xl mt-10 w-full">
+      </div>
+
+      <h2
+        class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-14 mb-4 sm:mb-5 lg:mb-8 mx-2 sm:mx-12 lg:mx-24 align-left">
+        Manpreet Sharma, NITJ Alumnus achieves All India Rank 83 in UPSC</h2>
+
+
+      <div class="relative mx-2 sm:mx-12 lg:mx-24  mb-3 lg:mb-4">
+        <div class="w-[10vw] sm:w-[25vw] lg:w-[20vw] text-[#2167A7] text-xs sm:text-sm lg:text-[1.1rem]">
+          <!-- <div class="my-1 sm:my-2">
+                <h1 class="font-semibold">16th December, 2023</h1>
+              </div>
+     
+              <div class="flex my-1 sm:my-2">
+                <i class="fa-solid fa-clock mr-3 my-1"></i>
+                <h1 class="">8:30 AM</h1>
+              </div> -->
+
+          <!-- <div class="flex my-1 sm:my-2">
+                <i class="fa-solid fa-location-dot mr-3 my-1"></i>
+                <h1 class="">NIT Jalandhar</h1>
+              </div> -->
+
+
+        </div>
+        <div class="relative">
+
+          <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem]  sm:my-2 text-justify">
+            Manpreet Sharma, an alumnus of NIT Jalandhar&rsquo;s 2016 Mechanical Engineering batch, has demonstrated Exceptional Academic and Professional Achievements. Hailing from the village of Lopon in the Moga District of Punjab, he comes from a family deeply dedicated to Public Service. His Mother is an Economics Lecturer at the Government Higher Secondary School in Moga, and his Father has dedicated nearly three decades to the field of Technical Education. His sister, Dr. Suman Sharma, is currently pursuing Postdoctoral Research in Horticulture at the University of Florence, USA, after completing her PhD at New Mexico State University, USA.<br />
+              &nbsp;</p>
+              
+              <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem]  sm:my-2 text-justify">During his time at NIT Jalandhar, Manpreet ranked as the 4th topper of his batch. He displayed remarkable passion in his final-year project on the topic &ldquo;Design and Fabrication of a Solar Thermal Storage Device using Phase Change Material,&rdquo; under the guidance of Dr. Subash Chander. He also gained valuable Industry exposure through his summer internship at Tata Steel, Jamshedpur.</p>
+              
+              <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem]  sm:my-2 text-justify"><br />
+              Manpreet began his professional career as an Assistant Manager at Maruti Suzuki India, where he served for three years. Driven by his aspiration to contribute to public administration, he later resigned to prepare for the Civil Services Examination. During this period, he actively engaged in social work through initiatives like &lsquo;Mera Pind 360&rsquo; and founded &lsquo;Mera Farmhouse,&rsquo; an agritech startup aimed at promoting rural development.</p>
+              
+              <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem]  sm:my-2 text-justify"><br />
+              His perseverance paid off when he successfully cleared the UPSC Civil Services Examination, achieving an All India Rank of 83 in the reserve list of 2023, which was released on 25th October 2024.</p>
+              
+              <p class="text-xs sm:text-sm sm:leading-6 lg:text-[1.1rem]  sm:my-2 text-justify"><br />
+              Prof. Binod Kumar Kanaujia, Director of NIT Jalandhar, extends his Heartfelt Congratulations to Manpreet Sharma for his Outstanding Achievements and conveys his best wishes for Manpreet&#39;s Future Endeavors. His success is a source of great pride for the Institute, and we look forward to seeing his continued excellence in his journey of Service and Leadership.</p>  
+          
+          </p>
+          <!-- <p><a
+              href="https://www.nitj.ac.in/template/index.html?id=668fa4f704e16af681ed2c30?category=newpage">Read
+              More &rarr;</a></p> -->
+        </div>
+        
+        <!-- <img class = "modal-image" src
+="https://nitj.ac.in/files/1713955875705-unnamed.jpg" alt="image" class="max-w-lg rounded-lg mt-10 w-full"> -->
+        
+        <img src
+="https://nitj.ac.in/files/1730095118766-1.jpg" alt="image" class="modal-image mx-auto max-w-xl rounded-xl mt-10 w-full">
+      </div>
+      
       <h2
         class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-14 mb-4 sm:mb-5 lg:mb-8 mx-2 sm:mx-12 lg:mx-24 align-left">
         Celebrating Our Alumnus: Prince Kumar Singh 's Remarkable Achievement</h2>
@@ -531,9 +755,11 @@
               More &rarr;</a></p>
         </div>
         
-        <!-- <img src="https://nitj.ac.in/files/1713955875705-unnamed.jpg" alt="image" class="max-w-lg rounded-lg mt-10 w-full"> -->
+        <!-- <img class = "modal-image" src
+="https://nitj.ac.in/files/1713955875705-unnamed.jpg" alt="image" class="max-w-lg rounded-lg mt-10 w-full"> -->
         
-        <img src="https://nitj.ac.in/files/1720688904620-image_.png" alt="image" class="mx-auto max-w-xl rounded-xl mt-10 w-full">
+        <img src
+="https://nitj.ac.in/files/1720688904620-image_.png" alt="image" class="modal-image mx-auto max-w-xl rounded-xl mt-10 w-full">
       </div>
       
       
@@ -568,9 +794,10 @@
               More &rarr;</a></p> -->
         </div>
         
-        <img src="https://nitj.ac.in/files/1713955875705-unnamed.jpg" alt="image" class="mx-auto max-w-lg rounded-lg mt-10 w-full">
+        <img  src="https://nitj.ac.in/files/1713955875705-unnamed.jpg" alt="image" class="modal-image mx-auto max-w-lg rounded-lg mt-10 w-full">
         
-        <!-- <img src="https://nitj.ac.in/files/1713955875705-unnamed.jpg" alt="image" class="max-w-xl rounded-xl mt-10 w-full"> -->
+        <!-- <img class = "modal-image" src
+="https://nitj.ac.in/files/1713955875705-unnamed.jpg" alt="image" class="max-w-xl rounded-xl mt-10 w-full"> -->
       </div>
       
       
@@ -605,7 +832,8 @@
               href="https://nitj.ac.in/template/index.html?id=65802d57a9bc398b52134c6e?category=latestEvent">Read
               More &rarr;</a></p> -->
         </div>
-        <img src="https://nitj.ac.in/files/1712981468612-unnamed.png" alt="image" class="mx-auto max-w-4xl rounded-xl mt-10 w-full">
+        <img src
+="https://nitj.ac.in/files/1712981468612-unnamed.png" alt="image" class="modal-image mx-auto max-w-4xl rounded-xl mt-10 w-full">
       </div>
      
       <h2
@@ -613,21 +841,21 @@
         ‘Yes, We Can’ — This Indian Aerospace Startup Is On A Mission to Build India's Own Jet Engine by our ALUMNUS</h2>
 
 
-      <div class="relative mx-2 sm:mx-12 lg:mx-24  mb-8 lg:mb-10">
+      <div class="relative  mx-2 sm:mx-12 lg:mx-24  mb-8 lg:mb-10 ">
         <div class="w-[10vw] sm:w-[25vw] lg:w-[20vw] text-[#2167A7] text-xs sm:text-sm lg:text-[1.1rem]">
 
         </div>
         <div class="relative">
 
             <a
-              href="https://swarajyamag.com/defence/yes-we-can-this-indian-aerospace-startup-is-on-a-mission-to-build-indias-own-jet-engine">Click here for Read
+              href="https://swarajyamag.com/defence/yes-we-can-this-indian-aerospace-startup-is-on-a-mission-to-build-indias-own-jet-engine">Click here to Read
               More &rarr;</a></p>
         </div>
-        <img src="https://nitj.ac.in/files/1710129666331-Prateek_Dhawan_with_engine_in_2015.png" alt="" class="mx-auto max-w-xl rounded-xl mt-10 w-full">
+        <img  src="https://nitj.ac.in/files/1710129666331-Prateek_Dhawan_with_engine_in_2015.png" alt="" class="modal-image mx-auto max-w-xl rounded-xl mt-10 w-full">
         
 
       </div>
-      
+
       <h2
         class="text-lg sm:text-xl lg:text-[1.6rem] font-bold mt-3 md:mt-5 lg:mt-8 mb-4 sm:mb-5 lg:mb-6 mx-2 sm:mx-12 lg:mx-24 align-left">
         NITJ Alumni Mr Preminder Singh (Batch of 1994: ECE) Director, Product Engineering @APPLE, US</h2>
@@ -666,7 +894,7 @@
         <div class="relative">
 
             <a
-              href="https://nitj.ac.in/files/1702701058013-NITJ Alumni of ECE Department Donated Funds for Upgradation.pdf">Click here for Read
+              href="https://nitj.ac.in/files/1702701058013-NITJ Alumni of ECE Department Donated Funds for Upgradation.pdf">Click here to Read
               More &rarr;</a></p>
         </div>
         
@@ -685,7 +913,7 @@
         <div class="relative">
 
             <a
-              href="https://www.autocarpro.in/news/sourcing-specialist-sudhir-chikhle-joins-tata-motors-ev-business-as-chief-purchase-officer-118115">Click here for Read
+              href="https://www.autocarpro.in/news/sourcing-specialist-sudhir-chikhle-joins-tata-motors-ev-business-as-chief-purchase-officer-118115">Click here to Read
               More &rarr;</a></p>
         </div>
         
@@ -729,7 +957,8 @@
               href="https://nitj.ac.in/template/index.html?id=654868447740daae16b57a0f?category=researchHighlights">Read
               More &rarr;</a></p>
         </div>
-        <img src="https://v1.nitj.ac.in/nitj_files/links/03_50486.jpg" alt="mou_image" class="mx-auto max-w-4xl rounded-xl mt-10 w-full">
+        <img src
+="https://v1.nitj.ac.in/nitj_files/links/03_50486.jpg" alt="mou_image" class="modal-image mx-auto max-w-4xl rounded-xl mt-10 w-full">
         
 
       </div>
@@ -1183,7 +1412,7 @@
           </div>
           <button
             class="bg-[#0054A6] rounded hover:bg-[#5F9DF7] text-xs lg:text-base text-white font-bold w-[70%] py-2 px-3 mt-2 sm:mt-4"
-            onclick="window.open('https://nitj.ac.in/alumni_fundraising/login')">CONNECT WITH US</button>
+            onclick="window.open('https://nitjalandhar.almaconnect.com/')">CONNECT WITH US</button>
         </div>
 
 
@@ -1239,7 +1468,8 @@
 
     <!--Footer image starts-->
     <div class="w-full">
-      <img src="img/footer image.png" alt="footer image">
+      <img class = "modal-image" src
+="img/footer image.png" alt="footer image">
     </div>
     <!--Footer image ends-->
 
@@ -1401,6 +1631,30 @@
       column.style.setProperty('height', '200%');
       column.innerHTML = column.innerHTML + column.innerHTML;
     });
+   
+var modal = document.getElementById("myModal");
+var modalImg = document.getElementById("img01");
+var span = document.getElementsByClassName("close")[0];
+
+
+function openModal(image) {
+  modal.style.display = "block";
+  modalImg.src = image.src;
+}
+
+
+var images = document.querySelectorAll('.modal-image');
+images.forEach(function(img) {
+  img.addEventListener('click', function() {
+    openModal(img);
+  });
+});
+
+span.onclick = function() {
+  modal.style.display = "none";
+};
+
+
   </script>
 
 

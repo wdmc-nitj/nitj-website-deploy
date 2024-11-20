@@ -16,57 +16,36 @@ function animateNumber(id, start, end, duration) {
 }
 
 // Parallax effect
-function applyParallaxEffect() {
+/* function applyParallaxEffect() {
+    console.log("hyy");
     window.addEventListener('scroll', function () {
         const scrollPosition = window.pageYOffset;
         document.querySelector('.numbers-section').style.backgroundPositionY = `${scrollPosition * 0.5}px`;
     });
 }
-
-
-
-
-async function fetchData() {
-    try {
-        const response = await fetch("/api/diia/numbers"); // Use const url for the fetch
-        const data = await response.json();
-        renderNumbers(data);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
-
+ */
 
 function renderNumbers(data) {
     const numbersSection = document.querySelector('.numbers-section');
     numbersSection.innerHTML = ''; // Clear existing content
 
-    data.forEach(item => {
-        const numberItem = document.createElement('div');
-        numberItem.classList.add('number-item');
-        
-        let iconClass;
-        switch (item.title.toLowerCase()) {
-            case 'mous':
-                iconClass = 'fa-graduation-cap';
-                break;
-            case 'research collaborations':
-                iconClass = 'fa-users';
-                break;
-            case 'delegate visits':
-                iconClass = 'fa-briefcase';
-                break;
-            default:
-                iconClass = 'fa-question'; // Default icon
-        }
+    const icons = ['fa-graduation-cap', 'fa-users', 'fa-briefcase']; // Array of icon classes
 
-        numberItem.innerHTML = `
-            <p id="${item.title.toLowerCase().replace(/\s+/g, '-')}" data-number="${item.Number}">${item.Number}</p>  
-            <h2>${item.title}</h2>  
-            <i class="fas ${iconClass} icon"></i>  
-        `;
-        numbersSection.appendChild(numberItem);
-    });
+data.forEach((item, index) => {
+    const numberItem = document.createElement('div');
+    numberItem.classList.add('number-item');
+
+    // Assign icon based on position (index) in the data array
+    const iconClass = icons[index];
+
+    numberItem.innerHTML = `
+        <p id="${item.title.toLowerCase().replace(/\s+/g, '-')}" data-number="${item.Number}">${item.Number}</p>  
+        <h2>${item.title}</h2>  
+        <i class="fas ${iconClass} icon"></i>  
+    `;
+    numbersSection.appendChild(numberItem);
+});
+
 
     // Animate numbers after rendering
     data.forEach(item => {
@@ -79,8 +58,26 @@ function renderNumbers(data) {
     });
 }
 
+
+async function fetchNumberData() {
+    try {
+        const response = await fetch("/api/diia/numbers"); // Use const url for the fetch
+        const data = await response.json();
+        renderNumbers(data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+
 // Initialize everything
-window.onload = function () {
+
+/* window.onload = function () {
+    console.log("hello");
     fetchData(); // Fetch data and render numbers
-    applyParallaxEffect(); // Apply parallax effect
-};
+   /*  applyParallaxEffect(); 
+}; */
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetchNumberData();
+});

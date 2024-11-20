@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template</title>
+     <!-- Favicon and title -->
+  <link rel="icon" type="image/x-icon" href="../../public/assets/images/nitj-logo.png" />
+  <title>Dr B R Ambedkar National Institute of Technology, Jalandhar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -114,10 +116,39 @@
       });
     </script> -->
   </head>
-  <script src="../diia_U/main/navscript.js"></script>
-  <body class="bg-gray-100 w-full">
+  <script src="./main/navscript.js"></script>
+  <body class="bg-gray-100 w-full ">
     <!-- <p id="navbar"></p> -->
     <!-- Header with Changing Background Image -->
+       <!-- scroll up button -->
+    <button id="scroll-to-top-button"
+    class="fixed bottom-0 right-0 z-50 p-2 mb-6 mr-6 font-bold text-white transition-all bg-orange-500 rounded-full opacity-60 hover:opacity-100 hover:bg-orange-700">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
+    </svg>
+</button>
+
+
+    <script>
+      // Show or hide the scroll-to-top button based on scroll position
+      window.addEventListener('scroll', function() {
+        const scrollToTopButton = document.querySelector("#scroll-to-top-button");
+        if (window.scrollY > 100) { // Show button when scrolled down 100px
+          scrollToTopButton.style.display = "block";
+        } else {
+          scrollToTopButton.style.display = "none";
+        }
+      });
+
+      // Smooth scroll to top when button is clicked
+      document.querySelector("#scroll-to-top-button").addEventListener("click", function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+
 
     <header
       class="relative w-full h-56 flex items-center justify-center bg-gray-800 mt-12"
@@ -132,14 +163,15 @@
       <div class="absolute inset-0 bg-black opacity-35"></div>
 
       <!-- Single Heading -->
-
-      <nav
-        class="header-heading text-xl md:text-3xl w-full z-10 lg:max-w-[1200px] mx-auto"
+       <div class="w-full lg:max-w-[1200px] mx-auto px-4 lg:px-[4rem] mb-[-20px]">
+      <div
+        class=" relative mt-[40px] text-white text-[52px] lg:text-[68px] w-full z-10 lg:max-w-[1200px] mx-auto px-4"
         id="headerHeading"
       >
         <!-- Content here -->
-      </nav>
+      </div>
     </header>
+    </div>
 
     <!-- Navigation heading -->
     <div class="bg-gray-200">
@@ -153,7 +185,7 @@
               href="javascript:void(0)"
               class="inline-flex items-center text-sm font-medium hover:text-gray-900"
             >
-              <a href="../index.html" class="text-lg font-medium ml-2">Home</a>
+              <a href="/diia_U/main/oiia.html" class="text-lg font-medium ml-2">Home</a>
             </a>
           </li>
           <li aria-current="page">
@@ -186,7 +218,7 @@
         <!-- Event items will be inserted here dynamically -->
       </div>
     </div>
-    <script src="../diia_U/main/footerscript.js"></script>
+    <script src="./main/footerscript.js"></script>
     <script src="./template.js"></script>
   </body>
 </html>

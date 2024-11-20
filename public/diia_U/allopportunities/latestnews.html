@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Opportunities</title>
+    <!-- Favicon and title -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../../public/assets/images/nitj-logo.png"
+    />
+    <title>Dr B R Ambedkar National Institute of Technology, Jalandhar</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link
@@ -38,6 +44,52 @@
   </head>
 
   <body class="bg-gray-100">
+    <!-- scroll up button -->
+    <button
+      id="scroll-to-top-button"
+      class="fixed bottom-0 right-0 z-50 p-2 mb-6 mr-6 font-bold text-white transition-all bg-orange-500 rounded-full opacity-60 hover:opacity-100 hover:bg-orange-700"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5"
+        />
+      </svg>
+    </button>
+
+    <script>
+      // Show or hide the scroll-to-top button based on scroll position
+      window.addEventListener("scroll", function () {
+        const scrollToTopButton = document.querySelector(
+          "#scroll-to-top-button"
+        );
+        if (window.scrollY > 100) {
+          // Show button when scrolled down 100px
+          scrollToTopButton.style.display = "block";
+        } else {
+          scrollToTopButton.style.display = "none";
+        }
+      });
+
+      // Smooth scroll to top when button is clicked
+      document
+        .querySelector("#scroll-to-top-button")
+        .addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+    </script>
+
     <script src="../main/navscript.js"></script>
     <div
       class="relative w-full h-60 flex items-center justify-center overflow-hidden bg-gray-800 mt-[4rem]"
@@ -49,20 +101,27 @@
       <div class="absolute inset-0 bg-black opacity-40"></div>
 
       <!-- Caption and Heading -->
-      <div class="absolute bottom-10 left-10 z-10">
-        <a href="#" target="_blank" rel="noopener noreferrer" id="headingLink">
-          <h1
-            class="text-xl md:text-3xl font-bold text-white mb-2"
-            id="heading"
-          ></h1>
-        </a>
-      </div>
+      <div class="w-full lg:max-w-[1200px] mx-auto px-4 lg:px-[4rem]">
+        <div class="absolute bottom-10 z-10">
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            id="headingLink"
+          >
+            <h1
+              class="text-white text-[30px] lg:text-[50px] leading-tight"
+              id="heading"
+            ></h1>
+          </a>
+        </div>
 
-      <!-- Slider Indicator -->
-      <div
-        class="absolute bottom-5 left-10 flex space-x-2 z-10"
-        id="indicators"
-      ></div>
+        <!-- Slider Indicator -->
+        <div
+          class="absolute bottom-5 flex space-x-2 z-10"
+          id="indicators"
+        ></div>
+      </div>
     </div>
 
     <!-- Navigation heading -->
@@ -77,7 +136,9 @@
               href=""
               class="inline-flex items-center text-sm font-medium hover:text-gray-900"
             >
-              <a href="../index.html" class="text-lg font-medium ml-2">Home</a>
+              <a href="/diia_U/main/oiia.html" class="text-lg font-medium ml-2"
+                >Home</a
+              >
             </a>
           </li>
           <li aria-current="page">

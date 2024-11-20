@@ -13,7 +13,8 @@
 
     <!-- For Numbers -->
     <link rel="stylesheet" href="numbersstyles.css">
-    <script src="numbersscript.js"></script>
+    
+
 
     <!-- For Hero Slider -->
     <link
@@ -53,8 +54,10 @@
 
     <!-- For Testimonials -->
      <link rel="stylesheet" href="testimonial-style.css">
-     <script src="testimonialscript.js"></script>
+     <!-- <script src="testimonialscript.js"></script> -->
 
+    <!-- For photo-gallery -->
+     <script src="photogallery.js"></script>
      <style>
       body {
         overflow-x: hidden;
@@ -65,8 +68,42 @@
         margin: auto;
       }
      </style>
+    
+
 </head>
-<body>
+<body class="relative">
+    <!-- scroll up button -->
+    <button id="scroll-to-top-button"
+    class="fixed bottom-0 right-0 z-50 p-2 mb-6 mr-6 font-bold text-white transition-all bg-orange-500 rounded-full opacity-60 hover:opacity-100 hover:bg-orange-700">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5m-15 6l7.5-7.5 7.5 7.5" />
+    </svg>
+</button>
+
+
+    <script>
+      // Show or hide the scroll-to-top button based on scroll position
+      window.addEventListener('scroll', function() {
+        const scrollToTopButton = document.querySelector("#scroll-to-top-button");
+        if (window.scrollY > 100) { // Show button when scrolled down 100px
+          scrollToTopButton.style.display = "block";
+        } else {
+          scrollToTopButton.style.display = "none";
+        }
+      });
+
+      // Smooth scroll to top when button is clicked
+      document.querySelector("#scroll-to-top-button").addEventListener("click", function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+
+
+
+
   <script src="../main/navscript.js"></script>
   
   <!-- Hero Section -->
@@ -74,14 +111,14 @@
   <div>
         
     <!-- Container for Image Slider and Quick Links -->
-<div class="relative h-[80vh] flex flex-col">
+<div class="relative h-[100vh] sm:h-[100vh] md:h-[100vh] flex flex-col">
       <!-- <h1
         class="font-inter flex font-bold text-black align-center items-center justify-center z-30 top-40"
       >
         Bridging Global Academia
       </h1> -->
       <div
-        class="relative w-full h-[75%] sm:h-[75%] md:h-[100%] overflow-hidden z-30"
+        class="relative w-full h-[100%] sm:h-[100%] md:h-[100%] overflow-hidden z-30"
       >
         <div
           class="relative rounded-lg shadow-lg w-full h-full"
@@ -91,47 +128,56 @@
             class="relative w-full h-full bg-gradient-to-b from-blue-950 to-black"
             data-carousel-inner
             id="carousel-images"
-          ></div>
+          >
+              <!-- This is where the banner goes -->
+          </div>
 
           <!-- Adjusted indicators container to be positioned absolutely -->
           <div
             id="carousel-indicators"
-            class="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-2 text-[red] z-40"
-          ></div>
+            class="absolute left-1/2 transform -translate-x-1/2 flex space-x-2 text-[red] z-40"
+          >
+          <!-- This is where dots show -->
+          </div>
         </div>
       </div>
 
 <!-- Quick Link Section -->
-<div class="absolute top-[68%] xs:top-[82%] sm:top-[68%] md:top-[92%] xl:top-[96%] left-0 right-0  bg-gradient-to-r from-blue-900 to-blue-700 border-white border-2 rounded-[36px] z-40 flex items-center justify-center mx-auto w-full max-w-[90%] xl:max-w-[65%] p-[20px]">
+<div id="quick_links_div" class="quick_links absolute left-0 right-0 bottom-0 bg-gradient-to-r from-blue-900 to-blue-700 border-white border-2 rounded-[36px] z-40 flex items-center justify-center mx-auto w-full max-w-[90%] xl:max-w-[65%] p-[20px]">
   <!-- Elements Container -->
+  <style>
+    .quick_links .border {
+      cursor: pointer;
+    }
+  </style>
   <div class="grid grid-cols-3 gap-0.5 w-full px-2 sm:px-3 lg:px-0.5 text-white font-medium hidden-scrollbar sm:flex">
     <!-- Element 1 link section -->
-    <div class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1 mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full hover:bg-white">
+    <div onclick="location.href='#opp-container-id'" class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1 mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full hover:bg-white">
       <i class="fa-solid fa-rocket text-xl md:text-[36px] lg:text-[48px] lg:mt-2"></i>
       <span class="text-xs sm:text-sm md:text-[16px] lg:text-[20px] lg:mt-2 sm:mt-2  lg:py-2 md:py-3 sm:py-3 ">Openings</span>
     </div>
     <!-- Element 2 link section -->
-    <div class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1 mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full hover:bg-white">
+    <div onclick="location.href='#rankings-div'" class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1 mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full hover:bg-white">
       <i class="fa-solid fa-medal text-xl md:text-[36px] lg:text-[48px] lg:mt-2"></i>
       <span class="text-xs sm:text-[12px] md:text-[12px] lg:text-[20px] xl:text-[20px] lg:mt-2 sm:mt-2  lg:py-4 md:py-3 sm:py-3 ">Rankings</span>
     </div>
     <!-- Element 3 link section -->
-    <div class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1 mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full hover:bg-white">
+    <div onclick="location.href='#cards-explore'" class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1 mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full hover:bg-white">
       <i class="fa-solid fa-graduation-cap text-xl md:text-[36px] lg:text-[48px] lg:mt-2"></i>
       <span class="text-xs sm:text-[12px] md:text-[12px] lg:text-[20px] xl:text-[20px] lg:mt-2 sm:mt-2  lg:py-4 md:py-3 sm:py-3 ">Admissions</span>
     </div>
     <!-- Element 4 link section -->
-    <div class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1  mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full lg:w-full hover:bg-white">
+    <div onclick="location.href='#MOU-div'" class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1  mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full lg:w-full hover:bg-white">
       <i class="fa-solid fa-building-columns text-xl md:text-[36px] lg:text-[48px] lg:mt-2"></i>
       <span class="text-xs sm:text-[12px] md:text-[12px] lg:text-[20px] xl:text-[20px] lg:mt-2 sm:mt-2  lg:py-4 md:py-3 sm:py-3 ">MOUs</span>
     </div>
     <!-- Element 5 link section -->
-    <div class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1 mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full hover:bg-white">
+    <div onclick="location.href='#map-div'" class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1 mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full hover:bg-white">
       <i class="fa-solid fa-map-location-dot text-xl md:text-[36px] lg:text-[48px] lg:mt-2"></i>
       <span class="text-xs sm:text-[12px] md:text-[12px] lg:text-[20px] xl:text-[20px] lg:mt-2 sm:mt-2  lg:py-4 md:py-3 sm:py-3 ">Map</span>
     </div>
     <!-- Element 6 link section -->
-    <div class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1 mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full lg:w-full hover:bg-white">
+    <div onclick="location.href='#testimonialbody'" class="border hover:text-blue-600 border-white group rounded-2xl p-1 xl:px-2 lg:p-3 md:p-3 mb-1 mt-1 mx-1 flex flex-col items-center w-[95%] sm:w-[16.6%] md:w-full xl:w-full lg:w-full hover:bg-white">
       <i class="fa-regular fa-star text-xl md:text-[36px] lg:text-[48px] lg:mt-2"></i>
       <span class="text-xs sm:text-[12px] md:text-[12px] lg:text-[20px] xl:text-[20px] lg:mt-2 sm:mt-2  lg:py-4 md:py-3 sm:py-3">Testimonials</span>
     </div>
@@ -153,35 +199,39 @@
     <script src="hero-index.js"></script>
   </div>
 
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  <div class="hidden md:block">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
 
-  <!-- Opportunities -->
   <div class="myborder opp-container" id="opp-container-id">
-    <h1 class="heading text-3xl"><b>CURRENT</b> OPENINGS  <i class="fa-solid fa-bolt text-3xl"></i></h1>
-      <div class="slider-wrapper p-4">
-        <div class="arrow arrow-left">
-          <img src="./assets/opportunities/left-arrow.png" alt="Left Arrow" />
-        </div>
-        <div class="arrow arrow-right">
-          <img src="./assets/opportunities/right-arrow.png" alt="Right Arrow" />
-        </div>
-        <div class="card-slider">
-          <div class="cards-wrapper m-auto"></div>
-          <!-- Dynamic cards will be inserted here -->
-        </div>
-      </div>
-      <div class="view-all-wrapper">
-        <a href="../allopportunities/latestnews.html" class="view-all"
-          >View All Opportunities</a
-        >
-      </div>
+  <h1 class="heading text-3xl">
+    <b>CURRENT</b> OPENINGS
+    <i class="fa-solid fa-bolt text-3xl"></i>
+  </h1>
+  <div class="slider-wrapper p-4">
+    <div class="arrow arrow-left">
+      <img src="./assets/opportunities/left-arrow.png" alt="Left Arrow" />
+    </div>
+    <div class="arrow arrow-right">
+      <img src="./assets/opportunities/right-arrow.png" alt="Right Arrow" />
+    </div>
+    <div class="card-slider">
+      <div class="cards-wrapper m-auto flex space-x-6"></div>
+      <!-- Dynamic cards will be inserted here -->
+    </div>
+  </div>
+  <div class="view-all-wrapper">
+    <a href="../allopportunities/latestnews.html" class="view-all">View All Opportunities</a>
+  </div>
 </div>
-<script src="opp-index.js"></script>
+
+<!-- <script src="opp-index.js"></script>   change it -->
+
 
 <!-- Deans Message -->
 <div id="dean-div" class="myborder">
@@ -215,15 +265,17 @@
  </div>
 
  <!-- Rankings -->
- <div class="sm:h-64 h-fit w-full p-2" style="background: linear-gradient(0deg, #1A4D89, #1A4D89);">
+ <div class="sm:h-64 h-fit w-full p-2" id="rankings-div" style="background: linear-gradient(0deg, #1A4D89, #1A4D89);">
   <div class="w-full container h-full flex sm:flex-row flex-col m-auto items-center justify-center sm:gap-0 gap-16" >
-      <div class="head flex flex-col gap-1 border border-white rounded-lg p-5 sm:mt-0 mt-5">
+      <div class="head lg:w-48 lg:h-48 sm:w-32 sm:h-32 w-11/12 h-48 flex flex-col items-center justify-center gap-1 border border-white rounded-lg lg:p-5 p-5 sm:px-2 sm:py-2 sm:mt-0 mt-5">
           <div class="logo flex gap-3 items-center ">
-              <p class="text-white font-bold lg:text-4xl sm:text-2xl text-4xl">NITJ</p>
+              <p class="text-white font-bold lg:text-4xl sm:text-2xl text-4xl">Recent</p>
               <img src="./assets/rankings/Ratings.png" alt="" class="lg:w-9 lg:h-9 sm:w-5 sm:h-5 w-9 h-9">
           </div>
-          <p class="text-white font-light lg:text-4xl sm:text-2xl text-4xl">RANKINGS</p>
-          <p class="text-white font-light lg:text-4xl sm:text-2xl text-4xl">2024</p>
+          <div class="flex flex-col -ml-7 sm:-ml-4">
+            <p class="text-white font-light lg:text-4xl sm:text-2xl text-4xl">NITJ</p>
+            <p class="text-white font-light lg:text-4xl sm:text-2xl text-4xl">Rankings</p>
+          </div>
       </div>
       <div class="sm:ml-24 cards flex sm:flex-row flex-col gap-5 items-center justify-center">
           <div class="card1 lg:w-48 lg:h-48 sm:w-32 sm:h-32 p-5 w-11/12 h-48 text-center rounded-lg flex flex-col gap-2 items-center justify-center" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%)">
@@ -243,7 +295,7 @@
           <div class="card4 lg:w-48 lg:h-48 sm:w-32 sm:h-32 h-48 w-11/12 p-5 text-center rounded-lg flex flex-col items-center justify-center relative" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.4266) -84.93%, rgba(153, 153, 153, 0.2538) 203.85%);">
               <p class="rank text-white lg:text-lg sm:text-sm overflow-y-clip"></p>
               <div class="absolute bottom-0 right-0 lg:w-20 lg:h-9 sm:w-16 sm:h-6 p-1 rounded-tl-lg" style="background:#1A4D89;">
-                  <div class="lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white" style="background: #406DA2;">
+                  <div class="lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-md rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center text-white" style="background: #406DA2;">
                       <a href="/admin/ranking.html" target="_blank">Read More</a>
                   </div>
               </div>
@@ -256,7 +308,7 @@
   <!-- Tiles -->
     <div class="tileParent"><div style="background-color: rgba(0, 0, 0, 0.7);">
       <div id="tileDiv" class="myborder"></div>
-      <p
+      <p id="map-div"
       class="text-center text-4xl p-8 text-white"
       >INTERNATIONAL <b>STUDENTS</b> AND <b>COLLABORATIONS</b> <i class="fa-solid fa-globe"></i><br><br></p>
     </div></div>
@@ -349,7 +401,7 @@
             <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 flex sectionContainer industry w-full h-full ">            </div>        
             <div class="overflow-x-auto scrollbar-custom ease-in-out-expo transition-all duration-400 sectionContainer national w-full h-full flex">            </div>
             <div class="linkMOU pb-[100px]">
-                <a href="../KushagraSaxena/mouSummary.html"  target="_blank" class="text-white font-bold view-all-MOU" style=" padding: 10px; border-radius: 5px;">View all MOU's</a>
+                <a href="./mouSummary.html"  target="_blank" class="text-white font-bold view-all-MOU" style=" padding: 10px; border-radius: 5px;">View all MOU's</a>
             </div>
         </div>
     </div>
@@ -403,9 +455,9 @@
         class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out"
         onmouseover="handleMouseOver(2)" onmouseout="handleMouseOut(2)"
       >
-        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/photo gallery/gdsc.png" alt="Image 2" />
-        <div class="absolute inset-0  rounded-[17px]"></div>
-        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Tech</div>
+        <img class="photoimage w-full h-full object-cover rounded-[17px]" src="" alt="Image 2" />
+        <a href="../AshutoshDevgotra/Photoslider.html" target="_blank"><div class="absolute inset-0 rounded-[17px]"></div></a>
+        <div class="caption absolute bottom-1 left-1 text-white text-lg font-semibold"></div>
       </div>
 
       <!-- Image 3 -->
@@ -413,9 +465,9 @@
         class="relative w-[80%] ml-auto h-[400px] transition-all duration-500 ease-in-out"
         onmouseover="handleMouseOver(3)" onmouseout="handleMouseOut(3)"
       >
-        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/photo gallery/giddha.png" alt="Image 3" />
-        <div class="absolute inset-0  rounded-[17px]"></div>
-        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Cultural</div>
+        <img class="photoimage w-full h-full object-cover rounded-[17px]" src="" alt="Image 3" />
+        <a href="../AshutoshDevgotra/Photoslider.html" target="_blank"><div class="absolute inset-0 rounded-[17px]"></div></a>
+        <div class="caption absolute bottom-1 left-1 text-white text-lg font-semibold"></div>
       </div>
 
       <!-- Image 4 -->
@@ -423,9 +475,9 @@
         class="relative w-[80%] mr-auto h-[400px] transition-all duration-500 ease-in-out"
         onmouseover="handleMouseOver(4)" onmouseout="handleMouseOut(4)"
       >
-        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/photo gallery/dr. statue.png" alt="Image 4" />
-        <div class="absolute inset-0  rounded-[17px]"></div>
-        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Campus</div>
+        <img class="photoimage w-full h-full object-cover rounded-[17px]" src="" alt="Image 4" />
+        <a href="../AshutoshDevgotra/Photoslider.html" target="_blank"><div class="absolute inset-0 rounded-[17px]"></div></a>
+        <div class="caption absolute bottom-1 left-1 text-white text-lg font-semibold"></div>
       </div>
 
       <!-- Image 5 -->
@@ -433,19 +485,29 @@
         class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out"
         onmouseover="handleMouseOver(5)" onmouseout="handleMouseOut(5)"
       >
-        <img class="w-full h-full object-cover rounded-[17px]" src="./assets/photo gallery/director.png" alt="Image 5" />
-        <div class="absolute inset-0 rounded-[17px]"></div>
-        <div class="absolute bottom-1 left-1 text-white text-lg font-semibold">Fest</div>
+        <img class="photoimage w-full h-full object-cover rounded-[17px]" src="" alt="Image 5" />
+        <a href="../AshutoshDevgotra/Photoslider.html" target="_blank"><div class="absolute inset-0 rounded-[17px]"></div></a>
+        <div class="caption absolute bottom-1 left-1 text-white text-lg font-semibold"></div>
       </div>
 
-      <!-- Image 6 (fixed height) -->
-      <div class="relative w-[80%] ml-auto h-[400px] transition-all duration-500 ease-in-out z-20">
-        <button class="rounded-[14.95px]  px-3 py-2 text-white">
-          See All
+      <!-- Image 6 -->
+      <div
+        class="relative w-[80%] mx-auto h-[400px] transition-all duration-500 ease-in-out"
+        onmouseover="handleMouseOver(5)" onmouseout="handleMouseOut(5)"
+      >
+        <img class="photoimage w-full h-full object-cover rounded-[17px]" src="" alt="Image 6" />
+        <a href="../AshutoshDevgotra/Photoslider.html" target="_blank"><div class="absolute inset-0 rounded-[17px]"></div></a>
+        <div class="caption absolute bottom-1 left-1 text-white text-lg font-semibold"></div>
+      </div>
+
+      <!-- Image 7 (fixed height) -->
+      <div class="relative w-[80%] ml-auto transition-all duration-500 ease-in-out z-20 ">
+        <button class="rounded-[14.95px]  px-3 py-2 text-white" style="background: #00387A;">
+          <a href="../AshutoshDevgotra/Photoslider.html" target="_blank">See All</a>
         </button>
 
         <!-- Arrows -->
-        <div class="relative w-[60%] mx-auto h-[400px] transition-all duration-500 ease-in-out z-10 top-[70%]">
+        <div class="relative w-[60%] mx-auto transition-all duration-500 ease-in-out z-10 ">
           <img src="./assets/photo gallery/arrow circle.png" />
         </div>
       </div>
@@ -489,6 +551,8 @@
     </script> -->
     </div>
 
+
+
     <!-- For Numbers Section -->
     <div id="numbers-body">
       <div class="main-content">
@@ -499,7 +563,6 @@
         </section>
       </div>
     </div>
-
     
         <!-- Card Template for all cards -->
     <div id="cards-explore" class="py-6 mt-[1.5rem] mb-12 myborder">
@@ -524,7 +587,6 @@
   </template>
 
   <script>
-    console.log("card script ran")
       const cardData = [
           {
               id: 1,
@@ -705,78 +767,65 @@
 
     <!-- Video and Heading Section -->
     <section class="myborder mx-auto flex flex-wrap">
-        <div class="w-full lg:w-1/2 p-2 video-section">
-            <!-- Header Section above the video -->
-            <div class="header-section">
-                <h1>Inspiring Journeys<br><span>at NITJ</span></h1>
+      <div class="w-full flex flex-col align-center justify-center" >
+          <h1 class="text-3xl p-8 text-[#00387A] text-center"><b>INSPIRING JOURNEYS</b> at NITJ   <i class="fa-solid fa-star"></i></h1>
+          <div class="w-full flex px-8"><a target="_blank" href="/alumni/alumni.html">
+            <div class="bg-[#00387A] rounded-lg bold text-[#cadcf9] p-3">Visit Alumni Website <i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+          </a></div>
+      </div>
+          <!-- Testimonial Section -->
+          <div class="w-full h-full lg:w-1/2 testimonial-container">
+              <!-- Row 1 -->
+              <div class="testimonial-row" style="width: 100%;">
+                  <div class="testimonial-card">
+                      <div class="testimonial-content">
+                          <p style="text-align: justify;">
+                            <a class="cursor-pointer whitespace-nowrap font-medium text-sky-500 hover:text-sky-600">
+                                Read More →</a>
+                          </p>
+                      </div>
+                      <div class="testimonial-footer">
+                          <div>
+                          <img alt="Flag">
+                          </div>
+                          <div>
+                              <h4></h4>
+                              <p></p>
+                          </div>
+                          <div></div>
+                      </div>
+                  </div>
+              </div>
+              <div class="testimonial-row" style="width: 100%;">
+                  <div class="testimonial-card">
+                      <div class="testimonial-content">
+                          <p style="text-align: justify;">
+                            <a class="cursor-pointer whitespace-nowrap font-medium text-sky-500 hover:text-sky-600">
+                                Read More →</a>
+                          </p>
+                      </div>
+                      <div class="testimonial-footer">
+                          <div>
+                          <img alt="Flag">
+                          </div>
+                          <div>
+                              <h4></h4>
+                              <p></p>
+                          </div>
+                          <div></div>
+                      </div>
+                  </div>
+              </div>
             </div>
-
-            <!-- Main Video -->
-            <div class="video-thumb">
-                <img src="./assets/testimonial/wp8774869.webp" alt="Main Video">
+            <div class="w-full flex align-center justify-center pb-4">
+              <a href="../alltestimonials/latestnews.html" class="view-all-btn">View All Testimonials</a>
             </div>
-
-            <!-- Smaller Videos -->
-            <div class="grid grid-cols-3 gap-2 mt-2">
-                <div class="video-thumb">
-                    <img src="./assets/testimonial/wp2225002.jpg" alt="Video 1">
-                </div>
-                <div class="video-thumb">
-                    <img src="./assets/testimonial/wp2225002.jpg" alt="Video 2">
-                </div>
-                <div class="video-thumb">
-                    <img src="./assets/testimonial/wp2225002.jpg" alt="Video 3">
-                </div>
-            </div>
-        </div>
-
-        <!-- Testimonial Section -->
-        <div class="w-full h-full lg:w-1/2 testimonial-container">
-            <!-- Row 1 -->
-            <div class="testimonial-row" style="width: 100%;">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p style="text-align: justify;">
-                          <a class="cursor-pointer whitespace-nowrap font-medium text-sky-500 hover:text-sky-600">
-                              Read More →</a>
-                        </p>
-                    </div>
-                    <div class="testimonial-footer">
-                        <div>
-                        <img alt="Flag">
-                        </div>
-                        <div>
-                            <h4></h4>
-                            <p></p>
-                        </div>
-                        <div></div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-row" style="width: 100%;">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p style="text-align: justify;">
-                          <a class="cursor-pointer whitespace-nowrap font-medium text-sky-500 hover:text-sky-600">
-                              Read More →</a>
-                        </p>
-                    </div>
-                    <div class="testimonial-footer">
-                        <div>
-                        <img alt="Flag">
-                        </div>
-                        <div>
-                            <h4></h4>
-                            <p></p>
-                        </div>
-                        <div></div>
-                    </div>
-                </div>
-            </div>
-            <a href="#" class="view-all-btn">View All Testimonials</a>
-        </div>
-    </section>
+          </div>
   </div>
+  <script src="opp-index.js" defer></script>
+<script src="numbersscript.js" defer></script>
+<script src="testimonialscript.js" defer></script>
 
     <script src="../main/footerscript.js"></script>
+  </body>
 </html>

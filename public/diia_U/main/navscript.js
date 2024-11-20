@@ -20,13 +20,14 @@ function genLogo() {
   let a = document.createElement("a");
   a.setAttribute("class", aStyle);
   a.setAttribute("href", "/");
+  a.setAttribute("target", "_blank");
   a.setAttribute("id", "brand");
 
   let imgStyle =
-    "h-10 md:h-12 w-auto object-contain hover:scale-110 custom-logo-reduce";
+    "h-10 md:h-12 w-auto object-contain hover:scale-110 custom-logo-reduce -ml-5 mr-2";
   let img = document.createElement("img");
   img.setAttribute("class", imgStyle);
-  img.setAttribute("src", "../main/assets/logo.png");
+  img.setAttribute("src", "/diia_U/main/assets/logo.png");
   img.setAttribute("alt", "logo");
 
   let spanStyle =
@@ -43,7 +44,8 @@ function genLogo() {
 
 function genHomeButton() {
   let a = document.createElement("a");
-  a.setAttribute("href", "/diia");
+  a.setAttribute("href", "/diia_U/main/oiia.html");
+  a.setAttribute("target", "_blank");
 
   let div = document.createElement("div");
   div.setAttribute(
@@ -64,12 +66,13 @@ function genHomeButtonLARGE() {
 
   let a = document.createElement("a");
   a.setAttribute("href", "/");
+  a.setAttribute("target", "_blank");
   let button = document.createElement("button");
   button.setAttribute(
     "class",
     "border whitespace-nowrap rounded-lg hover:bg-blue-700 bg-gradient-to-r from-blue-900 to-blue-700 px-3 py-2 md:text-[10px] lg:test-[12px] font-bold shadow-sm text-white custom-font-reduce"
   );
-  button.innerHTML = "Main Website";
+  button.innerHTML = "NITJ Home";
   a.appendChild(button);
   div.appendChild(a);
 
@@ -86,20 +89,23 @@ function genDropdowns(edata) {
   let a = document.createElement("a");
   a.setAttribute(
     "class",
-    "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase flex items-center custom-font-reduce text-base font-medium text-[#00387A]"
+    "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase flex items-center custom-font-reduce text-[8px] md:text-[10px] lg:text-[14px] font-medium text-[#00387A]"
   );
+  a.style.fontSize = "1vw";
   a.setAttribute("href", edata.link);
+  a.setAttribute("target", "_blank");
   a.innerHTML = edata.title + '<i class="fa p-1 fa-chevron-down"></i>';
 
   let div2 = document.createElement("div");
   div2.setAttribute(
     "class",
-    "absolute hidden bg-white flex-col rounded-lg transition-all group-hover:flex shadow-slate-500 shadow-sm overflow-hidden border-2 hover:border-blue-500 py-1 custom-font-reduce w-[10rem] left-1/2 transform -translate-x-1/2 top-[80%] mt-1" // Added top-full and mt-1 for positioning
+    "absolute hidden bg-white flex-col rounded-lg transition-all group-hover:flex shadow-slate-500 shadow-sm overflow-hidden border-2 hover:border-blue-500 py-1 custom-font-reduce md:w-[10rem] lg:w-[13rem] left-1/2 transform -translate-x-1/2 top-[80%] mt-1" // Added top-full and mt-1 for positioning
   );
 
   for (let x in edata.submenus) {
     let a2 = document.createElement("a");
     a2.setAttribute("href", edata.submenus[x].link);
+    a2.setAttribute("target", "_blank");
     a2.setAttribute(
       "class",
       "text-sm text-blue-700 hover:text-blue-500 hover:bg-blue-50 m-1 px-5 whitespace-nowrap custom-font-reduce py-1.5 rounded"
@@ -121,6 +127,7 @@ function genMenuItem(name) {
   );
   let a = document.createElement("a");
   a.setAttribute("href", "#");
+  a.setAttribute("target", "_blank");
   a.setAttribute(
     "class",
     "relative px-2 bg-white cursor-pointer group transition-all rounded-full custom-font-reduce uppercase"
@@ -164,44 +171,88 @@ function genMobileMenuToggle() {
 
   return div;
 }
-
 function genMobileMenu(items) {
   let div = document.createElement("div");
   div.setAttribute("id", "nav-dialog");
   div.setAttribute(
     "class",
-    "fixed inset-x-0 left-28 top-16 p-3 bg-blue-50 text-black z-50 hidden lg:hidden md:hidden shadow-lg rounded-lg custom-font-reduce"
+    "fixed inset-x-0 top-16 p-3 bg-blue-50 text-black z-50 hidden lg:hidden md:hidden shadow-lg rounded-lg custom-font-reduce max-w-xs mx-auto" // Added max-w-sm and mx-auto
   );
-  let div11 = document.createElement("div");
-  div11.setAttribute("class", "flex justify-between items-center");
-  let div12 = document.createElement("div");
-  div12.setAttribute("class", "mt-6");
 
-  for (let x in items) {
-    let a = document.createElement("a");
-    a.setAttribute("href", "/");
-    a.setAttribute(
+  let menuContainer = document.createElement("div");
+  menuContainer.setAttribute("class", "mt-4 flex flex-col items-center");
+
+  items.forEach((item) => {
+    // Container for main menu item and dropdown toggle
+    let mainItemContainer = document.createElement("div");
+    mainItemContainer.setAttribute(
       "class",
-      "block p-3 mt-3 font-medium border-2 border-blue-500 rounded-lg hover:text-blue-700 hover:bg-blue-100 custom-font-reduce"
+      "relative flex justify-between items-center p-3 mt-3 font-medium border-2 border-blue-500 rounded-lg hover:bg-blue-100 custom-font-reduce w-full"
     );
-    a.innerHTML = items[x];
-    div12.appendChild(a);
-  }
 
-  div.appendChild(div11);
-  div.appendChild(div12);
+    // Main menu link
+    let mainLink = document.createElement("a");
+    mainLink.setAttribute("href", item.link || "#");
+    mainLink.setAttribute("target", "_blank");
+    mainLink.setAttribute("class", "text-blue-700 hover:text-blue-500");
+    mainLink.innerHTML = item.title;
 
+    mainItemContainer.appendChild(mainLink);
+
+    // Dropdown icon
+    if (item.submenus && item.submenus.length > 0) {
+      let dropdownIcon = document.createElement("span");
+      dropdownIcon.setAttribute("class", "cursor-pointer text-blue-700 pl-2");
+      dropdownIcon.innerHTML = '<i class="fa fa-chevron-down"></i>';
+
+      mainItemContainer.appendChild(dropdownIcon);
+
+      // Submenu container with reduced width for mobile
+      let submenuContainer = document.createElement("div");
+      submenuContainer.setAttribute(
+        "class",
+        "absolute left-0 right-0 top-full mt-2 bg-white shadow-md rounded-lg hidden transition-all duration-300 z-40 max-w-xs mx-auto"
+      );
+
+      item.submenus.forEach((submenu) => {
+        let submenuLink = document.createElement("a");
+        submenuLink.setAttribute("href", submenu.link || "#");
+        submenuLink.setAttribute("target", "_blank");
+        submenuLink.setAttribute(
+          "class",
+          "block p-2 text-blue-700 hover:text-blue-500 hover:bg-blue-100 rounded custom-font-reduce"
+        );
+        submenuLink.innerHTML = submenu.title;
+        submenuContainer.appendChild(submenuLink);
+      });
+
+      // Toggle submenu visibility on dropdown icon click
+      dropdownIcon.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent triggering main link
+        submenuContainer.classList.toggle("hidden");
+        dropdownIcon.innerHTML = submenuContainer.classList.contains("hidden")
+          ? '<i class="fa fa-chevron-down"></i>'
+          : '<i class="fa fa-chevron-up"></i>';
+      });
+
+      mainItemContainer.appendChild(submenuContainer);
+    }
+
+    menuContainer.appendChild(mainItemContainer);
+  });
+
+  div.appendChild(menuContainer);
   return div;
 }
+
 document.addEventListener("DOMContentLoaded", genNav);
 async function genNav() {
   let nav = document.createElement("nav");
-  console.log("running navbar");
-  // let nav = document.getElementById('navbar')
   nav.setAttribute(
     "class",
-    "bg-white flex mx-auto px-4 md:px-3 py-3 left-0 right-0 top-0 justify-between items-center drop-shadow-2xl z-50 fixed shadow-black w-full custom-font-reduce"
+    "bg-white flex mx-auto px-4 md:px-3 py-1.5 left-0 right-0 top-0 justify-between items-center drop-shadow-2xl z-50 fixed shadow-black w-full custom-font-reduce"
   );
+  nav.setAttribute("id", "navscript-bar");
 
   nav.appendChild(genLogo());
 
@@ -213,6 +264,8 @@ async function genNav() {
   );
   navbarDiv.appendChild(genHomeButton());
 
+  let mobileMenuData = []; // Store full data structure for mobile menu
+
   try {
     const response = await fetch("/api/diia/navbar", {
       method: "GET",
@@ -222,29 +275,19 @@ async function genNav() {
     });
     if (response.status == 200) {
       const data = await response.json();
-      if (data)
+      if (data) {
+        mobileMenuData = data; // Use the full data structure for mobile menu
         for (let x in data) navbarDiv.appendChild(genDropdowns(data[x]));
+      }
     }
   } catch (e) {
     console.log(e);
   }
 
-  // navbarDiv.appendChild(genMenuItem('Partnerships'))
-  // navbarDiv.appendChild(genMenuItem('Events'))
-  // navbarDiv.appendChild(genMenuItem('About Us'))
   navbarDiv.appendChild(genHomeButtonLARGE());
   nav.appendChild(genMobileMenuToggle());
-  nav.appendChild(
-    genMobileMenu([
-      "For Faculty",
-      "For Students",
-      "Partnerships",
-      "Events",
-      "About Us",
-    ])
-  );
+  nav.appendChild(genMobileMenu(mobileMenuData)); // Pass the full data structure to genMobileMenu
 
   nav.appendChild(navbarDiv);
-
   document.body.appendChild(nav);
 }
