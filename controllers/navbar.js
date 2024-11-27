@@ -210,7 +210,9 @@ exports.create = async (req, res) => {
         ],
         Alumni: [],
         LifeatNITJ: [
-          ["Club & Socities", false],
+          ["Cultural Club", false],
+          ["Cultural Club", false],
+          ["Technical Club", true],
           ["Scholarships", true],
           ["Campus Amenities", false],
           ["Health And Wellness", true],
