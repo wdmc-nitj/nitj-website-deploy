@@ -34,7 +34,7 @@ const obj = {
   Alumni: ["SARC"],
   LifeatNITJ: [
     "Cultural Club",
-    "Cultural_Club",
+    "Cultural club",
     "Technical Club",
     "Scholarships",
     "Campus Amenities",
@@ -211,7 +211,7 @@ exports.create = async (req, res) => {
         Alumni: [],
         LifeatNITJ: [
           ["Cultural Club", false],
-          ["Cultural_Club", false],
+          ["Cultural club", false],
           ["Technical Club", true],
           ["Scholarships", true],
           ["Campus Amenities", false],
