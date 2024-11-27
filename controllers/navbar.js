@@ -33,12 +33,15 @@ const obj = {
   ],
   Alumni: ["SARC"],
   LifeatNITJ: [
-    "Club & Societies",
+    "Cultural Club",
+    "Cultural Club",
+    "Technical Club",
     "Scholarships",
     "Campus Amenities",
     "Health And Wellness",
     "NITJ Festivals",
     "Accomodation",
+    "SAMP",
   ],
 };  
 
