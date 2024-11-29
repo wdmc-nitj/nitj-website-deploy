@@ -8,8 +8,7 @@ exports.addResearchHighlights = async (req, res) => {
     }
 
     const researchHighlights = new ResearchHighlights({
-        // title: req.body?.title,
-        title: title,
+        title: req.body?.title,
         type: req.body?.type,
         desc: req.body?.desc,
         image: req.body?.image,
@@ -31,8 +30,7 @@ exports.addResearchHighlights = async (req, res) => {
 
 exports.updateResearchHighlights = async (req, res) => {
     ResearchHighlights.findByIdAndUpdate(req.params.id, {
-        title: title,
-        // title: req.body?.title,
+        title: req.body?.title,
         type: req.body?.type,
         desc: req.body?.desc,
         image: req.body?.image,
