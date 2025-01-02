@@ -29,32 +29,23 @@ function renderNumbers(data) {
     const numbersSection = document.querySelector('.numbers-section');
     numbersSection.innerHTML = ''; // Clear existing content
 
-    data.forEach(item => {
-        const numberItem = document.createElement('div');
-        numberItem.classList.add('number-item');
-        
-        let iconClass;
-        switch (item.title.toLowerCase()) {
-            case 'mous':
-                iconClass = 'fa-graduation-cap';
-                break;
-            case 'research collaborations':
-                iconClass = 'fa-users';
-                break;
-            case 'delegate visits':
-                iconClass = 'fa-briefcase';
-                break;
-            default:
-                iconClass = 'fa-question'; // Default icon
-        }
+    const icons = ['fa-graduation-cap', 'fa-users', 'fa-briefcase']; // Array of icon classes
 
-        numberItem.innerHTML = `
-            <p id="${item.title.toLowerCase().replace(/\s+/g, '-')}" data-number="${item.Number}">${item.Number}</p>  
-            <h2>${item.title}</h2>  
-            <i class="fas ${iconClass} icon"></i>  
-        `;
-        numbersSection.appendChild(numberItem);
-    });
+data.forEach((item, index) => {
+    const numberItem = document.createElement('div');
+    numberItem.classList.add('number-item');
+
+    // Assign icon based on position (index) in the data array
+    const iconClass = icons[index];
+
+    numberItem.innerHTML = `
+        <p id="${item.title.toLowerCase().replace(/\s+/g, '-')}" data-number="${item.Number}">${item.Number}</p>  
+        <h2>${item.title}</h2>  
+        <i class="fas ${iconClass} icon"></i>  
+    `;
+    numbersSection.appendChild(numberItem);
+});
+
 
     // Animate numbers after rendering
     data.forEach(item => {

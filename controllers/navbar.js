@@ -33,12 +33,15 @@ const obj = {
   ],
   Alumni: ["SARC"],
   LifeatNITJ: [
-    "Club & Socities",
+    "Cultural Club",
+    "Cultural club",
+    "Technical Club",
     "Scholarships",
     "Campus Amenities",
     "Health And Wellness",
     "NITJ Festivals",
     "Accomodation",
+    "SAMP",
   ],
 };  
 
@@ -207,7 +210,9 @@ exports.create = async (req, res) => {
         ],
         Alumni: [],
         LifeatNITJ: [
-          ["Club & Socities", false],
+          ["Cultural Club", false],
+          ["Cultural club", false],
+          ["Technical Club", true],
           ["Scholarships", true],
           ["Campus Amenities", false],
           ["Health And Wellness", true],

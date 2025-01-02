@@ -24,7 +24,7 @@ function genLogo() {
   a.setAttribute("id", "brand");
 
   let imgStyle =
-    "h-10 md:h-12 w-auto object-contain hover:scale-110 custom-logo-reduce";
+    "h-10 md:h-12 w-auto object-contain hover:scale-110 custom-logo-reduce -ml-5 mr-2";
   let img = document.createElement("img");
   img.setAttribute("class", imgStyle);
   img.setAttribute("src", "/diia_U/main/assets/logo.png");
@@ -72,7 +72,7 @@ function genHomeButtonLARGE() {
     "class",
     "border whitespace-nowrap rounded-lg hover:bg-blue-700 bg-gradient-to-r from-blue-900 to-blue-700 px-3 py-2 md:text-[10px] lg:test-[12px] font-bold shadow-sm text-white custom-font-reduce"
   );
-  button.innerHTML = "Main Website";
+  button.innerHTML = "NITJ Home";
   a.appendChild(button);
   div.appendChild(a);
 
@@ -89,8 +89,9 @@ function genDropdowns(edata) {
   let a = document.createElement("a");
   a.setAttribute(
     "class",
-    "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase flex items-center custom-font-reduce text-base font-medium text-[#00387A]"
+    "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase flex items-center custom-font-reduce text-[8px] md:text-[10px] lg:text-[14px] font-medium text-[#00387A]"
   );
+  a.style.fontSize = "1vw";
   a.setAttribute("href", edata.link);
   a.setAttribute("target", "_blank");
   a.innerHTML = edata.title + '<i class="fa p-1 fa-chevron-down"></i>';
@@ -98,7 +99,7 @@ function genDropdowns(edata) {
   let div2 = document.createElement("div");
   div2.setAttribute(
     "class",
-    "absolute hidden bg-white flex-col rounded-lg transition-all group-hover:flex shadow-slate-500 shadow-sm overflow-hidden border-2 hover:border-blue-500 py-1 custom-font-reduce w-[10rem] left-1/2 transform -translate-x-1/2 top-[80%] mt-1" // Added top-full and mt-1 for positioning
+    "absolute hidden bg-white flex-col rounded-lg transition-all group-hover:flex shadow-slate-500 shadow-sm overflow-hidden border-2 hover:border-blue-500 py-1 custom-font-reduce md:w-[10rem] lg:w-[13rem] left-1/2 transform -translate-x-1/2 top-[80%] mt-1" // Added top-full and mt-1 for positioning
   );
 
   for (let x in edata.submenus) {
@@ -249,7 +250,7 @@ async function genNav() {
   let nav = document.createElement("nav");
   nav.setAttribute(
     "class",
-    "bg-white flex mx-auto px-4 md:px-3 py-3 left-0 right-0 top-0 justify-between items-center drop-shadow-2xl z-50 fixed shadow-black w-full custom-font-reduce"
+    "bg-white flex mx-auto px-4 md:px-3 py-1.5 left-0 right-0 top-0 justify-between items-center drop-shadow-2xl z-50 fixed shadow-black w-full custom-font-reduce"
   );
   nav.setAttribute("id", "navscript-bar");
 
