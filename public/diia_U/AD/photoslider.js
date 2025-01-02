@@ -3,9 +3,7 @@ const eventsContainer = document.getElementById("eventsContainer");
 // Fetch and render data
 async function fetchImageData() {
   try {
-    const response = await fetch(
-      "/api/diia/gallery"
-    );
+    const response = await fetch("/api/diia/gallery");
     if (!response.ok) throw new Error("Failed to fetch data");
 
     const imageData = await response.json();
