@@ -89,7 +89,7 @@ function genDropdowns(edata) {
   let a = document.createElement("a");
   a.setAttribute(
     "class",
-    "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase flex items-center custom-font-reduce text-[8px] md:text-[10px] lg:text-[14px] font-medium text-[#00387A]"
+    "hover:text-blue-600 bg-white cursor-pointer group transition-all rounded-full uppercase flex items-center custom-font-reduce text-[8px] md:text-[10px] lg:text-[14px] font-medium text-[#00387A] whitespace-nowrap"
   );
   a.style.fontSize = "1vw";
   a.setAttribute("href", edata.link);
@@ -101,7 +101,7 @@ function genDropdowns(edata) {
     "class",
     "absolute hidden bg-white flex-col rounded-lg transition-all group-hover:flex shadow-slate-500 shadow-sm overflow-hidden border-2 hover:border-blue-500 py-1 custom-font-reduce md:w-[10rem] lg:w-[13rem] left-1/2 transform -translate-x-1/2 top-[80%] mt-1" // Added top-full and mt-1 for positioning
   );
-
+  edata.submenus.sort((a,b)=> a.order - b.order)
   for (let x in edata.submenus) {
     let a2 = document.createElement("a");
     a2.setAttribute("href", edata.submenus[x].link);
@@ -260,7 +260,7 @@ async function genNav() {
   navbarDiv.setAttribute("id", "nav-bar");
   navbarDiv.setAttribute(
     "class",
-    "flex items-center hidden md:flex md:text-sm h-fit gap-3 md:gap-3 lg:gap-10 custom-font-reduce"
+    "flex items-center hidden md:flex md:text-sm h-fit gap-3 sm:gap-2 custom-font-reduce"
   );
   navbarDiv.appendChild(genHomeButton());
 
