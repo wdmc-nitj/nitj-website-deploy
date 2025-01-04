@@ -110,11 +110,11 @@ async function addToHtmlMous() {
       // console.log("national")
       if (
         data[i].showInSlider === true &&
-        (data[i].Image !== undefined || data[i].Image == "")
+        (data[i].Image !== undefined || data[i].Image !== "")
       ) {
         if (data[i].type.toLowerCase() == "indian institutions") {
           count1 += 1;
-          national.innerHTML += `<div class="section1 flex flex-none w-full gap-5 sm:flex-row flex-col">
+          national.innerHTML += `<div class="section1 flex flex-none w-full gap-5 sm:flex-row flex-col" id = ${data[i]._id}>
                         <div class="background w-full relative rounded-xl" 
                                                     style = "background: url(${
                                                       data[i].Image
@@ -148,7 +148,7 @@ async function addToHtmlMous() {
                     </div>`;
         } else if (data[i].type.toLowerCase() == "industry") {
           count2 += 1;
-          industry.innerHTML += `<div class=" section2 flex flex-none w-full gap-5 sm:flex-row flex-col">
+          industry.innerHTML += `<div class=" section2 flex flex-none w-full gap-5 sm:flex-row flex-col" id = ${data[i]._id}>
                         <div class="relative card sm:w-1/2 flex flex-col p-6 rounded-2xl lg:gap-7 gap-5 transition-all duration-400 ease-in-out-expo scrollbar-custom text-white" style="background: linear-gradient(87.67deg, rgba(255, 255, 255, 0.2686) -84.93%, rgba(153, 153, 153, 0.1598) 203.85%);">
                             <p class="bg-white rounded-3xl w-fit h-5 text-xs p-3 flex items-center justify-center font-semibold" style="color: #0056b3;">Industry Partners</p>
                             <img src="assets/mous/Student Center.png" alt="" class="absolute top-5 right-5 h-6">
@@ -182,7 +182,7 @@ async function addToHtmlMous() {
                     </div>`;
         } else if (data[i].type.toLowerCase() == "international institutions") {
           count3 += 1;
-          international.innerHTML += `<div class=" section3 flex flex-none w-full gap-5 sm:flex-row flex-col">
+          international.innerHTML += `<div class=" section3 flex flex-none w-full gap-5 sm:flex-row flex-col" id = ${data[i]._id}>
                         <div class="background w-full relative rounded-xl" 
                                                     style = "background: url(${
                                                       data[i].Image
