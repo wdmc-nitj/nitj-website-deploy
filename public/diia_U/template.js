@@ -76,6 +76,7 @@ function renderTemplate([newsItem, category]) {
 
   const newsDescription = document.createElement("p");
   newsDescription.classList.add("text-justify");
+  newsDescription.classList.add("ck-content");
   newsDescription.innerHTML = newsItem.description;
   eventContainer.appendChild(newsDescription);
 }
@@ -118,6 +119,7 @@ function renderNewsPage(newsItem) {
 
   const newsDescription = document.createElement("p");
   newsDescription.classList.add("text-justify");
+  newsDescription.classList.add("ck-content");
   newsDescription.innerHTML = newsItem.description;
   eventContainer.appendChild(newsDescription);
 }
@@ -204,6 +206,7 @@ function renderMOUsCategory(mou) {
   const mouDescription = document.createElement("p");
   mouDescription.innerHTML = mou.description;
   mouDescription.classList.add(
+    "ck-content",
     "leading-relaxed",
     "text-xl",
     "text-black",
