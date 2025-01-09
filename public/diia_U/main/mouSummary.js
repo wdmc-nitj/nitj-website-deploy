@@ -46,6 +46,7 @@ async function addToHtmlMous(){
     let count1 = 0, count2 = 0, count3 = 0;
     try{
         let data = await fetchDataMous()
+        data.sort((a,b) => a.summaryOrder - b.summaryOrder)
         for(let i = 0; i < data.length; i++)
         {
             if(data[i].showInSummary === true)
@@ -58,17 +59,17 @@ async function addToHtmlMous(){
                     <div class="text-lg flex flex-col gap-2 mb-10">
                         <p class="text-blue-700">${(String(data[i].Poc) !== "undefined" && String(data[i].Poc) !== "")?`<i class="fa-solid fa-user mr-4" ></i>POC: `+ data[i].Poc:""}</p>
 
-                        <p class="text-green-700">${(String(data[i].startingDate && String(data[i].startingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar mr-4"></i>Starting Date: `+ data[i].startingDate.substring(0,10):""}</p>
+                        <p class="text-green-700">${(String(data[i].startingDate) !== "" && String(data[i].startingDate) !== "undefined")?`<i class="fa-solid fa-calendar mr-4"></i>Starting Date: `+ data[i].startingDate.substring(0,10):""}</p>
 
-                        <p class="text-red-700">${(String(data[i].endingDate && String(data[i].endingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar-check mr-4"></i>Ending Date: `+ data[i].endingDate.substring(0,10):""}</p>
+                        <p class="text-red-700">${(String(data[i].endingDate) !== "" && String(data[i].endingDate) !== "undefined")?`<i class="fa-solid fa-calendar-check mr-4"></i>Ending Date: `+ data[i].endingDate.substring(0,10):""}</p>
 
                         <p class="text-yellow-700">${(String(data[i].location) !== "undefined" && String(data[i].location) !== "")?`<i class="fa-solid fa-location-dot mr-4"></i>Location: ${data[i].location}`:""}</p>
                     </div>
-                    <div class="absolute bottom-3 lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center gap-2 text-white lg:p-3 p-1" style="background: #154378;">
+                    <div class="absolute bottom-3 text-white">
                         <a href="/diia_U/template.html?id=${
                                   data[i]._id
-                                }?category=mous" target="_blank">MOU</a>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                }?category=mous" target="_blank" style="background: #154378; padding:10px" class=" lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold">MOU <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        
                     </div>
                 </div>`
                 }
@@ -81,17 +82,17 @@ async function addToHtmlMous(){
                     <div class="text-lg flex flex-col gap-2 mb-10">
                         <p class="text-blue-700">${(String(data[i].Poc) !== "undefined" && String(data[i].Poc) !== "")?`<i class="fa-solid fa-user mr-4" ></i>POC: `+ data[i].Poc:""}</p>
 
-                        <p class="text-green-700">${(String(data[i].startingDate && String(data[i].startingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar mr-4"></i>Starting Date: `+ data[i].startingDate.substring(0,10):""}</p>
+                        <p class="text-green-700">${(String(data[i].startingDate) !== "" && String(data[i].startingDate) !== "undefined")?`<i class="fa-solid fa-calendar mr-4"></i>Starting Date: `+ data[i].startingDate.substring(0,10):""}</p>
 
-                        <p class="text-red-700">${(String(data[i].endingDate && String(data[i].endingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar-check mr-4"></i>Ending Date: `+ data[i].endingDate.substring(0,10):""}</p>
+                        <p class="text-red-700">${(String(data[i].endingDate) !== "" && String(data[i].endingDate) !== "undefined")?`<i class="fa-solid fa-calendar-check mr-4"></i>Ending Date: `+ data[i].endingDate.substring(0,10):""}</p>
 
                         <p class="text-yellow-700">${(String(data[i].location) !== "undefined" && String(data[i].location) !== "")?`<i class="fa-solid fa-location-dot mr-4"></i>Location: ${data[i].location}`:""}</p>
                     </div>
-                    <div class="absolute bottom-3 lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center gap-2 text-white lg:p-3 p-1" style="background: #154378;">
+                    <div class="absolute bottom-3 text-white">
                         <a href="/diia_U/template.html?id=${
                                   data[i]._id
-                                }?category=mous" target="_blank">MOU</a>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                }?category=mous" target="_blank" style="background: #154378; padding:10px" class=" lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold">MOU <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        
                     </div>
                 </div>`
                 }
@@ -104,17 +105,17 @@ async function addToHtmlMous(){
                     <div class="text-lg flex flex-col gap-2 mb-10">
                         <p class="text-blue-700">${(String(data[i].Poc) !== "undefined" && String(data[i].Poc) !== "")?`<i class="fa-solid fa-user mr-4" ></i>POC: `+ data[i].Poc:""}</p>
 
-                        <p class="text-green-700">${(String(data[i].startingDate && String(data[i].startingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar mr-4"></i>Starting Date: `+ data[i].startingDate.substring(0,10):""}</p>
+                        <p class="text-green-700">${(String(data[i].startingDate) !== "" && String(data[i].startingDate) !== "undefined") ?`<i class="fa-solid fa-calendar mr-4"></i>Starting Date: `+ data[i].startingDate.substring(0,10):""}</p>
 
-                        <p class="text-red-700">${(String(data[i].endingDate && String(data[i].endingDate) !== "") !== "undefined")?`<i class="fa-solid fa-calendar-check mr-4"></i>Ending Date: `+ data[i].endingDate.substring(0,10):""}</p>
+                        <p class="text-red-700">${(String(data[i].endingDate) !== "" && String(data[i].endingDate) !== "undefined")?`<i class="fa-solid fa-calendar-check mr-4"></i>Ending Date: `+ data[i].endingDate.substring(0,10):""}</p>
 
                         <p class="text-yellow-700">${(String(data[i].location) !== "undefined" && String(data[i].location) !== "")?`<i class="fa-solid fa-location-dot mr-4"></i>Location: ${data[i].location}`:""}</p>
                     </div>
-                    <div class="absolute bottom-3 lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold flex justify-center items-center gap-2 text-white lg:p-3 p-1" style="background: #154378;">
+                    <div class="absolute bottom-3 text-white">
                         <a href="/diia_U/template.html?id=${
                                   data[i]._id
-                                }?category=mous" target="_blank">MOU</a>
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                }?category=mous" target="_blank" style="background: #154378; padding:10px" class=" lg:w-20 lg:h-8 sm:w-16 sm:h-5 lg:rounded-lg sm:rounded-sm rounded-md text-xs w-20 h-8 font-semibold">MOU <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        
                     </div>
                 </div>`
                 }
