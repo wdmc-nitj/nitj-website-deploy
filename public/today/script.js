@@ -387,7 +387,7 @@ ${event.category}
               </div>
               <div class="mt-3 flex flex-col gap-1" >
                   <div class="flex flex-row mb-2 gap-1 items-center" >
-                  <a href="https://xceed.nitj.ac.in/classrooms" target="_blank" rel="noopener noreferrer">
+                  <a href="https://maps.app.goo.gl/P58p6NdXX7jxLdxa9" target="_blank" rel="noopener noreferrer">
                       <svg class=" " xmlns="http://www.w3.org/2000/svg" height="17" viewBox="0 -960 960 960" width="17" style="vertical-align: middle;">
                         <style>
                           svg:hover path {
@@ -399,7 +399,7 @@ ${event.category}
                       </svg>
                       </a>
                       <span class="text-slate-700 hover:text-accent" style="venue vertical-align: middle; margin-bottom: 20; ">
-                        <a href="https://xceed.nitj.ac.in/classrooms" target="_blank" rel="noopener noreferrer">
+                        <a href="https://maps.app.goo.gl/P58p6NdXX7jxLdxa9" target="_blank" rel="noopener noreferrer">
                           ${event.venue}
                         </a>
                       </span>
