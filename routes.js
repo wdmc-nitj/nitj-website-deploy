@@ -45,6 +45,7 @@ const curriculumRouter = require("./routes/curriculum");
 const deptCalendarRouter = require("./routes/deptCalendar");
 const examinationRouter = require("./routes/examination");
 const eventsCalendarRouter = require("./routes/calendar/eventsCalendar")
+const sampRouter = require("./routes/samp")
 
 const adminPath = "dashboard";
 
@@ -63,7 +64,7 @@ mainRouter.use("/*", (req, res, next) => {
   if (req.method === "GET") {
     next();
   } else {
-    if (req.headers.authorization === process.env.SECRET_KEY || req.baseUrl.startsWith("/api/dept/")) {
+    if (req.headers.authorization === process.env.SECRET_KEY || req.baseUrl.startsWith("/api/dept/") || req.baseUrl.startsWith("/api/samp/")) {
       next();
     } else {
       res.status(403).json({ message: "Unauthorized" });
@@ -117,6 +118,8 @@ mainRouter.use("/store", store);
 mainRouter.use("/admissions", admissionsRoutes);
 mainRouter.use("/research", researchRoutes);
 mainRouter.use("/recruitments", recruitmentsRoutes);
+
+mainRouter.use("/samp", sampRouter);
 
 mainRouter.use("/eventsCalendar",eventsCalendarRouter)
 
