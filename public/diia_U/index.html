@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        iframe {
+            width: 100%;
+            /* border: 1px solid black; */
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="./AshutoshDevgotra/index.html" id="target" frameborder="0"></iframe>
+    <iframe src="./news/index.html" id="target2" frameborder="0"></iframe>
+    <iframe src="./Jagjit/index.html" id="target3" frameborder="0"></iframe>
+    <iframe src="./opportunities/index.html" id="target4" frameborder="0"></iframe>
+    <iframe src="./Divyansh/index.html" id="target5" frameborder="0"></iframe>
+    <iframe src="./Tiles/index.html" id="target8" frameborder="0"></iframe>
+    <iframe src="./KushagraSaxena/index.html" id="target6" frameborder="0"></iframe>
+    <iframe src="./testimonial/index.html" id="target7" frameborder="0"></iframe>
+    <iframe src="./Divyansh/footer.htm" id="target8" frameborder="0"></iframe>
+    <script>
+        let div = document.getElementById("target");
+        let div2 = document.getElementById("target2");
+        let div3 = document.getElementById("target3");
+        let div4 = document.getElementById("target4");
+        let div5 = document.getElementById("target5");
+        let div6 = document.getElementById("target6");
+        let div7 = document.getElementById("target7");
+        let div8 = document.getElementById("target8");
+        div.onload = function() {
+            setTimeout(()=>{
+                div.style.height =
+                div.contentWindow.document.body.scrollHeight + 'px';
+            },1)
+        }
+        div2.onload = function() {
+            setInterval(()=>{
+                div2.style.height =
+                div2.contentWindow.document.body.scrollHeight + 'px';
+            },1000)
+        }
+        div3.onload = function() {
+            setInterval(()=>{
+                div3.style.height =
+                div3.contentWindow.document.body.scrollHeight + 'px';
+            },1000)
+        }
+        div4.onload = function() {
+            setInterval(()=>{
+                div4.style.height =
+                div4.contentWindow.document.body.scrollHeight + 'px';
+            },1000)
+        }
+        div5.onload = function() {
+            setInterval(()=>{
+                div5.style.height =
+                div5.contentWindow.document.body.scrollHeight + 'px';
+            },1000)
+        }
+        div6.onload = function() {
+            setInterval(()=>{
+                div6.style.height =
+                div6.contentWindow.document.body.scrollHeight + 'px';
+            },1000)
+        }
+        div7.onload = function() {
+            setInterval(()=>{
+                div7.style.height =
+                div7.contentWindow.document.body.scrollHeight + 'px';
+            },1000)
+        }
+        div8.onload = function() {
+            setInterval(()=>{
+                div8.style.height =
+                div8.contentWindow.document.body.scrollHeight + 'px';
+            },1000)
+        }
+    </script>
+</body>
+</html>

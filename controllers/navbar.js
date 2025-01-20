@@ -15,6 +15,7 @@ const obj = {
     "Academic System",
     "Academic Services",
     "Allied facilities",
+    "GLOBAL ENGAGEMENTS",
     "Programs of study",
     "convocation",
     "other links",
@@ -24,6 +25,7 @@ const obj = {
     "Anti Raging",
     "Join NITJ",
     "Institute Flyers",
+    "INTERNATIONAL ADMISSIONS",
   ],
   Research: [
     "Research @NITJ",
@@ -33,12 +35,15 @@ const obj = {
   ],
   Alumni: ["SARC"],
   LifeatNITJ: [
-    "Club & Socities",
+    "Cultural Club",
+    "Cultural club",
+    "Technical Club",
     "Scholarships",
     "Campus Amenities",
     "Health And Wellness",
     "NITJ Festivals",
     "Accomodation",
+    "SAMP",
   ],
 };  
 
@@ -189,6 +194,7 @@ exports.create = async (req, res) => {
           ["Academic System", true],
           ["Academic Services", false],
           ["Academic facilities", true],
+          ["GLOBAL ENGAGEMENTS", true],
           ["Programs of study", false],
           ["convocation", true],
           ["other links", true],
@@ -198,6 +204,7 @@ exports.create = async (req, res) => {
           ["Anti Raging", true],
           ["Join NITJ", false],
           ["Institute Flyers", true],
+          ["INTERNATIONAL ADMISSIONS", true],
         ],
         Research: [
           ["Research @NITJ", false],
@@ -207,12 +214,15 @@ exports.create = async (req, res) => {
         ],
         Alumni: [],
         LifeatNITJ: [
-          ["Club & Socities", false],
+          ["Cultural Club", false],
+          ["Cultural club", false],
+          ["Technical Club", true],
           ["Scholarships", true],
           ["Campus Amenities", false],
           ["Health And Wellness", true],
           ["NITJ Festivals", false],
           ["Accomodation", true],
+          ["SAMP", true],
         ],
       });
       await navbar.save();

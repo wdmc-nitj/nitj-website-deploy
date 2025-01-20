@@ -2,18 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css" />
   <link rel="stylesheet" href="/style.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-
   <link rel="icon" type="favicon" href="img/logo.png">
-
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,19 +15,12 @@
 
 
 
-
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="jquery-3.6.3.min.js"></script>
-
   <script src="https://kit.fontawesome.com/46aac33939.js" crossorigin="anonymous"></script>
-
   <title>Awards</title>
-
-
-  <style>
+   <style>
     .main {
       display: flex;
       justify-content: center;
@@ -48,67 +35,69 @@
         transform: translateY(var(--direction, -50%));
       }
     }
+     .font-times{
+      font-family: 'Times New Roman', Times, serif;
+    }
   </style>
-
-
 </head>
 
 <body class="h-screen overflow-x-hidden">
 
-  <!--NAVBAR BEGINS-->
-  <nav
-    class="fixed p-2 scroll-smooth z-50 max-w-screen w-full bg-white lg:flex lg:items-center lg:justify-around font-[Inter] shadow-2xl">
-    <div class="flex justify-around p-1 items-center ">
+ <!--NAVBAR BEGINS-->
+   <nav
+    class="font-times fixed p-5 sm:p-3 lg:p-2 scroll-smooth z-50 max-w-screen w-full bg-white lg:flex lg:items-center lg:justify-around shadow-2xl">
+    
+    <div class="flex justify-around items-center overflow-hidden">
+      
       <a href="/alumni/alumni.html" target="_blank">
-        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline mx-2 lg:ml-12 cursor-pointer"
+        <img class="h-[2.2rem] w-[2.2rem] sm:h-[3.62rem] sm:w-[3.5rem] inline lg:mx-2 mr-6 ml-2 lg:pl-0 cursor-pointer"
           src="img/logo.png" alt="logo">
       </a>
 
       <div
-        class="text-[0.50rem] pl-2 sm:text-base w-[30rem] lg:w-[33rem] ml-2 sm:ml-3 leading-5 text-[#0054A6]  cursor-pointer font-bold">
+        class="text-[10px] pl-2 sm:text-base w-[30rem] lg:w-[33rem] ml-2 sm:ml-3 leading-5 text-[#0054A6]  cursor-pointer font-bold">
         <a href="/alumni/alumni.html">
-          <div>NITJ Alumni Association (NITJAA)</div>Dr. B R Ambedkar National Institute of Technology Jalandhar
-        </a>
+          <div>NITJ Alumni Association (NITJAA)</div>Dr. BR Ambedkar National Institute of Technology Jalandhar</a>
       </div>
 
       <span class="text-2xl sm:text-3xl cursor-pointer text-black mx-2 mr-3 lg:hidden block">
         <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
       </span>
     </div>
-
+     
     <ul
-      class="lg:flex lg:items-center z-50 lg:z-auto lg:relative absolute bg-white w-full lg:top-0 lg:w-auto lg:py-0 p-4 lg:opacity-100 opacity-0 transition-all ease-in duration-500 left-0">
+      class="lg:flex lg:items-center z-50 lg:z-auto lg:relative absolute bg-white w-full lg:top-0 lg:w-auto lg:py-0 lg:pl-1 lg:opacity-100 opacity-0 transition-all ease-in duration-500 left-0">
 
 
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="/index.html" target="_blank"
-          class=" text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">
+          class=" text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500">
           <span class="text-[#0054A6] hover:text-[#D3D3D3]"><i class="fa-solid fa-house"></i></span>
         </a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
-        <a href="./alumni.html#about_nitjaa"
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="alumni.html" 
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">ABOUT</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <!-- <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="https://drive.google.com/file/d/1qKooGTBjiBW9yHjtnC6rhkqTY-dO1utk/view?usp=sharing" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">NEWSLETTER</a>
-      </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
-        <a href="awards.html" target="_blank"
+      </li> -->
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
+        <a href="#" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">AWARDS</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="office_bearers.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">OFFICE
           BEARERS</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="givingback.html" target="_blank"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">GIVING
           BACK</a>
       </li>
-      <li class="m-1 lg:mr-4 xl:m-4 my-3 lg:my-0">
+      <li class="m-1 lg:mr-1.5 xl:m-4 my-3 lg:my-0">
         <a href="#contact_reference"
           class="text-[0.5rem] sm:text-xs xl:text-base w-auto text-black hover:text-[#D3D3D3] duration-500 ">
           CONTACT US</a>
@@ -116,7 +105,7 @@
 
       <a href="https://nitj.ac.in/alumni_fundraising/login" target="_blank">
         <button
-          class="bg-[#0054A6] ml-1 mb-4 mr-10 lg:mb-0 text-white text-[0.5rem] sm:text-xs xl:text-base duration-500 w-20 xl:w-24 py-2 px-2 text-center shadow-md border-2 border-[#FFD66E]  rounded hover:-translate-y-1 hover:scale-110 ">
+          class="bg-[#0054A6] ml-1.5 mb-4 mr-1.5 lg:mb-0 text-white text-[0.5rem] sm:text-xs xl:text-base duration-500 w-20 xl:w-24 py-2 px-2 text-center shadow-md border-2 border-[#FFD66E]  rounded hover:-translate-y-1 hover:scale-110 ">
           LOGIN
         </button>
       </a>
@@ -128,29 +117,30 @@
 
 
 
-  <div class="relative max-w-screen flex items-center justify-center h-screen mb-12 overflow-hidden">
+
+  <!-- <div class="relative max-w-screen flex items-center justify-center h-screen mb-12 overflow-hidden"> -->
     <!-- <p>Support by Sarthak Sharma</p> -->
-    <div class="relative z-30 p-5 text-white bg-opacity-50 rounded-xl flex-none">
+    <!-- <div class="relative z-30 p-5 text-black bg-opacity-50 rounded-xl flex-none"> -->
       <!-- <div class="text-xl md:text-4xl lg:text-5xl font-semibold italic animate-pulse md:py-2">
         Welcome Home!
       </div> -->
-      <div class="text-base md:text-4xl lg:text-5xl font-semibold italic ">
-        Your alma mater needs your support<br>
-        It&apos;s now time to give back
-      </div>
-    </div>
-    <video autoplay loop muted class="fixed -z-10 w-auto min-w-full min-h-full max-w-none "
+      <!-- <div class="text-base md:text-4xl lg:text-5xl font-semibold italic "> -->
+        <!-- Your alma mater needs your support<br> -->
+        <!-- It&apos;s now time to give back -->
+      <!-- </div> -->
+    <!-- </div> -->
+    <!-- <video autoplay loop muted class="fixed -z-10 w-auto min-w-full min-h-full max-w-none "
       poster="img/Campus_Aerial_view.png">
       <source src="img/NITJ_Campus_Aerial_View.mp4" type="video/mp4" />Your browser does not support the video tag.
-    </video>
-  </div>
+    </video> -->
+  <!-- </div> -->
 
 
   <div
-    class="grid bg-white py-4 sm:py-10 lg:py-16 px-5 sm:px-10 lg:px-[4.5rem] md:w-[68vw] max-w-screen md:rounded-xl mx-auto  h-[45vh] md:h-auto z-40 relative shadow-xl shadow-gray-700">
+    class="pt-20 grid bg-white py-40 sm:py-20 lg:py-30 px-5 sm:px-10 lg:px-[4.5rem] md:w-[68vw] max-w-screen md:rounded-xl mx-auto md:h-auto z-40 relative">
 
     <h2
-      class="grid justify-center items-center grid-cols-1 font-bold text-sm sm:text-base md:text-lg lg:text-2xl my-3 sm:my-5 text-black text-center font-sans">
+      class="grid justify-center items-center grid-cols-1 font-bold text-sm sm:text-base md:text-lg lg:text-2xl my-3 sm:my-5 text-black text-center font-sans"><br>
       NITJ ALUMNI AWARDS</h2>
 
     <p
@@ -259,14 +249,14 @@
       <table class="min-w-full divide-y divide-gray-200 whitespace-normal">
         <thead class="bg-[#0054A6]">
           <tr>
-            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Sr.No.</th>
-            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Distinguished
+            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Sr.No.</th>
+            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Distinguished
               Donor Award <br> (Categories)
             </th>
-            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Contribution by
+            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Contribution by
               alumni (INR)
             </th>
-            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Additional
+            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Additional
               Recognition apart from <br> the
               DDA award (apart from the incentives
               mentioned under various heads; refer
@@ -276,10 +266,10 @@
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
           <tr>
-            <td class="px-6 py-4">1</td>
-            <td class="px-6 py-4">Diamond</td>
-            <td class="px-6 py-4">Greater than 20 Lakhs</td>
-            <td class="px-6 py-4">
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Diamond</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Greater than 20 Lakhs</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-left tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">
               <ul class="list-disc">
                 <li>Stage felicitation with a
                   gift
@@ -292,10 +282,10 @@
             </td>
           </tr>
           <tr>
-            <td class="px-6 py-4">2</td>
-            <td class="px-6 py-4">Platinum</td>
-            <td class="px-6 py-4">10-20 Lakhs</td>
-            <td class="px-6 py-4">
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">2</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Platinum</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10-20 Lakhs</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-left tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">
               <ul class="list-disc">
                 <li>Stage felicitation with a
                   gift
@@ -310,10 +300,10 @@
             </td>
           </tr>
           <tr>
-            <td class="px-6 py-4">3</td>
-            <td class="px-6 py-4">Gold</td>
-            <td class="px-6 py-4">1-10 Lakhs</td>
-            <td class="px-6 py-4">
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">3</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Gold</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1-10 Lakhs</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-left tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">
               <ul class="list-disc">
                 <li>The Donor’s profile (with
                   photo) will be permanently displayed on the Alumni
@@ -324,10 +314,10 @@
             </td>
           </tr>
           <tr>
-            <td class="px-6 py-4">4</td>
-            <td class="px-6 py-4">Silver</td>
-            <td class="px-6 py-4">0.05-1 Lakhs</td>
-            <td class="px-6 py-4">
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">4</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Silver</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">0.05-1 Lakhs</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-left tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">
               <ul class="list-disc">
               <li>The Donor’s profile (with
                 photo) will be permanently displayed on the Alumni
@@ -338,79 +328,139 @@
         </tbody>
       </table>
 
-      <br/>
-      <br/>
-
-      <table class="min-w-full divide-y divide-gray-200 whitespace-normal">
+      <!-- <table class="min-w-full divide-y divide-gray-200 whitespace-normal">
         <thead class="bg-[#0054A6]">
           <tr>
-            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Sr.No.</th>
-            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Name of Alumni <br> (Categories)
-            </th>
-            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Batch & Department
-            </th>
-            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Amount Donated (INR)
-            </th>
-            <th class="px-6 py-6 text-left text-xs font-medium text-white uppercase tracking-wider">Donated for
-            </th>
+            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Sr.No.</th>
+            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Name of Alumni</th>
+            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Batch & Department</th>
+            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Amount Donated</th>
+            <th class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Donated For</th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y divide-gray-200">
           <tr>
-            <td class="px-6 py-4">1. </td>
-            <td class="px-6 py-4">Ruchi Sharma</td>
-            <td class="px-6 py-4">1991-1995 <br/> Electronics and Communication Engineering</td>
-            <td class="px-6 py-4">10,000/-</td>
-            <td class="px-6 py-4">Student Scholarship</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Ruchi Sharma</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1991-1995 <br/> Electronics and Communication Engineering</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Scholarship</td>
           </tr>
           <tr>
-            <td class="px-6 py-4">2. </td>
-            <td class="px-6 py-4">Amarjot Kaur</td>
-            <td class="px-6 py-4">1991-1995 <br/> Chemical & Bio Engineering</td>
-            <td class="px-6 py-4">10,000/-</td>
-            <td class="px-6 py-4">Disabled Student</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">2</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Amarjot Kaur</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1991-1995 <br/> Chemical and Bio Engineering</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Disabled Student</td>
           </tr>
           <tr>
-            <td class="px-6 py-4">3. </td>
-            <td class="px-6 py-4">Renu Sharma</td>
-            <td class="px-6 py-4">1991-1995 <br/> Textile Technology</td>
-            <td class="px-6 py-4">10,000/-</td>
-            <td class="px-6 py-4">Student Project Fund</td>
-          </tr>
-          
-          <tr>
-            <td class="px-6 py-4">4. </td>
-            <td class="px-6 py-4">Gurvinder Pal Singh</td>
-            <td class="px-6 py-4">1994-1998 <br/> Textile Technology</td>
-            <td class="px-6 py-4">10,000/-</td>
-            <td class="px-6 py-4">Student Scholarship</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">3</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Renu Sharma</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1991-1995 <br/> Textile Technology</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Project Fund</td>
           </tr>
           <tr>
-            <td class="px-6 py-4">5. </td>
-            <td class="px-6 py-4">Ruchi Sharma</td>
-            <td class="px-6 py-4">1991-1995 <br/> Electronics and Communication Engineering</td>
-            <td class="px-6 py-4">10,000/-</td>
-            <td class="px-6 py-4">Student Scholarship</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">4</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Gurvinder Pal Singh</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1994-1998 <br/> Textile Technology</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Scholarship</td>
           </tr>
           <tr>
-            <td class="px-6 py-4">6. </td>
-            <td class="px-6 py-4">Salil Sethunath</td>
-            <td class="px-6 py-4">1995-1998 <br/> Textile Technology</td>
-            <td class="px-6 py-4">10,000/-</td>
-            <td class="px-6 py-4">Student Scholarship</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">5</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Ruchi Sharma</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1991-1995 <br/> Electronics and Communication Engineering</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Scholarship</td>
           </tr>
           <tr>
-            <td class="px-6 py-4">7. </td>
-            <td class="px-6 py-4">Shuvendu Bose</td>
-            <td class="px-6 py-4">1990-1994 <br/> Mechanical Engineering</td>
-            <td class="px-6 py-4">10,000/-</td>
-            <td class="px-6 py-4">Student Scholarship</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">6</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Sahil Sethunath</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1995-1998 <br/> Textile Technology</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Scholarship</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">7</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Shuvendu Bose</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1990-1994 <br/> Mechanical Engineering</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+            <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Scholarship</td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
+<br><br>
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-[#0054A6]">
+            <tr>
+              <th class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Sr.No.</th>
+              <th class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Name of Alumni</th>
+              <th class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Batch & Department</th>
+              <th class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Amount Donated</th>
+              <th class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 text-white uppercase">Donated For</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+        
+            <tr>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Ruchi Sharma</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1991-1995 <br/> Electronics and Communication Engineering</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Scholarship</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">2</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Amarjot Kaur</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1991-1995 <br/> Chemical and Bio Engineering</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Disabled Student</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">3</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Renu Sharma</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1991-1995 <br/> Textile Technology</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Project Fund</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">4</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Gurvinder Pal Singh</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1994-1998 <br/> Textile Technology</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Scholarship</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">5</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Ruchi Sharma</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1991-1995 <br/> Electronics and Communication Engineering</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Scholarship</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">6</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Sahil Sethunath</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1995-1998 <br/> Textile Technology</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Scholarship</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">7</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Shuvendu Bose</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">1990-1994 <br/> Mechanical Engineering</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">10,000/-</td>
+              <td class="px-6 py-4 font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-center tracking-wide leading-loose text-[#000000B2] mt-2 my-2 md:my-9 lg:my-19 ">Student Scholarship</td>
+            </tr>
+          </tbody>
+        </table>
+      
+      
+
     </div>
-    <!-- <br><b>*The donation amounts would also be displayed in front of the Donor's names. </b> -->
-    </p>
+
+    <p class="font-normal font-[Poppins] text-[0.5rem] sm:text-xs md:text-base lg:text-xl text-left tracking-wide leading-loose mt-2 my-2 md:my-9 lg:my-19 ">
+      <b>*The donation amounts would also be displayed in front of the Donor's names. </b>
 
   </div>
 
@@ -421,7 +471,9 @@
 
 
 
-  <div class="wrapper bg bg-cover bg-center bg-no-repeat h-screen"
+
+
+  <div class="wrapper bg bg-cover bg-center bg-no-repeat md:h-10 sm:h-0"
     style="background-image: url('footer.png'); width: 100%;"></div>
 
   <script>
@@ -459,102 +511,118 @@
       //   textElement.style.display = "none";
       // }
     }
-
   </script>
 </body>
 
-<!-- === FOOTER Starts === -->
-<div class="z-10">
-  <div class=" bg-[#0054A6] text-white lg:flex-row px-5 pt-5 lg:px-20 h-full flex">
-    <a href="/alumni/alumni.html" target="_blank" class="hover:text-[#82C3FF]">
-      <img class="h-[2.2rem] sm:h-[3.6rem] inline cursor-pointer " src="img/SARC_logo.png" alt="logo">
-    </a>&nbsp;&nbsp;
-    <p class="grid items-center font-semibold text-white lg:text-[20px] hover:text-[#82C3FF]">
-      <a href="/alumni/alumni.html" target="_blank">NITJ Alumni Association (NITJAA)</a>
-    </p>
-  </div>
-  <a name="contact_reference"></a>
-  <div class="px-5 pt-3 lg:px-20 bg-[#0054A6] text-white">
-    <div class="pb-[6px] lg:w-[85%]">
-      <i class="fas fa-location-dot pr-[8px]"></i><span class="opacity-90">G.T Road, Amritsar Bypass, Jalandhar,
-        Punjab, India-144008</span>
+ <!-- === FOOTER Starts === -->
+  <div class="z-10 text-sm md:text-base lg:text-lg">
+    <div class=" bg-[#0054A6] text-white lg:flex-row px-5 pt-5 lg:px-20 h-full flex">
+      <a href="/alumni/alumni.html" target="_blank" class="hover:text-[#82C3FF]">
+        <img class="h-[2.2rem] sm:h-[3.6rem] inline cursor-pointer " src="img/SARC_logo.png" alt="logo">
+      </a>&nbsp;&nbsp;
+      <p class="grid items-center font-semibold text-white lg:text-[20px] hover:text-[#82C3FF]">
+        <a href="/alumni/alumni.html" target="_blank">NITJ Alumni Association (NITJAA)</a>
+      </p>
     </div>
-    <div class=" pb-[6px]">
-      <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780609d" class="hover:text-[#82C3FF]">
+    <a name="contact_reference"></a>
+    <div class="px-5 pt-3 lg:px-20 bg-[#0054A6] text-white">
+      <div class="pb-[6px] lg:w-[85%]">
+        <i class="fas fa-location-dot pr-[8px]"></i><span class="opacity-90">G.T Road, Amritsar Bypass, Jalandhar,
+          Punjab, India-144008</span>
+      </div>
+      <div class=" pb-[6px]">
+        <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780609d"
+          class="hover:text-[#82C3FF]">
 
-        <div>
-          <span class="font-bold ">Dr. Anish Kumar Sachdeva</span> (Dean Student Welfare)
-      </a>
-      <a href="https://departments.nitj.ac.in/dept/me/Faculty/6430446638bff038a7807afd" class="hover:text-[#82C3FF]">
+          <div>
+            <span class="font-bold ">Prof. Anish Kumar Sachdeva</span> (Dean Student Welfare & President NITJ Alumni Association)
+        </a>
 
-        <div>
-          <span class="font-bold ">Dr. Manoj Kumar</span> (Alumni Coordinator)
-      </a>
-      <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780601a"
-        class="hover:text-[#82C3FF] clear-right">
+        <a href="https://departments.nitj.ac.in/dept/tt/Faculty/6430445d38bff038a7807071"
+          class="hover:text-[#82C3FF]">
 
-        <div>
-          <span class="font-bold ">Dr. Ajay Gupta</span> (Alumni Coordinator)
-      </a>
+          <div>
+            <span class="font-bold ">Prof. Monica Sikka </span> (Vice-President, NITJ Alumni Association)
+        </a>
+
+        <a href="https://departments.nitj.ac.in/dept/ipe/Faculty/6430445738bff038a780601a"
+          class="hover:text-[#82C3FF] clear-right">
+
+          <div>
+            <span class="font-bold ">Dr. Ajay Gupta</span> (Chairman, NITJ Alumni Association)
+        </a>
+
+        <a href="https://departments.nitj.ac.in/dept/me/Faculty/6430446638bff038a7807afd"
+          class="hover:text-[#82C3FF]">
+
+          <div>
+            <span class="font-bold ">Dr. Manoj Kumar</span> (Institute Coordinator, NITJ Alumni Association)
+        </a>
 
 
-      <h3 class="opacity-90"><i class="fas fa-envelope mt-1 pr-[8px]"></i> office.alumniaffairs@nitj.ac.in</h3>
+        <h3 class="opacity-90"><i class="fas fa-envelope mt-1 pr-[8px]"></i> office.alumniaffairs@nitj.ac.in</h3>
+
+      </div>
+        
+        <div class="align-center flex flex-row pb-[14px] clear-both">
+          <i class="fas fa-phone mt-1 pr-[8px]"></i>
+          <h3 class="opacity-90">
+            +91-0181-5037855, 2690301, 2690453, 3082000
+          </h3>
+        </div>
+      </div>
 
     </div>
+    
 
-    <div class="align-center flex flex-row pb-[14px] clear-both">
-      <i class="fas fa-phone mt-1 pr-[8px]"></i>
-      <h3 class="opacity-90">
-        +91-0181-5037855, 2690301, 2690453, 3082000
-      </h3>
+  </div>
+
+
+
+  <div class="border-t border-zinc-400 bg-[#0054A6] p-3 text-center text-white">
+    <div class="pb-[10px] text-[12px] lg:pb-0 lg:text-[15px] text-center">
+      &#169; Copyright 2024, All Rights Reserved NIT Jalandhar
+    </div>
+
+    <div class="text-[12px] lg:text-[15px]">
+      <a href="https://www.facebook.com/sarc.nitjalandhar" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+        target="_blank">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+      |
+      <a href="https://twitter.com/NITJofficial" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+        target="_blank">
+        <i class="fab fa-twitter"></i>
+      </a>
+      |
+      <a href="https://www.linkedin.com/in/s-a-r-c-nit-jalandhar-ab6261259"
+        class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]" target="_blank">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      |
+      <a href="https://www.instagram.com/nitjofficial/?hl=en" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+        target="_blank">
+        <i class="fa-brands fa-instagram "></i>
+      </a>
+      |
+      <a href="https://www.youtube.com/c/NITJOfficial" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
+        target="_blank">
+        <i class="fa-brands fa-youtube"></i>
+      </a>
+      |
+      <a href="credits.html" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]" target="_blank">Credits</a>
     </div>
   </div>
-
-</div>
-
-
-</div>
-
-
-
-<div class="border-t border-zinc-400 bg-[#0054A6] p-3 text-center text-white">
-  <div class="pb-[10px] text-[12px] lg:pb-0 lg:text-[15px] text-center">
-    &#169; Copyright 2022, All Rights Reserved NIT Jalandhar
   </div>
-
-  <div class="text-[12px] lg:text-[15px]">
-    <a href="https://www.facebook.com/sarc.nitjalandhar" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
-      target="_blank">
-      <i class="fa-brands fa-facebook"></i>
-    </a>
-    |
-    <a href="https://twitter.com/NITJofficial" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
-      target="_blank">
-      <i class="fab fa-twitter"></i>
-    </a>
-    |
-    <a href="https://www.linkedin.com/in/s-a-r-c-nit-jalandhar-ab6261259"
-      class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]" target="_blank">
-      <i class="fa-brands fa-linkedin"></i>
-    </a>
-    |
-    <a href="https://www.instagram.com/nitjofficial/?hl=en" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
-      target="_blank">
-      <i class="fa-brands fa-instagram "></i>
-    </a>
-    |
-    <a href="https://www.youtube.com/c/NITJOfficial" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]"
-      target="_blank">
-      <i class="fa-brands fa-youtube"></i>
-    </a>
-    |
-    <a href="credits.html" class="mx-1 hover:underline lg:mx-2 hover:text-[#82C3FF]" target="_blank">Credits</a>
-  </div>
-</div>
-</div>
-<!-- === FOOTER Ends === -->
+  <!-- === FOOTER Ends === -->
+ 
 </div>
 </div>
 </div>
-
+  <script>
+    function Menu(e) {
+      let list = document.querySelector('ul');
+      e.name === 'menu' ? (e.name = "close", list.classList.add('top-[80px]'), list.classList.add('opacity-100')) : (e.name = "menu", list.classList.remove('top-[80px]'), list.classList.remove('opacity-100'))
+    }
+  </script>
 </html>

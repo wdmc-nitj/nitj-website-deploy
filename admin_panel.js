@@ -62,6 +62,26 @@ const yearlyRanking = require("./models/yearlyRanking");
 const scholarship = require("./models/scholarship");
 const initiative = require("./models/initiatives");
 
+//diia
+const DiiaRankings = require("./models/diia/DiiaRankings");
+const DiiaHeroSlider = require("./models/diia/DiiaHeroSlider");
+const DiiaNewsSection = require("./models/diia/DiiaNewsSection");
+const DiiaTestimonials = require("./models/diia/DiiaTestimonials");
+const DiiaMous = require("./models/diia/DiiaMous");
+const DiiaOpportunities= require("./models/diia/DiiaOpportunities");
+const DiiaMap= require("./models/diia/DiiaMap");
+const DiiaFooter = require("./models/diia/DiiaFooter");
+const DiiaColorButton=require("./models/diia/DiiaColorButton");
+const DiiaNumber=require("./models/diia/DiiaNumber");
+const DiiaNavBar=require("./models/diia/DiiaNavBar");
+const DiiaDeandetails=require("./models/diia/DiiaDeandetails");
+const DiiaGallery=require("./models/diia/DiiaGallery");
+const DiiaTiles=require("./models/diia/DiiaTiles");
+
+
+
+
+
 // Research Menu
 const researchMenuName = "Research";
 const Consultancy = require("./models/research/consultancy");
@@ -93,8 +113,8 @@ const curriculum = require("./models/curriculum");
 const examSchedule = require("./models/examSchedule");
 const deptwiseFaculty = require("./models/deptwiseFaculty");
 
-// Events Calendar 
-const eventsCalendar = require("./models/calendar/eventsCalendar.js")
+// Events Calendar
+const eventsCalendar = require("./models/calendar/eventsCalendar.js");
 
 // defined new role : clubadmin , can access their respective club
 const canModifyUsers = ({ currentAdmin }) =>
@@ -103,6 +123,13 @@ const isAdmin = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "admin";
 const isClubAdmin = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === "clubadmin";
+
+//diia dean
+const isdiiaAdmin=({currentAdmin})=>
+  currentAdmin && (currentAdmin.role === "diia" || currentAdmin.role === "admin");
+
+const isdiiaAdminonly=(currentAdmin)=>
+  currentAdmin && (currentAdmin.role === "diia");
 
   // removal of feilds that should not be changed by the admin panel / non required fields
 function removefields(arr) {
@@ -176,7 +203,7 @@ function removefields(arr) {
   }
   return arr;
 }
-  // removal of feilds that should not be changed by the admin panel / non required fields
+// removal of feilds that should not be changed by the admin panel / non required fields
 
 const removefieldsAdmin = (arr) => {
   var index = arr.indexOf("role");
@@ -249,6 +276,9 @@ const canEditDept = ({ currentAdmin, record }) => {
   if (currentAdmin.role === "admin") {
     return true;
   }
+  if(currentAdmin.role=="diia"){
+    return false;
+  }
 
   if (!currentAdmin.role) {
     return false;
@@ -272,9 +302,13 @@ const canEditClub = ({ currentAdmin, record }) => {
   if (!currentAdmin.role) {
     return false;
   }
+  //if role is diaa then then don't give access
+  if (currentAdmin.role == "diia") {
+    return false;
+  }
   // added check that department should not access the club data
   if (currentAdmin.role === "restricted") {
-    return false
+    return false;
   }
   if (!record) {
     return true;
@@ -300,9 +334,9 @@ const canEditprofile = ({ currentAdmin, record }) => {
   }
 };
 
-// excluding clubadmin from accessing the department data : updated each deptmt model config with this logic 
+// excluding clubadmin and diia from accessing the department data : updated each deptmt model config with this logic 
 const notAccessibleByClubs = ({ currentAdmin, record }) => {
-  return !isClubAdmin({ currentAdmin }) && canEditDept({ currentAdmin, record })
+  return (!isdiiaAdminonly({currentAdmin}) && !isClubAdmin({ currentAdmin }) && canEditDept({ currentAdmin, record }));
 }
 AdminBro.registerAdapter(AdminBroMongoose);
 const AdminBroOptions = {
@@ -313,10 +347,13 @@ const AdminBroOptions = {
     favicon:
       "https://th.bing.com/th/id/OIP.33xhS0Ai3c5yQkxwtYXTQgAAAA?pid=ImgDet&rs=1",
   },
+  dashboard: {
+   component: AdminBro.bundle('./my-dashboard'),
+ },
   rootPath: "/api/dashboard",
   loginPath: "/api/dashboard/login",
   logoutPath: "/api/dashboard/logout",
-  timezone: 'Asia/Kolkata',
+  timezone: "Asia/Kolkata",
   resources: [
     ////// Assessable By Department HOD /////
     {
@@ -369,35 +406,43 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptImages.schema.paths)
+              return Object.keys(DeptImages.schema.paths);
             },
             after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptImages.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptImages.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptImages.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptImages.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
+            isAccessible: canEditDept,
           },
         },
         properties: {
@@ -455,36 +500,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptDescription.schema.paths)
-            }, 
+              return Object.keys(DeptDescription.schema.paths);
+            },
             after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptDescription.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptDescription.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptDescription.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptDescription.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -541,36 +594,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(Activity.schema.paths)
-            }, 
+              return Object.keys(Activity.schema.paths);
+            },
             after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                Activity.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                Activity.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                Activity.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                Activity.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -627,36 +688,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptNews.schema.paths)
-            }, 
+              return Object.keys(DeptNews.schema.paths);
+            },
             after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptNews.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptNews.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptNews.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptNews.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -713,35 +782,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(Placement.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                Placement.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(Placement.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                Placement.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                Placement.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                Placement.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -798,35 +876,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(eventsCalendar.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                eventsCalendar.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(eventsCalendar.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                eventsCalendar.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                eventsCalendar.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                     console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                eventsCalendar.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
-            },  
-            isAccessible: canEditDept
-          }
+                query: query_fetched,
+              };
+            },
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -858,36 +945,44 @@ const AdminBroOptions = {
             },
             new: {
               layout: (currentAdmin) => {
-                return Object.keys(HOD.schema.paths)
-              }, 
+                return Object.keys(HOD.schema.paths);
+              },
               after: async (request, context) => {
-                const adminUser = context.session.adminUser
-                query_fetched = { ...request.query }
-                if (adminUser && adminUser.role === 'restricted') {
-                  HOD.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                    if (err) {
-                      console.log(err)
-                    } else {
-                      console.log("Result :", result)
+                const adminUser = context.session.adminUser;
+                query_fetched = { ...request.query };
+                if (adminUser && adminUser.role === "restricted") {
+                  HOD.update(
+                    { _id: request.record.params._id },
+                    { department: adminUser.department },
+                    function (err, result) {
+                      if (err) {
+                        console.log(err);
+                      } else {
+                        console.log("Result :", result);
+                      }
                     }
-                  })
+                  );
                 }
                 if (adminUser) {
-                  HOD.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                    if (err) {
-                      console.log(err)
-                    } else {
-                      console.log("Result :", result)
+                  HOD.update(
+                    { _id: request.record.params._id },
+                    { sourceOfInfo: adminUser.email },
+                    function (err, result) {
+                      if (err) {
+                        console.log(err);
+                      } else {
+                        console.log("Result :", result);
+                      }
                     }
-                  })
+                  );
                 }
                 return {
                   ...request,
-                  query: query_fetched
-                }
+                  query: query_fetched,
+                };
               },
-              isAccessible: canEditDept
-            }
+              isAccessible: canEditDept,
+            },
           },
           delete: { isAccessible: isAdmin },
           list: {
@@ -969,35 +1064,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(Achievements.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                Achievements.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(Achievements.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                Achievements.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                Achievements.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                Achievements.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -1054,35 +1158,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(Infrastructure.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                Infrastructure.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(Infrastructure.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                Infrastructure.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                Infrastructure.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                Infrastructure.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -1139,34 +1252,43 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptContactUs.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptContactUs.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(DeptContactUs.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptContactUs.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptContactUs.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptContactUs.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
+            isAccessible: canEditDept,
           },
         },
         properties: {
@@ -1224,35 +1346,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptProgrammeInfo.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptProgrammeInfo.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(DeptProgrammeInfo.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptProgrammeInfo.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptProgrammeInfo.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptProgrammeInfo.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -1309,35 +1440,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptCoordinators.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptCoordinators.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(DeptCoordinators.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptCoordinators.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptCoordinators.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptCoordinators.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -1394,35 +1534,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptSyllabus.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptSyllabus.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(DeptSyllabus.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptSyllabus.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptSyllabus.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptSyllabus.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -1479,35 +1628,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptTimeTable.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptTimeTable.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(DeptTimeTable.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptTimeTable.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptTimeTable.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptTimeTable.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -1564,35 +1722,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptCalender.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptCalender.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(DeptCalender.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptCalender.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptCalender.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptCalender.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -1649,35 +1816,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(PhdScholar.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                PhdScholar.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(PhdScholar.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                PhdScholar.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                PhdScholar.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                PhdScholar.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -1734,35 +1910,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptStudents.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptStudents.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(DeptStudents.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptStudents.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptStudents.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptStudents.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -1819,35 +2004,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(Staff.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                Staff.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(Staff.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                Staff.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                Staff.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                Staff.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -1904,35 +2098,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptPub.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptPub.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(DeptPub.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptPub.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptPub.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptPub.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -1989,35 +2192,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptProjects.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptProjects.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(DeptProjects.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptProjects.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptProjects.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptProjects.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -2074,35 +2286,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptConsultancy.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptConsultancy.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(DeptConsultancy.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptConsultancy.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptConsultancy.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptConsultancy.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -2159,35 +2380,44 @@ const AdminBroOptions = {
           bulkDelete: { isAccessible: isAdmin },
           new: {
             layout: (currentAdmin) => {
-              return Object.keys(DeptClub.schema.paths)
-            }, after: async (request, context) => {
-              const adminUser = context.session.adminUser
-              query_fetched = { ...request.query }
-              if (adminUser && adminUser.role === 'restricted') {
-                DeptClub.update({ _id: request.record.params._id }, { department: adminUser.department }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+              return Object.keys(DeptClub.schema.paths);
+            },
+            after: async (request, context) => {
+              const adminUser = context.session.adminUser;
+              query_fetched = { ...request.query };
+              if (adminUser && adminUser.role === "restricted") {
+                DeptClub.update(
+                  { _id: request.record.params._id },
+                  { department: adminUser.department },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               if (adminUser) {
-                DeptClub.update({ _id: request.record.params._id }, { sourceOfInfo: adminUser.email }, function (err, result) {
-                  if (err) {
-                    console.log(err)
-                  } else {
-                    console.log("Result :", result)
+                DeptClub.update(
+                  { _id: request.record.params._id },
+                  { sourceOfInfo: adminUser.email },
+                  function (err, result) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      console.log("Result :", result);
+                    }
                   }
-                })
+                );
               }
               return {
                 ...request,
-                query: query_fetched
-              }
+                query: query_fetched,
+              };
             },
-            isAccessible: canEditDept
-          }
+            isAccessible: canEditDept,
+          },
         },
         properties: {
           sourceOfInfo: { isVisible: false },
@@ -2312,7 +2542,7 @@ const AdminBroOptions = {
               }
               return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
             },
-            isAccessible: (canEditClub || isAdmin)
+            isAccessible: canEditClub || isAdmin,
           },
           list: {
             before: async (request, context) => {
@@ -2328,7 +2558,7 @@ const AdminBroOptions = {
               };
             },
             // only club admin can access their club and super admin can access all clubs
-            isAccessible: (canEditClub || isAdmin)
+            isAccessible: canEditClub || isAdmin,
           },
           show: {
             layout: (currentAdmin) => {
@@ -2337,7 +2567,7 @@ const AdminBroOptions = {
               }
               return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
             },
-            isAccessible: (canEditClub || isAdmin)
+            isAccessible: canEditClub || isAdmin,
           },
           // only super admin can delete club
           delete: { isAccessible: isAdmin },
@@ -2347,8 +2577,8 @@ const AdminBroOptions = {
               return removefieldsAdmin(Object.keys(ClubsPage.schema.paths));
             },
             // only super admin can create new club
-            isAccessible: (isAdmin)
-          }
+            isAccessible: isAdmin,
+          },
         },
       },
     },
@@ -2767,6 +2997,278 @@ const AdminBroOptions = {
         },
       },
     },
+
+
+//diia
+{
+  resource: DiiaRankings,
+  options: {
+      navigation: "DIIA",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+        },
+      },
+  },
+{
+  resource: DiiaHeroSlider,
+  options: {
+      navigation: "DIIA",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+        },
+      },
+  },
+
+  {
+    resource: DiiaNewsSection,
+    options: {
+      navigation: "DIIA",
+      actions: {
+        new: { isAccessible: isdiiaAdmin },
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin },
+      },
+      properties: {
+        sourceOfInfo: { isVisible: false },
+        copyLink: {
+          isVisible: { list: true, filter: false, show: false, edit: false },
+          components: {
+            list: AdminBro.bundle('./copylink'),
+          },
+        },
+      },
+      sort: {
+        direction: 'desc',
+        sortBy: 'createdAt'
+      },
+    },
+  },
+  
+{
+  resource: DiiaOpportunities,
+  options: {
+      navigation: "DIIA",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+        },
+      },
+  },
+{
+  resource: DiiaMap,
+  options: {
+      navigation: "DIIA",
+      properties: {
+        color: {
+          type: 'string',
+          components: {
+            edit: AdminBro.bundle('./ColorPickerComponent'), // Custom component for color picker
+          },
+        },
+        sourceOfInfo: { isVisible: false },
+      },
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+  },
+},
+{
+  resource: DiiaTestimonials,
+  options: {
+      navigation: "DIIA",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+        },
+      },
+  },
+{
+  resource: DiiaMous,
+  options: {
+      navigation: "DIIA",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+        },
+      },
+  },
+{
+  resource: DiiaFooter,
+  options: {
+    navigation: "DIIA",
+    properties: {
+      QuickLinkName: {
+        type: 'array', // Represents an array of QuickLink names
+      },
+      QuickLink: {
+        type: 'array', // Represents an array of QuickLink URLs
+      },
+    },
+    actions: {
+      new: { isAccessible: isdiiaAdmin},
+      edit: { isAccessible: isdiiaAdmin },
+      delete: { isAccessible: isdiiaAdmin },
+      show: { isAccessible: isdiiaAdmin },
+      bulkDelete: { isAccessible: isdiiaAdmin },
+      list: { isAccessible: isdiiaAdmin},
+    },
+  },
+},
+
+{
+  resource: DiiaNumber,
+  options: {
+    navigation: "DIIA",
+    actions: {
+      new: { isAccessible: isdiiaAdmin },
+      edit: { isAccessible: isdiiaAdmin },
+      delete: { isAccessible: isdiiaAdmin },
+      show: { isAccessible: isdiiaAdmin },
+      bulkDelete: { isAccessible: isdiiaAdmin },
+      list: { isAccessible: isdiiaAdmin },
+    },
+  },
+},
+{
+  resource: DiiaColorButton,
+  options: {
+    navigation: "DIIA",
+    properties: {
+      textcolor: {
+        type: 'string',
+        components: {
+          edit: AdminBro.bundle('./ColorPickerComponent'), // Custom component for color picker
+        },
+      },
+      buttoncolor: {
+        type: 'string',
+        components: {
+          edit: AdminBro.bundle('./ColorPickerComponent'), // Custom component for color picker
+        },
+      },
+
+    },
+    actions: {
+      new: { isAccessible: isdiiaAdmin },
+      edit: { isAccessible: isdiiaAdmin },
+      delete: { isAccessible: isdiiaAdmin },
+      show: { isAccessible: isdiiaAdmin },
+      bulkDelete: { isAccessible: isdiiaAdmin },
+      list: { isAccessible: isdiiaAdmin },
+
+    },
+  },
+},
+{
+  resource: DiiaNavBar,
+  options: {
+    navigation: "DIIA",
+    properties: {
+      submenus: {
+        type: 'mixed',  // Define submenus as a mixed type to allow for flexible data entry
+      },
+    },
+    actions: {
+      new: { isAccessible: isdiiaAdmin },
+      edit: { isAccessible: isdiiaAdmin },
+      delete: { isAccessible: isdiiaAdmin },
+      show: { isAccessible: isdiiaAdmin },
+      bulkDelete: { isAccessible: isdiiaAdmin },
+      list: { isAccessible: isdiiaAdmin },
+    },
+  },
+},
+
+{
+  resource: DiiaDeandetails,
+  options: {
+    navigation: "DIIA",
+    actions: {
+      new: { isAccessible: isdiiaAdmin },
+      edit: { isAccessible: isdiiaAdmin },
+      delete: { isAccessible: isdiiaAdmin },
+      show: { isAccessible: isdiiaAdmin },
+      bulkDelete: { isAccessible: isdiiaAdmin },
+      list: { isAccessible: isdiiaAdmin },
+    },
+  },
+},
+
+{
+  resource: DiiaGallery,
+  options: {
+    navigation: "DIIA",
+    actions: {
+      new: { isAccessible: isdiiaAdmin },
+      edit: { isAccessible: isdiiaAdmin },
+      delete: { isAccessible: isdiiaAdmin },
+      show: { isAccessible: isdiiaAdmin },
+      bulkDelete: { isAccessible: isdiiaAdmin },
+      list: { isAccessible: isdiiaAdmin },
+    },
+  },
+},
+
+{
+  resource: DiiaTiles,
+  options: {
+    navigation: "DIIA",
+    actions: {
+      new: { isAccessible: isdiiaAdmin },
+      edit: { isAccessible: isdiiaAdmin },
+      delete: { isAccessible: isdiiaAdmin },
+      show: { isAccessible: isdiiaAdmin },
+      bulkDelete: { isAccessible: isdiiaAdmin },
+      list: { isAccessible: isdiiaAdmin },
+    },
+  },
+},
+
     {
       resource: AcademicCalendar,
       options: {
@@ -3010,14 +3512,83 @@ const AdminBroOptions = {
       },
     },
     {
-      resource: newpage,
+      resource: NewPage,
       options: {
         navigation: "New Page",
         actions: { list: { isAccessible: isAdmin } },
       },
     },
 
+
+
+    //changed adminbro user handling for hashing and hiding it from frontend
     {
+      resource: User,
+      options: {
+        navigation: "AdminPanelUsers",
+        properties: {
+          password: {
+            isVisible: { list: false, edit: true, filter: false, show: false, new: true },  // Show in edit and new view
+          },
+        },
+        actions: {
+          list: { isAccessible: isAdmin },
+          new: {
+            isAccessible: canModifyUsers,
+            before: async (request) => {
+              const { email, role, password } = request.payload;
+    
+              // Validate required fields
+              if (!email || !role || !password) {
+                throw new AdminBro.ValidationError({
+                  email: { message: 'Email is required.' },
+                  role: { message: 'Role is required.' },
+                  password: { message: 'Password is required.' },
+                });
+              }
+    
+              console.log('Incoming request payload:', request.payload);
+    
+              if (password) {
+                try {
+                  const bcrypt = require('bcrypt');
+                  const salt = await bcrypt.genSalt(10);
+                  const hashedPassword = await bcrypt.hash(password, salt);
+    
+                  // Replace the plain password with the hashed version
+                  request.payload = {
+                    ...request.payload,
+                    password: hashedPassword,  // Store the hashed password
+                  };
+                } catch (error) {
+                  console.log('Error hashing password:', error);
+                  throw new AdminJS.ValidationError({
+                    password: {
+                      message: 'Error occurred during password hashing.',
+                    },
+                  });
+                }
+              }
+    
+              return request;
+            },
+          },
+          edit: {
+            isAccessible: canModifyUsers,
+            before: async (request) => {
+              const user = await User.findById(request.params.recordId); // Fetch the existing user
+              request.payload.password = user.password; // Keep the existing hashed password
+              return request;
+            },
+          },
+          delete: { isAccessible: canModifyUsers },
+        },
+      },
+    }
+    
+    
+
+    /* {
       resource: User,
       options: {
         navigation: "AdminPanelUsers",
@@ -3039,7 +3610,7 @@ const AdminBroOptions = {
           new: { isAccessible: canModifyUsers },
         },
       },
-    },
+    }, */
   ],
   locale: {
     translations: {
@@ -3070,18 +3641,16 @@ const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
     const clubuser = await ClubsBroUser.findOne({ email });
     const faculty = await Faculty.findOne({ email });
     if (user) {
-      const matched = password == user.password;
+      const matched = user.decryptPassword(password);
       if (matched) {
         return user;
-      }
-    }
-    else if (clubuser) {
+      } 
+    } else if (clubuser) {
       const matched = password == clubuser.password;
       if (matched) {
         return clubuser;
       }
-    }
-    else if (faculty) {
+    } else if (faculty) {
       var status = false;
       await bcrypt.compare(password, faculty.password).then((value) => {
         if (value) {
