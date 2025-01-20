@@ -1,123 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
-  <title>SAMP portal</title>
-  <link rel="stylesheet" href="./css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <link rel="stylesheet" href="./css/reponsive.css" />
-
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
-</head>
-
-<body>
-  <div class="contain">
-    <nav class="navbar">
-      <div class="logo">
-        <img src="./images/sampLogo2.png" alt="Logo" />
-        <span class="website-name glow">SAMP</span>
-      </div>
-
-      <ul class="nav-links">
-        <li>
-          <a href="https://www.nitj.ac.in/" target="_blank"><span class="home-icon"></span>NITJ</a>
-        </li>
-        <li><a href="index.html" class="active-link">Home</a></li>
-        <li><a href="#" onclick="scrollToAbout()">About</a></li>
-        <li>
-          <div class="dropdown">
-            <button onclick="myFucntion()" class="dropbtn">
-              SAMP Committee
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="iSamp.html">I-SAMP</a>
-              <a href="dSamp.html">D-SAMP</a>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="search-container">
-            <input type="text" placeholder="Search..." class="search-input" />
-            <img src="./images/searchInterfaceSymbol.png" alt="Search Icon" class="search-icon" />
-          </div>
-        </li>
-
-        <li><a href="login.html" class="btn">Login</a></li>
-      </ul>
-      <div class="burger-menu" onclick="toggleMenu()">&#9776;</div>
-    </nav>
-
-    <div class="front-page">
-      <div class="front-page-overlay"></div>
-      <div class="front-page-content">
-        <h1 id="front-page-heading">
-          WELCOME TO STUDENT ACADEMIC MENTORSHIP PROGRAMME
-        </h1>
-        <p id="front-page-text">
-          “Join a Community of Achievers and Mentors, Where Futures Are
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+        <title>SAMP portal</title>
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+        <link rel="stylesheet" href="./css/reponsive.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+    </head>
+    <body>
+        <div class="contain">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="./images/sampLogo2.png" alt="Logo">
+                    <span class="website-name glow">SAMP</span>
+                </div>
+                <ul class="nav-links">
+                    <li class="nav-item">
+                        <a href="https://www.nitj.ac.in/" target="_blank">
+                            <i class="fas fa-university"></i>
+                            NITJ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html" class="active-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" onclick="scrollToAbout()">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button onclick="myFucntion()" class="dropbtn">
+                                SAMP Committee
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="iSamp.html">I-SAMP</a>
+                                <a href="dSamp.html">D-SAMP</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="search-container">
+                            <input type="text" placeholder="Search..." class="search-input">
+                            <button type="submit" class="search-button">
+                                <img src="./images/searchInterfaceSymbol.png" alt="Search Icon" class="search-icon">
+                            </button>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://v1.nitj.ac.in/erp/login" class="btn outline-btn" target="_blank">Add a query</a>
+                    </li>
+                </ul>
+                <div class="burger-menu" onclick="toggleMenu()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+            <div class="front-page">
+                <div class="background-slider">
+                    <img src="./images/departments/cse.jpg" class="slide active" alt="Background 1">
+                    <img src="./images/departments/ece.jpg" class="slide" alt="Background 2">
+                    <img src="./images/departments/mech.jpg" class="slide" alt="Background 3">
+                </div>
+                <div class="front-page-overlay"></div>
+                <div class="front-page-content">
+                    <h1 id="front-page-heading">
+                        WELCOME TO STUDENT ACADEMIC MENTORSHIP PROGRAMME
+                    </h1>
+                    <p id="front-page-text">
+                        "Join a Community of Achievers and Mentors, Where Futures Are
           Forged."
-        </p>
-        <!-- <button class="btn">Get Started</button> -->
-      </div>
-    </div>
-  </div>
+                    </p>
+                </div>
+                <div class="scroll-indicator"></div>
+            </div>
+        </div>
+        <div class="about" id="about-link">
+            <div class="aboutUsPage"></div>
+            <h2 class="A-heading">About us</h2>
+            <div class="navbar-line"></div>
+            <div class="aboutus">
+                <div class="grid-container">
+                    <div class="about-content">
+                        <p id="about-text">
+                            The program is led by Student Coordinators, and I-SAMP and the
+            D-SAMP Faculty Coordinators. The responsible senior students to act
+            as mentors for the junior students and address any problems
+            (academic as well as non-academic) they might be having at the
+            department as well as at the Institute level. It is a fairly simple
+            yet effective framework for helping students and enabling positive
+            discussions with seniors. It is also quite flexible and leaves room
+            for many activities - Social Service Endeavours, Team meetups,
+            Mentor-Mentee treats. The different departments implement this idea
+            in vastly different manners to suit their needs and maximize student
+            wellness. Here, I-SAMP and D-SAMP are Institute and Department level
+            coordinators,respectively.
+                        </p>
+                        <img src="images/about3.png" alt="SAMP Logo" class="samp-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="about" id="about-link"></div>
+        <div class="aboutUsPage"></div>
+        <h2 class="A-heading">Mentor and Mentees</h2>
+        <div class="navbar-line"></div>
+        <div class="aboutus">
+            <div class="grid-container">
+                <div class="about-content">
+                    <img src="images/about1.png" alt="SAMP Logo" class="samp-logo">
+                    <p id="about-text">
+                        The responsible senior students will act as mentors for the junior students, providing guidance and support for a wide range of issues they might face. These mentors will serve as a reliable point of contact for juniors, addressing both academic and non-academic challenges. Their role will include offering assistance with understanding course material, managing workloads, and preparing for exams.
 
-  <div class="about" id="about-link">
-    <div class="aboutUsPage"></div>
-    <h2 class="A-heading">About us</h2>
+Beyond academics, these mentors will also help juniors navigate non-academic aspects of their experience at the department and institute level. This could involve helping with acclimatization to campus life, resolving personal concerns, or offering advice on extracurricular opportunities and career planning. By fostering a supportive and approachable environment, these senior mentors will play a vital role in ensuring the well-being and growth of the junior students during their time at the institute.
+                    </p>
+                </div>
+            </div>
+            <div class="aboutus">
+                <div class="grid-container">
+                    <div class="about-content">
+                        <p id="about-text">
+                            As a mentee, you have the unique opportunity to learn and grow under the guidance of senior mentors who are dedicated to supporting your academic and personal development. This mentorship program is designed to help you navigate the challenges of your journey at the department and institute level while empowering you to achieve your full potential.
 
-    <div class="navbar-line"></div>
-    <div class="aboutus">
-      <div class="grid-container">
-        <p id="about-text">
-          The program is led by Student Coordinators, and I-SAMP and the
-          D-SAMP Faculty Coordinators. The responsible senior students to act
-          as mentors for the junior students and address any problems
-          (academic as well as non-academic) they might be having at the
-          department as well as at the Institute level. It is a fairly simple
-          yet effective framework for helping students and enabling positive
-          discussions with seniors. It is also quite flexible and leaves room
-          for many activities - Social Service Endeavours, Team meetups,
-          Mentor-Mentee treats. The different departments implement this idea
-          in vastly different manners to suit their needs and maximize student
-          wellness. Here, I-SAMP and D-SAMP are Institute and Department level
-          coordinators,respectively.
-        </p>
-        <div class="container"></div>
-      </div>
-    </div>
-  </div>
+To make the most of this opportunity, it is essential for mentees to actively engage with their mentors. Be open about your challenges—whether they are academic, personal, or related to campus life. Your mentors are here to help you with understanding coursework, preparing for exams, managing your time effectively, and even exploring extracurricular and career opportunities.
 
-  <section id="services-container">
-    <div id="services">
-      <div class="box">
-        <!-- <img src="img/1.png" alt=""> -->
-        <h2 class="h-secondary center">Mentor Section</h2>
-        <p class="center">
-          The responsible senior students to act as mentors for the junior
-          students and address any problems (academic as well as non-academic)
-          they might be having at the department as well as at the Institute
-          level.
-        </p>
-      </div>
-      <div class="box">
-        <!-- <img src="img/2.webp" alt=""> -->
-        <h2 class="h-secondary center">Mentee Section</h2>
-        <p class="center">
-          Whether it's issues within the department or broader concerns at the
-          institute level, mentees can rely on their mentors for assistance
-          and advice, creating a nurturing environment for personal and
-          academic growth
-        </p>
-      </div>
-      <!-- <div class="box">
+Take initiative in reaching out to your mentor when you need guidance, and don’t hesitate to ask questions. Your curiosity and willingness to learn are key to maximizing the benefits of this mentorship relationship. Additionally, maintain a respectful and professional attitude, and value the time and effort your mentor dedicates to supporting you.
+                        </p>
+                        <img src="images/about2.png" alt="SAMP Logo" class="samp-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="box">
             
             <h2 class="h-secondary center">Alumni Section</h2>
             <p class="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci blanditiis eligendi
@@ -127,96 +146,157 @@
 
         </div> -->
     </div>
-  </section>
-
-  <div class="imgAnnouncement">
-    <div class="textcenter">
-      <h2>Image Gallery</h2>
-
-      <div class="imgscroll">
-        <div class="container">
-          <div class="slider-wrapper">
-            <button id="prev-slide" class="slide-button material-symbols-rounded">
-              chevron_left
-            </button>
-            <ul class="image-list">
-              <img class="image-item" src="./images/img1.jpg" alt="img-1" />
-              <img class="image-item" src="./images/img2.jpg" alt="img-2" />
-              <img class="image-item" src="./images/img3.jpg" alt="img-3" />
-            </ul>
-            <button id="next-slide" class="slide-button material-symbols-rounded">
-              chevron_right
-            </button>
+</section>
+<div class="section-3">
+  <div class="section-3-container">
+    <section class="announcements-section">
+      <h2 class="section-title">Announcements</h2>
+      <div class="title-underline"></div>
+      <div class="announcements-container">
+          <div class="announcements-scroll">
+              <div class="announcements-content" id="announcementsContent">
+                  <div class="announcement-card">
+                      <p class="announcement-text">Exciting news! Our student mentorship portal is now live!!</p>
+                      <a href="#" class="announcement-link">Explore</a>
+                  </div>
+                  <div class="announcement-card">
+                      <p class="announcement-text">Calling all students! Don't miss out on the chance to connect with experienced mentors who can help shape your future.</p>
+                      <a href="/login" class="announcement-link">Join Now</a>
+                  </div>
+                  <div class="announcement-card">
+                      <p class="announcement-text">Looking for guidance and inspiration? Our student mentorship portal offers personalized support to help you thrive.</p>
+                      <a href="#" class="announcement-link">Learn More</a>
+                  </div>
+                  <div class="announcement-card">
+                    <p class="announcement-text">Exciting news! Our student mentorship portal is now live!!</p>
+                    <a href="#" class="announcement-link">Explore</a>
+                </div>
+                <div class="announcement-card">
+                    <p class="announcement-text">Calling all students! Don't miss out on the chance to connect with experienced mentors who can help shape your future.</p>
+                    <a href="/login" class="announcement-link">Join Now</a>
+                </div>
+                <div class="announcement-card">
+                    <p class="announcement-text">Looking for guidance and inspiration? Our student mentorship portal offers personalized support to help you thrive.</p>
+                    <a href="#" class="announcement-link">Learn More</a>
+                </div>
+                <div class="announcement-card">
+                  <p class="announcement-text">Exciting news! Our student mentorship portal is now live!!</p>
+                  <a href="#" class="announcement-link">Explore</a>
+              </div>
+              <div class="announcement-card">
+                  <p class="announcement-text">Calling all students! Don't miss out on the chance to connect with experienced mentors who can help shape your future.</p>
+                  <a href="/login" class="announcement-link">Join Now</a>
+              </div>
+              <div class="announcement-card">
+                  <p class="announcement-text">Looking for guidance and inspiration? Our student mentorship portal offers personalized support to help you thrive.</p>
+                  <a href="#" class="announcement-link">Learn More</a>
+              </div>
+              </div>
           </div>
-          <div class="slider-scrollbar">
-            <div class="scrollbar-track">
-              <div class="scrollbar-thumb"></div>
+      </div>
+  </section>
+  <section class="announcements-section">
+    <h2 class="section-title">Image Gallery</h2>
+    <div class="title-underline"></div>
+    <div class="announcements-container">
+      <div class="pic-container">
+        <div class="carousel">
+          <img
+            class="item"
+            src="https://images.pexels.com/photos/1173777/pexels-photo-1173777.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt=""
+          />
+          <img
+            class="item"
+            src="https://images.pexels.com/photos/775201/pexels-photo-775201.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt=""
+          />
+          <img
+            class="item"
+            src="https://images.pexels.com/photos/1598073/pexels-photo-1598073.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt=""
+          />
+          <img
+            class="item"
+            src="https://images.pexels.com/photos/70365/forest-sunbeams-trees-sunlight-70365.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt=""
+          />
+          <img
+            class="item"
+            src="https://images.pexels.com/photos/1658967/pexels-photo-1658967.jpeg?auto=compress&cs=tinysrgb&w=600"
+            alt=""
+          />
+        </div>
+      </div>
+        </div>
+    </div>
+  </section>
+  </div>
+  
+<section class="branches-section">
+    <h2 class="section-title">Our Branches</h2>
+    <div class="title-underline"></div>
+    <div class="branches-container">
+        <button class="scroll-button scroll-left" onclick="scrollBranches('left')">←</button>
+        <button class="scroll-button scroll-right" onclick="scrollBranches('right')">→</button>
+        <div class="branches-scroll" id="branchesScroll">
+            <div class="branch-card">
+                <img src="./images/departments/cse/pic1.JPEG" alt="Computer Science" class="branch-image">
+                <div class="branch-info">
+                    <h3 class="branch-title">CSE</h3>
+                    <p class="branch-subtitle">Department of Computer Science</p>
+                </div>
             </div>
+            <div class="branch-card">
+                <img src="./images/departments/ice/F_Y_4.jpg" alt="Mechanical" class="branch-image">
+                <div class="branch-info">
+                    <h3 class="branch-title">ICE</h3>
+                    <p class="branch-subtitle">Department of Mechanical Engineering</p>
+                </div>
+            </div>
+            <div class="branch-card">
+                <img src="./images/departments/ece/image2.jpeg" alt="Electronics" class="branch-image">
+                <div class="branch-info">
+                    <h3 class="branch-title">ECE</h3>
+                    <p class="branch-subtitle">Department of Electric and Communication Engineering</p>
+                </div>
+            </div>
+            <div class="branch-card">
+                <img src="./images/departments/civil/Picture3.jpg" alt="Civil" class="branch-image">
+                <div class="branch-info">
+                    <h3 class="branch-title">Civil</h3>
+                    <p class="branch-subtitle">Department of Civil Engineering</p>
+                </div>
+            </div>
+            <div class="branch-card">
+              <img src="./images/departments/cse/IMG-20240408-WA0004 - PARDUMAN SINGLA.JPEG" alt="Computer Science" class="branch-image">
+              <div class="branch-info">
+                  <h3 class="branch-title">IT</h3>
+                  <p class="branch-subtitle">Department of Information Technology</p>
+              </div>
           </div>
         </div>
-      </div>
     </div>
+</section>
+</div>
 
-    <div class="headingAnnoucement">
-      <h2>Announcements</h2>
-      <div class="container_announcment">
-        <div class="announcement-container" onmouseenter="startScroll()" onmouseleave="stopScroll()">
-          <div class="announcement">
-            <!-- <h2>Important Announcement 1</h2> -->
-            <p>
-              Exciting news! Our student mentorship portal is now live!! <br> <a href=""
-                style="color:rgb(24, 24, 82);">Explore</a>
-            </p>
-          </div>
-          <div class="announcement">
-            <!-- <h2>Important Announcement 2</h2> -->
-            <p>
-              "Calling all students! Don't miss out on the chance to connect with experienced mentors who can help shape
-              your future.<br> <a href="/login" style="color:rgb(24, 24, 82);">Explore</a>
-            </p>
-          </div>
-          <div class="announcement">
-            <!-- <h2>Important Announcement 3</h2> -->
-            <p>
-              Looking for guidance and inspiration? Our student mentorship portal offers personalized support to help
-              you thrive.
-            </p>
-          </div>
-          <!-- <div class="announcement">
-              <h2>Important Announcement 4</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                ullamcorper lacus nec lorem tincidunt, vel blandit nisl
-                bibendum.
-              </p>
-            </div> -->
-
-          <!-- Add more announcements here -->
-        </div>
-      </div>
-    </div>
-        
-  </div>
-  </div>
-
-  <section class="footer">
+</div>
+</div>
+<section class="footer">
     <div class="center" style="text-align: center">
-      copyright &copy; www.nitj.ac.in All rights reserved!
+        copyright &copy; www.nitj.ac.in All rights reserved!
     </div>
-  </section>
-
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="gallery.js" defer></script>
-  <script src="home.js"></script>
-  <script src="./main.js"></script>
-  <script>
+</section>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="gallery.js" defer></script>
+<script src="home.js"></script>
+<script src="./main.js"></script>
+<script src="./mainpic.js"></script>
+<script>
     function scrollToAbout() {
       var aboutSection = document.getElementById("about-link");
       aboutSection.scrollIntoView({ behavior: "smooth" });
     }
-  </script>
-
-   
+</script>
 </body>
-
 </html>
