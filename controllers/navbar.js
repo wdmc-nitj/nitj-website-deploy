@@ -32,6 +32,7 @@ const obj = {
     "Incubation @NITJ",
     "Consultancy @NITJ",
     "Upcoming Events",
+    "Centers of Excellence",
   ],
   Alumni: ["SARC"],
   LifeatNITJ: [
@@ -211,6 +212,8 @@ exports.create = async (req, res) => {
           ["Incubation @NITJ", true],
           ["Consultancy @NITJ", false],
           ["Upcoming Events", true],
+          ["Centers of Excellence", false],
+
         ],
         Alumni: [],
         LifeatNITJ: [
