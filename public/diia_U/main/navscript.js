@@ -19,7 +19,7 @@ function genLogo() {
 
   let a = document.createElement("a");
   a.setAttribute("class", aStyle);
-  a.setAttribute("href", "/");
+  a.setAttribute("href", "/diia_U/main/oiia.html");
   a.setAttribute("target", "_blank");
   a.setAttribute("id", "brand");
 
