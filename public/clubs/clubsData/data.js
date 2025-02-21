@@ -70,26 +70,58 @@ fetch(`${baseURL}/clubsPage/${id}`)
     // Gallery
     let galleryImages = '';
     if (APIdata.clubImages && APIdata.clubImages.length > 0) {
-      APIdata.clubImages.forEach((image, index) => {
-        if (index % 4 === 0) {
-          // Start a new row for every 3 images
-          galleryImages += '<div class="container overflow-hidden  mt-4 flex md:flex-row flex-col justify-center">';
-        }
-
-        galleryImages += `
-      <div class="box overflow-hidden mx-2">
-        <img src="${image.link}" alt="Gallery Image" style="height: 200px;" />
-      </div>
-    `;
-
-        if ((index + 1) % 4 === 0 || (index + 1) === APIdata.clubImages.length) {
-          // Close the row after every 3 images or at the end of the loop
-          galleryImages += '</div>';
-        }
-      });
+      if (APIdata.clubImages.length === 1) {
+        // Single Image - Show Large and Centered
+        galleryImages = `
+          <div class="container flex justify-center items-center mt-4 px-4">
+            <img src="${APIdata.clubImages[0].link}" 
+                alt="Gallery Image" 
+                class="w-full md:w-2/3 lg:w-1/2 h-auto object-cover rounded-lg shadow-lg" />
+          </div>
+        `;
+      } else {
+        // Multiple Images - Show in Grid
+        galleryImages += '<div class="container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4 mx-auto px-4">';
+      
+        APIdata.clubImages.forEach((image) => {
+          galleryImages += `
+            <div class="box overflow-hidden rounded-lg shadow-md">
+              <img src="${image.link}" alt="Gallery Image" class="w-full h-48 object-cover rounded-lg" />
+            </div>
+          `;
+        });
+      
+        galleryImages += '</div>';
+      }
     } else {
-      galleryImages = "<p> </p>";
+      galleryImages = "<p class='text-center text-gray-500'>No images available.</p>";
     }
+
+
+
+
+    // let galleryImages = '';
+    // if (APIdata.clubImages && APIdata.clubImages.length > 0) {
+    //   APIdata.clubImages.forEach((image, index) => {
+    //     if (index % 4 === 0) {
+    //       // Start a new row for every 3 images
+    //       galleryImages += '<div class="container overflow-hidden  mt-4 flex md:flex-row flex-col justify-center">';
+    //     }
+
+    //     galleryImages += `
+    //   <div class="box overflow-hidden mx-2">
+    //     <img src="${image.link}" alt="Gallery Image" style="height: 200px;" />
+    //   </div>
+    // `;
+
+    //     if ((index + 1) % 4 === 0 || (index + 1) === APIdata.clubImages.length) {
+    //       // Close the row after every 3 images or at the end of the loop
+    //       galleryImages += '</div>';
+    //     }
+    //   });
+    // } else {
+    //   galleryImages = "<p> </p>";
+    // }
 
     // Generate HTML for faculty committee members
     const facultyHTML = generateFacultyHTML(APIdata.facultyCoordinator);
@@ -108,7 +140,7 @@ fetch(`${baseURL}/clubsPage/${id}`)
               <div class="mb-1 md:text-lg text-base font-medium text-gray-900">${faculty.name}</div>
               <div class="text-sm  flex text-gray-500">${faculty.designation}</div>
               <div class="text-sm  flex text-gray-500">${faculty.designationClub}</div>
-              <div class="text-sm  md:w-64 w-48 text-start items-center self-center  text-gray-500">${faculty.department}</div>
+              <div class="text-sm  md:w-64 w-52 text-start  text-gray-500">${faculty.department}</div>
               <div class="md:text-base text-sm  flex font2  text-sky-500">${faculty.email}</div>
             </div>
         </div>
