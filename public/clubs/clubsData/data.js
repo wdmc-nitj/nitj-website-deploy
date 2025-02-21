@@ -35,7 +35,7 @@ fetch(`${baseURL}/clubsPage/${id}`)
     if (APIdata.objective && APIdata.objective.length > 0) {
       APIdata.objective.forEach((objective) => {
         objectivesHTML += `
-        <p class="my-2 text-lg font-semibold">
+        <p class="my-2 text-lg font-normal">
         &#8226; ${objective.description}
         </p>
       `;
