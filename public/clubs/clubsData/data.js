@@ -102,7 +102,7 @@ fetch(`${baseURL}/clubsPage/${id}`)
       if (facultyData && facultyData.length > 0) {
         facultyData.forEach((faculty) => {
           html += `
-        <div class="w-full md:w-1/3 lg:w-1/4 rounded-lg border border-gray-200 shadow-md flex flex-row items-center justify-center p-4">
+        <div class="w-1/3 md:w-1/3 lg:w-1/4 rounded-lg border border-gray-200 shadow-md flex flex-row items-center justify-center ">
             <img class="m-2 rounded-lg shadow-lg" style="height:150px; width:150px;" src="${faculty.image ? faculty.image : "https://www.iconpacks.net/icons/1/free-user-icon-244-thumb.png"}" alt="faculty-image">
             <div class="flex my-3 ml-2 md:mr-4 mr-2 flex-col items-start justify-start md:gap-1 gap-0">
               <div class="mb-1 md:text-lg text-base font-medium text-gray-900">${faculty.name}</div>
