@@ -15,7 +15,7 @@ const obj = {
     "Academic System",
     "Academic Services",
     "Allied facilities",
-    "GLOBAL ENGAGEMENTS",
+    "Global Engagements",
     "Programs of study",
     "convocation",
     "other links",
@@ -25,7 +25,7 @@ const obj = {
     "Anti Raging",
     "Join NITJ",
     "Institute Flyers",
-    "INTERNATIONAL ADMISSIONS",
+    "International Admission",
   ],
   Research: [
     "Research @NITJ",
@@ -195,7 +195,7 @@ exports.create = async (req, res) => {
           ["Academic System", true],
           ["Academic Services", false],
           ["Academic facilities", true],
-          ["GLOBAL ENGAGEMENTS", true],
+          ["Global Engagements", true],
           ["Programs of study", false],
           ["convocation", true],
           ["other links", true],
@@ -205,7 +205,8 @@ exports.create = async (req, res) => {
           ["Anti Raging", true],
           ["Join NITJ", false],
           ["Institute Flyers", true],
-          ["INTERNATIONAL ADMISSIONS", true],
+          ["International Admission", true],
+          
         ],
         Research: [
           ["Research @NITJ", false],
