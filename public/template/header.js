@@ -91,6 +91,9 @@ function navbarUtil() {
     insti_name_cont.classList.remove('sm:h-20', 'sm:max-h-20')
     insti_name_cont.classList.add('sm:h-10', 'sm:max-h-10')
     // insti_name_cont.classList.add(' sm:max-h-20')
+       // Add transform to push institute name upward
+    insti_name_cont.style.transform = 'translateY(-10px)'
+    
     topbar.style.transform = 'translateY(-50px)'
     for (let i = 0; i < diff_lang.length; i++) {
       diff_lang[i].classList.remove('mt-7')
