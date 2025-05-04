@@ -309,13 +309,13 @@
                 <svg xmlns="http://www.w3.org/2000/svg" height="24" class="h-6 w-6" fill="currentColor" viewBox="0 -960 960 960" width="24"><path d="M240-200h147.692v-235.385h184.616V-200H720v-360L480-741.538 240-560v360Zm-40 40v-420l280-211.539L760-580v420H532.308v-235.384H427.692V-160H200Zm280-310.769Z"/></svg>
               </a>
             </div>
-            <div id="menu-1" class="group cursor-default hover:bg-blue-800">
+            <div id="menu-1" class="group cursor-default sm:hover:bg-blue-800">
               <div id="Administration" class="p-1.5 font-medium uppercase">Administration</div>
             </div>
-            <div id="menu-2" class="group cursor-default hover:bg-blue-800">
+            <div id="menu-2" class="group cursor-default sm:hover:bg-blue-800">
               <div id="Academics" class="p-1.5 font-medium uppercase">Academics</div>
             </div>
-            <div id="menu-3" class="group cursor-default hover:bg-blue-800">
+            <div id="menu-3" class="group cursor-default sm:hover:bg-blue-800">
               <div id="Admissions" class="p-1.5 font-medium uppercase">Admissions</div>
             </div>
           </div>
@@ -324,13 +324,13 @@
           <div class="flex w-full flex-row justify-between">
             <div class="basis-4/5">
               <div class="flex flex-row justify-between">
-                <div id="menu-4" class="group cursor-default hover:bg-blue-800">
+                <div id="menu-4" class="group cursor-default sm:hover:bg-blue-800">
                   <div id="Research" class="p-1.5 font-medium uppercase">Research</div>
                 </div>
-                <div id="menu-5" class="group cursor-default hover:bg-blue-800">
+                <div id="menu-5" class="group cursor-default sm:hover:bg-blue-800">
                   <div id="Alumni" class="p-1.5 font-medium uppercase">Alumni</div>
                 </div>
-                <div id="menu-6" class="group relative cursor-default hover:bg-blue-800">
+                <div id="menu-6" class="group relative cursor-default sm:hover:bg-blue-800">
                   <div id="Life at NITJ" class="p-1.5 font-medium uppercase">Life at NITJ</div>
                 </div>
               </div>
@@ -407,7 +407,7 @@
           class="z-20 block w-full rounded-r-lg border border-l-2 border-gray-300 border-l-gray-50 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:border-l-gray-700 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500"
           placeholder="Search Resources, Navbar links..." required=" " />
         <!-- <button type="button" onclick="display_resources()" 
-          class=" material-symbols-outlined absolute top-0 right-0 rounded-r-lg border border-blue-700 bg-blue-700 p-1 text-2xl text-white hover:bg-blue-800">
+          class=" material-symbols-outlined absolute top-0 right-0 rounded-r-lg border border-blue-700 bg-blue-700 p-1 text-2xl text-white sm:hover:bg-blue-800">
           search
         </button> -->
       </div>
@@ -422,3 +422,19 @@
     </div>
   </div>
 </div>
+
+<!-- put this at the very bottom of navbar.html, after all your HTML and other scripts -->
+
+<script>
+  document.addEventListener('click', function(e) {
+    // see if we clicked one of the top-level menus
+    const btn = e.target.closest('[id^="menu-"]');
+    if (btn) {
+      e.stopPropagation();
+      openDropDowns(btn.id);   // your existing function
+      return;
+    }
+    // any other click closes all open submenus
+    closeDropDowns();          // your existing function
+  });
+</script>
