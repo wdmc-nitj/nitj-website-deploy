@@ -354,6 +354,9 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
+
+
+
 // Include the script source for Google Translate
 var script = document.createElement('script');
 script.type = 'text/javascript';
