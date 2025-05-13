@@ -3636,32 +3636,136 @@ const AdminBroOptions = {
 const admin_panel = new AdminBro(AdminBroOptions);
 // Build and use a router which will handle all AdminBro routes
 const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
+  // authenticate: async (email, password) => {
+  //   console.log(email, password);
+  //   const user = await User.findOne({ email });
+  //   const clubuser = await ClubsBroUser.findOne({ email });
+  //   const faculty = await Faculty.findOne({ email });
+  //   if (user) {
+  //     const matched = await user.decryptPassword(password);
+  //     console.log(matched);
+  //     if (matched) {
+  //       return user;
+  //     } 
+  //   } else if (clubuser) {
+  //     const matched = password == clubuser.password;
+  //     if (matched) {
+  //       return clubuser;
+  //     }
+  //   } else if (faculty) {
+  //     var status = false;
+  //     await bcrypt.compare(password, faculty.password).then((value) => {
+  //       if (value) {
+  //         status = true;
+  //       }
+  //     });
+  //     if (status) {
+  //       return faculty;
+  //     }
+  //   }
+  //   return false;
+  // },
   authenticate: async (email, password) => {
-    const user = await User.findOne({ email });
-    const clubuser = await ClubsBroUser.findOne({ email });
-    const faculty = await Faculty.findOne({ email });
-    if (user) {
-      const matched = user.decryptPassword(password);
-      if (matched) {
-        return user;
-      } 
-    } else if (clubuser) {
-      const matched = password == clubuser.password;
-      if (matched) {
-        return clubuser;
-      }
-    } else if (faculty) {
-      var status = false;
-      await bcrypt.compare(password, faculty.password).then((value) => {
-        if (value) {
-          status = true;
+    console.log('Entering authenticate function');
+    console.log('Email:', email, 'Password:', password);
+
+    try {
+      // Check AdminBroUser model
+      const user = await User.findOne({ email });
+      if (user) {
+        console.log('Found user in AdminBroUser model:', user.email);
+        let matched = false;
+
+        // Check if password is hashed (starts with $2b$ for bcrypt)
+        if (user.password.startsWith('$2b$')) {
+          matched = await user.decryptPassword(password); // Use bcrypt.compare
+        } else {
+          // Plain-text comparison
+          matched = password === user.password;
+          // If plain-text password matches, hash it and update the database
+          if (matched) {
+            console.log('Plain-text password detected, hashing it');
+            const hashedPassword = await bcrypt.hash(user.password, 10);
+            await User.updateOne({ _id: user._id }, { password: hashedPassword });
+            console.log('Password hashed and updated for AdminBroUser:', user.email);
+          }
         }
-      });
-      if (status) {
-        return faculty;
+
+        console.log('AdminBroUser password match:', matched);
+        if (matched) {
+          return user;
+        }
+        console.log('AdminBroUser password mismatch');
+      } else {
+        console.log('No user found in AdminBroUser model');
       }
+
+      // Check ClubsBroUser model
+      const clubuser = await ClubsBroUser.findOne({ email });
+      if (clubuser) {
+        console.log('Found user in ClubsBroUser model:', clubuser.email);
+        let matched = false;
+
+        // Check if password is hashed
+        if (clubuser.password.startsWith('$2b$')) {
+          matched = await bcrypt.compare(password, clubuser.password);
+        } else {
+          // Plain-text comparison
+          matched = password === clubuser.password;
+          // If plain-text password matches, hash it and update the database
+          if (matched) {
+            console.log('Plain-text password detected, hashing it');
+            const hashedPassword = await bcrypt.hash(clubuser.password, 10);
+            await ClubsBroUser.updateOne({ _id: clubuser._id }, { password: hashedPassword });
+            console.log('Password hashed and updated for ClubsBroUser:', clubuser.email);
+          }
+        }
+
+        console.log('ClubsBroUser password match:', matched);
+        if (matched) {
+          return clubuser;
+        }
+        console.log('ClubsBroUser password mismatch');
+      } else {
+        console.log('No user found in ClubsBroUser model');
+      }
+
+      // Check Faculty model
+      const faculty = await Faculty.findOne({ email });
+      if (faculty) {
+        console.log('Found user in Faculty model:', faculty.email);
+        let matched = false;
+
+        // Check if password is hashed
+        if (faculty.password.startsWith('$2b$')) {
+          matched = await bcrypt.compare(password, faculty.password);
+        } else {
+          // Plain-text comparison
+          matched = password === faculty.password;
+          // If plain-text password matches, hash it and update the database
+          if (matched) {
+            console.log('Plain-text password detected, hashing it');
+            const hashedPassword = await bcrypt.hash(faculty.password, 10);
+            await Faculty.updateOne({ _id: faculty._id }, { password: hashedPassword });
+            console.log('Password hashed and updated for Faculty:', faculty.email);
+          }
+        }
+
+        console.log('Faculty password match:', matched);
+        if (matched) {
+          return faculty;
+        }
+        console.log('Faculty password mismatch');
+      } else {
+        console.log('No user found in Faculty model');
+      }
+
+      console.log('Authentication failed: No user found or password mismatch');
+      return false;
+    } catch (error) {
+      console.error('Error in authenticate function:', error);
+      return false;
     }
-    return false;
   },
   cookiePassword: "some-secret-password-used-to-secure-cookie",
 });
