@@ -723,7 +723,47 @@
     callAPi();
   </script>
 
-  <script>
+    <script>
+    async function callAPi() {
+      let result = await fetch(
+        "/api/administration?id=68636995a4ff7e9b1d4b6812"
+      );
+      result = await result.json();
+      console.log(result);
+      document.getElementById("bwc_8").innerHTML = `
+        <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                            <p class="text-sm text-gray-500 my-1">${result[0].messageText}    </p>
+                        </div>
+            <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
+                        <p class="text-sm">${result[0].designation}</p>
+                        <p class="text-sm text-gray-500">${result[0].department}</p>
+                        
+           `;
+    }
+    callAPi();
+  </script>
+
+      <script>
+    async function callAPi() {
+      let result = await fetch(
+        "/api/administration?id=686369bfa4ff7e9b1d4b6b99"
+      );
+      result = await result.json();
+      console.log(result);
+      document.getElementById("bwc_9").innerHTML = `
+        <div class="w-full flex flex-row gap-2 items-center text-gray-500">
+                            <p class="text-sm text-gray-500 my-1">${result[0].messageText}    </p>
+                        </div>
+            <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
+                        <p class="text-sm">${result[0].designation}</p>
+                        <p class="text-sm text-gray-500">${result[0].department}</p>
+                        
+           `;
+    }
+    callAPi();
+  </script>
+
+  <!-- <script>
     async function callAPi() {
       let result = await fetch(
         "/api/administration?id=639fede4f6453929c05e5cdf"
@@ -744,9 +784,9 @@
            `;
     }
     callAPi();
-  </script>
+  </script> -->
 
-    <script>
+    <!-- <script>
     async function callAPi() {
       let result = await fetch(
         "/api/administration?id=68636995a4ff7e9b1d4b6812"
@@ -790,7 +830,7 @@
            `;
     }
     callAPi();
-  </script>
+  </script> -->
 
 </body>
 
