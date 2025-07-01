@@ -318,6 +318,52 @@
                         <p class="text-sm my-1">Jalandhar, Punjab - 144008</p>
                       </div> -->
           </div>
+                    <div id="bwc_9">
+            <!-- <p
+                        class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1"
+                      >
+                        Dr Rohit Mehra
+                      </p>
+                      <p class="text-sm">Department of Industrial & Production Engg</p>
+                      <p class="text-sm text-gray-500">
+                        Dr B R Ambedkar NIT, Jalandhar
+                      </p>
+                      <div
+                        class="w-full flex flex-row gap-2 items-center text-gray-500"
+                      >
+                        <i class="fa-solid fa-envelope"></i>
+                        <p class="text-sm text-gray-500 my-1">director@nitj.ac.in</p>
+                      </div>
+                      <div
+                        class="w-full flex flex-row gap-2 items-center text-gray-500"
+                      >
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p class="text-sm my-1">Jalandhar, Punjab - 144008</p>
+                      </div> -->
+          </div>
+                    <div id="bwc_10">
+            <!-- <p
+                        class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1"
+                      >
+                        Dr Rohit Mehra
+                      </p>
+                      <p class="text-sm">Department of Industrial & Production Engg</p>
+                      <p class="text-sm text-gray-500">
+                        Dr B R Ambedkar NIT, Jalandhar
+                      </p>
+                      <div
+                        class="w-full flex flex-row gap-2 items-center text-gray-500"
+                      >
+                        <i class="fa-solid fa-envelope"></i>
+                        <p class="text-sm text-gray-500 my-1">director@nitj.ac.in</p>
+                      </div>
+                      <div
+                        class="w-full flex flex-row gap-2 items-center text-gray-500"
+                      >
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p class="text-sm my-1">Jalandhar, Punjab - 144008</p>
+                      </div> -->
+          </div>
         </div>
       </div>
     </div>
@@ -676,6 +722,7 @@
     }
     callAPi();
   </script>
+
   <script>
     async function callAPi() {
       let result = await fetch(
@@ -684,6 +731,52 @@
       result = await result.json();
       console.log(result);
       document.getElementById("bwc_8").innerHTML = `
+        <div class="w-full flex flex-col items-start mb-8">
+                            <p class="font2 font-medium text-[28px] lg:text-[44px]">
+                                ${result[0].messageText} 
+                            </p>
+                            <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[5px]"></div>
+                        </div>
+            <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
+                        <p class="text-sm">${result[0].designation}</p>
+                        <p class="text-sm text-gray-500">${result[0].department}</p>
+                        
+           `;
+    }
+    callAPi();
+  </script>
+
+    <script>
+    async function callAPi() {
+      let result = await fetch(
+        "/api/administration?id=68636995a4ff7e9b1d4b6812"
+      );
+      result = await result.json();
+      console.log(result);
+      document.getElementById("bwc_9").innerHTML = `
+        <div class="w-full flex flex-col items-start mb-8">
+                            <p class="font2 font-medium text-[28px] lg:text-[44px]">
+                                ${result[0].messageText} 
+                            </p>
+                            <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[5px]"></div>
+                        </div>
+            <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
+                        <p class="text-sm">${result[0].designation}</p>
+                        <p class="text-sm text-gray-500">${result[0].department}</p>
+                        
+           `;
+    }
+    callAPi();
+  </script>
+
+    <script>
+    async function callAPi() {
+      let result = await fetch(
+        "/api/administration?id=686369bfa4ff7e9b1d4b6b99"
+      );
+      result = await result.json();
+      console.log(result);
+      document.getElementById("bwc_10").innerHTML = `
         <div class="w-full flex flex-col items-start mb-8">
                             <p class="font2 font-medium text-[28px] lg:text-[44px]">
                                 ${result[0].messageText} 
