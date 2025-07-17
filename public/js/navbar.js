@@ -81,7 +81,7 @@ async function createNav(obj) {
   const dropdown6 = document.createElement('div');
   dropdown6.setAttribute(
     'class',
-    'absolute hidden gap-5 self-center bg-white p-5 text-sm shadow-sm group-hover:flex right-0 dropdown-menu'
+    'absolute hidden gap-5 bg-white p-5 text-sm shadow-sm group-hover:flex right-0 dropdown-menu'
   );
   dropdown6.setAttribute('id', 'drop-down');
   data['LifeatNITJ'].forEach(array => navbarhelper(array, dropdown6));
