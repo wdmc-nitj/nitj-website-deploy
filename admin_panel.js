@@ -3574,13 +3574,24 @@ const AdminBroOptions = {
             },
           },
           edit: {
-            isAccessible: canModifyUsers,
-            before: async (request) => {
-              const user = await User.findById(request.params.recordId); // Fetch the existing user
-              request.payload.password = user.password; // Keep the existing hashed password
-              return request;
-            },
-          },
+  isAccessible: canModifyUsers,
+  before: async (request) => {
+    const user = await User.findById(request.params.recordId);
+
+    // If password field is empty, keep the old password
+    if (!request.payload.password) {
+      request.payload.password = user.password;
+    } else {
+      // Hash the new password
+      const bcrypt = require('bcrypt');
+      const salt = await bcrypt.genSalt(10);
+      request.payload.password = await bcrypt.hash(request.payload.password, salt);
+    }
+
+    return request;
+  },
+},
+
           delete: { isAccessible: canModifyUsers },
         },
       },
@@ -3636,35 +3647,6 @@ const AdminBroOptions = {
 const admin_panel = new AdminBro(AdminBroOptions);
 // Build and use a router which will handle all AdminBro routes
 const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
-  // authenticate: async (email, password) => {
-  //   console.log(email, password);
-  //   const user = await User.findOne({ email });
-  //   const clubuser = await ClubsBroUser.findOne({ email });
-  //   const faculty = await Faculty.findOne({ email });
-  //   if (user) {
-  //     const matched = await user.decryptPassword(password);
-  //     console.log(matched);
-  //     if (matched) {
-  //       return user;
-  //     } 
-  //   } else if (clubuser) {
-  //     const matched = password == clubuser.password;
-  //     if (matched) {
-  //       return clubuser;
-  //     }
-  //   } else if (faculty) {
-  //     var status = false;
-  //     await bcrypt.compare(password, faculty.password).then((value) => {
-  //       if (value) {
-  //         status = true;
-  //       }
-  //     });
-  //     if (status) {
-  //       return faculty;
-  //     }
-  //   }
-  //   return false;
-  // },
   authenticate: async (email, password) => {
     console.log('Entering authenticate function');
     console.log('Email:', email, 'Password:', password);
@@ -3684,7 +3666,6 @@ const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
           matched = password === user.password;
           // If plain-text password matches, hash it and update the database
           if (matched) {
-            console.log('Plain-text password detected, hashing it');
             const hashedPassword = await bcrypt.hash(user.password, 10);
             await User.updateOne({ _id: user._id }, { password: hashedPassword });
             console.log('Password hashed and updated for AdminBroUser:', user.email);
