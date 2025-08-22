@@ -1738,7 +1738,7 @@
                       <p class="text-sm text-gray-500">${result[0].department}</p>
                       <div class="w-full flex flex-row gap-2 items-center text-gray-500">
                           <i class="fa-solid fa-envelope"></i>
-                          <p class="text-sm text-gray-500 my-1">${result[0].contact.email}    </p>
+                          <p class="text-sm text-gray-500 my-1">${result[0].contact.Email}    </p>
                       </div>
                       <div class="w-full flex flex-row gap-2 items-center text-gray-500">
                         <!-- <i class="fa-solid fa-phone"></i>-->
@@ -1796,7 +1796,7 @@
   <script>
     async function callAPi() {
       let result = await fetch(
-        "/api/administration?id=639ebedc1abac50c0b5e1c15"
+        "/api/administration?id=68a81d9a9d96c6185c1fe9f4"
       );
       result = await result.json();
       console.log(result);
