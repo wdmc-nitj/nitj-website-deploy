@@ -89,6 +89,25 @@
             background-size: cover;
         }
     </style>
+
+      <style>
+    /* Blue header */
+    .table-header-blue th {
+      background-color: #003a6a !important;
+      color: #fff !important;
+    }
+    /* Darker borders on the whole table */
+    .table-custom-striped {
+      --bs-border-color: #333;
+    }
+    /* Stripe ONLY the mid cells (Name, Designation, Contact) */
+    .table-custom-striped tbody tr:nth-of-type(odd) td.mid {
+      background-color: #e0e0e0 !important; /* dark grey for odd rows */
+    }
+    .table-custom-striped tbody tr:nth-of-type(even) td.mid {
+      background-color: #ffffff !important; /* white for even rows */
+    }
+  </style>
     
     
     
@@ -159,241 +178,81 @@
                         </h1>
                         <br>
 
-                        <table border="1" cellpadding="6" cellspacing="0" class="table table-bordered table-striped" style="width: 100%; user-select: auto;">
-                            <tbody style="user-select: auto;">
-                                <tr style="user-select: auto;">
-                                    <td style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;"><strong style="user-select: auto;">Hostel</strong> &nbsp;</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;"><strong style="user-select: auto;">Name of Staff</strong></span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;"><strong style="user-select: auto;">Designation</strong></span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;"><strong style="user-select: auto;">Contact No.</strong></span></td>
-                                    <td style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;"><strong style="user-select: auto;">Email - ID</strong></span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td rowspan="4" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Boys Hostel - 01</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Anant Pandey</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">8872682351</span></td>
-                                    <td rowspan="4" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">hwb1@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Vinod Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9779946937</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Basant Singh Bist</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">8968269948</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Satya Dev</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">8968550509</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td rowspan="4" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Boys Hostel - 02</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Umesh&nbsp; Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9023850798</span></td>
-                                    <td rowspan="4" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">hwb2@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Sandeep Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9872244638</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Vishal Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7710463092</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Awdesh Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9872548026</span></td>
-                                </tr>    
-                                <tr style="user-select: auto;">
-                                    <td rowspan="4" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Boys Hostel - 03</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Ashish Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7307236134</span></td>
-                                    <td rowspan="4" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">hwb3@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Vijay Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9417451454</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Wattan Singh</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9646799284</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Prince Tiwari</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">8146199736</span></td>
-                                </tr>
-                                
-                                <tr style="user-select: auto;">
-                                    <td rowspan="3" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Boys Hostel - 04</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Kailash kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9997890496</span></td>
-                                    <td rowspan="3" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">hwb4@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Pramod Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9417310329</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Dharmendra Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9780685163</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td rowspan="3" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Boys Hostel - 05</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Rakesh  Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9463535975</span></td>
-                                    <td rowspan="3" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">hwb5@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Virender</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9805236831</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Prakash Mishra</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7508248563</span></td>
-                                </tr>
-                                
-                                <tr style="user-select: auto;">
-                                    <td rowspan="3" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Boys Hostel - 06</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Ravikant Tripathi</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7508771834</span></td>
-                                    <td rowspan="3" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">hwb6@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Nirmal Mahli</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7307928269</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Sukhpreet Singh</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9878022970</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td rowspan="4" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Boys Hostel - 07 &amp; 7E</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Deepu Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9463739424</span></td>
-                                    <td rowspan="4" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">hwb7@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Hitesh Ray</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">869911254</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Ram Bhawan</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9915567713</span></td>
-                                </tr>
-                                
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Mohitosh</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7307771160</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td rowspan="5" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mega Boys Hostel: Block - A</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Hari Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7837797418</span></td>
-                                    <td rowspan="5" style="width: 140px; user-select: auto;"><a href="mailto:mhba@nitj.ac.in" style="user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">mhba@nitj.ac.in</span></a></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Joga Singh</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7087946940</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Tasen Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">8437857489</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Satnam Yadav</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7973257236</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Keshav Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9988903662</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td rowspan="5" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mega Boys Hostel: Block - B</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. R.N Chaturvedi</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9464886034</span></td>
-                                    <td rowspan="5" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">mhbb@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Rajesh Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9878329873</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Baljit Singh</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">8264416270</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Suminder</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9872886810</span></td>
-                                </tr>
-                                <tr id="girlshostel" style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Dinesh Chandra Roy</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">8054549808</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td rowspan="5" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mega Boys Hostel: Block - F</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Krishankant Tripathi</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9779945241</span></td>
-                                    <td rowspan="5" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">mhbf@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Bhuwan Chander</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7888952464</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Dev Raj</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9113707652</span></td>
-                                </tr>
-                                <tr  style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Rakesh Kumar</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9779980361</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mr. Dhananjay Tiwari</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9501811427</span></td>
-                                </tr>
+      <table class="table table-bordered align-middle table-custom-striped">
+        <thead class="table-header-blue">
+          <tr>
+            <th>Hostel</th>
+            <th>Name of the Staff</th>
+            <th>Designation</th>
+            <th>Contact No.</th>
+            <th>Email - ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Boys Hostel - 01 -->
+          <tr><td rowspan="4">Boys Hostel - 01</td><td class="mid">Mr. Rakesh Kumar</td><td class="mid">Clerk</td><td class="mid">9463535975</td><td rowspan="4">hwb1@nitj.ac.in</td></tr>
+          <tr><td class="mid">Mr. Vinod Kumar</td><td class="mid">Attendant</td><td class="mid">9779946937</td></tr>
+          <tr><td class="mid">Mr. Jayant Roy</td><td class="mid">Attendant</td><td class="mid">8101591315</td></tr>
+          <tr><td class="mid">Mr. Satya Dev</td><td class="mid">Attendant</td><td class="mid">8968550509</td></tr>
 
-                            </tbody>
-                        </table>
+          <!-- Boys Hostel - 02 -->
+          <tr><td rowspan="4">Boys Hostel - 02</td><td class="mid">Mr. Anant Pandey</td><td class="mid">Clerk</td><td class="mid">8872682351</td><td rowspan="4">hwb2@nitj.ac.in</td></tr>
+          <tr><td class="mid">Mr. Sandeep Kumar</td><td class="mid">Attendant</td><td class="mid">9872244638</td></tr>
+          <tr><td class="mid">Mr. Vishnu</td><td class="mid">Attendant</td><td class="mid">9915671574</td></tr>
+          <tr><td class="mid">Mr. Kamal Kumar</td><td class="mid">Attendant</td><td class="mid">7876428074</td></tr>
+
+          <!-- Boys Hostel - 03 -->
+          <tr><td rowspan="3">Boys Hostel - 03</td><td class="mid">Mr. Gopal Tripathi</td><td class="mid">Clerk</td><td class="mid">8853274315</td><td rowspan="3">hwb3@nitj.ac.in</td></tr>
+          <tr><td class="mid">Mr. Wattan Singh</td><td class="mid">Attendant</td><td class="mid">9646799284</td></tr>
+          <tr><td class="mid">Mr. Pramod Kumar</td><td class="mid">Attendant</td><td class="mid">9417310329</td></tr>
+
+          <!-- Boys Hostel - 04 -->
+          <tr><td rowspan="4">Boys Hostel - 04</td><td class="mid">Mr. Deepu Kumar</td><td class="mid">Clerk</td><td class="mid">9463739424</td><td rowspan="4">hwb4@nitj.ac.in</td></tr>
+          <tr><td class="mid">Mr. Sharvan Kumar</td><td class="mid">Attendant</td><td class="mid">9534036762</td></tr>
+          <tr><td class="mid">Mr. Baljit Singh</td><td class="mid">Attendant</td><td class="mid">8264416270</td></tr>
+          <tr><td class="mid">Mr. Dharmendra Kumar</td><td class="mid">Attendant</td><td class="mid">9780685163</td></tr>
+
+          <!-- Boys Hostel - 05 -->
+          <tr><td rowspan="4">Boys Hostel - 05</td><td class="mid">Mr. Kailash Kumar</td><td class="mid">Clerk</td><td class="mid">9997890496</td><td rowspan="4">hwb5@nitj.ac.in</td></tr>
+          <tr><td class="mid">Mr. Virender</td><td class="mid">Attendant</td><td class="mid">7508454849</td></tr>
+          <tr><td class="mid">Mr. Bhuwan Chander</td><td class="mid">Attendant</td><td class="mid">7888952464</td></tr>
+          <tr><td class="mid">Mr. Prakash Mishra</td><td class="mid">Attendant</td><td class="mid">7508248563</td></tr>
+
+          <!-- Boys Hostel - 06 -->
+          <tr><td rowspan="3">Boys Hostel - 06</td><td class="mid">Mr. R.N Chaturvedi</td><td class="mid">Clerk</td><td class="mid">9464886034</td><td rowspan="3">hwb6@nitj.ac.in</td></tr>
+          <tr><td class="mid">Mr. Nirmal Mahli</td><td class="mid">Attendant</td><td class="mid">7307928269</td></tr>
+          <tr><td class="mid">Mr. Sukhpreet Singh</td><td class="mid">Attendant</td><td class="mid">9878022970</td></tr>
+
+          <!-- Boys Hostel - 07 & 7E -->
+          <tr><td rowspan="6">Boys Hostel - 07 & 7E</td><td class="mid">Mr. Umesh Kumar</td><td class="mid">Clerk</td><td class="mid">9023850798</td><td rowspan="6">hwb7@nitj.ac.in</td></tr>
+          <tr><td class="mid">Mr. Rakesh Kumar</td><td class="mid">Attendant</td><td class="mid">9779980361</td></tr>
+          <tr><td class="mid">Mr. Ram Bhawan</td><td class="mid">Attendant</td><td class="mid">9915567713</td></tr>
+          <tr><td class="mid">Mr. Sanjit Ram</td><td class="mid">Attendant</td><td class="mid">8226987805</td></tr>
+          <tr><td class="mid">Mr. Rohitpal Singh</td><td class="mid">Attendant</td><td class="mid">7814313767</td></tr>
+          <tr><td class="mid">Mr. Sachin</td><td class="mid">Attendant</td><td class="mid">9888789051</td></tr>
+
+          <!-- Mega Boys Hostel: Block - A -->
+          <tr><td rowspan="5">Mega Boys Hostel: Block - A</td><td class="mid">Mr. Hari Kumar</td><td class="mid">Clerk</td><td class="mid">7837797418</td><td rowspan="5">mhba@nitj.ac.in</td></tr>
+          <tr><td class="mid">Mr. Joga Singh</td><td class="mid">Attendant</td><td class="mid">7087946940</td></tr>
+          <tr><td class="mid">Mr. Tasan Kumar</td><td class="mid">Attendant</td><td class="mid">8437857489</td></tr>
+          <tr><td class="mid">Mr. Satnam Yadav</td><td class="mid">Attendant</td><td class="mid">7973257236</td></tr>
+          <tr><td class="mid">Mr. Keshav Kumar</td><td class="mid">Attendant</td><td class="mid">9988903662</td></tr>
+
+          <!-- Mega Boys Hostel: Block - B -->
+          <tr><td rowspan="5">Mega Boys Hostel: Block - B</td><td class="mid">Mr. Ravikant Tripathi</td><td class="mid">Clerk</td><td class="mid">7508771834</td><td rowspan="5">mhbb@nitj.ac.in</td></tr>
+          <tr><td class="mid">Mr. Deen Bandhu</td><td class="mid">Attendant</td><td class="mid">8207438954</td></tr>
+          <tr><td class="mid">Mr. Ritesh Kumar</td><td class="mid">Attendant</td><td class="mid">6299215051</td></tr>
+          <tr><td class="mid">Mr. Prince Tiwari</td><td class="mid">Attendant</td><td class="mid">8146199736</td></tr>
+          <tr><td class="mid">Mr. Dinesh Chandra Roy</td><td class="mid">Attendant</td><td class="mid">8054549808</td></tr>
+
+          <!-- Mega Boys Hostel: Block - F -->
+          <tr><td rowspan="5">Mega Boys Hostel: Block - F</td><td class="mid">Mr. Krishankant Tripathi</td><td class="mid">Clerk</td><td class="mid">7009930969</td><td rowspan="5">mhbf@nitj.ac.in</td></tr>
+          <tr><td class="mid">Mr. Awdesh Kumar</td><td class="mid">Attendant</td><td class="mid">9872548026</td></tr>
+          <tr><td class="mid">Mr. Dev Raj</td><td class="mid">Attendant</td><td class="mid">9113707652</td></tr>
+          <tr><td class="mid">Mr. Ajay Kumar</td><td class="mid">Attendant</td><td class="mid">7837901088</td></tr>
+          <tr><td class="mid">Mr. Dhananjay Tiwari</td><td class="mid">Attendant</td><td class="mid">9501811427</td></tr>
+        </tbody>
+      </table>
                         <br>
                         
                         <h1  class="font2 font-medium text-[28px] lg:text-[32px]">
@@ -402,102 +261,47 @@
                         <br>
 
 
-                        <table  border="1" cellpadding="6" cellspacing="0" class="table table-bordered table-striped" style="width: 100%; user-select: auto;">
-                            <tbody style="user-select: auto;">
+      <table class="table table-bordered align-middle table-custom-striped">
+        <thead class="table-header-blue">
+          <tr>
+            <th>Hostel</th>
+            <th>Name of the Staff</th>
+            <th>Designation</th>
+            <th>Contact No.</th>
+            <th>Email - ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Girls Hostel - 01 -->
+          <tr><td rowspan="4">Girls Hostel - 01</td><td class="mid">Ms. Neha Devi</td><td class="mid">Clerk</td><td class="mid">7657904743</td><td rowspan="4">ohwg1@nitj.ac.in</td></tr>
+          <tr><td class="mid">Ms. Kamaljeet Kaur</td><td class="mid">Attendant</td><td class="mid">9876135284</td></tr>
+          <tr><td class="mid">Ms. Rajani Devi</td><td class="mid">Attendant</td><td class="mid">9464883084</td></tr>
+          <tr><td class="mid">Ms. Shashi Prabha</td><td class="mid">Attendant</td><td class="mid">9872935244</td></tr>
 
-                                <tr style="user-select: auto;">
-                                    <td rowspan="5" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Girls Hostel - 01</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Monu Sharma</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9464012062</span></td>
-                                    <td rowspan="5" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">ohwg1@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms.Kamaljeet Kaur</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9876135284</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Rajani Devi</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9464883084</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Priyanka</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">8679081042</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Anita Devi</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9815637984</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td rowspan="7" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Girls Hostel - 02</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Neha Devi</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">8146017894</span></td>
-                                    <td rowspan="7" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">ohwg2@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Neelam</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">6280443276</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Shubham Devi</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9465236856</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Chhinder</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9417616890</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Dimple</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7626821375</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Rinky Mourya</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9815122148</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Yashomati</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">6284439243</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td rowspan="5" style="width: 166px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Mega Girls Hostel</span></td>
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Amarjeet Kaur</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Clerk</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">7888956947</span></td>
-                                    <td rowspan="5" style="width: 140px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">mhg@nitj.ac.in</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Reeta Kumari</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9478744809</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Gurmeet Kaur</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9876304506</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Vidya</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9872325092</span></td>
-                                </tr>
-                                <tr style="user-select: auto;">
-                                    <td style="width: 185px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Ms. Usha Devi</span></td>
-                                    <td style="width: 95px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">Attendant</span></td>
-                                    <td style="width: 103px; user-select: auto;"><span style="color: rgb(0, 0, 0); user-select: auto;">9878130512</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+          <!-- Girls Hostel - 02 -->
+          <tr><td rowspan="3">Girls Hostel - 02</td><td class="mid">Ms. Neha Devi</td><td class="mid">Clerk</td><td class="mid">7657904743</td><td rowspan="3">ohwg2@nitj.ac.in</td></tr>
+          <tr><td class="mid">Ms. Priyanka</td><td class="mid">Attendant</td><td class="mid">8679081042</td></tr>
+          <tr><td class="mid">Ms. Anita Devi</td><td class="mid">Attendant</td><td class="mid">9815637984</td></tr>
+
+          <!-- Mega Girls Hostel -->
+          <tr><td rowspan="5">Mega Girls Hostel</td><td class="mid">Ms. Amarjeet Kaur</td><td class="mid">Clerk</td><td class="mid">7888956947</td><td rowspan="5">mhg@nitj.ac.in</td></tr>
+          <tr><td class="mid">Ms. Reeta Kumari</td><td class="mid">Attendant</td><td class="mid">9478744809</td></tr>
+          <tr><td class="mid">Ms. Gurmeet Kaur</td><td class="mid">Attendant</td><td class="mid">9876304506</td></tr>
+          <tr><td class="mid">Ms. Vidya</td><td class="mid">Attendant</td><td class="mid">9872325092</td></tr>
+          <tr><td class="mid">Ms. Usha Devi</td><td class="mid">Attendant</td><td class="mid">9878130512</td></tr>
+
+          <!-- Mega Girls Hostel Phase-II -->
+          <tr><td rowspan="9">Mega Girls Hostel Phase-II</td><td class="mid">Ms. Monu Sharma</td><td class="mid">Clerk</td><td class="mid">9464012062</td><td rowspan="9">mgha@nitj.ac.in, mghb@nitj.ac.in</td></tr>
+          <tr><td class="mid">Ms. Babita</td><td class="mid">Clerk</td><td class="mid">8264945835</td></tr>
+          <tr><td class="mid">Ms. Neelam</td><td class="mid">Attendant</td><td class="mid">6280443276</td></tr>
+          <tr><td class="mid">Ms. Shubham Devi</td><td class="mid">Attendant</td><td class="mid">9465236856</td></tr>
+          <tr><td class="mid">Ms. Chhinder</td><td class="mid">Attendant</td><td class="mid">9417616890</td></tr>
+          <tr><td class="mid">Ms. Rinky Mourya</td><td class="mid">Attendant</td><td class="mid">9815122148</td></tr>
+          <tr><td class="mid">Ms. Yashomati</td><td class="mid">Attendant</td><td class="mid">6284439243</td></tr>
+          <tr><td class="mid">Ms. Manjit Kaur</td><td class="mid">Attendant</td><td class="mid">7087441306</td></tr>
+          <tr><td class="mid">Ms. Varsha</td><td class="mid">Attendant</td><td class="mid">7807576260</td></tr>
+        </tbody>
+      </table>
 
                         <p style="user-select: auto;">&nbsp;</p>
 
