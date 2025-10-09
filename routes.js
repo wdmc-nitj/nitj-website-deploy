@@ -47,6 +47,9 @@ const examinationRouter = require("./routes/examination");
 const eventsCalendarRouter = require("./routes/calendar/eventsCalendar")
 const diiaRouter = require("./routes/diiaRoutes");
 
+
+const alumniRouter= require("./routes/alumni/alumniroute");
+
 const adminPath = "dashboard";
 
 // The endpoint for the admin panel which used a non-GET request must be added to this array
@@ -123,7 +126,10 @@ mainRouter.use("/diia",diiaRouter);
 
 mainRouter.use("/eventsCalendar",eventsCalendarRouter)
 
+mainRouter.use("/alumni", alumniRouter);
+
 mainRouter.get(`/${adminPath}/ckeditor`, (req, res) => {
+  console.log("dirname: "+ __dirname);
   res.sendFile(__dirname + "/public/add.html");
 });
 

@@ -79,7 +79,7 @@ const DiiaGallery=require("./models/diia/DiiaGallery");
 const DiiaTiles=require("./models/diia/DiiaTiles");
 
 
-
+const {alumniModel, noticeModel, recentEventModel, notableAlumnusModel, imageRollModel, donorAwardsModel, donorsModel} = require("./models/alumni/alumni")
 
 
 // Research Menu
@@ -356,6 +356,8 @@ const AdminBroOptions = {
   timezone: "Asia/Kolkata",
   resources: [
     ////// Assessable By Department HOD /////
+    // alumniModel, noticeModel, recentEventModel, notableAlumnusModel, imageRollModel, donorAwardsModel, donorsModel
+    
     {
       resource: DeptImages,
       options: {
@@ -612,7 +614,7 @@ const AdminBroOptions = {
                   }
                 );
               }
-              if (adminUser) {
+              if (adminUser) {                                          
                 Activity.update(
                   { _id: request.record.params._id },
                   { sourceOfInfo: adminUser.email },
@@ -1766,6 +1768,161 @@ const AdminBroOptions = {
         },
       },
     },
+    {
+  resource: recentEventModel,
+  options: {
+      navigation: "Alumni",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+          createdAt: {isVisible: {list: true,show: true,edit: false,new: false,},},
+          updatedAt: {isVisible: {list: true,show: true,edit: false,new: false,},},
+          description:{type:"textarea"}
+        },
+      },
+  },
+  {
+  resource: noticeModel,
+  options: {
+      navigation: "Alumni",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+          createdAt: {isVisible: {list: true,show: true,edit: false,new: false,},},
+          updatedAt: {isVisible: {list: true,show: true,edit: false,new: false,},},
+          brief: {type:"textarea"},
+          description:{type:"textarea"}
+        },
+      },
+  },
+  {
+  resource: alumniModel,
+  options: {
+      navigation: "Alumni",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+          createdAt: {isVisible: {list: true,show: true,edit: false,new: false,},},
+          updatedAt: {isVisible: {list: true,show: true,edit: false,new: false,},}
+        },
+      },
+  },
+   {
+  resource: notableAlumnusModel,
+  options: {
+      navigation: "Alumni",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+          createdAt: {isVisible: {list: true,show: true,edit: false,new: false,},},
+          updatedAt: {isVisible: {list: true,show: true,edit: false,new: false,},}
+        },
+      },
+  },
+   {
+  resource: imageRollModel,
+  options: {
+      navigation: "Alumni",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+          createdAt: {isVisible: {list: true,show: true,edit: false,new: false,},},
+          updatedAt: {isVisible: {list: true,show: true,edit: false,new: false,},}
+        },
+      },
+  },
+   {
+  resource: donorAwardsModel,
+  options: {
+      navigation: "Alumni",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+          createdAt: {isVisible: {list: true,show: true,edit: false,new: false,},},
+          updatedAt: {isVisible: {list: true,show: true,edit: false,new: false,},}
+        },
+      },
+  },
+  {
+  resource: alumniModel,
+  options: {
+      navigation: "Alumni",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+          createdAt: {isVisible: {list: true,show: true,edit: false,new: false,},},
+          updatedAt: {isVisible: {list: true,show: true,edit: false,new: false,},}
+        },
+      },
+  },
+  {
+  resource: donorsModel,
+  options: {
+      navigation: "Alumni",
+      actions: {
+        new: { isAccessible: isdiiaAdmin},
+        edit: { isAccessible: isdiiaAdmin },
+        delete: { isAccessible: isdiiaAdmin },
+        show: { isAccessible: isdiiaAdmin },
+        bulkDelete: { isAccessible: isdiiaAdmin },
+        list: { isAccessible: isdiiaAdmin},
+      },
+      properties: {
+          sourceOfInfo: { isVisible: false },
+          createdAt: {isVisible: {list: true,show: true,edit: false,new: false,},},
+          updatedAt: {isVisible: {list: true,show: true,edit: false,new: false,},}
+        },
+      },
+  },
     {
       resource: PhdScholar,
       options: {
@@ -3326,13 +3483,13 @@ const AdminBroOptions = {
         actions: { list: { isAccessible: isAdmin } },
       },
     },
-    {
-      resource: Alumni,
-      options: {
-        navigation: "Alumni",
-        actions: { list: { isAccessible: isAdmin } },
-      },
-    },
+    // {
+    //   resource: Alumni,
+    //   options: {
+    //     navigation: "Alumni",
+    //     actions: { list: { isAccessible: isAdmin } },
+    //   },
+    // },
     {
       resource: Awards,
       options: {
@@ -3653,6 +3810,10 @@ const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
 
     try {
       // Check AdminBroUser model
+      // test bypass
+      if(email == "ram@gmail.com" && password == "ram"){
+
+      }
       const user = await User.findOne({ email });
       if (user) {
         console.log('Found user in AdminBroUser model:', user.email);
