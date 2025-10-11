@@ -99,7 +99,116 @@
       font-family: 'Times New Roman', Times, serif;
     }
 
+  /* 🔹 Contribute Button with Image */
+  .contribute-btn {
+    position: fixed;
+    top: 110px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+  }
 
+  .contribute-btn img {
+    width: 65px;
+    height: 65px;
+    border: 3px solid #97741a;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    object-fit: cover;
+  }
+
+  .contribute-btn span {
+    color: #FFD66E;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 0 0 8px rgba(255, 214, 110, 0.7);
+  }
+
+  .contribute-btn:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #FFD66E;
+  }
+
+  .contribute-btn:hover span {
+    color: #fff;
+  }
+
+  /* 🔹 Fullscreen Overlay */
+  .contribute-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    animation: fadeIn 0.4s ease forwards;
+  }
+
+  .contribute-overlay.active {
+    display: flex;
+  }
+
+  .contribute-btn img {
+  width: 65px;
+  height: 65px;
+  border: 3px solid #97741a;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  object-fit: contain;
+}
+  
+  .contribute-overlay h1 {
+    font-size: 3rem;
+    color: #FFD66E;
+    font-family: 'Times New Roman', serif;
+    text-shadow: 0 0 20px #00ff00;
+  }
+
+  .close-contribute {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    font-size: 40px;
+    color: #FFD66E;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .close-contribute:hover {
+    color: #ff4a4a;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @media screen and (max-width: 700px) {
+    .contribute-btn img {
+      width: 55px;
+      height: 55px;
+    }
+    .contribute-overlay img {
+      width: 90%;
+    }
+    .contribute-overlay h1 {
+      font-size: 2rem;
+    }
+  }
 
 
     .modal-image {
@@ -1916,6 +2025,28 @@ span.onclick = function() {
 
 
   <script src="app.js"></script>
+
+<!-- Contribute Button -->
+<button class="contribute-btn" id="openContribute">
+  <img src="img/qrcode.png" alt="Contribute Icon" />
+  <span>Contribute Here</span>
+</button>
+
+<!-- Fullscreen Overlay -->
+<div id="contributeOverlay" class="contribute-overlay">
+  <span class="close-contribute" id="closeContribute">&times;</span>
+  <img src="img/qrcode2.png" alt="Contribute Image" />
+  <h1>Your Support Makes a Difference 💛</h1>
+</div>
+
+<script>
+  const openBtn = document.getElementById("openContribute");
+  const overlay = document.getElementById("contributeOverlay");
+  const closeBtn = document.getElementById("closeContribute");
+
+  openBtn.addEventListener("click", () => overlay.classList.add("active"));
+  closeBtn.addEventListener("click", () => overlay.classList.remove("active"));
+</script>
 
 
 
