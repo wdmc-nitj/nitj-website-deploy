@@ -36,6 +36,10 @@ const DiiaOpportunitiesSchema = new mongoose.Schema({
     disable: {
         type: Boolean,
         default: false,
+    },
+    new: {
+        type: Boolean,
+        default: false,
     }
 }, { timestamps: true });
 
