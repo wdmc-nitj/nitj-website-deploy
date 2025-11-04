@@ -1,34 +1,27 @@
 let data = [];
+let dataSlider = [];
 let currentIndex = 0;
+
 const url = "https://nitjfinal.onrender.com";
-// const furl= "https://nitjfinal.onrender.com";
-// async function fetchData() {
-//   try {
-//     const response = await fetch(`${url}/api/diia/opportunities`);
-//     if (!response.ok) {
-//       throw new Error(`Network response was not ok: ${response.status}`);
-//     }
-//     data = await response.json();
-//     console.log("Fetched Data:", data);
-//     initSlider();
-//     populateList();
-//   } catch (error) {
-//     console.error("Failed to fetch data:", error);
-//   }
-// }
+
+// Fetch data from backend
 async function fetchData() {
   try {
     const response = await fetch(`/api/diia/opportunities`);
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.status}`);
     }
+
     data = await response.json();
     console.log("Fetched Data:", data);
 
-    // Sort data based on createdAt and take the latest 4 items
+    // Sort by creation date (latest first)
     data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-    dataSlider = data.slice(0, 4); // Take the most recent 4 items
-    console.log(data);
+
+    // Take the most recent 4 for the slider
+    dataSlider = data.slice(0, 4);
+    console.log("Data for slider:", dataSlider);
+
     initSlider(dataSlider);
     populateList(data);
   } catch (error) {
@@ -36,6 +29,7 @@ async function fetchData() {
   }
 }
 
+// Initialize the slider
 function initSlider(dataSlider) {
   const imageContainer = document.getElementById("imageContainer");
   const indicatorsContainer = document.getElementById("indicators");
@@ -54,13 +48,24 @@ function initSlider(dataSlider) {
   }
 
   dataSlider.forEach((elt, index) => {
+    // Create image
     const imgElement = document.createElement("img");
     imgElement.src = elt.Image;
-    imgElement.alt = `Stack Image ${index + 1}`;
+    imgElement.alt = `Slider Image ${index + 1}`;
     imgElement.className = `absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000`;
     if (index === 0) imgElement.classList.add("opacity-100");
     imageContainer.appendChild(imgElement);
 
+    // Add "New" ribbon if item.new === true
+    if (elt.new === true) {
+      const newRibbon = document.createElement("div");
+      newRibbon.textContent = "NEW";
+      newRibbon.className =
+        "absolute top-3 left-3 bg-[#ff9905] text-white font-bold px-3 py-1 rounded shadow-lg text-sm uppercase";
+      imgElement.parentElement?.appendChild(newRibbon);
+    }
+
+    // Indicators
     const indicator = document.createElement("span");
     indicator.className = `w-3 h-3 rounded-full bg-gray-500 ${
       index === 0 ? "bg-white" : ""
@@ -69,6 +74,7 @@ function initSlider(dataSlider) {
   });
 }
 
+// Update the slider automatically
 function updateSlider() {
   if (dataSlider.length === 0) {
     console.warn("No data available for slider update");
@@ -80,9 +86,8 @@ function updateSlider() {
     img.classList.toggle("opacity-0", index !== currentIndex);
   });
 
-  const currentImage = data[currentIndex];
+  const currentImage = dataSlider[currentIndex];
   document.getElementById("heading").textContent = currentImage.title1;
-
   document.getElementById(
     "headingLink"
   ).href = `/diia_U/template.html?id=${currentImage._id}?category=opportunities`;
@@ -95,6 +100,7 @@ function updateSlider() {
   currentIndex = (currentIndex + 1) % dataSlider.length;
 }
 
+// Populate the list below the slider
 function populateList(data) {
   const list = document.getElementById("list");
 
@@ -107,38 +113,43 @@ function populateList(data) {
 
   data.forEach((item) => {
     const listItem = document.createElement("li");
+
     const link = document.createElement("a");
     link.className =
       "underline underline-offset-4 decoration-accent decoration-0 hover:decoration-2 text-lg";
     link.href = `/diia_U/template.html?id=${item._id}?category=opportunities`;
     link.textContent = item.title1;
 
-    const newTagDiv = document.createElement("div");
-    newTagDiv.className =
-      "inline-flex ml-2 items-center justify-start space-x-2";
-
-    const iconSpan = document.createElement("span");
-    iconSpan.className = "material-symbols-outlined text-accent-orange";
-    iconSpan.innerHTML = `
-      <svg fill="#ff9905" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-        <path d="M0 0h24v24H0z" fill="none"/>
-        <path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/>
-      </svg>
-    `;
-
-    const newText = document.createElement("p");
-    newText.className = "text-lg font-bold uppercase text-[#ff9905]";
-    newText.textContent = "New";
-
-    newTagDiv.appendChild(iconSpan);
-    newTagDiv.appendChild(newText);
-
     listItem.appendChild(link);
-    listItem.appendChild(newTagDiv);
+
+    // ✅ Show "New" tag only if backend field new === true
+    if (item.new === true) {
+      const newTagDiv = document.createElement("div");
+      newTagDiv.className =
+        "inline-flex ml-2 items-center justify-start space-x-2";
+
+      const iconSpan = document.createElement("span");
+      iconSpan.className = "material-symbols-outlined text-accent-orange";
+      iconSpan.innerHTML = `
+        <svg fill="#ff9905" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/>
+        </svg>
+      `;
+
+      const newText = document.createElement("p");
+      newText.className = "text-lg font-bold uppercase text-[#ff9905]";
+      newText.textContent = "New";
+
+      newTagDiv.appendChild(iconSpan);
+      newTagDiv.appendChild(newText);
+      listItem.appendChild(newTagDiv);
+    }
 
     list.appendChild(listItem);
   });
 }
 
+// Run the functions
 fetchData();
 setInterval(updateSlider, 3000);
