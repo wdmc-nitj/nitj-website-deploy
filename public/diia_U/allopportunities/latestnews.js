@@ -15,8 +15,16 @@ async function fetchData() {
     data = await response.json();
     console.log("Fetched Data:", data);
 
-    // Sort by creation date (latest first)
-    data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    // ✅ Sort: higher 'order' on top, smaller 'order' at bottom
+    data.sort((a, b) => {
+      // Handle missing order field gracefully
+      const orderA = a.order ?? Number.MIN_SAFE_INTEGER;
+      const orderB = b.order ?? Number.MIN_SAFE_INTEGER;
+      return orderB - orderA; // descending order (bigger first)
+    });
+
+    // Then by createdAt if needed
+    // data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     // Take the most recent 4 for the slider
     dataSlider = data.slice(0, 4);
