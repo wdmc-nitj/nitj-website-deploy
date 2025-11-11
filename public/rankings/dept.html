@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Institute Contribution — NITJ</title>
+
+  <!-- Base CSS -->
+  <link rel="stylesheet" href="../style.css" />
+
+  <!-- ICONS -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- FONTS -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js + SheetJS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 0.95rem;
+    }
+
+    th,
+    td {
+      border: 1px solid #d1d5db;
+      padding: 8px 10px;
+    }
+
+    thead th {
+      background-color: #f3f4f6;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    #loadingSpinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-top: 4px solid #4f46e5;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <script src="/template/header.js" type="module"></script>
+  <script src="/template/helper.js"></script>
+
+  <div class="main-body flex flex-col gap-8 pt-[112px] md:pt-[144px] lg:pt-[144px] pb-16">
+
+    <!-- Page Heading -->
+    <div class="text-center px-4 pt-10">
+      <h1 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-2">Institute Contribution (2022–2024)</h1>
+      <p class="text-gray-600 text-base mb-4">Performance Overview Across All Departments</p>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
+
+      <!-- Loading Overlay -->
+      <div id="loadingOverlay" class="fixed inset-0 bg-gray-200/70 flex items-center justify-center z-50">
+        <div class="bg-white shadow-md p-6 rounded-lg flex flex-col items-center gap-3">
+          <div id="loadingSpinner"></div>
+          <p class="text-sm font-medium text-gray-600">Loading data...</p>
+        </div>
+      </div>
+
+      <!-- Year-wise Table -->
+      <section>
+        <h2 class="text-2xl font-semibold mb-3 text-gray-800">Year-wise Comparison (2022–2024)</h2>
+        <div class="overflow-x-auto bg-white border rounded-lg shadow-sm p-3">
+          <table id="yearwiseTable">
+            <thead>
+              <tr>
+                <th rowspan="2">Department</th>
+                <th colspan="3">SCI</th>
+                <th colspan="3">Projects</th>
+                <th colspan="3">Patents</th>
+                <th colspan="3">Events</th>
+                <th colspan="3">PhD</th>
+                <th colspan="3">Placement (%)</th>
+              </tr>
+              <tr>
+                <th>2022</th><th>2023</th><th>2024</th>
+                <th>2022</th><th>2023</th><th>2024</th>
+                <th>2022</th><th>2023</th><th>2024</th>
+                <th>2022</th><th>2023</th><th>2024</th>
+                <th>2022</th><th>2023</th><th>2024</th>
+                <th>2022</th><th>2023</th><th>2024</th>
+              </tr>
+            </thead>
+            <tbody id="yearwiseBody"></tbody>
+          </table>
+        </div>
+        <p class="text-sm text-gray-600 mt-1">
+          <span class="text-green-600 font-semibold">Green</span> = Increase,
+          <span class="text-red-600 font-semibold">Red</span> = Decrease (vs previous year),
+          Project count includes consultancy works; Patent count includes filed and granted patents; PhD count includes awarded and admitted scholars.
+        </p>
+      </section>
+
+      <!-- Combined Table -->
+      <section>
+        <h2 class="text-2xl font-semibold mb-3 text-gray-800">3-Year Combined Summary</h2>
+        <div class="overflow-x-auto bg-white border rounded-lg shadow-sm p-3">
+          <table>
+            <thead>
+              <tr>
+                <th>Department</th>
+                <th>SCI</th>
+                <th>Projects</th>
+                <th>Patents</th>
+                <th>Events</th>
+                <th>PhD</th>
+                <th>Placement (avg %)</th>
+              </tr>
+            </thead>
+            <tbody id="combinedBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Per Faculty Table -->
+      <section>
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-2xl font-semibold text-gray-800">Average Per Faculty (3-Year)</h2>
+          <select id="rankingMetric" class="px-3 py-2 border rounded-lg bg-white shadow-sm text-sm">
+            <option value="SCI">Sort by SCI</option>
+            <option value="Projects">Sort by Projects</option>
+            <option value="Patents">Sort by Patents</option>
+            <option value="Events">Sort by Events</option>
+            <option value="PhD">Sort by PhD</option>
+          </select>
+        </div>
+        <div class="overflow-x-auto bg-white border rounded-lg shadow-sm p-3">
+          <table>
+            <thead>
+              <tr>
+                <th>Department</th>
+                <th>Faculty</th>
+                <th>SCI/Faculty</th>
+                <th>Projects/Faculty</th>
+                <th>Patents/Faculty</th>
+                <th>Events/Faculty</th>
+                <th>PhD/Faculty</th>
+              </tr>
+            </thead>
+            <tbody id="perFacultyBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Charts -->
+      <section class="space-y-10">
+        <section>
+          <div class="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2">
+            <h2 class="text-2xl font-semibold text-gray-800">Department Performance Over Years</h2>
+            <select id="deptSelectChart"
+              class="px-3 py-2 border rounded-lg text-sm bg-white shadow-sm w-full md:w-auto"></select>
+          </div>
+          <div class="bg-white border rounded-lg p-4 md:p-6 shadow-sm">
+            <div class="relative h-80 md:h-96">
+              <canvas id="deptOverYearsChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2">
+            <h2 class="text-2xl font-semibold text-gray-800">Per Faculty Average by Department</h2>
+            <select id="compSelect"
+              class="px-3 py-2 border rounded-lg text-sm bg-white shadow-sm w-full md:w-auto">
+              <option value="SCI">SCI</option>
+              <option value="Projects">Projects</option>
+              <option value="Patents">Patents</option>
+              <option value="Events">Events</option>
+              <option value="PhD">PhD</option>
+            </select>
+          </div>
+          <div class="bg-white border rounded-lg p-4 md:p-6 shadow-sm">
+            <div class="relative h-80 md:h-96">
+              <canvas id="compByDeptChart"></canvas>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <div id="errorBox"
+        class="hidden p-4 text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg"></div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <script src="/template/footer.js"></script>
+
+  <!-- JavaScript -->
+  <script>
+    const XLSX_URL = "./departments_2022_24_yearwise_all.xlsx";
+    const FACULTY_CSV_URL = "./faculty.csv";
+
+    let rows = [], departments = [], facultyCount = {};
+    let deptOverYearsChart = null, compByDeptChart = null;
+
+    const colors = {
+      SCI: "#1f77b4", Projects: "#ff7f0e", Patents: "#2ca02c",
+      Events: "#9467bd", PhD: "#e377c2", Placement: "#17becf"
+    };
+    const yearPalette = { 2022: "#3b82f6", 2023: "#10b981", 2024: "#f59e0b" };
+
+    (async function init() {
+      try {
+        await loadFacultyCSV();
+        await loadExcel();
+        renderAll();
+      } catch (e) {
+        console.error("Error during initialization:", e);
+        showError("Unable to load data: " + e.message);
+      } finally {
+        document.getElementById("loadingOverlay").style.display = "none";
+      }
+    })();
+
+    async function loadFacultyCSV() {
+      try {
+        const res = await fetch(FACULTY_CSV_URL);
+        if (!res.ok) throw new Error("Failed to fetch faculty.csv");
+        const text = await res.text();
+        const lines = text.trim().split(/\r?\n/);
+        const headers = lines[0].split(",").map(h => h.trim());
+        const deptIdx = headers.findIndex(h => /department/i.test(h));
+        const countIdx = headers.findIndex(h => /(faculty|count)/i.test(h));
+        lines.slice(1).forEach(line => {
+          const cols = line.split(",");
+          const dept = cols[deptIdx]?.trim();
+          const count = Number(cols[countIdx]) || 0;
+          if (dept && count > 0) facultyCount[dept] = count;
+        });
+      } catch (e) {
+        console.warn("Faculty CSV load failed:", e.message);
+      }
+    }
+
+    async function loadExcel() {
+      const res = await fetch(XLSX_URL);
+      if (!res.ok) throw new Error("Failed to fetch Excel file");
+      const buf = await res.arrayBuffer();
+      const wb = XLSX.read(buf, { type: "array" });
+      const sheet = wb.Sheets[wb.SheetNames[0]];
+      const data = XLSX.utils.sheet_to_json(sheet, { defval: 0 });
+
+      rows = data.map(r => ({
+        Department: String(r.Department || "").trim(),
+        Year: Number(r.Year),
+        SCI: +r.SCI, Projects: +r.Projects, Patents: +r.Patents,
+        Events: +r.Events, PhD: +r.PhD,
+        Placement: +r.Placement || 0
+      }));
+
+      departments = [...new Set(rows.map(r => r.Department))].sort();
+    }
+
+    function showError(msg) {
+      const box = document.getElementById("errorBox");
+      box.classList.remove("hidden");
+      box.textContent = msg;
+    }
+
+    function renderAll() {
+      if (!rows.length) return showError("No data available to display.");
+      renderYearwise();
+      renderCombined();
+      renderPerFaculty();
+      setupCharts();
+      document.getElementById("rankingMetric").onchange = renderPerFaculty;
+    }
+
+    function renderYearwise() {
+      const tbody = document.getElementById("yearwiseBody");
+      const comps = ["SCI", "Projects", "Patents", "Events", "PhD", "Placement"];
+      const years = [2022, 2023, 2024];
+      const byDept = {};
+
+      rows.forEach(r => {
+        byDept[r.Department] ||= {};
+        byDept[r.Department][r.Year] = r;
+      });
+
+      tbody.innerHTML = departments.map(dept => {
+        let html = `<tr><td>${dept}</td>`;
+        comps.forEach(comp => {
+          years.forEach((y, i) => {
+            const curr = byDept[dept][y]?.[comp] || 0;
+            const prev = i ? byDept[dept][years[i - 1]]?.[comp] || 0 : null;
+            const cls =
+              prev === null ? "" :
+              curr > prev ? "text-green-600 font-semibold" :
+              curr < prev ? "text-red-600 font-semibold" : "";
+            html += `<td class="text-center ${cls}">${comp === "Placement" ? curr.toFixed(1) : curr}</td>`;
+          });
+        });
+        return html + "</tr>";
+      }).join("");
+    }
+
+    function renderCombined() {
+      const tbody = document.getElementById("combinedBody");
+      const byDept = {};
+      rows.forEach(r => {
+        const d = r.Department;
+        byDept[d] ||= { SCI: 0, Projects: 0, Patents: 0, Events: 0, PhD: 0, Placement: [] };
+        ["SCI", "Projects", "Patents", "Events", "PhD"].forEach(k => byDept[d][k] += r[k]);
+        byDept[d].Placement.push(r.Placement);
+      });
+      tbody.innerHTML = departments.map(d => {
+        const r = byDept[d];
+        const avg = r.Placement.length ? (r.Placement.reduce((a, b) => a + b, 0) / r.Placement.length).toFixed(1) + "%" : "—";
+        return `<tr><td>${d}</td><td class="text-right">${r.SCI}</td><td class="text-right">${r.Projects}</td>
+        <td class="text-right">${r.Patents}</td><td class="text-right">${r.Events}</td>
+        <td class="text-right">${r.PhD}</td><td class="text-right">${avg}</td></tr>`;
+      }).join("");
+    }
+
+    function renderPerFaculty() {
+      const tbody = document.getElementById("perFacultyBody");
+      const metric = document.getElementById("rankingMetric").value;
+      const sum = {};
+      rows.forEach(r => {
+        const d = r.Department;
+        sum[d] ||= { SCI: 0, Projects: 0, Patents: 0, Events: 0, PhD: 0 };
+        ["SCI", "Projects", "Patents", "Events", "PhD"].forEach(k => sum[d][k] += r[k]);
+      });
+      const list = departments.map(d => {
+        const f = facultyCount[d] || 1;
+        const s = sum[d];
+        return {
+          d, f,
+          SCI: s.SCI / f, Projects: s.Projects / f, Patents: s.Patents / f,
+          Events: s.Events / f, PhD: s.PhD / f
+        };
+      }).sort((a, b) => b[metric] - a[metric]);
+      tbody.innerHTML = list.map(r =>
+        `<tr><td>${r.d}</td><td class="text-right">${r.f}</td><td class="text-right">${r.SCI.toFixed(2)}</td>
+         <td class="text-right">${r.Projects.toFixed(2)}</td><td class="text-right">${r.Patents.toFixed(2)}</td>
+         <td class="text-right">${r.Events.toFixed(2)}</td><td class="text-right">${r.PhD.toFixed(2)}</td></tr>`
+      ).join("");
+    }
+
+    function setupCharts() {
+      const deptSel = document.getElementById("deptSelectChart");
+      deptSel.innerHTML = departments.map(d => `<option>${d}</option>`).join("");
+      deptSel.onchange = e => renderDeptChart(e.target.value);
+      renderDeptChart(departments[0]);
+      const compSel = document.getElementById("compSelect");
+      compSel.onchange = e => renderCompChart(e.target.value);
+      renderCompChart(compSel.value);
+    }
+
+    function renderDeptChart(dept) {
+      const ctx = document.getElementById("deptOverYearsChart");
+      if (deptOverYearsChart) deptOverYearsChart.destroy();
+      const comps = ["SCI", "Projects", "Patents", "Events", "PhD", "Placement"];
+      const years = [2022, 2023, 2024];
+      const data = years.map(y => comps.map(c => rows.find(r => r.Department === dept && r.Year === y)?.[c] || 0));
+      deptOverYearsChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: comps,
+          datasets: years.map((y, i) => ({
+            label: y,
+            data: data[i],
+            backgroundColor: yearPalette[y],
+            borderRadius: 6
+          }))
+        },
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+      });
+    }
+
+    function renderCompChart(comp) {
+      const ctx = document.getElementById("compByDeptChart");
+      if (compByDeptChart) compByDeptChart.destroy();
+      const totals = {};
+      rows.forEach(r => {
+        const d = r.Department;
+        totals[d] ||= 0;
+        totals[d] += r[comp];
+      });
+      const list = departments.map(d => ({
+        d,
+        v: totals[d] / (facultyCount[d] || 1)
+      })).sort((a, b) => b.v - a.v);
+      compByDeptChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: list.map(r => r.d),
+          datasets: [{
+            label: `${comp} per Faculty`,
+            data: list.map(r => r.v),
+            backgroundColor: colors[comp],
+            borderRadius: 8
+          }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true } } }
+      });
+    }
+  </script>
+</body>
+</html>
