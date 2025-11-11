@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Individual Faculty Contribution</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- PapaParse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f5f7fb;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.7rem;
+      color: #2c3e50;
+      margin: 0;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    section {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      color: #2c3e50;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 10px;
+      margin-top: 25px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .dropdown-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .or-divider {
+      text-align: center;
+      color: #888;
+      font-style: italic;
+      margin: 6px 0;
+      font-size: 0.9rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    th {
+      background-color: #f0f2f5;
+      text-align: left;
+      color: #333;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #fafafa;
+    }
+
+    tr:hover td {
+      background-color: #f1f6ff;
+    }
+
+    .note {
+      font-size: 0.85rem;
+      color: #555;
+      font-style: italic;
+      margin-top: 8px;
+      line-height: 1.4;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .chart-wrap {
+      position: relative;
+      height: 360px;
+      margin-top: 10px;
+    }
+
+    .search-dropdown {
+      position: absolute;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 2px;
+      max-height: 180px;
+      overflow-y: auto;
+      width: 100%;
+      display: none;
+      z-index: 10;
+    }
+
+    .search-dropdown div {
+      padding: 8px 10px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .search-dropdown div:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Individual Faculty Contribution</h1>
+    <span style="font-size: 0.8rem; color: #999;">v1.4</span>
+  </header>
+
+  <main>
+    <!-- Faculty Search -->
+    <section>
+      <h2>Select Faculty</h2>
+
+      <!-- Search Row -->
+      <div class="search-row" style="position: relative;">
+        <div style="flex: 1;">
+          <label>Search Faculty</label>
+          <input id="searchInput" type="text" placeholder="Search Faculty..." />
+          <div id="searchDropdown" class="search-dropdown"></div>
+        </div>
+      </div>
+
+      <div class="or-divider">— or —</div>
+
+      <!-- Dropdown Row -->
+      <div class="dropdown-row">
+        <div style="flex: 1;">
+          <label>Select Department</label>
+          <select id="deptSelect">
+            <option value="">Select Department</option>
+          </select>
+        </div>
+        <div style="flex: 1;">
+          <label>Select Faculty</label>
+          <select id="facultySelect">
+            <option value="">Select Faculty</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faculty Details -->
+    <section id="facultyContent" class="hidden">
+      <h2 id="facultyHeader"></h2>
+
+      <h3>Year-wise Contributions</h3>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead><tr id="facultyYearHead"></tr></thead>
+          <tbody id="facultyYearBody"></tbody>
+        </table>
+      </div>
+
+      <p class="note">
+        Data shown reflects contributions across three academic years; Project count includes consultancy works; 
+        Patent count includes filed and granted patents; PhD count includes admitted and awarded scholars count.
+      </p>
+
+      <h3>3-Year Combined Contributions</h3>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead><tr id="facultyCombinedHead"></tr></thead>
+          <tbody id="facultyCombinedBody"></tbody>
+        </table>
+      </div>
+
+      <h3>Percentage Contribution to Department (3-Year Combined)</h3>
+      <div class="chart-wrap">
+        <canvas id="facultyPercentChart"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const categories = ["SCI", "Scopus", "Projects", "Patents", "Events", "Books", "PhD"];
+    const baseColors = {
+      SCI: "#1f77b4", Scopus: "#ff7f0e", Projects: "#2ca02c",
+      Patents: "#d62728", Events: "#9467bd", Books: "#8c564b", PhD: "#e377c2"
+    };
+
+    let processed = [], combined = [], departments = [], facultyList = [];
+    let selectedDept = "", selectedFaculty = "";
+    let facultyData = [], combinedFaculty = null, facultyPercentChart = null;
+
+    Papa.parse("./facultydata.csv", {
+      download: true,
+      skipEmptyLines: true,
+      complete: (result) => {
+        const rows = result.data;
+        const years = ["2022", "2023", "2024"];
+        for (let i = 1; i < rows.length; i++) {
+          const row = rows[i];
+          const faculty = row[0]?.trim();
+          const dept = row[1]?.trim();
+          if (!faculty || !dept) continue;
+          years.forEach((year, idx) => {
+            const entry = {
+              Faculty: faculty, Department: dept, Year: +year,
+              SCI: +row[2 + idx] || 0, Scopus: +row[5 + idx] || 0,
+              Projects: +row[8 + idx] || 0, Patents: +row[11 + idx] || 0,
+              Events: +row[14 + idx] || 0, Books: +row[17 + idx] || 0,
+              PhD: +row[20 + idx] || 0
+            };
+            processed.push(entry);
+          });
+        }
+
+        const cMap = {};
+        processed.forEach(d => {
+          const key = d.Faculty + "|" + d.Department;
+          if (!cMap[key]) cMap[key] = { Faculty: d.Faculty, Department: d.Department, SCI: 0, Scopus: 0, Projects: 0, Patents: 0, Events: 0, Books: 0, PhD: 0 };
+          categories.forEach(c => cMap[key][c] += d[c]);
+        });
+        combined = Object.values(cMap);
+        departments = [...new Set(processed.map(d => d.Department))].sort();
+        facultyList = combined.map(d => ({ Faculty: d.Faculty, Department: d.Department }));
+        initFilters();
+      }
+    });
+
+    function initFilters() {
+      const deptSelect = document.getElementById('deptSelect');
+      const facultySelect = document.getElementById('facultySelect');
+      const searchInput = document.getElementById('searchInput');
+      const searchDropdown = document.getElementById('searchDropdown');
+
+      departments.forEach(d => deptSelect.insertAdjacentHTML('beforeend', `<option value="${d}">${d}</option>`));
+
+      function refreshFacultySelect() {
+        const list = facultyList.filter(f => !selectedDept || f.Department === selectedDept);
+        facultySelect.innerHTML = `<option value="">Select Faculty</option>` +
+          list.map(f => `<option value="${f.Faculty}">${f.Faculty}</option>`).join('');
+      }
+
+      deptSelect.addEventListener('change', e => {
+        selectedDept = e.target.value;
+        refreshFacultySelect();
+        hideFacultySection();
+      });
+
+      facultySelect.addEventListener('change', e => {
+        selectedFaculty = e.target.value;
+        if (selectedFaculty) showFacultyData(selectedFaculty);
+        else hideFacultySection();
+      });
+
+      searchInput.addEventListener('input', () => {
+        const q = searchInput.value.trim().toLowerCase();
+        if (!q) return searchDropdown.style.display = 'none';
+        const matches = facultyList.filter(f => f.Faculty.toLowerCase().includes(q)).slice(0, 10);
+        if (matches.length === 0) return searchDropdown.style.display = 'none';
+        searchDropdown.innerHTML = matches.map(f => `
+          <div><span>${f.Faculty}</span><span style="color:#777;">${f.Department}</span></div>`).join('');
+        Array.from(searchDropdown.children).forEach((el, i) => el.addEventListener('click', () => {
+          selectedFaculty = matches[i].Faculty;
+          searchInput.value = "";
+          searchDropdown.style.display = 'none';
+          showFacultyData(selectedFaculty);
+        }));
+        searchDropdown.style.display = 'block';
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!searchDropdown.contains(e.target) && e.target !== searchInput) {
+          searchDropdown.style.display = 'none';
+        }
+      });
+    }
+
+    function showFacultyData(name) {
+      facultyData = processed.filter(d => d.Faculty === name).sort((a,b)=>a.Year-b.Year);
+      combinedFaculty = combined.find(d => d.Faculty === name);
+      if (!facultyData.length) return hideFacultySection();
+
+      const section = document.getElementById('facultyContent');
+      const header = document.getElementById('facultyHeader');
+      const yearHead = document.getElementById('facultyYearHead');
+      const yearBody = document.getElementById('facultyYearBody');
+      const combHead = document.getElementById('facultyCombinedHead');
+      const combBody = document.getElementById('facultyCombinedBody');
+
+      header.textContent = `${combinedFaculty.Faculty} – ${combinedFaculty.Department}`;
+      yearHead.innerHTML = `<th>Year</th>${categories.map(c=>`<th>${c}</th>`).join('')}`;
+      yearBody.innerHTML = facultyData.map(r=>`
+        <tr><td>${r.Year}</td>${categories.map(c=>`<td>${r[c]}</td>`).join('')}</tr>
+      `).join('');
+
+      combHead.innerHTML = `<th>Faculty</th><th>Dept</th>${categories.map(c=>`<th>${c}</th>`).join('')}`;
+      combBody.innerHTML = `
+        <tr><td>${combinedFaculty.Faculty}</td><td>${combinedFaculty.Department}</td>
+        ${categories.map(c=>`<td>${combinedFaculty[c]}</td>`).join('')}</tr>`;
+
+      renderFacultyPercentBars();
+      section.classList.remove('hidden');
+    }
+
+    function hideFacultySection() {
+      document.getElementById('facultyContent').classList.add('hidden');
+    }
+
+    function renderFacultyPercentBars() {
+      const ctx = document.getElementById('facultyPercentChart').getContext('2d');
+      if (facultyPercentChart) facultyPercentChart.destroy();
+      if (!combinedFaculty) return;
+
+      const labels = categories;
+      const values = categories.map(cat => {
+        const deptTotal = combined.filter(x => x.Department === combinedFaculty.Department)
+                                 .reduce((sum, x) => sum + x[cat], 0);
+        return deptTotal > 0 ? ((combinedFaculty[cat] / deptTotal) * 100).toFixed(2) : 0;
+      });
+
+      facultyPercentChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: '% Contribution to Department',
+            data: values,
+            backgroundColor: labels.map(c => baseColors[c]),
+            borderRadius: 5
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: { beginAtZero: true, max: 100, title: { display: true, text: 'Percentage (%)' } },
+            x: { title: { display: true, text: 'Category' } }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (ctx) => `${ctx.formattedValue}%`
+              }
+            }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
