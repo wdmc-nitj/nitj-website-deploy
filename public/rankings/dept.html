@@ -5,9 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Institute Contribution — NITJ</title>
+  <title>Institute Achievements — NITJ</title>
 
-  <!-- Base CSS -->
+  <!-- Site CSS -->
   <link rel="stylesheet" href="../style.css" />
 
   <!-- ICONS -->
@@ -17,25 +17,45 @@
 
   <!-- FONTS -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet">
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind (no preflight to preserve navbar design) -->
+  <script>
+    tailwind = { config: { corePlugins: { preflight: false } } };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
+
   <!-- Chart.js + SheetJS -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
   <style>
+    :root {
+      --font1: 'Barlow', sans-serif;
+      --font2: 'Barlow', sans-serif;
+    }
+
+    html,
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: var(--font1) !important;
       background: #fff;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font2) !important;
     }
 
     table {
       border-collapse: collapse;
       width: 100%;
       font-size: 0.95rem;
+      background: #fff;
     }
 
     th,
@@ -48,6 +68,15 @@
       background-color: #f3f4f6;
       font-weight: 600;
       text-align: center;
+    }
+
+    tbody td {
+      text-align: center;
+    }
+
+    tbody td:first-child {
+      text-align: left;
+      font-weight: 500;
     }
 
     #loadingSpinner {
@@ -64,25 +93,33 @@
         transform: rotate(360deg);
       }
     }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(30, 58, 138, 1);
+      border-radius: 10px;
+    }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
   <script src="/template/header.js" type="module"></script>
   <script src="/template/helper.js"></script>
 
-  <div class="main-body flex flex-col gap-8 pt-[112px] md:pt-[144px] lg:pt-[144px] pb-16">
-
-    <!-- Page Heading -->
+  <div class="main-body flex flex-col gap-8 pt-[112px] md:pt-[144px] pb-16">
     <div class="text-center px-4 pt-10">
-      <h1 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-2">Institute Contribution (2022–2024)</h1>
-      <p class="text-gray-600 text-base mb-4">Performance Overview Across All Departments</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-indigo-800 mb-2">
+        Institute Achievements (2022–2024)
+      </h1>
+      <p class="text-gray-600 text-base mb-4">
+        Consolidated performance overview across all departments
+      </p>
     </div>
 
-    <!-- MAIN CONTENT -->
     <main class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
-
       <!-- Loading Overlay -->
       <div id="loadingOverlay" class="fixed inset-0 bg-gray-200/70 flex items-center justify-center z-50">
         <div class="bg-white shadow-md p-6 rounded-lg flex flex-col items-center gap-3">
@@ -95,7 +132,7 @@
       <section>
         <h2 class="text-2xl font-semibold mb-3 text-gray-800">Year-wise Comparison (2022–2024)</h2>
         <div class="overflow-x-auto bg-white border rounded-lg shadow-sm p-3">
-          <table id="yearwiseTable">
+          <table>
             <thead>
               <tr>
                 <th rowspan="2">Department</th>
@@ -118,13 +155,11 @@
             <tbody id="yearwiseBody"></tbody>
           </table>
         </div>
-        <p class="text-sm text-gray-600 mt-1">
-          <span class="text-green-600 font-semibold">Green</span> = Increase,
-          <span class="text-red-600 font-semibold">Red</span> = Decrease (vs previous year),
-          Project count includes consultancy works; Patent count includes filed and granted patents; PhD count includes awarded and admitted scholars.
-        </p>
       </section>
-
+   <p class="text-sm text-gray-600 mt-2">
+          <i class="fa fa-circle-info text-indigo-600 mr-1"></i>
+          Data shown reflects departmental contributions across three academic years; Project count includes consultancy works; Patent count includes filed and granted patents; PhD count includes admitted and awarded count.
+        </p>
       <!-- Combined Table -->
       <section>
         <h2 class="text-2xl font-semibold mb-3 text-gray-800">3-Year Combined Summary</h2>
@@ -146,7 +181,7 @@
         </div>
       </section>
 
-      <!-- Per Faculty Table -->
+      <!-- Per Faculty -->
       <section>
         <div class="flex items-center justify-between mb-3">
           <h2 class="text-2xl font-semibold text-gray-800">Average Per Faculty (3-Year)</h2>
@@ -210,16 +245,11 @@
           </div>
         </section>
       </section>
-
-      <div id="errorBox"
-        class="hidden p-4 text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg"></div>
     </main>
   </div>
 
-  <!-- Footer -->
   <script src="/template/footer.js"></script>
 
-  <!-- JavaScript -->
   <script>
     const XLSX_URL = "./departments_2022_24_yearwise_all.xlsx";
     const FACULTY_CSV_URL = "./faculty.csv";
@@ -234,65 +264,44 @@
     const yearPalette = { 2022: "#3b82f6", 2023: "#10b981", 2024: "#f59e0b" };
 
     (async function init() {
-      try {
-        await loadFacultyCSV();
-        await loadExcel();
-        renderAll();
-      } catch (e) {
-        console.error("Error during initialization:", e);
-        showError("Unable to load data: " + e.message);
-      } finally {
-        document.getElementById("loadingOverlay").style.display = "none";
-      }
+      await loadFacultyCSV();
+      await loadExcel();
+      renderAll();
+      document.getElementById("loadingOverlay").style.display = "none";
     })();
 
     async function loadFacultyCSV() {
-      try {
-        const res = await fetch(FACULTY_CSV_URL);
-        if (!res.ok) throw new Error("Failed to fetch faculty.csv");
-        const text = await res.text();
-        const lines = text.trim().split(/\r?\n/);
-        const headers = lines[0].split(",").map(h => h.trim());
-        const deptIdx = headers.findIndex(h => /department/i.test(h));
-        const countIdx = headers.findIndex(h => /(faculty|count)/i.test(h));
-        lines.slice(1).forEach(line => {
-          const cols = line.split(",");
-          const dept = cols[deptIdx]?.trim();
-          const count = Number(cols[countIdx]) || 0;
-          if (dept && count > 0) facultyCount[dept] = count;
-        });
-      } catch (e) {
-        console.warn("Faculty CSV load failed:", e.message);
-      }
+      const res = await fetch(FACULTY_CSV_URL);
+      if (!res.ok) return;
+      const text = await res.text();
+      const lines = text.trim().split(/\r?\n/);
+      const headers = lines[0].split(",");
+      const deptIdx = headers.findIndex(h => /department/i.test(h));
+      const countIdx = headers.findIndex(h => /(faculty|count)/i.test(h));
+      lines.slice(1).forEach(line => {
+        const cols = line.split(",");
+        const dept = cols[deptIdx]?.trim();
+        const count = Number(cols[countIdx]) || 0;
+        if (dept && count > 0) facultyCount[dept] = count;
+      });
     }
 
     async function loadExcel() {
       const res = await fetch(XLSX_URL);
-      if (!res.ok) throw new Error("Failed to fetch Excel file");
       const buf = await res.arrayBuffer();
       const wb = XLSX.read(buf, { type: "array" });
       const sheet = wb.Sheets[wb.SheetNames[0]];
       const data = XLSX.utils.sheet_to_json(sheet, { defval: 0 });
-
       rows = data.map(r => ({
         Department: String(r.Department || "").trim(),
-        Year: Number(r.Year),
+        Year: +r.Year,
         SCI: +r.SCI, Projects: +r.Projects, Patents: +r.Patents,
-        Events: +r.Events, PhD: +r.PhD,
-        Placement: +r.Placement || 0
+        Events: +r.Events, PhD: +r.PhD, Placement: +r.Placement || 0
       }));
-
       departments = [...new Set(rows.map(r => r.Department))].sort();
     }
 
-    function showError(msg) {
-      const box = document.getElementById("errorBox");
-      box.classList.remove("hidden");
-      box.textContent = msg;
-    }
-
     function renderAll() {
-      if (!rows.length) return showError("No data available to display.");
       renderYearwise();
       renderCombined();
       renderPerFaculty();
@@ -305,23 +314,21 @@
       const comps = ["SCI", "Projects", "Patents", "Events", "PhD", "Placement"];
       const years = [2022, 2023, 2024];
       const byDept = {};
-
       rows.forEach(r => {
         byDept[r.Department] ||= {};
         byDept[r.Department][r.Year] = r;
       });
 
       tbody.innerHTML = departments.map(dept => {
+        const placementVals = years.map(y => byDept[dept][y]?.Placement || 0);
+        const allZeroPlacement = placementVals.every(v => v === 0);
         let html = `<tr><td>${dept}</td>`;
         comps.forEach(comp => {
-          years.forEach((y, i) => {
-            const curr = byDept[dept][y]?.[comp] || 0;
-            const prev = i ? byDept[dept][years[i - 1]]?.[comp] || 0 : null;
-            const cls =
-              prev === null ? "" :
-              curr > prev ? "text-green-600 font-semibold" :
-              curr < prev ? "text-red-600 font-semibold" : "";
-            html += `<td class="text-center ${cls}">${comp === "Placement" ? curr.toFixed(1) : curr}</td>`;
+          years.forEach(y => {
+            const val = byDept[dept][y]?.[comp] || 0;
+            const display = (comp === "Placement" && allZeroPlacement) ? "—" :
+              (comp === "Placement" ? val.toFixed(1) : val);
+            html += `<td>${display}</td>`;
           });
         });
         return html + "</tr>";
@@ -339,10 +346,10 @@
       });
       tbody.innerHTML = departments.map(d => {
         const r = byDept[d];
-        const avg = r.Placement.length ? (r.Placement.reduce((a, b) => a + b, 0) / r.Placement.length).toFixed(1) + "%" : "—";
-        return `<tr><td>${d}</td><td class="text-right">${r.SCI}</td><td class="text-right">${r.Projects}</td>
-        <td class="text-right">${r.Patents}</td><td class="text-right">${r.Events}</td>
-        <td class="text-right">${r.PhD}</td><td class="text-right">${avg}</td></tr>`;
+        const avg = r.Placement.every(v => v === 0) ? "—"
+          : (r.Placement.reduce((a, b) => a + b, 0) / r.Placement.length).toFixed(1) + "%";
+        return `<tr><td>${d}</td><td>${r.SCI}</td><td>${r.Projects}</td>
+        <td>${r.Patents}</td><td>${r.Events}</td><td>${r.PhD}</td><td>${avg}</td></tr>`;
       }).join("");
     }
 
@@ -358,17 +365,11 @@
       const list = departments.map(d => {
         const f = facultyCount[d] || 1;
         const s = sum[d];
-        return {
-          d, f,
-          SCI: s.SCI / f, Projects: s.Projects / f, Patents: s.Patents / f,
-          Events: s.Events / f, PhD: s.PhD / f
-        };
+        return { d, f, SCI: s.SCI / f, Projects: s.Projects / f, Patents: s.Patents / f, Events: s.Events / f, PhD: s.PhD / f };
       }).sort((a, b) => b[metric] - a[metric]);
-      tbody.innerHTML = list.map(r =>
-        `<tr><td>${r.d}</td><td class="text-right">${r.f}</td><td class="text-right">${r.SCI.toFixed(2)}</td>
-         <td class="text-right">${r.Projects.toFixed(2)}</td><td class="text-right">${r.Patents.toFixed(2)}</td>
-         <td class="text-right">${r.Events.toFixed(2)}</td><td class="text-right">${r.PhD.toFixed(2)}</td></tr>`
-      ).join("");
+      tbody.innerHTML = list.map(r => `<tr><td>${r.d}</td><td>${r.f}</td>
+      <td>${r.SCI.toFixed(2)}</td><td>${r.Projects.toFixed(2)}</td><td>${r.Patents.toFixed(2)}</td>
+      <td>${r.Events.toFixed(2)}</td><td>${r.PhD.toFixed(2)}</td></tr>`).join("");
     }
 
     function setupCharts() {
@@ -386,11 +387,14 @@
       if (deptOverYearsChart) deptOverYearsChart.destroy();
       const comps = ["SCI", "Projects", "Patents", "Events", "PhD", "Placement"];
       const years = [2022, 2023, 2024];
-      const data = years.map(y => comps.map(c => rows.find(r => r.Department === dept && r.Year === y)?.[c] || 0));
+      const byDept = rows.filter(r => r.Department === dept);
+      const placementVals = years.map(y => byDept.find(r => r.Year === y)?.Placement || 0);
+      const validComps = placementVals.every(v => v === 0) ? comps.filter(c => c !== "Placement") : comps;
+      const data = years.map(y => validComps.map(c => byDept.find(r => r.Year === y)?.[c] || 0));
       deptOverYearsChart = new Chart(ctx, {
         type: "bar",
         data: {
-          labels: comps,
+          labels: validComps,
           datasets: years.map((y, i) => ({
             label: y,
             data: data[i],
@@ -407,9 +411,8 @@
       if (compByDeptChart) compByDeptChart.destroy();
       const totals = {};
       rows.forEach(r => {
-        const d = r.Department;
-        totals[d] ||= 0;
-        totals[d] += r[comp];
+        totals[r.Department] ||= 0;
+        totals[r.Department] += r[comp];
       });
       const list = departments.map(d => ({
         d,
