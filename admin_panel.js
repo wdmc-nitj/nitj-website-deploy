@@ -3811,9 +3811,7 @@ const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
     try {
       // Check AdminBroUser model
       // test bypass
-      if(email == "ram@gmail.com" && password == "ram"){
-
-      }
+      
       const user = await User.findOne({ email });
       if (user) {
         console.log('Found user in AdminBroUser model:', user.email);

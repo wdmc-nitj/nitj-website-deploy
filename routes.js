@@ -129,7 +129,7 @@ mainRouter.use("/eventsCalendar",eventsCalendarRouter)
 mainRouter.use("/alumni", alumniRouter);
 
 mainRouter.get(`/${adminPath}/ckeditor`, (req, res) => {
-  console.log("dirname: "+ __dirname);
+  
   res.sendFile(__dirname + "/public/add.html");
 });
 
