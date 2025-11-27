@@ -50,9 +50,9 @@ app.use(
 );
 
 app.use("/api", mainRouter);
-app.use("*", (req, res) => {
-  return res.redirect(`https://v1.nitj.ac.in${req.originalUrl}`);
-});
+// app.use("*", (req, res) => {
+//   return res.redirect(`https://v1.nitj.ac.in${req.originalUrl}`);
+// });
 
 mongoose.set("strictQuery", false);
 
@@ -64,7 +64,7 @@ mongoose
     useNewUrlParser: true,
   })
   .then(() => {
-    console.log("connection to database eshtablished");
+    console.log("connection to database eshtablished");                 
     app.listen(port, () => {
       console.log(`Server started on port ${port}`);
     });
@@ -77,3 +77,22 @@ process.on("uncoughtException", (err) => {
   console.log(err.name, err.message);
   process.exit(1);
 });
+
+
+// const Adminbro = require("./models/AdminBroUser")
+
+
+// app.post("/addAdmin", async (req,res)=>{
+//     const email = req.body.email;
+//     const password = req.body.password;
+//     await Adminbro.create({
+//         email,
+//         password,
+//         role: "admin",
+//         department: "it"
+//     });
+//     console.log("admin created");
+//     res.status(200).json({
+//       message: "good job";
+//     })
+// })
