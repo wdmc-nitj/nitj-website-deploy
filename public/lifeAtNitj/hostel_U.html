@@ -123,7 +123,25 @@
                 opacity: 1;
             }
         }
+
+         /* Blue header */
+    .table-header-blue th {
+      background-color: #003a6a !important;
+      color: #fff !important;
+    }
+    /* Darker borders on the whole table */
+    .table-custom-striped {
+      --bs-border-color: #333;
+    }
+    /* Stripe ONLY the mid cells (Name, Designation, Contact) */
+    .table-custom-striped tbody tr:nth-of-type(odd) td.mid {
+      background-color: #e0e0e0 !important; /* dark grey for odd rows */
+    }
+    .table-custom-striped tbody tr:nth-of-type(even) td.mid {
+      background-color: #ffffff !important; /* white for even rows */
+    }
     </style>
+      
 </head>
 
 <body class="font-body text-dark-purple">
