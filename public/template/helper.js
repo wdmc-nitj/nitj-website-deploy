@@ -225,7 +225,7 @@ fetch('/api/navbar')
       }
     });
   })
-dept_list = ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai'];
+dept_list = ['bt', 'ch', 'cy', 'ce', 'cw', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai'];
 for (let dept of dept_list) {
   fetch(`/api/dept/${dept}/Faculty`)
   .then((response) => response.json())

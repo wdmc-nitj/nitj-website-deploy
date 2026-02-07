@@ -32,7 +32,7 @@ const PublicationSchema = new mongoose.Schema(
     },
     sourceOfInfoDepartment: {
       type: String,
-      enum: ['bt', 'ch', 'cy', 'ce', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf']
+      enum: ['bt', 'ch', 'cy', 'ce', 'cw', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf']
     },
     updateLogs: {
       type: Array,
