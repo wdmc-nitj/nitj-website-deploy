@@ -34,7 +34,7 @@ const obj = {
     "Upcoming Events",
     "Centers of Excellence",
   ],
-  Alumni: ["SARC"],
+  Alumni: ["NITJAA"],
   LifeatNITJ: [
     "Cultural Club",
     "Cultural club",
