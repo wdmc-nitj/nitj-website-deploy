@@ -1085,7 +1085,7 @@ id="nav-menu" style="display: none">
                               <a href="/clubs/yoga.html" class="hover:text-[#FF6600]">
                                 Heartfulness Mediation Club
                               </a>
-                              <a href="/clubs/prayas.html" class="hover:text-[#FF6600]">
+                              <a href="/clubs/prayaas.html" class="hover:text-[#FF6600]">
                                 Prayaas - A Campaign for Smile
                               </a>
                               <a href="/clubs/rtist.html" class="hover:text-[#FF6600]">
