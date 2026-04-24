@@ -25,7 +25,7 @@ const PublicationSchema = new mongoose.Schema(
     },
     department: {
       type: String,
-      enum: ['bt', 'ch', 'cy', 'ce', 'cw', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai']
+      enum: ['bt', 'ch', 'cy', 'ce', 'cw', 'cse', 'ee', 'ece', 'hm', 'ipe', 'it', 'ice', 'ma', 'me', 'ph', 'tt', 'cf','cee','cai','itep']
     },
     show: { type: Boolean, default: true },
     order: {
