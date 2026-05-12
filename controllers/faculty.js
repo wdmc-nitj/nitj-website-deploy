@@ -65,20 +65,49 @@ const deleteFaculty = async (req, res) => {
     }
 }
 
+// const updateFaculty = async (req, res) => {
+//     try {
+//         if(req.user.login && req.user.isFaculty){
+//             const result = await Faculty.findById(req.params.id);
+//             await result.update({$set:{[req.query.q]:req.body}});
+//             return res.status(200).json("Faculty updated succesfully")
+//         }
+//         return res.status(401).json("Faculty not Updated");
+//     } catch (error) {
+//         console.log(error);
+//         res.status(400).json("Error: " + error);
+
+//     }
+// }
+
 const updateFaculty = async (req, res) => {
     try {
         if(req.user.login && req.user.isFaculty){
-            const result = await Faculty.findById(req.params.id);
-            await result.update({$set:{[req.query.q]:req.body}});
-            return res.status(200).json("Faculty updated succesfully")
+            const fieldName = req.query.q;
+            const updateData = req.body;
+            
+            if (!fieldName) {
+                return res.status(400).json("Error: Field name (q parameter) is required");
+            }
+            
+            const faculty = await Faculty.findById(req.params.id);
+            if (!faculty) {
+                return res.status(404).json("Error: Faculty not found");
+            }
+            
+            faculty[fieldName] = updateData;
+            await faculty.save();
+            
+            console.log(`Successfully updated ${fieldName} for faculty: ${faculty.name}`);
+            return res.status(200).json("Faculty updated successfully");
         }
-        return res.status(401).json("Faculty not Updated");
+        return res.status(401).json("Faculty not Updated - Unauthorized");
     } catch (error) {
-        console.log(error);
-        res.status(400).json("Error: " + error);
-
+        console.error("Error in updateFaculty:", error);
+        res.status(400).json("Error: " + error.message);
     }
 }
+
 
 const updateFacultyPeronalDetails = async (req, res) => {
     try {
