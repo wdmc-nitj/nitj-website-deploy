@@ -412,29 +412,24 @@ const Schema = new mongoose.Schema({
         ],
         default: []
     },
-    personal_link: {
-        type: {
-            "Google Scholar Link": {
-                type: String
-            },
-            "Personal Link": {
-                type: [
-                    {
-                        title: {
-                            type: String
-                        },
-                        link: {
-                            type: String
-                        }
-                    }
-                ]
-            }
+
+personal_link: {
+    type: {
+        "Google Scholar Link": {
+            type: String,
+            default: ""
         },
-        default: {
-            "Google Scholar Link": "",
-            "Personal Link": []
+        "Personal Link": {
+            type: String,
+            default: ""
         }
     },
+    default: {
+        "Google Scholar Link": "",
+        "Personal Link": ""
+    }
+},
+
     journal: {
         type: [
             {
