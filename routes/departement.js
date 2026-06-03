@@ -54,6 +54,13 @@ const {
   getByDeptPhdScholar,
 } = require("../controllers/phdScholar");
 const {
+  getByIdAdjunctFaculty,
+  addAdjunctFaculty,
+  updateAdjunctFaculty,
+  deleteAdjunctFaculty,
+  getByDeptAdjunctFaculty,
+} = require("../controllers/adjunctFaculty");
+const {
   getAllPlacement,
   getByIdPlacement,
   addPlacement,
@@ -140,6 +147,12 @@ Router.get("/:dept/PhdScholar/:id",getByIdPhdScholar);
 // Router.post("/:dept/PhdScholar", addPhdScholar);
 // Router.put("/:dept/PhdScholar/:id", updatePhdScholar);
 // Router.delete("/:dept/PhdScholar/:id", deletePhdScholar);
+
+Router.get("/:dept/AdjunctFaculty", getByDeptAdjunctFaculty);
+Router.get("/:dept/AdjunctFaculty/:id", getByIdAdjunctFaculty);
+// Router.post("/:dept/AdjunctFaculty", addAdjunctFaculty);
+// Router.put("/:dept/AdjunctFaculty/:id", updateAdjunctFaculty);
+// Router.delete("/:dept/AdjunctFaculty/:id", deleteAdjunctFaculty);
 
 Router.get("/:dept/Staff", getByDeptStaff);
 // Router.post("/:dept/Staff", addStaff);
