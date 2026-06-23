@@ -33,7 +33,7 @@ document.write(`
                         <div class="text-l text-white">
                             <a href="https://twitter.com/NITJofficial?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
                                 target="_blank">
-                                <i class="fab fa-twitter text-[21px] hover:text-yellow-300"></i></a>
+                                <i class="fab fa-x-twitter text-[21px] hover:text-yellow-300"></i></a>
                         </div>
                         <div class="text-l text-white">
                             <a href="https://in.linkedin.com/school/dr-b-r-ambedkar-national-institute-of-technology-jalandhar-official/"
