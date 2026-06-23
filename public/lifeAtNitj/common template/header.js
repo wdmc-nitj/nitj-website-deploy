@@ -242,7 +242,7 @@ id="nav-menu" style="display: none">
         <div class="hidden sm:flex basis-1/6 gap-4 flex-row items-center">
           <a href="https://www.facebook.com/NITJofficial"><i class="fa-brands fa-facebook text-lg"></i></a>
           <a href="https://www.instagram.com/nitjofficial/"><i class="fa-brands fa-instagram text-lg"></i></a>
-          <a href="https://twitter.com/NITJofficial"><i class="fa-brands fa-x-twitter text-lg"></i></a>
+          <a href="https://twitter.com/NITJofficial"><i class="fa-brands fa-twitter text-lg"></i></a>
         </div>
         <div class="flex sm:basis-1/3 basis-1/2 justify-center items-center">
           <span class="material-symbols-outlined" style="
