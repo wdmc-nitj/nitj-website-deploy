@@ -154,12 +154,14 @@
             display: block;
         }
 
-        .icon-pair {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 60px;
-        }
+.icon-pair {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+}
+
 
         .action-cell > a {
             display: inline-flex;
@@ -243,21 +245,25 @@
                                     </thead>
                                     <tbody>
                                         <!-- First row: October to December 2025 - has TWO icons (flipbook + PDF) -->
-                                        <tr>
-                                            <td><span class="newsletter-name">NITJ Newsletter (October to December 2025)</span></td>
-                                            <td>
-                                                <div class="action-cell">
-                                                    <span class="icon-pair">
-                                                        <a href="https://v1.nitj.ac.in/newsletters/oct_dec_2025/" target="_blank">
-                                                            <img src="https://nitj.ac.in/files/1783052955059-flipbook.png" alt="flipbook" />
-                                                        </a>
-                                                        <a href="https://drive.google.com/file/d/1Dvic3e_ABBaJIZXcKLTcmMd6WLWp-Ll2/view?usp=sharing" target="_blank">
-                                                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
-                                                        </a>
-                                                    </span>
-                                                </div>
-                                            </td>
-                                        </tr>
+<tr>
+    <td><span class="newsletter-name">NITJ Newsletter (October to December 2025)</span></td>
+    <td style="padding: 0;">
+        <table style="width: 100%; border-collapse: collapse; height: 100%;">
+            <tr>
+                <td style="text-align: center; padding: 8px 4px; border-right: 1px solid #dee2e6; width: 50%;">
+                    <a href="https://v1.nitj.ac.in/newsletters/oct_dec_2025/" target="_blank">
+                        <img src="https://nitj.ac.in/files/1783052955059-flipbook.png" alt="flipbook" style="height: 30px; width: 30px; display: block; margin: 0 auto;" />
+                    </a>
+                </td>
+                <td style="text-align: center; padding: 8px 4px; width: 50%;">
+                    <a href="https://drive.google.com/file/d/1Dvic3e_ABBaJIZXcKLTcmMd6WLWp-Ll2/view?usp=sharing" target="_blank">
+                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" style="height: 30px; width: 30px; display: block; margin: 0 auto;" />
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
                                         <!-- All other rows: single PDF icon -->
                                         <tr>
                                             <td><span class="newsletter-name">NITJ Newsletter (July to September 2025)</span></td>
@@ -543,7 +549,7 @@
                                 </table>
                             </div>
 
-                            <p>&nbsp;</p>
+
                         </div>
                     </div>
                 </div>
