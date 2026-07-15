@@ -86,6 +86,116 @@
             background-position: center;
             background-size: cover;
         }
+
+        /* Table styling */
+        .newsletter-table {
+            width: 60%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            background: white;
+        }
+
+        .newsletter-table thead tr {
+            background-color: #003a6a;
+            color: white;
+        }
+
+        .newsletter-table thead th {
+            padding: 14px 16px;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            text-align: left;
+            border: 1px solid #003a6a;
+        }
+
+        .newsletter-table thead th:first-child {
+            width: 45%;
+        }
+        .newsletter-table thead th:last-child {
+            width: 25%;
+            text-align: center;
+        }
+
+        .newsletter-table tbody td {
+            padding: 12px 16px;
+            border: 1px solid #dee2e6;
+            vertical-align: middle;
+            background-color: white;
+        }
+
+        .newsletter-table tbody tr:nth-child(even) td {
+            background-color: #f5f7fa;
+        }
+
+        .action-cell {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .action-cell a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.15s;
+        }
+        .action-cell a:hover {
+            opacity: 0.7;
+        }
+
+        .action-cell img {
+            height: 30px;
+            width: 30px;
+            object-fit: contain;
+            display: block;
+        }
+
+.icon-pair {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+}
+
+
+        .action-cell > a {
+            display: inline-flex;
+        }
+
+        .newsletter-name {
+            font-weight: 500;
+            color: #1e2a41;
+        }
+
+        @media (max-width: 650px) {
+            .newsletter-table thead th,
+            .newsletter-table tbody td {
+                padding: 10px 8px;
+                font-size: 0.85rem;
+            }
+            .action-cell img {
+                height: 26px;
+                width: 26px;
+            }
+            .icon-pair {
+                gap: 14px;
+            }
+            .newsletter-table thead th:first-child {
+                width: 65%;
+            }
+            .newsletter-table thead th:last-child {
+                width: 35%;
+            }
+        }
+
+        .newsletter-table tbody tr:last-child td {
+            border-bottom: 1px solid #dee2e6;
+        }
     </style>
 </head>
 
@@ -96,473 +206,356 @@
     <div class="main-body flex flex-col gap-8 lg:gap-12 pt-[112px] md:pt-[144px] lg:pt-[144px] lg:mb-32">
         <div class="titlebg">
           <div class="container flex flex-col justify-center items-start h-[224px] py-[48px]">
-            <!-- px-4 lg:px-[11%] -->
             <p class="font2 font-bold text-[52px] lg:text-[68px] uppercase text-white leading-[1]">Newsletter</p>
           </div>
           <nav class="flex bg-gray-200 py-[8px] text-black" aria-label="Breadcrumb">
             <ol class="container inline-flex items-center">
-<li class="inline-flex items-center">
-    <a href="../index.html"
-       class="inline-flex items-center text-lg font-medium hover:text-gray-900">
-        Home
-    </a>
-</li>
-              <li aria-current="page">
-                <div class="inline-flex items-center">
-                  <i style=" color: rgb(128, 128, 128);
-                            font-size: 12px;
-                            margin-left: 12px;
-                          " class="fa-solid fa-angle-right ml-2"></i>
-                  <a href="#" class="text-lg font-medium ml-2">Newsletter</a>
-                </div>
-              </li>
+                <li class="inline-flex items-center">
+                    <a href="../index.html"
+                       class="inline-flex items-center text-lg font-medium hover:text-gray-900">
+                        Home
+                    </a>
+                </li>
+                <li aria-current="page">
+                    <div class="inline-flex items-center">
+                        <i style="color: rgb(128, 128, 128); font-size: 12px; margin-left: 12px;" class="fa-solid fa-angle-right ml-2"></i>
+                        <a href="#" class="text-lg font-medium ml-2">Newsletter</a>
+                    </div>
+                </li>
             </ol>
           </nav>
         </div>
 
-<div class="container col-md-8">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="widget-item" style="min-height: 1123px;">
-                <div class="menu-content download-links overflow-auto">
+        <div class="container col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget-item" style="min-height: 1123px;">
+                        <div class="menu-content download-links overflow-auto">
+                            <h2 class="mb-8 text-left font-bold text-2xl text-accent">
+                                All Newsletters
+                            </h2>
 
-                    <h2 class="mb-8 text-left font-bold text-2xl text-accent">
-                        All Newsletters
-                    </h2>
+                            <div class="table-responsive">
+                                <table class="newsletter-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Newsletter</th>
+                                            <th style="text-align: center;">View / Download</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- First row: October to December 2025 - has TWO icons (flipbook + PDF) -->
+<tr>
+    <td><span class="newsletter-name">NITJ Newsletter (October to December 2025)</span></td>
+    <td style="padding: 0;">
+        <table style="width: 100%; border-collapse: collapse; height: 100%;">
+            <tr>
+                <td style="text-align: center; padding: 8px 4px; border-right: 1px solid #dee2e6; width: 50%;">
+                    <a href="https://v1.nitj.ac.in/newsletters/oct_dec_2025/" target="_blank">
+                        <img src="https://nitj.ac.in/files/1783052955059-flipbook.png" alt="flipbook" style="height: 30px; width: 30px; display: block; margin: 0 auto;" />
+                    </a>
+                </td>
+                <td style="text-align: center; padding: 8px 4px; width: 50%;">
+                    <a href="https://drive.google.com/file/d/1Dvic3e_ABBaJIZXcKLTcmMd6WLWp-Ll2/view?usp=sharing" target="_blank">
+                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" style="height: 30px; width: 30px; display: block; margin: 0 auto;" />
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+                                        <!-- All other rows: single PDF icon -->
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (July to September 2025)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://drive.google.com/file/d/15G0iUutPGiRca6uGhvMVTE8Vqkoy0cx9/view" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (April to June 2025)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://drive.google.com/file/d/1EUZyVfuq4zQ7gcDxI55CVKS-gyV5Gl3i/view" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (January to March 2025)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://drive.google.com/file/d/1_sukv01GDUSP5-jqOfyzcPBD7IEebfN6/view" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (October to December 2024)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://drive.google.com/file/d/1sAwud_nu_LuI7W_tvM8xoTFW_mGgWT8h/view" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (July to September 2024)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://drive.google.com/file/d/12yztGSVMU1g5p0qZURvob5SDnumQXIx7/view" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (April to June 2024)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://drive.google.com/file/d/18uIGys1S4RZIS6-eZ0jA-UJonAfP6Xll/view" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (January to March 2024)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://drive.google.com/file/d/1bdfCNu3Yoo2X2fXyMA8Zyxvn7gIH2VgG/view" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (October to December 2023)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://drive.google.com/file/d/13MzS216T9u0muxayB0cpM8u-OJHNcCzB/view" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (July to September 2023)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://drive.google.com/file/d/1Z0h0FoCtr_0L5L5rmGkO5zSX40YQVvk6/view" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (April to June 2023)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://drive.google.com/file/d/1jjzoZAU3sykwVjJY1Mcjpl8LHQOQrnce/view" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (January to March 2023)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://drive.google.com/file/d/1u8bOKmr8wvYLjvF8sHhHiBFs3RFYexBP/view" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (October to December 2022)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/18.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (July to September 2022)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/17.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (April to June 2022)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/16.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (January to March 2022)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/15.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (October to December 2021)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/14.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (July to September 2021)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/13.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (April to June 2021)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/12.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (January to March 2021)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/11.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (October to December 2020)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/10.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (July to September 2020)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/9.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (April to June 2020)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/8.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (January to March 2020)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/7.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (October to December 2019)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/6.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (July to September 2019)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/5.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">First R&D Newsletter of NIT Jalandhar</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/4.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (March to June 2019)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/3.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="newsletter-name">NITJ Newsletter (July to December 2014)</span></td>
+                                            <td>
+                                                <div class="action-cell">
+                                                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/1.pdf" target="_blank">
+                                                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" alt="PDF" />
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
-<table cellspacing="0" style="border-collapse:collapse; width:70%">
-    <thead>
-        <tr class="bg-accent w-[111px] h-[1px] lg:h-[5px] text-white">
-            <td colspan="1" rowspan="1" style="background-color:#003a6a; border-color:#dee2e6 #dee2e6 #dee2e6 currentcolor; border-style:solid solid solid none; border-width:1px 1px 2px medium; vertical-align:center; width:40%">
-                <p style="text-align:center"><strong>Newsletter</strong></p>
-            </td>
-            <td colspan="2" rowspan="1" style="background-color:#003a6a; border-color:#dee2e6 #dee2e6 #dee2e6 currentcolor; border-style:solid solid solid none; border-width:1px 1px 2px medium; vertical-align:center; width:30%">
-                <p style="text-align:center"><strong>View / Download</strong></p>
-            </td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>NITJ Newsletter (October to December 2025)</td>
-            <td style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/newsletters/oct_dec_2025/">
-                        <center>
-                            <img alt="" src="https://nitj.ac.in/files/1783052955059-flipbook.png" style="height:35px; width:35px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-            <td style="text-align:center">
-                <a href="https://drive.google.com/file/d/1Dvic3e_ABBaJIZXcKLTcmMd6WLWp-Ll2/view?usp=sharing">
-                    <center>
-                        <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                    </center>
-                </a>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (July to September 2025)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://drive.google.com/file/d/15G0iUutPGiRca6uGhvMVTE8Vqkoy0cx9/view">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (April to June 2025)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://drive.google.com/file/d/1EUZyVfuq4zQ7gcDxI55CVKS-gyV5Gl3i/view">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (January to March 2025)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://drive.google.com/file/d/1_sukv01GDUSP5-jqOfyzcPBD7IEebfN6/view">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (October to December 2024)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://drive.google.com/file/d/1sAwud_nu_LuI7W_tvM8xoTFW_mGgWT8h/view">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (July to September 2024)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://drive.google.com/file/d/12yztGSVMU1g5p0qZURvob5SDnumQXIx7/view">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (April to June 2024)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://drive.google.com/file/d/18uIGys1S4RZIS6-eZ0jA-UJonAfP6Xll/view">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (January to March 2024)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://drive.google.com/file/d/1bdfCNu3Yoo2X2fXyMA8Zyxvn7gIH2VgG/view">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (October to December 2023)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://drive.google.com/file/d/13MzS216T9u0muxayB0cpM8u-OJHNcCzB/view">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (July to September 2023)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://drive.google.com/file/d/1Z0h0FoCtr_0L5L5rmGkO5zSX40YQVvk6/view">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (April to June 2023)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://drive.google.com/file/d/1jjzoZAU3sykwVjJY1Mcjpl8LHQOQrnce/view">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (January to March 2023)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://drive.google.com/file/d/1u8bOKmr8wvYLjvF8sHhHiBFs3RFYexBP/view">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (October to December 2022)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/18.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (July to September 2022)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/17.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (April to June 2022)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/16.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (January to March 2022)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/15.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (October to December 2021)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/14.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (July to September 2021)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/13.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (April to June 2021)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/12.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (January to March 2021)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/11.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (October to December 2020)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/10.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (July to September 2020)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/9.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (April to June 2020)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/8.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (January to March 2020)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/7.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (October to December 2019)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/6.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (July to September 2019)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/5.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>First R&amp;D Newsletter of NIT Jalandhar</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/4.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color:#e0e0e0; border-bottom:1px solid #dee2e6; border-left:none; border-right:1px solid #dee2e6; border-top:none; vertical-align:center">
-                <p>NITJ Newsletter (March to June 2019)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/3.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <p>NITJ Newsletter (July to December 2014)</p>
-            </td>
-            <td colspan="2" rowspan="1" style="text-align:center">
-                <p>
-                    <a href="https://v1.nitj.ac.in/NITJ/WDMC/1.pdf">
-                        <center>
-                            <img src="https://v1.nitj.ac.in/nitj_files/links/pdf_icon_55519.png" style="height:30px; width:30px" />
-                        </center>
-                    </a>
-                </p>
-            </td>
-        </tr>
-    </tbody>
-</table>
 
-<p>&nbsp;</p>
-
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
     
     <script src="app.js"></script>
     <script src="../template/footer.js"></script>
