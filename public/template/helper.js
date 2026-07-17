@@ -334,8 +334,17 @@ function waitForElm(selector) {
   });
 }
 
+// function googleTranslateElementInit() {
+//   new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+// }
+
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL}, 'google_translate_element');
+  waitForElm('#google_translate_element').then((element) => {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en', 
+      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+    }, 'google_translate_element');
+  });
 }
 
 // once google translate element is initialized, remove the google translate logo
