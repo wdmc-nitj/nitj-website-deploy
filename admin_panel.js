@@ -3741,8 +3741,8 @@ const AdminBroOptions = {
                 });
               }
     
-              console.log('Incoming request payload:', request.payload);
-    
+              // Do not log the payload here: it contains the plaintext password.
+
               if (password) {
                 try {
                   const bcrypt = require('bcrypt');
@@ -3842,8 +3842,7 @@ const admin_panel = new AdminBro(AdminBroOptions);
 // Build and use a router which will handle all AdminBro routes
 const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
   authenticate: async (email, password) => {
-    console.log('Entering authenticate function');
-    console.log('Email:', email, 'Password:', password);
+    // Do not log credentials. (Previously logged email + plaintext password.)
 
     try {
       // Check AdminBroUser model
@@ -3942,7 +3941,9 @@ const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
       return false;
     }
   },
-  cookiePassword: "some-secret-password-used-to-secure-cookie",
+  // Set COOKIE_SECRET in .env to a long random value and rotate it now — the old
+  // hardcoded value was committed to the repo and can be used to forge sessions.
+  cookiePassword: process.env.COOKIE_SECRET || "some-secret-password-used-to-secure-cookie",
 });
 
 module.exports = { admin_panel, router };
