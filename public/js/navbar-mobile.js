@@ -1,3 +1,19 @@
+// --- XSS guards for values coming from /api/navbar ---
+function escapeHtml(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+function safeUrl(url) {
+  const raw = String(url == null ? '' : url)
+  const normalized = raw.replace(/\s+/g, '').toLowerCase()
+  if (/^(javascript|vbscript|data):/.test(normalized)) return '#'
+  return escapeHtml(raw)
+}
+
 var sideMenu = document.querySelector('#nav-menu')
 var crossBtn = document.querySelector('#nav-menu .menu-btn')
 var leastpri = 5
@@ -186,7 +202,7 @@ function navbarmobilehelper(array, dropdownbutton, i, dropdown1) {
     'class',
     'subDropButtons capitalize border border-gray-300 z-10 w-full inline-flex flex-shrink-0 items-center py-1.5 px-4 text-center text-sm font-medium bg-white text-black hover:bg-blue-800 focus:bg-blue-800 focus:text-white'
   )
-  subdropdownbutton.innerHTML = `${array[0]}
+  subdropdownbutton.innerHTML = `${escapeHtml(array[0])}
         <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd"
             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -213,7 +229,7 @@ function navbarmobilehelper(array, dropdownbutton, i, dropdown1) {
       'class',
       'inline-flex w-full py-1 px-4 border border-gray hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-left'
     )
-    ListEle.innerHTML = `<a href="${array[i]['link']}">${array[i]['name']}</a>
+    ListEle.innerHTML = `<a href="${safeUrl(array[i]['link'])}">${escapeHtml(array[i]['name'])}</a>
       `
     subListEle.appendChild(ListEle)
   }
