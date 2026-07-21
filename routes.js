@@ -86,15 +86,24 @@ function sanitizeDeep(value) {
 }
 
 // The shared secret the trusted admin pages send in the "authorization" header.
-// NOTE: this value is also present in client-side HTML, so it is only a first
-// line of defense. Rotate it (set SECRET_KEY in .env) and move to session-based
-// auth. The sanitizer above is the layer that holds even if this secret leaks.
-const WRITE_SECRET = process.env.SECRET_KEY || "HareKrishna";
+// Sourced from .env (SECRET_KEY) — no hardcoded fallback, so the value that was
+// committed to the repo ("HareKrishna") no longer works. If SECRET_KEY is unset
+// the guard fails closed and rejects every write.
+// NOTE: this secret still appears in the public/*.html admin pages, so it is a
+// deterrent, not real access control. Move to session-based auth to remove it
+// from client code entirely. The sanitizer below holds even if it leaks.
+const WRITE_SECRET = process.env.SECRET_KEY;
 
 mainRouter.use((req, res, next) => {
   // Reads are public.
   if (req.method === "GET" || req.method === "HEAD" || req.method === "OPTIONS") {
     return next();
+  }
+
+  // Fail closed if the secret was never configured.
+  if (!WRITE_SECRET) {
+    console.error("SECRET_KEY is not set — rejecting all write requests.");
+    return res.status(503).json({ message: "Server not configured for writes." });
   }
 
   // Gate all state-changing requests behind the admin shared secret.

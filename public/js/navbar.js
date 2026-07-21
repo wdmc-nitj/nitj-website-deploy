@@ -1,6 +1,26 @@
 // getNavbar.js
 import createNavMob from './navbar-mobile.js';
 
+// --- XSS guards for values coming from /api/navbar ---
+// Escape text before putting it inside innerHTML.
+function escapeHtml(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+// Allow only safe URL schemes in href; block javascript:/data:/vbscript:.
+// Control chars (0x00-0x20) are stripped first so "java\tscript:" style tricks
+// cannot slip a dangerous scheme past the check.
+function safeUrl(url) {
+  const raw = String(url == null ? '' : url);
+  const normalized = raw.replace(/\s+/g, '').toLowerCase();
+  if (/^(javascript|vbscript|data):/.test(normalized)) return '#';
+  return escapeHtml(raw);
+}
+
 export default async function getNavbar() {
   const data = await fetch('/api/navbar').then(r => r.json());
   createNav(data);
@@ -111,7 +131,7 @@ function navbarhelper(array, dropdown) {
     'rounded-b-xl h-full overflow-clip bg-accent hover:bg-orange-500 uppercase'
   );
   head.setAttribute('id', 'head');
-  head.innerHTML = `<div class="p-2 text-center">${array[0]}</div>`;
+  head.innerHTML = `<div class="p-2 text-center">${escapeHtml(array[0])}</div>`;
 
   const listdiv = document.createElement('div');
   listdiv.setAttribute('class', 'h-full rounded-b-xl bg-white normal-case');
@@ -126,7 +146,7 @@ function navbarhelper(array, dropdown) {
     listItem.setAttribute('class', 'hover:text-[#FF6600]');
     listItem.innerHTML = `<a ${
       array[i]?.newPage ? "target='_blank'" : ''
-    } href="${array[i].link}">${array[i].name}</a>`;
+    } href="${safeUrl(array[i].link)}">${escapeHtml(array[i].name)}</a>`;
     list.appendChild(listItem);
   }
 
@@ -159,7 +179,7 @@ function enableTouchDropdowns() {
   // Find all the dropdown menus
   const dropdownMenus = document.querySelectorAll('.dropdown-menu');
   console.log(`Found ${dropdownMenus.length} dropdown menus`);
-  
+
   // Configure all dropdown menus for touch
   dropdownMenus.forEach(menu => {
     // Remove hover behavior and ensure proper initial state
@@ -167,33 +187,33 @@ function enableTouchDropdowns() {
     menu.classList.add('hidden');
     menu.style.display = 'none';
   });
-  
+
   // Find all menu containers (with ID menu-1, menu-2, etc.)
   const menuContainers = document.querySelectorAll('[id^="menu-"]');
-  
+
   menuContainers.forEach(container => {
     // Skip the menu-content container which has different structure
     if (container.id === 'menu-content') return;
-    
+
     // Find the direct children - first should be heading, second should be dropdown
     const children = Array.from(container.children);
     if (children.length < 2) {
       console.log(`Container ${container.id} doesn't have enough children:`, children.length);
       return;
     }
-    
+
     const heading = children[0]; // First child should be the heading
     const dropdown = children[1]; // Second child should be the dropdown
-    
+
     console.log(`Setting up ${container.id}:`, heading.id, 'with dropdown:', dropdown.className);
-    
+
     // Attach click handler to the heading
     heading.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      
+
       console.log(`${heading.id || heading.textContent} clicked!`);
-      
+
       // Close all other dropdowns first
       dropdownMenus.forEach(menu => {
         if (menu !== dropdown) {
@@ -201,7 +221,7 @@ function enableTouchDropdowns() {
           menu.style.display = 'none';
         }
       });
-      
+
       // Toggle this dropdown
       const isCurrentlyHidden = dropdown.classList.contains('hidden');
       if (isCurrentlyHidden) {
@@ -214,13 +234,13 @@ function enableTouchDropdowns() {
         dropdown.style.display = 'none';
       }
     });
-    
+
     // Prevent clicks in dropdown from closing it
     dropdown.addEventListener('click', function(e) {
       e.stopPropagation();
     });
   });
-  
+
   // Close all dropdowns when clicking elsewhere
   document.addEventListener('click', function(e) {
     // If the clicked element is not inside any menu container
