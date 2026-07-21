@@ -25,11 +25,29 @@ exports.upload = async (req, res) => {
 exports.delete = async (req, res) => {
   try {
     let link = req.body.link;
-    
-    if(link){
-      link = link.substr(currentUrl.length+1);
 
-      await fs.unlink(path.join(__dirname, "..", "..", "nitj_files", link), (err) => {
+    if(link){
+      // Only accept links that actually point at our files host, then reduce to
+      // a bare filename so "../" traversal cannot escape the nitj_files dir.
+      if (typeof link !== "string" || !link.startsWith(currentUrl + "/")) {
+        return res.status(400).json({
+          status: false,
+          message: "Invalid file URL.",
+        });
+      }
+      link = path.basename(link.substr(currentUrl.length + 1));
+
+      const filesDir = path.join(__dirname, "..", "..", "nitj_files");
+      const target = path.join(filesDir, link);
+      // Final guard: resolved path must stay inside nitj_files.
+      if (path.relative(filesDir, target).startsWith("..") || path.isAbsolute(path.relative(filesDir, target))) {
+        return res.status(400).json({
+          status: false,
+          message: "Invalid file path.",
+        });
+      }
+
+      await fs.unlink(target, (err) => {
         if(err){
           // just one error for now
           return res.status(200).json({
