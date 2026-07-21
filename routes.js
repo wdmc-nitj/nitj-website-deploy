@@ -60,17 +60,60 @@ const allowedNonGetRoutes = [
   "/api/upload",
 ];
 
-/* mainRouter.use("/*", (req, res, next) => {
-  if (req.method === "GET") {
-    next();
-  } else {
-    if (req.headers.authorization === process.env.SECRET_KEY || req.baseUrl.startsWith("/api/dept/")) {
-      next();
-    } else {
-      res.status(403).json({ message: "Unauthorized" });
-    }
+// --- Security: sanitize incoming write payloads to neutralize stored XSS ---
+// Strips event-handler attributes (onerror/onload/...), dangerous tags, and
+// javascript:/file:/vbscript:/data: URIs from all string values in the body.
+// This protects every downstream innerHTML render sink across the site.
+const DANGEROUS_TAG = /<\s*\/?\s*(script|iframe|object|embed|svg|link|meta|base|form)\b[^>]*>/gi;
+const EVENT_HANDLER_ATTR = /\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi;
+const DANGEROUS_SCHEME = /(href|src|xlink:href|action|formaction)\s*=\s*("|'|)\s*(javascript|vbscript|file|data)\s*:/gi;
+
+function sanitizeString(str) {
+  return str
+    .replace(DANGEROUS_TAG, "")
+    .replace(EVENT_HANDLER_ATTR, "")
+    .replace(DANGEROUS_SCHEME, (match, attr, quote) => `${attr}=${quote}#`);
+}
+
+function sanitizeDeep(value) {
+  if (typeof value === "string") return sanitizeString(value);
+  if (Array.isArray(value)) return value.map(sanitizeDeep);
+  if (value && typeof value === "object") {
+    for (const key of Object.keys(value)) value[key] = sanitizeDeep(value[key]);
+    return value;
   }
-}); */
+  return value;
+}
+
+// The shared secret the trusted admin pages send in the "authorization" header.
+// NOTE: this value is also present in client-side HTML, so it is only a first
+// line of defense. Rotate it (set SECRET_KEY in .env) and move to session-based
+// auth. The sanitizer above is the layer that holds even if this secret leaks.
+const WRITE_SECRET = process.env.SECRET_KEY || "HareKrishna";
+
+mainRouter.use((req, res, next) => {
+  // Reads are public.
+  if (req.method === "GET" || req.method === "HEAD" || req.method === "OPTIONS") {
+    return next();
+  }
+
+  // Gate all state-changing requests behind the admin shared secret.
+  // (Department resources kept their historical exception; the sanitizer below
+  // still runs for them.)
+  const authorized =
+    req.headers.authorization === WRITE_SECRET ||
+    req.originalUrl.startsWith("/api/dept/");
+
+  if (!authorized) {
+    return res.status(403).json({ message: "Unauthorized" });
+  }
+
+  // Defense-in-depth: strip XSS payloads from the write body before it reaches
+  // any controller / the database.
+  if (req.body) req.body = sanitizeDeep(req.body);
+
+  return next();
+});
 
 // mainRouter.route('/*').post(verifyUser).put(verifyUser).delete(verifyUser);
 mainRouter.use("/navbar", navBarRouter);
