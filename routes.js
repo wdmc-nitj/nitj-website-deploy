@@ -85,36 +85,23 @@ function sanitizeDeep(value) {
   return value;
 }
 
-// The shared secret the trusted admin pages send in the "authorization" header.
-// Sourced from .env (SECRET_KEY) — no hardcoded fallback, so the value that was
-// committed to the repo ("HareKrishna") no longer works. If SECRET_KEY is unset
-// the guard fails closed and rejects every write.
-// NOTE: this secret still appears in the public/*.html admin pages, so it is a
-// deterrent, not real access control. Move to session-based auth to remove it
-// from client code entirely. The sanitizer below holds even if it leaks.
-const WRITE_SECRET = process.env.SECRET_KEY;
-
 mainRouter.use((req, res, next) => {
   // Reads are public.
   if (req.method === "GET" || req.method === "HEAD" || req.method === "OPTIONS") {
     return next();
   }
 
-  // Fail closed if the secret was never configured.
-  if (!WRITE_SECRET) {
-    console.error("SECRET_KEY is not set — rejecting all write requests.");
-    return res.status(503).json({ message: "Server not configured for writes." });
-  }
-
-  // Gate all state-changing requests behind the admin shared secret.
+  // Gate all state-changing requests behind a real logged-in admin session.
+  // req.session is populated by the shared session middleware (see server.js),
+  // and AdminBro stores the authenticated user at req.session.adminUser on login.
   // (Department resources kept their historical exception; the sanitizer below
   // still runs for them.)
   const authorized =
-    req.headers.authorization === WRITE_SECRET ||
+    (req.session && req.session.adminUser) ||
     req.originalUrl.startsWith("/api/dept/");
 
   if (!authorized) {
-    return res.status(403).json({ message: "Unauthorized" });
+    return res.status(401).json({ message: "Login required." });
   }
 
   // Defense-in-depth: strip XSS payloads from the write body before it reaches

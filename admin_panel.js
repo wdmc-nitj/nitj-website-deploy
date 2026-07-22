@@ -3,6 +3,8 @@ const AdminBroMongoose = require("@admin-bro/mongoose");
 const AdminBroExpressjs = require("admin-bro-expressjs");
 
 const bcrypt = require("bcrypt");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 
 const Faculty = require("./models/Faculty");
 const Acadcord = require("./models/Acadcord");
@@ -3839,6 +3841,38 @@ const AdminBroOptions = {
 };
 
 const admin_panel = new AdminBro(AdminBroOptions);
+
+// --- Shared session so the logged-in admin is recognized on /api routes too ---
+// Both AdminBro's internal session middleware and the /api middleware below use
+// the SAME secret and the SAME MongoDB-backed store, so req.session.adminUser
+// (set by AdminBro on login) is readable when the custom admin pages POST to
+// /api/navbar, /api/store, etc. This replaces the shared-secret header with real
+// authentication: only a logged-in admin can perform writes.
+const COOKIE_SECRET =
+  process.env.COOKIE_SECRET || "some-secret-password-used-to-secure-cookie";
+
+const sessionStore = MongoStore.create({
+  mongoUrl: process.env.URI,
+  collectionName: "sessions",
+});
+
+const sessionOptions = {
+  store: sessionStore,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { httpOnly: true, sameSite: "lax" },
+};
+
+// Reusable middleware that populates req.session on non-AdminBro routes.
+// The cookie name MUST match the one AdminBro uses internally (it defaults to
+// "adminbro" in admin-bro-expressjs), otherwise this middleware would look for a
+// different cookie and never see the logged-in session.
+const apiSessionMiddleware = session({
+  ...sessionOptions,
+  secret: COOKIE_SECRET,
+  name: "adminbro",
+});
+
 // Build and use a router which will handle all AdminBro routes
 const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
   authenticate: async (email, password) => {
@@ -3943,7 +3977,7 @@ const router = AdminBroExpressjs.buildAuthenticatedRouter(admin_panel, {
   },
   // Set COOKIE_SECRET in .env to a long random value and rotate it now — the old
   // hardcoded value was committed to the repo and can be used to forge sessions.
-  cookiePassword: process.env.COOKIE_SECRET || "some-secret-password-used-to-secure-cookie",
-});
+  cookiePassword: COOKIE_SECRET,
+}, null, sessionOptions);
 
-module.exports = { admin_panel, router };
+module.exports = { admin_panel, router, apiSessionMiddleware };

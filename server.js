@@ -6,7 +6,7 @@ const express = require("express");
 const cors = require("cors");
 const compression = require("compression");
 const mainRouter = require("./routes");
-const { admin_panel, router } = require("./admin_panel");
+const { admin_panel, router, apiSessionMiddleware } = require("./admin_panel");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 
@@ -49,6 +49,10 @@ app.use(
   })
 );
 
+// Populate req.session on /api routes so the write guard can recognize a
+// logged-in admin. (/api/dashboard is handled by the AdminBro router above and
+// never reaches this.)
+app.use("/api", apiSessionMiddleware);
 app.use("/api", mainRouter);
 app.use("*", (req, res) => {
   return res.redirect(`https://v1.nitj.ac.in${req.originalUrl}`);
