@@ -242,7 +242,16 @@ id="nav-menu" style="display: none">
         <div class="hidden sm:flex basis-1/6 gap-4 flex-row items-center">
           <a href="https://www.facebook.com/NITJofficial"><i class="fa-brands fa-facebook text-lg"></i></a>
           <a href="https://www.instagram.com/nitjofficial/"><i class="fa-brands fa-instagram text-lg"></i></a>
-          <a href="https://twitter.com/NITJofficial"><i class="fa-brands fa-twitter text-lg"></i></a>
+          <a href="https://twitter.com/NITJofficial" target="_blank" aria-label="X">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         viewBox="0 0 24 24"
+         width="18"
+         height="18"
+         fill="currentColor"
+         aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817-5.963 6.817H1.684l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/>
+    </svg>
+</a>
         </div>
         <div class="flex sm:basis-1/3 basis-1/2 justify-center items-center">
           <span class="material-symbols-outlined" style="
