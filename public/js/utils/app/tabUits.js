@@ -161,8 +161,16 @@ for (const link of tabsUI) {
 }
 
 
-window.onload = () =>
-{
-  // console.log(tabsUI[1])
-notificationTabs(tabsUI[0])
-}
+// window.onload = () =>
+// {
+//   // console.log(tabsUI[1])
+// notificationTabs(tabsUI[0])
+// }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Ensure tabsUI is defined and has elements
+  if (tabsUI && tabsUI.length > 0) {
+    // Trigger the first tab (Upcoming Events)
+    notificationTabs(tabsUI[0]);
+  }
+});
