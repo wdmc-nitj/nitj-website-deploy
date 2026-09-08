@@ -37,6 +37,7 @@ document.write(`
          width="18"
          height="18"
          fill="currentColor"
+         class="hover:text-yellow-300 transition-colors duration-200"
          aria-hidden="true">
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.214-6.817-5.963 6.817H1.684l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z"/>
     </svg>
