@@ -137,19 +137,19 @@
                             Chairman
                         </p>
                         <div class="bg-accent w-full lg:w-[111px] h-[1px] lg:h-[5px]"></div>
-                    <div class="">
+                    <!-- <div class="">
                          <p><br></p>
                          <p>Yet to be Nominated</p>
+                    </div> -->
                     </div>
-                    </div>
 
 
 
-                    <!-- <div class="mb-8 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
+                    <div class="mb-8 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
                         <div id="fc_chairman">
 
                         </div>
-                    </div> -->
+                    </div>
                     <div>
                         <div class="w-full flex flex-col items-start mb-8">
                             <p class="font2 font-medium text-[28px] lg:text-[44px]">
@@ -402,10 +402,7 @@
             result = await result.json();
             console.log(result);
             document.getElementById("fc_chairman").innerHTML = `
-                <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>
-                            <p class="text-sm">${result[0].designation}</p>
-                            <p class="text-sm text-gray-500">${result[0].department}</p>
-                        
+                <p class="font2 font-semibold text-2xl lg:text-3xl text-accent my-1">${result[0].name}</p>          
                `;
         }
         callAPi();
